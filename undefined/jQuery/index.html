@@ -1,0 +1,1963 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/site.jpg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="学习笔记," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="BangjinHu's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="1.jQuery语法jQuery语法是通过选取 HTML 元素，并对选取的元素执行某些操作。  jQuery 入口函数与 JavaScript 入口函数的区别：       1.jQuery 的入口函数是在 html 所有标签(DOM)都加载之后，就会去执行。 1234   //文档就绪之后执行jQuery方法$(function()&amp;#123;   	// 执行代码&amp;#125;); 2.Java">
+<meta name="keywords" content="学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery-学习笔记">
+<meta property="og:url" content="http://bangjinhu.github.io/undefined/jQuery/index.html">
+<meta property="og:site_name" content="BangjinHu&#39;s Blog">
+<meta property="og:description" content="1.jQuery语法jQuery语法是通过选取 HTML 元素，并对选取的元素执行某些操作。  jQuery 入口函数与 JavaScript 入口函数的区别：       1.jQuery 的入口函数是在 html 所有标签(DOM)都加载之后，就会去执行。 1234   //文档就绪之后执行jQuery方法$(function()&amp;#123;   	// 执行代码&amp;#125;); 2.Java">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-09-05T07:09:20.371Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jQuery-学习笔记">
+<meta name="twitter:description" content="1.jQuery语法jQuery语法是通过选取 HTML 元素，并对选取的元素执行某些操作。  jQuery 入口函数与 JavaScript 入口函数的区别：       1.jQuery 的入口函数是在 html 所有标签(DOM)都加载之后，就会去执行。 1234   //文档就绪之后执行jQuery方法$(function()&amp;#123;   	// 执行代码&amp;#125;); 2.Java">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://bangjinhu.github.io/undefined/jQuery/"/>
+
+
+
+
+
+  <title>jQuery-学习笔记 | BangjinHu's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    
+    <a href="https://github.com/BangjinHu"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">BangjinHu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">让优秀成为习惯，让知识成为信仰</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            本站搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/jQuery/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">jQuery-学习笔记</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-05T09:22:26+08:00">
+                2018-06-05
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-09-05T15:09:20+08:00">
+                2018-09-05
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/jQuery/" itemprop="url" rel="index">
+                    <span itemprop="name">jQuery</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-jQuery语法"><a href="#1-jQuery语法" class="headerlink" title="1.jQuery语法"></a>1.jQuery语法</h2><pre><code>jQuery语法是通过选取 HTML 元素，并对选取的元素执行某些操作。
+
+jQuery 入口函数与 JavaScript 入口函数的区别：
+
+     1.jQuery 的入口函数是在 html 所有标签(DOM)都加载之后，就会去执行。
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">   //文档就绪之后执行jQuery方法</span><br><span class="line">$(function()&#123;</span><br><span class="line">   	// 执行代码</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<pre><code>2.JavaScript 的 window.onload 事件是等到所有内容，包括外部图片之类的文件加载完后，才会执行。
+</code></pre><a id="more"></a>
+<h2 id="2-jQuery-选择器"><a href="#2-jQuery-选择器" class="headerlink" title="2.jQuery 选择器"></a>2.jQuery 选择器</h2><p>jQuery 选择器(jQuery 选择器允许我们对 HTML 元素组或单个元素进行操作)基于元素的 id、类、类型、属性、属性值等”查找”（或选择）HTML 元素，jQuery 中所有选择器都以美元符号开头：$()。</p>
+<p>  1.#id 选择器<br>    jQuery #id 选择器通过 HTML 元素的 id 属性选取指定的元素，页面中元素的 id 应该是唯一的，所以您要在页面中选取唯一的元素需要通过 #id 选择器。</p>
+<pre><code>语法：$(&quot;#test&quot;)
+</code></pre><p>  2..class 选择器<br>    jQuery 类选择器可以通过指定的 class 查找元素</p>
+<pre><code>语法：$(&quot;.test&quot;)
+</code></pre><p>  3.元素选择器<br>    jQuery 元素选择器基于元素名选取元素</p>
+<pre><code>语法：$(&quot;p&quot;) 表示选取页面中所有的&lt;p&gt;元素
+</code></pre><p>  4.过滤选择器<br>    主要是通过特定的过滤规则筛选出所需要的DOM元素 过滤规则：选择器以(:)开头</p>
+<pre><code>主要过滤选择器：
+    1.:first 选取第一个元素
+    2.:last 选取最后一个元素
+    3.:header 选取所有的标题元素，如：h2/h3/h1等
+    ...
+
+案例：
+    //改变第一个&lt;div&gt;元素的背景色
+    $(&apos;div:first&apos;).css(&quot;background&quot;,&quot;#bbffaa&quot;);
+</code></pre><h2 id="3-jQuery-事件"><a href="#3-jQuery-事件" class="headerlink" title="3.jQuery 事件"></a>3.jQuery 事件</h2><pre><code>事件(jQuery 是为事件处理特别设计的)：页面对不同访问者的响应叫做事件 事件处理程序指的是当HTML中发生某些事件时所调用的方法
+</code></pre><h4 id="1-jQuery-事件方法语法"><a href="#1-jQuery-事件方法语法" class="headerlink" title="1.jQuery 事件方法语法"></a>1.jQuery 事件方法语法</h4><pre><code>在 jQuery 中，大多数 DOM 事件都有一个等效的 jQuery 方法
+1.$(&quot;p&quot;).click();//页面中点击事件的语法，然后在事件触发之后让其执行相关的事件处理程序
+2.常用的jQuery事件方法
+    1.click() 该方法是当按钮点击事件被触发时会调用的一个函数
+        $(&quot;p&quot;).click(function(){
+            $(this).hide();
+        });
+    2.dblclick() 当双击元素时，会发生dblclick事件
+    3.mouseenter() 当鼠标指针穿过元素时，会发生 mouseenter 事件
+    4.mouseleave() 当鼠标指针离开元素时，会发生 mouseleave 事件
+    5.mousedown() 
+    ...
+3.
+</code></pre><h4 id="2-事件绑定"><a href="#2-事件绑定" class="headerlink" title="2.事件绑定"></a>2.事件绑定</h4><pre><code>1.基本效果
+在文档装载完成之后，如果需要为元素绑定事件来完成操作，可以使用bind()方法来对匹配元素进行特定事件的绑定。
+格式：
+    bind(type [,data],fn);
+    1.type:事件类型
+    2.可选参数，作为event、data属性值传递给事件对象的额外数据对象
+    3.fn:用来绑定操作的处理函数
+</code></pre><blockquote>
+<p>注意：jQuery中的事件绑定类型比普通的JavaScript事件绑定类型少了on</p>
+</blockquote>
+<pre><code>案例：
+    $(function(){
+        $(&quot;#panel h5.head&quot;).bind(&quot;click&quot;,function(){
+            $(this).next(&quot;div.content&quot;).show();
+        })
+    })
+</code></pre><blockquote>
+<p>注意：在jQuery中的关键字this，this引用的是携带相应行为的DOM元素</p>
+</blockquote>
+<pre><code>2.加强效果
+
+3.改变事件的绑定类型
+
+4.简写绑定事件
+</code></pre><h2 id="4-jQuery效果"><a href="#4-jQuery效果" class="headerlink" title="4.jQuery效果"></a>4.jQuery效果</h2><pre><code>1.hide()/show() 通过hide()和show()方法来隐藏和显示HTML元素
+    //hide()方法
+    $(&quot;#hide&quot;).click(function(){
+        $(&quot;p&quot;).hide();
+    });
+    //show()方法
+    $(&quot;#show&quot;).click(function(){
+        $(&quot;p&quot;).show();
+    });
+2.toggle() 使用 toggle() 方法来切换 hide() 和 show() 方法
+3.fadeIn() 用于淡入已隐藏的元素
+    //fadeIn()方法中的效果时长：&quot;slow&quot;/fast以及毫秒值
+    $(&quot;button&quot;).click(function(){
+        $(&quot;#div1&quot;).fadeIn();
+        $(&quot;#div2&quot;).fadeIn(&quot;slow&quot;);
+        $(&quot;#div3&quot;).fadeIn(3000);
+    });
+4.fadeOut() 方法用于淡出可见元素
+    //类似于fadeIn()方法，其也能够控制效果时长
+    $(&quot;button&quot;).click(function(){
+        $(&quot;#div1&quot;).fadeOut();
+        $(&quot;#div2&quot;).fadeOut(&quot;slow&quot;);
+        $(&quot;#div3&quot;).fadeOut(3000);
+    });
+5.fadeToggle() 方法可以在 fadeIn() 与 fadeOut() 方法之间进行切换
+  如果元素已淡出，则fadeToggle()会向元素添加淡入效果 如果元素已淡入，则fadeToggle()会向元素添加淡出效果
+
+6.fadeTo() 方法允许渐变为给定的不透明度（值介于 0 与 1 之间）
+  opacity 参数将淡入淡出效果设置为给定的不透明度（值介于 0 与 1 之间）
+7.slideDown() 方法用于向下滑动元素
+        $(&quot;#flip&quot;).click(function(){
+            $(&quot;#panel&quot;).slideDown();
+        });
+8.slideUp() 方法用于向上滑动元素
+        $(&quot;#flip&quot;).click(function(){
+            $(&quot;#panel&quot;).slideUp();
+        });
+9.slideToggle() 方法可以在 slideDown() 与 slideUp() 方法之间进行切换
+10.animate() 用于创建自定义动画
+   语法：$(selector).animate({params},speed,callback);
+   1.params:定义形成动画的css属性
+   2.speed:可以是fast/slow/毫秒值
+   3.callback:可选，表示动画完成之后所执行的函数名称
+        $(&quot;button&quot;).click(function(){
+            $(&quot;div&quot;).animate({left:&apos;250px&apos;});
+        });
+</code></pre><h2 id="5-jQuery-方法链接"><a href="#5-jQuery-方法链接" class="headerlink" title="5.jQuery 方法链接"></a>5.jQuery 方法链接</h2><p>有一种名为链接（chaining）的技术，允许我们在相同的元素上运行多条 jQuery 命令，一条接着另一条。</p>
+<blockquote>
+<p>提示： 这样的话，浏览器就不必多次查找相同的元素。如需链接一个动作，只需简单地把该动作追加到之前的动作上。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//表示p1元素会首先变成红色，然后向上滑动，最后向下滑动</span><br><span class="line">$(&quot;#p1&quot;).css(&quot;color&quot;,&quot;red&quot;).slideUp(2000).slideDown(2000);</span><br></pre></td></tr></table></figure>
+<pre><code>1.jQuery方法
+    1. on()方法 该方法在被选元素及子元素上添加一个或多个事件处理程序
+</code></pre><blockquote>
+<p>注意：使用on()方法添加的事件处理程序适用于当前及未来的元素</p>
+<blockquote>
+<p>提示：<br>1.如果需要移除事件处理程序，使用off()方法 2.如需添加只运行一次的事件然后移除，请使用 one() 方法</p>
+</blockquote>
+</blockquote>
+<pre><code>2.event.preventDefault() 方法 阻止元素发生默认的行为
+例如：点击提交按钮时阻止对表单的提交或阻止URL的链接等 
+</code></pre><blockquote>
+<p>提示：请使用 event.isDefaultPrevented() 方法来检查指定的事件上是否调用了 preventDefault() 方法</p>
+<blockquote>
+<p>注意：参数event必须，是来自事件绑定绑定函数</p>
+</blockquote>
+</blockquote>
+<h2 id="6-jQuery-获取内容和属性"><a href="#6-jQuery-获取内容和属性" class="headerlink" title="6.jQuery 获取内容和属性"></a>6.jQuery 获取内容和属性</h2><blockquote>
+<p>前提：jQuery 提供一系列与 DOM(文档对象模型)<br>相关的方法，这使访问和操作元素和属性变得很容易</p>
+</blockquote>
+<h4 id="1-获取内容-方法"><a href="#1-获取内容-方法" class="headerlink" title="1.获取内容(方法)"></a>1.获取内容(方法)</h4><pre><code>1.text() - 设置或返回所选元素的文本内容
+2.html() - 设置或返回所选元素的内容（包括 HTML 标记）
+3.val() - 设置或返回表单字段的值
+4.attr() 方法用于获取属性值
+</code></pre><blockquote>
+<p>注意：1.对于<code>HTML</code>元素本身就带有的固有属性，在处理时，使用 prop 方法。对于 HTML 元素我们自己自定义的 DOM 属性，在处理时，使用 attr 方法</p>
+</blockquote>
+<h4 id="2-设置内容和属性"><a href="#2-设置内容和属性" class="headerlink" title="2.设置内容和属性"></a>2.设置内容和属性</h4><pre><code>1.attr() 用于设置或改变一个或多个属性值
+</code></pre><h4 id="3-添加元素"><a href="#3-添加元素" class="headerlink" title="3.添加元素"></a>3.添加元素</h4><pre><code>1.append() 在被选元素结尾插入内容
+2.prepend() 在被选元素开头插入内容
+3.after() 在被选元素之后插入内容
+4.before() 在被选元素之前插入内容
+</code></pre><blockquote>
+<p>总结：1.append()/prepend() 是在选择元素内部嵌入 2.after()/before()是在元素外面追加</p>
+</blockquote>
+<h4 id="4-删除元素"><a href="#4-删除元素" class="headerlink" title="4.删除元素"></a>4.删除元素</h4><pre><code>如果需要删除元素，一般使用remove()/empty()方法。
+1.remove() 删除被选元素以及子元素
+    //此时删除的不仅是div1里面的内容，而且还有div1这个块
+    $(&quot;#div1&quot;).remove();
+2.empty() 从被选元素中删除子元素
+    //此时仅仅删除的是div1里面的内容，并没有删除div1这个块
+    $(&quot;#div1&quot;).empty();
+3.过滤被删除的元素
+    //即就是接受一个参数，删除该参数下所有的元素
+    $(&quot;p&quot;).remove(&quot;.italic&quot;);//表示删除class=&quot;italic&quot;下面的所有&lt;p&gt;元素
+</code></pre><h2 id="7-jQuery-css-方法"><a href="#7-jQuery-css-方法" class="headerlink" title="7.jQuery css() 方法"></a>7.jQuery css() 方法</h2><pre><code>1.css() 方法设置或返回被选元素的一个或多个样式属性
+</code></pre><blockquote>
+<p>扩展</p>
+<blockquote>
+<p>JavaScript Object.keys()方法<br><br>作用：返回对象的可枚举属性和方法的名称</p>
+<blockquote>
+<p>语法：Object.keys(object)</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="8-jQuery-尺寸"><a href="#8-jQuery-尺寸" class="headerlink" title="8.jQuery 尺寸"></a>8.jQuery 尺寸</h2><pre><code>1.width() 方法设置或返回元素的宽度（不包括内边距、边框或外边距）
+2.height() 方法设置或返回元素的高度（不包括内边距、边框或外边距）
+3.innerWidth() 方法返回元素的宽度（包括内边距）
+4.innerHeight() 方法返回元素的高度（包括内边距）
+5.outerWidth() 方法返回元素的宽度（包括内边距和边框）
+6.outerHeight() 方法返回元素的高度（包括内边距和边框）
+</code></pre><h2 id="9-jQuery-遍历"><a href="#9-jQuery-遍历" class="headerlink" title="9.jQuery 遍历"></a>9.jQuery 遍历</h2><h4 id="1-祖先"><a href="#1-祖先" class="headerlink" title="1.祖先"></a>1.祖先</h4><pre><code>通过 jQuery，能够向上遍历 DOM 树，以查找元素的祖先
+
+1.parent() 方法返回被选元素的直接父元素，该方法只会向上一级对 DOM 树进行遍历
+        //表示只返回span元素的直接父元素(如：&lt;ul&gt;/&lt;li&gt;)
+        $(document).ready(function(){
+            $(&quot;span&quot;).parent();
+        });
+2.parents() 方法返回被选元素的所有祖先元素，它一路向上直到文档的根元素 (&lt;html&gt;)
+        //返回元素span的所有父元素
+        $(document).ready(function(){
+            $(&quot;span&quot;).parents();
+        });
+3.parentsUntil() 方法返回介于两个给定元素之间的所有祖先元素
+        //返回介于span元素与div元素之间所有的父元素
+        $(document).ready(function(){
+            $(&quot;span&quot;).parentsUntil(&quot;div&quot;);
+        });
+</code></pre><h4 id="2-后代"><a href="#2-后代" class="headerlink" title="2.后代"></a>2.后代</h4><pre><code>通过jQuery，我们可以向下遍历DOM树，查找元素的所有后代
+
+1.children()方法 返回被选元素的所有直接子元素，该方法只会向下一级对 DOM 树进行遍历
+        //返回div元素的所有子元素，不会越级返回元素
+        $(document).ready(function(){
+            $(&quot;div&quot;).children();
+        });
+</code></pre><blockquote>
+<p>注意：可以使用可选参数来过滤子元素的搜索</p>
+</blockquote>
+<pre><code>//表示返回类名为class_1的所有&lt;p&gt;元素，且这些元素是&lt;div&gt;的直接子元素
+$(document).ready(function(){
+    $(&quot;div&quot;).children(&quot;p.class_1&quot;);
+});
+
+    2.find()方法 返回被选元素的后代元素，一路向下直到最后一个后代
+            //表示返回div元素后代的所有span元素
+            $(document).ready(function(){
+                $(&quot;div&quot;).find(&quot;span&quot;);
+            });
+
+            //表示返回div元素的所有后代
+            $(document).ready(function(){
+                $(&quot;div&quot;).find(&quot;*&quot;);
+            });
+</code></pre><h4 id="3-同胞"><a href="#3-同胞" class="headerlink" title="3.同胞"></a>3.同胞</h4><blockquote>
+<p>前提：同胞拥有相同的父元素，通过 jQuery，我们能够在 DOM 树中遍历元素的同胞元素</p>
+</blockquote>
+<pre><code>1.next() 方法返回被选元素的下一个同胞元素
+        //表示返回h2元素的下一个同胞元素
+        $(document).ready(function(){
+            $(&quot;h2&quot;).next();
+        });
+
+2.nextAll() 方法返回被选元素的所有跟随的同胞元素
+        //表示返回h2元素的所有跟随同胞元素
+        $(document).ready(function(){
+            $(&quot;h2&quot;).nextAll();
+        });
+
+3.nextUntil() 方法返回介于两个给定参数之间的所有跟随的同胞元素
+        //返回介于h2-h6之间的所有的跟随同胞元素
+        $(document).ready(function(){
+            $(&quot;h2&quot;).nextUntil(&quot;h6&quot;);
+        });
+
+4.siblings() 方法返回被选元素的所有同胞元素
+</code></pre><blockquote>
+<p>注意：prev() prevAll() 以及 prevUntil()<br>方法的工作方式与上面的方法类似。只不过是工作方向相反而已，它们返回的是前面的同胞元素（在 DOM 树中沿着同胞之前元素遍历，而不是之后元素遍历）</p>
+</blockquote>
+<h4 id="4-过滤"><a href="#4-过滤" class="headerlink" title="4.过滤"></a>4.过滤</h4><blockquote>
+<p>基本的过滤方法：first()/last()和eq()，它们允许我们基于其在一组元素中的位置来选择一个特定的元素</p>
+</blockquote>
+<pre><code>1.first() 方法返回被选元素的首个元素
+        //选取首个 &lt;div&gt; 元素内部的第一个 &lt;p&gt; 元素
+        $(document).ready(function(){
+            $(&quot;div p&quot;).first();
+        });
+
+2.last() 方法返回被选元素的最后一个元素
+        //选择最后一个 &lt;div&gt; 元素中的最后一个 &lt;p&gt; 元素
+        $(document).ready(function(){
+            $(&quot;div p&quot;).last();
+        });
+
+3.eq() 方法返回被选元素中带有指定索引号的元素
+        //索引号从 0 开始，因此首个元素的索引号是 0 而不是 1
+        $(document).ready(function(){
+            $(&quot;p&quot;).eq(1);
+        });
+
+4.filter() 方法允许我们规定一个标准，如果元素不匹配这个标准的会被从集合中删除，匹配的元素会被返回
+        //返回带有类名 &quot;url&quot; 的所有 &lt;p&gt; 元素
+        $(document).ready(function(){
+            $(&quot;p&quot;).filter(&quot;.url&quot;);
+        });
+</code></pre><h2 id="10-jQuery-AJAX"><a href="#10-jQuery-AJAX" class="headerlink" title="10.jQuery - AJAX"></a>10.jQuery - AJAX</h2><p>AJAX 与服务器交换的技术，它在不重载全部页面的情况下，实现了对部分网页的更新。</p>
+<blockquote>
+<p>AJAX = 异步 JavaScript 和 XML（Asynchronous JavaScript and XML） 简短地说，在不重载整个网页的情况下，AJAX 通过后台加载数据，并在网页上进行显示。</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>注意：ajax的工作原理相当于在用户和服务器之间加了一个中间层(AJAX引擎)，使用户操作与服务器响应异步化</p>
+</blockquote>
+</blockquote>
+<p>jQuery 提供多个与 AJAX 有关的方法，通过 jQuery AJAX 方法，我们能够使用 HTTP Get 和 HTTP Post 从远程服务器上请求文本、HTML、XML 或 JSON 同时我们能够把这些外部数据直接载入网页的被选元素中 是用于创建快速动态网页的技术。</p>
+<p>1.load() 方法是简单但强大的 AJAX 方法</p>
+<p>作用：从服务器加载数据，并把返回的数据放入被选元素中</p>
+<p>1.URL参数规定所希望加载的URL<br>2.data参数规定与请求一同发送的查询字符串键值对集合</p>
+<blockquote>
+<p>语法：$(selector).load(URL,data,callback); </p>
+</blockquote>
+<p>2.$.get() 方法通过 HTTP GET 请求从服务器上请求数据</p>
+<p>URL 参数规定您希望请求的 URL callback 参数是请求成功后所执行的函数名(可选)</p>
+<blockquote>
+<p>语法：$.get(URL,callback);</p>
+</blockquote>
+<p>3.$.post() 方法通过 HTTP POST 请求向服务器提交数据</p>
+<p>URL 参数规定您希望请求的 URL data 参数规定连同请求发送的数据(可选) callback参数是请求成功后所执行的函数名(可选)</p>
+<blockquote>
+<p>语法：$.post(URL,data,callback); </p>
+</blockquote>
+<p>4.ajax() 该方法通过HTTP请求加载远程数据，是jQurey底层AJAX实现，$.ajax() 返回其创建的 XMLHttpRequest 对象，在最简单的情况下，$.ajax()可以不带任何参数直接使用。</p>
+<p>注意：所有的选项都可以通过 $.ajaxSetup() 函数来全局设置</p>
+<blockquote>
+<p>语法：jQuery.ajax([settings]) </p>
+<blockquote>
+<p>settings：用于配置AJAX请求的键值对集合 可以通过$.ajaxSetup() 设置任何选项的默认值</p>
+</blockquote>
+</blockquote>
+<p>5.ajax提交form表单方法</p>
+<p>在日常项目中经常使用到ajax提交form表单，而ajax提交表单有两种方式：</p>
+<p>1.无返回结果，直接将表单交给后台，让后台直接处理 最简单的：$(“#formid”).submit();//直接将form表单提交到后台。</p>
+<p>2.有返回结果的，在这种情况下，后台不管执行成功还是失败，最终的信息都需要返回到前台。而ajax本身属于有返回结果的一类，其中的success方法就是处理后台返回结果的。</p>
+<p>ajax提交表单有返回结果的两种实现方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">1.将表单数据序列化</span><br><span class="line"></span><br><span class="line">&lt;span style=&quot;font-size:18px;&quot;&gt;  </span><br><span class="line">$.ajax(&#123;  </span><br><span class="line">    type: &quot;POST&quot;,  </span><br><span class="line">   	//请求的类型 </span><br><span class="line">	url:your-url,  </span><br><span class="line">    //请求的路径</span><br><span class="line">	data:$(&apos;#yourformid&apos;).serialize(),  </span><br><span class="line">    //将数据序列化</span><br><span class="line">	async: false,  </span><br><span class="line">    //异步请求否</span><br><span class="line">	error: function(request) &#123;  </span><br><span class="line">    //发生错误调用函数</span><br><span class="line">		alert(&quot;Connection error&quot;);  </span><br><span class="line">    &#125;,  </span><br><span class="line">    success: function(data) &#123;  </span><br><span class="line">	//成功调用的函数        </span><br><span class="line">	//接收后台返回的结果  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;);</span><br><span class="line">&lt;/span&gt;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注意：使用这种方法的前提是form表单中要有name属性，后台获取的键值对为key=name值，value=各项值 无论是input标签还是span标签或者其他标签一定要有name属性，没有name属性，后台是获取不到该项的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">2.通过窗口查看form提交</span><br><span class="line">&lt;span style=&quot;font-size:18px;&quot;&gt;  </span><br><span class="line">    //提交表单  </span><br><span class="line">  	var obj = document.getElementById(&quot;xx_iframe&quot;).contentWindow;  </span><br><span class="line">  	obj.$(&quot;#yourform&quot;).form(&quot;submit&quot;,&#123;  </span><br><span class="line">    success :function(data)&#123;  </span><br><span class="line">    //对结果处理  </span><br><span class="line">    &#125;);&lt;/span&gt;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>注意：ajax中封装的post、get请求都是有返回结果的一类</p>
+</blockquote>
+<h4 id="AJAX使用的步骤"><a href="#AJAX使用的步骤" class="headerlink" title="AJAX使用的步骤"></a>AJAX使用的步骤</h4><pre><code>1.创建XMLHttpRequest对象
+
+    语法：
+
+        var myAjax = new XMLHttpRequest();
+    或  var myAjax = new ActiveXObject(&quot;microsoft.xmlhttp&quot;);
+
+2.open()方法连接服务器
+3.send()方法发送请求给服务器
+
+    2.向服务器发送请求：使用open()方法和send()方法
+
+        语法：
+
+            open(method,url,async) 表示规定请求的类型、URL以及是否异步请求，method：请求类型，get/post
+                                    url:文件在服务器上的位置 
+
+            send(string):string 仅用于post请求
+
+3.服务器响应
+
+    如果我们需要获取来自服务器的响应，需要使用XMLHttpRequest对象的responseText或responseXML属性
+
+        responseText属性：该属性返回字符串形式的响应
+        responseXML属性：如果来自服务器的响应是XML，同时需要作为XML对象进行解析，需要使用responseXML属性
+
+
+4.onreadystatechange属性连接函数responseText属性从服务器返回的数据
+
+    onreadystatechange 事件，当请求被发送到服务器时，我们需要执行一些基于响应的任务。 
+    每当 readyState 改变时，就会触发 onreadystatechange 事件。
+
+        XMLHttpRequest 对象的三个重要的属性：
+            onreadystatechange:存储函数（或函数名），每当 readyState 属性改变时，就会调用该函数。
+
+            readyState:存有 XMLHttpRequest 的状态。从 0 到 4 发生变化。
+                0: 请求未初始化
+                1: 服务器连接已建立
+                2: 请求已接收
+                3: 请求处理中
+                4: 请求已完成，且响应已就绪
+
+            status:200: &quot;OK&quot;/404: 未找到页面
+</code></pre><blockquote>
+<p>扩展：四种常用的ajax请求方式：</p>
+</blockquote>
+<pre><code>&lt;br&gt;
+    1.$.ajax()返回其创建的 XMLHttpRequest 对象
+
+        $.ajax() 只有一个参数：参数 key/value 对象，包含各配置及回调函数信息，如果你指定了dataType选项，那么需要保证服务器返回正确的MIME信息，(如 xml 返回 &quot;text/xml&quot;)
+
+    2.通过远程http get请求载入信息
+
+        比较复杂的$.ajax来说，get请求功能更简单，请求成功时可以调用回调函数，出错时还是使用$.ajax
+
+    3.通过远程http post请求载入信息
+
+        post请求相对比较简单，请求成功时可以调用回调函数，出错时也使用$.ajax请求
+
+    4.通过http get请求载入JSON数据
+
+        方法：$.getJSON(url,function(){})
+</code></pre><hr>
+<blockquote>
+<p>扩展：jQuery DataTable 前端插件(与后端完全分离) 强大的功能支持：排序、分页、搜索等</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>主要特点：自动分页处理、即时表格数据过滤、数据排序以及数据类型自动检测、自动处理列宽度、可通过CSS定制样式、支持隐藏列、易用、可扩展性和灵活性、国际化、动态创建表格。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>使用方法：<br>        1.首先构建我们需要的数据列表，以及页面显示表格<br>        2.在jQuery DataTable官网下载一份js库<br>        3.在页面中引入这两个文件，然后在两个文件要在最前面以至于能够被引用到<br>        4.编写前端程序，需要使用到ajax对后台进行请求，所以在配置datatable的时候，要加上{“serverSide”:ture}，以保证页面在加载时就请求后台，以及每次对datatable进行操作时也是请求后台。<br>        5.配置数据返回对应具体的列，在Datatable中，属性columns用来配置具体列的属性，包括对应的数据列名，是否支持搜索，是否显示，是否支持排序等。</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<pre><code>列 columns 和 columnDefs基本使用
+    相同点：达到相同的效果
+    不同点：作用和使用不一样
+        1.columns：设置特定列的初始化属性，可以定义数组设置多列，数组长度必须等于表格的数量，只想使用默认值可以设为“NULL”，数组每个元素只能设置单列的属性。
+        2.columnDefs：与columns非常相似，该数组可以针对特定的列，多列或者所有列定义。数组可以任意长度。通过targets参数设置一个列或者多列
+            属性定义：
+                0或正整数 - 从左边的列索引计数 
+                负整数 - 列索引从右边计数 
+                一个字符串 - 类名称将被匹配上的TH为列 
+                字符串“_all” - 所有的列（即指定一个默认值） 
+                两个参数可以同时使用，但是columns定义的优先级最高。 
+                当columnDefs里对同一列有多个定义时，最开始的定义优先级最高
+</code></pre><blockquote>
+<p>注意：<br>DataTables的一些基础属性配置:    </p>
+</blockquote>
+<pre><code>    &quot;bPaginate&quot;: true, //翻页功能 
+    &quot;bLengthChange&quot;: true, //改变每页显示数据数量 
+    &quot;bFilter&quot;: true, //过滤功能 
+    &quot;bSort&quot;: false, //排序功能 
+    &quot;bInfo&quot;: true,//页脚信息 
+    &quot;bAutoWidth&quot;: true//自动宽度 
+    &quot;sPaginationType&quot;: &quot;full_numbers&quot;  //分页样式
+
+1.数据排序：&quot;aaSorting&quot;: [ [ 4, &quot;desc&quot; ] ] };//表示从第0列开始，以第四列倒序排序
+
+2.隐藏某列：
+
+3.国际化：
+</code></pre><hr>
+<blockquote>
+<p>扩展1</p>
+<blockquote>
+<p>控制台属性和方法：</p>
+<blockquote>
+<p>1.console.log 用于输出普通信息  2.console.info 用于输出提示性信息  3.console.error用于输出错误信息  4.console.warn用于输出警示信息    5.console.debug用于输出调试信息</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>注意：console对象的上面5种方法，都可以使用printf风格的占位符。不过，占位符的种类比较少，只支持字符（%s）、整数（%d或%i）、浮点数（%f）和对象（%o）四种</p>
+</blockquote>
+<pre><code>1.%o  //此占位符用来查看对象内部情况
+2.
+</code></pre><p>案例：</p>
+<pre><code>console.log(&quot;%d年%d月%d日&quot;,2011,3,26);//表示输出日期
+console.log(&quot;圆周率是%f&quot;,3.1415926);//输出数学表达式
+</code></pre><p>控制台方法：</p>
+<pre><code>1.console.assert 对输入的表达式进行断言，只有表达式为false时，才输出相应的信息到控制台。
+2.console.count 用于统计代码被执行的次数。&lt;br/&gt;
+3.console.dir 直接将该DOM结点以DOM树的结构进行输出，可以详细查对象的方法发展等。&lt;br/&gt;
+4.console.time 计时开始&lt;br/&gt;
+5.console.timeEnd 计时结束
+6.console.trace 堆栈跟踪相关的调试
+</code></pre><blockquote>
+<p>扩展2</p>
+<blockquote>
+<p>jquery setTimeout()函数使用方法</p>
+<blockquote>
+<p>该方法表示从载入后延迟指定的时间去执行一个表达式或者是函数，仅仅执行一次。与<code>window.clean Timeout</code> 一起使用</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>window.location.reload()函数</p>
+<blockquote>
+<p>JS中实现刷新页面的方法，浏览器重新从服务器中请求资源</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<hr>
+<h2 id="11-JSONP"><a href="#11-JSONP" class="headerlink" title="11.JSONP"></a>11.JSONP</h2><blockquote>
+<p>简介：JSONP是JSON的一种使用模式，可以让网页从其他网站获取资料，实现跨域读取数据。</p>
+<blockquote>
+<p>同源策略：它是由Netscape提出的一个著名的安全策略，现在所有支持JavaScript 的浏览器都会使用这个策略。</p>
+<blockquote>
+<p>JSON.parse() 将数据转换为JavaScript对象。<br>语法：JSON.parse(text[, reviver])<br>text：一个有效的JSON字符串  reviver：转换结果的函数，将为对象的每个成员调用此函数</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<hr>
+<h2 id="12-jQuery-EasyUI"><a href="#12-jQuery-EasyUI" class="headerlink" title="12.jQuery EasyUI"></a>12.jQuery EasyUI</h2><p>jQuery EasyUI是一个基于jQuery的框架，集成了各种用户界面（UI）插件。jQuery EasyUI能够帮助Web开发者更轻松的打造出功能丰富并且美观的UI界面。</p>
+<pre><code>两种方法声明UI组件：
+    1.直接在HTML声明组件
+
+        &lt;div class=&quot;easyui-dialog&quot; style=&quot;width:400px;height:200px&quot;data-options=&quot;title:&apos;My Dialog&apos;,collapsible:true,iconCls:&apos;icon-ok&apos;,onOpen:function(){}&quot;&gt;
+                    dialog content.
+        &lt;/div&gt;
+
+    2.编写JavaScript来创建组件
+
+        &lt;input id=&quot;cc&quot; style=&quot;width:200px&quot; /&gt; //HTML标签
+
+        $(&apos;#cc&apos;).combobox({        //jQuery语法
+            url: ...,
+            required: true,
+            valueField: &apos;id&apos;,
+            textField: &apos;text&apos;
+        });
+</code></pre><p>EasyUI应用 创建CRUD应用</p>
+<hr>
+<h2 id="13-jQuery-Validate验证详解"><a href="#13-jQuery-Validate验证详解" class="headerlink" title="13.jQuery Validate验证详解"></a>13.jQuery Validate验证详解</h2><p>jQuery Validate 插件为表单提供了强大的验证功能，让客户端表单验证变得更简单，同时提供了大量的定制选项，满足应用程序各种需求。该插件捆绑了一套有用的验证方法，包括 URL 和电子邮件验证，同时提供了一个用来编写用户自定义方法的 API。</p>
+<p>1.导入JS文件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"jQuery.1.8.3.js"</span> type=<span class="string">"text/javascript"</span>&gt;&lt;/script&gt; </span><br><span class="line">&lt;script src=<span class="string">"jquery.validate.js"</span> type=<span class="string">"text/javascript"</span>&gt;&lt;/script&gt; </span><br><span class="line">&lt;script src=<span class="string">"messages_zh.js"</span> type=<span class="string">"text/javascript"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>2.默认校验规则</p>
+<p>3.默认的提示</p>
+<p>4.使用方法</p>
+<pre><code>1.通过属性方式添加验证规则
+
+2.metadata用法(将校验规则写到控件中或者在 class 属性填写规则（效果一样）)
+注意：使用class=&quot;{}&quot;的方式需要引入包：jquery.metadata.js
+
+
+3.将校验规则写到JS代码中
+</code></pre><hr>
+<h2 id="14-jQuery-树型菜单插件-Treeview"><a href="#14-jQuery-树型菜单插件-Treeview" class="headerlink" title="14.jQuery 树型菜单插件(Treeview)"></a>14.jQuery 树型菜单插件(Treeview)</h2><p>jQuery Treeview提供了一个无序灵活的树形菜单</p>
+<p>1.首先引入 CSS 与 JS 文件</p>
+<pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;http://static.runoob.com/assets/js/jquery-treeview/jquery.treeview.css&quot;/&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;http://static.runoob.com/assets/js/jquery-treeview/screen.css&quot;/&gt;
+
+&lt;script src=&quot;https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;http://static.runoob.com/assets/js/jquery-treeview/jquery.cookie.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;http://static.runoob.com/assets/js/jquery-treeview/jquery.treeview.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+</code></pre><p>2.然后编写 JS 程序</p>
+<pre><code>    $(&quot;#browser&quot;).treeview({
+    toggle: function() {
+        console.log(&quot;%s was toggled.&quot;, $(this).find(&quot;&gt;span&quot;).text());
+    }
+});
+</code></pre><p>3.最后编写 HTML 文件</p>
+<pre><code>//在类里面声明filetree treeview-famfamfam
+&lt;ul id=&quot;browser&quot; class=&quot;filetree treeview-famfamfam&quot;&gt;
+&lt;li&gt;&lt;span class=&quot;folder&quot;&gt;Folder 1&lt;/span&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;span class=&quot;folder&quot;&gt;Item 1.1&lt;/span&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;span class=&quot;file&quot;&gt;Item 1.1.1&lt;/span&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;span class=&quot;folder&quot;&gt;Folder 2&lt;/span&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;span class=&quot;folder&quot;&gt;Subfolder 2.1&lt;/span&gt;
+                    &lt;ul id=&quot;folder21&quot;&gt;
+                        &lt;li&gt;&lt;span class=&quot;file&quot;&gt;File 2.1.1&lt;/span&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;span class=&quot;file&quot;&gt;File 2.1.2&lt;/span&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/li&gt;
+                &lt;li&gt;&lt;span class=&quot;folder&quot;&gt;Subfolder 2.2&lt;/span&gt;
+                    &lt;ul&gt;
+                        &lt;li&gt;&lt;span class=&quot;file&quot;&gt;File 2.2.1&lt;/span&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;span class=&quot;file&quot;&gt;File 2.2.2&lt;/span&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;closed&quot;&gt;&lt;span class=&quot;folder&quot;&gt;Folder 3 (closed at start)&lt;/span&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;span class=&quot;file&quot;&gt;File 3.1&lt;/span&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;span class=&quot;file&quot;&gt;File 4&lt;/span&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre><p>4.最后加上相关的按钮或者链接（整个HTML页面完成）</p>
+<hr>
+<h2 id="15-jQuery-Tooltip"><a href="#15-jQuery-Tooltip" class="headerlink" title="15.jQuery Tooltip"></a>15.jQuery Tooltip</h2><blockquote>
+<p>提示：jQuery Tooltip 取代了原生的工具提示框，让其可以自定义，我们只需要调整其内容、位置和外观便可。</p>
+</blockquote>
+<p>使用步骤：<br>1.</p>
+<hr>
+<h2 id="16-jQuery-Prettydate"><a href="#16-jQuery-Prettydate" class="headerlink" title="16.jQuery Prettydate"></a>16.jQuery Prettydate</h2><p>jQuery Prettydate 插件为表单提供了强大的验证功能，让客户端表单验证变得更简单，同时提供了大量的定制选项，满足应用程序各种需求。该插件捆绑了一套有用的验证方法，包括 URL 和电子邮件验证，同时提供了一个用来编写用户自定义方法的 API。</p>
+<p>1.使用方法<br>如果我们需要使用到此插件，需要我们在<code>title</code>标签中加上带有<code>ISO8601</code>日期</p>
+<pre><code>&lt;a title=&quot;2008-01-28T20:24:17Z&quot;&gt;January 28th, 2008&lt;/a&gt; 
+&lt;a title=&quot;2008-01-27T22:24:17Z&quot;&gt;January 27th, 2008&lt;/a&gt; 
+&lt;a title=&quot;2008-01-26T22:24:17Z&quot;&gt;January 26th, 2008&lt;/a&gt;
+</code></pre><p>然后对它们使用prettyDate()方法</p>
+<pre><code>$(function() { $(&quot;a&quot;).prettyDate(); });
+</code></pre><hr>
+<h2 id="17-Password-Validation-插件"><a href="#17-Password-Validation-插件" class="headerlink" title="17.Password Validation 插件"></a>17.Password Validation 插件</h2><p>对于密码验证，这一插件提供了两种组件：<br>1.<br>2.</p>
+<p>1.使用方式<br>如果我们需要使用到<code>password validation</code>插件，我们需要添加一个<code>class=&quot;password&quot;</code>到<code>input</code>中，同时添加<code>显示强度</code>的基本标记在表单的需要显示的地方。</p>
+<pre><code>//首先设置验证器的默认情况，然后编写验证器的验证规则
+jQuery.validator.setDefaults({
+        debug: true,
+        success: &quot;valid&quot;
+});
+$( &quot;#myform&quot; ).validate({
+    rules: {
+        password: &quot;required&quot;,
+        password_again: {
+            equalTo: &quot;#password&quot;
+        }
+    }
+});
+</code></pre><hr>
+<h2 id="18-jQuery-Growl-插件"><a href="#18-jQuery-Growl-插件" class="headerlink" title="18.jQuery Growl 插件"></a>18.jQuery Growl 插件</h2>
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+
+  <p><span>本文标题:</span>jQuery-学习笔记</a></p>
+  <p><span>文章作者:</span>Bangjin-Hu</a></p>
+  <p><span>发布时间:</span>2018年06月05日 - 09:22:26</p>
+  <p><span>最后更新:</span>2018年09月05日 - 15:09:20</p>
+  <p><span>原始链接:</span><a href="/undefined/jQuery/" title="jQuery-学习笔记">http://bangjinhu.github.io/undefined/jQuery/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/jQuery/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.jpg" alt="Bangjin-Hu wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎扫码关注微信公众号，订阅我的微信公众号.</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持是我创作的动力.</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat-reward-img.jpg" alt="Bangjin-Hu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay-reward-img.jpg" alt="Bangjin-Hu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Bangjin-Hu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://bangjinhu.github.io/undefined/jQuery/" title="jQuery-学习笔记">http://bangjinhu.github.io/undefined/jQuery/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/学习笔记/" rel="tag"><i class="fa fa-tag"></i> 学习笔记</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/undefined/mybatis/" rel="prev" title="mybatis-学习笔记">
+                mybatis-学习笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/site.jpg"
+                alt="Bangjin-Hu" />
+            
+              <p class="site-author-name" itemprop="name">Bangjin-Hu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/BangjinHu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:2315378346@qq.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/Aaron_P_L" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-heart-o"></i>知乎</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          <div id="music163player">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src="//music.163.com/outchain/player?type=2&id=38358214&auto=0&height=66
+
+">
+    </iframe>
+</div>
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-jQuery语法"><span class="nav-text">1.jQuery语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-jQuery-选择器"><span class="nav-text">2.jQuery 选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-jQuery-事件"><span class="nav-text">3.jQuery 事件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-jQuery-事件方法语法"><span class="nav-text">1.jQuery 事件方法语法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-事件绑定"><span class="nav-text">2.事件绑定</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-jQuery效果"><span class="nav-text">4.jQuery效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-jQuery-方法链接"><span class="nav-text">5.jQuery 方法链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-jQuery-获取内容和属性"><span class="nav-text">6.jQuery 获取内容和属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-获取内容-方法"><span class="nav-text">1.获取内容(方法)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-设置内容和属性"><span class="nav-text">2.设置内容和属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-添加元素"><span class="nav-text">3.添加元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-删除元素"><span class="nav-text">4.删除元素</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-jQuery-css-方法"><span class="nav-text">7.jQuery css() 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-jQuery-尺寸"><span class="nav-text">8.jQuery 尺寸</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-jQuery-遍历"><span class="nav-text">9.jQuery 遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-祖先"><span class="nav-text">1.祖先</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-后代"><span class="nav-text">2.后代</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-同胞"><span class="nav-text">3.同胞</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-过滤"><span class="nav-text">4.过滤</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-jQuery-AJAX"><span class="nav-text">10.jQuery - AJAX</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#AJAX使用的步骤"><span class="nav-text">AJAX使用的步骤</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-JSONP"><span class="nav-text">11.JSONP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-jQuery-EasyUI"><span class="nav-text">12.jQuery EasyUI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-jQuery-Validate验证详解"><span class="nav-text">13.jQuery Validate验证详解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-jQuery-树型菜单插件-Treeview"><span class="nav-text">14.jQuery 树型菜单插件(Treeview)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-jQuery-Tooltip"><span class="nav-text">15.jQuery Tooltip</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-jQuery-Prettydate"><span class="nav-text">16.jQuery Prettydate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17-Password-Validation-插件"><span class="nav-text">17.Password Validation 插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#18-jQuery-Growl-插件"><span class="nav-text">18.jQuery Growl 插件</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bangjin-Hu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count"></span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/lib/clipboard/clipboard.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+</body>
+</html>

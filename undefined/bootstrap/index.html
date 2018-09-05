@@ -1,0 +1,2557 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/site.jpg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="学习笔记," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="BangjinHu's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. Bootstrap 包的内容 1.基本结构：Bootstrap 提供了一个带有网格系统、链接样式、背景的基本结构   2.CSS：Bootstrap 自带以下特性：全局的 CSS 设置、定义基本的 HTML 元素样式、可扩展的 class，以及一个先进的网格系统   3.组件：Bootstrap 包含了十几个可重用的组件，用于创建图像、下拉菜单、导航">
+<meta name="keywords" content="学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="bootstrap-学习笔记">
+<meta property="og:url" content="http://bangjinhu.github.io/undefined/bootstrap/index.html">
+<meta property="og:site_name" content="BangjinHu&#39;s Blog">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. Bootstrap 包的内容 1.基本结构：Bootstrap 提供了一个带有网格系统、链接样式、背景的基本结构   2.CSS：Bootstrap 自带以下特性：全局的 CSS 设置、定义基本的 HTML 元素样式、可扩展的 class，以及一个先进的网格系统   3.组件：Bootstrap 包含了十几个可重用的组件，用于创建图像、下拉菜单、导航">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://bangjinhu.github.io/undefined/bootstrap/cinqueterre.jpg">
+<meta property="og:updated_time" content="2018-09-05T07:04:35.588Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="bootstrap-学习笔记">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. Bootstrap 包的内容 1.基本结构：Bootstrap 提供了一个带有网格系统、链接样式、背景的基本结构   2.CSS：Bootstrap 自带以下特性：全局的 CSS 设置、定义基本的 HTML 元素样式、可扩展的 class，以及一个先进的网格系统   3.组件：Bootstrap 包含了十几个可重用的组件，用于创建图像、下拉菜单、导航">
+<meta name="twitter:image" content="http://bangjinhu.github.io/undefined/bootstrap/cinqueterre.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://bangjinhu.github.io/undefined/bootstrap/"/>
+
+
+
+
+
+  <title>bootstrap-学习笔记 | BangjinHu's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    
+    <a href="https://github.com/BangjinHu"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">BangjinHu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">让优秀成为习惯，让知识成为信仰</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            本站搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/bootstrap/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">bootstrap-学习笔记</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-05T09:22:26+08:00">
+                2018-06-05
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-09-05T15:04:35+08:00">
+                2018-09-05
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/bootstrap/" itemprop="url" rel="index">
+                    <span itemprop="name">bootstrap</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="Bootstrap-包的内容"><a href="#Bootstrap-包的内容" class="headerlink" title="Bootstrap 包的内容"></a>Bootstrap 包的内容</h2><blockquote>
+<p>1.基本结构：Bootstrap 提供了一个带有网格系统、链接样式、背景的基本结构</p>
+</blockquote>
+<blockquote>
+<p>2.CSS：Bootstrap 自带以下特性：全局的 CSS 设置、定义基本的 HTML 元素样式、可扩展的 class，以及一个先进的网格系统</p>
+</blockquote>
+<blockquote>
+<p>3.组件：Bootstrap 包含了十几个可重用的组件，用于创建图像、下拉菜单、导航、警告框、弹出框等</p>
+</blockquote>
+<blockquote>
+<p>4.JavaScript 插件：Bootstrap 包含了十几个自定义的 jQuery 插件</p>
+</blockquote>
+<blockquote>
+<p>5.定制：您可以定制 Bootstrap 的组件、LESS 变量和 jQuery 插件来得到您自己的版本<br><a id="more"></a><br>扩展</p>
+<blockquote>
+<p>meta标签中http-equiv属性<br>meta是head区的一个辅助性标签，而这个标签的作用是：搜索引擎优化(SEO)、定义页面使用语言、自动刷新并且指向新的页面。</p>
+<blockquote>
+<p>meta标签有两个属性：http-equiv/name属性 其中name属性用于描述网页，对应的属性值为content，content中的内容主要是便于搜索引擎机器人查找信息和分类信息用的。</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="Bootstrap-CSS"><a href="#Bootstrap-CSS" class="headerlink" title="Bootstrap CSS"></a>Bootstrap CSS</h2><h4 id="1-HTML5文档类型-doctype"><a href="#1-HTML5文档类型-doctype" class="headerlink" title="1.HTML5文档类型(doctype)"></a>1.HTML5文档类型(doctype)</h4><p>Bootstrap 使用了一些 HTML5 元素和 CSS 属性，所以为了让这些属性元素正常工作，需要使用HTML5文档类型。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+    &lt;html&gt;&lt;/html&gt;
+</code></pre><blockquote>
+<p>注意：如果在boostrap创建的页面中不使用文档类型(doctype)，页面会出现显示不一致的问题</p>
+</blockquote>
+<h4 id="2-移动设备优先"><a href="#2-移动设备优先" class="headerlink" title="2.移动设备优先"></a>2.移动设备优先</h4><p>为了让 Bootstrap 开发的网站对移动设备友好，确保适当的绘制和触屏缩放，需要在网页的 head 之中添加<code>viewport meta</code>标签<br><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></p>
+<blockquote>
+<p>1.width属性让网站能正确不同屏幕分辨率的设备上浏览显示</p>
+</blockquote>
+<blockquote>
+<p>2.initial-scale 保证网页在加载的时候是以1:1的比例显示</p>
+</blockquote>
+<blockquote>
+<p>注意：在移动设备浏览器上，通过为 <code>viewport meta</code> 标签添加 <code>user-scalable=no</code> 可以禁用其缩放（zooming）功能.通常情况下，参数<code>maximum-scale=1.0</code> 与 <code>user-scalable=no</code> 一起使用，禁用缩放功能，用户只能滚动屏幕进行网页查看。</p>
+</blockquote>
+<h4 id="3-响应式图像"><a href="#3-响应式图像" class="headerlink" title="3.响应式图像"></a>3.响应式图像</h4><p><code>&lt;img src=&quot;...&quot; class=&quot;img-responsive&quot; alt=&quot;响应式图像&quot;&gt;</code><br>通过添加 <code>img-responsive class</code> 可以让 Bootstrap 3<br>中的图像对响应式布局的支持更友好。在<code>img-responsive class</code> 中为图像设置的属性 <code>max-width: 100%;</code> 和<code>height: auto;</code> 属性，可以让图像按比例缩放，不超过其父元素的尺寸这说明了图像显示以<code>block</code>的方法，在设置元素的显示<code>display</code>为<code>block</code>时，以块级元素显示</p>
+<blockquote>
+<p>注意：如果需要使.img-responsive 类的图片水平居中，请使用 .center-block 类，不要用 .text-center</p>
+</blockquote>
+<h4 id="4-全局显示、排版和链接"><a href="#4-全局显示、排版和链接" class="headerlink" title="4.全局显示、排版和链接"></a>4.全局显示、排版和链接</h4><h5 id="1-基本的全局显示"><a href="#1-基本的全局显示" class="headerlink" title="1.基本的全局显示"></a>1.基本的全局显示</h5><p>Bootstrap 3 使用 <code>body {margin: 0;}</code> 来移除 body 的边距,一般的全局显示是<code>body{}</code>中设置，然后属性有：</p>
+<pre><code>1.font-family:   //用于设置默认字体样式 
+2.font-size:   //设置文本默认字体大小 
+3.line-height:  //设置默认行高
+4.color: //设置默认的文本颜色    
+5.background-color:  //设置默认的背景颜色
+</code></pre><h5 id="2-排版"><a href="#2-排版" class="headerlink" title="2.排版"></a>2.排版</h5><p>使用<code>@font-family-base</code> <code>@font-size-base</code> 和 <code>@line-height-base</code> 属性作为排版样式</p>
+<h5 id="3-链接样式"><a href="#3-链接样式" class="headerlink" title="3.链接样式"></a>3.链接样式</h5><p>使用 <code>@link-color</code> 设置全局链接的颜色</p>
+<pre><code>例子：
+        //表示在鼠标悬停或者点击过链接时，颜色会变，然后会呈现一条下划线。然后点击过得链接还会出现样式
+        a:hover,a:focus{color:#253544 text-decoration:underline}
+        a:focous{outline:thin dotted #333;outline:5px auto --webkit-focus-ring-color;outline-offset: -2px;}
+</code></pre><h5 id="4-避免跨浏览器的不一致"><a href="#4-避免跨浏览器的不一致" class="headerlink" title="4.避免跨浏览器的不一致"></a>4.避免跨浏览器的不一致</h5><p>Bootstrap 使用 <code>Normalize</code> 来建立跨浏览器的一致性，而 <code>Normalize.css</code> 文件是一个很小的css文件，在HTML元素默认的样式中提供更好的跨浏览器一致性</p>
+<h5 id="5-容器"><a href="#5-容器" class="headerlink" title="5.容器"></a>5.容器</h5><p><code>&lt;div class=&quot;container&quot;&gt;&lt;/div&gt;</code> 表示引用容器，然后再看cnotainer容器的属性：</p>
+<pre><code>.container {
+       padding-right: 15px;//内边距
+       padding-left: 15px;
+       margin-right: auto;//页边距，由浏览器决定
+       margin-left: auto;
+}
+</code></pre><blockquote>
+<p>注意：Bootstrap 3 CSS 有一个申请响应的<code>媒体查询</code>，在不同的媒体查询阈值范围内都为 <code>container</code> 设置了<code>max-width</code>，用以匹配网格系统。</p>
+</blockquote>
+<pre><code>@media (min-width: 768px) {
+       .container {
+              width: 750px;
+    }
+</code></pre><blockquote>
+<p>注意：container与container-fluid之间的区别</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>1.<code>container</code> 类和<code>container-fluid</code>类的区别体现在是否有随视口宽度改变的<code>margin</code>存在。<br>2.<code>container</code>类所谓的自适应也是通过<code>margin</code>的改变来完成，<code>container-fluid</code>类的百分百宽度是指在固有的<code>15px</code>的<code>padding</code>前提下宽度总是当前视口的宽度</p>
+</blockquote>
+</blockquote>
+<h5 id="6-Bootstrap-浏览器-设备支持"><a href="#6-Bootstrap-浏览器-设备支持" class="headerlink" title="6.Bootstrap 浏览器/设备支持"></a>6.Bootstrap 浏览器/设备支持</h5><p>Bootstrap 可以在最新的桌面系统和移动端浏览器中很好的工作，然后在旧的浏览器可能无法很好的支持 bootstrap 网格系统.Bootstrap 提供了一套响应式、移动设备优先的流式网格系统，随着屏幕或视口（viewport）尺寸的增加，系统会自动分为最多12列。</p>
+<pre><code>1.网格(Grid)
+    表示在网页设计过程中用于组织内容，让网站更容易浏览，降低用户端的负载
+
+2.bootstrap的网格系统
+    bootstrap3 是移动设备优先的，然后再扩展到大屏幕设备(pc端)上的组件和网格
+
+3.移动设备优先策略
+    1.内容
+
+    2.布局
+      1.优先设计更小的宽度
+      2.基础的css是移动设备优先
+    3.渐进增强
+      随着屏幕的大小的增加而添加元素
+</code></pre><blockquote>
+<p>注意：响应式网格系统随着屏幕或视口（viewport）尺寸的增加，系统会自动分为最多12列。</p>
+</blockquote>
+<pre><code>4.bootstrap网格系统的工作原理
+    网格系统通过一系列包含内容的行和列来创建页面布局
+
+    1.行必须放置在 .container class 内，以便获得适当的对齐（alignment）和内边距（padding）
+    2.使用行来创建列的水平组
+    3.内容应该放置在列内，且唯有列可以是行的直接子元素
+    4.
+
+5.媒体查询
+    bootstrap的媒体查询允许我们基于视口大小移动、显示并隐藏内容
+
+        /* 超小设备（手机，小于 768px） */
+        /* Bootstrap 中默认情况下没有媒体查询 */
+
+        /* 小型设备（平板电脑，768px 起） */
+        @media (min-width: @screen-sm-min) { ... }
+
+        /* 中型设备（台式电脑，992px 起） */
+        @media (min-width: @screen-md-min) { ... }
+
+        /* 大型设备（大台式电脑，1200px 起） */
+        @media (min-width: @screen-lg-min) { ... }
+</code></pre><blockquote>
+<p>注意：有时候的媒体查询包含<code>max-width</code>，这样作用是将css的影响限制更小范围的屏幕大小之内</p>
+</blockquote>
+<pre><code>@media (max-width: @screen-xs-max) { ... }//限制css的影响
+@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) { ... }
+@media (min-width: @screen-md-min) and (max-width: @screen-md-max) { ... }
+@media (min-width: @screen-lg-min) { ... }
+</code></pre><blockquote>
+<p>注意：媒体查询包括：1.设备规范 2.大小规则</p>
+</blockquote>
+<pre><code>@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) { ... }
+表示：对于所有带有 min-width: @screen-sm-min 的设备，如果屏幕的宽度小于 @screen-sm-max，则会进行一些处理
+
+6.网格选项
+    class前缀：
+        .col-xs- 表示超小设备手机（&lt;768px）    
+        .col-sm- 表示小型设备平板电脑（≥768px）    
+        .col-md- 表示中型设备台式电脑（≥992px）    
+        .col-lg- 表示大型设备台式电脑（≥1200px）
+
+    基本的网格选项
+        案例：
+            注意：
+            1.`&lt;div class=&quot;container&quot;&gt;...&lt;/div&gt;` 元素被添加，确保居中和最大宽度
+            2.在添加容器之后，需要考虑以行为单位，添加 `&lt;div class=&quot;row&quot;&gt;...&lt;/div&gt;`，并在行内添加列 `&lt;div class=&quot;col-md-6&quot;&gt;&lt;/div&gt;`
+
+            col-md-6 表示设备为中型台式设备(&gt;992px)，然后6表示一个列由六个单元组成
+
+            3.网格中的每一行是由12个单元组成，我们可以使用这些单元定义列的尺寸，但是要确保最后的列所组成的单元的总和为12
+
+7.响应式的列重置
+
+    在案例中包含多个网格，在小设备浏览时无法确定网格显示的位置，所以我们可以使用 `.clearfix class` 和 `响应式实用工具` 来解决这个问题
+
+    1.响应式使用工具：
+
+
+8.偏移列
+
+    如果希望在大屏幕显示器上使用偏移，使用 `.col-md-offset-*` 类,这些类会把一个列的左外边距（margin）增加 * 列，其中 * 范围是从 1 到 11（也就是整个列向右移*单元）
+
+9.嵌套列
+
+    在内容上嵌套默认的网格，需要添加一个新的 `.row` 然后在已有的 `.col-md-*` 列内添加一组 `.col-md-*` 列
+
+10. 列排序
+
+    我们可以以一种顺序编写列，然后以另一种顺序显示列 我们可以使用使用 `.col-md-push-*` 和 `.col-md-pull-*` 类来互换这两列的顺序
+</code></pre><h2 id="Bootstrap-排版"><a href="#Bootstrap-排版" class="headerlink" title="Bootstrap 排版"></a>Bootstrap 排版</h2><pre><code>1.标题
+    在bootstrap定义了所有的HTML标题(h1-h6)样式
+
+2.
+</code></pre><h2 id="Bootstrap-代码"><a href="#Bootstrap-代码" class="headerlink" title="Bootstrap 代码"></a>Bootstrap 代码</h2><p>Bootstrap 允许我们以两种方式显示代码：</p>
+<pre><code>1.使用&lt;code&gt;标签，如果需要内联显示代码，那么需要使用&lt;code&gt;标签
+2.使用&lt;pre&gt;标签，如果代码需要被显示为一个独立的块元素或者代码有多行，需要使用&lt;pre&gt;标签
+</code></pre><blockquote>
+<p>注意：当我们确认是使用<code>&lt;pre&gt;</code>标签还是<code>&lt;code&gt;</code>标签，我们在开始以及结束需要使用：<code>&amp;lt;</code>和 <code>&amp;gt;</code> 表示 &lt; 与 &gt;</p>
+</blockquote>
+<pre><code>&lt;var&gt; 表示变量显示
+&lt;kbd&gt; 表示强调字体高亮
+&lt;pre&gt; 表示多行代码
+&lt;pre class=&quot;pre-scrollable&quot;&gt; 表示多行代码且带有滚动条
+&lt;samp&gt; 表示一种样式，电脑输出
+&lt;code&gt; 表示代码高亮，突出显示
+</code></pre><h2 id="Bootstrap-表格"><a href="#Bootstrap-表格" class="headerlink" title="Bootstrap 表格"></a>Bootstrap 表格</h2><p>bootstrap提供给我们一个清晰的创建表格的布局</p>
+<pre><code>&lt;table&gt;    为表格添加基础样式
+&lt;thead&gt;    表格标题行的容器元素（&lt;tr&gt;），用来标识表格列
+&lt;tbody&gt;    表格主体中的表格行的容器元素（&lt;tr&gt;）
+&lt;tr&gt; 行
+&lt;td&gt; 表格单元格
+&lt;th&gt; 必须在&lt;thead&gt;中使用，用来表示列或行，特殊的表格单元格
+&lt;caption&gt; 关于表格存储内容的描述或总结 备注
+
+1.表格类
+
+    .table 为任意 `&lt;table&gt;` 添加基本样式 (只有横向分隔线)
+    .table-striped    在 `&lt;tbody&gt;` 内添加斑马线形式的条纹 ( IE8 不支持)
+    .table-bordered    为所有表格的单元格添加边框
+    .table-hover 在 &lt;tbody&gt; 内的任一行启用鼠标悬停状态
+    .table-condensed 让表格更加紧凑
+
+2.&lt;tr&gt;, &lt;th&gt; 和 &lt;td&gt; 类
+
+    .active    将悬停的颜色应用在行或者单元格上
+    .success 表示成功的操作
+    .info 表示信息变化的操作 就是改变了行的背景色
+    .warning 表示一个警告的操作
+    .danger    表示一个危险的操作
+
+3.基本的表格
+
+
+4.可选的表格类
+
+
+5.响应式表格
+
+    通过把任意的 .table 包在 .table-responsive class 内，我们可以让表格水平滚动以适应小型设备（小于 768px）。当在大于 768px 宽的大型设备上查看时，将看不到任何的差别。
+</code></pre><blockquote>
+<p>扩展</p>
+<blockquote>
+<p>HTML属性hidden：该属性表示隐藏，是布尔属性，浏览器不显示已规定的hidden属性的元素，防止用户查看元素</p>
+</blockquote>
+</blockquote>
+<h2 id="Bootstrap-表单"><a href="#Bootstrap-表单" class="headerlink" title="Bootstrap 表单"></a>Bootstrap 表单</h2><pre><code>1.表单布局
+    1.垂直表单(默认)
+    2.内联表单
+    3.水平表单
+
+2.垂直或基本表单
+
+    基本的表单借结构是bootstrap自带的，个别的表单空间自动接收全局样式
+
+    创建基本表单的步骤：
+        1.向父&lt;form&gt;元素添加role=&quot;form&quot;  &lt;form role=&quot;form&quot;&gt;
+        2.将标签和控制放在一个带有 class .form-group 的 &lt;div&gt; 中。这是获取最佳间距所必需的  &lt;div class=&quot;form-group&quot;&gt;
+        3.向所有的文本元素 &lt;input&gt;、&lt;textarea&gt; 和 &lt;select&gt; 添加 class =&quot;form-control&quot;   &lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;name&quot; placeholder=&quot;请输入名称&quot;&gt;
+
+3.内联表单
+
+    如果需要创建一个表单，它的所有元素是内联的，向左对齐的，标签是并排的，需要向&lt;form&gt;标签添加`class.form-inline`  如：&lt;form class=&quot;form-inline&quot; role=&quot;form&quot;&gt;
+
+    注意：1.默认情况下，Bootstrap 中的 input、select 和 textarea 标签有 100% 宽度。所以在使用内联表单时，需要在表单控件上设置一个宽度
+          2.使用class .sr-only，可以隐藏内联表单的标签
+
+4.水平表单
+
+    水平表单与其他表单不仅标记的数量上不同，而且表单的呈现形式也不同。
+
+    创建一个水平布局的表单步骤：
+        1.向父 &lt;form&gt; 元素添加 class .form-horizontal      
+        如：`&lt;form class=&quot;form-horizontal&quot; role=&quot;form&quot;&gt;`
+
+        2.把标签和控件放在一个带有 `class .form-group` 的 &lt;div&gt; 中
+        如：`&lt;div class=&quot;form-group&quot;&gt;`
+
+        3.向标签添加 class .control-label    
+        如：&lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;firstname&quot; placeholder=&quot;请输入名字&quot;&gt;
+
+5.支持的表单控件
+
+    bootstrap支持最常见的表单控件，主要是 input、textarea、checkbox、radio 和 select
+
+    1.输入框（Input）
+
+        &lt;input type=&quot;hidden&quot; value=&quot;${grade}&quot; id=&quot;slected-grade&quot;&gt;
+        这段程序表示：隐藏域在页面中对于用户不可见，在表单中插入隐藏域的目的在于搜集或发送信息，以利于被处理表单的程序所使用。虽然在页面中隐藏了，但是还是具有form传值功能。
+
+    2.文本框（Textarea）
+
+    3.复选框（Checkbox）和单选框（Radio）
+        注意：对一系列复选框和单选框使用 .checkbox-inline 或 .radio-inline class，控制它们显示在同一行上
+
+    5.选择框（Select）
+        注意：1.使用&lt;select&gt;标签展示列表选项，通常是那些用户很熟悉的选择列表 2.使用 multiple=&quot;multiple&quot; 允许用户选择多个选项
+
+    6.静态控件
+        需要在一个水平表单内的表单标签后放置纯文本时，请在 &lt;p&gt; 上使用 class .form-control-static
+
+    7.表单控件状态
+
+
+    8.表单控件大小
+        分别用 class.input-lg 和.col-lg-* 来设置表单的高度和宽度
+
+    9.表单帮助文本
+        bootstrap表单控件可以在输入框input上有一个块级帮助文本。如果要添加一个占用整个宽度的内容块，需要在&lt;input&gt;之后使用.help-block   如：&lt;span class=&quot;help-block&quot;&gt;&lt;/span&gt;
+</code></pre><h2 id="Bootstrap-按钮"><a href="#Bootstrap-按钮" class="headerlink" title="Bootstrap 按钮"></a>Bootstrap 按钮</h2><p>任何带有 <code>class .btn</code> 的元素都会继承圆角灰色按钮的默认外观。但是 Bootstrap 提供了一些选项来定义按钮的样式，同时这些样式还能够用于<code>&lt;a&gt; &lt;button&gt;</code> 或 <code>&lt;input&gt;</code> 元素。</p>
+<p>如果一个按钮有多个属性，需要在class中将所有的属性都加上</p>
+<pre><code>设置按钮的颜色
+    .btn 为按钮添加基本样式
+    .btn-default 默认/标准按钮
+    .btn-primary 原始按钮样式（未被操作)
+    .btn-success 表示成功的动作
+    .btn-info 该样式可用于要弹出信息的按钮
+    .btn-warning 表示需要谨慎操作的按钮
+    .btn-danger 表示一个危险动作的按钮操作
+    .btn-link 让按钮看起来像个链接 (仍然保留按钮行为)
+    .btn-lg    制作一个大按钮
+    .btn-sm    制作一个小按钮
+    .btn-xs    制作一个超小按钮
+    .btn-block 块级按钮(拉伸至父元素100%的宽度)
+    .active    按钮被点击
+    .disabled 禁用按钮
+
+    class=&quot;btn btn-primary&quot; 原始按钮
+</code></pre><h5 id="1-按钮状态"><a href="#1-按钮状态" class="headerlink" title="1.按钮状态"></a>1.按钮状态</h5><p>bootstrap提供激活、禁用等按钮状态class</p>
+<p>1.激活状态：按钮在被激活时将会呈现被按压状态，使用<code>.active class</code> 来显示它是激活的。</p>
+<p>2.禁用状态：一个按钮被禁用时，它的颜色会变淡50%，失去渐变 将<code>disabled</code>属性添加到<code>&lt;button&gt;</code>按钮实现禁用。</p>
+<h2 id="Bootstrap-图片"><a href="#Bootstrap-图片" class="headerlink" title="Bootstrap 图片"></a>Bootstrap 图片</h2><p>Bootstrap 提供了三个可对图片应用简单样式的 class :</p>
+<pre><code>1. .img-rounded：添加 border-radius:6px 来获得图片圆角
+2. .img-circle：添加 border-radius:50% 来让整个图片变成圆形
+3. .img-thumbnail：添加一些内边距（padding）和一个灰色的边框
+</code></pre><h5 id="1-lt-img-gt-类"><a href="#1-lt-img-gt-类" class="headerlink" title="1.&lt;img&gt; 类"></a>1.<code>&lt;img&gt;</code> 类</h5><pre><code>.img-rounded 为图片添加圆角 (IE8 不支持)
+.img-circle 将图片变为圆形 (IE8 不支持)
+.img-thumbnail 缩略图功能
+.img-responsive    图片响应式 (将很好地扩展到父元素)    
+</code></pre><h5 id="2-响应式图片"><a href="#2-响应式图片" class="headerlink" title="2.响应式图片"></a>2.响应式图片</h5><p>通过在 <code>&lt;img&gt;</code> 标签添加 <code>.img-responsive</code> 类来让图片支持响应式设计，图片将很好地扩展到父元素。<code>.img-responsive</code> 类将 <code>max-width: 100%;</code> 和 <code>height: auto;</code> 样式应用在图片上。<br>    如：<br>        <img src="cinqueterre.jpg" class="img-responsive" alt="Cinque Terre"></p>
+<h2 id="Bootstrap-辅助类"><a href="#Bootstrap-辅助类" class="headerlink" title="Bootstrap 辅助类"></a>Bootstrap 辅助类</h2><h5 id="1-文本"><a href="#1-文本" class="headerlink" title="1.文本"></a>1.文本</h5><p>不同的类展示了不同的文本颜色，如果文本是个链接鼠标移动到上面文本将会变暗</p>
+<pre><code>.text-muted
+.text-primary
+</code></pre><h5 id="2-背景"><a href="#2-背景" class="headerlink" title="2.背景"></a>2.背景</h5><p>不同的类展示不同的背景颜色，如果文本是个链接，鼠标移动到文本上文本会变暗</p>
+<pre><code>.bg-primary
+.bg-success
+.bg-info
+.bg-warning
+</code></pre><h5 id="3-其他"><a href="#3-其他" class="headerlink" title="3.其他"></a>3.其他</h5><pre><code>.pull-left 元素浮动到左边
+
+.pull-right 元素浮动到右边
+
+.center-block 设置元素为 display:block
+    并居中显示(设置显示为块，并且居中显示)
+
+.clearfix 清除浮动
+
+.show 强制元素显示
+
+.hidden    强制元素隐藏
+
+.sr-only 除了屏幕阅读器外，其他设备上隐藏元素
+
+.sr-only-focusable 与 .sr-only 类结合使用，在元素获取焦点时显示(如：键盘操作的用户)
+
+.text-hide 将页面元素所包含的文本内容替换为背景图
+
+.close 显示关闭按钮 只是一个标识
+
+.caret 显示下拉式功能 一个标识
+</code></pre><h5 id="4-更多"><a href="#4-更多" class="headerlink" title="4.更多"></a>4.更多</h5><p>内容居中：使用 <code>class center-block</code> 来居中元素</p>
+<h2 id="Bootstrap-响应式实用工具"><a href="#Bootstrap-响应式实用工具" class="headerlink" title="Bootstrap 响应式实用工具"></a>Bootstrap 响应式实用工具</h2><p>bootstrap提供一些辅助类，通过媒体查询结合大型、中型和小型设备，实现内容对设备的显示和隐藏。</p>
+<h2 id="Bootstrap-字体图标Glyphicons"><a href="#Bootstrap-字体图标Glyphicons" class="headerlink" title="Bootstrap 字体图标Glyphicons"></a>Bootstrap 字体图标<code>Glyphicons</code></h2><p>Bootstrap 捆绑了 200 多种字体格式的字形，字体图标是在WEB项目中使用的图标字体</p>
+<pre><code>1.获取字体图标
+
+2.使用方法
+
+    如果需要使用图标，只需要使用代码： &lt;span class=&quot;glyphicon glyphicon-search&quot;&gt;&lt;/span&gt; 此外，还需要在文本和图标之间保持适当的空间
+
+3.定制字体图标(只需要在所应用的类中标注class的属性即可)
+
+    开始：
+
+    &lt;button type=&quot;button&quot; class=&quot;btn btn-primary btn-lg&quot;&gt;
+          &lt;span class=&quot;glyphicon glyphicon-user&quot;&gt;&lt;/span&gt; User
+    &lt;/button&gt;
+
+    1.定制字体尺寸
+        可以通过增加或减少图标的字体尺寸让图标看起来更大或更小
+        在原先的基础上加上属性：style=&quot;font-size:90px&quot;
+
+    2.定制字体颜色
+        在原先的基础上加上属性：style=&quot;color:rgb(212,106,64);&quot;
+
+    3.应用文本阴影
+        在原先的基础上加上属性：style=&quot;text-shadow:black 5px 3px 3px;&quot;
+</code></pre><h2 id="Bootstrap-下拉菜单（Dropdowns）"><a href="#Bootstrap-下拉菜单（Dropdowns）" class="headerlink" title="Bootstrap 下拉菜单（Dropdowns）"></a>Bootstrap 下拉菜单（Dropdowns）</h2><p>下拉菜单是可切换的，是以列表格式显示链接的上下文菜单<br>如果需要使用下拉菜单，在 <code>class .dropdown</code> 内加上下拉菜单即可。</p>
+<h5 id="2-更多"><a href="#2-更多" class="headerlink" title="2.更多"></a>2.更多</h5><pre><code>.dropdown 指定下拉菜单，下拉菜单都包裹在 .dropdown 里
+
+.dropdown-menu 创建下拉菜单    
+
+.dropdown-menu-right 下拉菜单右对齐    
+
+.dropdown-header 下拉菜单中添加标题
+
+.dropup    指定向上弹出的下拉菜单
+
+.disabled 下拉菜单中的禁用项
+
+.divider 下拉菜单中的分割线
+</code></pre><h2 id="Bootstrap-按钮组"><a href="#Bootstrap-按钮组" class="headerlink" title="Bootstrap 按钮组"></a>Bootstrap 按钮组</h2><p>按钮组允许多个按钮被叠放在同一行里</p>
+<blockquote>
+<p>按钮组中的重要类：</p>
+</blockquote>
+<pre><code>.btn-group 形成基本按钮组，在其中放置一系列带有 class.btn 的按钮
+
+.btn-toolbar 将几组 .btn-group 结合到一个&lt;div&gt;中，获得更复杂的组件
+
+.btn-group-lg  .btn-group-sm  .btn-group-xs 用于对按钮组的大小调整
+
+.btn-group-vertical 让一组按钮垂直堆叠显示，不是水平堆叠显示
+
+class=&quot;btn-group-xs&quot; btn-group-sm btn-group-lg 按钮组从小到大的显示
+</code></pre><h2 id="Bootstrap-按钮下拉菜单"><a href="#Bootstrap-按钮下拉菜单" class="headerlink" title="Bootstrap 按钮下拉菜单"></a>Bootstrap 按钮下拉菜单</h2><p>如果需要向按钮中添加下拉菜单，只需要简单的在一个<code>.btn-group</code> 中放置按钮和下拉菜单即可。此外，也可以使用 <code>&lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;</code> 来指示按钮作为下拉菜单</p>
+<pre><code>1.分割的按钮下拉菜单
+    按钮左边是原始的功能，右边显示下拉菜单的切换
+
+2.按钮下拉菜单的大小
+
+3.按钮上拉菜单
+    在父  .btn-group 容器添加 .dropup 即可
+</code></pre><h2 id="Bootstrap-输入框组"><a href="#Bootstrap-输入框组" class="headerlink" title="Bootstrap 输入框组"></a>Bootstrap 输入框组</h2><p>使用输入框组，可以很容易地向基于文本的输入框添加作为前缀和后缀的文本或按钮<br>通过向输入域添加前缀和后缀的内容，可以向用户输入添加公共的元素。例如，可以添加美元符号，或者应用程序接口所需要的其他公共的元素。</p>
+<pre><code>向 .form-control 添加前缀或后缀元素的步骤：
+    1.把前缀或后缀元素放在一个带有 class .input-group 的 &lt;div&gt; 中
+    2.在相同的 &lt;div&gt; 内，在 class 为 .input-group-addon 的 &lt;span&gt; 内放置额外的内容
+    3.把该 &lt;span&gt; 放置在 &lt;input&gt; 元素的前面或者后面
+
+    如：
+        &lt;div style=&quot;padding: 100px 100px 10px;&quot;&gt;
+                &lt;form class=&quot;bs-example bs-example-form&quot; role=&quot;form&quot;&gt;
+                    &lt;div class=&quot;input-group&quot;&gt;
+                            &lt;span class=&quot;input-group-addon&quot;&gt;@&lt;/span&gt;    //将其放在前面
+                            &lt;input type=&quot;text&quot; class=&quot;form-control&quot; placeholder=&quot;twitterhandle&quot;&gt;
+                    &lt;/div&gt;
+</code></pre><h5 id="2-输入框组大小"><a href="#2-输入框组大小" class="headerlink" title="2.输入框组大小"></a>2.输入框组大小</h5><pre><code>可以通过向 .input-group 添加相对表单大小的 class（比如 .input-group-lg、input-group-sm）来改变输入框组的大小
+</code></pre><h5 id="3-复选框和单选插件"><a href="#3-复选框和单选插件" class="headerlink" title="3.复选框和单选插件"></a>3.复选框和单选插件</h5><pre><code>我们可以将复选框和单选插件作为输入框组的前缀或者后缀元素
+</code></pre><h5 id="4-按钮插件"><a href="#4-按钮插件" class="headerlink" title="4.按钮插件"></a>4.按钮插件</h5><pre><code>将按钮作为输入框组的前缀或者后缀元素，这时不是添加 .input-group-addon class，而是需要使用 class .input-group-btn 来包裹按钮。注意：这是必需的，因为默认的浏览器样式不会被重写
+</code></pre><h5 id="5-带下拉菜单的按钮"><a href="#5-带下拉菜单的按钮" class="headerlink" title="5.带下拉菜单的按钮"></a>5.带下拉菜单的按钮</h5><pre><code>输入框组添加带有下拉菜单的按钮，只需要在 .input-group-btn class 中包裹按钮和下拉菜单即可
+</code></pre><h2 id="Bootstrap-导航元素"><a href="#Bootstrap-导航元素" class="headerlink" title="Bootstrap 导航元素"></a>Bootstrap 导航元素</h2><p>使用相同的标记和基类 <code>.nav</code></p>
+<pre><code>1.表格导航或标签
+
+    步骤：
+
+    1.创建一个带有 class .nav 的无序列表
+    2.添加 class .nav-tabs
+
+2.胶囊式的导航菜单
+
+    1.基本的导航菜单
+
+        如果需要把标签改成胶囊的样式，只需要使用 class .nav-pills 代替 .nav-tabs 即可，创建步骤与上面相同
+
+        步骤：        
+
+        1.引入文件
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css&quot;&gt;  
+        &lt;script src=&quot;https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+
+        2.编写导航栏，active 表示默认此
+        3.在class一栏有 class=&quot;nav nav-pills&quot; 胶囊状的导航菜单
+
+            &lt;p&gt;基本的胶囊式导航菜单&lt;/p&gt;
+            &lt;ul class=&quot;nav nav-pills&quot;&gt;
+                  &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;#&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;SVN&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;iOS&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;VB.Net&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Java&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;PHP&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+
+    2.垂直的胶囊式导航菜单
+
+        在使用class .nav .nav-pills 的同时使用 class .nav-stacked，让胶囊垂直堆叠 在上面例子中加入class=&quot;nav nav-pills nav-stacked&quot;
+
+    3.两端对齐的导航
+
+        通过使用 .nav、.nav-tabs 或 .nav、.nav-pills 的同时使用 class .nav-justified，让标签式或胶囊式导航菜单与父元素等宽 
+
+    4.禁用连接
+
+        对于每个 .nav class 如果添加.disabled class 则会创建一个灰色的链接，同时禁用该链接的 :hover 状态
+
+    5.下拉菜单
+
+        默认情况下，列表项的锚与一些数据属性协同合作来触发带有 .dropdown-menu class 的无序列表
+
+        带有下拉菜单的标签
+
+        步骤：
+            1.以一个带有 class .nav 的无序列表开始
+            2.添加 class .nav-tabs
+            3.添加带有 .dropdown-menu class 的无序列表
+
+        1.带有下拉菜单的胶囊
+
+            步骤与创建带有下拉菜单的标签相同，只是需要把 .nav-tabs class 改为 .nav-pills
+
+    6.更多
+        标签页与胶囊标签页
+
+            .tab-content 与 .tab-pane 和 data-toggle=&quot;tab&quot; (data-toggle=&quot;pill&quot; ) 一同使用, 设置标签页对应的内容随标签的切换而更改
+
+            .tab-pane 与 .tab-content 和 data-toggle=&quot;tab&quot; (data-toggle=&quot;pill&quot;)一同使用, 设置标签页对应的内容随标签的切换而更改
+</code></pre><h2 id="Bootstrap-导航栏"><a href="#Bootstrap-导航栏" class="headerlink" title="Bootstrap 导航栏"></a>Bootstrap 导航栏</h2><h5 id="1-默认导航栏创建步骤："><a href="#1-默认导航栏创建步骤：" class="headerlink" title="1.默认导航栏创建步骤："></a>1.默认导航栏创建步骤：</h5><pre><code>1.向 &lt;nav&gt; 标签添加 class .navbar、.navbar-default
+2.向上面的元素添加 role=&quot;navigation&quot;，有助于增加可访问性
+3.向 &lt;div&gt; 元素添加一个标题 class .navbar-header，内部包含了带有 class navbar-brand 的 &lt;a&gt; 元素。这会让文本看起来更大一号。
+4.为了向导航栏添加链接，只需要简单地添加带有 class .nav、.navbar-nav 的无序列表即可
+</code></pre><h5 id="2-响应式的导航栏"><a href="#2-响应式的导航栏" class="headerlink" title="2.响应式的导航栏"></a>2.响应式的导航栏</h5><p>给导航栏添加响应特性，要折叠的内容必须包裹在带有<code>class .collapse</code>、<code>.navbar-collapse</code> 的 <code>&lt;div&gt;</code> 中，折叠起来的导航栏实际是一个带有 <code>class .navbar-toggle</code> 及两个 <code>data-</code> 元素的按钮。第一个是 <code>data-toggle</code>，用于告诉 <code>JavaScript</code> 需要对按钮做什么，第二个是 <code>data-target</code>，指示要切换到哪一个元素。三个带有 <code>class .icon-bar</code> 的 <code>&lt;span&gt;</code> 创建所谓的汉堡按钮。这些会切换为 <code>.nav-collapse</code> <code>&lt;div&gt;</code> 中的元素。为了实现以上这些功能，您必须包含 Bootstrap 折叠<code>（Collapse）</code>插件</p>
+<h5 id="3-导航栏的表单"><a href="#3-导航栏的表单" class="headerlink" title="3.导航栏的表单"></a>3.导航栏的表单</h5><p>使用 <code>class .navbar-form</code> 以至于能够确保表单适当的垂直对齐和在较窄的视口中折叠的行为，使用对齐方式来决定导航栏中的内容放置在哪。</p>
+<h5 id="4-导航栏中的按钮"><a href="#4-导航栏中的按钮" class="headerlink" title="4.导航栏中的按钮"></a>4.导航栏中的按钮</h5><p>使用 <code>class .navbar-btn</code> 向不在<code>&lt;form&gt;</code>中的<code>&lt;button&gt;</code>元素添加按钮，按钮在导航栏上垂直居中。<code>.navbar-btn</code> 可被使用在 <code>&lt;a&gt;</code> 和 <code>&lt;input&gt;</code> 元素上</p>
+<blockquote>
+<p>注意：不要在 <code>.navbar-nav</code> 内的 <code>&lt;a&gt;</code> 元素上使用 <code>.navbar-btn</code>，因为它不是标准的 button class。</p>
+</blockquote>
+<h5 id="5-导航栏中的文本"><a href="#5-导航栏中的文本" class="headerlink" title="5.导航栏中的文本"></a>5.导航栏中的文本</h5><p>如果导航栏中需要包含文本字符串，使用 <code>class .navbar-text</code> 这通常与 <code>&lt;p&gt;</code> 标签一起使用，确保适当的前导和颜色。</p>
+<h5 id="6-结合图标的导航链接"><a href="#6-结合图标的导航链接" class="headerlink" title="6.结合图标的导航链接"></a>6.结合图标的导航链接</h5><p>如果需要在常规的导航栏导航组件中使用图标，使用  <code>class glyphicon glyphicon-*</code> 来设置图标。</p>
+<h5 id="7-组件的对齐方式"><a href="#7-组件的对齐方式" class="headerlink" title="7.组件的对齐方式"></a>7.组件的对齐方式</h5><p>使用实用工具 <code>class .navbar-left</code> 或 <code>.navbar-right</code> 向左或向右对齐导航栏中的 导航链接、表单、按钮或文本 这些组件。</p>
+<h5 id="8-固定到顶部"><a href="#8-固定到顶部" class="headerlink" title="8.固定到顶部"></a>8.固定到顶部</h5><p>如果需要将导航栏固定在页面的顶端，在 <code>.navbar class</code> 添加 <code>class .navbar-fixed-top</code>    </p>
+<blockquote>
+<p>注意：放置导航栏与主体页面主体中的其他内容的顶部交错，在<code>&lt;body&gt;</code>标签中添加至少50px的内边距<code>(padding)</code>视情况而定。</p>
+</blockquote>
+<h5 id="9-固定到底部"><a href="#9-固定到底部" class="headerlink" title="9.固定到底部"></a>9.固定到底部</h5><p>向 <code>.navbar class</code> 添加 <code>class .navbar-fixed-bottom</code></p>
+<h5 id="10-静态的顶部"><a href="#10-静态的顶部" class="headerlink" title="10.静态的顶部"></a>10.静态的顶部</h5><p>如果需要创建能够随着页面一起滚动的导航栏，添加<code>.navbar-static-top class</code>。该 class 不要求向 <code>&lt;body&gt;</code> 添加内边距<code>（padding）</code></p>
+<h5 id="11-反色的导航栏"><a href="#11-反色的导航栏" class="headerlink" title="11.反色的导航栏"></a>11.反色的导航栏</h5><p>创建一个带有黑色背景白色文本的反色导航栏，向 <code>.navbar class</code> 添加 <code>.navbar-inverse class</code> 即可</p>
+<blockquote>
+<p>注意：为了防止导航栏与页面主体中的其他内容的顶部相交错，向<body>标签添加至少50px的内边距(padding) 内边距值视情况而定</body></p>
+</blockquote>
+<h2 id="Bootstrap-面包屑导航（Breadcrumbs）"><a href="#Bootstrap-面包屑导航（Breadcrumbs）" class="headerlink" title="Bootstrap 面包屑导航（Breadcrumbs）"></a>Bootstrap 面包屑导航（Breadcrumbs）</h2><p>面包屑导航（Breadcrumbs）是一种基于网站层次信息的显示方式。以博客为例，面包屑导航可以显示发布日期、类别或标签。它们表示当前页面在导航层次结构内的位置。</p>
+<p>Bootstrap 中的面包屑导航（Breadcrumbs）是一个简单的带有 <code>.breadcrumb class</code> 的无序列表(只需要在使用的时候在class中加上class=”breadcrumb”)</p>
+<h2 id="Bootstrap-分页"><a href="#Bootstrap-分页" class="headerlink" title="Bootstrap 分页"></a>Bootstrap 分页</h2><p>分页（Pagination），是一种无序列表，Bootstrap 像处理其他界面元素一样处理分页</p>
+<pre><code>1.分页
+
+    .pagination 添加该 class 来在页面上显示分页
+    .disabled  .active 我们可以自定义链接，通过使用 .disabled 来定义不可点击的链接，通过使用 .active 来指示当前的页面
+    pagination-lg, .pagination-sm 使用这些 class 来获取不同大小的项
+
+2.默认的分页
+
+    在class属性为pagination 表示默认的分页功能
+
+3.分页的状态
+
+    class属性为disabled/active
+
+4.分页的大小
+
+    表示 pagination-* 的用法 class   大：pagination-lg  中：pagination   小：pagination-sm
+
+5.翻页
+
+    如果需要创建一个简单的分页链接为用户提供导航，可以通过翻页来实现
+
+    .pager 添加该 class 来获得翻页链接
+
+    .previous  .next 使用 class .previous 把链接向左对齐，使用 .next 把链接向右对齐
+
+    .disabled 添加该 class 来设置对应按钮禁止使用
+
+
+6.对齐的链接
+
+    .previous  .next
+</code></pre><h2 id="Bootstrap-标签"><a href="#Bootstrap-标签" class="headerlink" title="Bootstrap 标签"></a>Bootstrap 标签</h2><p>标签可用于计数、提示或页面上其他的标记显示，使用 <code>class .label</code> 来显示标签。<br>我们可以使用修饰的<code>class   label-default/label-primary/label-success/label-info/label-warning/label-danger</code> 来改变标签的外观</p>
+<pre><code>label-default 默认灰色标签
+label-primary 蓝色标签
+label-warning 黄色标签
+</code></pre><h2 id="Bootstrap-徽章（Badges）"><a href="#Bootstrap-徽章（Badges）" class="headerlink" title="Bootstrap 徽章（Badges）"></a>Bootstrap 徽章（Badges）</h2><p>徽章与标签相似，主要的区别在于徽章的边角更加圆滑。徽章（Badges）主要用于突出显示新的或未读的项。如需使用徽章，只需要把<code>&lt;span class=&quot;badge&quot;&gt;</code> 添加到链接、Bootstrap 导航等这些元素上即可。</p>
+<h5 id="1-激活导航状态"><a href="#1-激活导航状态" class="headerlink" title="1.激活导航状态"></a>1.激活导航状态</h5><p>可以在激活状态的胶囊导航和列表导航中放置徽章，通过使用<code>&lt;span class=&quot;badge&quot;&gt;</code> 来激活链接。</p>
+<h2 id="Bootstrap-超大屏幕（Jumbotron）"><a href="#Bootstrap-超大屏幕（Jumbotron）" class="headerlink" title="Bootstrap 超大屏幕（Jumbotron）"></a>Bootstrap 超大屏幕（Jumbotron）</h2><p>该组件可以增加标题的大小，并且为登录页面内容添加更多的外边距(margin)</p>
+<pre><code>步骤：
+    1.创建一个带有 class .jumbotron 的容器 &lt;div&gt;
+    2.除了更大的 &lt;h1&gt;，字体粗细 font-weight 被减为 200
+</code></pre><blockquote>
+<p>注意：为了获得占用全部宽度且不带圆角的超大屏幕，需要在 <code>.container class</code> 外使用 <code>.jumbotron class</code></p>
+</blockquote>
+<h2 id="Bootstrap-页面标题（Page-Header）"><a href="#Bootstrap-页面标题（Page-Header）" class="headerlink" title="Bootstrap 页面标题（Page Header）"></a>Bootstrap 页面标题（Page Header）</h2><p>它会在网页标题四周添加适当的间距，当一个网页中有多个标题且每个标题之间需要添加一定的间距时，这个功能就有很强的作用。如果需要使用页面标题这个功能，我们需要将我们的标题放在带有 <code>class .page-header</code> 的<code>&lt;div&gt;</code>中</p>
+<h2 id="Bootstrap-缩略图"><a href="#Bootstrap-缩略图" class="headerlink" title="Bootstrap 缩略图"></a>Bootstrap 缩略图</h2><pre><code>使用bootstrap创建缩略图步骤：
+
+    1.在图像周围添加带有 class .thumbnail 的 &lt;a&gt; 标签
+
+    2.这会添加四个像素的内边距(padding)和一个灰色的边框 特点
+
+    3.当鼠标悬停在图像上时，会动画显示出图像的轮廓 结果
+
+1.添加自定义的内容
+
+    我们有一个基本缩略图，我们可以向缩略图中添加各种HTML内容(标题、段落、按钮)
+
+    步骤：
+        1.把带有 class .thumbnail 的 &lt;a&gt; 标签改为 &lt;div&gt;
+
+        2.在该 &lt;div&gt; 内，您可以添加任何您想要添加的东西。由于这是一个 &lt;div&gt;，我们可以使用默认的基于 span 的命名规则来调整大小
+
+        3.如果需要给多个图像进行分组，请把它们放置在一个无序列表中，且每个列表项向左浮动
+</code></pre><h2 id="Bootstrap-警告（Alerts）"><a href="#Bootstrap-警告（Alerts）" class="headerlink" title="Bootstrap 警告（Alerts）"></a>Bootstrap 警告（Alerts）</h2><p>我们可以通过创建一个<div> 并向其中添加一个 .alert class 和四个上下文 class（即 .alert-success、.alert-info、.alert-warning、.alert-danger）之一，来添加一个基本的警告框</div></p>
+<pre><code>1.可取消的警告(dismissal Alert)
+
+    创建步骤：
+        1.通过创建一个&lt;div&gt; 同时向其中添加一个 .alert class 和四个上下文 class（即 .alert-success、.alert-info、.alert-warning、.alert-danger）之一，来添加一个基本的警告框
+
+        2.在上面的&lt;div&gt; class 添加可选的 .alert-dismissable
+
+        3.添加一个关闭按钮
+2.警告中的链接
+
+    在上面的例子中成功添加好一个警告框之后，然后使用 .alert-link 实体类来快速提供带有匹配颜色的链接
+</code></pre><h2 id="Bootstrap-进度条"><a href="#Bootstrap-进度条" class="headerlink" title="Bootstrap 进度条"></a>Bootstrap 进度条</h2><blockquote>
+<p>注意：Bootstrap 进度条使用 CSS3 过渡和动画来获得该效果。Internet Explorer 9 及之前的版本和旧版的 Firefox 不支持该特性，Opera 12 不支持动画。</p>
+</blockquote>
+<pre><code>1.默认的进度条
+
+    步骤：
+        1.添加一个带有class.progress的&lt;div&gt;
+        2.在上面创建好了的&lt;div&gt;中添加一个带有 class.progress-bar 的空的&lt;/div&gt;
+        3.添加一个带有百分比表示的宽度的style属性。如：style=&quot;width:60%&quot;;表示进度条在60%的位置
+
+2.交替的进度条
+
+    步骤：
+        1.添加带有 class.progress的&lt;div&gt;
+        2.在已经建好的&lt;div&gt;中添加 class.progress-bar和class.progress-bar-*的空的&lt;div&gt; 其中，*可以是：success/info/warning/danger
+        3.添加一个带有百分比表示的宽度的style属性。如：style=&quot;60%&quot;;用来表示进度条的位置
+
+3.条纹进度条
+
+    步骤：
+        1.添加一个带有 class .progress 和 .progress-striped 的 &lt;div&gt;
+
+            &lt;div class=&quot;progress progress-striped&quot;&gt;
+
+        2.在上面的 &lt;div&gt; 内，添加一个带有 class .progress-bar 和 class progress-bar-* 的空的 &lt;div&gt;。
+          其中，* 可以是 success、info、warning、danger。
+
+            div class=&quot;progress-bar progress-bar-success&quot; role=&quot;progressbar&quot;
+
+        3.添加一个带有百分比表示的宽度的 style 属性，例如 style=&quot;60%&quot;; 表示进度条在 60% 的位置
+
+4.动画进度条
+
+步骤：
+
+    1.添加一个带有 class .progress 和 .progress-striped 的 &lt;div&gt;。同时添加 class .active
+
+        &lt;div class=&quot;progress progress-striped active&quot;&gt;
+
+    2.然后在上面的 &lt;div&gt; 内，添加一个带有 class .progress-bar 的空的 &lt;div&gt;
+
+        &lt;div class=&quot;progress-bar progress-bar-success&quot;
+
+    3.添加一个带有百分比表示的宽度的 style 属性，例如 style=&quot;60%&quot;; 表示进度条在 60% 的位置。
+
+         style=&quot;width: 40%;&quot;&gt; //这将会使条纹具有从右向左的运动感。
+
+5.堆叠的进度条
+
+    将多个进度条放在相同的 .progress 中即可实现堆叠 &lt;div class=&quot;progress&quot;&gt;
+</code></pre><h2 id="Bootstrap-多媒体对象（Media-Object）"><a href="#Bootstrap-多媒体对象（Media-Object）" class="headerlink" title="Bootstrap 多媒体对象（Media Object）"></a>Bootstrap 多媒体对象（Media Object）</h2><p><code>.media</code>：该 class 允许将媒体对象里的多媒体（图像、视频、音频）浮动到内容区块的左边或者右边</p>
+<p><code>.media-list</code>：如果你需要一个列表，各项内容是无序列表的一部分，可以使用该 class。可用于评论列表与文章列表</p>
+<h2 id="Bootstrap-列表组"><a href="#Bootstrap-列表组" class="headerlink" title="Bootstrap 列表组"></a>Bootstrap 列表组</h2><p>列表组件用于以列表的形式呈现复杂的和自定义的内容</p>
+<pre><code>创建步骤：
+    1.向元素&lt;ul&gt;中添加 class .list-group
+    2.向&lt;li&gt;添加 class .list-group-item
+
+1.向列表组添加徽章
+
+    我们可以向任意的列表项中添加徽章组件，其会自动定义到右边，我们只需要在&lt;li&gt;元素中添加&lt;span class=&quot;badge&quot;&gt;即可
+
+2.向列表组添加链接
+
+    通过使用锚点标签代替列表项，我们可以向列表组添加链接 通过添加&lt;a&gt;标签
+
+3.向列表组添加自定义内容
+
+    表示此后为列表组：&lt;a href=&quot;#&quot; class=&quot;list-group-item&quot;&gt;
+    添加一标题：&lt;h4 class=&quot;list-group-item-heading&quot;&gt;24*7 支持&lt;/h4&gt;
+    添加一个段落：&lt;p class=&quot;list-group-item-text&quot;&gt;我们提供 24*7 支持。&lt;/p&gt;    
+</code></pre><h2 id="Bootstrap-面板（Panels）"><a href="#Bootstrap-面板（Panels）" class="headerlink" title="Bootstrap 面板（Panels）"></a>Bootstrap 面板（Panels）</h2><p>面板组件作用于将DOM组件插入到一个盒子中，而创建一个基本的面板只需要向<div>元素中添加 <code>class .panel</code> 和 <code>class .panel-default</code> 即可</div></p>
+<pre><code>1.面板标题
+
+    可以通过两种方式添加面板标题：
+        1.使用 .panel-heading class 可以很简单的向面板添加标题容器
+        2.使用带有 .panel-title class 的&lt;h1&gt;-&lt;h6&gt;来添加预定义样式的标题
+
+        注意：class .panel-body 标注面板内容块
+
+2.面板脚注
+
+    我们可以向面板中添加脚注，我们只需要将按钮或者副文本放在带有 class .panel-footer 的&lt;div&gt;中便可
+
+        &lt;div class=&quot;panel panel-default&quot;&gt;
+                &lt;div class=&quot;panel-body&quot;&gt;
+                    这是一个基本的面板
+                &lt;/div&gt;
+
+                &lt;div class=&quot;panel-footer&quot;&gt;面板脚注&lt;/div&gt;
+        &lt;/div&gt;
+</code></pre><blockquote>
+<p>注意：面板脚注不会从带语境色彩的面板中继承颜色和边框，因为其不是前景中的内容</p>
+</blockquote>
+<pre><code>3.带语境色彩的面板
+
+    语境状态类：可以通过 panel-primary、panel-success、panel-info、panel-warning、panel-danger 这些语境状态类来设置带语境色彩的面板
+
+4.带表格的面板
+
+    如果希望在面板中创建一个没有边框的表格，我们可以在面板中使用 class .table 如果有个&lt;div&gt;中包含 .panel-body 我们可以向表格的顶部添加额外的边框用来分隔     
+    如果没有包含 .panel-body 的 &lt;div&gt;，则组件会无中断地从面板头部移动到表格
+
+5.带有列表组的面板
+
+    可以在任何面板中包含列表组，通过在&lt;div&gt;元素中添加 .panel 和 .panel-default 类来创建面板，同时在面板中添加列表项
+
+    在&lt;class=&quot;panel-body&quot;&gt;之后创建一个列表组&lt;list-group&gt;
+</code></pre><h2 id="Bootstrap-Well"><a href="#Bootstrap-Well" class="headerlink" title="Bootstrap Well"></a>Bootstrap Well</h2><p>Well 是一种会引起内容凹陷显示或插图效果的容器<code>&lt;div&gt;</code>如果需要创建 Well，只需要简单地把内容放在带有 <code>class .well</code> 的<code>&lt;div&gt;</code> 中即可</p>
+<pre><code>    &lt;div class=&quot;well&quot;&gt;您好，我在 Well 中！&lt;/div&gt;
+
+1.尺寸大小
+
+    我们可以使用 well-lg 或者 well-sm 来改变well尺寸的大小 此外，这两个类是结合 .well 类使用的，这两个类会影响内边距(padding)，根据使用的类，well会显示的更大或者更小
+</code></pre><h2 id="Bootstrap-创建一个网页"><a href="#Bootstrap-创建一个网页" class="headerlink" title="Bootstrap 创建一个网页"></a>Bootstrap 创建一个网页</h2><pre><code>1.创建一个简单的响应式网页
+</code></pre><hr>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><pre><code>bootstrap本地引用：
+
+        1.引用的包有：
+
+            &lt;script src=&quot;dist/js/jquery-1.9.1.min.js&quot;&gt;&lt;/script&gt;
+                &lt;script src=&quot;dist/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+                &lt;link href=&quot;dist/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+
+        注意：1.在IDEA中创建静态工程，在这个工程下面直接创建HTML文档，然后放在dist目录下，这样就能够使用了
+              2.src=&quot;dist/js/bootstrap.min.js&quot;不能写成 src=&quot;/dist/js/bootstrap.min.js&quot; 因为是相对路径
+              3.jquery-1.9.1.min.js不需要改成jquery.min.js也是可以的
+
+bootstrap 远程 CDN
+
+        引入远程文件的顺序：
+
+            &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css&quot;&gt;  
+            &lt;script src=&quot;https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js&quot;&gt;&lt;/script&gt;
+            &lt;script src=&quot;https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+</code></pre><hr>
+<h2 id="BootStrap-插件"><a href="#BootStrap-插件" class="headerlink" title="BootStrap 插件"></a>BootStrap 插件</h2><pre><code>Bootstrap 自带 12 种 jQuery 插件，扩展了功能，可以给站点添加更多的互动。利用 Bootstrap 数据 API（Bootstrap Data API），大部分的插件可以在不编写任何代码的情况被触发。
+
+站点引用bootstrap的方式两种：
+
+    1.单独引用：使用 Bootstrap 的个别的 *.js 文件   注意：一些插件和 CSS 组件依赖于其他插件，所以在单独引用插件的时候需要确保插件之间的依赖关系
+    2.编译的同时引用：使用 bootstrap.js 或者是压缩版的 bootstrap.min.js
+
+注意：所有的插件都是依赖于jQuery，所以我们在引入插件文件之前需要引入jQuery 注意版本之间的支持
+
+1.data属性
+
+    通过data属性API使用所有的bootstrap插件(首选)
+
+2.编程方式的API(重要)
+
+    所有的bootstrap插件都提供了纯JavaScript方式的API，所以公开的API都是支持单独或链式调用方式，并且返回其所操作元素的集合
+
+    所有的方法都可以接受一个可选的选项对象作为参数或者一个代表特定方法的字符串，或者不带任何参数（这种情况下，将会初始化插件为默认行为）
+
+    1.$(&quot;#myModal&quot;).modal()  //初始化默认行为
+    2.$(&quot;#myModal&quot;).modal({ keyboard: false })  //初始化不支持键盘
+    3.$(&quot;#myModal&quot;).modal(&apos;show&apos;)  //初始化并立即调用show
+
+    注意：如果需要获取某个特定插件的实例，可以直接通过页面元素调取： $(&apos;[rel=popover]&apos;).data(&apos;popover&apos;)
+
+3.避免命名空间冲突
+
+    某些时候bootstrap插件可能要与UI框架插件一起使用，如果在使用过程中发生命名空间冲突，可以通过调用插件 .noConflict 方法恢复期原始值
+
+4.事件
+
+    bootstrap为大多数的插件的独特行为提供了自定义的插件，两种形式：
+
+        1.动词不定式，这会在事件开始时被触发 如：ex:show 动词不定式事件提供了preventDefault功能，使得在事件开始前可以停止操作的执行
+
+            $(&apos;#myModal&apos;).on(&apos;show.bs.modal&apos;, function (e) {
+                // 阻止模态框的显示
+                  if (!data) return e.preventDefault() 
+            })
+
+        2.过去分词形式，这会在动作执行完毕之后被触发。例如 ex: shown
+</code></pre><h2 id="Bootstrap-过渡效果（Transition）插件"><a href="#Bootstrap-过渡效果（Transition）插件" class="headerlink" title="Bootstrap 过渡效果（Transition）插件"></a>Bootstrap 过渡效果（Transition）插件</h2><pre><code>这一插件提供了简单的过渡效果
+
+注意：如果需要单独引用该插件的功能，除了其它的JS文件之外，还需要引用 transition.js 或者是引用bootstrap.js或者压缩版的 bootstrap.min.js 
+</code></pre><h2 id="Bootstrap-模态框（Modal）插件"><a href="#Bootstrap-模态框（Modal）插件" class="headerlink" title="Bootstrap 模态框（Modal）插件"></a>Bootstrap 模态框（Modal）插件</h2><p>模态框（Modal）是覆盖在父窗体上的子窗体。通常，目的是显示来自一个单独的源的内容，可以在不离开父窗体的情况下有一些互动。子窗体可提供信息、交互等。</p>
+<pre><code>1.使用方法
+
+    切换模态框(modal)插件的隐藏内容：
+
+        1.通过data属性：将控制器元素(如：按钮或者链接)上设置属性 data-toggle=&quot;modal&quot;，同时设置 data-target=&quot;#identifier&quot;或者是href=&quot;#identifier&quot;来指定要切换的特定的模态框(id=&quot;identifier&quot;)
+
+        2.通过JavaScript：使用这种技术，我们可以通过简单的一行JavaScript来调用带有 id=&quot;identifier&quot;的模态框
+
+            $(&apos;#identifier&apos;).modal(options)
+
+        3.源码分析
+
+            1.使用模态窗口需要触发某种触发器(可以是按钮或者链接)
+
+            2.data-target=&quot;#mymodal&quot;  表示向要在页面上加载的模态框目标，所以可以在页面上创建多个模态框，然后为每个模态框创建不同的触发器
+</code></pre><blockquote>
+<p>注意：虽然不能同时使用多个模块，但是可以在页面上创建多个模块不同时间加载</p>
+</blockquote>
+<pre><code>        3.注意两点：
+                1. .modal用来将&lt;div&gt;的内容识别为模态框 
+                2. .fade class 当模态框切换时，它会引起内容淡入淡出 
+
+            4.aria-labelledby=&quot;myModalLabel&quot; 该属性引用模态框的标题(引用会在后面创建的标题)
+
+            5.属性 aria-hidden=&quot;true&quot; 
+            用于保持模态窗口不可见，直到触发器被触发为止（比如点击在相关的按钮上）
+
+            6.&lt;div class=&quot;modal-header&quot;&gt; modal-header 是为模态窗口的头部定义样式的类
+
+            7.class=&quot;close&quot; close 是一个 CSS class，用于为模态窗口的关闭按钮设置样式
+
+            8.data-dismiss=&quot;modal&quot; 在这里它被用于关闭模态窗口，是一个自定义 HTML5 属性
+
+            9.class=&quot;modal-body&quot; 是 Bootstrap CSS 的一个 CSS class，用于为模态窗口的主体设置样式
+
+            10.class=&quot;modal-footer&quot; 是 Bootstrap CSS 的一个 CSS class，用于为模态窗口的底部设置样式
+
+            11.data-toggle=&quot;modal&quot; HTML5 自定义的 data 属性 data-toggle 用于打开模态窗口
+
+2.选项
+
+    选项可以用来定制模态窗口的外观和感观，通过data属性或者JavaScript来传递
+
+    1.backdrop (data-backdrop) 指定一个静态背景，当用户点击模态框外部时不会关闭模态框
+    2.keyboard (data-keyboard) 当按下escape键时，设置为false时无效
+    3.show (data-show) 当初始化时显示模态框
+    4.remote (data-remote) 
+
+3.方法
+
+    1. .modal(options) 将内容作为模态框激活，接受一个可选的选项对象  
+
+        $(&apos;#identifier&apos;).modal({
+            keyboard: false
+        })
+
+    2. .modal(&apos;toggle&apos;) 手动切换模态框  $(&apos;#identifier&apos;).modal(&apos;toggle&apos;)
+
+    3. .modal(&apos;show&apos;) 手动打开模态框 $(&apos;#identifier&apos;).modal(&apos;show&apos;)
+
+    4. .modal(&apos;hide&apos;) 手动隐藏模态框 $(&apos;#identifier&apos;).modal(&apos;hide&apos;)
+
+4.事件
+
+    1.show.bs.modal    在调用 show 方法后触发 
+
+        $(&apos;#identifier&apos;).on(&apos;show.bs.modal&apos;, function () {
+              // 执行一些动作...
+        })
+
+    2.shown.bs.modal 当模态框对用户可见时触发（将等待 CSS 过渡效果完成） 
+
+        $(&apos;#identifier&apos;).on(&apos;shown.bs.modal&apos;, function () {
+              // 执行一些动作...
+        })
+
+    3.hide.bs.modal    当调用 hide 实例方法时触发
+
+        $(&apos;#identifier&apos;).on(&apos;hide.bs.modal&apos;, function () {
+              // 执行一些动作...
+        })
+
+    4.hidden.bs.modal 当模态框完全对用户隐藏时触发。    
+
+        $(&apos;#identifier&apos;).on(&apos;hidden.bs.modal&apos;, function () {
+              // 执行一些动作...
+        })
+
+    5.loaded.bs.modal 
+</code></pre><h2 id="Bootstrap-下拉菜单（Dropdown）插件"><a href="#Bootstrap-下拉菜单（Dropdown）插件" class="headerlink" title="Bootstrap 下拉菜单（Dropdown）插件"></a>Bootstrap 下拉菜单（Dropdown）插件</h2><p>使用下拉菜单插件可以向任何组件添加下拉菜单，如果想要单独引用该插件的功能，需要引用<code>dropdown.js</code></p>
+<pre><code>1.使用方法
+
+    可以切换下拉菜单的隐藏内容
+
+    通过data属性：通过向链接或者按钮添加 data-toggle=&quot;dropdown&quot; 来切换下拉菜单
+
+    通过JavaScript：$(&apos;.dropdown-toggle&apos;).dropdown()
+
+2.方法
+
+    下拉菜单切换有一个简单的方法(显示隐藏下拉菜单) $().dropdown(&apos;toggle&apos;)
+
+3.扩展
+
+    bootstrap给 a 之类的元素都绑定上事件，终止链接默认行为。
+    1.data-toggle 表示以什么事件触发，常用的有：modal/popover/tooltips等
+    2.data-target 表示事件的目标
+
+    所以上面的两者一起使用表示data-target所指的元素以data-toggle指定的形式显示
+</code></pre><h2 id="Bootstrap-滚动监听（Scrollspy）插件"><a href="#Bootstrap-滚动监听（Scrollspy）插件" class="headerlink" title="Bootstrap 滚动监听（Scrollspy）插件"></a>Bootstrap 滚动监听（Scrollspy）插件</h2><p>滚动监听也就是自动更新导航插件，根据滚动条的位置自动更新对应的导航目标 基于滚动条的位置向导航栏中添加 <code>.active class</code></p>
+<blockquote>
+<p>注意：如果需要单独引用该插件的功能，需要引用<code>scrollspy.js</code></p>
+</blockquote>
+<pre><code>1.使用方法
+
+    通过data属性：向我们想要监听的元素(body)中添加 data-spy=&quot;scroll&quot; 然后添加带有bootstrap .nav 组件的父元素的ID或者class属性 data-target
+
+        &lt;body data-spy=&quot;scroll&quot; data-target=&quot;.navbar-example&quot;&gt;
+            &lt;div class=&quot;navbar-example&quot;&gt;
+
+    通过JavaScript：$(&apos;body&apos;).scrollspy({ target: &apos;.navbar-example&apos; })
+
+2.方法
+    通过JavaScript调用scrollspy方法时，需要调用 .refresh 方法更新DOM 
+
+        $(&apos;[data-spy=&quot;scroll&quot;]&apos;).each(function () {
+              var $spy = $(this).scrollspy(&apos;refresh&apos;)
+        })
+
+3.事件
+
+    滚动监听要用到的事件，这些事件可以在函数中当做钩子使用
+
+        activate.bs.scrollspy 每当一个新项目被滚动监听激活时，触发该事件
+
+        $(&apos;#myScrollspy&apos;).on(&apos;activate.bs.scrollspy&apos;, function () {
+              // 执行一些动作...
+        })
+
+4.选项
+
+    通过data属性或JavaScript来传递
+
+        Data属性名称：data-offset 作用：当计算滚动位置时，距离顶部的偏移像素
+</code></pre><h2 id="Bootstrap-标签页（Tab）插件"><a href="#Bootstrap-标签页（Tab）插件" class="headerlink" title="Bootstrap 标签页（Tab）插件"></a>Bootstrap 标签页（Tab）插件</h2><p>通过这个插件我们可以把内容放置在标签页或者是胶囊式标签页甚至是下拉菜单标签页中</p>
+<pre><code>1.使用方法
+
+    通过data属性：需要添加 data-toggle=&quot;tab&quot; 或 data-toggle=&quot;pill&quot; 到锚文本链接中
+
+        添加 nav 和 nav-tabs 类到 ul 中，将会应用 Bootstrap 标签样式，添加 nav 和 nav-pills 类到 ul 中，将会应用 Bootstrap 胶囊式样式
+
+    通过JavaScript：
+
+        $(&apos;#myTab a&apos;).click(function (e) {
+              e.preventDefault()
+              $(this).tab(&apos;show&apos;)
+        })
+
+2.淡入淡出效果
+
+    如果需要为标签页设置淡入淡出效果，请添加 .fade 到每个 .tab-panel 后面。第一个标签页必须添加 .in 类，以便淡入显示初始内容
+
+        &lt;div class=&quot;tab-pane fade in active&quot; id=&quot;home&quot;&gt;...&lt;/div&gt;
+        &lt;div class=&quot;tab-pane fade&quot; id=&quot;svn&quot;&gt;...&lt;/div&gt;
+
+3.方法
+
+    .$().tab：该方法可以激活标签页元素和内容容器。标签页需要用一个 data-target 或者一个指向 DOM 中容器节点的 href
+
+4.事件
+
+    show.bs.tab 该事件在标签页显示时触发，但是必须在新标签页被显示之前。
+    分别使用 event.target 和 event.relatedTarget 来定位到激活的标签页和前一个激活的标签页。
+
+        $(&apos;a[data-toggle=&quot;tab&quot;]&apos;).on(&apos;show.bs.tab&apos;, function (e) {
+              e.target // 激活的标签页
+              e.relatedTarget // 前一个激活的标签页
+        })
+
+    shown.bs.tab 该事件在标签页显示时触发，但是必须在某个标签页已经显示之后。
+    分别使用 event.target 和 event.relatedTarget 来定位到激活的标签页和前一个激活的标签页。
+
+        $(&apos;a[data-toggle=&quot;tab&quot;]&apos;).on(&apos;shown.bs.tab&apos;, function (e) {
+              e.target // 激活的标签页
+              e.relatedTarget // 前一个激活的标签页
+        })
+
+5.tabindex
+
+    模态框中tabindex属性规定元素的tab键控制顺序(此时tab键用于导航)，出了safari浏览器之外，其他浏览器都有tabindex属性
+</code></pre><h2 id="Bootstrap-提示工具（Tooltip）插件"><a href="#Bootstrap-提示工具（Tooltip）插件" class="headerlink" title="Bootstrap 提示工具（Tooltip）插件"></a>Bootstrap 提示工具（Tooltip）插件</h2><pre><code>1.使用方法
+
+    通过data属性：如果需要添加提示工具(tooltip)放在他们的触发元素里面，只需要向一个锚标签添加 data-toggle=&quot;tooltip&quot; 即可 默认情况下，插件将提示工具(tooltip)设置在顶部
+
+    &lt;a href=&quot;#&quot; data-toggle=&quot;tooltip&quot; title=&quot;Example tooltip&quot;&gt;请悬停在我的上面&lt;/a&gt;
+
+    通过JavaScript
+
+    $(&apos;#identifier&apos;).tooltip(options)
+
+    注意：使用该插件需要激活 $(function () { $(&quot;[data-toggle=&apos;tooltip&apos;]&quot;).tooltip(); });
+
+2.选项
+</code></pre><h2 id="Bootstrap-弹出框（Popover）插件"><a href="#Bootstrap-弹出框（Popover）插件" class="headerlink" title="Bootstrap 弹出框（Popover）插件"></a>Bootstrap 弹出框（Popover）插件</h2><pre><code>1.使用方法
+
+    通过data属性：向一个锚标签添加 data-toggle=&quot;popover&quot; 即可 锚的title=&quot;弹出框(popover)&quot;的文本 默认情况下，插件将弹出框（popover）设置在顶部        
+
+        &lt;a href=&quot;#&quot; data-toggle=&quot;popover&quot; title=&quot;Example popover&quot;&gt;
+                    请悬停在我的上面
+        &lt;/a&gt;
+
+    通过JavaScript
+
+        $(&apos;#identifier&apos;).popover(options)
+
+    注意：使用该插件需要使用脚本来启用页面中的所有的弹出框(popover) $(function () { $(&quot;[data-toggle=&apos;popover&apos;]&quot;).popover(); });
+</code></pre><h2 id="Bootstrap-警告框（Alert）插件"><a href="#Bootstrap-警告框（Alert）插件" class="headerlink" title="Bootstrap 警告框（Alert）插件"></a>Bootstrap 警告框（Alert）插件</h2><pre><code>使用警告框（Alert）插件，可以向所有的警告框消息添加可取消（dismiss）功能
+
+1.使用方法
+
+两种方式启用警告框的可取消功能
+
+    通过data属性：向关闭按钮中添加 data-dismiss=&quot;alert&quot; 就会自动为警告框添加关闭功能
+
+        &lt;a class=&quot;close&quot; data-dismiss=&quot;alert&quot; href=&quot;#&quot; aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/a&gt;
+
+    通过JavaScript：$(&quot;.alert&quot;).alert()
+
+2.方法
+
+    .alert() 该方法让所有的警告框都带有关闭功能  语法：$(&apos;#identifier&apos;).alert();
+
+    .alert(&apos;close&apos;)    关闭所有的警告框  语法：$(&apos;#identifier&apos;).alert(&apos;close&apos;);
+</code></pre><blockquote>
+<p>注意：如果需要在关闭时启用动画效果，需要添加 <code>.fade</code> 和 <code>.in class</code></p>
+</blockquote>
+<pre><code>3.事件
+
+    close.bs.alert 当调用 close 实例方法时立即触发该事件
+
+        $(&apos;#myalert&apos;).bind(&apos;close.bs.alert&apos;, function () {
+              // 执行一些动作...
+        })
+
+    closed.bs.alert    当警告框被关闭时触发该事件（将等待 CSS 过渡效果完成）
+
+        $(&apos;#myalert&apos;).bind(&apos;closed.bs.alert&apos;, function () {
+                // 执行一些动作...
+        })
+</code></pre><h2 id="Bootstrap-按钮（Button）插件"><a href="#Bootstrap-按钮（Button）插件" class="headerlink" title="Bootstrap 按钮（Button）插件"></a>Bootstrap 按钮（Button）插件</h2><pre><code>通过按钮（Button）插件，我们可以添加进一些交互，比如控制按钮状态，或者为其他组件（如工具栏）创建按钮组
+
+1.加载状态
+
+    如果我们需要向按钮中添加加载状态，向button元素添加 data-loading-text=&quot;loading...&quot; 作为其属性便可
+
+2.单个切换
+
+    如果需要激活单个按钮的切换(即改变按钮的正常状态为按压状态，反之亦然)，向 button 元素添加 data-toggle=&quot;button&quot; 作为其属性即可
+
+3.复选框
+
+    创建复选框组，并通过向 btn-group 添加 data 属性 data-toggle=&quot;buttons&quot; 来添加复选框组的切换
+
+4.单选按钮
+
+    创建单选按钮组，通过向 btn-group 添加 data 属性 data-toggle=&quot;buttons&quot; 来添加单选按钮组的切换
+
+注意：可以通过JavaScript启用按钮插件 $(&apos;.btn&apos;).button()
+</code></pre><h2 id="Bootstrap-折叠（Collapse）插件"><a href="#Bootstrap-折叠（Collapse）插件" class="headerlink" title="Bootstrap 折叠（Collapse）插件"></a>Bootstrap 折叠（Collapse）插件</h2><pre><code>折叠（Collapse）插件可以很容易地让页面区域折叠起来
+
+    1.data-toggle=&quot;collapse&quot; 添加到想要展开或折叠的组件的链接上
+
+    2.href 或 data-target 属性添加到父组件，它的值是子组件的 id
+
+    3.data-parent 属性把折叠面板（accordion）的 id 添加到要展开或折叠的组件的链接上
+
+1.使用方法
+
+    .collapse 隐藏内容
+    .collapse.in 显示内容
+    .collapsing 当过渡效果开始时被添加，当过渡效果完成时被移除
+</code></pre><blockquote>
+<p>注意：通过两种方式使用折叠插件 </p>
+<blockquote>
+<p>1.通过data属性：向元素添加 data-toggle=”collapse” 和 data-target，自动分配可折叠元素的控制，确保可折叠元素已经添加了class .collapse 同时如果希望在默认情况下是打开的，需要添加额外的class .in。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>2.通过JavaScript：$(‘.collapse’).collapse()</p>
+</blockquote>
+</blockquote>
+<pre><code>2.方法
+
+3.事件
+</code></pre><h2 id="Bootstrap-轮播（Carousel）插件"><a href="#Bootstrap-轮播（Carousel）插件" class="headerlink" title="Bootstrap 轮播（Carousel）插件"></a>Bootstrap 轮播（Carousel）插件</h2><h5 id="1-可选的标题"><a href="#1-可选的标题" class="headerlink" title="1.可选的标题"></a>1.可选的标题</h5><p>可以通过 .item 内的 .carousel-caption 元素向幻灯片添加标题</p>
+<h5 id="2-使用方法"><a href="#2-使用方法" class="headerlink" title="2.使用方法"></a>2.使用方法</h5><p>通过 data 属性：</p>
+<p>使用 data 属性可以很容易控制轮播（Carousel）的位置<br>属性 <code>data-slide</code> 接受关键字 <code>prev</code> 或 <code>next</code>，用来改变幻灯片相对于当前位置的位置。<br>使用 <code>data-slide-to</code> 来向轮播传递一个原始滑动索引，<code>data-slide-to=&quot;2&quot;</code> 将把滑块移动到一个特定的索引，索引从 0 开始计数<br><code>data-ride=&quot;carousel&quot;</code> 属性用于标记轮播在页面加载时就开始动画播放。</p>
+<p>通过 JavaScript：轮播（Carousel）可通过 JavaScript 手动调用 </p>
+<blockquote>
+<p><code>语法：$(&#39;.carousel&#39;).carousel()</code></p>
+</blockquote>
+<h2 id="Bootstrap-附加导航（Affix）插件"><a href="#Bootstrap-附加导航（Affix）插件" class="headerlink" title="Bootstrap 附加导航（Affix）插件"></a>Bootstrap 附加导航（Affix）插件</h2><pre><code>该插件允许指定&lt;div&gt;固定在页面的某个位置，不会随着页面其他部分一起滚动
+
+1.使用方法
+
+通过 JavaScript：您可以通过 JavaScript 手动为某个元素添加附加导航（Affix）
+
+    $(&apos;#myAffix&apos;).affix({
+           offset: {
+                  top: 100, bottom: function () {
+                     return (this.bottom = 
+                            $(&apos;.bs-footer&apos;).outerHeight(true))
+                         }
+                  }
+    })
+
+通过data属性：如果要向元素添加附加导航行为，只需要向需要监听的元素添加 data-spy=&quot;affix&quot; 同时需要使用偏移来定义何时切换元素的锁定和移动
+
+2.通过CSS定位
+
+    注意：在使用附加导航插件的方式中，需要通过CSS定位内容，然后每种class都呈现特定的状态：.affix .affix-top .affix-bottom
+
+    步骤：1.在插件添加 .affix-top 来指定元素在它最顶端位置    
+          2.当滚动经过添加了附加导航的元素时，应触发实际的附加导航(affix)，此时的 .affix 会替代 .affix-top 同时设置 position:fixed;
+          3.如果定义了底部偏移，当滚动到此位置时，应该将 .affix 替换为 .affix-bottom 注意：如果此时设置了此偏移，那么需要设置适当的css。在这种情况下，必要时候添加 position:absolute;
+
+3.选项
+
+    选项：offset  data属性名称：data-offset 当计算机滚动位置时，距离顶部的偏移像素。如果设置了属性值，则该偏移量将被应用到顶部或底部
+</code></pre><hr>
+<hr>
+<blockquote>
+<p>扩展</p>
+<blockquote>
+<p>freemaker FTL指令常用标签及语法 注意：使用freemarker要求所有标签必须闭合，否则freemarker标签无法解析。</p>
+<blockquote>
+<p>1.注释：&lt;#–注释内容–&gt;(格式)   2.取值：代替输出数据模型的部分，格式：${数据模型}或#{数据模型}</p>
+<blockquote>
+<p>freemarker语法及使用方法：</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<pre><code>1. ${var} Java基本类型及String引用类型。  
+2. ${var!} 对null或者不存在的对象进行取值，可以设置默认值。如：${var! &apos;我是默认值&apos;} 表示有值时显示正常值，无值时显示默认值。
+3. ${封装对象.属性} 用于对封装对象进行取值。 
+4. ${date?String(&apos;yyyy-MM-dd&apos;)} 用于对日期格式进行取值，需要注意的是，定义Date类型的变量时，java.util.Date无法输出日期，必须使用java.sql.Date。 
+5. ${var?html} 转移HTML。 
+6. &lt;#assign num = 100 /&gt; 定义变量，支持计算和赋值。 
+
+7.对List集合进行取值
+&lt;#list  list集合  as  item&gt; 
+    ${item} --取值
+&lt;/#list&gt;
+
+8.对Map集合进行取值
+&lt;#list map?keys as key&gt;
+    ${key}:${map[key]}
+&lt;/#list&gt;
+如：Map&lt;String,Object&gt; map = new HashMap&lt;String,Object&gt;();
+    m.put(&quot;name&quot;,&quot;姓名&quot;);
+    m.put(&quot;age&quot;,18);
+    m.put(&quot;sex&quot;,&quot;男&quot;);
+然后在页面中获取变量：
+    &lt;#list m?keys as key&gt;
+        ${key}:${m[key]}
+    &lt;/#list&gt;
+然后得到结果：
+    name:姓名
+    age:18
+    sex:男
+
+9.条件判断指令
+    1.&lt;#if 条件&gt;
+        输出
+      &lt;#else&gt;
+         输出
+      &lt;/#if&gt;
+    2.switch指令，经常与case、break和default指令一起使用，参数可以为字符串。
+        &lt;#switch var&gt;
+            &lt;#case 条件1&gt;
+                输出
+            &lt;#break&gt;
+            &lt;#case 条件2&gt;
+                输出
+            &lt;#break&gt;
+            &lt;#default&gt;
+                输出
+        &lt;/#switch&gt;
+
+10.自定义指令
+    &lt;@自定义指令名称 入参(key-value格式) ; 出参(list格式)&gt;
+        运行条件
+    &lt;/@自定义指令名称&gt;
+
+     PS:不同的返回值用逗号间隔开
+
+11.常用内建函数、macro(宏指令)、function(函数指令)
+</code></pre>
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+
+  <p><span>本文标题:</span>bootstrap-学习笔记</a></p>
+  <p><span>文章作者:</span>Bangjin-Hu</a></p>
+  <p><span>发布时间:</span>2018年06月05日 - 09:22:26</p>
+  <p><span>最后更新:</span>2018年09月05日 - 15:04:35</p>
+  <p><span>原始链接:</span><a href="/undefined/bootstrap/" title="bootstrap-学习笔记">http://bangjinhu.github.io/undefined/bootstrap/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/bootstrap/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.jpg" alt="Bangjin-Hu wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎扫码关注微信公众号，订阅我的微信公众号.</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持是我创作的动力.</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat-reward-img.jpg" alt="Bangjin-Hu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay-reward-img.jpg" alt="Bangjin-Hu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Bangjin-Hu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://bangjinhu.github.io/undefined/bootstrap/" title="bootstrap-学习笔记">http://bangjinhu.github.io/undefined/bootstrap/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/学习笔记/" rel="tag"><i class="fa fa-tag"></i> 学习笔记</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/undefined/程序猿日常-编程之美/" rel="next" title="程序猿日常-编程之美">
+                <i class="fa fa-chevron-left"></i> 程序猿日常-编程之美
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/undefined/Git/" rel="prev" title="git-学习笔记">
+                git-学习笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/site.jpg"
+                alt="Bangjin-Hu" />
+            
+              <p class="site-author-name" itemprop="name">Bangjin-Hu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/BangjinHu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:2315378346@qq.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/Aaron_P_L" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-heart-o"></i>知乎</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          <div id="music163player">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src="//music.163.com/outchain/player?type=2&id=38358214&auto=0&height=66
+
+">
+    </iframe>
+</div>
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-包的内容"><span class="nav-text">Bootstrap 包的内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-CSS"><span class="nav-text">Bootstrap CSS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-HTML5文档类型-doctype"><span class="nav-text">1.HTML5文档类型(doctype)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-移动设备优先"><span class="nav-text">2.移动设备优先</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-响应式图像"><span class="nav-text">3.响应式图像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-全局显示、排版和链接"><span class="nav-text">4.全局显示、排版和链接</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-基本的全局显示"><span class="nav-text">1.基本的全局显示</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-排版"><span class="nav-text">2.排版</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-链接样式"><span class="nav-text">3.链接样式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-避免跨浏览器的不一致"><span class="nav-text">4.避免跨浏览器的不一致</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-容器"><span class="nav-text">5.容器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-Bootstrap-浏览器-设备支持"><span class="nav-text">6.Bootstrap 浏览器/设备支持</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-排版"><span class="nav-text">Bootstrap 排版</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-代码"><span class="nav-text">Bootstrap 代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-表格"><span class="nav-text">Bootstrap 表格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-表单"><span class="nav-text">Bootstrap 表单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-按钮"><span class="nav-text">Bootstrap 按钮</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-按钮状态"><span class="nav-text">1.按钮状态</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-图片"><span class="nav-text">Bootstrap 图片</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-lt-img-gt-类"><span class="nav-text">1.&lt;img&gt; 类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-响应式图片"><span class="nav-text">2.响应式图片</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-辅助类"><span class="nav-text">Bootstrap 辅助类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-文本"><span class="nav-text">1.文本</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-背景"><span class="nav-text">2.背景</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-其他"><span class="nav-text">3.其他</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-更多"><span class="nav-text">4.更多</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-响应式实用工具"><span class="nav-text">Bootstrap 响应式实用工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-字体图标Glyphicons"><span class="nav-text">Bootstrap 字体图标Glyphicons</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-下拉菜单（Dropdowns）"><span class="nav-text">Bootstrap 下拉菜单（Dropdowns）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-更多"><span class="nav-text">2.更多</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-按钮组"><span class="nav-text">Bootstrap 按钮组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-按钮下拉菜单"><span class="nav-text">Bootstrap 按钮下拉菜单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-输入框组"><span class="nav-text">Bootstrap 输入框组</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-输入框组大小"><span class="nav-text">2.输入框组大小</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-复选框和单选插件"><span class="nav-text">3.复选框和单选插件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-按钮插件"><span class="nav-text">4.按钮插件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-带下拉菜单的按钮"><span class="nav-text">5.带下拉菜单的按钮</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-导航元素"><span class="nav-text">Bootstrap 导航元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-导航栏"><span class="nav-text">Bootstrap 导航栏</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-默认导航栏创建步骤："><span class="nav-text">1.默认导航栏创建步骤：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-响应式的导航栏"><span class="nav-text">2.响应式的导航栏</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-导航栏的表单"><span class="nav-text">3.导航栏的表单</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-导航栏中的按钮"><span class="nav-text">4.导航栏中的按钮</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-导航栏中的文本"><span class="nav-text">5.导航栏中的文本</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-结合图标的导航链接"><span class="nav-text">6.结合图标的导航链接</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-组件的对齐方式"><span class="nav-text">7.组件的对齐方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-固定到顶部"><span class="nav-text">8.固定到顶部</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#9-固定到底部"><span class="nav-text">9.固定到底部</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#10-静态的顶部"><span class="nav-text">10.静态的顶部</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#11-反色的导航栏"><span class="nav-text">11.反色的导航栏</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-面包屑导航（Breadcrumbs）"><span class="nav-text">Bootstrap 面包屑导航（Breadcrumbs）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-分页"><span class="nav-text">Bootstrap 分页</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-标签"><span class="nav-text">Bootstrap 标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-徽章（Badges）"><span class="nav-text">Bootstrap 徽章（Badges）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-激活导航状态"><span class="nav-text">1.激活导航状态</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-超大屏幕（Jumbotron）"><span class="nav-text">Bootstrap 超大屏幕（Jumbotron）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-页面标题（Page-Header）"><span class="nav-text">Bootstrap 页面标题（Page Header）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-缩略图"><span class="nav-text">Bootstrap 缩略图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-警告（Alerts）"><span class="nav-text">Bootstrap 警告（Alerts）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-进度条"><span class="nav-text">Bootstrap 进度条</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-多媒体对象（Media-Object）"><span class="nav-text">Bootstrap 多媒体对象（Media Object）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-列表组"><span class="nav-text">Bootstrap 列表组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-面板（Panels）"><span class="nav-text">Bootstrap 面板（Panels）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-Well"><span class="nav-text">Bootstrap Well</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-创建一个网页"><span class="nav-text">Bootstrap 创建一个网页</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#BootStrap-插件"><span class="nav-text">BootStrap 插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-过渡效果（Transition）插件"><span class="nav-text">Bootstrap 过渡效果（Transition）插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-模态框（Modal）插件"><span class="nav-text">Bootstrap 模态框（Modal）插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-下拉菜单（Dropdown）插件"><span class="nav-text">Bootstrap 下拉菜单（Dropdown）插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-滚动监听（Scrollspy）插件"><span class="nav-text">Bootstrap 滚动监听（Scrollspy）插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-标签页（Tab）插件"><span class="nav-text">Bootstrap 标签页（Tab）插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-提示工具（Tooltip）插件"><span class="nav-text">Bootstrap 提示工具（Tooltip）插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-弹出框（Popover）插件"><span class="nav-text">Bootstrap 弹出框（Popover）插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-警告框（Alert）插件"><span class="nav-text">Bootstrap 警告框（Alert）插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-按钮（Button）插件"><span class="nav-text">Bootstrap 按钮（Button）插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-折叠（Collapse）插件"><span class="nav-text">Bootstrap 折叠（Collapse）插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-轮播（Carousel）插件"><span class="nav-text">Bootstrap 轮播（Carousel）插件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-可选的标题"><span class="nav-text">1.可选的标题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-使用方法"><span class="nav-text">2.使用方法</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap-附加导航（Affix）插件"><span class="nav-text">Bootstrap 附加导航（Affix）插件</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bangjin-Hu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count"></span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/lib/clipboard/clipboard.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+</body>
+</html>
