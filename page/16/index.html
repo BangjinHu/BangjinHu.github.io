@@ -1,0 +1,3880 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/site.jpg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="BangjinHu'Blog" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="BangjinHu's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="微信公众号：iProgrammer_ing">
+<meta property="og:type" content="website">
+<meta property="og:title" content="BangjinHu&#39;s Blog">
+<meta property="og:url" content="http://bangjinhu.github.io/page/16/index.html">
+<meta property="og:site_name" content="BangjinHu&#39;s Blog">
+<meta property="og:description" content="微信公众号：iProgrammer_ing">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BangjinHu&#39;s Blog">
+<meta name="twitter:description" content="微信公众号：iProgrammer_ing">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://bangjinhu.github.io/page/16/"/>
+
+
+
+
+
+  <title>BangjinHu's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+    
+    <a href="https://github.com/BangjinHu"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">BangjinHu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">让优秀成为习惯，让知识成为信仰</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            本站搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第19章 ThemeResolver/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/第19章 ThemeResolver/" itemprop="url">AOP</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T09:54:24+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AOP/" itemprop="url" rel="index">
+                    <span itemprop="name">AOP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,299
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h1 id="第19章-ThemeResolver"><a href="#第19章-ThemeResolver" class="headerlink" title="第19章 ThemeResolver"></a>第19章 ThemeResolver</h1><p>·这里的SpringMVC框架提供的主题设置应用的整体样式和风格，提高用户体验。SpringMVC主题是一些静态资源的集合。ThemeResolver根据request解析Theme，ThemeResolver的实现和LocalResolver相似。AbstractThemeResolver设置默认的主题：defaultThemeName属性，提供get/set方法。在SpringMVC中包括两部分内容：Theme和ThemeResolver。</p>
+<h2 id="1-Theme"><a href="#1-Theme" class="headerlink" title="1.Theme"></a>1.Theme</h2><p>在应用Theme主题时需要实现org.springframework.ui.context.ThemeSource接口，WEB应用上下文WebApplication接口继承自ThemeSource，但实现功能委派给具体的类实现，默认：org.springframework.ui.context.support.ResouceBundleThemeSource类。此类默认从classpath加载主题文件。</p>
+<blockquote>
+<p>注意：无论是自定义ThemeSource接口的实现 或 通过配置属性文件路径的ResourceBundleThemeSource实现，都需要在Spring上下文中定义此bean，并且bean的id必须为themeSource，Spring会自动发现并使用。</p>
+</blockquote>
+<h2 id="2-ThemeResolver"><a href="#2-ThemeResolver" class="headerlink" title="2.ThemeResolver"></a>2.ThemeResolver</h2><p>在Spring上下文中定义Theme之后，DispatcherServlet会在Spring容器中查找id是themeResolver的bean使用。</p>
+<blockquote>
+<p>提示：ThemeResolver的使用和LocalResolver的工作原理一样，它在request中查找theme主题并且可以修改request的theme主题，Spring提供如下的主体解析器：</p>
+</blockquote>
+<pre><code>1.FixedThemeResolver：默认主题解析器，使用固定的主题，通过defaultThemeName属性设置，即此属性指定主题属性文件的文件名。此解析器不能动态设置主题。
+
+2.SessionThemeResolver：通过用户会话来保持主题，每个会话（session）仅需要设置一次，所有请求共享主题，但是不能两个会话共享。
+
+3.CookieThemeResolver：使用客户端cookie存储的主题。
+</code></pre><blockquote>
+<p>提示：Spring提供ThemeChangeInterceptor拦截器，通过request参数控制改变用户请求的主题。</p>
+</blockquote>
+<h4 id="1-FixedThemeResolver"><a href="#1-FixedThemeResolver" class="headerlink" title="1.FixedThemeResolver"></a>1.FixedThemeResolver</h4><p>该解析器是默认的主题解析器(在DispatcherServlet.properties文件中配置默认策略)，实现ThemeResolver接口，主题的名字通过defaultThemeName属性指定，该值默认是theme。</p>
+<pre><code>public class FixedThemeResolver extends AbstractThemeResolver {
+    // 解析主题文件名
+    @Override
+    public String resolveThemeName(HttpServletRequest request) {
+        // 返回主题文件名，默认值为theme（在父类中定义）
+        return getDefaultThemeName();
+    }
+
+    // 设置主题文件名，此解析器不能设置。
+    @Override
+    public void setThemeName(
+            HttpServletRequest request, @Nullable HttpServletResponse response, @Nullable String themeName) {
+        throw new UnsupportedOperationException(&quot;Cannot change theme - use a different theme resolution strategy&quot;);
+    }
+}
+</code></pre><p><strong>1.1 FixedThemeResolver 配置文件</strong><br></p>
+<pre><code>&lt;!-- 默认Servlet处理静态资源 --&gt;
+&lt;mvc:default-servlet-handler /&gt;
+&lt;!-- jsp视图映射与视图解析 --&gt;
+&lt;bean id=&quot;viewResolver&quot; class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;&gt;
+    &lt;property name=&quot;viewClass&quot; value=&quot;org.springframework.web.servlet.view.JstlView&quot;/&gt;
+    &lt;property name=&quot;prefix&quot; value=&quot;/WEB-INF/jsp/&quot;/&gt;
+    &lt;property name=&quot;suffix&quot; value=&quot;.jsp&quot;/&gt;
+&lt;/bean&gt;
+
+&lt;!-- 加载主题资源文件 --&gt;
+&lt;bean id=&quot;themeSource&quot; class=&quot;org.springframework.ui.context.support.ResourceBundleThemeSource&quot;&gt;
+    &lt;!-- 指定文件前缀，即文件所在目录，如果放在classpath下，value为空（默认从classpath下加载） --&gt;
+    &lt;property name=&quot;basenamePrefix&quot; value=&quot;theme.&quot;/&gt;
+&lt;/bean&gt;
+&lt;!-- 使用FixedThemeResolver --&gt;
+&lt;bean id=&quot;themeResolver&quot; class=&quot;org.springframework.web.servlet.theme.FixedThemeResolver&quot;&gt;
+    &lt;!-- 定义theme文件的名称 --&gt;
+    &lt;property name=&quot;defaultThemeName&quot; value=&quot;myTheme&quot;/&gt;
+&lt;/bean&gt;
+</code></pre><blockquote>
+<p>说明：1.ResourceBundleThemeSource的属性basenamePrefix即为主题属性文件所在目录名称，其后必须有”.”或”/“。 2.FixedThemeResolver是Spring默认的解析器，再此配置是为了自定义defaultThemeName属性值，即属性文件名称。</p>
+</blockquote>
+<blockquote>
+<p>提示：在配置文件之后还应该有jsp文件和controller文件等。这里省略。</p>
+</blockquote>
+<h4 id="2-SessionThemeResolver"><a href="#2-SessionThemeResolver" class="headerlink" title="2.SessionThemeResolver"></a>2.SessionThemeResolver</h4><blockquote>
+<p>说明：1.SessionThemeResolver与FixedThemeResolver解析器的继承关系一样，都继承自AbstractThemeResolver抽象类，其中抽象类中定义了defaultThemeName属性，用于设置属性文件的名称，默认为theme。2.SessionThemeResolver类实现ThemeResolver接口，使用用户会话（session）中的主题。</p>
+</blockquote>
+<pre><code>public class SessionThemeResolver extends AbstractThemeResolver {
+    // 用于设置session Attribute中的key使用
+    public static final String THEME_SESSION_ATTRIBUTE_NAME = SessionThemeResolver.class.getName() + &quot;.THEME&quot;;
+
+    // 解析请求中使用的主题
+    @Override
+    public String resolveThemeName(HttpServletRequest request) {
+        // 从请求会话中获取到主题
+        String themeName = (String) WebUtils.getSessionAttribute(request, THEME_SESSION_ATTRIBUTE_NAME);
+        // 如果会话中不存在，使用默认的主题
+        return (themeName != null ? themeName : getDefaultThemeName());
+    }
+    // 设置请求的主题
+    @Override
+    public void setThemeName(
+            HttpServletRequest request, @Nullable HttpServletResponse response, @Nullable String themeName) {
+        // 从客户端请求获取主题并设置到session的Attribute区中
+        WebUtils.setSessionAttribute(request, THEME_SESSION_ATTRIBUTE_NAME,
+                (StringUtils.hasText(themeName) ? themeName : null));
+    }
+}
+</code></pre><p><strong>2.1 SessionThemeResolver 配置文件</strong><br></p>
+<pre><code>&lt;mvc:interceptors&gt;
+    &lt;!-- 该拦截器通过名为”theme”的参数来拦截HTTP请求，设置Theme主题 --&gt;
+    &lt;bean class=&quot;org.springframework.web.servlet.theme.ThemeChangeInterceptor&quot;&gt;
+        &lt;!-- 用户请求参数的名称为：theme --&gt;
+        &lt;property name=&quot;paramName&quot; value=&quot;theme&quot;/&gt;
+    &lt;/bean&gt;
+&lt;/mvc:interceptors&gt;
+
+&lt;!-- 指定ThemeResolver --&gt;
+&lt;bean id=&quot;themeResolver&quot; class=&quot;org.springframework.web.servlet.theme.SessionThemeResolver&quot;&gt;
+    &lt;!-- 配置默认的主题文件 --&gt;
+    &lt;property name=&quot;defaultThemeName&quot; value=&quot;myTheme&quot;/&gt;
+&lt;/bean&gt;
+
+&lt;!-- 其余配置省略，参加上章 --&gt;
+...
+</code></pre><h4 id="3-CookieThemeResolver"><a href="#3-CookieThemeResolver" class="headerlink" title="3.CookieThemeResolver"></a>3.CookieThemeResolver</h4><p>CookieThemeResolver将主题保存到cookie中，为了处理cookie方便继承了CookieGenerator，所以不能继承AbstractThemeResolver，其实现了对默认主题的支持。</p>
+<pre><code>// 设置Theme，在请求到达Controller之前，进行设置
+@Override
+public void setThemeName(
+        HttpServletRequest request, @Nullable HttpServletResponse response, @Nullable String themeName) {
+
+    Assert.notNull(response, &quot;HttpServletResponse is required for CookieThemeResolver&quot;);
+    // 请求参数中传来的themeName值
+    if (StringUtils.hasText(themeName)) {
+        // 把请求参数指定的主题设置request Attribute并写cookie
+        request.setAttribute(THEME_REQUEST_ATTRIBUTE_NAME, themeName);
+        addCookie(response, themeName);
+    }
+    else {
+        // 将默认的主题设置request Attribute并写cookie
+        request.setAttribute(THEME_REQUEST_ATTRIBUTE_NAME, getDefaultThemeName());
+        removeCookie(response);
+    }
+}
+
+// 解析请求的Theme
+@Override
+public String resolveThemeName(HttpServletRequest request) {
+    // 从request中获取主题theme
+    String themeName = (String) request.getAttribute(THEME_REQUEST_ATTRIBUTE_NAME);
+    if (themeName != null) {
+        return themeName;
+    }
+
+    // 从客户端cookie中获取指定名字的theme，在设置时指定了cookie名字
+    String cookieName = getCookieName();
+    if (cookieName != null) {
+        Cookie cookie = WebUtils.getCookie(request, cookieName);
+        if (cookie != null) {
+            String value = cookie.getValue();
+            if (StringUtils.hasText(value)) {
+                themeName = value;
+            }
+        }
+    }
+
+    // 请求和cookie中都无时，使用默认theme
+    if (themeName == null) {
+        themeName = getDefaultThemeName();
+    }
+    request.setAttribute(THEME_REQUEST_ATTRIBUTE_NAME, themeName);
+    return themeName;
+}
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第20章 FlashMapManager/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/第20章 FlashMapManager/" itemprop="url">AOP</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T09:54:52+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AOP/" itemprop="url" rel="index">
+                    <span itemprop="name">AOP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,051
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h1 id="第20章-FlashMapManager"><a href="#第20章-FlashMapManager" class="headerlink" title="第20章 FlashMapManager"></a>第20章 FlashMapManager</h1><p>FlashMapManager用来管理FlashMap，FlashMap用于在redirect时传递参数。FlashMapManager实现结构简单，只有一个抽象类和一个实现类。抽象类采用模板模式定义整体流程。具体实现类SessionFlashManager通过模板方法提供具体操作FlashMap的功能。</p>
+<blockquote>
+<p>说明：1.实际的Session中保存的FlashMap类型是List<flashmap>类型，也就是说一个Session可以保存多个FlashMap，一个FlashMap保存着一套Redirect转发所传递的参数。2. FlashMap继承自HashMap，除了用于HashMap的功能和设置有效期，还可以保存Redirect后的目标路径和通过url传递的参数，这两项内容主要用来从Session保存的多个FlashMap中查找当前的FalshMap。</flashmap></p>
+</blockquote>
+<h2 id="1-AbstractFlashMapManager"><a href="#1-AbstractFlashMapManager" class="headerlink" title="1.AbstractFlashMapManager"></a>1.AbstractFlashMapManager</h2><h4 id="1-1-saveOutputFlashMap"><a href="#1-1-saveOutputFlashMap" class="headerlink" title="1.1 saveOutputFlashMap"></a>1.1 saveOutputFlashMap</h4><pre><code>public final void saveOutputFlashMap(FlashMap flashMap, HttpServletRequest request, HttpServletResponse response) {
+    if (!CollectionUtils.isEmpty(flashMap)) {
+        //首先对flashMap中转发的地址和参数进行编码，这里的request主要是用来获取当前的编码
+        String path = this.decodeAndNormalizePath(flashMap.getTargetRequestPath(), request);            
+        flashMap.setTargetRequestPath(path);
+        if (this.logger.isDebugEnabled()) {
+            this.logger.debug(&quot;Saving FlashMap=&quot; + flashMap);
+        }
+        //设置过期时间，默认值是180秒
+        flashMap.startExpirationPeriod(this.getFlashMapTimeout());
+        用于获取互斥变量，是模板方法，如果子类返回不为null则同步执行，否则不需要同步
+        Object mutex = this.getFlashMapsMutex(request);
+        if (mutex != null) {
+            synchronized(mutex) {
+                //取回保存的flashMap，如果没有则新建一个
+                List&lt;FlashMap&gt; allFlashMaps = this.retrieveFlashMaps(request);
+                List&lt;FlashMap&gt; allFlashMaps = allFlashMaps != null ? allFlashMaps : new CopyOnWriteArrayList();
+                ((List)allFlashMaps).add(flashMap);
+                //将添加完的list&lt;FalshMap&gt;更新到存储介质中去，是模板方法，由子类实现
+                this.updateFlashMaps((List)allFlashMaps, request, response);
+            }
+        } else {
+            List&lt;FlashMap&gt; allFlashMaps = this.retrieveFlashMaps(request);
+            List&lt;FlashMap&gt; allFlashMaps = allFlashMaps != null ? allFlashMaps : new LinkedList();
+            ((List)allFlashMaps).add(flashMap);
+            this.updateFlashMaps((List)allFlashMaps, request, response);
+        }
+
+    }
+}
+</code></pre><blockquote>
+<p>总结：1.首先对flashMap中的目标地址和url参数进行编码，编码格式使用当前request获取。2.然后设置有效期，通过flashMapTimeout参数配置。3.最后将flashMap添加到整体的List<flashmap>中并更新。</flashmap></p>
+</blockquote>
+<h4 id="1-2-SessionFlashMapManager"><a href="#1-2-SessionFlashMapManager" class="headerlink" title="1.2 SessionFlashMapManager"></a>1.2 SessionFlashMapManager</h4><pre><code>public class SessionFlashMapManager extends AbstractFlashMapManager {
+    private static final String FLASH_MAPS_SESSION_ATTRIBUTE = SessionFlashMapManager.class.getName() + &quot;.FLASH_MAPS&quot;;
+
+    public SessionFlashMapManager() {
+    }
+
+    @Nullable
+    protected List&lt;FlashMap&gt; retrieveFlashMaps(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        return session != null ? (List)session.getAttribute(FLASH_MAPS_SESSION_ATTRIBUTE) : null;
+    }
+
+    protected void updateFlashMaps(List&lt;FlashMap&gt; flashMaps, HttpServletRequest request, HttpServletResponse response) {
+        WebUtils.setSessionAttribute(request, FLASH_MAPS_SESSION_ATTRIBUTE, !flashMaps.isEmpty() ? flashMaps : null);
+    }
+
+    protected Object getFlashMapsMutex(HttpServletRequest request) {
+        return WebUtils.getSessionMutex(request.getSession());
+    }
+}
+</code></pre><h4 id="1-3-retrieveAndUpdate"><a href="#1-3-retrieveAndUpdate" class="headerlink" title="1.3 retrieveAndUpdate"></a>1.3 retrieveAndUpdate</h4><pre><code>public final FlashMap retrieveAndUpdate(HttpServletRequest request, HttpServletResponse response) {
+     //从存储介质session中获取list&lt;FlashMap&gt;，模板方法，子类实现
+    List&lt;FlashMap&gt; allFlashMaps = this.retrieveFlashMaps(request);
+    if (CollectionUtils.isEmpty(allFlashMaps)) {
+        return null;
+    } else {
+        if (this.logger.isDebugEnabled()) {
+            this.logger.debug(&quot;Retrieved FlashMap(s): &quot; + allFlashMaps);
+        }
+        //检查过期的flashMap，并将那他们设置到mapsToRemove
+        List&lt;FlashMap&gt; mapsToRemove = this.getExpiredFlashMaps(allFlashMaps);
+        //获取与当前request匹配的FlashMap，并设置到match中
+        FlashMap match = this.getMatchingFlashMap(allFlashMaps, request);
+        //如果有匹配的则将其添加到mapsToRemove，待下面删除
+        if (match != null) {
+            mapsToRemove.add(match);
+        }
+        //删除mapsToRemove中保存的变量
+        if (!mapsToRemove.isEmpty()) {
+            if (this.logger.isDebugEnabled()) {
+                this.logger.debug(&quot;Removing FlashMap(s): &quot; + mapsToRemove);
+            }
+
+            Object mutex = this.getFlashMapsMutex(request);
+            if (mutex != null) {
+                synchronized(mutex) {
+                    allFlashMaps = this.retrieveFlashMaps(request);
+                    if (allFlashMaps != null) {
+                        allFlashMaps.removeAll(mapsToRemove);
+                        this.updateFlashMaps(allFlashMaps, request, response);
+                    }
+                }
+            } else {
+                allFlashMaps.removeAll(mapsToRemove);
+                this.updateFlashMaps(allFlashMaps, request, response);
+            }
+        }
+        return match;
+    }
+}
+</code></pre><blockquote>
+<p>总结：上面的过程是：1.首先使用retrieveFlashMaps模板方法获取List<flashmap>。2.然后检查其中已经过期的FlashMap并保存，检查方法通过保存时设置的过期时间进行判断。3.然后调用getMatchingFlashMap()方法从获取的List<flashmap>中找出和当前request相匹配的FlashMap。4.最后将过期的和当前请求匹配的FlashMap从List<flashmap>中删除并更新到Session中，将与当前request匹配的返回。</flashmap></flashmap></flashmap></p>
+</blockquote>
+<h4 id="1-4-getMatchingFlashMap"><a href="#1-4-getMatchingFlashMap" class="headerlink" title="1.4 getMatchingFlashMap()"></a>1.4 getMatchingFlashMap()</h4><p>该方法是查找与当前request匹配的FlashMap。</p>
+<pre><code>private FlashMap getMatchingFlashMap (List&lt;FlashMap&gt; allMaps, HttpServletRequest request) {
+    List&lt;FlashMap&gt; result = new LinkedList&lt;FlashMap&gt;();
+    for(FlashMap flashMap : allMaps){
+        //1.调用isFlashMapForRequest()方法实际检查是否匹配，如果匹配则保存到临时变量result
+        if(isFlashMapForRequest(flashMap, request)){
+            result.add(flashMap);
+        }
+    }
+
+    if(!result.isEmpty()){
+        Collections.sort(result);
+        if(logger.isDebugEnable){
+            logger.debug(&quot;&quot;);
+        }
+        return result.get(0);
+    }
+    return null;
+}
+</code></pre><h4 id="1-5-isFlashMapForRequest"><a href="#1-5-isFlashMapForRequest" class="headerlink" title="1.5 isFlashMapForRequest()"></a>1.5 isFlashMapForRequest()</h4><pre><code>protected boolean isFlashMapForRequest(FlashMap flashMap, HttpServletRequest request) {
+    //检查目标路径，如果flashMap中保存的和request的不匹配，返回false
+    String expectedPath = flash.getTargetRequestpath();
+    if(expectedPath != null){
+        String requestUri = getUrlPathHelper().getOriginatingRequestUri(request);
+        if(!requestUri.equals(expectedPath) &amp;&amp; !requestUri.equals(expectedPath + &quot;/&quot;)){
+            return false;
+        }
+    }
+
+    //检查参数，如果在FlashMap中保存的参数在request中没有则返回false
+    MultiValueMap&lt;String, String&gt; targetParams = flashMap.getTargetRequestParams();
+    for(String expectedName : targetParams.keySet()){
+        if(!ObjectUtils.containsElement(request.getParameterValues(expectedName), expectedValue)){
+            return false;
+        }
+    }
+
+    return true;
+}
+</code></pre><blockquote>
+<p>总结：这里的检查方法是通过FlashMap中保存的目标地址和url参数与request进行比较的。</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第22章 异步请求/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/第22章 异步请求/" itemprop="url">Redis - Java集成</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:05:41+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  325
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h1 id="第22章-异步请求"><a href="#第22章-异步请求" class="headerlink" title="第22章 异步请求"></a>第22章 异步请求</h1><p>在Servlet 3.0中新增对异步请求的支持。异步请求表示在处理比较耗时的业务时先将request返回，然后另起线程处理耗时的业务，处理完之后再返回给用户。异步请求的核心原理主要分为：轮询和长连接。</p>
+<pre><code>1.轮询：定时自动发起请求检查有没有需要返回的数据
+2.长连接：客户端发起请求，服务端处理并返回后不结束连接，这样就能够在后面再次返回给客户端数据。
+</code></pre><blockquote>
+<p>提示：Servlet对异步请求的支持是采用长连接的方式，异步请求在原始的请求返回的时候没有关闭连接，关闭的只是处理请求的那个线程，只有在异步请求全部处理完之后才会关闭连接。</p>
+</blockquote>
+<blockquote>
+<p>扩展：浏览器将请求交给代理对象 XMLHttpRequest(浏览器内置此对象)，由代理对象向服务器发起请求，接收和解析服务器响应的数据，并将数据更新到浏览器指定的控件上。从而实现页面数据的局部更新。</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第2章 Java并发机制的底层实现原理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/第2章 Java并发机制的底层实现原理/" itemprop="url">AOP</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T09:54:41+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AOP/" itemprop="url" rel="index">
+                    <span itemprop="name">AOP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,332
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<p>[TOC]</p>
+<h2 id="第二章-Java并发机制的底层实现原理"><a href="#第二章-Java并发机制的底层实现原理" class="headerlink" title="第二章 Java并发机制的底层实现原理"></a>第二章 Java并发机制的底层实现原理</h2><h3 id="2-1-volatile的应用"><a href="#2-1-volatile的应用" class="headerlink" title="2.1 volatile的应用"></a>2.1 volatile的应用</h3><p>在多线程并发编程中 synchronize 和 volatile 扮演重要角色。 volatile 是轻量级的 synchronize ，在多处理器中保证共享变量的可见性。</p>
+<p>如果使用 volatile 变量修饰符使用恰当，比 synchronize 的使用和执行成本更低。因为它不会引起线程上下文的切换和调度。</p>
+<h4 id="2-2-1-volatile定义与实现原理"><a href="#2-2-1-volatile定义与实现原理" class="headerlink" title="2.2.1 volatile定义与实现原理"></a>2.2.1 volatile定义与实现原理</h4><p>定义：Java编程语言允许线程访问共享变量，为了确保共享变量能够被准确和一致地更新，线程应该确保通过排它锁单独获取这个变量。</p>
+<pre><code>CPU操作术语：
+
+    1.内存屏障：是一组处理器指令，用于实现对内存操作的顺序限制。
+
+    ...
+</code></pre><h3 id="2-2-synchronize的实现原理和应用"><a href="#2-2-synchronize的实现原理和应用" class="headerlink" title="2.2 synchronize的实现原理和应用"></a>2.2 synchronize的实现原理和应用</h3><p>synchronize实现同步的基础：Java中每一个对象都可以作为锁。</p>
+<pre><code>1.对于普通同步方法，锁是当前实例对象。
+
+2.对于静态同步方法，锁是当前静态类的Class对象。
+
+3.对于同步方法块，锁是synchronize括号里配置的对象。
+</code></pre><blockquote>
+<p>提示：在JVM中，代码块同步是使用monitorenter和monitorexit指令实现的。</p>
+</blockquote>
+<h4 id="2-2-1-Java对象头"><a href="#2-2-1-Java对象头" class="headerlink" title="2.2.1 Java对象头"></a>2.2.1 Java对象头</h4><p>synchronize 用的锁是存在Java对象头里。如果对象是数组类型，则虚拟机用3个字宽存储对象头，如果是非数组类型，则用2字宽存储对象头。</p>
+<h4 id="2-2-2-锁的升级和对比"><a href="#2-2-2-锁的升级和对比" class="headerlink" title="2.2.2 锁的升级和对比"></a>2.2.2 锁的升级和对比</h4><p>Java 1.6中，锁有四种状态，级别从低到高是：无锁状态、偏向锁状态、轻量级锁状态、重量级锁状态。</p>
+<blockquote>
+<p>注意：锁可以升级，不可以降级。如：偏向级锁升级成轻量级锁之后不能降为偏向锁。</p>
+</blockquote>
+<p><strong>1.偏向锁</strong><br></p>
+<p>当一个线程访问同步块并获取锁时，会在对象头和栈帧中的锁记录里存储锁偏向的线程ID，以后该线程在进入和退出同步块时不需要进行CAS操作来加锁和解锁，只需要简单测试下对象头的mark word里是否存有指向当前线程的偏向锁。</p>
+<p><strong>2.轻量级锁</strong><br></p>
+<p>线程在执行同步块之前，JVM会先在当前线程的栈帧中创建用于存储锁记录的空间，并将对象头中的 Mark Word 复制到锁记录中。然后尝试使用CAS将对象头中的 Mark Word 替换为指向锁记录的指针。如果成功，当前线程获得锁，如果失败，表示其它现车个竞争锁。</p>
+<p><strong>3.锁之间的对比</strong><br></p>
+<table>
+<thead>
+<tr>
+<th>锁</th>
+<th>优点</th>
+<th>缺点</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>偏向锁</td>
+<td>加锁和解锁不需要额外的开销，和执行非同步方法相比仅存在纳秒级差距</td>
+<td>如果线程之间存在锁竞争，会带来额外的锁撤销的消耗</td>
+<td>适用于一个线程访问同步块场景</td>
+</tr>
+<tr>
+<td>轻量级锁</td>
+<td>竞争的线程不会阻塞，提高了程序的响应速度</td>
+<td>如果始终得不到锁竞争的线程，适用自旋会消耗CPU</td>
+<td>追求响应时间同步块执行速度非常快</td>
+</tr>
+<tr>
+<td>重量级锁</td>
+<td>线程竞争不使用自旋，不会消耗CPU</td>
+<td>线程阻塞，响应时间缓慢</td>
+<td>追求吞吐量，同步块执行速度较长</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-3-原子操作实现原理"><a href="#2-3-原子操作实现原理" class="headerlink" title="2.3 原子操作实现原理"></a>2.3 原子操作实现原理</h3><h4 id="2-3-3-Java实现原子操作"><a href="#2-3-3-Java实现原子操作" class="headerlink" title="2.3.3 Java实现原子操作"></a>2.3.3 Java实现原子操作</h4><p>在Java中通过锁和循环CAS的方式实现原子操作。</p>
+<p><strong>1.使用CAS实现原子操作</strong><br></p>
+<p>JVM中的CAS操作正是利用了处理器提供 CMPXCHG 指令实现的，自旋CAS实现的基本思路就是循环进行CAS操作直到成功为止。</p>
+<blockquote>
+<p>提示：在Java 1.5以后，JDK的并发包提供一些类支持原子操作，如：AtomicBoolean（用原子方式更新的boolean值）、AtomicInteger（用原子方式更新int值）、AtomicInteger（用原子方式更新Long值）。</p>
+</blockquote>
+<p><strong>2.CAS实现原子操作的三大问题</strong><br></p>
+<pre><code>1.ABA问题：因为CAS需要操作值时，检查值有没有发生变化，如果没有则更新，但如果值原来是A，后变成B，后又变成A，那么使用CAS进行检查时发现它的值没有发生变化，实际上变化了。
+
+    解决：ABA问题使用版本号解决，每次更新的时候将版本号加1。在Java 1.5之后，JDK的Atomic包提供一个类 AtomicStampedReferance 解决ABA问题。
+
+2.循环时间长开销大：自旋CAS如果长时间不成功，会给CPU带来非常大的执行开销。如果JVM提供pause指令，那么效率会提升。
+
+3.只能保证一个共享变量的原子操作：当对一个共享变量执行操作时，我们可以使用循环CAS来保证原子操作，但是对于多个共享变量时，这时候CAS无法保证操作的原子性，这时候可以用锁。或者将多个共享变量合并成一个共享变量来操作。
+</code></pre><p><strong>3.使用锁机制来实现原子操作</strong><br></p>
+<p>锁机制保证了只有获得锁的线程才能操作锁定的内存区域。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第2章 深入分析Java IO的工作机制/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/第2章 深入分析Java IO的工作机制/" itemprop="url">第二章 深入分析Java IO的工作机制</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:41:34+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AOP/" itemprop="url" rel="index">
+                    <span itemprop="name">AOP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,617
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<p>[TOC]</p>
+<h2 id="第二章-深入分析Java-IO的工作机制"><a href="#第二章-深入分析Java-IO的工作机制" class="headerlink" title="第二章 深入分析Java IO的工作机制"></a>第二章 深入分析Java IO的工作机制</h2><h3 id="2-1-Java-的I-O库的基本架构"><a href="#2-1-Java-的I-O库的基本架构" class="headerlink" title="2.1 Java 的I/O库的基本架构"></a>2.1 Java 的I/O库的基本架构</h3><p>IO问题是整个人机交互的核心问题，因为IO是机器获取和交换信息的重要渠道。Java的io类都在类java.io下，这些io类可以分为四组：</p>
+<pre><code>传输数据的数据格式：
+
+    1. 基于字节操作的IO接口：InputStream | OutputStream
+
+    2. 基于字符操作的IO接口：Writer | Reader
+
+传输数据的方式：
+
+    3. 基于磁盘操作的IO接口：File
+
+    4. 基于网络操作的IO接口：Socket
+</code></pre><h4 id="2-1-1-基于字节的IO操作接口"><a href="#2-1-1-基于字节的IO操作接口" class="headerlink" title="2.1.1 基于字节的IO操作接口"></a>2.1.1 基于字节的IO操作接口</h4><pre><code>1. 操作数据的方式是可以组合使用的
+
+    OutputStream out = new BufferedOutputStream(new ObjectOutputStream(new FileOutputStream(new FileOutputStream(&quot;fileName&quot;))));
+
+2. 流最终写到什么地方必须要指定，要么写到磁盘，要么写到网络中
+</code></pre><h4 id="2-1-2-基于字符的IO操作接口"><a href="#2-1-2-基于字符的IO操作接口" class="headerlink" title="2.1.2 基于字符的IO操作接口"></a>2.1.2 基于字符的IO操作接口</h4><pre><code>1. write(char[] buf, int off, int len);
+
+2. int read(char[] buf, int off, int len);
+</code></pre><h4 id="2-1-3-字节与字符的转换接口"><a href="#2-1-3-字节与字符的转换接口" class="headerlink" title="2.1.3 字节与字符的转换接口"></a>2.1.3 字节与字符的转换接口</h4><p>数据持久化与网络传输都是以字节进行的，所以必须要有字符和字节之间的转换。</p>
+<pre><code>1. InputStreamReader 字节到字符的转换桥梁，InputStream到Reader的过程需要指定编码字符集，否则采用默认编码，可能出现乱码。
+</code></pre><h3 id="2-2-磁盘IO工作机制"><a href="#2-2-磁盘IO工作机制" class="headerlink" title="2.2 磁盘IO工作机制"></a>2.2 磁盘IO工作机制</h3><h4 id="2-2-1-几种访问文件的方式"><a href="#2-2-1-几种访问文件的方式" class="headerlink" title="2.2.1 几种访问文件的方式"></a>2.2.1 几种访问文件的方式</h4><p><strong>1.标准访问文件方式</strong><br></p>
+<p><strong>2.直接IO方式</strong><br></p>
+<p><strong>3.同步访问文件方式</strong><br></p>
+<p>数据的写入和读取都是同步的，它与标准访问方式不一样的是，只有当数据被成功写到磁盘时才返回给应用程序成功标志。</p>
+<p><strong>4.异步访问文件方式</strong><br></p>
+<h4 id="2-2-2-Java访问磁盘文件"><a href="#2-2-2-Java访问磁盘文件" class="headerlink" title="2.2.2 Java访问磁盘文件"></a>2.2.2 Java访问磁盘文件</h4><h4 id="2-2-3-Java序列化"><a href="#2-2-3-Java序列化" class="headerlink" title="2.2.3 Java序列化"></a>2.2.3 Java序列化</h4><h3 id="2-3-网络IO工作机制"><a href="#2-3-网络IO工作机制" class="headerlink" title="2.3 网络IO工作机制"></a>2.3 网络IO工作机制</h3><h4 id="2-3-1-TCP状态转换"><a href="#2-3-1-TCP状态转换" class="headerlink" title="2.3.1 TCP状态转换"></a>2.3.1 TCP状态转换</h4><h4 id="2-3-5-数据传输"><a href="#2-3-5-数据传输" class="headerlink" title="2.3.5 数据传输"></a>2.3.5 数据传输</h4><p>当连接建立成功之后，服务端和客户端都会拥有一个socket实例，每个socket实例都有一个inputStream和outputStream，通过这两个对象来交换数据。</p>
+<h3 id="2-4-NIO的工作方式"><a href="#2-4-NIO的工作方式" class="headerlink" title="2.4 NIO的工作方式"></a>2.4 NIO的工作方式</h3><h4 id="2-4-1-BIO的挑战"><a href="#2-4-1-BIO的挑战" class="headerlink" title="2.4.1 BIO的挑战"></a>2.4.1 BIO的挑战</h4><p>BIO（阻塞IO），不管是磁盘IO还是网络IO，数据在写入OutputStream或者从InputStream读取时都会可能阻塞，一旦阻塞，线程将会失去CPU使用权，这在当前的大规模访问量和有性能要求的情况下是不能被接受的。</p>
+<h4 id="2-4-2-NIO的工作机制"><a href="#2-4-2-NIO的工作机制" class="headerlink" title="2.4.2 NIO的工作机制"></a>2.4.2 NIO的工作机制</h4><p>NIO的两个核心概念，Channel | Selector。</p>
+<pre><code>1.Channel：channel要比socket更加具体，其可以体现为一种具体的交通工具。如：汽车或高铁。
+
+2.Selector：其可以看做是一个车站的车站运行调度系统，将负责监控车辆的当前运行状态（在路上或者出站等）。可以轮询每个Channel的状态。
+
+3. Buffer类：它比Stream更加具体，如果Channel是汽车的话，那么Buffer就是汽车上的具体座位，它始终是一个具体的概念。在Buffer中我们可以控制Buffer的容量、是否扩容以及如何扩容。
+</code></pre><h4 id="2-4-3-Buffer的工作方式"><a href="#2-4-3-Buffer的工作方式" class="headerlink" title="2.4.3 Buffer的工作方式"></a>2.4.3 Buffer的工作方式</h4><p>在Selector检测到通信信道IO有数据传输时，通过select()取得SocketChannel，将数据读取或写入Buffer缓冲区。</p>
+<p>Buffer可以简单的理解为一组基本数据类型的元素列表。</p>
+<pre><code>1. capacity 缓冲区数组总长度
+
+2. position 下一个要操作数据元素的位置
+
+3. limit 缓冲区数组中不可操作的下一个元素位置
+
+4. mark 记录当前position的前一个位置或默认是0
+</code></pre><p>ByteBuffer.allocate(n)，创建长度n的数组缓冲区。</p>
+<p>要将字节数据写入Channel通信信道，调用Buffer.flip()方法。</p>
+<h4 id="2-4-4-NIO数据访问方式"><a href="#2-4-4-NIO数据访问方式" class="headerlink" title="2.4.4 NIO数据访问方式"></a>2.4.4 NIO数据访问方式</h4><p>NIO提供比传统文件方式访问的更好的方式。</p>
+<pre><code>1. FileChannel.transferTo
+
+2. FileChannel.transferFrom
+
+上面两种方式与传统访问文件方式相比可以减少数据从内核到用户空间的复制。
+
+3. FileChannel.map
+
+上面的方式将文件按照一定大小块映射为内存区域，当程序访问这个内存区域时将直接操作这个文件数据，这种方式省去数据从内核空间向用户空间复制的损耗。
+</code></pre><blockquote>
+<p>提示：NIO引入Channel | Buffer | Selector就是想将这些信息具体化，让我们有机会控制它们。</p>
+</blockquote>
+<h3 id="2-5-IO调优"><a href="#2-5-IO调优" class="headerlink" title="2.5 IO调优"></a>2.5 IO调优</h3><h4 id="2-5-1-磁盘IO优化"><a href="#2-5-1-磁盘IO优化" class="headerlink" title="2.5.1 磁盘IO优化"></a>2.5.1 磁盘IO优化</h4><pre><code>1. 性能检测
+</code></pre><h3 id="2-6-设计模式之适配器模式"><a href="#2-6-设计模式之适配器模式" class="headerlink" title="2.6 设计模式之适配器模式"></a>2.6 设计模式之适配器模式</h3><p>适配器模式是将一个类的接口变换成客户端所能接受的另一种接口，从而使得两个接口不匹配而无法在一起工作的两个类能够在一起工作。如在项目中需要引用一些开源框架来一起工作的情况下需要引入适配器模式。</p>
+<p>适配器模式的结构：</p>
+<pre><code>1. Target 目标接口，所需要转换的所期待的接口
+
+2. Adaptee 源角色，需要适配的接口
+
+3. Adapter 适配器，将源接口适配成目标接口，继承源接口，实现目标接口
+</code></pre><h4 id="2-6-2-Java-IO中适配器模式"><a href="#2-6-2-Java-IO中适配器模式" class="headerlink" title="2.6.2 Java IO中适配器模式"></a>2.6.2 Java IO中适配器模式</h4><p>适配器的作用是将一个接口适配到另一个接口，在Java IO类库中有很多这样的需求。如将字符串数据转变成字节数据保存到文件中，将字节数据转变成流数据等。</p>
+<h3 id="2-7-设计模式之装饰器模式"><a href="#2-7-设计模式之装饰器模式" class="headerlink" title="2.7 设计模式之装饰器模式"></a>2.7 设计模式之装饰器模式</h3><p>装饰器模式的构建：</p>
+<pre><code>1. Component 抽象组件角色，定义一组抽象的接口，规定被装饰器组件都有哪些功能。
+
+2. ConcreteComponent 实现抽象组件的所有功能
+
+3. Decorator 装饰器角色，持有一个Component对象实例的引用，定义一个与抽象组件一直的接口。
+
+4. ConcreteDecorator 具体的装饰器实现者，负责实现装饰器角色定义的功能
+</code></pre><h4 id="2-7-2-Java-IO-装饰器模式"><a href="#2-7-2-Java-IO-装饰器模式" class="headerlink" title="2.7.2 Java IO 装饰器模式"></a>2.7.2 Java IO 装饰器模式</h4><h3 id="2-8-适配器模式与装配器模式的区别"><a href="#2-8-适配器模式与装配器模式的区别" class="headerlink" title="2.8 适配器模式与装配器模式的区别"></a>2.8 适配器模式与装配器模式的区别</h3><p>适配器模式的意义在于将一个接口转变成另一个子接口。而装配器模式不是要改变被装饰对象的接口，而恰恰要保持原有的接口，但是增强原有对象的功能。或者改变原有对象的处理方式而提升性能。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第4章 Java并发编程基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/第4章 Java并发编程基础/" itemprop="url">Redis - Java集成</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T08:45:41+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,800
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="第四章-Java并发编程基础"><a href="#第四章-Java并发编程基础" class="headerlink" title="第四章 Java并发编程基础"></a>第四章 Java并发编程基础</h2><p>[TOC]</p>
+<h3 id="4-1-线程"><a href="#4-1-线程" class="headerlink" title="4.1 线程"></a>4.1 线程</h3><blockquote>
+<p>提示：在一个Java程序中，Java程序运行不仅是main()方法运行，而是main线程和多个其它线程的同时运行。</p>
+</blockquote>
+<h4 id="4-1-3-线程优先级"><a href="#4-1-3-线程优先级" class="headerlink" title="4.1.3 线程优先级"></a>4.1.3 线程优先级</h4><p>现代操作系统基本采用时分的形式调度运行的线程，操作系统会分出一个个时间片，线程会分配到若干时间片，当线程的时间片用完了就会发生线程调度，并等待下一次分配。</p>
+<blockquote>
+<p>提示：线程优先级不能作为程序正确性的依赖，因为操作系统可以完全不理会Java线程对于优先级的设定。</p>
+</blockquote>
+<h4 id="4-1-4-线程的状态"><a href="#4-1-4-线程的状态" class="headerlink" title="4.1.4 线程的状态"></a>4.1.4 线程的状态</h4><pre><code>1.NEW 初始状态，线程被创建，但是还没有调用start()方法。
+
+2.RUNNABLE 运行状态，Java线程将操作系统中的就绪和运行两种状态笼统称作：运行中
+
+3.BLOCKED 阻塞状态，表示线程阻塞干预
+
+4.WAITING 等待状态，表示线程进入进入等待状态，需要等待其它线程做出一些动作（通知或中断）
+
+5.TIME_WAITING 超时等待，不同于WAITING，是可以在指定时间自行返回的
+
+6.TERMINATED 终止状态，表示该线程已经执行完毕
+</code></pre><blockquote>
+<p>提示：线程被创建之后，调用start()方法开始运行。当线程执行wait()方法之后，线程进入等待状态。当线程调用同步方法时，在没有获取到锁的状态下，线程将会进入到阻塞状态。线程在执行Runnable的run()方法之后将会进入到终止状态。</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>注意：阻塞状态是线程阻塞在进入 synchronized 关键字修饰的方法或代码块（获取锁）时的状态，但是阻塞在 java.concurrent 包中的 Lock 接口的线程状态是等待状态，因为 java.concurrent 包中接口 Lock 对于阻塞的实现均使用了 LockSupport 类中的相关方法。</p>
+</blockquote>
+</blockquote>
+<h4 id="4-1-5-Daemon-线程"><a href="#4-1-5-Daemon-线程" class="headerlink" title="4.1.5 Daemon 线程"></a>4.1.5 Daemon 线程</h4><p>Daemon线程是一种支持型线程，因为它主要被用作程序中后台调用以及支持性工作。表示在一个Java虚拟机中 不存在非Daemon线程 的时候，Java虚拟机将会退出。</p>
+<blockquote>
+<p>提示：Daemon线程被用作支持性工作，但是在Java虚拟机退出时Daemon线程中的finally块并不一定会执行。</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>注意：在构建Daemon线程时，不能依靠finally块中的内容来确保执行关闭或清理资源的逻辑。</p>
+</blockquote>
+</blockquote>
+<h3 id="4-2-启动或终止线程"><a href="#4-2-启动或终止线程" class="headerlink" title="4.2 启动或终止线程"></a>4.2 启动或终止线程</h3><h4 id="4-2-1-构造线程"><a href="#4-2-1-构造线程" class="headerlink" title="4.2.1 构造线程"></a>4.2.1 构造线程</h4><p>在运行线程之前首先要构造一个线程对象，线程对象在构造的时候需要提供线程所需要的属性，如：线程所属线程组、线程优先级、是否是Daemon线程等信息。</p>
+<h4 id="4-2-2-启动线程"><a href="#4-2-2-启动线程" class="headerlink" title="4.2.2 启动线程"></a>4.2.2 启动线程</h4><p>线程对象在初始化完成之后，调用start()方法可以启动这个线程。start()方法表示：当前线程同步告知Java虚拟机，只要线程规划器空闲，应立即启动调用start()方法的线程。</p>
+<blockquote>
+<p>提示：启动一个线程之前设置线程名称，在利用jstack分析程序或者进行问题排查可以方便一些。</p>
+</blockquote>
+<h4 id="4-2-3-中断"><a href="#4-2-3-中断" class="headerlink" title="4.2.3 中断"></a>4.2.3 中断</h4><h4 id="4-2-4-过期的-suspend-resume-stop"><a href="#4-2-4-过期的-suspend-resume-stop" class="headerlink" title="4.2.4 过期的 suspend() | resume() | stop()"></a>4.2.4 过期的 suspend() | resume() | stop()</h4><p>对线程做 暂停 恢复 停止 操作对应的API就是 suspend() | resume() | stop()。但是这些方法都是过期了的，是因为以suspend()方法为例，在调用后线程不会释放已经占有的资源（如锁），而是占用资源进入睡眠状态，容易引起死锁问题。</p>
+<blockquote>
+<p>提示：因为 suspend() | resume() | stop() 带来的副作用，而暂停和恢复操作可以用后面提到的等待/通知机制来替代。</p>
+</blockquote>
+<h4 id="4-2-5-安全终止线程"><a href="#4-2-5-安全终止线程" class="headerlink" title="4.2.5 安全终止线程"></a>4.2.5 安全终止线程</h4><p>通过标识位或者中断操作的方式能够使得线程在终止时有机会去清理资源，不是武断将线程停止，因此这种操作更加安全和优化。</p>
+<h3 id="4-3-线程间通信"><a href="#4-3-线程间通信" class="headerlink" title="4.3 线程间通信"></a>4.3 线程间通信</h3><h4 id="4-3-1-volatile和synchronize关键字"><a href="#4-3-1-volatile和synchronize关键字" class="headerlink" title="4.3.1 volatile和synchronize关键字"></a>4.3.1 volatile和synchronize关键字</h4><p>关键字 volatile 可以用来修饰字段，就是告知程序任何对该变量的访问均需要从共享内存中获取，而对它的改变必须同步刷新回共享内存，它能保证所有线程对变量访问的可见性。</p>
+<blockquote>
+<p>提示：过多的使用volatile关键字会降低程序执行的效率。</p>
+</blockquote>
+<p>关键字synchronize可以修饰方法或者以同步块的形式来进行使用，它主要确保多个线程在同一个时刻，只能有一个线程处于方法或同步块中。保证线程对变量访问的可见性和排它性。</p>
+<h4 id="4-3-2-等待-通知机制"><a href="#4-3-2-等待-通知机制" class="headerlink" title="4.3.2 等待/通知机制"></a>4.3.2 等待/通知机制</h4><p>等待/通知的相关方法是任意Java对象都具备的。因为这些方法被定义在所有对象的超类 java.lang.Object 上。</p>
+<pre><code>1.notify() 通知一个在对象上等待的线程，使其从 wait() 方法返回，而返回的前提是该线程获取到了对象的锁。
+
+2.notifyAll() 通知所有等待在该对象上的线程。
+
+3.wait() 调用该方法的线程进入 WAITING 状态
+
+4.wait(long) 超时等待一段时间
+</code></pre><p>通知/等待机制表示一个线程 A 调用该对象O的wait()方法进入等待状态，而另一个线程 B 调用了对象O的notify()或者notifyAll()方法，线程 A 收到通知后从对象O的wait()方法返回，进而执行后续操作。</p>
+<h4 id="4-3-3-等待-通知的经典范式"><a href="#4-3-3-等待-通知的经典范式" class="headerlink" title="4.3.3 等待/通知的经典范式"></a>4.3.3 等待/通知的经典范式</h4><p>等待/通知的经典范式分为两部分：等待方（消费者）和通知方（生产者）。</p>
+<ul>
+<li><p>等待方遵循原则：</p>
+<p>  1.获取对象的锁。</p>
+<p>  2.如果条件不满足，那么调用对象的wait()方法，被通知后仍要检查条件。</p>
+<p>  3.条件满足时执行对应的逻辑。</p>
+</li>
+<li><p>通知方遵循原则：</p>
+<p>  1.获取对象的锁。</p>
+<p>  2.改变条件。</p>
+<p>  3.通知所有等待在对象上的线程。</p>
+</li>
+</ul>
+<h4 id="4-3-4-管道输入-输出流"><a href="#4-3-4-管道输入-输出流" class="headerlink" title="4.3.4 管道输入/输出流"></a>4.3.4 管道输入/输出流</h4><p>管道输入/输出流和普通文件的输入/输出流或者网络输入/输出流不同之处在于，它主要用于线程之间的数据传输，而传输媒介是内存。</p>
+<p>管道输入/输出流主要包括以下四种具体实现：</p>
+<pre><code>1.PipedOutputStream
+
+2.PipedInputStream
+
+3.PipedWriter
+
+4.PipedReader
+</code></pre><blockquote>
+<p>提示：对于Piped类型的流，必须先要进行绑定，也就是调用connect()方法，如果没有将输入/输出流绑定起来，对于该流的访问将会抛出异常。</p>
+</blockquote>
+<h4 id="4-3-5-Thread-join"><a href="#4-3-5-Thread-join" class="headerlink" title="4.3.5 Thread.join()"></a>4.3.5 Thread.join()</h4><p>join() 表示当前线程A等待thread线程终止之后才从thread.join()返回。</p>
+<h4 id="4-3-6-ThreadLocal-的使用"><a href="#4-3-6-ThreadLocal-的使用" class="headerlink" title="4.3.6 ThreadLocal 的使用"></a>4.3.6 ThreadLocal 的使用</h4><p>ThreadLocal 线程变量，是一个以ThreadLocal对象为键，任意对象为值的存储结构。这个结构被附带在线程上，即一个线程可以根据一个ThreadLocal对象查询到绑定在这个线程上的一个值。</p>
+<h3 id="4-4-线程应用实例"><a href="#4-4-线程应用实例" class="headerlink" title="4.4 线程应用实例"></a>4.4 线程应用实例</h3>
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第4章 Spring MVC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/第4章 Spring MVC/" itemprop="url">Redis - Java集成</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T08:45:33+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,770
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="第4章-Spring-MVC"><a href="#第4章-Spring-MVC" class="headerlink" title="第4章 Spring MVC"></a>第4章 Spring MVC</h2><p>[TOC]</p>
+<h3 id="4-1-Spring-MVC-概述"><a href="#4-1-Spring-MVC-概述" class="headerlink" title="4.1 Spring MVC 概述"></a>4.1 Spring MVC 概述</h3><p><img src="https://upload-images.jianshu.io/upload_images/5376408-5d50c3491fd9aae2.png?imageMogr2/auto-orient/strip|imageView2/2/format/webp" alt="MVC模式"></p>
+<p>在我们使用Spring MVC的时候，需要我们在web.xml文件中配置DispatcherServlet，该DispatcherServerlet可以看做是一个前端控制器的具体实现，还需要在Bean定义中配置Web请求和Controller的对应关系，以及各种视图的展现方式。在具体使用Controller的时候，会看到ModelAndView数据的生成，还会看到将ModelAndView数据交给相应的View来进行呈现。</p>
+<h3 id="4-2-Web环境中的Spring-MVC"><a href="#4-2-Web环境中的Spring-MVC" class="headerlink" title="4.2 Web环境中的Spring MVC"></a>4.2 Web环境中的Spring MVC</h3><p>Spring MVC 是建立在IoC容器基础上的，要了解SpringMVC，首先要了解 Spring IoC 是如何在Web环境中发挥作用的。</p>
+<p>Spring IoC是个独立的模块，并不是直接在Web环境中发挥作用。如果我们需要在Web环境中使用IOC容器，需要为IOC设计一个启动过程，将ioc容器导入。在web容器启动过程中，将IoC导入，并在web容器中建立起来并初始化，这样才能建立起 Spring MVC 运行机制，从而响应web容器传递的HTTP请求。</p>
+<p>我们通常在web.xml文件中可以得到通常的配置。</p>
+<ol>
+<li><p>首选是定义一个Servlet对象，它是Spring MVC的DispatcherServlet。该DispatcherServlet是MVC中最重要的一个类，起着分发请求的作用。</p>
+</li>
+<li><p>然后为这个DispatcherServlet定义了对应的URL映射，这些URL映射为这个Servlet指定了需要处理的HTTP请求。context-param参数的配置用来指定Spring IOC容器读取Bean定义的XML文件的路径，在这里，这个配置文件被定义为/WEB-INF/applicationContext.xml。</p>
+</li>
+<li><p>最后ContextLoaderListener被定义为一个监听器，该监听器是与Web服务器的生命周期相关联的，由ContextLoaderListener监听器负责完成IOC容器在Web环境中的启动工作。</p>
+</li>
+</ol>
+<p>DispatcherServlet和ContextLoaderListener提供了在Web容器中对Spring的接口，这些接口与web容器耦合是通过 ServletContext 来实现的。</p>
+<h3 id="4-3-上下文在Web容器中的启动"><a href="#4-3-上下文在Web容器中的启动" class="headerlink" title="4.3 上下文在Web容器中的启动"></a>4.3 上下文在Web容器中的启动</h3><h4 id="4-3-1-IOC容器启动的基本过程"><a href="#4-3-1-IOC容器启动的基本过程" class="headerlink" title="4.3.1 IOC容器启动的基本过程"></a>4.3.1 IOC容器启动的基本过程</h4><p>IoC容器启动过程就是建立上下文的过程，该上下文与ServletContext相伴而生，由ContextLoaderListener启动的上下文为根上下文。在根上下文的基础上，还有一个与Web MVC相关的上下文用来保存控制器（DispatcherServlet）需要的MVC对象，作为跟上下文的子上下文。</p>
+<p>在web.xml中，已经配置了由Spring提供的实现了ServletContextListener接口的ContextLoaderListener，该监听器类为在Web容器中建立IoC容器提供服务。</p>
+<p>在Web容器中，建立WebApplicationContext的过程，是在contextInitialized的接口实现中完成的。</p>
+<p>具体的载入IOC容器的过程是由ContextLoaderListenser交由ContextLoader来完成的，而ContextLoader本身就是ContextLoaderListener的基类。</p>
+<p>在ContextLoader中，完成两个IoC容器建立的基本过程，一个是在Web容器中建立起双亲IoC容器，另一个是生成相应的WebApplicationContext并将其初始化。</p>
+<h4 id="4-3-2-Web容器中的上下文设计"><a href="#4-3-2-Web容器中的上下文设计" class="headerlink" title="4.3.2 Web容器中的上下文设计"></a>4.3.2 Web容器中的上下文设计</h4><p>在启动过程中，Spring使用默认的XmlWebApplicationContext 实现作为IoC容器。</p>
+<h4 id="4-3-3-ContextLoader的设计与实现"><a href="#4-3-3-ContextLoader的设计与实现" class="headerlink" title="4.3.3 ContextLoader的设计与实现"></a>4.3.3 ContextLoader的设计与实现</h4><p>对于Spring承载的Web应用而言，可以指定在Web应用程序启动时载人IoC容器(或者称为WebAppl icationContext)。这个功能是由ContextLoaderListener这样的类来完成的，它是在Web容器中配置的监听器。这个ContextLoaderListener通过使用ContextLoader来完成实际的WebApplicationContext，也就是IoC容器的初始化工作。这个ContextLoader就像Spring应用程序在Web容器中的启动器。这个启动过程是在Web容器中发生的，所以需要根据Web容器部署的要求来定义ContextLoader。</p>
+<p>在初始化这个上下文以后，该上下文会被存储到SevletContext中，这样就建立了一个全局的关于整个应用的上下文。同时，在启动Spring MVC时.我们还会看到这个上下文被以后的DispatcherServlet在进行自己持有的上下文的初始化时，设置为DispatcherServlet自带的上下文的双亲上下文。</p>
+<h3 id="4-4-Spring-MVC-的设计与实现"><a href="#4-4-Spring-MVC-的设计与实现" class="headerlink" title="4.4 Spring MVC 的设计与实现"></a>4.4 Spring MVC 的设计与实现</h3><h4 id="4-4-1-Spring-MVC的应用场景"><a href="#4-4-1-Spring-MVC的应用场景" class="headerlink" title="4.4.1 Spring MVC的应用场景"></a>4.4.1 Spring MVC的应用场景</h4><p>在web.xml中，除了需要配置ContextLoaderListener之外，还需要配置DispatcherServlet。建立Spring的上下文体系并初始化。</p>
+<p>在完成对ContextLoaderListener的初始化以后，Web容器开始初始化DispatcherServlet，这个初始化的启动与在web.xml中对载入次序的定义有关。</p>
+<p>DispatcherServiet会建立自己的上下文来持有 Spring MVC 的 Bean 对象，在建立这个自己持有的Ioc容器时，会从ServletContext中得到根上下文作为DispatcherServlet持有上下文的双亲上下文。有了这个根上下文，再对自己持有的上下文进行初始化，最后把自己持有的这个上下文保存到ServletContext（Web容器的上下文）中，供以后检索和使用。</p>
+<h4 id="4-4-2-Spring-MVC设计概览"><a href="#4-4-2-Spring-MVC设计概览" class="headerlink" title="4.4.2 Spring MVC设计概览"></a>4.4.2 Spring MVC设计概览</h4><p><img src="https://upload-images.jianshu.io/upload_images/5376408-ea1f3f0ee11892ce.png?imageMogr2/auto-orient/strip|imageView2/2/w/585/format/webp" alt="DispatcherServlet的处理过程"></p>
+<p>DispatcherServiet的工作大致可以分为两个部分：</p>
+<ol>
+<li>由initServletBean()启动，通过initWebAppIicationContext()方法最终调用DispatcherServlet的initStrategies方法。在这个方法里，DispatcherServlet对MVC模块的其他部分进行了初始化，比如handlerMapping, ViewResolver等。</li>
+<li>对HTTP请求进行响应，作为一个Serviet，Web容器会调用Servlet的doGet()和doPost()方法，在经过FrameworkServlet的processRequest()简单处理后，会调用DispatcherServlet的doService()方法，在这个方法调用中封装了doDispatch()，这个doDispatch()是Dispatcher实现MVC模式的主要部分。</li>
+</ol>
+<h4 id="4-4-3-DispatcherServlet的启动和初始化"><a href="#4-4-3-DispatcherServlet的启动和初始化" class="headerlink" title="4.4.3 DispatcherServlet的启动和初始化"></a>4.4.3 DispatcherServlet的启动和初始化</h4><h4 id="4-4-4-MVC处理HTTP分发请求"><a href="#4-4-4-MVC处理HTTP分发请求" class="headerlink" title="4.4.4 MVC处理HTTP分发请求"></a>4.4.4 MVC处理HTTP分发请求</h4><p>1.HandlerMapping的配置和设计原理</p>
+<p>在初始化完成时，在上下文环境中已定义的所有HandlerMapping都已经被加载了，这些加载的handlerMappings被放在一个List中并排序，存储着HTTP请求对应的映射数据。这个List中的每一个元素都对应着一个具体handlerMapping的配置，一般每一个handlerMapping可以持有一系列从URL请求到Controller的映射，而Spring MVC 提供了一系列的HandlerMapping实现。</p>
+<p>2.使用HandlerMapping完成请求的映射处理</p>
+<p>通过SimpleUrlHandlerMapping的实现来分析HandlerMapping的接口方法getHandler，该方法会根据初始化时得到的映射关系来生成DispatcherServlet需要的HandlerExecutionChain，也就是说，这个getHandler方法是实际使用HandlerMapping完成请求的映射处理的地方。</p>
+<p>获得handler的具体过程在getHandlerInternal方法中实现，这个方法接受HTTP请求作为参数，它的实现在AbstractHandlerMapping的子类AbstractUrlHandlerMapping中，这个实现过程包括从HTTP请求中得到URL，并根据URL到urlMapping中获得handler。</p>
+<p>经过这一系列对HTTP请求进行解析和匹配handler的过程，得到了与请求对应的handler处理器。在返回的handler中，已经完成了在HandlerExecutionChain中的封装工作，为handler对HTTP请求的响应做好了准备。</p>
+<p>接下来就是解决请求如何实现分发的问题，从而得到对应的handler。</p>
+<p>3.Spring MVC对HTTP请求的分发处理</p>
+<h3 id="4-5-Spring-MVC-视图的呈现"><a href="#4-5-Spring-MVC-视图的呈现" class="headerlink" title="4.5 Spring MVC 视图的呈现"></a>4.5 Spring MVC 视图的呈现</h3><h4 id="4-5-1-DispatcherServlet视图呈现的设计"><a href="#4-5-1-DispatcherServlet视图呈现的设计" class="headerlink" title="4.5.1 DispatcherServlet视图呈现的设计"></a>4.5.1 DispatcherServlet视图呈现的设计</h4>
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第5章 Java中的锁/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/第5章 Java中的锁/" itemprop="url">Redis - Java集成</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:05:45+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,105
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="第五章-Java中的锁"><a href="#第五章-Java中的锁" class="headerlink" title="第五章 Java中的锁"></a>第五章 Java中的锁</h2><p>[TOC]</p>
+<h3 id="5-1-Lock接口"><a href="#5-1-Lock接口" class="headerlink" title="5.1 Lock接口"></a>5.1 Lock接口</h3><p>Java SE 1.5 之后，在并发包中新增 Lock 接口用来实现锁功能。它提供了与synchronize关键字类似的同步功能，只是在使用时需要显式地获取和释放锁。</p>
+<blockquote>
+<p>提示：使用synchronize关键字将会隐式地获取锁，但是它将锁的获取和释放固化了，也就是先获取后释放。这种方式简化了同步的管理，但是扩展性没有显式的锁获取和释放好。</p>
+</blockquote>
+<blockquote>
+<p>注意：不要将获取锁的过程写在try块中，如果在获取锁（自定义锁的实现）时发生异常，异常抛出的同时，也会导致锁的释放。</p>
+</blockquote>
+<p>Lock接口提供的 synchronize 关键字不具备的特性：</p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>尝试非阻塞地获取锁</td>
+<td>当前线程尝试获取锁，如果这一时刻锁没有被其它线程获取到，则成功获取并持有锁</td>
+</tr>
+<tr>
+<td>能被中断地获取锁</td>
+<td>与synchronize不同，获取到锁的线程能够响应中断，当获取到锁的线程被中断时，中断异常将会抛出，同时锁会被释放</td>
+</tr>
+<tr>
+<td>超时获取锁</td>
+<td>在指定的截止时间之前获取锁，如果截止时间到了仍旧无法获取锁，则返回</td>
+</tr>
+</tbody>
+</table>
+<p>Lock是一个接口，它定义了锁获取和释放的基本操作。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>void lock()</td>
+<td>获取锁</td>
+</tr>
+<tr>
+<td>void lockInterruptibly() throws InterruptedException</td>
+<td>可中断获取锁</td>
+</tr>
+<tr>
+<td>boolean tryLock()</td>
+<td>尝试非阻塞的获取锁</td>
+</tr>
+<tr>
+<td>boolean tryLock(long time, TimeUtil unit) throws InterruptedException</td>
+<td>超时的获取锁，当前线程在以下三种情况会返回：1.当前线程在超时时间内获得了锁。2.当前线程在超时时间内被终端。3.超时时间结束，返回false。</td>
+</tr>
+<tr>
+<td>void unlock</td>
+<td>释放锁</td>
+</tr>
+<tr>
+<td>Condition newCondition</td>
+<td>获取等待通知组件</td>
+</tr>
+</tbody>
+</table>
+<h3 id="5-2-队列同步器"><a href="#5-2-队列同步器" class="headerlink" title="5.2 队列同步器"></a>5.2 队列同步器</h3><p>队列同步器AbstractQueuedSynchronize（AQS），是用来构建锁或者其它同步组件的基础框架，其使用了一个int成员变量表示同步状态，通过内置的FIFO队列来完成资源获取线程的排队工作。</p>
+<p>同步器的设计基于模板方法模式，使用者需要继承同步器并重写指定的方法，随后将同步器组合在自定义同步组件的实现中，并调用同步器提供的模板方法，而这些模板方法将会调用使用者重写的方法。</p>
+<p>重写同步器指定的方法时，需要使用同步器提供的三个方法访问或修改：</p>
+<pre><code>1.getState() 获取当前同步状态
+
+2.setState() 设置当前同步状态
+
+3.compareAndSetState(int expect, int update) 使用CAS设置当前状态，该方法能够保证状态设置的原子性
+</code></pre><h4 id="5-2-2-队列同步器的实现分析"><a href="#5-2-2-队列同步器的实现分析" class="headerlink" title="5.2.2 队列同步器的实现分析"></a>5.2.2 队列同步器的实现分析</h4><p>1.同步队列</p>
+<h3 id="5-3-重入锁"><a href="#5-3-重入锁" class="headerlink" title="5.3 重入锁"></a>5.3 重入锁</h3><p>重入锁 ReentrantLock，支持重进入的锁，表示该锁能够支持一个线程对资源的重复加锁。该锁还支持获取锁时的公平和非公平性选择。</p>
+<blockquote>
+<p>提示：ReentrantLock虽然没能像synchronized关键字一样支持隐式的重进入，但是在调用lock()方法时，已经获取到锁的线程，能够再次调用lock()方法获取锁而不被阻塞。</p>
+</blockquote>
+<p>公平性问题：公平性的获取锁，也就是等待时间最长的线程最优先获取锁，也可以说锁获取是有顺序的。ReentrantLock 提供了一个构造函数，能够控制锁是否是公平。</p>
+<blockquote>
+<p>提示：公平的锁机制往往没有非公平的效率高，但是并不是任何场景都是以TPS作为唯一的标准，公平锁能够减少“饥饿”发生的概率，等待越久的请求越是能够得到优先满足。</p>
+</blockquote>
+<h4 id="5-3-1-实现重进入"><a href="#5-3-1-实现重进入" class="headerlink" title="5.3.1 实现重进入"></a>5.3.1 实现重进入</h4><p>重进入表示任意线程在获取到锁之后能够再次获取该锁而不会被锁阻塞，该特性的实现需要解决的问题：</p>
+<pre><code>1.线程再次获取锁：锁需要去识别获取锁的线程是否是当前占据锁的线程。如果是则再次成功获取。
+
+2.锁的最终释放：线程重复n次获取该锁，随后在第n次释放该锁后，其它线程能够获取到该锁。锁的最终释放要求锁对于获取进行计数自增，锁被释放时，计数自减。当计数为0时表示锁已经成功释放。
+</code></pre><blockquote>
+<p>提示：</p>
+</blockquote>
+<h4 id="5-3-2-公平与非公平获取锁的区别"><a href="#5-3-2-公平与非公平获取锁的区别" class="headerlink" title="5.3.2 公平与非公平获取锁的区别"></a>5.3.2 公平与非公平获取锁的区别</h4><p>公平性与否是针对获取锁而言的，如果一个锁是公平的，那么锁的获取顺序就应该符合请求的绝对时间顺序，FIFO。</p>
+<blockquote>
+<p>总结：公平性锁保证了锁的获取按照FIFO原则，而代价是<code>进行大量的线程切换</code>。非公平性锁虽然可能造成线程“饥饿”，但极少的线程切换，保证了其更大的吞吐量。</p>
+</blockquote>
+<h4 id="5-3-3-重入锁的方法"><a href="#5-3-3-重入锁的方法" class="headerlink" title="5.3.3 重入锁的方法"></a>5.3.3 重入锁的方法</h4><pre><code>1. lock() 获得锁，如果锁已经被占用则等待
+
+2. lockInterruptibly() 获得锁，但优先响应中断
+
+3. tryLock() 尝试获得锁，如果成功则返回true，否则返回false，该方法不等待，立即返回
+
+4. tryLock(long time, TimeUnit unit) 在给定时间内尝试获得锁
+
+5. unlock() 释放锁
+</code></pre><h3 id="5-4-读写锁"><a href="#5-4-读写锁" class="headerlink" title="5.4 读写锁"></a>5.4 读写锁</h3><p>之前的锁（Mutex | ReentrantLock）基本都是<code>排它锁</code>，这些锁在<code>同一时刻只允许一个线程进行访问</code>，而<code>读写锁</code>在同一时刻可以允许多个<code>读线程</code>进行访问，但是在<code>写线程</code>访问时，所有读线程和其它线程均被阻塞。</p>
+<blockquote>
+<p>提示：读写锁维护了一对锁，一个读锁，一个写锁，通过分离读锁和写锁，使得并发相比一般的排它锁有了很高提升。</p>
+</blockquote>
+<p>Java并发包中提供的读写锁实现是：ReentrantReadWriteLock，其提供特性为：</p>
+<pre><code>特性 | 说明
+--- | ---
+公平性选择 | 支持非公平和公平的锁获取方式，吞吐量还是非公平由于公平
+重进入 | 该锁支持重进入
+锁降级 | 遵循获取写锁、获取读锁再释放写锁的次序，写锁能够降级成为读锁
+</code></pre><h4 id="5-4-1-读写锁实例"><a href="#5-4-1-读写锁实例" class="headerlink" title="5.4.1 读写锁实例"></a>5.4.1 读写锁实例</h4><h3 id="5-6-Condition接口"><a href="#5-6-Condition接口" class="headerlink" title="5.6 Condition接口"></a>5.6 Condition接口</h3><p>任意一个Java对象都拥有一组监视器方法（定义在java.lang.Object上），主要包括wait() | wait(long timeout) | notify() | notifyAll()方法，这些方法与synchronize同步关键字配合，可以实现等待/通知模式。</p>
+<p>Condition接口也提供了类似Object的监视器方法，与Lock配合可以实现等待/通知模式，但是两者再使用方式以及功能特性上是有差别的。</p>
+<p>Condition的方法和描述：</p>
+<pre><code>方法名称 | 描述
+--- | ---
+await() | 当前线程进入等待状态直到被通知或中断
+signal() | 唤醒一个等待在Condition上的线程，该线程从等待方法返回前必须获得与Condition相关联的锁
+</code></pre><p>Condition定义了等待/通知两种类型的方法，当前线程调用这些方法时，需要<code>提前获取到Condition对象关联的锁</code>。Condition对象是由Lock对象（调用Lock对象的newCondition()方法）创建出来的，换句话说就是<code>Condition是依赖Lock对象</code>的。</p>
+<blockquote>
+<p>提示：Condition在调用方法前需要获取锁。</p>
+</blockquote>
+<pre><code>//1. 在调用方法之前获取锁
+Lock lock = new ReentrantLock();
+Condition condition = lock.newCondition();
+
+public void conditionWait() throws InterruptedException {
+    lock.lock();
+    try {
+        condition.await();
+    }finally {
+        lock.unlock();
+    }
+}
+
+public void conditionSignal(){
+    lock.lock();
+    try {
+        condition.signal();
+    }finally {
+        lock.unlock();
+    }
+}
+</code></pre><p>一般都会将Condition对象作为成员变量，在调用成员变量之后，当前线程会释放锁并在此等待，而其它线程调用Condition对象的signal()方法，通知当前线程后，当前线程才从await()方法返回，并且在返回前已经获取了锁。</p>
+<blockquote>
+<p>提示：获取一个Condition必须通过Lock的newCondition()方法。</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>提示：有界队列是一种特殊的队列，当队列为空时，队列的获取操作将会阻塞获取线程，直到队列中有新增元素，当队列已满时，队列的插入操作将会阻塞插入线程，直到队列出现空位。</p>
+</blockquote>
+</blockquote>
+<h4 id="5-6-1-Condition接口提供基本方法"><a href="#5-6-1-Condition接口提供基本方法" class="headerlink" title="5.6.1 Condition接口提供基本方法"></a>5.6.1 Condition接口提供基本方法</h4><pre><code>1. void await(); 
+
+2. void awaitUninterruptibly();
+
+3. awaitNanos(long nanosTimeout);
+
+4. boolean await(long time, TimeUnit unit);
+
+5. boolean awaitUnit(Date deadline);
+
+6. void signal();
+
+7. void signalAll();
+</code></pre><h4 id="5-6-2-Condition实现分析"><a href="#5-6-2-Condition实现分析" class="headerlink" title="5.6.2 Condition实现分析"></a>5.6.2 Condition实现分析</h4><p>每个Condition对象都包含着一个队列（等待队列），该队列是Condition对象实现等待/通知功能的关键。</p>
+<p><strong>1.等待队列</strong><br></p>
+<p>等待队列是一个FIFO的队列，在队列中的每个节点都包含一个线程引用，该线程就是在Condition对象上等待的线程。如果一个线程调用了 Condition.await() 方法，那么该线程将会被释放锁、构造成节点加入等待队列并进入等待状态。</p>
+<p><strong>2.等待</strong><br></p>
+<p>调用Condition的await()方法（或者以await()方法开头的方法）会使当前线程进入等待队列并释放锁，同时线程状态变成等待状态。当从await()方法返回时，当前线程一定获取了Condition相关联的锁。</p>
+<p><strong>3.通知</strong><br></p>
+<p>调用Condition的signal()方法，将会唤醒在等待队列中等待时间最长的节点（首节点），在唤醒结点之前，会将节点移到同步队列中。</p>
+<h3 id="5-6-锁"><a href="#5-6-锁" class="headerlink" title="5.6 锁"></a>5.6 锁</h3><h4 id="5-6-1-无锁"><a href="#5-6-1-无锁" class="headerlink" title="5.6.1 无锁"></a>5.6.1 无锁</h4><p>在并发控制层面，锁是一种悲观策略。无锁是一种乐观策略，所有线程都能够在不停顿的状态下持续执行，在遇到冲突的时候使用一种比较交换的策略（CAS）鉴别线程冲突。</p>
+<h5 id="1-CAS"><a href="#1-CAS" class="headerlink" title="1. CAS"></a>1. CAS</h5><p>CAS算法过程，包含三个参数 CAS(V,E,N)，V表示要更新的变量，E表示预期值，N表示新值。仅仅当V==E时，才会将V设置为N，如果E!=E，说明其它线程已经做了更新，当前线程什么都不用做。最后CAS返回当前V的真实值。</p>
+<p>CAS总是持乐观态度，在多个线程同时使用CAS操作一个变量时，只有一个会胜出，并成功更新，其余均会失败。失败的线程不会被挂起，仅仅是告知失败，并且允许再次尝试或放弃操作。</p>
+<h5 id="2-AtomicInteger"><a href="#2-AtomicInteger" class="headerlink" title="2. AtomicInteger"></a>2. AtomicInteger</h5><p>AtomicInteger直接使用CAS操作的线程安全的类型，可以将其看做一个整数。与Integer不一样的是它是可变的，并且线程安全。对其各种修改或其它操作都是CAS指令进行的。</p>
+<h5 id="3-Java中的指针-Unsafe类"><a href="#3-Java中的指针-Unsafe类" class="headerlink" title="3. Java中的指针 Unsafe类"></a>3. Java中的指针 Unsafe类</h5><p>Unsafe类是 sun.misc.Unsafe类型。该类封装了一些不安全的操作（指针是不安全的），所以该类封装了一些类似指针的操作。</p>
+<p>Unsafe类提供的一些方法</p>
+<pre><code>1. public native int getInt(Object o, long offset);//获取给定对象偏移量上的int值
+
+2. public native void putInt(Object o, long offset, int x);//设置给定对象偏移量上的int值
+
+3. public native long objectFieldOffset(Field f);
+
+...
+</code></pre><h5 id="4-无锁对象的引用-AtomicReference"><a href="#4-无锁对象的引用-AtomicReference" class="headerlink" title="4. 无锁对象的引用 AtomicReference"></a>4. 无锁对象的引用 AtomicReference</h5><p>该类型是对普通的对象的引用。保证我们在修改对象引用时线程安全性，</p>
+<h5 id="5-带有时间戳的对象引用-AtomicStampedReference"><a href="#5-带有时间戳的对象引用-AtomicStampedReference" class="headerlink" title="5. 带有时间戳的对象引用 AtomicStampedReference"></a>5. 带有时间戳的对象引用 AtomicStampedReference</h5><p>在其内部不仅维护了对象值，还维护了一个时间戳，当AtomicStampedReference对应的数值被修改时，除了更新数据本身外，还必须更新时间戳。</p>
+<h5 id="6-数组无锁-AtomicIntegerArray"><a href="#6-数组无锁-AtomicIntegerArray" class="headerlink" title="6. 数组无锁 AtomicIntegerArray"></a>6. 数组无锁 AtomicIntegerArray</h5><p>原子数组包括：AtomicIntegerArray | AtomicLongArray | AtomicReferenceArray。</p>
+<p>AtomicIntegerArray本质上是对int[]类型的封装，使用Unsafe类通过CAS的方式控制int[]在多线程下的安全性。</p>
+<h5 id="7-普通变量享受原子操作-AtomicIntegerFieldUpdater"><a href="#7-普通变量享受原子操作-AtomicIntegerFieldUpdater" class="headerlink" title="7. 普通变量享受原子操作 AtomicIntegerFieldUpdater"></a>7. 普通变量享受原子操作 AtomicIntegerFieldUpdater</h5><p>AtomicIntegerFieldUpdater 在不改动或极少改动原有程序的基础上让普通的变量享受CAS操作带来的线程安全性。</p>
+<p>根据数据类型不同，Updater有三种：AtomicIntegerFieldUpdater | AtomicLongFieldUpdater | AtomicReferenceFieldUpdater。</p>
+<blockquote>
+<p>注意：</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<ol>
+<li>Updater只能修改它可见范围内的变量，因为Updater使用反射得到这个变量。如果变量不可见，就会出错。如：score声明为private。</li>
+</ol>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<ol start="2">
+<li>为了确保变量被正确的读写，其必须是volatile类型的。</li>
+</ol>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<ol start="3">
+<li>由于CAS操作会通过对象实例中的偏移量直接进行复制，所以它不支持static字段。</li>
+</ol>
+</blockquote>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第5章 深入class文件结构/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/第5章 深入class文件结构/" itemprop="url">Redis - Java集成</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T08:45:22+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  130
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="第5章-深入class文件结构"><a href="#第5章-深入class文件结构" class="headerlink" title="第5章 深入class文件结构"></a>第5章 深入class文件结构</h2><p>[toc]</p>
+<h3 id="5-1-JVM指令集简介"><a href="#5-1-JVM指令集简介" class="headerlink" title="5.1 JVM指令集简介"></a>5.1 JVM指令集简介</h3><h4 id="5-1-1-类相关的指令"><a href="#5-1-1-类相关的指令" class="headerlink" title="5.1.1 类相关的指令"></a>5.1.1 类相关的指令</h4><pre><code>.source 表示该代码的源文件
+
+.class 表示这是一个类且公有的类名
+
+.super 表示该类的父类
+</code></pre><h4 id="5-1-2-方法的定义"><a href="#5-1-2-方法的定义" class="headerlink" title="5.1.2 方法的定义"></a>5.1.2 方法的定义</h4><pre><code>.method public &lt;init&gt;() V 表示该方法是公有的，没有参数，返回值类型是V（void），&lt;init&gt;表示构造函数。
+</code></pre><h3 id="5-2-class文件头的表示形式"><a href="#5-2-class文件头的表示形式" class="headerlink" title="5.2 class文件头的表示形式"></a>5.2 class文件头的表示形式</h3>
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第6章 Java并发容器和框架/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/第6章 Java并发容器和框架/" itemprop="url">Redis - Java集成</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T08:45:03+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,369
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="第六章-Java并发容器和框架"><a href="#第六章-Java并发容器和框架" class="headerlink" title="第六章 Java并发容器和框架"></a>第六章 Java并发容器和框架</h2><p>[TOC]</p>
+<h3 id="6-1-ConcurrentHashMap的实现原理和使用"><a href="#6-1-ConcurrentHashMap的实现原理和使用" class="headerlink" title="6.1 ConcurrentHashMap的实现原理和使用"></a>6.1 ConcurrentHashMap的实现原理和使用</h3><p>ConcurrentHashMap是线程安全且高效的HashMap。</p>
+<h4 id="6-1-1-为何使用ConcurrentHashMap"><a href="#6-1-1-为何使用ConcurrentHashMap" class="headerlink" title="6.1.1 为何使用ConcurrentHashMap"></a>6.1.1 为何使用ConcurrentHashMap</h4><p>在并发编程中使用HashMap可能会导致死循环，而使用线程安全的HashTable效率非常低下，基于上面两个原因，所以有了ConcurrentHashMap。</p>
+<p><strong>1.线程不安全的HashMap</strong><br></p>
+<p>多线程环境下，使用HashMap进行put操作会导致死循环，导致CPU利用率接近1。</p>
+<p><strong>2.效率低下的HashTable</strong><br></p>
+<p>HashTable容器使用synchronize来保证线程安全，但是在竞争激励的情况下HashTable效率低下。当一个线程访问HashTable的同步方法，其它线程访问将会进入阻塞或者是轮询状态。</p>
+<p><strong>3.ConcurrentHashMap的锁分段技术可有效提升并发访问率</strong><br></p>
+<blockquote>
+<p>提示：HashTable在并发环境下表现效率低下的原因是因为所有访问HashTable的线程都必须要竞争同一把锁，<code>如果容器中存在多把锁，每一把锁用于锁定容器中的一部分数据</code>，那么多线程访问容器里不同数据段的数据时，线程间就不存在锁竞争（锁分段技术）。</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>锁分段技术：将数据分成一段一段的存储，然后给每一段数据配一把锁，当一个线程占用锁访问其中一个段数据时，其它段的数据也能被其它线程访问。</p>
+</blockquote>
+</blockquote>
+<h4 id="6-1-2-ConcurrentHashMap的结构"><a href="#6-1-2-ConcurrentHashMap的结构" class="headerlink" title="6.1.2 ConcurrentHashMap的结构"></a>6.1.2 ConcurrentHashMap的结构</h4><p>ConcurrentHashMap是由 Segment数组结构 和 HashEntry数组结构 组成。Segment数组结构 是一种可重入锁（ReentrantLock），在ConcurrentHashMap里扮演锁的角色。HashEntry 则用于存储键值数据。</p>
+<p>一个ConcurrentHashMap里包含一个 Segment数组，Segment的结构和HashMap类似，是一种数组和链表结构。一个Segment包含一个HashEntry数组，每个HashEntry是一个链表结构的元素。</p>
+<h4 id="6-1-3-ConcurrentHashMap初始化"><a href="#6-1-3-ConcurrentHashMap初始化" class="headerlink" title="6.1.3 ConcurrentHashMap初始化"></a>6.1.3 ConcurrentHashMap初始化</h4><p>ConcurrentHashMap初始化方法是通过 initialCapacity loadFactor concurrencyLevel等几个参数来初始化segment数组、段偏移量segmentshift、段掩码segmentMask和每个segment里的HashEntry数组实现。</p>
+<h4 id="6-1-4-定位Segment"><a href="#6-1-4-定位Segment" class="headerlink" title="6.1.4 定位Segment"></a>6.1.4 定位Segment</h4><p>因为ConcurrentHashMap是通过分段锁Segment来保护不同段的数据，那么在<code>插入和获取元素</code>的时候，必须先通过散列算法定位到Segment。</p>
+<h4 id="6-1-5-ConcurrentHashMap的操作"><a href="#6-1-5-ConcurrentHashMap的操作" class="headerlink" title="6.1.5 ConcurrentHashMap的操作"></a>6.1.5 ConcurrentHashMap的操作</h4><p><strong>1.get操作</strong><br></p>
+<p>Segment的get操作非常高效和简单。先通过一次<code>再散列</code>，然后使用<code>这个散列值</code>通过散列运算定位到Segment，再通过散列算法定位到元素。</p>
+<p><strong>2.put操作</strong><br></p>
+<p>由于put方法需要对共享变量进行写入操作，所以为了线程安全，在操作共享变量时必须加锁。</p>
+<p><strong>3.size操作</strong><br></p>
+<p>如果需要统计整个ConcurrentHashMap中元素的大小，需要统计所有Segment里元素的大小后求和。</p>
+<h3 id="6-2-ConcurrentLinkedQueue"><a href="#6-2-ConcurrentLinkedQueue" class="headerlink" title="6.2 ConcurrentLinkedQueue"></a>6.2 ConcurrentLinkedQueue</h3><p>在并发编程环境下，需要使用线程安全的队列。如果要实现一个线程安全的队列有两种方式：1.使用阻塞算法。2.使用非阻塞算法。</p>
+<pre><code>1.使用阻塞算法的队列可以用一个锁（入队和出队用同一把锁）或者两把锁。
+
+2.非阻塞实现方式则可以使用循环CAS的方式来实现。
+</code></pre><p>ConcurrentLinkedQueue 是一个基于链接节点的无界线程安全队列，采用先进先出的规则对节点进行排序，当添加一个元素的时候，它会添加到队列的尾部。当获取一个元素时，会返回队列的头部。采用CAS算法实现。</p>
+<h4 id="6-2-1-ConcurrentLinkedQueue的结构"><a href="#6-2-1-ConcurrentLinkedQueue的结构" class="headerlink" title="6.2.1 ConcurrentLinkedQueue的结构"></a>6.2.1 ConcurrentLinkedQueue的结构</h4><p>ConcurrentLinkedQueue 由head节点和tail节点组成，每个节点Node由节点元素（item）和指向下一个节点（next）的引用组成，节点与节点之间就是通过next关联起来，从而组成一张链表结构的队列。</p>
+<h4 id="6-2-2-入队列"><a href="#6-2-2-入队列" class="headerlink" title="6.2.2 入队列"></a>6.2.2 入队列</h4><p>入队列就是将入队节点添加到队列的尾部。</p>
+<h4 id="6-2-3-出队列"><a href="#6-2-3-出队列" class="headerlink" title="6.2.3 出队列"></a>6.2.3 出队列</h4><p>出队列就是从队列中返回一个结点元素，并清空该节点对元素的引用。</p>
+<h3 id="6-3-Java阻塞队列"><a href="#6-3-Java阻塞队列" class="headerlink" title="6.3 Java阻塞队列"></a>6.3 Java阻塞队列</h3><h4 id="6-3-1-什么是阻塞队列"><a href="#6-3-1-什么是阻塞队列" class="headerlink" title="6.3.1 什么是阻塞队列"></a>6.3.1 什么是阻塞队列</h4><p>阻塞队列，指一个支持两个附加操作的队列。这两个附件操作支持阻塞的插入和移除操作。</p>
+<pre><code>1.支持阻塞的插入方法：当队列满时，队列会阻塞插入元素的线程，直到队列不满。
+
+2.支持阻塞的移除方法：对队列为空时，获取元素的线程会等待队列变为非空。
+</code></pre><blockquote>
+<p>提示：阻塞队列常用于生产者和消费者的场景。</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>注意：如果是无界阻塞队列，队列不可能会出现满的情况，所以使用put或offer方法永远不会被阻塞，而且使用offer方法时，该方法永远返回true。</p>
+</blockquote>
+</blockquote>
+<h4 id="6-3-2-Java里的阻塞队列"><a href="#6-3-2-Java里的阻塞队列" class="headerlink" title="6.3.2 Java里的阻塞队列"></a>6.3.2 Java里的阻塞队列</h4><p>JDK 7 提供7个阻塞队列：</p>
+<pre><code>1.ArrayBlockingQueue 数组组成的有界阻塞队列，按照先进先出的原则对元素进行排序。默认情况不保证线程公平的访问队列。
+
+    //在初始化时指定阻塞队列的容量和公平性
+    ArrayBlockingQueue(int capacity, boolean fair);
+</code></pre><blockquote>
+<p>提示：公平访问队列是指，阻塞的线程可以按照阻塞的先后顺序访问队列，先阻塞的线程先访问队列。非公平性是指，阻塞的线程可以争夺访问队列的资格。</p>
+</blockquote>
+<pre><code>2.LinkedBlockingQueue 链表实现的有界阻塞队列
+
+3.PriorityBlockingQueue 是一个支持优先级的无界阻塞队列。默认情况采取自然升序排列。
+
+4.DelayQueue 支持延时获取元素的无界阻塞队列
+
+5.SynchronousQueue 不存储元素的阻塞队列，每一个put操作都必须等待一个take操作，否则不能继续添加元素。
+
+    //可以指定公平性策略
+    public SynchronousQueue(boolean fair);
+
+6.LinkedTransferQueue
+
+7.LinkedBlockingDeque
+</code></pre><h4 id="6-3-3-阻塞队列的实现原理"><a href="#6-3-3-阻塞队列的实现原理" class="headerlink" title="6.3.3 阻塞队列的实现原理"></a>6.3.3 阻塞队列的实现原理</h4><h5 id="通知模式"><a href="#通知模式" class="headerlink" title="通知模式"></a>通知模式</h5><p>当生产者往满的队列里添加元素时会阻塞生产者，当消费者消费队列中的一元素之后会通知生产者当前队列可用。</p>
+<h3 id="6-4-Fork-Join框架"><a href="#6-4-Fork-Join框架" class="headerlink" title="6.4 Fork | Join框架"></a>6.4 Fork | Join框架</h3><h4 id="6-4-1-Fork-Join框架简介"><a href="#6-4-1-Fork-Join框架简介" class="headerlink" title="6.4.1 Fork/Join框架简介"></a>6.4.1 Fork/Join框架简介</h4><p>并行执行任务框架，将一个大任务分割成若干个小任务，最终汇总每个任务结果后得到大任务结果的框架。</p>
+<p>Fork是将大任务切分成若干小任务并行的执行，Join是合并这些子任务的执行结果，最后得到大任务的结果。</p>
+<h4 id="6-4-2-工作窃取算法"><a href="#6-4-2-工作窃取算法" class="headerlink" title="6.4.2 工作窃取算法"></a>6.4.2 工作窃取算法</h4><p>该算法表示某个线程从其它队列里窃取任务来执行。此时会发生窃取任务线程和被窃取任务线程之间的竞争，为了解决这个问题，使用双端队列，被窃取的任务线程永远从双端队列的头部拿任务执行，而窃取任务的线程永远从双端队列的尾部拿任务执行。</p>
+<pre><code>1.优点：充分利用线程进行并行运算，减少线程间的竞争。
+
+2.缺点：某些情况下还是存在竞争。如：双端队列中只有一个任务时。
+</code></pre><h4 id="6-4-3-Fork-Join框架的设计"><a href="#6-4-3-Fork-Join框架的设计" class="headerlink" title="6.4.3 Fork/Join框架的设计"></a>6.4.3 Fork/Join框架的设计</h4><pre><code>1.分割任务
+
+2.执行任务并合并结果
+</code></pre><p>那么这里Fork/Join使用两个类来完成上面两件事情：</p>
+<pre><code>1.ForkJoinTask：我们要使用ForkJoin框架，必须首先创建一个ForkJoin任务。它提供在任务中执行fork()和join()操作的机制。
+
+提示：ForkJoinTask与一般任务的主要区别在于它需要实现compute()方法。在此方法中首先需要判断任务足够小，才执行当前子任务并返回结果。
+
+    在这里不需要直接继承ForkJoinTask类，只需要继承它的子类，Fork/Join框架提供以下两个子类：
+
+        1.RecursiveAction：用于没有返回结果的任务。
+
+        2.RecursiveTask：用于有返回结果的任务。
+
+2.ForkJoinPool：ForkJoinTask需要通过ForkJoinPool来执行。
+</code></pre><h4 id="6-4-4-使用Fork-Join框架"><a href="#6-4-4-使用Fork-Join框架" class="headerlink" title="6.4.4 使用Fork/Join框架"></a>6.4.4 使用Fork/Join框架</h4><pre><code>package Java.ChapterSeven.ForkJoin;
+
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.Future;
+import java.util.concurrent.RecursiveTask;
+
+public class ForkJoinExample extends RecursiveTask&lt;Integer&gt; {
+
+    private final int threshold = 5;
+    private int firstOne;
+    private int lastOne;
+
+    public ForkJoinExample(int firstOne, int lastOne) {
+        this.firstOne = firstOne;
+        this.lastOne = lastOne;
+    }
+
+    @Override
+    protected Integer compute() {
+        int result = 0;
+        //任务小可以直接计算
+        if (lastOne - firstOne &lt;= threshold){
+            for (int i = firstOne; i &lt;= lastOne; i++){
+                result += i;
+            }
+        }else {
+            //拆分成小任务
+            int middle = firstOne + (lastOne - firstOne) / 2;
+            ForkJoinExample leftTask = new ForkJoinExample(firstOne, lastOne);
+            ForkJoinExample rightTask = new ForkJoinExample(middle + 1, lastOne);
+            leftTask.fork();
+            rightTask.fork();
+
+            result = leftTask.join() + rightTask.join();
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        ForkJoinExample example = new ForkJoinExample(1, 1000);
+        ForkJoinPool forkJoinPool = new ForkJoinPool();
+        Future&lt;Integer&gt; result = forkJoinPool.submit(example);
+        try {
+            System.out.println(result.get());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre><h4 id="6-4-5-Fork-Join框架的异常处理和实现原理"><a href="#6-4-5-Fork-Join框架的异常处理和实现原理" class="headerlink" title="6.4.5 Fork/Join框架的异常处理和实现原理"></a>6.4.5 Fork/Join框架的异常处理和实现原理</h4><p>ForkJoinTask在执行的时候可能会抛出异常，但是我们没办法在主线程里直接捕获异常，所以ForkJoinTask提供isCompletedAbnormally()方法检查任务是否已经抛出异常或者被取消了，并且可以通过ForkJoinTask的getException()方法获取异常。</p>
+<p>ForkJoinPool由ForkJoinTask数组和ForkJoinWorkerThread数组组成，ForkJoinTask数组负责将存放程序提交给ForkJoinPool的任务，而ForkJoinWorkerThread数组负责执行这些任务。</p>
+<h4 id="6-4-6-Fork-Join框架的实现原理"><a href="#6-4-6-Fork-Join框架的实现原理" class="headerlink" title="6.4.6 Fork/Join框架的实现原理"></a>6.4.6 Fork/Join框架的实现原理</h4><p>ForkJoinPool由ForkJoinTask数组和ForkJoinWorkerThread数组组成，ForkJoinTask数组负责存放程序提交给ForkJoinPool的任务。ForkJoinWorkerThread负责执行这些任务。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/15/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/17/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/site.jpg"
+                alt="Bangjin-Hu" />
+            
+              <p class="site-author-name" itemprop="name">Bangjin-Hu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/BangjinHu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:2315378346@qq.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/Aaron_P_L" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-heart-o"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
+                      
+                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://iProgramering.github.io" target="_blank" title="iProgramer_ing">
+                      
+                        <i class="fa fa-fw fa-user"></i>iProgramer_ing</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          <div id="music163player">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src="//music.163.com/outchain/player?type=2&id=38358214&auto=0&height=66
+
+">
+    </iframe>
+</div>
+        </div>
+      </section>
+
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bangjin-Hu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">465.0k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/lib/clipboard/clipboard.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+</body>
+</html>

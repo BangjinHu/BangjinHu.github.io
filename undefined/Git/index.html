@@ -152,18 +152,18 @@
 
 
 
-<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. 1.git rebasegit合并代码主要有两种方式： 1.merge处理，这是我们比较能理解的方式。 2.rebase处理，中文此处翻译为衍合过程。">
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. 1.git rebasegit合并代码主要有两种方式： 1.merge处理，这是我们比较能理解的方式。 2.rebase处理，中文此处翻译为衍合过程。 2.git update-index –assume-unchanged PATH表示手动设置不要检查特定文件的更改情况。  注意：另外git提供了另外一种exclude的方式来完成同样的事情，不同的">
 <meta name="keywords" content="Git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git">
 <meta property="og:url" content="http://bangjinhu.github.io/undefined/Git/index.html">
 <meta property="og:site_name" content="BangjinHu&#39;s Blog">
-<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. 1.git rebasegit合并代码主要有两种方式： 1.merge处理，这是我们比较能理解的方式。 2.rebase处理，中文此处翻译为衍合过程。">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. 1.git rebasegit合并代码主要有两种方式： 1.merge处理，这是我们比较能理解的方式。 2.rebase处理，中文此处翻译为衍合过程。 2.git update-index –assume-unchanged PATH表示手动设置不要检查特定文件的更改情况。  注意：另外git提供了另外一种exclude的方式来完成同样的事情，不同的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-20T07:01:19.888Z">
+<meta property="og:updated_time" content="2020-03-29T02:31:23.935Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git">
-<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 1.git rebasegit合并代码主要有两种方式： 1.merge处理，这是我们比较能理解的方式。 2.rebase处理，中文此处翻译为衍合过程。">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 1.git rebasegit合并代码主要有两种方式： 1.merge处理，这是我们比较能理解的方式。 2.rebase处理，中文此处翻译为衍合过程。 2.git update-index –assume-unchanged PATH表示手动设置不要检查特定文件的更改情况。  注意：另外git提供了另外一种exclude的方式来完成同样的事情，不同的">
 
 
 
@@ -403,8 +403,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-05T09:22:26+08:00">
-                2018-06-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
               </time>
             
 
@@ -419,8 +419,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-09-20T15:01:19+08:00">
-                2018-09-20
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:31:23+08:00">
+                2020-03-29
               </time>
             
           </span>
@@ -438,8 +438,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">学习笔记</span>
+                  <a href="/categories/Git/" itemprop="url" rel="index">
+                    <span itemprop="name">Git</span>
                   </a>
                 </span>
 
@@ -469,7 +469,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  65
+                  913
                 </span>
               
 
@@ -485,7 +485,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  4
                 </span>
               
             </div>
@@ -511,6 +511,72 @@
 <h2 id="1-git-rebase"><a href="#1-git-rebase" class="headerlink" title="1.git rebase"></a>1.git rebase</h2><p>git合并代码主要有两种方式：</p>
 <pre><code>1.merge处理，这是我们比较能理解的方式。
 2.rebase处理，中文此处翻译为衍合过程。
+</code></pre><h2 id="2-git-update-index-–assume-unchanged-PATH"><a href="#2-git-update-index-–assume-unchanged-PATH" class="headerlink" title="2.git update-index –assume-unchanged PATH"></a>2.git update-index –assume-unchanged PATH</h2><p>表示手动设置不要检查特定文件的更改情况。</p>
+<blockquote>
+<p>注意：另外git提供了另外一种exclude的方式来完成同样的事情，不同的是.gitignore这个文件本身会提交到版本库中去。用来保存公共的需要排除的文件。.git/info/exclude设置的是我们自己本地需要排除的文件。这不会影响到别人，也不会提交到版本库中去。</p>
+</blockquote>
+<pre><code>$ git update-index --assume-unchanged /path/to/file   #忽略跟踪
+
+$ git update-index --no-assume-unchanged /path/to/file  #恢复跟踪
+</code></pre><h2 id="3-Git工作流程"><a href="#3-Git工作流程" class="headerlink" title="3.Git工作流程"></a>3.Git工作流程</h2><pre><code>git -
+    commit -a 将workspace程序提交到local repository
+    add (-u) 将workspace程序提交到index(暂存区)
+    commit 将index程序提交到local repository
+    push 将local repository程序推到remote repository
+
+    pull/rebase 将remote repository程序拉到workspace
+    fetch 将remote repository程序拉到local repository
+
+    checkout head 将local repository到workspace
+    checkout 将index到workspace
+    diff head 将local到workspace
+    diff 将index到workspace
+</code></pre><blockquote>
+<p>注：</p>
+</blockquote>
+<h2 id="4-git命令"><a href="#4-git命令" class="headerlink" title="4.git命令"></a>4.git命令</h2><h4 id="4-1-创建与合并分支"><a href="#4-1-创建与合并分支" class="headerlink" title="4.1 创建与合并分支"></a>4.1 创建与合并分支</h4><pre><code>1.git branch 查看当前分支
+2.git checkout -b &lt;name&gt; 创建并切换到dev分支
+3.git checkout &lt;name&gt; 切换分支
+3.git merge dev 将dev分支合并到master，当然首先需要切换回到master分支
+
+4.git merge 该命令表示合并指定分支到当前分支
+
+5.git branch -d &lt;name&gt; 删除分支
+</code></pre><h4 id="4-2-解决冲突"><a href="#4-2-解决冲突" class="headerlink" title="4.2 解决冲突"></a>4.2 解决冲突</h4><p>如果两个分支上的程序出现冲突，即就是两个分支上的程序都被改动之后，那么在两者合并的过程中就会产生冲突。</p>
+<pre><code>1.git status 了解冲突的文件
+</code></pre><blockquote>
+<p>注意：在git无法自动合并分支的时候，首先应该解决冲突，然后再提交合并。</p>
+</blockquote>
+<pre><code>2.git log --graph 该命令可以看到分支合并图
+</code></pre><h4 id="4-3-分支管理策略"><a href="#4-3-分支管理策略" class="headerlink" title="4.3 分支管理策略"></a>4.3 分支管理策略</h4><pre><code>1.git merge --no-ff &lt;name&gt; 该命令表示禁用fast forward 快速合并 分支
+</code></pre><blockquote>
+<p>提示：分支策略，在实际开发过程中，按照几个基本原则进行管理，平时不在master分支上干活，这分支是用来发布新版本。</p>
+</blockquote>
+<h4 id="4-4-多人协作"><a href="#4-4-多人协作" class="headerlink" title="4.4 多人协作"></a>4.4 多人协作</h4><pre><code>1.git remote -v 查看远程库信息
+2.git push origin &lt;name&gt; 从本地推送分支，推送失败 git pull 抓取远程的新提交
+
+3.git branch --set-upstream branch-name origin/branch-name 建立本地分支和远程分支的关联
+</code></pre><h4 id="4-5-标签管理"><a href="#4-5-标签管理" class="headerlink" title="4.5 标签管理"></a>4.5 标签管理</h4><pre><code>1.命令git tag &lt;tagname&gt;用于新建一个标签，默认为HEAD，也可以指定一个commit id
+2.命令git tag -a &lt;tagname&gt; -m &quot;blablabla...&quot;可以指定标签信息
+3.命令git tag可以查看所有标签
+
+4.命令git push origin &lt;tagname&gt;可以推送一个本地标签
+5.命令git push origin --tags可以推送全部未推送过的本地标签
+6.命令git tag -d &lt;tagname&gt;可以删除一个本地标签
+7.命令git push origin :refs/tags/&lt;tagname&gt;可以删除一个远程标签
+</code></pre><h4 id="4-6-自定义git"><a href="#4-6-自定义git" class="headerlink" title="4.6 自定义git"></a>4.6 自定义git</h4><pre><code>如果想要忽略到一些文件的时候，可以在.gitignore文件中填写，同时该文件可以被版本管理。
+</code></pre><hr>
+<h2 id="不上传LocalController-java和local文件夹文件"><a href="#不上传LocalController-java和local文件夹文件" class="headerlink" title="不上传LocalController.java和local文件夹文件"></a>不上传LocalController.java和local文件夹文件</h2><pre><code>1.找到 E:\projects\WebOA\.git\info 路径
+2.修改该路径下的语句：
+
+    # git ls-files --others --exclude-from=.git/info/exclude
+    # Lines that start with &apos;#&apos; are comments.
+    # For a project mostly in C, the following would be a good set of
+    # exclude patterns (uncomment them if you want to use them):
+    # *.[oa]
+    # *~
+    src/main/java/cn/edu/xidian/see/controller/LocalController.java
+    src/main/webapp/WEB-INF/views/local/*
 </code></pre>
       
     </div>
@@ -521,6 +587,38 @@
     <div>
       
         
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+
+  <p><span>本文标题:</span>Git</a></p>
+  <p><span>文章作者:</span>Bangjin-Hu</a></p>
+  <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
+  <p><span>最后更新:</span>2020年03月29日 - 10:31:23</p>
+  <p><span>原始链接:</span><a href="/undefined/Git/" title="Git">http://bangjinhu.github.io/undefined/Git/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/Git/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
       
     </div>
     
@@ -601,8 +699,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/undefined/Java-总结/" rel="next" title="Java-学习笔记">
-                <i class="fa fa-chevron-left"></i> Java-学习笔记
+              <a href="/undefined/JSON 和 ProtoBuf序列化/" rel="next" title="JSON 和 ProtoBuf序列化">
+                <i class="fa fa-chevron-left"></i> JSON 和 ProtoBuf序列化
               </a>
             
           </div>
@@ -611,8 +709,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/undefined/Chrome 浏览器审查元素(F12)教程/" rel="prev" title="Chrome 浏览器开发者程序">
-                Chrome 浏览器开发者程序 <i class="fa fa-chevron-right"></i>
+              <a href="/undefined/ClassPathXmlApplicationContext/" rel="prev" title="ClassPathXmlApplicationContext">
+                ClassPathXmlApplicationContext <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -722,7 +820,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">242</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -733,7 +831,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">59</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -744,7 +842,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">62</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -828,7 +926,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-git-rebase"><span class="nav-text">1.git rebase</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-git-rebase"><span class="nav-text">1.git rebase</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-git-update-index-–assume-unchanged-PATH"><span class="nav-text">2.git update-index –assume-unchanged PATH</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Git工作流程"><span class="nav-text">3.Git工作流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-git命令"><span class="nav-text">4.git命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-创建与合并分支"><span class="nav-text">4.1 创建与合并分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-解决冲突"><span class="nav-text">4.2 解决冲突</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-分支管理策略"><span class="nav-text">4.3 分支管理策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-4-多人协作"><span class="nav-text">4.4 多人协作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-5-标签管理"><span class="nav-text">4.5 标签管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-6-自定义git"><span class="nav-text">4.6 自定义git</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不上传LocalController-java和local文件夹文件"><span class="nav-text">不上传LocalController.java和local文件夹文件</span></a></li></ol></div>
             
 
           </div>
@@ -869,7 +967,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">59.3k</span>
+    <span title="Site words total count">465.0k</span>
   
 </div>
 

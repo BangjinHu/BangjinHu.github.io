@@ -1,0 +1,1543 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/site.jpg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Redis," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="BangjinHu's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. 第六章 Java并发容器和框架[TOC] 6.1 ConcurrentHashMap的实现原理和使用ConcurrentHashMap是线程安全且高效的HashMap。 6.1.1 为何使用ConcurrentHashMap在并发编程中使用HashMap可能会导致死循环，而使用线程安全的HashTable效率非常低下，基于上面两个原因，所以有了Con">
+<meta name="keywords" content="Redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis - Java集成">
+<meta property="og:url" content="http://bangjinhu.github.io/undefined/第6章 Java并发容器和框架/index.html">
+<meta property="og:site_name" content="BangjinHu&#39;s Blog">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. 第六章 Java并发容器和框架[TOC] 6.1 ConcurrentHashMap的实现原理和使用ConcurrentHashMap是线程安全且高效的HashMap。 6.1.1 为何使用ConcurrentHashMap在并发编程中使用HashMap可能会导致死循环，而使用线程安全的HashTable效率非常低下，基于上面两个原因，所以有了Con">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-03-29T00:45:03.435Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Redis - Java集成">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 第六章 Java并发容器和框架[TOC] 6.1 ConcurrentHashMap的实现原理和使用ConcurrentHashMap是线程安全且高效的HashMap。 6.1.1 为何使用ConcurrentHashMap在并发编程中使用HashMap可能会导致死循环，而使用线程安全的HashTable效率非常低下，基于上面两个原因，所以有了Con">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://bangjinhu.github.io/undefined/第6章 Java并发容器和框架/"/>
+
+
+
+
+
+  <title>Redis - Java集成 | BangjinHu's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    
+    <a href="https://github.com/BangjinHu"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">BangjinHu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">让优秀成为习惯，让知识成为信仰</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            本站搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第6章 Java并发容器和框架/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Redis - Java集成</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T08:45:03+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,369
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="第六章-Java并发容器和框架"><a href="#第六章-Java并发容器和框架" class="headerlink" title="第六章 Java并发容器和框架"></a>第六章 Java并发容器和框架</h2><p>[TOC]</p>
+<h3 id="6-1-ConcurrentHashMap的实现原理和使用"><a href="#6-1-ConcurrentHashMap的实现原理和使用" class="headerlink" title="6.1 ConcurrentHashMap的实现原理和使用"></a>6.1 ConcurrentHashMap的实现原理和使用</h3><p>ConcurrentHashMap是线程安全且高效的HashMap。</p>
+<h4 id="6-1-1-为何使用ConcurrentHashMap"><a href="#6-1-1-为何使用ConcurrentHashMap" class="headerlink" title="6.1.1 为何使用ConcurrentHashMap"></a>6.1.1 为何使用ConcurrentHashMap</h4><p>在并发编程中使用HashMap可能会导致死循环，而使用线程安全的HashTable效率非常低下，基于上面两个原因，所以有了ConcurrentHashMap。</p>
+<p><strong>1.线程不安全的HashMap</strong><br></p>
+<p>多线程环境下，使用HashMap进行put操作会导致死循环，导致CPU利用率接近1。</p>
+<p><strong>2.效率低下的HashTable</strong><br></p>
+<p>HashTable容器使用synchronize来保证线程安全，但是在竞争激励的情况下HashTable效率低下。当一个线程访问HashTable的同步方法，其它线程访问将会进入阻塞或者是轮询状态。</p>
+<p><strong>3.ConcurrentHashMap的锁分段技术可有效提升并发访问率</strong><br></p>
+<blockquote>
+<p>提示：HashTable在并发环境下表现效率低下的原因是因为所有访问HashTable的线程都必须要竞争同一把锁，<code>如果容器中存在多把锁，每一把锁用于锁定容器中的一部分数据</code>，那么多线程访问容器里不同数据段的数据时，线程间就不存在锁竞争（锁分段技术）。</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>锁分段技术：将数据分成一段一段的存储，然后给每一段数据配一把锁，当一个线程占用锁访问其中一个段数据时，其它段的数据也能被其它线程访问。</p>
+</blockquote>
+</blockquote>
+<h4 id="6-1-2-ConcurrentHashMap的结构"><a href="#6-1-2-ConcurrentHashMap的结构" class="headerlink" title="6.1.2 ConcurrentHashMap的结构"></a>6.1.2 ConcurrentHashMap的结构</h4><p>ConcurrentHashMap是由 Segment数组结构 和 HashEntry数组结构 组成。Segment数组结构 是一种可重入锁（ReentrantLock），在ConcurrentHashMap里扮演锁的角色。HashEntry 则用于存储键值数据。</p>
+<p>一个ConcurrentHashMap里包含一个 Segment数组，Segment的结构和HashMap类似，是一种数组和链表结构。一个Segment包含一个HashEntry数组，每个HashEntry是一个链表结构的元素。</p>
+<h4 id="6-1-3-ConcurrentHashMap初始化"><a href="#6-1-3-ConcurrentHashMap初始化" class="headerlink" title="6.1.3 ConcurrentHashMap初始化"></a>6.1.3 ConcurrentHashMap初始化</h4><p>ConcurrentHashMap初始化方法是通过 initialCapacity loadFactor concurrencyLevel等几个参数来初始化segment数组、段偏移量segmentshift、段掩码segmentMask和每个segment里的HashEntry数组实现。</p>
+<h4 id="6-1-4-定位Segment"><a href="#6-1-4-定位Segment" class="headerlink" title="6.1.4 定位Segment"></a>6.1.4 定位Segment</h4><p>因为ConcurrentHashMap是通过分段锁Segment来保护不同段的数据，那么在<code>插入和获取元素</code>的时候，必须先通过散列算法定位到Segment。</p>
+<h4 id="6-1-5-ConcurrentHashMap的操作"><a href="#6-1-5-ConcurrentHashMap的操作" class="headerlink" title="6.1.5 ConcurrentHashMap的操作"></a>6.1.5 ConcurrentHashMap的操作</h4><p><strong>1.get操作</strong><br></p>
+<p>Segment的get操作非常高效和简单。先通过一次<code>再散列</code>，然后使用<code>这个散列值</code>通过散列运算定位到Segment，再通过散列算法定位到元素。</p>
+<p><strong>2.put操作</strong><br></p>
+<p>由于put方法需要对共享变量进行写入操作，所以为了线程安全，在操作共享变量时必须加锁。</p>
+<p><strong>3.size操作</strong><br></p>
+<p>如果需要统计整个ConcurrentHashMap中元素的大小，需要统计所有Segment里元素的大小后求和。</p>
+<h3 id="6-2-ConcurrentLinkedQueue"><a href="#6-2-ConcurrentLinkedQueue" class="headerlink" title="6.2 ConcurrentLinkedQueue"></a>6.2 ConcurrentLinkedQueue</h3><p>在并发编程环境下，需要使用线程安全的队列。如果要实现一个线程安全的队列有两种方式：1.使用阻塞算法。2.使用非阻塞算法。</p>
+<pre><code>1.使用阻塞算法的队列可以用一个锁（入队和出队用同一把锁）或者两把锁。
+
+2.非阻塞实现方式则可以使用循环CAS的方式来实现。
+</code></pre><p>ConcurrentLinkedQueue 是一个基于链接节点的无界线程安全队列，采用先进先出的规则对节点进行排序，当添加一个元素的时候，它会添加到队列的尾部。当获取一个元素时，会返回队列的头部。采用CAS算法实现。</p>
+<h4 id="6-2-1-ConcurrentLinkedQueue的结构"><a href="#6-2-1-ConcurrentLinkedQueue的结构" class="headerlink" title="6.2.1 ConcurrentLinkedQueue的结构"></a>6.2.1 ConcurrentLinkedQueue的结构</h4><p>ConcurrentLinkedQueue 由head节点和tail节点组成，每个节点Node由节点元素（item）和指向下一个节点（next）的引用组成，节点与节点之间就是通过next关联起来，从而组成一张链表结构的队列。</p>
+<h4 id="6-2-2-入队列"><a href="#6-2-2-入队列" class="headerlink" title="6.2.2 入队列"></a>6.2.2 入队列</h4><p>入队列就是将入队节点添加到队列的尾部。</p>
+<h4 id="6-2-3-出队列"><a href="#6-2-3-出队列" class="headerlink" title="6.2.3 出队列"></a>6.2.3 出队列</h4><p>出队列就是从队列中返回一个结点元素，并清空该节点对元素的引用。</p>
+<h3 id="6-3-Java阻塞队列"><a href="#6-3-Java阻塞队列" class="headerlink" title="6.3 Java阻塞队列"></a>6.3 Java阻塞队列</h3><h4 id="6-3-1-什么是阻塞队列"><a href="#6-3-1-什么是阻塞队列" class="headerlink" title="6.3.1 什么是阻塞队列"></a>6.3.1 什么是阻塞队列</h4><p>阻塞队列，指一个支持两个附加操作的队列。这两个附件操作支持阻塞的插入和移除操作。</p>
+<pre><code>1.支持阻塞的插入方法：当队列满时，队列会阻塞插入元素的线程，直到队列不满。
+
+2.支持阻塞的移除方法：对队列为空时，获取元素的线程会等待队列变为非空。
+</code></pre><blockquote>
+<p>提示：阻塞队列常用于生产者和消费者的场景。</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>注意：如果是无界阻塞队列，队列不可能会出现满的情况，所以使用put或offer方法永远不会被阻塞，而且使用offer方法时，该方法永远返回true。</p>
+</blockquote>
+</blockquote>
+<h4 id="6-3-2-Java里的阻塞队列"><a href="#6-3-2-Java里的阻塞队列" class="headerlink" title="6.3.2 Java里的阻塞队列"></a>6.3.2 Java里的阻塞队列</h4><p>JDK 7 提供7个阻塞队列：</p>
+<pre><code>1.ArrayBlockingQueue 数组组成的有界阻塞队列，按照先进先出的原则对元素进行排序。默认情况不保证线程公平的访问队列。
+
+    //在初始化时指定阻塞队列的容量和公平性
+    ArrayBlockingQueue(int capacity, boolean fair);
+</code></pre><blockquote>
+<p>提示：公平访问队列是指，阻塞的线程可以按照阻塞的先后顺序访问队列，先阻塞的线程先访问队列。非公平性是指，阻塞的线程可以争夺访问队列的资格。</p>
+</blockquote>
+<pre><code>2.LinkedBlockingQueue 链表实现的有界阻塞队列
+
+3.PriorityBlockingQueue 是一个支持优先级的无界阻塞队列。默认情况采取自然升序排列。
+
+4.DelayQueue 支持延时获取元素的无界阻塞队列
+
+5.SynchronousQueue 不存储元素的阻塞队列，每一个put操作都必须等待一个take操作，否则不能继续添加元素。
+
+    //可以指定公平性策略
+    public SynchronousQueue(boolean fair);
+
+6.LinkedTransferQueue
+
+7.LinkedBlockingDeque
+</code></pre><h4 id="6-3-3-阻塞队列的实现原理"><a href="#6-3-3-阻塞队列的实现原理" class="headerlink" title="6.3.3 阻塞队列的实现原理"></a>6.3.3 阻塞队列的实现原理</h4><h5 id="通知模式"><a href="#通知模式" class="headerlink" title="通知模式"></a>通知模式</h5><p>当生产者往满的队列里添加元素时会阻塞生产者，当消费者消费队列中的一元素之后会通知生产者当前队列可用。</p>
+<h3 id="6-4-Fork-Join框架"><a href="#6-4-Fork-Join框架" class="headerlink" title="6.4 Fork | Join框架"></a>6.4 Fork | Join框架</h3><h4 id="6-4-1-Fork-Join框架简介"><a href="#6-4-1-Fork-Join框架简介" class="headerlink" title="6.4.1 Fork/Join框架简介"></a>6.4.1 Fork/Join框架简介</h4><p>并行执行任务框架，将一个大任务分割成若干个小任务，最终汇总每个任务结果后得到大任务结果的框架。</p>
+<p>Fork是将大任务切分成若干小任务并行的执行，Join是合并这些子任务的执行结果，最后得到大任务的结果。</p>
+<h4 id="6-4-2-工作窃取算法"><a href="#6-4-2-工作窃取算法" class="headerlink" title="6.4.2 工作窃取算法"></a>6.4.2 工作窃取算法</h4><p>该算法表示某个线程从其它队列里窃取任务来执行。此时会发生窃取任务线程和被窃取任务线程之间的竞争，为了解决这个问题，使用双端队列，被窃取的任务线程永远从双端队列的头部拿任务执行，而窃取任务的线程永远从双端队列的尾部拿任务执行。</p>
+<pre><code>1.优点：充分利用线程进行并行运算，减少线程间的竞争。
+
+2.缺点：某些情况下还是存在竞争。如：双端队列中只有一个任务时。
+</code></pre><h4 id="6-4-3-Fork-Join框架的设计"><a href="#6-4-3-Fork-Join框架的设计" class="headerlink" title="6.4.3 Fork/Join框架的设计"></a>6.4.3 Fork/Join框架的设计</h4><pre><code>1.分割任务
+
+2.执行任务并合并结果
+</code></pre><p>那么这里Fork/Join使用两个类来完成上面两件事情：</p>
+<pre><code>1.ForkJoinTask：我们要使用ForkJoin框架，必须首先创建一个ForkJoin任务。它提供在任务中执行fork()和join()操作的机制。
+
+提示：ForkJoinTask与一般任务的主要区别在于它需要实现compute()方法。在此方法中首先需要判断任务足够小，才执行当前子任务并返回结果。
+
+    在这里不需要直接继承ForkJoinTask类，只需要继承它的子类，Fork/Join框架提供以下两个子类：
+
+        1.RecursiveAction：用于没有返回结果的任务。
+
+        2.RecursiveTask：用于有返回结果的任务。
+
+2.ForkJoinPool：ForkJoinTask需要通过ForkJoinPool来执行。
+</code></pre><h4 id="6-4-4-使用Fork-Join框架"><a href="#6-4-4-使用Fork-Join框架" class="headerlink" title="6.4.4 使用Fork/Join框架"></a>6.4.4 使用Fork/Join框架</h4><pre><code>package Java.ChapterSeven.ForkJoin;
+
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.Future;
+import java.util.concurrent.RecursiveTask;
+
+public class ForkJoinExample extends RecursiveTask&lt;Integer&gt; {
+
+    private final int threshold = 5;
+    private int firstOne;
+    private int lastOne;
+
+    public ForkJoinExample(int firstOne, int lastOne) {
+        this.firstOne = firstOne;
+        this.lastOne = lastOne;
+    }
+
+    @Override
+    protected Integer compute() {
+        int result = 0;
+        //任务小可以直接计算
+        if (lastOne - firstOne &lt;= threshold){
+            for (int i = firstOne; i &lt;= lastOne; i++){
+                result += i;
+            }
+        }else {
+            //拆分成小任务
+            int middle = firstOne + (lastOne - firstOne) / 2;
+            ForkJoinExample leftTask = new ForkJoinExample(firstOne, lastOne);
+            ForkJoinExample rightTask = new ForkJoinExample(middle + 1, lastOne);
+            leftTask.fork();
+            rightTask.fork();
+
+            result = leftTask.join() + rightTask.join();
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        ForkJoinExample example = new ForkJoinExample(1, 1000);
+        ForkJoinPool forkJoinPool = new ForkJoinPool();
+        Future&lt;Integer&gt; result = forkJoinPool.submit(example);
+        try {
+            System.out.println(result.get());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre><h4 id="6-4-5-Fork-Join框架的异常处理和实现原理"><a href="#6-4-5-Fork-Join框架的异常处理和实现原理" class="headerlink" title="6.4.5 Fork/Join框架的异常处理和实现原理"></a>6.4.5 Fork/Join框架的异常处理和实现原理</h4><p>ForkJoinTask在执行的时候可能会抛出异常，但是我们没办法在主线程里直接捕获异常，所以ForkJoinTask提供isCompletedAbnormally()方法检查任务是否已经抛出异常或者被取消了，并且可以通过ForkJoinTask的getException()方法获取异常。</p>
+<p>ForkJoinPool由ForkJoinTask数组和ForkJoinWorkerThread数组组成，ForkJoinTask数组负责将存放程序提交给ForkJoinPool的任务，而ForkJoinWorkerThread数组负责执行这些任务。</p>
+<h4 id="6-4-6-Fork-Join框架的实现原理"><a href="#6-4-6-Fork-Join框架的实现原理" class="headerlink" title="6.4.6 Fork/Join框架的实现原理"></a>6.4.6 Fork/Join框架的实现原理</h4><p>ForkJoinPool由ForkJoinTask数组和ForkJoinWorkerThread数组组成，ForkJoinTask数组负责存放程序提交给ForkJoinPool的任务。ForkJoinWorkerThread负责执行这些任务。</p>
+
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+
+  <p><span>本文标题:</span>Redis - Java集成</a></p>
+  <p><span>文章作者:</span>Bangjin-Hu</a></p>
+  <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
+  <p><span>最后更新:</span>2020年03月29日 - 08:45:03</p>
+  <p><span>原始链接:</span><a href="/undefined/第6章 Java并发容器和框架/" title="Redis - Java集成">http://bangjinhu.github.io/undefined/第6章 Java并发容器和框架/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/第6章 Java并发容器和框架/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.jpg" alt="Bangjin-Hu wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎扫码关注微信公众号，订阅我的微信公众号.</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持是我创作的动力.</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat-reward-img.jpg" alt="Bangjin-Hu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay-reward-img.jpg" alt="Bangjin-Hu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Bangjin-Hu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://bangjinhu.github.io/undefined/第6章 Java并发容器和框架/" title="Redis - Java集成">http://bangjinhu.github.io/undefined/第6章 Java并发容器和框架/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Redis/" rel="tag"><i class="fa fa-tag"></i> Redis</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/undefined/第6章 深入分析ClassLoader工作机制/" rel="next" title="Redis - Java集成">
+                <i class="fa fa-chevron-left"></i> Redis - Java集成
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/undefined/第5章 深入class文件结构/" rel="prev" title="Redis - Java集成">
+                Redis - Java集成 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/site.jpg"
+                alt="Bangjin-Hu" />
+            
+              <p class="site-author-name" itemprop="name">Bangjin-Hu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/BangjinHu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:2315378346@qq.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/Aaron_P_L" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-heart-o"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
+                      
+                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://iProgramering.github.io" target="_blank" title="iProgramer_ing">
+                      
+                        <i class="fa fa-fw fa-user"></i>iProgramer_ing</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          <div id="music163player">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src="//music.163.com/outchain/player?type=2&id=38358214&auto=0&height=66
+
+">
+    </iframe>
+</div>
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第六章-Java并发容器和框架"><span class="nav-text">第六章 Java并发容器和框架</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-ConcurrentHashMap的实现原理和使用"><span class="nav-text">6.1 ConcurrentHashMap的实现原理和使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1-1-为何使用ConcurrentHashMap"><span class="nav-text">6.1.1 为何使用ConcurrentHashMap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1-2-ConcurrentHashMap的结构"><span class="nav-text">6.1.2 ConcurrentHashMap的结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1-3-ConcurrentHashMap初始化"><span class="nav-text">6.1.3 ConcurrentHashMap初始化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1-4-定位Segment"><span class="nav-text">6.1.4 定位Segment</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1-5-ConcurrentHashMap的操作"><span class="nav-text">6.1.5 ConcurrentHashMap的操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-ConcurrentLinkedQueue"><span class="nav-text">6.2 ConcurrentLinkedQueue</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-2-1-ConcurrentLinkedQueue的结构"><span class="nav-text">6.2.1 ConcurrentLinkedQueue的结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-2-2-入队列"><span class="nav-text">6.2.2 入队列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-2-3-出队列"><span class="nav-text">6.2.3 出队列</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-Java阻塞队列"><span class="nav-text">6.3 Java阻塞队列</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-3-1-什么是阻塞队列"><span class="nav-text">6.3.1 什么是阻塞队列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-3-2-Java里的阻塞队列"><span class="nav-text">6.3.2 Java里的阻塞队列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-3-3-阻塞队列的实现原理"><span class="nav-text">6.3.3 阻塞队列的实现原理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#通知模式"><span class="nav-text">通知模式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-4-Fork-Join框架"><span class="nav-text">6.4 Fork | Join框架</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-4-1-Fork-Join框架简介"><span class="nav-text">6.4.1 Fork/Join框架简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-4-2-工作窃取算法"><span class="nav-text">6.4.2 工作窃取算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-4-3-Fork-Join框架的设计"><span class="nav-text">6.4.3 Fork/Join框架的设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-4-4-使用Fork-Join框架"><span class="nav-text">6.4.4 使用Fork/Join框架</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-4-5-Fork-Join框架的异常处理和实现原理"><span class="nav-text">6.4.5 Fork/Join框架的异常处理和实现原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-4-6-Fork-Join框架的实现原理"><span class="nav-text">6.4.6 Fork/Join框架的实现原理</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bangjin-Hu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">465.0k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/lib/clipboard/clipboard.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+</body>
+</html>

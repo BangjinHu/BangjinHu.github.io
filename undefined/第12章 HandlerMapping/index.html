@@ -1,0 +1,1903 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/site.jpg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="SpringMVC," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="BangjinHu's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. 第12章 HandlerMapping[TOC] HandlerMapping的作用是通过request查找Handler和Interceptors。HandlerMapping包括继承AbstractUrlHandlerMapping和继承AbstractHandlerMapping，这两支都继承抽象类AbstractHandlerMapping。">
+<meta name="keywords" content="SpringMVC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HandlerMapping">
+<meta property="og:url" content="http://bangjinhu.github.io/undefined/第12章 HandlerMapping/index.html">
+<meta property="og:site_name" content="BangjinHu&#39;s Blog">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. 第12章 HandlerMapping[TOC] HandlerMapping的作用是通过request查找Handler和Interceptors。HandlerMapping包括继承AbstractUrlHandlerMapping和继承AbstractHandlerMapping，这两支都继承抽象类AbstractHandlerMapping。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-03-29T02:18:40.805Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HandlerMapping">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 第12章 HandlerMapping[TOC] HandlerMapping的作用是通过request查找Handler和Interceptors。HandlerMapping包括继承AbstractUrlHandlerMapping和继承AbstractHandlerMapping，这两支都继承抽象类AbstractHandlerMapping。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://bangjinhu.github.io/undefined/第12章 HandlerMapping/"/>
+
+
+
+
+
+  <title>HandlerMapping | BangjinHu's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    
+    <a href="https://github.com/BangjinHu"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">BangjinHu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">让优秀成为习惯，让知识成为信仰</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            本站搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第12章 HandlerMapping/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">HandlerMapping</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:18:40+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SpringMVC/" itemprop="url" rel="index">
+                    <span itemprop="name">SpringMVC</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,331
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  15
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h1 id="第12章-HandlerMapping"><a href="#第12章-HandlerMapping" class="headerlink" title="第12章 HandlerMapping"></a>第12章 HandlerMapping</h1><p>[TOC]</p>
+<p>HandlerMapping的作用是通过request查找Handler和Interceptors。HandlerMapping包括继承AbstractUrlHandlerMapping和继承AbstractHandlerMapping，这两支都继承抽象类AbstractHandlerMapping。</p>
+<h2 id="12-1-AbstractHandlerMapping"><a href="#12-1-AbstractHandlerMapping" class="headerlink" title="12.1 AbstractHandlerMapping"></a>12.1 AbstractHandlerMapping</h2><p>AbstractHandlerMapping是HandlerMapping抽象实现。其采用模板模式设计了HandlerMapping实现的整体结构。子类通过模板方法提供初始值或者具体算法即可。这种模式是：首先使用一个抽象实现采用模板模式进行整体设计，然后在子类通过实现模板方法具体实现业务。</p>
+<p>HandlerMapping的作用是是通过request查找Handler和Interceptors。获取Handler的过程通过模板方法getHandlerInternal()交给子类。AbstractHandlerMapping中保存了所有的配置Interceptor，在获取Handler后会自己根据从request中获取的lookupPath将相应的Interceptor装配。子类也可以如此。</p>
+<h4 id="12-1-1-创建AbstractHandlerMapping"><a href="#12-1-1-创建AbstractHandlerMapping" class="headerlink" title="12.1.1 创建AbstractHandlerMapping"></a>12.1.1 创建AbstractHandlerMapping</h4><p>AbstractHandlerMapping继承WebApplicationObjectSupport，初始化时会自动调用模板方法initApplicationContext()方法。AbstractHandlerMapping创建是在initApplicationContext()方法中。</p>
+<pre><code>package org.springframework.web.servlet.handler;
+public abstract class AbstractHandlerMapping extends WebApplicationObjectSupport implements HandlerMapping, Ordered {
+    // ...
+ }
+
+protected void initApplicationContext() throws BeansException {
+    //该方法是模板方法，给子类提供一个添加或修改Interceptors的入口
+    extendInterceptors(this.interceptors);
+
+    //将SpringMVC容器和父容器中所有的MappedInterceptor类型的Bean添加到mappedInterceptors属性
+    detectMappedInterceptors(this.mappedInterceptors);
+
+    //该方法的作用是初始化Interceptor
+    initInterceptors();
+}
+
+//提供给子类扩展拦截器(没有使用)
+protected void extendInterceptors(List&lt;Object&gt; interceptors) {
+
+    }
+
+//扫描应用下的MappedInterceptor,并添加到mappedInterceptors
+protected void detectMappedInterceptors(List&lt;MappedInterceptor&gt; mappedInterceptors) {
+     mappedInterceptors.addAll(
+             BeanFactoryUtils.beansOfTypeIncludingAncestors(
+                     getApplicationContext(),MappedInterceptor.class, true, false).values());
+ }
+
+//归集MappedInterceptor,并适配HandlerInterceptor和WebRequestInterceptor
+protected void initInterceptors() {
+     if (!this.interceptors.isEmpty()) {
+         for (int i = 0; i &lt; this.interceptors.size(); i++) {
+             Object interceptor = this.interceptors.get(i);
+             if (interceptor == null) {
+                 throw new IllegalArgumentException(&quot;Entry number &quot; + i + &quot; in interceptors array is null&quot;);
+             }
+             if (interceptor instanceof MappedInterceptor) {
+                 mappedInterceptors.add((MappedInterceptor) interceptor);
+             }
+             else {
+                 adaptedInterceptors.add(adaptInterceptor(interceptor));
+             }
+         }
+     }
+ }
+
+AbstractHandlerMapping的属性：
+
+    // order赋了最大值,优先级是最小的
+    private int order = Integer.MAX_VALUE;
+
+    // 默认的Handler,这边使用的Obejct,子类实现的时候,使用HandlerMethod,HandlerExecutionChain等
+    private Object defaultHandler;
+
+    // url计算的辅助类
+    private UrlPathHelper urlPathHelper = new UrlPathHelper();
+
+    // 基于ant进行path匹配,解决如/books/{id}场景
+    private PathMatcher pathMatcher = new AntPathMatcher();
+
+    // 拦截器配置:两种配置方式 interceptors只用于配置
+    // 1 HandlerMapping属性设置;
+    // 2 extendInterceptors设置
+    private final List&lt;Object&gt; interceptors = new ArrayList&lt;Object&gt;();
+
+    // 从interceptors中解析得到,直接添加给全部handler
+    private final List&lt;HandlerInterceptor&gt; adaptedInterceptors = new ArrayList&lt;HandlerInterceptor&gt;();
+
+    // 使用前需要跟url进行匹配,匹配通过才会使用。匹配成功后将其添加到getHandler的返回值HandlerExecutionChain中。
+    private final List&lt;MappedInterceptor&gt; mappedInterceptors = new ArrayList&lt;MappedInterceptor&gt;();
+</code></pre><blockquote>
+<p>提示：WebApplicationObjectSupport用于提供上下文ApplicationContext和ServletContext。AbstractHandlerMapping的创建就是上面三个Interceptor的初始化。</p>
+</blockquote>
+<h4 id="12-1-2-AbstractHandlerMapping的使用"><a href="#12-1-2-AbstractHandlerMapping的使用" class="headerlink" title="12.1.2 AbstractHandlerMapping的使用"></a>12.1.2 AbstractHandlerMapping的使用</h4><p>HandlerMapping通过getHandler()方法获取处理器Handler和拦截器Interceptors。</p>
+<pre><code>public final HandlerExecutionChain getHandler(HttpServletRequest request) throws Exception {
+    //留给子类具体实现，子类主要做的事情
+    Object handler = getHandlerInternal(request);
+
+    //没有获取到则使用默认的Handler
+    if (handler == null) {
+        handler = getDefaultHandler();
+    }
+    if (handler == null) {
+        return null;
+    }
+    // Bean name or resolved handler?
+    if (handler instanceof String) {
+        String handlerName = (String) handler;
+        handler = getApplicationContext().getBean(handlerName);
+    }
+    return getHandlerExecutionChain(handler, request);
+}
+
+//这里预留getHandlerInternal(HttpServletRequest request)方法给子类实现
+protected abstract Object getHandlerInternal(HttpServletRequest request) throws Exception;
+</code></pre><p>然后封装拦截器到HandlerExecutionChain()，该方法用于添加拦截器。</p>
+<pre><code>protected HandlerExecutionChain getHandlerExecutionChain(Object handler, HttpServletRequest request) {
+
+    //1.首先使用handler创建HandlerExecutionChain类型变量
+    HandlerExecutionChain chain = 
+    (handler instanceof HandlerExecutionChain) ? (HandlerExecutionChain) handler : new HandlerExecutionChain(handler);
+
+    //adaptedInterceptors直接添加
+    chain.addInterceptors(getAdaptedInterceptors());
+
+    //mappedInterceptors需要根据url匹配通过后添加
+    String lookupPath = urlPathHelper.getLookupPathForRequest(request);
+    for (MappedInterceptor mappedInterceptor : mappedInterceptors) {
+        if (mappedInterceptor.matches(lookupPath, pathMatcher)) {
+            chain.addInterceptor(mappedInterceptor.getInterceptor());
+        }
+    }
+
+    return chain;
+}
+</code></pre><h2 id="12-2-AbstractUrlHandlerMapping"><a href="#12-2-AbstractUrlHandlerMapping" class="headerlink" title="12.2 AbstractUrlHandlerMapping"></a>12.2 AbstractUrlHandlerMapping</h2><p>从名字可以看出是通过url进行匹配的。大致原理是将url与对应的handler保存到一个Map中，在getHandlerInternal()方法中使用url从Map中获取Handler，AbstractUrlHandlerMapping中实现了具体用url从Map中获取Handler的过程。</p>
+<pre><code>@Override
+protected Object getHandlerInternal(HttpServletRequest request) throws Exception {
+    // 根据request获取url
+    String lookupPath = getUrlPathHelper().getLookupPathForRequest(request);
+    // 根据url查找handler
+    Object handler = lookupHandler(lookupPath, request);
+    if (handler == null) {
+        // 如果没有匹配到handler需要查找默认的,下面需要将PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE缓存到request
+        //临时变量，保存找到的原始Handler
+        Object rawHandler = null;
+        if (&quot;/&quot;.equals(lookupPath)) {
+            rawHandler = getRootHandler();
+        }
+        if (rawHandler == null) {
+            rawHandler = getDefaultHandler();
+        }
+        if (rawHandler != null) {
+            //如果是String类型则到容器中查找具体的bean
+            if (rawHandler instanceof String) {
+                String handlerName = (String) rawHandler;
+                rawHandler = getApplicationContext().getBean(handlerName);
+            }
+            // 预留的校验handler模板方法,没有使用
+            validateHandler(rawHandler, request);
+            // 添加expose属性到request的拦截器
+            handler = buildPathExposingHandler(rawHandler, lookupPath, lookupPath, null);
+        }
+    }
+    if (handler != null &amp;&amp; logger.isDebugEnabled()) {
+        logger.debug(&quot;Mapping [&quot; + lookupPath + &quot;] to &quot; + handler);
+    }
+    else if (handler == null &amp;&amp; logger.isTraceEnabled()) {
+        logger.trace(&quot;No handler mapping found for [&quot; + lookupPath + &quot;]&quot;);
+    }
+    return handler;
+}
+</code></pre><blockquote>
+<p>提示：这里的lookupHandler()方法用于使用lookupPath从Map中查找Handler。buildPathExposiongHandler()方法用于给查找到的Handler注册两个拦截器PathExposingHandlerIntercptor和UriTemplateVariablesHandlerInterceptor。这两个是内部拦截器，主要作用是将与当前url实际匹配的pattern、匹配条件和url模板参数等设置到request的属性中。这样一来在后面的处理过程中就能够直接从request中获取。</p>
+</blockquote>
+<pre><code>protected Object lookupHandler(String urlPath, HttpServletRequest request) throws Exception {
+    // 直接根据url进行查找handler，直接从Map中获取
+    Object handler = this.handlerMap.get(urlPath);
+    if (handler != null) {
+        // 如果是String类型直接从容器中获取
+        if (handler instanceof String) {
+            String handlerName = (String) handler;
+            handler = getApplicationContext().getBean(handlerName);
+        }
+        validateHandler(handler, request);
+        return buildPathExposingHandler(handler, urlPath, urlPath, null);
+    }
+    // Pattern match? 通过表达式进行匹配具体通过AntPathMatcher实现,具体后面分析
+    List&lt;String&gt; matchingPatterns = new ArrayList&lt;String&gt;();
+    for (String registeredPattern : this.handlerMap.keySet()) {
+        if (getPathMatcher().match(registeredPattern, urlPath)) {
+            matchingPatterns.add(registeredPattern);
+        }
+    }
+    String bestPatternMatch = null;
+    Comparator&lt;String&gt; patternComparator = getPathMatcher().getPatternComparator(urlPath);
+    if (!matchingPatterns.isEmpty()) {
+        Collections.sort(matchingPatterns, patternComparator);
+        if (logger.isDebugEnabled()) {
+            logger.debug(&quot;Matching patterns for request [&quot; + urlPath + &quot;] are &quot; + matchingPatterns);
+        }
+        // order序号最小的优先级最高
+        bestPatternMatch = matchingPatterns.get(0);
+    }
+    if (bestPatternMatch != null) {
+        handler = this.handlerMap.get(bestPatternMatch);
+        // 如果是String类型则从容器中获取
+        if (handler instanceof String) {
+            String handlerName = (String) handler;
+            handler = getApplicationContext().getBean(handlerName);
+        }
+        validateHandler(handler, request);
+        String pathWithinMapping = getPathMatcher().extractPathWithinPattern(bestPatternMatch, urlPath);
+
+        //处理使用sort()方法排序之后，多个Pattern顺序相同，返回值为0的情况
+        Map&lt;String, String&gt; uriTemplateVariables = new LinkedHashMap&lt;String, String&gt;();
+        for (String matchingPattern : matchingPatterns) {
+            if (patternComparator.compare(bestPatternMatch, matchingPattern) == 0) {
+                Map&lt;String, String&gt; vars = getPathMatcher().extractUriTemplateVariables(matchingPattern, urlPath);
+                Map&lt;String, String&gt; decodedVars = getUrlPathHelper().decodePathVariables(request, vars);
+                uriTemplateVariables.putAll(decodedVars);
+            }
+        }
+        if (logger.isDebugEnabled()) {
+            logger.debug(&quot;URI Template variables for request [&quot; + urlPath + &quot;] are &quot; + uriTemplateVariables);
+        }
+        return buildPathExposingHandler(handler, bestPatternMatch, pathWithinMapping, uriTemplateVariables);
+    }
+    // No handler found...
+    return null;
+}
+</code></pre><h4 id="12-2-1-SimpleUrlHandlerMapping"><a href="#12-2-1-SimpleUrlHandlerMapping" class="headerlink" title="12.2.1 SimpleUrlHandlerMapping"></a>12.2.1 SimpleUrlHandlerMapping</h4><p>该类定义了一个Map变量(两个作用：1.方便配置。2.在注册前做一些预处理。如：确保所有的url都以””/“开头)，将所有的url和handler的对应关系放在里面，最后注册到父类的Map中。AbstractDetectingUrlHandlerMapping是将容器中所有bean拿出来，按照一定规则注册到父类的Map中。</p>
+<p>SimpleUrlHandlerMapping在创建时重写父类的initApplicationContext()方法，调用registerHandlers()方法完成Handler注册。registerHandlers()方法调用AbstractHandlerMapping的registerHandler()方法将配置的urlMap注册到AbstractUrlHandlerMapping的Map中。</p>
+<blockquote>
+<p>总结：该类就是直接将配置的内容注册到AbstractUrlHandlerMapping中去。</p>
+</blockquote>
+<h4 id="12-2-2-AbstractDetectingUrlHandlerMapping"><a href="#12-2-2-AbstractDetectingUrlHandlerMapping" class="headerlink" title="12.2.2 AbstractDetectingUrlHandlerMapping"></a>12.2.2 AbstractDetectingUrlHandlerMapping</h4><p>该类也是通过重写initApplicationContext来注册Handler，在里面调用了detectHandler()方法。在detectHandlers()中根据配置的detectHand-lersInAncestorContexts参数从Springmvc容器或者Springmvc及其父容器中找到所有的bean的beanName，然后使用方法determineUrlsHandler()方法对每个beanName解析出对应的urls。</p>
+<pre><code>@Override
+public void initApplicationContext() throws ApplicationContextException {
+    //进行初始化
+    super.initApplicationContext();
+
+    detectHandlers();
+}
+
+protected void detectHandlers() throws BeansException {
+    if (logger.isDebugEnabled()) {
+        logger.debug(&quot;Looking for URL mappings in application context: &quot; + getApplicationContext());
+    }
+
+    //获取容器的所有bean的名字
+    String[] beanNames = (this.detectHandlersInAncestorContexts ?
+            BeanFactoryUtils.beanNamesForTypeIncludingAncestors(getApplicationContext(), Object.class) :
+            getApplicationContext().getBeanNamesForType(Object.class));
+
+    // 对每个beanName解析url，如果能解析到就注册到父类的Map中
+    for (String beanName : beanNames) {
+
+        //使用beanName解析url，是模板方法，子类具体实现
+        String[] urls = determineUrlsForHandler(beanName);
+
+        //如果能解析到url则注册到父类
+        if (!ObjectUtils.isEmpty(urls)) {
+            // 父类的registerHandler方法
+            registerHandler(urls, beanName);
+        } else {
+            if (logger.isDebugEnabled()) {
+                logger.debug(&quot;Rejected bean name &apos;&quot; + beanName + &quot;&apos;: no URL paths identified&quot;);
+            }
+        }
+    }
+}
+
+//预留的模板方法
+protected abstract String[] determineUrlsForHandler(String beanName);
+</code></pre><blockquote>
+<p>提示：AbstractDetectingUrlHandlerMapping中有三个类：BeanNameUrlHandlerMapping | DefaultAnnotationHandlerMapping(@Deprecated 已被弃用) | AbstractControllerUrlHandlerMapping 。</p>
+</blockquote>
+<p><strong>1.BeanNameUrlHandlerMapping</strong><br><br>该类是检查beanName和alias是否是以”/“开头，如果是则将其作为url，里面只有一个determineUrlsForHandler()方法。</p>
+<pre><code>/**
+ * Checks name and aliases of the given bean for URLs, starting with &quot;/&quot;.
+ */
+@Override
+protected String[] determineUrlsForHandler(String beanName) {
+    List&lt;String&gt; urls = new ArrayList&lt;String&gt;();
+    if (beanName.startsWith(&quot;/&quot;)) {
+        urls.add(beanName);
+    }
+    String[] aliases = getApplicationContext().getAliases(beanName);
+    for (String alias : aliases) {
+        if (alias.startsWith(&quot;/&quot;)) {
+            urls.add(alias);
+        }
+    }
+    return StringUtils.toStringArray(urls);
+}
+</code></pre><p><strong>2.AbstractControllerUrlHandlerMapping</strong><br><br>该类是将实现了Controller接口或注释@Controller的bean作为Handler，同时可以设置excludedClasses和excludedPackages将不包含的bean或者不包含的包下的所有bean排除在外。这里的determineUrlsForHandler()方法主要负责将符合条件的Handler找出来。</p>
+<pre><code>//determineUrlsForHandler()方法主要负责将符合条件的Handler找出来
+@Override
+protected String[] determineUrlsForHandler(String beanName) {
+    Class beanClass = getApplicationContext().getType(beanName);
+    if (isEligibleForMapping(beanName, beanClass)) {
+        return buildUrlsForHandler(beanName, beanClass);
+    }
+    else {
+        return null;
+    }
+}
+
+//判断controller是否被排除在外(通过包package排除或类class排除)
+protected boolean isEligibleForMapping(String beanName, Class beanClass) {
+    if (beanClass == null) {
+        if (logger.isDebugEnabled()) {
+            logger.debug(&quot;Excluding controller bean &apos;&quot; + beanName + &quot;&apos; from class name mapping &quot; +
+                    &quot;because its bean type could not be determined&quot;);
+        }
+        return false;
+    }
+
+    //排除excludedClasses里配置的类
+    if (this.excludedClasses.contains(beanClass)) {
+        if (logger.isDebugEnabled()) {
+            logger.debug(&quot;Excluding controller bean &apos;&quot; + beanName + &quot;&apos; from class name mapping &quot; +
+                    &quot;because its bean class is explicitly excluded: &quot; + beanClass.getName());
+        }
+        return false;
+    }
+    String beanClassName = beanClass.getName();
+
+    //排除excludedPackages里配置的包下的类
+    for (String packageName : this.excludedPackages) {
+        if (beanClassName.startsWith(packageName)) {
+            if (logger.isDebugEnabled()) {
+                logger.debug(&quot;Excluding controller bean &apos;&quot; + beanName + &quot;&apos; from class name mapping &quot; +
+                        &quot;because its bean class is defined in an excluded package: &quot; + beanClass.getName());
+            }
+            return false;
+        }
+    }
+
+    //检查是否实现了Controller接口或注释了@Controller
+    return isControllerType(beanClass);
+}
+</code></pre><p><strong>2.1 AbstractControllerUrlHandlerMapping 的实现类 ControllerBeanNameUrlHandlerMapping</strong><br><br>此类是根据beanName来生产url。</p>
+<pre><code>@Override
+protected String[] buildUrlsForHandler(String beanName, Class beanClass) {
+    List&lt;String&gt; urls = new ArrayList&lt;String&gt;();
+    urls.add(generatePathMapping(beanName));
+    String[] aliases = getApplicationContext().getAliases(beanName);// 也获取配置的别名
+    for (String alias : aliases) {
+        urls.add(generatePathMapping(alias));
+    }
+    return StringUtils.toStringArray(urls);
+}
+</code></pre><p><strong>2.2 AbstractControllerUrlHandlerMapping 的实现类 ControllerClassNameUrlHandlerMapping</strong><br><br>此类是根据className来生产url。</p>
+<pre><code>//对path添加前后缀,还有/
+protected String generatePathMapping(String beanName) {
+    String name = (beanName.startsWith(&quot;/&quot;) ? beanName : &quot;/&quot; + beanName);
+    StringBuilder path = new StringBuilder();
+    if (!name.startsWith(this.urlPrefix)) {
+        path.append(this.urlPrefix);
+    }
+    path.append(name);
+    if (!name.endsWith(this.urlSuffix)) {
+        path.append(this.urlSuffix);
+    }
+    return path.toString();
+}
+</code></pre><blockquote>
+<p>提示：ControllerClassNameUrlHandlerMapping直接委托给 generatePathMappings 实现。</p>
+</blockquote>
+<pre><code>@Override
+protected String[] buildUrlsForHandler(String beanName, Class beanClass) {
+    return generatePathMappings(beanClass);
+}
+
+
+protected String[] generatePathMappings(Class beanClass) {
+    StringBuilder pathMapping = buildPathPrefix(beanClass);
+    String className = ClassUtils.getShortName(beanClass);
+    String path = (className.endsWith(CONTROLLER_SUFFIX) ?
+            className.substring(0, className.lastIndexOf(CONTROLLER_SUFFIX)) : className);
+    if (path.length() &gt; 0) {
+        if (this.caseSensitive) {
+            pathMapping.append(path.substring(0, 1).toLowerCase()).append(path.substring(1));
+        }
+        else {
+            pathMapping.append(path.toLowerCase());
+        }
+    }
+    if (isMultiActionControllerType(beanClass)) {
+        return new String[] {pathMapping.toString(), pathMapping.toString() + &quot;/*&quot;};
+    }
+    else {
+        return new String[] {pathMapping.toString() + &quot;*&quot;};
+    }
+}
+
+
+private StringBuilder buildPathPrefix(Class beanClass) {
+    StringBuilder pathMapping = new StringBuilder();
+    if (this.pathPrefix != null) {
+        pathMapping.append(this.pathPrefix);
+        pathMapping.append(&quot;/&quot;);
+    }
+    else {
+        pathMapping.append(&quot;/&quot;);
+    }
+    if (this.basePackage != null) {
+        String packageName = ClassUtils.getPackageName(beanClass);
+        if (packageName.startsWith(this.basePackage)) {
+            String subPackage = packageName.substring(this.basePackage.length()).replace(&apos;.&apos;, &apos;/&apos;);
+            pathMapping.append(this.caseSensitive ? subPackage : subPackage.toLowerCase());
+            pathMapping.append(&quot;/&quot;);
+        }
+    }
+    return pathMapping;
+}
+
+
+protected boolean isMultiActionControllerType(Class beanClass) {
+    return this.predicate.isMultiActionControllerType(beanClass);
+}
+</code></pre><h2 id="12-3-AbstractHandlerMethodMapping"><a href="#12-3-AbstractHandlerMethodMapping" class="headerlink" title="12.3 AbstractHandlerMethodMapping"></a>12.3 AbstractHandlerMethodMapping</h2><p>AbstractHandlerMethodMapping系列只有是三个类：AbstractHandlerMethodMapping | RequestMappingInfoHandlerMapping | RequestMappingHandlerMapping。这一系列是将Method作为Handler来使用的。比如经常使用的@RequestMapping所注释的方法就是这种Handler，它专门有一个类型：HandlerMethod，即Method类型的Handler。</p>
+<h4 id="12-3-1-创建AbstractHandlerMethodMapping"><a href="#12-3-1-创建AbstractHandlerMethodMapping" class="headerlink" title="12.3.1 创建AbstractHandlerMethodMapping"></a>12.3.1 创建AbstractHandlerMethodMapping</h4><p>该类的作用是定义整个算法流程。这里最重要的理解三个Map的含义：</p>
+<pre><code>//该map的作用是保存着匹配条件(RequestCondition)和Handler Method的对应关系。
+private final Map&lt;T,HandlerMethod&gt; handlerMethods = new LinkedHashMap&lt;T,HandlerMethod&gt;();
+
+//该map的作用是保存着url与匹配条件的对应关系。
+private final MultiValueMap&lt;String,T&gt; urlMap = new LinkedMultiValueMap&lt;String,T&gt;();
+
+//该map的作用是保存着name与handlermathod的对应关系。
+private final MultiValueMap&lt;String,HandlerMethod&gt; nameMap = new LinkedMultiValueMap&lt;String,HandlerMethod&gt;();
+</code></pre><p>这里的AbstractHandlerMethodMapping实现了initialziingBean接口，所有Spring容器会自动调用其afterProperties方法和afterPropertiesSet又交给initHandlerMethods()方法完成初始化。</p>
+<pre><code>protected void initHandlerMethods() {
+    if (logger.isDebugEnabled()) {
+        logger.debug(&quot;Looking for request mappings in application context: &quot; + getApplicationContext());
+    }
+    String[] beanNames = (this.detectHandlerMethodsInAncestorContexts ?
+            BeanFactoryUtils.beanNamesForTypeIncludingAncestors(obtainApplicationContext(), Object.class) :
+            obtainApplicationContext().getBeanNamesForType(Object.class));
+
+    for (String beanName : beanNames) {
+        if (!beanName.startsWith(SCOPED_TARGET_NAME_PREFIX)) {
+            Class&lt;?&gt; beanType = null;
+            try {
+                beanType = obtainApplicationContext().getType(beanName);
+            }
+            catch (Throwable ex) {
+                if (logger.isDebugEnabled()) {
+                    logger.debug(&quot;Could not resolve target class for bean with name &apos;&quot; + beanName + &quot;&apos;&quot;, ex);
+                }
+            }
+            if (beanType != null &amp;&amp; isHandler(beanType)) {
+                detectHandlerMethods(beanName);
+            }
+        }
+    }
+    handlerMethodsInitialized(getHandlerMethods());
+}
+</code></pre><blockquote>
+<p>提示：1.首先拿到容器里面的所有bean。2.然后根据一定的规则筛选出Handler。3.最后保存到Map中。这里的筛选方法是isHandler()方法，是一个模板方法。具体的筛选是在子类里，筛选的逻辑是检查类前是否有@Controller或者@RequestMapping注解。4.在detectHandlerMethods中，首先从传入的处理器中找到符合要求的方法，然后用registerHandlerMethod进行注册（也就是保存在Map中），从这里可以看出Spring其实是将处理请求的方法所在的类看作处理器，而不是处理请求的方法，不过许多地方需要将请求的方法作为处理器来理解。从handler里获取可以处理请求的method的方法使用。</p>
+</blockquote>
+<h4 id="12-3-1-续-AbstractHandlerMethodMapping-系列之用"><a href="#12-3-1-续-AbstractHandlerMethodMapping-系列之用" class="headerlink" title="12.3.1 续 AbstractHandlerMethodMapping 系列之用"></a>12.3.1 续 AbstractHandlerMethodMapping 系列之用</h4><p>这里的主要功能是通过 getHandlerInternal() 方法获取处理器。这里的 getHandlerInternal() 方法做三件事：1.根据request获取ookupPath(url)。2.使用lookupPath和request找handlerMethod。3.如果可以找到handlerMethod则调用它的createWithResolverBean()方法创建新的 HandlerMethod 并返回。这里的 createWithResolverBean() 方法是判断 handlerMethod 里的handler是否是String类型。如果是则改为将其作为 beanName从容器中所取到的bean，但是HandlerMethod中的属性是final类型，不能修改。</p>
+<h4 id="12-3-2-RequestMappingInfoHandlerMapping"><a href="#12-3-2-RequestMappingInfoHandlerMapping" class="headerlink" title="12.3.2 RequestMappingInfoHandlerMapping"></a>12.3.2 RequestMappingInfoHandlerMapping</h4><p>提供匹配条件RequestMappingInfo的解析处理。</p>
+<pre><code>/**
+ * 获取url集合，即@RequestMapping中设置的value或path
+ */
+@Override
+protected Set&lt;String&gt; getMappingPathPatterns(RequestMappingInfo info) {
+    return info.getPatternsCondition().getPatterns();
+}
+</code></pre><h4 id="12-3-3-RequestMappingHandlerMapping"><a href="#12-3-3-RequestMappingHandlerMapping" class="headerlink" title="12.3.3 RequestMappingHandlerMapping"></a>12.3.3 RequestMappingHandlerMapping</h4><p>根据@RequestMapping注解生成RequestMappingInfo，同时提供isHandler()方法实现。</p>
+<pre><code>/**
+ * 使用方法和类型注解@RequestMapping创建RequestMappingInfo对象
+ */
+@Override
+@Nullable
+protected RequestMappingInfo getMappingForMethod(Method method, Class&lt;?&gt; handlerType) {
+    // 创建方法的RequestMappingInfo
+    RequestMappingInfo info = createRequestMappingInfo(method);
+    if (info != null) {
+        // 创建类的RequestMappingInfo
+        RequestMappingInfo typeInfo = createRequestMappingInfo(handlerType);
+        if (typeInfo != null) {
+            // 将方法RequestMappingInfo和类RequestMappingInfo合并，比如Controller类上有@RequestMapping(&quot;/demo&quot;)，方法的@RequestMapping(&quot;/demo1&quot;)，结果为&quot;/demo/demo1&quot;
+            info = typeInfo.combine(info);
+        }
+    }
+    return info;
+}
+
+@Nullable
+private RequestMappingInfo createRequestMappingInfo(AnnotatedElement element) {
+    // 获取RequestMapping注解
+    RequestMapping requestMapping = AnnotatedElementUtils.findMergedAnnotation(element, RequestMapping.class);
+    RequestCondition&lt;?&gt; condition = (element instanceof Class ?
+            getCustomTypeCondition((Class&lt;?&gt;) element) : getCustomMethodCondition((Method) element));
+    // 调用createRequestMappingInfo创建匹配条件对象
+    return (requestMapping != null ? createRequestMappingInfo(requestMapping, condition) : null);
+}
+
+/**
+ * 构造匹配条件对象
+ */
+protected RequestMappingInfo createRequestMappingInfo(
+        RequestMapping requestMapping, @Nullable RequestCondition&lt;?&gt; customCondition) {
+
+    RequestMappingInfo.Builder builder = RequestMappingInfo
+            .paths(resolveEmbeddedValuesInPatterns(requestMapping.path()))
+            .methods(requestMapping.method())
+            .params(requestMapping.params())
+            .headers(requestMapping.headers())
+            .consumes(requestMapping.consumes())
+            .produces(requestMapping.produces())
+            .mappingName(requestMapping.name());
+    if (customCondition != null) {
+        builder.customCondition(customCondition);
+    }
+    return builder.options(this.config).build();
+}
+</code></pre>
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+
+  <p><span>本文标题:</span>HandlerMapping</a></p>
+  <p><span>文章作者:</span>Bangjin-Hu</a></p>
+  <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
+  <p><span>最后更新:</span>2020年03月29日 - 10:18:40</p>
+  <p><span>原始链接:</span><a href="/undefined/第12章 HandlerMapping/" title="HandlerMapping">http://bangjinhu.github.io/undefined/第12章 HandlerMapping/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/第12章 HandlerMapping/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.jpg" alt="Bangjin-Hu wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎扫码关注微信公众号，订阅我的微信公众号.</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持是我创作的动力.</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat-reward-img.jpg" alt="Bangjin-Hu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay-reward-img.jpg" alt="Bangjin-Hu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Bangjin-Hu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://bangjinhu.github.io/undefined/第12章 HandlerMapping/" title="HandlerMapping">http://bangjinhu.github.io/undefined/第12章 HandlerMapping/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SpringMVC/" rel="tag"><i class="fa fa-tag"></i> SpringMVC</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/undefined/第13章 HandlerAdapter/" rel="next" title="HandlerAdapter">
+                <i class="fa fa-chevron-left"></i> HandlerAdapter
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/undefined/第11章 Java并发编程实战/" rel="prev" title="AOP">
+                AOP <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/site.jpg"
+                alt="Bangjin-Hu" />
+            
+              <p class="site-author-name" itemprop="name">Bangjin-Hu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/BangjinHu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:2315378346@qq.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/Aaron_P_L" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-heart-o"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
+                      
+                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://iProgramering.github.io" target="_blank" title="iProgramer_ing">
+                      
+                        <i class="fa fa-fw fa-user"></i>iProgramer_ing</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          <div id="music163player">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src="//music.163.com/outchain/player?type=2&id=38358214&auto=0&height=66
+
+">
+    </iframe>
+</div>
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第12章-HandlerMapping"><span class="nav-text">第12章 HandlerMapping</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#12-1-AbstractHandlerMapping"><span class="nav-text">12.1 AbstractHandlerMapping</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#12-1-1-创建AbstractHandlerMapping"><span class="nav-text">12.1.1 创建AbstractHandlerMapping</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12-1-2-AbstractHandlerMapping的使用"><span class="nav-text">12.1.2 AbstractHandlerMapping的使用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-2-AbstractUrlHandlerMapping"><span class="nav-text">12.2 AbstractUrlHandlerMapping</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#12-2-1-SimpleUrlHandlerMapping"><span class="nav-text">12.2.1 SimpleUrlHandlerMapping</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12-2-2-AbstractDetectingUrlHandlerMapping"><span class="nav-text">12.2.2 AbstractDetectingUrlHandlerMapping</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-3-AbstractHandlerMethodMapping"><span class="nav-text">12.3 AbstractHandlerMethodMapping</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#12-3-1-创建AbstractHandlerMethodMapping"><span class="nav-text">12.3.1 创建AbstractHandlerMethodMapping</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12-3-1-续-AbstractHandlerMethodMapping-系列之用"><span class="nav-text">12.3.1 续 AbstractHandlerMethodMapping 系列之用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12-3-2-RequestMappingInfoHandlerMapping"><span class="nav-text">12.3.2 RequestMappingInfoHandlerMapping</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12-3-3-RequestMappingHandlerMapping"><span class="nav-text">12.3.3 RequestMappingHandlerMapping</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bangjin-Hu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">465.0k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/lib/clipboard/clipboard.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+</body>
+</html>

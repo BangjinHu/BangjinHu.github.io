@@ -1,0 +1,1656 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/site.jpg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="并发编程," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="BangjinHu's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. Java并发编程之美[TOC] 第1章 基础第2章 基础扩展第3章 Java并发包ThreadLocalRandom类原理剖析该类是JUC包下新增的随机数生成器，弥补Random类在多线程下的缺陷。 3.1 Random类的局限性每个Random实例里面都有一个原子性的种子变量用来记录当前的种子值，当要生成新的随机数时需要根据当前种子计算新的种子并更">
+<meta name="keywords" content="并发编程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java并发编程之美">
+<meta property="og:url" content="http://bangjinhu.github.io/undefined/Java 并发编程之美/index.html">
+<meta property="og:site_name" content="BangjinHu&#39;s Blog">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. Java并发编程之美[TOC] 第1章 基础第2章 基础扩展第3章 Java并发包ThreadLocalRandom类原理剖析该类是JUC包下新增的随机数生成器，弥补Random类在多线程下的缺陷。 3.1 Random类的局限性每个Random实例里面都有一个原子性的种子变量用来记录当前的种子值，当要生成新的随机数时需要根据当前种子计算新的种子并更">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-03-29T02:37:16.353Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java并发编程之美">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. Java并发编程之美[TOC] 第1章 基础第2章 基础扩展第3章 Java并发包ThreadLocalRandom类原理剖析该类是JUC包下新增的随机数生成器，弥补Random类在多线程下的缺陷。 3.1 Random类的局限性每个Random实例里面都有一个原子性的种子变量用来记录当前的种子值，当要生成新的随机数时需要根据当前种子计算新的种子并更">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://bangjinhu.github.io/undefined/Java 并发编程之美/"/>
+
+
+
+
+
+  <title>Java并发编程之美 | BangjinHu's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    
+    <a href="https://github.com/BangjinHu"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">BangjinHu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">让优秀成为习惯，让知识成为信仰</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            本站搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Java 并发编程之美/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Java并发编程之美</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:37:16+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/并发编程/" itemprop="url" rel="index">
+                    <span itemprop="name">并发编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4,823
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  19
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="Java并发编程之美"><a href="#Java并发编程之美" class="headerlink" title="Java并发编程之美"></a>Java并发编程之美</h2><p>[TOC]</p>
+<h3 id="第1章-基础"><a href="#第1章-基础" class="headerlink" title="第1章 基础"></a>第1章 基础</h3><h3 id="第2章-基础扩展"><a href="#第2章-基础扩展" class="headerlink" title="第2章 基础扩展"></a>第2章 基础扩展</h3><h3 id="第3章-Java并发包ThreadLocalRandom类原理剖析"><a href="#第3章-Java并发包ThreadLocalRandom类原理剖析" class="headerlink" title="第3章 Java并发包ThreadLocalRandom类原理剖析"></a>第3章 Java并发包ThreadLocalRandom类原理剖析</h3><p>该类是JUC包下新增的随机数生成器，弥补Random类在多线程下的缺陷。</p>
+<h4 id="3-1-Random类的局限性"><a href="#3-1-Random类的局限性" class="headerlink" title="3.1 Random类的局限性"></a>3.1 Random类的局限性</h4><p>每个Random实例里面都有一个原子性的种子变量用来记录当前的种子值，当要生成新的随机数时需要根据当前种子计算新的种子并更新回原子变量。</p>
+<p>在多线程环境下使用单个Random实例生成随机数时，当多个线程同时计算随机数来计算新的种子时，多个线程会竞争同一个原子变量的更新操作，由于原子变量的更新是CAS操作，同时只有一个线程会成功，所以会造成大量线程进行自旋重试，会降低并发性能。</p>
+<h4 id="3-2-ThreadLocalRandom"><a href="#3-2-ThreadLocalRandom" class="headerlink" title="3.2 ThreadLocalRandom"></a>3.2 ThreadLocalRandom</h4><pre><code>package com.ccpc.edu.xidian.cn.ccpc.example.random;
+
+import java.util.concurrent.ThreadLocalRandom;
+
+public class example1 {
+
+    public static void main(String[] args) {
+        ThreadLocalRandom random = ThreadLocalRandom.current();
+        for (int i = 0; i &lt; 10; i++){
+            System.out.println(random.nextInt(5));
+        }
+    }
+}
+</code></pre><p>ThreadLocalRandom random = ThreadLocalRandom.current();来获取当前线程的随机数生成器。</p>
+<p>==ThreadLocalRandom 可以被联想到ThreadLocal（通过让每一个线程复制一份变量，使得每一个线程对变量进行操作时实际是操作自己本地内存的副本，从而避免对共享变量进行同步）。ThreadLocalRandom 的实现也是如此。==</p>
+<blockquote>
+<p>提示：Random类的缺点是多个线程会使用同一个原子性种子变量，从而导致对原子变量更新的竞争。</p>
+</blockquote>
+<h4 id="3-3-源码分析"><a href="#3-3-源码分析" class="headerlink" title="3.3 源码分析"></a>3.3 源码分析</h4><p>ThreadLocalRandom 类似于一个ThreadLocal类，就是个工具类。当线程调用ThreadLocalRandom负责初始化调用线程的threadLocalRandomSeed变量，也就是初始化种子。</p>
+<p>当多线程通过ThreadLocalRandom random = ThreadLocalRandom.current();获取ThreadLocalRandom 实例时，其实获取的是同一个实例。但是由于具体的种子是存放在线程里面的，所以在ThreadLocalRandom 实例里面只包含与线程无关的通用算法，是线程安全的。</p>
+<h4 id="3-4-总结"><a href="#3-4-总结" class="headerlink" title="3.4 总结"></a>3.4 总结</h4><p>ThreadLocalRandom 使用ThreadLocal的原理，让每个线程都持有一本地种子变量，该种子变量只有在使用随机数时才会被初始化。在多线程下==计算新种子时时根据自己线程内维护的种子变量进行更新，从而避免竞争。==</p>
+<hr>
+<h3 id="第4章-Java-并发包中原子操作类原理剖析"><a href="#第4章-Java-并发包中原子操作类原理剖析" class="headerlink" title="第4章 Java 并发包中原子操作类原理剖析"></a>第4章 Java 并发包中原子操作类原理剖析</h3><p>JUC包提供一系列原子性操作类，这些类都使用非阻塞算法CAS实现的，相比锁实现原子性操作在性能上有很大的提升。</p>
+<h4 id="4-1-原子变量操作类"><a href="#4-1-原子变量操作类" class="headerlink" title="4.1 原子变量操作类"></a>4.1 原子变量操作类</h4><p>JUC并发包包含有 AtomicInteger、AtomicLong等。它们原理相似。</p>
+<p>AtomicLong是原子性递增或递减类，其内部使用Unsafe来实现。</p>
+<p>因为AtomincLong类也是在rt.jar包下面，AtomicLong就是通过BootStrap类加载器进行加载的。所以能够通过Unsafe.getUnsafe()方法获取Unsafe的实例。</p>
+<h4 id="4-2-LongAdder"><a href="#4-2-LongAdder" class="headerlink" title="4.2 LongAdder"></a>4.2 LongAdder</h4><p>AtomicLong通过CAS提供了非阻塞的原子性操作，相比于使用阻塞算法的同步器来说它好。</p>
+<p>在高并发下大量线程会同时去竞争更新同一个原子变量，但是由于同时只有一个线程的CAS操作会成功，这就造成了大量线程竞争失败后，会通过无限循环不断进行自旋尝试CAS操作，这就会白白浪费CPU资源。</p>
+<p>在JDK8中使用LongAdder用来克服在高并发下使用AtomicLong的缺点。</p>
+<p>在LongAdder内部维护多个Cell变量，每个Cell变量里面有一个初始值为0的long型变量。在这种情况下，相对AtomicLong来说争夺单个变量更新操作的线程量会减少，所以变相的减少了争夺共享资源的并发量。</p>
+<p>另外，多个线程在争夺同一个Cell原子变量时如果失败，并不是在当前Cell变量上一直自旋CAS重试，而是尝试在其它Cell的变量上进行CAS尝试，这改变增加了当前线程CAS成功的可能性。</p>
+<p>最后在获取LongAdder当前值时，是将所有Cell变量的value值累加后再加上base返回的。</p>
+<blockquote>
+<p>提示：LongAdder维护了一个延迟初始化的原子性更新数组（默认情况下Cell数组是null）和一个基值变量base。</p>
+</blockquote>
+<h4 id="4-3-LongAccumulator类"><a href="#4-3-LongAccumulator类" class="headerlink" title="4.3 LongAccumulator类"></a>4.3 LongAccumulator类</h4><p>LongAdder是LongAccumulator的特例。</p>
+<p>LongAccumulator相比于LongAdder可以为累加器提供非0的初始值，后者只能提供默认的0值。同时前者能够指定累加规则</p>
+<hr>
+<h3 id="第5章-Java并发包中并发List源码剖析"><a href="#第5章-Java并发包中并发List源码剖析" class="headerlink" title="第5章 Java并发包中并发List源码剖析"></a>第5章 Java并发包中并发List源码剖析</h3><p>在并发包中只有CopyOnWriteArrayList，是一个线程安全的ArrayList，对其进行的修改操作都是在底层的一个复制的数组（快照）上进行的，也是使用了写时复制策略。</p>
+<blockquote>
+<p>提示：在CopyOnWriteArrayList中迭代器的弱一致性是指返回迭代器之后，其它线程对list的增删改对迭代器是不可见的。</p>
+</blockquote>
+<h4 id="5-3-总结"><a href="#5-3-总结" class="headerlink" title="5.3 总结"></a>5.3 总结</h4><p>CopyOnWriteArrayList 使用写时复制的策略来保证list的一致性，而获取-修改-写入三步操作并不是原子性的，所以在增删改的过程中都使用独占锁，来保证某个时间只有一个线程能对list数组进行修改。</p>
+<p>另外，CopyOnWriteArrayList提供了弱一致性的迭代器，从而保证在获取迭代器后，其它线程对list的修改是不可见的，迭代器遍历的数组是一个快照。</p>
+<hr>
+<h3 id="第6章-Java并发包中锁原理剖析"><a href="#第6章-Java并发包中锁原理剖析" class="headerlink" title="第6章 Java并发包中锁原理剖析"></a>第6章 Java并发包中锁原理剖析</h3><h4 id="6-1-LockSupport工具类"><a href="#6-1-LockSupport工具类" class="headerlink" title="6.1 LockSupport工具类"></a>6.1 LockSupport工具类</h4><p>JDK中的rt.jar包里面的LockSupport是个工具类，它的主要作用是唤醒和挂起线程，该工具类是创建锁和其它同步类的基础。</p>
+<p>LockSupport 与每个使用它的线程都关联一个许可证，在默认情况下调用LockSupport类的方法的线程是不持有许可证的。</p>
+<p>LockSupport 是使用Unsafe类实现的。</p>
+<h5 id="1-void-park-方法"><a href="#1-void-park-方法" class="headerlink" title="1. void park()方法"></a>1. void park()方法</h5><p>如果调用park()方法的线程已经拿到了与LockSupport关联的许可证，则调用LockSupport.park()时会马上返回，否则调用线程会被禁止参与线程的调度（被挂起）。</p>
+<blockquote>
+<p>提示：因调用park()方法而被阻塞的线程被其它线程中断而返回时并不会抛出InterruptedException异常。</p>
+</blockquote>
+<h5 id="2-void-unpark-Thread-thread-方法"><a href="#2-void-unpark-Thread-thread-方法" class="headerlink" title="2. void unpark(Thread thread)方法"></a>2. void unpark(Thread thread)方法</h5><p>当一个线程调用unpark()时，如果参数thread线程没有持有与LockSupport类关联的许可证，则让thread线程持有。</p>
+<p>如果thread之前因为调用park()而被挂起，在调用unpark()之后，该线程会被唤醒。</p>
+<h5 id="3-void-parkNanos-long-nanos-方法"><a href="#3-void-parkNanos-long-nanos-方法" class="headerlink" title="3. void parkNanos(long nanos)方法"></a>3. void parkNanos(long nanos)方法</h5><p>该方法与park()方法类似，不同在于如果没有拿到许可证，则调用线程会被挂起nanos时间后修改为自动返回。</p>
+<p>…</p>
+<h4 id="6-2-抽象同步队列AQS"><a href="#6-2-抽象同步队列AQS" class="headerlink" title="6.2 抽象同步队列AQS"></a>6.2 抽象同步队列AQS</h4><h5 id="1-AQS概述"><a href="#1-AQS概述" class="headerlink" title="1. AQS概述"></a>1. AQS概述</h5><p>它是实现同步器的基础组件，并发包中锁的底层就是使用AQS实现的。</p>
+<h4 id="6-3-独占锁-ReentrantLock-原理"><a href="#6-3-独占锁-ReentrantLock-原理" class="headerlink" title="6.3 独占锁 ReentrantLock 原理"></a>6.3 独占锁 ReentrantLock 原理</h4><h5 id="1-类图结构"><a href="#1-类图结构" class="headerlink" title="1. 类图结构"></a>1. 类图结构</h5><p>ReentrantLock 是可重入独占锁，同时只能有一个线程可以获取该锁，其它获取该锁的线程会被阻塞而被放入该锁的AQS阻塞队列里面。</p>
+<p>ReentrantLock 最终还是使用AQS实现，并且根据参数来决定内部是公平还是非公平锁，默认非公平锁。</p>
+<h4 id="6-4-读写锁-ReentrantReadWriteLock-的原理"><a href="#6-4-读写锁-ReentrantReadWriteLock-的原理" class="headerlink" title="6.4 读写锁 ReentrantReadWriteLock 的原理"></a>6.4 读写锁 ReentrantReadWriteLock 的原理</h4><p>解决线程安全使用ReentrantLock就可以，但是ReentrantLock是独占锁，某时只有一个线程可以获取该锁，而在实际中会有写少读多的场景。</p>
+<p>ReentrantReadWriteLock 采用读写分离的策略，允许多个线程可以同时获取读锁。</p>
+<p>ReentrantReadWriteLock 巧妙使用state的高16位表示读状态，也就是获取到读锁的次数。使用低16位表示获取到写锁的线程的可重入次数。</p>
+<h4 id="6-5-StampedLock"><a href="#6-5-StampedLock" class="headerlink" title="6.5 StampedLock"></a>6.5 StampedLock</h4><hr>
+<h3 id="第7章-并发队列原理剖析"><a href="#第7章-并发队列原理剖析" class="headerlink" title="第7章 并发队列原理剖析"></a>第7章 并发队列原理剖析</h3><h4 id="7-1-ConcurrentLinkedQueue-原理探究"><a href="#7-1-ConcurrentLinkedQueue-原理探究" class="headerlink" title="7.1 ConcurrentLinkedQueue 原理探究"></a>7.1 ConcurrentLinkedQueue 原理探究</h4><p>ConcurrentLinkedQueue 是线程安全的无界非阻塞队列，底层使用单向链表实现，对入队和出队操作使用CAS来实现线程安全。</p>
+<h4 id="7-2-LinkedBlockingQueue-原理探究"><a href="#7-2-LinkedBlockingQueue-原理探究" class="headerlink" title="7.2 LinkedBlockingQueue 原理探究"></a>7.2 LinkedBlockingQueue 原理探究</h4><p>该队列是使用独占锁实现的阻塞队列。</p>
+<h5 id="1-offer"><a href="#1-offer" class="headerlink" title="1. offer()"></a>1. offer()</h5><p>向队列尾部插入一个元素。</p>
+<h5 id="2-put"><a href="#2-put" class="headerlink" title="2. put()"></a>2. put()</h5><p>向队列尾部插入一个元素，如果队列中有空闲则插入后直接返回，否则队列已满则阻塞当前线程，直到队列有空闲插入成功后返回。</p>
+<h5 id="3-poll"><a href="#3-poll" class="headerlink" title="3. poll()"></a>3. poll()</h5><p>从队列头部获取并移除一个元素，如果队列为空则返回null。该方法不是阻塞的。</p>
+<h5 id="4-peek"><a href="#4-peek" class="headerlink" title="4. peek()"></a>4. peek()</h5><p>….</p>
+<hr>
+<h3 id="第8章-Java并发包线程池ThreadPoolExecutor原理探究"><a href="#第8章-Java并发包线程池ThreadPoolExecutor原理探究" class="headerlink" title="第8章 Java并发包线程池ThreadPoolExecutor原理探究"></a>第8章 Java并发包线程池ThreadPoolExecutor原理探究</h3><p>线程池解决：1. 在执行大量异步任务时线程池能够提供较好的性能。2. 线程池提供了一种资源限制和管理的手段，可限制线程的个数，动态新增线程等。</p>
+<h4 id="8-3-源码分析"><a href="#8-3-源码分析" class="headerlink" title="8.3 源码分析"></a>8.3 源码分析</h4><h5 id="1-public-void-execute-Runnable-command"><a href="#1-public-void-execute-Runnable-command" class="headerlink" title="1. public void execute(Runnable command)"></a>1. public void execute(Runnable command)</h5><p>该方法作用是提交任务command到线程池进行执行。</p>
+<hr>
+<h3 id="第9章-Java并发包-ScheduledThreadPoolExecutor-原理"><a href="#第9章-Java并发包-ScheduledThreadPoolExecutor-原理" class="headerlink" title="第9章 Java并发包 ScheduledThreadPoolExecutor 原理"></a>第9章 Java并发包 ScheduledThreadPoolExecutor 原理</h3><p>ThreadPoolExecutor只是Executors工具的部分功能。ScheduledThreadPoolExecutor 是一个可以在指定一定延迟时间后或者定时进行任务调度执行的线程池。</p>
+<h4 id="9-2-类图介绍"><a href="#9-2-类图介绍" class="headerlink" title="9.2 类图介绍"></a>9.2 类图介绍</h4><pre><code>/**
+ * Period in nanoseconds for repeating tasks.  A positive
+ * value indicates fixed-rate execution.  A negative value
+ * indicates fixed-delay execution.  A value of 0 indicates a
+ * non-repeating task.
+ */
+private final long period;
+</code></pre><p>在ScheduledFutureTask内部有一个变量period用来表示任务类型。</p>
+<pre><code>period = 0 表示一次性任务，执行完便退出。
+
+period &lt; 0 表示fixed-delay以固定延迟的定时可可重复执行任务
+
+period &gt; 0 表示fixed-rate以固定频率的定时可重复执行任务
+</code></pre><h4 id="9-3-原理剖析"><a href="#9-3-原理剖析" class="headerlink" title="9.3 原理剖析"></a>9.3 原理剖析</h4><h5 id="1-schedule"><a href="#1-schedule" class="headerlink" title="1. schedule"></a>1. schedule</h5><pre><code>/**
+ * @throws RejectedExecutionException {@inheritDoc}
+ * @throws NullPointerException       {@inheritDoc}
+ */
+public ScheduledFuture&lt;?&gt; schedule(Runnable command,
+                                   long delay,
+                                   TimeUnit unit) {
+    if (command == null || unit == null)
+        throw new NullPointerException();
+
+    //任务转换
+    RunnableScheduledFuture&lt;?&gt; t = decorateTask(command,
+        new ScheduledFutureTask&lt;Void&gt;(command, null,
+                                      triggerTime(delay, unit)));
+
+    //添加任务到延迟队列
+    delayedExecute(t);
+    return t;
+}
+</code></pre><p>该方法的作用是提交一个延迟执行的任务，任务从提交时间算起，延迟单位为unit的delay时间后开始执行，提交的任务不是周期性任务，任务只会执行一次。</p>
+<h5 id="2-scheduleWithFixedDelay"><a href="#2-scheduleWithFixedDelay" class="headerlink" title="2. scheduleWithFixedDelay"></a>2. scheduleWithFixedDelay</h5><pre><code>/**
+ * @throws RejectedExecutionException {@inheritDoc}
+ * @throws NullPointerException       {@inheritDoc}
+ * @throws IllegalArgumentException   {@inheritDoc}
+ */
+public ScheduledFuture&lt;?&gt; scheduleWithFixedDelay(Runnable command,
+                                                 long initialDelay,
+                                                 long delay,
+                                                 TimeUnit unit) {
+    if (command == null || unit == null)
+        throw new NullPointerException();
+    if (delay &lt;= 0)
+        throw new IllegalArgumentException();
+
+    //任务转换，注意这里是period=-delay&lt;0
+    ScheduledFutureTask&lt;Void&gt; sft =
+        new ScheduledFutureTask&lt;Void&gt;(command,
+                                      null,
+                                      triggerTime(initialDelay, unit),
+                                      unit.toNanos(-delay));
+    RunnableScheduledFuture&lt;Void&gt; t = decorateTask(command, sft);
+    sft.outerTask = t;
+    delayedExecute(t);
+    return t;
+}
+</code></pre><p>当任务执行完毕之后，让其延迟固定时间后再次运行。initialDelay表示提交任务后延迟多少时间来开始执行command，delay表示任务执行完后延长多少时间再次运行command任务，unit时间单位。</p>
+<p>任务会一直运行直到任务运行中抛出异常被取消或者关闭线程池。</p>
+<h5 id="3-总结"><a href="#3-总结" class="headerlink" title="3. 总结"></a>3. 总结</h5><p>fixed-delay类型的任务执行原理是，==当添加一个任务到延迟队列后，等待initialDelay时间后，任务就会过期，过期的任务就会被从队列移除，并执行。== 执行完毕后，会重新设置任务的延迟时间，然后再将任务放入延迟队列，循环往复。</p>
+<blockquote>
+<p>注意：如果一个任务在执行过程中抛出异常，那么这个任务就结束了，但是不影响其它任务的执行。</p>
+</blockquote>
+<h5 id="4-scheduleAtFixedRate"><a href="#4-scheduleAtFixedRate" class="headerlink" title="4. scheduleAtFixedRate"></a>4. scheduleAtFixedRate</h5><pre><code>/**
+ * @throws RejectedExecutionException {@inheritDoc}
+ * @throws NullPointerException       {@inheritDoc}
+ * @throws IllegalArgumentException   {@inheritDoc}
+ */
+public ScheduledFuture&lt;?&gt; scheduleAtFixedRate(Runnable command,
+                                              long initialDelay,
+                                              long period,
+                                              TimeUnit unit) {
+    if (command == null || unit == null)
+        throw new NullPointerException();
+    if (period &lt;= 0)
+        throw new IllegalArgumentException();
+    ScheduledFutureTask&lt;Void&gt; sft =
+        new ScheduledFutureTask&lt;Void&gt;(command,
+                                      null,
+                                      triggerTime(initialDelay, unit),
+                                      unit.toNanos(period));
+    RunnableScheduledFuture&lt;Void&gt; t = decorateTask(command, sft);
+    sft.outerTask = t;
+    delayedExecute(t);
+    return t;
+}
+</code></pre><p>该方法是相对起始时间点以固定频率调用指定任务（fixed-rate任务）。当将任务提交到线程池并延迟initialDelay时间（时间单位为unit）后开始执行任务command。然后从initialDelay+period时间点再次执行，然后在initialDelay+2*period时间点再次执行，循环往复，直到抛出异常或调用了任务的cancel()方法取消任务或者关闭线程池。</p>
+<p>scheduleAtFixedRate 原理与 scheduleWithFixedDelay 类似。</p>
+<h5 id="5-总结"><a href="#5-总结" class="headerlink" title="5. 总结"></a>5. 总结</h5><p>相对于fixed-delay任务来说，fixed-rate方式执行规则是，时间为 initialDelay+n*period 时间启动任务，但是如果当前任务还没执行完，下一次要执行任务的时间到了，并不会并发执行，下次要执行的任务会被延迟执行。</p>
+<h4 id="9-4-总结"><a href="#9-4-总结" class="headerlink" title="9.4 总结"></a>9.4 总结</h4><p>ScheduledThreadPoolExecutor 的实现原理是，内部使用 DelayQueue 来存放具体任务。任务分为3种：1. 一次性执行任务，执行完毕之后就结束，fixed-delay任务保证同一个任务在多次执行之间间隔固定时间。2. fixed-rate任务保证按照固定的频率执行，任务类型施一公period的值来区分。</p>
+<hr>
+<h3 id="第10章-Java并发包中线程同步器原理剖析"><a href="#第10章-Java并发包中线程同步器原理剖析" class="headerlink" title="第10章 Java并发包中线程同步器原理剖析"></a>第10章 Java并发包中线程同步器原理剖析</h3><h4 id="10-1-CountDownLatch原理"><a href="#10-1-CountDownLatch原理" class="headerlink" title="10.1 CountDownLatch原理"></a>10.1 CountDownLatch原理</h4><p>在CountDownLatch出现之前一般都是使用join()方法来实现这一点，但是join()方法不够灵活，不能够满足不同场景的需求。</p>
+<blockquote>
+<p>总结：CountDownLatch与join()方法区别：1. 调用一个子线程join()方法之后，会一直阻塞直到子线程运行完毕。2. countDownLatch使用计数器来允许子线程运行完毕或者在运行中递减计数，可以在子线程运行的任何时候让await()方法返回而不一定必须等到线程结束。 ==另外，使用线程池来管理线程时，一般都是直接添加Runnable到线程池，这时候就没法再次调用线程的join()方法。</p>
+</blockquote>
+<h5 id="1-void-await"><a href="#1-void-await" class="headerlink" title="1. void await()"></a>1. void await()</h5><p>在线程调用CountDownLatch对象的await()方法之后，当前线程会被阻塞，直到：1. 当所有线程都调用了CountDownLatch对象的countDown()方法后，计数器值为0。2. 其它线程调用了当前线程的interrupt()方法中断了当前线程，当前线程会抛出IE异常，然后返回。</p>
+<h5 id="2-boolean-await-long-timeout-TimeUnit-unit"><a href="#2-boolean-await-long-timeout-TimeUnit-unit" class="headerlink" title="2. boolean await(long timeout, TimeUnit unit)"></a>2. boolean await(long timeout, TimeUnit unit)</h5><p>在线程调用CountDownLatch对象的await()方法之后，当前线程会被阻塞，直到：1. 所有线程都调用了CountDownLatch对象的countDown方法后，计数器值为0时，返回true。2. 设置的timeout时间到了，因为超时返回false。3. 其它线程调用了当前线程的interrupt()方法中断了当前线程，当前线程抛出IE异常，然后返回。</p>
+<h5 id="3-void-countDown"><a href="#3-void-countDown" class="headerlink" title="3. void countDown()"></a>3. void countDown()</h5><p>线程调用该方法之后，计数器的值递减，递减后如果计数器值为0则唤醒所有因调用await()方法而被阻塞的线程，否则什么都不用做。</p>
+<h5 id="4-long-getCount"><a href="#4-long-getCount" class="headerlink" title="4. long getCount()"></a>4. long getCount()</h5><p>获取当前计数器的值，也就是AQS的state值，一般在测试时使用该方法。</p>
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>CountDownLatch是使用AQS的状态变量来存放计数器的值。在计数器值变为0时，当前线程还要调用AQS的doReleaseShared()方法来激活由于调用await()方法而被阻塞的线程。</p>
+<h4 id="10-2-回环屏障-CyclicBarrier-原理"><a href="#10-2-回环屏障-CyclicBarrier-原理" class="headerlink" title="10.2 回环屏障 CyclicBarrier 原理"></a>10.2 回环屏障 CyclicBarrier 原理</h4><p>因为CountDownLatch的计数器是一次性的，在等到计数器值变为0后，再调用CountDownLatch的await()和countDown()方法都会立刻返回，这就起不到线程同步的效果。</p>
+<p>CyclicBarrier 的功能并不限于CountDownLatch的功能。它可以让一组线程全部达到一个状态后再全部同时执行。</p>
+<p>线程在调用 await() 方法之后就会被阻塞，等到所有线程都调用了 await() 方法之后，线程们就会冲破屏障，继续向下运行。</p>
+<pre><code>/**
+ * Creates a new {@code CyclicBarrier} that will trip when the
+ * given number of parties (threads) are waiting upon it, and which
+ * will execute the given barrier action when the barrier is tripped,
+ * performed by the last thread entering the barrier.
+ *
+ * @param parties the number of threads that must invoke {@link #await}
+ *        before the barrier is tripped
+ * @param barrierAction the command to execute when the barrier is
+ *        tripped, or {@code null} if there is no action
+ * @throws IllegalArgumentException if {@code parties} is less than 1
+ */
+public CyclicBarrier(int parties, Runnable barrierAction) {
+    if (parties &lt;= 0) throw new IllegalArgumentException();
+    this.parties = parties;
+    this.count = parties;
+    this.barrierCommand = barrierAction;
+}
+</code></pre><h5 id="1-int-await"><a href="#1-int-await" class="headerlink" title="1. int await()"></a>1. int await()</h5><p>当前线程调用该方法时会被阻塞，直到满足条件：1. parties个线程都调用了await()方法，也就是线程到达屏障点。2. 其它线程调用了当前线程的interrupt()方法中断了当前线程，则当前线程抛出IE异常返回。返回。</p>
+<h5 id="2-boolean-await-long-timeout-TimeUnit-unit-1"><a href="#2-boolean-await-long-timeout-TimeUnit-unit-1" class="headerlink" title="2. boolean await(long timeout, TimeUnit unit)"></a>2. boolean await(long timeout, TimeUnit unit)</h5><p>当前线程调用该方法阻塞，直到满足条件返回：1. parties个线程都调用了await()方法返回true。2. 设置的超时时间到了后返回false。3. 其它线程调用当前线程的interrupt()方法中断当前线程，则抛出IE异常并返回。</p>
+<h5 id="3-int-dowait-boolean-timed-long-nanos"><a href="#3-int-dowait-boolean-timed-long-nanos" class="headerlink" title="3. int dowait(boolean timed, long nanos)"></a>3. int dowait(boolean timed, long nanos)</h5><pre><code>private int dowait(boolean timed, long nanos)
+    throws InterruptedException, BrokenBarrierException,
+           TimeoutException {
+    final ReentrantLock lock = this.lock;
+    lock.lock();
+    try {
+        ...
+        int index = --count;
+        if (index == 0) {  // tripped
+            boolean ranAction = false;
+            try {
+                final Runnable command = barrierCommand;
+                if (command != null)
+                    command.run();
+                ranAction = true;
+                nextGeneration();
+                return 0;
+            } finally {
+                if (!ranAction)
+                    breakBarrier();
+            }
+        }
+
+        // loop until tripped, broken, interrupted, or timed out
+        for (;;) {
+            try {
+                if (!timed)
+                    trip.await();
+                else if (nanos &gt; 0L)
+                    nanos = trip.awaitNanos(nanos);
+            } catch (InterruptedException ie) {
+                if (g == generation &amp;&amp; ! g.broken) {
+                    breakBarrier();
+                    throw ie;
+                } else {
+                    Thread.currentThread().interrupt();
+                }
+            }
+            ...
+        }
+    } finally {
+        lock.unlock();
+    }
+}
+</code></pre><p>当线程调用 dowait() 方法之后，首先会获取独占锁lock，如果在创建 CyclicBarrier 时传递的参数是10，那么后面9个调用线程会被阻塞。然后获取到锁的线程会对计数器count进行递减操作。</p>
+<h4 id="10-3-信号量-Semaphore-原理"><a href="#10-3-信号量-Semaphore-原理" class="headerlink" title="10.3 信号量 Semaphore 原理"></a>10.3 信号量 Semaphore 原理</h4><p>它内部的计数器是递增的，并且在一开始初始化 Semaphore 时可以指定一个初始值，但不需要知道需要同步的线程个数，而是在需要同步的地方调用 acquire() 方法时指定需要同步的线程个数。</p>
+<blockquote>
+<p>提示：如果在构建Semaphore时传递的参数N，并在M个线程中调用了该信号量的release()方法，那么在调用acquire()使M个线程同步时传递的参数应该是M+N。</p>
+</blockquote>
+<h5 id="1-void-acquire"><a href="#1-void-acquire" class="headerlink" title="1. void acquire()"></a>1. void acquire()</h5><p>当前线程调用该方法的目的是希望获取一个信号量资源。</p>
+<p>如果当前信号量个数大于0，则当前信号量的计数会减1，然后该方法直接返回。否则如果当前信号量个数等于0，则当前线程会被放入AQS的阻塞队列。</p>
+<p>当其它线程调用了当前线程的interrupt()方法中断了当前线程时，则当前线程抛出IE异常返回。</p>
+<h5 id="2-void-acquire-int-permits"><a href="#2-void-acquire-int-permits" class="headerlink" title="2. void acquire(int permits)"></a>2. void acquire(int permits)</h5><p>该方法只需要获取permits个信号量值。</p>
+<h5 id="3-void-acquireUniterruptibly"><a href="#3-void-acquireUniterruptibly" class="headerlink" title="3. void acquireUniterruptibly()"></a>3. void acquireUniterruptibly()</h5><p>该方法与acquire()方法类似，不同在于该方法对中断不响应。</p>
+<h5 id="4-void-acquireUniterruptibly-int-permits"><a href="#4-void-acquireUniterruptibly-int-permits" class="headerlink" title="4. void acquireUniterruptibly(int permits)"></a>4. void acquireUniterruptibly(int permits)</h5><p>与acquire(int permits)方法不一样在于该方法对中断不响应。</p>
+<h5 id="5-void-release"><a href="#5-void-release" class="headerlink" title="5. void release()"></a>5. void release()</h5><p>该方法作用在于将当前的Semaphore对象的信号量值增加1，如果当前线程因为调用acquire()方法被阻塞而被放入AQS的阻塞队列，则会根据公平策略选择一个信号量个数能被满足的线程进行激活，激活的线程会尝试获取刚增加的信号量。</p>
+<h5 id="6-void-release-int-permits"><a href="#6-void-release-int-permits" class="headerlink" title="6. void release(int permits)"></a>6. void release(int permits)</h5><p>与方法release()不同的在于，前者每次调用会在信号量值原来的基础上增加permits，而后者每次增加1。</p>
+
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+
+  <p><span>本文标题:</span>Java并发编程之美</a></p>
+  <p><span>文章作者:</span>Bangjin-Hu</a></p>
+  <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
+  <p><span>最后更新:</span>2020年03月29日 - 10:37:16</p>
+  <p><span>原始链接:</span><a href="/undefined/Java 并发编程之美/" title="Java并发编程之美">http://bangjinhu.github.io/undefined/Java 并发编程之美/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/Java 并发编程之美/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.jpg" alt="Bangjin-Hu wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎扫码关注微信公众号，订阅我的微信公众号.</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持是我创作的动力.</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat-reward-img.jpg" alt="Bangjin-Hu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay-reward-img.jpg" alt="Bangjin-Hu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Bangjin-Hu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://bangjinhu.github.io/undefined/Java 并发编程之美/" title="Java并发编程之美">http://bangjinhu.github.io/undefined/Java 并发编程之美/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/并发编程/" rel="tag"><i class="fa fa-tag"></i> 并发编程</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/undefined/Java 序列化与反序列化/" rel="next" title="Redis - Java集成">
+                <i class="fa fa-chevron-left"></i> Redis - Java集成
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/undefined/Java 字符串与文本IO/" rel="prev" title="IO">
+                IO <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/site.jpg"
+                alt="Bangjin-Hu" />
+            
+              <p class="site-author-name" itemprop="name">Bangjin-Hu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/BangjinHu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:2315378346@qq.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/Aaron_P_L" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-heart-o"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
+                      
+                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://iProgramering.github.io" target="_blank" title="iProgramer_ing">
+                      
+                        <i class="fa fa-fw fa-user"></i>iProgramer_ing</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          <div id="music163player">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src="//music.163.com/outchain/player?type=2&id=38358214&auto=0&height=66
+
+">
+    </iframe>
+</div>
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java并发编程之美"><span class="nav-text">Java并发编程之美</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第1章-基础"><span class="nav-text">第1章 基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第2章-基础扩展"><span class="nav-text">第2章 基础扩展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第3章-Java并发包ThreadLocalRandom类原理剖析"><span class="nav-text">第3章 Java并发包ThreadLocalRandom类原理剖析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-Random类的局限性"><span class="nav-text">3.1 Random类的局限性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-ThreadLocalRandom"><span class="nav-text">3.2 ThreadLocalRandom</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-源码分析"><span class="nav-text">3.3 源码分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-总结"><span class="nav-text">3.4 总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第4章-Java-并发包中原子操作类原理剖析"><span class="nav-text">第4章 Java 并发包中原子操作类原理剖析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-原子变量操作类"><span class="nav-text">4.1 原子变量操作类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-LongAdder"><span class="nav-text">4.2 LongAdder</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-LongAccumulator类"><span class="nav-text">4.3 LongAccumulator类</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第5章-Java并发包中并发List源码剖析"><span class="nav-text">第5章 Java并发包中并发List源码剖析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-总结"><span class="nav-text">5.3 总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第6章-Java并发包中锁原理剖析"><span class="nav-text">第6章 Java并发包中锁原理剖析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1-LockSupport工具类"><span class="nav-text">6.1 LockSupport工具类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-void-park-方法"><span class="nav-text">1. void park()方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-void-unpark-Thread-thread-方法"><span class="nav-text">2. void unpark(Thread thread)方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-void-parkNanos-long-nanos-方法"><span class="nav-text">3. void parkNanos(long nanos)方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-2-抽象同步队列AQS"><span class="nav-text">6.2 抽象同步队列AQS</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-AQS概述"><span class="nav-text">1. AQS概述</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-3-独占锁-ReentrantLock-原理"><span class="nav-text">6.3 独占锁 ReentrantLock 原理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-类图结构"><span class="nav-text">1. 类图结构</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-4-读写锁-ReentrantReadWriteLock-的原理"><span class="nav-text">6.4 读写锁 ReentrantReadWriteLock 的原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-5-StampedLock"><span class="nav-text">6.5 StampedLock</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第7章-并发队列原理剖析"><span class="nav-text">第7章 并发队列原理剖析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#7-1-ConcurrentLinkedQueue-原理探究"><span class="nav-text">7.1 ConcurrentLinkedQueue 原理探究</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-2-LinkedBlockingQueue-原理探究"><span class="nav-text">7.2 LinkedBlockingQueue 原理探究</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-offer"><span class="nav-text">1. offer()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-put"><span class="nav-text">2. put()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-poll"><span class="nav-text">3. poll()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-peek"><span class="nav-text">4. peek()</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第8章-Java并发包线程池ThreadPoolExecutor原理探究"><span class="nav-text">第8章 Java并发包线程池ThreadPoolExecutor原理探究</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#8-3-源码分析"><span class="nav-text">8.3 源码分析</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-public-void-execute-Runnable-command"><span class="nav-text">1. public void execute(Runnable command)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第9章-Java并发包-ScheduledThreadPoolExecutor-原理"><span class="nav-text">第9章 Java并发包 ScheduledThreadPoolExecutor 原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#9-2-类图介绍"><span class="nav-text">9.2 类图介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-3-原理剖析"><span class="nav-text">9.3 原理剖析</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-schedule"><span class="nav-text">1. schedule</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-scheduleWithFixedDelay"><span class="nav-text">2. scheduleWithFixedDelay</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-总结"><span class="nav-text">3. 总结</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-scheduleAtFixedRate"><span class="nav-text">4. scheduleAtFixedRate</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-总结"><span class="nav-text">5. 总结</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-4-总结"><span class="nav-text">9.4 总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第10章-Java并发包中线程同步器原理剖析"><span class="nav-text">第10章 Java并发包中线程同步器原理剖析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#10-1-CountDownLatch原理"><span class="nav-text">10.1 CountDownLatch原理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-void-await"><span class="nav-text">1. void await()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-boolean-await-long-timeout-TimeUnit-unit"><span class="nav-text">2. boolean await(long timeout, TimeUnit unit)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-void-countDown"><span class="nav-text">3. void countDown()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-long-getCount"><span class="nav-text">4. long getCount()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#总结"><span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-2-回环屏障-CyclicBarrier-原理"><span class="nav-text">10.2 回环屏障 CyclicBarrier 原理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-int-await"><span class="nav-text">1. int await()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-boolean-await-long-timeout-TimeUnit-unit-1"><span class="nav-text">2. boolean await(long timeout, TimeUnit unit)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-int-dowait-boolean-timed-long-nanos"><span class="nav-text">3. int dowait(boolean timed, long nanos)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-3-信号量-Semaphore-原理"><span class="nav-text">10.3 信号量 Semaphore 原理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-void-acquire"><span class="nav-text">1. void acquire()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-void-acquire-int-permits"><span class="nav-text">2. void acquire(int permits)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-void-acquireUniterruptibly"><span class="nav-text">3. void acquireUniterruptibly()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-void-acquireUniterruptibly-int-permits"><span class="nav-text">4. void acquireUniterruptibly(int permits)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-void-release"><span class="nav-text">5. void release()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-void-release-int-permits"><span class="nav-text">6. void release(int permits)</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bangjin-Hu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">465.0k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/lib/clipboard/clipboard.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+</body>
+</html>

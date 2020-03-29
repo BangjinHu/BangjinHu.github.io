@@ -1,0 +1,1878 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/site.jpg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="AOP," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="BangjinHu's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. 第14章 ViewResolverViewResolver主要的作用是根据视图名和Locale解析出视图，解析过程主要做两件事：解析出使用的模板和视图的类型。SpringMVC中的ViewResolver主要分为四大类：1.AbstractCachingViewResolver | 2.BeanNameViewResolver | 3.Content">
+<meta name="keywords" content="AOP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AOP">
+<meta property="og:url" content="http://bangjinhu.github.io/undefined/第14章 ViewResolver/index.html">
+<meta property="og:site_name" content="BangjinHu&#39;s Blog">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. 第14章 ViewResolverViewResolver主要的作用是根据视图名和Locale解析出视图，解析过程主要做两件事：解析出使用的模板和视图的类型。SpringMVC中的ViewResolver主要分为四大类：1.AbstractCachingViewResolver | 2.BeanNameViewResolver | 3.Content">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-03-29T01:53:52.614Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AOP">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 第14章 ViewResolverViewResolver主要的作用是根据视图名和Locale解析出视图，解析过程主要做两件事：解析出使用的模板和视图的类型。SpringMVC中的ViewResolver主要分为四大类：1.AbstractCachingViewResolver | 2.BeanNameViewResolver | 3.Content">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://bangjinhu.github.io/undefined/第14章 ViewResolver/"/>
+
+
+
+
+
+  <title>AOP | BangjinHu's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    
+    <a href="https://github.com/BangjinHu"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">BangjinHu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">让优秀成为习惯，让知识成为信仰</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            本站搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第14章 ViewResolver/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">AOP</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T09:53:52+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AOP/" itemprop="url" rel="index">
+                    <span itemprop="name">AOP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,482
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  15
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h1 id="第14章-ViewResolver"><a href="#第14章-ViewResolver" class="headerlink" title="第14章 ViewResolver"></a>第14章 ViewResolver</h1><p>ViewResolver主要的作用是根据视图名和Locale解析出视图，解析过程主要做两件事：解析出使用的模板和视图的类型。SpringMVC中的ViewResolver主要分为四大类：1.AbstractCachingViewResolver | 2.BeanNameViewResolver | 3.ContentNegotiatingViewResolver | 4.ViewResolverComposite 。其中在后面的三个只有一个实现类。</p>
+<pre><code>1.BeanNameViewResolver：通过beanName从SpringMVC容器中查找。
+2.ViewResolverComposite：该类封装着多个ViewResolver的容器，解析视图时遍历封装着的ViewResolver具体解析。在ViewResolverComposite遍历成员解析视图的同时还给成员初始化。其中包括对实现了ApplicationContextAware接口的ViewResolver设置ApplicationContext、是给实现了ServletContextAware接口的ViewResolver设置ServletContext以及对实现了InitializingBean接口的ViewResolver调用afterPropertiesSet方法。
+
+    public class ViewResolverComposite implements ViewResolver, Ordered, InitializingBean, ApplicationContextAware, ServletContextAware {
+        private final List&lt;ViewResolver&gt; viewResolvers = new ArrayList();
+        private int order = 2147483647;
+
+        public ViewResolverComposite() {
+        }
+
+        public void setViewResolvers(List&lt;ViewResolver&gt; viewResolvers) {
+            this.viewResolvers.clear();
+            if (!CollectionUtils.isEmpty(viewResolvers)) {
+                this.viewResolvers.addAll(viewResolvers);
+            }
+
+        }
+
+        public List&lt;ViewResolver&gt; getViewResolvers() {
+            return Collections.unmodifiableList(this.viewResolvers);
+        }
+
+        public void setOrder(int order) {
+            this.order = order;
+        }
+
+        public int getOrder() {
+            return this.order;
+        }
+
+        public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+            Iterator var2 = this.viewResolvers.iterator();
+
+            while(var2.hasNext()) {
+                ViewResolver viewResolver = (ViewResolver)var2.next();
+                if (viewResolver instanceof ApplicationContextAware) {
+                    ((ApplicationContextAware)viewResolver).setApplicationContext(applicationContext);
+                }
+            }
+
+        }
+
+        public void setServletContext(ServletContext servletContext) {
+            Iterator var2 = this.viewResolvers.iterator();
+
+            while(var2.hasNext()) {
+                ViewResolver viewResolver = (ViewResolver)var2.next();
+                if (viewResolver instanceof ServletContextAware) {
+                    ((ServletContextAware)viewResolver).setServletContext(servletContext);
+                }
+            }
+
+        }
+
+        public void afterPropertiesSet() throws Exception {
+            Iterator var1 = this.viewResolvers.iterator();
+
+            while(var1.hasNext()) {
+                ViewResolver viewResolver = (ViewResolver)var1.next();
+                if (viewResolver instanceof InitializingBean) {
+                    ((InitializingBean)viewResolver).afterPropertiesSet();
+                }
+            }
+
+        }
+
+        //主要是这个方法用来解析View的
+        @Nullable
+        public View resolveViewName(String viewName, Locale locale) throws Exception {
+            Iterator var3 = this.viewResolvers.iterator();
+
+            View view;
+            do {
+                if (!var3.hasNext()) {
+                    return null;
+                }
+
+                ViewResolver viewResolver = (ViewResolver)var3.next();
+                view = viewResolver.resolveViewName(viewName, locale);
+            } while(view == null);
+
+            return view;
+        }
+    }
+</code></pre><blockquote>
+<p>总结：这里它真正的解析过程就是最后一个方法 resolveViewName()。其它方法都是给所包含的ViewResolver做初始化。</p>
+</blockquote>
+<h2 id="14-1-ContentNegotiatingViewResolver"><a href="#14-1-ContentNegotiatingViewResolver" class="headerlink" title="14.1 ContentNegotiatingViewResolver"></a>14.1 ContentNegotiatingViewResolver</h2><p>该解析器的作用是在别的解析器解析的结果上增加了对MediaType(Content-Type 媒体类型)和后缀支持。对视图的解析不是其本身完成的，而是通过封装的ViewResolver来进行的。</p>
+<blockquote>
+<p>整个过程是：1.首先遍历所封装的ViewResolver具体视图，这里可能会解析出多个视图。2.然后使用request获取MediaType，可能也是多个结果。3.最后将这两个结果进行匹配查找出最优的视图。</p>
+</blockquote>
+<blockquote>
+<p>属性ViewResolver的两种初始化方式：1.手动设置，不在Spring容器中，则会对它初始化。2.如果没有设置则自动获取Spring容器中除它自己外的所有ViewResolver并设置到ViewResolver中。</p>
+</blockquote>
+<h4 id="1-initServletContext"><a href="#1-initServletContext" class="headerlink" title="1.initServletContext"></a>1.initServletContext</h4><pre><code> protected void initServletContext(ServletContext servletContext) {
+    //获取容器中所有的ViewResolver类型的bean，是整个spring容器，而不仅仅是springMVC获取的
+    Collection&lt;ViewResolver&gt; matchingBeans = BeanFactoryUtils.beansOfTypeIncludingAncestors(this.obtainApplicationContext(), ViewResolver.class).values();
+    ViewResolver viewResolver;
+
+    //如果没有手动注册则将容器中找到的ViewResolver设置给ViewResolvers
+    if (this.viewResolvers == null) {
+        this.viewResolvers = new ArrayList(matchingBeans.size());
+        Iterator var3 = matchingBeans.iterator();
+
+        while(var3.hasNext()) {
+            viewResolver = (ViewResolver)var3.next();
+            if (this != viewResolver) {
+                this.viewResolvers.add(viewResolver);
+            }
+        }
+    } else {
+         //如果是手动注册，但是容器中不存在，则进行初始化
+        for(int i = 0; i &lt; this.viewResolvers.size(); ++i) {
+            viewResolver = (ViewResolver)this.viewResolvers.get(i);
+            if (!matchingBeans.contains(viewResolver)) {
+                String name = viewResolver.getClass().getName() + i;
+                this.obtainApplicationContext().getAutowireCapableBeanFactory().initializeBean(viewResolver, name);
+            }
+        }
+    }
+
+    if (this.viewResolvers.isEmpty()) {
+        this.logger.warn(&quot;Did not find any ViewResolvers to delegate to; please configure them using the &apos;viewResolvers&apos; property on the ContentNegotiatingViewResolver&quot;);
+    }
+    //按照Order属性进行排序
+    AnnotationAwareOrderComparator.sort(this.viewResolvers);
+    this.cnmFactoryBean.setServletContext(servletContext);
+}
+</code></pre><h4 id="2-resolveViewName-解析视图的方法"><a href="#2-resolveViewName-解析视图的方法" class="headerlink" title="2.resolveViewName 解析视图的方法"></a>2.resolveViewName 解析视图的方法</h4><pre><code>@Nullable
+public View resolveViewName(String viewName, Locale locale) throws Exception {
+    //使用RequestContextHolder获取RequestAttribute，进而获取request
+    RequestAttributes attrs = RequestContextHolder.getRequestAttributes();
+    Assert.state(attrs instanceof ServletRequestAttributes, &quot;No current ServletRequestAttributes&quot;);
+    //通过request获取MediaType,用作需要满足的条件
+    List&lt;MediaType&gt; requestedMediaTypes = this.getMediaTypes(((ServletRequestAttributes)attrs).getRequest());
+    if (requestedMediaTypes != null) {
+        //获取所有的候选视图，内部通过遍历封装的viewResolver来解析
+        List&lt;View&gt; candidateViews = this.getCandidateViews(viewName, locale, requestedMediaTypes);
+        //从多个候选视图中选出最好的一个
+        View bestView = this.getBestView(candidateViews, requestedMediaTypes, attrs);
+        if (bestView != null) {
+            return bestView;
+        }
+    }
+
+    if (this.useNotAcceptableStatusCode) {
+        if (this.logger.isDebugEnabled()) {
+            this.logger.debug(&quot;No acceptable view found; returning 406 (Not Acceptable) status code&quot;);
+        }
+
+        return NOT_ACCEPTABLE_VIEW;
+    } else {
+        this.logger.debug(&quot;No acceptable view found; returning null&quot;);
+        return null;
+    }
+}
+</code></pre><blockquote>
+<p>总结：这里整个过程是：1.首先使用request获取MediaType作为需要满足的条件。2.然后使用viewResolver解析出多个候选视图。3.最后将两者进行匹配找出最优视图。</p>
+</blockquote>
+<h4 id="3-getCandidateView-获取候选视图"><a href="#3-getCandidateView-获取候选视图" class="headerlink" title="3.getCandidateView() 获取候选视图"></a>3.getCandidateView() 获取候选视图</h4><blockquote>
+<p>总结：获取候选视图逻辑：1.遍历viewResolver进行视图解析，同时将所有解析出的结果添加到候选视图。2.然后判断有没有设置默认视图，如果有责将其添加到候选视图。同时这里不仅使用逻辑视图进行解析，而且还使用了通过遍历requestedMediaTypes获取到所对应的后缀，然后添加到逻辑视图后面作为新的视图名进行解析。</p>
+</blockquote>
+<h4 id="4-getBestView-获取最优视图"><a href="#4-getBestView-获取最优视图" class="headerlink" title="4.getBestView() 获取最优视图"></a>4.getBestView() 获取最优视图</h4><pre><code>private View getBestView(List&lt;View&gt; candidateViews, List&lt;MediaType&gt; requestedMediaTypes, RequestAttributes attrs) {
+    Iterator var4 = candidateViews.iterator();
+    //判断候选视图中有没有redirect视图，如果有直接返回
+    while(var4.hasNext()) {
+        View candidateView = (View)var4.next();
+        if (candidateView instanceof SmartView) {
+            SmartView smartView = (SmartView)candidateView;
+            if (smartView.isRedirectView()) {
+                if (this.logger.isDebugEnabled()) {
+                    this.logger.debug(&quot;Returning redirect view [&quot; + candidateView + &quot;]&quot;);
+                }
+
+                return candidateView;
+            }
+        }
+    }
+
+    var4 = requestedMediaTypes.iterator();
+
+    while(var4.hasNext()) {
+        MediaType mediaType = (MediaType)var4.next();
+        Iterator var10 = candidateViews.iterator();
+
+        while(var10.hasNext()) {
+            View candidateView = (View)var10.next();
+            if (StringUtils.hasText(candidateView.getContentType())) {
+                //根据候选视图获取对应的MediaType
+                MediaType candidateContentType = MediaType.parseMediaType(candidateView.getContentType());
+                //判断当前MediaType是否支持从候选视图获取对应的MediaType,如text/*可以支持test/html,text/css,text/xml等所有的text类型
+                if (mediaType.isCompatibleWith(candidateContentType)) {
+                    if (this.logger.isDebugEnabled()) {
+                        this.logger.debug(&quot;Returning [&quot; + candidateView + &quot;] based on requested media type &apos;&quot; + mediaType + &quot;&apos;&quot;);
+                    }
+
+                    attrs.setAttribute(View.SELECTED_CONTENT_TYPE, mediaType, 0);
+                    return candidateView;
+                }
+            }
+        }
+    }
+
+    return null;
+}
+</code></pre><blockquote>
+<p>总结：1.首先判断候选视图中有没有redirect视图，如果有则直接返回，否则同时遍历从request中获取的requestMediaTypes和解析出的候选逻辑视图candidateViews。2.然后根据候选视图获取对应的MediaType，同时使用当前的requestedMediaType对其进行判断，如果支持则将所有的requestedMediaType添加到request的Attribute中，以便在视图渲染过程中使用，并将当前视图返回。</p>
+</blockquote>
+<h2 id="14-2-AbstractCachingViewResolver-系列"><a href="#14-2-AbstractCachingViewResolver-系列" class="headerlink" title="14.2 AbstractCachingViewResolver 系列"></a>14.2 AbstractCachingViewResolver 系列</h2><h3 id="14-2-1-AbstractCachingViewResolver解析视图"><a href="#14-2-1-AbstractCachingViewResolver解析视图" class="headerlink" title="14.2.1 AbstractCachingViewResolver解析视图"></a>14.2.1 AbstractCachingViewResolver解析视图</h3><p>该解析器提供统一的缓存功能，当视图被解析过一次就缓存起来，直到缓存被删除前视图的解析都会自动从缓存中获取。它的直接继承有三个类：</p>
+<pre><code>1.ResourceBundleViewResolver：通过使用properties属性配置文件解析视图。
+
+2.XmlViewResolver：通过使用xml属性配置文件解析视图。
+
+3.UrlBasedViewResolver：所有直接将逻辑视图作为url查找模板文件的ViewResolver的基类，这个类设置了统一的查找模板的规则，它的子类只需要确定渲染方式就可以确定视图类型，它的每一个子类都对应一种视图类型。
+</code></pre><blockquote>
+<p>提示：前两种解析器的原理：1.首先根据Locale将相应的配置文件初始化到BeanFactory。2.然后直接将逻辑视图作为beanName到factory里查找。两者的loadView程序一样。</p>
+</blockquote>
+<pre><code>protected View loadView(String viewName, Locale locale) throws BeansException {
+    BeanFactory factory = initFactory();
+    try{
+        return factory.getBean(viewName, View.class);
+    }catch(NoSuchBeanDefinitionException ex){
+        return null;
+    }
+}
+</code></pre><h4 id="1-AbstractCachingViewResolver解析视图过程"><a href="#1-AbstractCachingViewResolver解析视图过程" class="headerlink" title="1.AbstractCachingViewResolver解析视图过程"></a>1.AbstractCachingViewResolver解析视图过程</h4><pre><code>public View resolveViewName(String viewName, Locale locale) throws Exception {
+    //是否有缓存
+    if (!this.isCache()) {
+        //实际创建视图
+        return this.createView(viewName, locale);
+    } else {
+        Object cacheKey = this.getCacheKey(viewName, locale);
+        //这里是通过concurrentHashMap的容器中获取的缓存
+        View view = (View)this.viewAccessCache.get(cacheKey);
+        if (view == null) {
+            Map var5 = this.viewCreationCache;
+            synchronized(this.viewCreationCache) {
+                view = (View)this.viewCreationCache.get(cacheKey);
+                if (view == null) {
+                    //创建视图
+                    view = this.createView(viewName, locale);
+                    if (view == null &amp;&amp; this.cacheUnresolved) {
+                        view = UNRESOLVED_VIEW;
+                    }
+
+                    if (view != null) {
+                        //这里同时在创建视图后存入缓存中，这里放到两个容器中了
+                        this.viewAccessCache.put(cacheKey, view);
+                        this.viewCreationCache.put(cacheKey, view);
+                        if (this.logger.isTraceEnabled()) {
+                            this.logger.trace(&quot;Cached view [&quot; + cacheKey + &quot;]&quot;);
+                        }
+                    }
+                }
+            }
+        }
+
+        return view != UNRESOLVED_VIEW ? view : null;
+    }
+}
+
+@Nullable
+protected View createView(String viewName, Locale locale) throws Exception {
+    return this.loadView(viewName, locale);
+}
+//这是一个模板方法由子类实现
+@Nullable
+protected abstract View loadView(String var1, Locale var2) throws Exception;
+</code></pre><blockquote>
+<p>总结：1.首先判断是否开启缓存功能，如果没有开启则直接调用createView()创建视图，否则检查是否已经存在缓存中。如果存在则直接获取返回，否则使用createView创建一个。2.然后保存到缓存中返回。</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>提示：在createView()方法内部直接调用了loadView()方法，loadView()方法是模板方法，留给子类实际创建视图，是子类解析视图的入口方法。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>注意：该AbstractCachingViewResolver中有一个cacheLimit参数，是用来设置最大缓存数，设置为0表不启用缓存。设置为正数表示最多可以缓存视图的数量。</p>
+</blockquote>
+<h3 id="14-2-2-UrlBasedViewResolver"><a href="#14-2-2-UrlBasedViewResolver" class="headerlink" title="14.2.2 UrlBasedViewResolver"></a>14.2.2 UrlBasedViewResolver</h3><p>在该解析器中重写了父类的 getCacheKey | createView | loadView三个方法。</p>
+<pre><code>1.getCacheKey()：该方法直接返回viewName 和原来父类的返回viewName+“_”+locale相比，子类覆盖而没有使用locale，说明这个UrlBasedViewResolver并没有使用Locale，只是用viewName。
+
+2.createView()：该方法首先检查是否可以解析传入的逻辑视图，如果不可以则返回null，然后让别的ViewResolver解析，接着分别检查是不是redirect或者forward视图，如果是则返回相应的视图，如果不是则交给父类的createView，父类中又调用loadView。
+
+    protected View createView(String viewName, Locale locale) throws Exception {
+        //检查是否支持此逻辑视图，可以配置支持的模板
+        if (!this.canHandle(viewName, locale)) {
+            return null;
+        } else {
+            String forwardUrl;
+            //检查是不是redirect视图
+            if (viewName.startsWith(&quot;redirect:&quot;)) {
+                forwardUrl = viewName.substring(&quot;redirect:&quot;.length());
+                RedirectView view = new RedirectView(forwardUrl, this.isRedirectContextRelative(), this.isRedirectHttp10Compatible());
+                String[] hosts = this.getRedirectHosts();
+                if (hosts != null) {
+                    view.setHosts(hosts);
+                }
+
+                return this.applyLifecycleMethods(viewName, view);
+            //检查是不是forward视图
+            } else if (viewName.startsWith(&quot;forward:&quot;)) {
+                forwardUrl = viewName.substring(&quot;forward:&quot;.length());
+                return new InternalResourceView(forwardUrl);
+            } else {
+                //如果都不是则调用父类的createView，也就会调用loadView()方法
+                return super.createView(viewName, locale);
+            }
+        }
+    }
+
+3.检查是否支持传入的逻辑视图和传入的逻辑视图是redirect和forward视图的功能。这里使用canHandle()方法检查，它通过配置的viewName属性检查，这里如果没有配置则可以解析所有逻辑视图，如果已经配置则按照配置的模式检查。
+
+    //canHandle()方法
+    protected boolean canHandle(String viewName, Locale locale) {
+        String[] viewNames = getViewNames();
+        return (viewNames == null || PatternMatchUtils.simpleMatch(viewNames, viewName));
+    }
+
+    //loadView()方法
+    protected View loadView(String viewName, Locale locale) throws Exception {
+        //1.创建view
+        AbstractUrlBasedView view = buildView(viewName);
+
+        //2.使用applyLifecycleMethods()方法对创建的view初始化
+        View result = applyLifecycleMethods(viewName, view);
+
+        //3.检查view对应的模板是否存在，如果存在则将初始化视图返回
+        return (View.checkResource(locale) ? result : null);
+    }
+
+    private View applyLifecycleMethods(String viewName, AbstractView view) {
+        return (View) getApplicationContext().getAutowireCapableBeanFactory().initializeBean(view, viewName);
+    }
+
+4.buildView()方法，它的作用是具体创建View。
+
+    protected AbstractUrlBasedView buildView(String viewName) throws Exception {
+        //这里viewClass可以在子类通过setViewClass()方法重新设置viewClass类型。
+        Class&lt;?&gt; viewClass = this.getViewClass();
+        Assert.state(viewClass != null, &quot;No view class&quot;);
+
+        AbstractUrlBasedView view = (AbstractUrlBasedView)BeanUtils.instantiateClass(viewClass);
+
+        //这里给viewName加上前缀和后缀，可以通过配置设置
+        view.setUrl(this.getPrefix() + viewName + this.getSuffix());
+
+        String contentType = this.getContentType();
+        if (contentType != null) {
+            //contentType不为空设置给view
+            view.setContentType(contentType);
+        }
+
+        view.setRequestContextAttribute(this.getRequestContextAttribute());
+        view.setAttributesMap(this.getAttributesMap());
+        Boolean exposePathVariables = this.getExposePathVariables();
+        if (exposePathVariables != null) {
+            //这个表示让view使用PathVariables,可以在ViewResolver中设置，PathVariable就是处理器中@PathVariables注释的参数
+            view.setExposePathVariables(exposePathVariables);
+        }
+
+        Boolean exposeContextBeansAsAttributes = this.getExposeContextBeansAsAttributes();
+        if (exposeContextBeansAsAttributes != null) {
+            //这个不为空的时候设置给view，表示让view使用容器中注册的bean，此参数可以在ViewResolver中配置
+            view.setExposeContextBeansAsAttributes(exposeContextBeansAsAttributes);
+        }
+
+        String[] exposedContextBeanNames = this.getExposedContextBeanNames();
+        if (exposedContextBeanNames != null) {
+            //这个不为空的时候设置给view，表示让view使用容器中注册的bean，此参数可以在ViewResolver中配置
+            view.setExposedContextBeanNames(exposedContextBeanNames);
+        }
+        return view;
+    }
+
+
+    public void setViewClass(@Nullable Class&lt;?&gt; viewClass) {
+        if (viewClass != null &amp;&amp; !this.requiredViewClass().isAssignableFrom(viewClass)) {
+            throw new IllegalArgumentException(&quot;Given view class [&quot; + viewClass.getName() + &quot;] is not of type [&quot; + this.requiredViewClass().getName() + &quot;]&quot;);
+        } else {
+            this.viewClass = viewClass;
+        }
+    }
+
+    @Nullable
+    protected Class&lt;?&gt; getViewClass() {
+        return this.viewClass;
+    }
+
+    protected Class&lt;?&gt; requiredViewClass() {
+        return AbstractUrlBasedView.class;
+    }
+</code></pre><blockquote>
+<p>总结：这里我们知道UrlBasedViewResolver的子类主要的三件事情：1.通过重写 requiredViewClass()方法修改必须符合的视图类型的值。2.使用setViewClass()方法设置所用的视图类型。3.给创建出来的视图设置一些属性。</p>
+</blockquote>
+<h3 id="14-2-3-InternalResourceViewResolver和FreeMarkerViewResolver"><a href="#14-2-3-InternalResourceViewResolver和FreeMarkerViewResolver" class="headerlink" title="14.2.3 InternalResourceViewResolver和FreeMarkerViewResolver"></a>14.2.3 InternalResourceViewResolver和FreeMarkerViewResolver</h3><p>InternalResourceViewResolver和FreeMarkerViewResolver两个解析器，前面的解析器是用来解析JSP的，后面的解析器是用来解析freemarker视图的。</p>
+<h4 id="1-InternalResourceViewResolver"><a href="#1-InternalResourceViewResolver" class="headerlink" title="1.InternalResourceViewResolver"></a>1.InternalResourceViewResolver</h4><pre><code>public class InternalResourceViewResolver extends UrlBasedViewResolver {
+    private static final boolean jstlPresent = ClassUtils.isPresent(&quot;javax.servlet.jsp.jstl.core.Config&quot;, InternalResourceViewResolver.class.getClassLoader());
+    @Nullable
+    private Boolean alwaysInclude;
+    //这里如果类型是jstlPresent，viewClass会使用JstlView.class
+    public InternalResourceViewResolver() {
+        Class&lt;?&gt; viewClass = this.requiredViewClass();
+        if (InternalResourceView.class == viewClass &amp;&amp; jstlPresent) {
+            viewClass = JstlView.class;
+        }
+
+        this.setViewClass(viewClass);
+    }
+
+    public InternalResourceViewResolver(String prefix, String suffix) {
+        this();
+        this.setPrefix(prefix);
+        this.setSuffix(suffix);
+    }
+    //返回的类型是InternalResourceView  
+    protected Class&lt;?&gt; requiredViewClass() {
+        return InternalResourceView.class;
+    }
+
+    public void setAlwaysInclude(boolean alwaysInclude) {
+        this.alwaysInclude = alwaysInclude;
+    }
+    //新添加了alwaysInclude属性
+    protected AbstractUrlBasedView buildView(String viewName) throws Exception {
+        InternalResourceView view = (InternalResourceView)super.buildView(viewName);
+        //这个表示是否在使用forward的情况下也强制使用include，默认是false，可以在注册解析器时配置
+        if (this.alwaysInclude != null) {
+            view.setAlwaysInclude(this.alwaysInclude);
+        }
+        //用于阻止循环调用，也就是请求处理完成后又转发回了原来使用的处理器的情况
+        view.setPreventDispatchLoop(true);
+        return view;
+    }
+}
+</code></pre><h4 id="2-FreeMarkerViewResolver"><a href="#2-FreeMarkerViewResolver" class="headerlink" title="2.FreeMarkerViewResolver"></a>2.FreeMarkerViewResolver</h4><pre><code>public class AbstractTemplateViewResolver extends UrlBasedViewResolver {
+    private boolean exposeRequestAttributes = false;
+    private boolean allowRequestOverride = false;
+    private boolean exposeSessionAttributes = false;
+    private boolean allowSessionOverride = false;
+    private boolean exposeSpringMacroHelpers = true; 
+    //...setter和getter方法
+
+   protected AbstractUrlBasedView buildView(String viewName) throws Exception {
+        AbstractTemplateView view = (AbstractTemplateView)super.buildView(viewName);
+        //是否将requestAttributes暴露给view，默认为false
+        view.setExposeRequestAttributes(this.exposeRequestAttributes);
+        //当requestAttributes中存在Model中同名的参数，是否允许将Model中的值覆盖，默认false
+        view.setAllowRequestOverride(this.allowRequestOverride);
+        //是否将SessionAttribute暴露给view使用，默认是false
+        view.setExposeSessionAttributes(this.exposeSessionAttributes);
+        //当SessionAttributes中存在Model中同名的参数，是否使用requestAttributes的值将Model中的覆盖，默认false
+        view.setAllowSessionOverride(this.allowSessionOverride);
+        view.setExposeSpringMacroHelpers(this.exposeSpringMacroHelpers);
+        return view;
+    }
+}
+
+//在这里只需要覆盖requiredViewClass()方法就返回FreeMakerView类型
+public class FreeMarkerViewResolver extends AbstractTemplateViewResolver {
+    public FreeMarkerViewResolver() {
+        this.setViewClass(this.requiredViewClass());
+    }
+
+    public FreeMarkerViewResolver(String prefix, String suffix) {
+        this();
+        this.setPrefix(prefix);
+        this.setSuffix(suffix);
+    }
+
+    protected Class&lt;?&gt; requiredViewClass() {
+        return FreeMarkerView.class;
+    }
+}
+</code></pre><blockquote>
+<p>总结：大部分实现类都是继承AbstractCachingViewResolver，它提供了对解析结果进行缓存的统一解决方法，它的子类中ResourceBundlerViewResolver和XmlViewResolver分别通过properties和xml配置文件进行解析。UrlBasedViewResolver将viewName添加前后缀用作url，它的子类只需要提供视图类型就可以了。解析视图的核心工作是查找模板文件和视图类型，而查找的主要参数只有viewName，这里有三种解析思路：</p>
+</blockquote>
+<pre><code>1.使用viewName查找模板文件：对应URLBasedViewResolver
+2.使用viewName查找视图类型：对应BeanNameViewResolver
+3.使用viewName同时查找视图类型和模板文件：对应ResourceBundlerViewResolver和XmlViewResolver
+</code></pre>
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+
+  <p><span>本文标题:</span>AOP</a></p>
+  <p><span>文章作者:</span>Bangjin-Hu</a></p>
+  <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
+  <p><span>最后更新:</span>2020年03月29日 - 09:53:52</p>
+  <p><span>原始链接:</span><a href="/undefined/第14章 ViewResolver/" title="AOP">http://bangjinhu.github.io/undefined/第14章 ViewResolver/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/第14章 ViewResolver/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.jpg" alt="Bangjin-Hu wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎扫码关注微信公众号，订阅我的微信公众号.</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持是我创作的动力.</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat-reward-img.jpg" alt="Bangjin-Hu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay-reward-img.jpg" alt="Bangjin-Hu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Bangjin-Hu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://bangjinhu.github.io/undefined/第14章 ViewResolver/" title="AOP">http://bangjinhu.github.io/undefined/第14章 ViewResolver/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/AOP/" rel="tag"><i class="fa fa-tag"></i> AOP</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/undefined/第17章 MultipartResolver/" rel="next" title="AOP">
+                <i class="fa fa-chevron-left"></i> AOP
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/undefined/第15章 RequestToViewNameTranslator/" rel="prev" title="AOP">
+                AOP <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/site.jpg"
+                alt="Bangjin-Hu" />
+            
+              <p class="site-author-name" itemprop="name">Bangjin-Hu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/BangjinHu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:2315378346@qq.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/Aaron_P_L" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-heart-o"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
+                      
+                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://iProgramering.github.io" target="_blank" title="iProgramer_ing">
+                      
+                        <i class="fa fa-fw fa-user"></i>iProgramer_ing</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          <div id="music163player">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src="//music.163.com/outchain/player?type=2&id=38358214&auto=0&height=66
+
+">
+    </iframe>
+</div>
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第14章-ViewResolver"><span class="nav-text">第14章 ViewResolver</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#14-1-ContentNegotiatingViewResolver"><span class="nav-text">14.1 ContentNegotiatingViewResolver</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-initServletContext"><span class="nav-text">1.initServletContext</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-resolveViewName-解析视图的方法"><span class="nav-text">2.resolveViewName 解析视图的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-getCandidateView-获取候选视图"><span class="nav-text">3.getCandidateView() 获取候选视图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-getBestView-获取最优视图"><span class="nav-text">4.getBestView() 获取最优视图</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-2-AbstractCachingViewResolver-系列"><span class="nav-text">14.2 AbstractCachingViewResolver 系列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#14-2-1-AbstractCachingViewResolver解析视图"><span class="nav-text">14.2.1 AbstractCachingViewResolver解析视图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-AbstractCachingViewResolver解析视图过程"><span class="nav-text">1.AbstractCachingViewResolver解析视图过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-2-2-UrlBasedViewResolver"><span class="nav-text">14.2.2 UrlBasedViewResolver</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-2-3-InternalResourceViewResolver和FreeMarkerViewResolver"><span class="nav-text">14.2.3 InternalResourceViewResolver和FreeMarkerViewResolver</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-InternalResourceViewResolver"><span class="nav-text">1.InternalResourceViewResolver</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-FreeMarkerViewResolver"><span class="nav-text">2.FreeMarkerViewResolver</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bangjin-Hu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">465.0k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/lib/clipboard/clipboard.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+</body>
+</html>

@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/site.jpg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="AOP," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="BangjinHu's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. 第18章 LocaleResolverLocaleResolver的主要作用在于根据不同的用户区域展示不同的视图，通过设置系统的环境，根据运行环境使用不同的语言显示。用户的区域称为 Locale ，这一信息可以由前端直接获取。通过这一方式可以实现国际化的目的。如：针对美国用户提供一个视图，针对中国用户提供一个视图。而LocaleResolver的使用">
+<meta name="keywords" content="AOP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AOP">
+<meta property="og:url" content="http://bangjinhu.github.io/undefined/第18章 LocaleResolver/index.html">
+<meta property="og:site_name" content="BangjinHu&#39;s Blog">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. 第18章 LocaleResolverLocaleResolver的主要作用在于根据不同的用户区域展示不同的视图，通过设置系统的环境，根据运行环境使用不同的语言显示。用户的区域称为 Locale ，这一信息可以由前端直接获取。通过这一方式可以实现国际化的目的。如：针对美国用户提供一个视图，针对中国用户提供一个视图。而LocaleResolver的使用">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-03-29T01:54:18.857Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AOP">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 第18章 LocaleResolverLocaleResolver的主要作用在于根据不同的用户区域展示不同的视图，通过设置系统的环境，根据运行环境使用不同的语言显示。用户的区域称为 Locale ，这一信息可以由前端直接获取。通过这一方式可以实现国际化的目的。如：针对美国用户提供一个视图，针对中国用户提供一个视图。而LocaleResolver的使用">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://bangjinhu.github.io/undefined/第18章 LocaleResolver/"/>
+
+
+
+
+
+  <title>AOP | BangjinHu's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    
+    <a href="https://github.com/BangjinHu"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">BangjinHu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">让优秀成为习惯，让知识成为信仰</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            本站搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第18章 LocaleResolver/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">AOP</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T09:54:18+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AOP/" itemprop="url" rel="index">
+                    <span itemprop="name">AOP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,927
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h1 id="第18章-LocaleResolver"><a href="#第18章-LocaleResolver" class="headerlink" title="第18章 LocaleResolver"></a>第18章 LocaleResolver</h1><p>LocaleResolver的主要作用在于根据不同的用户区域展示不同的视图，通过设置系统的环境，根据运行环境使用不同的语言显示。用户的区域称为 Locale ，这一信息可以由前端直接获取。通过这一方式可以实现国际化的目的。如：针对美国用户提供一个视图，针对中国用户提供一个视图。而LocaleResolver的使用是实现对用户不同视图的切换。LocaleResolver的作用是使用request解析出Locale。在LocaleResolver的实现类中，AcceptHeaderLocaleResolver直接使用了Header里的acceptlanguage值，不能在程序里面修改。</p>
+<h4 id="1-Spring针对LocaleResoler提供几种实现方式"><a href="#1-Spring针对LocaleResoler提供几种实现方式" class="headerlink" title="1.Spring针对LocaleResoler提供几种实现方式"></a>1.Spring针对LocaleResoler提供几种实现方式</h4><pre><code>1.FixedLocaleResolver 在声明该resolver时，需要指定一个默认的Locale，在进行Locale获取时，始终返回该Locale，并且调用其setLocale()方法也无法改变其Locale。
+
+2.SessionLocaleResolver 其会将Locale信息存储在session中，如果用户想要修改Locale信息，可以通过修改session中对应属性的值即可。
+
+3.CookieLocaleResolver 其读取Locale的方式是在session中通过Cookie来获取其指定的Locale的，如果修改了Cookie的值，页面视图也会同步切换。
+
+4.AcceptHeaderLocaleResolver 其会通过用户请求中名称为Accept-Language的header来获取Locale信息，如果想要修改展示的视图，只需要修改该header信息即可。
+</code></pre><blockquote>
+<p>提示：在Spring4.x之后，LocaleResolver添加子接口 LocaleContextResolver 其中增加了获取和设置LocaleContext 的能力，并添加了抽象类 AbstractLocaleContextResolver，抽象类添加了对TimeZone(时区)的支持。</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>注意：Spring虽然提供几个不同的获取Locale的方式，但是这些方式除 FixedLocaleResolver 以外，其它也都支持在浏览器地址栏添加Locale参数来切换Locale。而对于Locale的切换，Spring通过拦截器来实现，其提供一个LocaleChangeInterceptor，在该拦截器中的preHandler()方法中，Spring会读取浏览器参数中的locale参数，然后调用LocaleResolver.setLocale()方法实现对Locale的切换。</p>
+</blockquote>
+</blockquote>
+<h3 id="2-LocaleResolver接口声明"><a href="#2-LocaleResolver接口声明" class="headerlink" title="2.LocaleResolver接口声明"></a>2.LocaleResolver接口声明</h3><pre><code>public interface LocaleResolver {
+    // 根据request对象根据指定的方式获取一个Locale，如果没有获取到，则使用用户指定的默认的Locale
+    Locale resolveLocale(HttpServletRequest request);
+
+    // 用于实现Locale的切换。比如SessionLocaleResolver获取Locale的方式是从session中读取，但如果
+    // 用户想要切换其展示的样式(由英文切换为中文)，那么这里的setLocale()方法就提供了这样一种可能
+    void setLocale(HttpServletRequest request, @Nullable HttpServletResponse response, 
+        @Nullable Locale locale);
+}
+</code></pre><h4 id="2-1-重写-resolveLocale-HttpServletRequest-request-方法"><a href="#2-1-重写-resolveLocale-HttpServletRequest-request-方法" class="headerlink" title="2.1 重写 resolveLocale(HttpServletRequest request)方法"></a>2.1 重写 resolveLocale(HttpServletRequest request)方法</h4><p>这里使用默认的解析器 AcceptHeaderLocaleResolver 继承 LocaleResolver 重写resolverLocale(HttpServletRequest request)方法，通过检查客户端发送请求中的Accept-Language头来确定客户端Locale（地区信息）。</p>
+<pre><code>/**
+ * 从当前的request中解析Locale
+ */
+@Override
+public Locale resolveLocale(HttpServletRequest request) {
+    // 获取默认设置，可在配置AcceptHeaderLocaleResolver Bean中设置defaultLocale属性
+    Locale defaultLocale = getDefaultLocale();
+    // 设置了默认值并且请求中没有Accept-Language头信息时，使用默认设置
+    if (defaultLocale != null &amp;&amp; request.getHeader(&quot;Accept-Language&quot;) == null) {
+        return defaultLocale;
+    }
+    // 从当前请求中获取Locale
+    Locale requestLocale = request.getLocale();
+    // 从配置中获取支持的Locale集合，可在AcceptHeaderLocaleResolver Bean中设置supportedLocales属性
+    List&lt;Locale&gt; supportedLocales = getSupportedLocales();
+    // 未设置supportedLocales或者supportedLocales中包括请求Locale，则使用请求Locale
+    if (supportedLocales.isEmpty() || supportedLocales.contains(requestLocale)) {
+        return requestLocale;
+    }
+    // 找到设置的Locale集合中是否有请求的Locale
+    Locale supportedLocale = findSupportedLocale(request, supportedLocales);
+    if (supportedLocale != null) {
+        return supportedLocale;
+    }
+    return (defaultLocale != null ? defaultLocale : requestLocale);
+}
+
+/**
+ * 不支持程序设置Locale
+ */
+@Override
+public void setLocale(HttpServletRequest request, @Nullable HttpServletResponse response, @Nullable Locale locale) {
+    throw new UnsupportedOperationException(
+            &quot;Cannot change HTTP accept header - use a different locale resolution strategy&quot;);
+}
+</code></pre><h4 id="2-2-在SpringMVC配置文件中配置资源加载以及AcceptHeaderLocaleResolver-bean"><a href="#2-2-在SpringMVC配置文件中配置资源加载以及AcceptHeaderLocaleResolver-bean" class="headerlink" title="2.2 在SpringMVC配置文件中配置资源加载以及AcceptHeaderLocaleResolver bean"></a>2.2 在SpringMVC配置文件中配置资源加载以及AcceptHeaderLocaleResolver bean</h4><pre><code>&lt;!-- 国际化资源文件 --&gt;
+&lt;bean id=&quot;messageSource&quot; class=&quot;org.springframework.context.support.ReloadableResourceBundleMessageSource&quot;&gt;
+    &lt;!-- 如果资源文件放在classpath下，basename的value必须有classpath:前缀，否则报错：No message found under code... --&gt;
+    &lt;property name=&quot;basename&quot; value=&quot;classpath:i18n/messages&quot; /&gt;
+    &lt;!-- 如果在国际化资源文件中找不到对应代码的信息，就用这个代码作为名称返回  --&gt;
+    &lt;property name=&quot;useCodeAsDefaultMessage&quot; value=&quot;true&quot; /&gt;
+    &lt;!--&lt;property name=&quot;defaultEncoding&quot; value=&quot;ISO-8859-1&quot;/&gt;--&gt;
+&lt;/bean&gt;
+&lt;!-- LocaleResolver解析器 --&gt;
+&lt;bean id=&quot;localeResolver&quot; class=&quot;org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver&quot;&gt;
+    &lt;property name=&quot;defaultLocale&quot; value=&quot;zh_CN&quot;/&gt;
+&lt;/bean&gt;
+</code></pre><h4 id="2-3-属性文件"><a href="#2-3-属性文件" class="headerlink" title="2.3 属性文件"></a>2.3 属性文件</h4><p><strong>2.3.1 messages_en.properties</strong><br></p>
+<pre><code>message.locale = en
+</code></pre><p><strong>2.3.2 messages_zh_CN.properties</strong><br></p>
+<pre><code>message.locale=zh_CN
+</code></pre><h4 id="2-4-Controller"><a href="#2-4-Controller" class="headerlink" title="2.4 Controller"></a>2.4 Controller</h4><pre><code>@GetMapping(value = &quot;/acceptHeaderLocaleResolver&quot; , produces = &quot;text/html;charset=UTF-8&quot;)
+@ResponseBody
+public String test(HttpServletRequest request) {
+    String clientLocale = &quot;&quot;;
+    Enumeration&lt;Locale&gt; enus =  request.getLocales();
+    while (enus.hasMoreElements()){
+        Locale locale = enus.nextElement();
+        clientLocale += locale + &quot;,&quot;;
+    }
+    RequestContext requestContext = new RequestContext(request);
+    String value = requestContext.getMessage(&quot;message.locale&quot;);
+    return &quot;客户端支持的Locale有：&quot;+clientLocale+&quot; &lt;/br&gt;当前使用的Locale是：&quot; + requestContext.getLocale() + &quot; &lt;/br&gt;使用的资源Locale文件是：&quot; + value ;
+}
+</code></pre><hr>
+<h4 id="3-CookieLocaleResolver解析器"><a href="#3-CookieLocaleResolver解析器" class="headerlink" title="3.CookieLocaleResolver解析器"></a>3.CookieLocaleResolver解析器</h4><p>CookieLocaleResolver解析器通过不同的Locale展示不同的视图。CookieLocaleResolver类的入口是：resolveLocaleContext(final HttpServletRequest request); SpringMVC接收到客户端请求之后会调用该方法。</p>
+<pre><code>@Override
+public LocaleContext resolveLocaleContext(final HttpServletRequest request) {
+    // 解析Cookie信息
+    parseLocaleCookieIfNecessary(request);
+    // 返回Locale和TimeZone
+    return new TimeZoneAwareLocaleContext() {
+        @Override
+        @Nullable
+        public Locale getLocale() {
+            return (Locale) request.getAttribute(LOCALE_REQUEST_ATTRIBUTE_NAME);
+        }
+        @Override
+        @Nullable
+        public TimeZone getTimeZone() {
+            return (TimeZone) request.getAttribute(TIME_ZONE_REQUEST_ATTRIBUTE_NAME);
+        }
+    };
+}
+
+private void parseLocaleCookieIfNecessary(HttpServletRequest request) {
+    // 第一次请求为null
+    if (request.getAttribute(LOCALE_REQUEST_ATTRIBUTE_NAME) == null) {
+        Locale locale = null; // 地区
+        TimeZone timeZone = null; // 时区
+
+        // 获取cookie的名称，取自Spring MVC配置，默认为：CookieLocaleResolver.DEFAULT_COOKIE_NAME
+        String cookieName = getCookieName();
+        if (cookieName != null) {
+            // 根据名称获取当前请求中的Cookie（第一次访问为null）
+            Cookie cookie = WebUtils.getCookie(request, cookieName);
+            if (cookie != null) {
+                // 以下主要是从客户端Cookie中解析出Locale
+                String value = cookie.getValue();
+                String localePart = value;
+                String timeZonePart = null;
+                int spaceIndex = localePart.indexOf(&apos; &apos;);
+                if (spaceIndex != -1) {
+                    localePart = value.substring(0, spaceIndex);
+                    timeZonePart = value.substring(spaceIndex + 1);
+                }
+                try {
+                    locale = (!&quot;-&quot;.equals(localePart) ? parseLocaleValue(localePart) : null);
+                    if (timeZonePart != null) {
+                        timeZone = StringUtils.parseTimeZoneString(timeZonePart);
+                    }
+                }
+                catch (IllegalArgumentException ex) {
+                    if (request.getAttribute(WebUtils.ERROR_EXCEPTION_ATTRIBUTE) != null) {
+                        // Error dispatch: ignore locale/timezone parse exceptions
+                        if (logger.isDebugEnabled()) {
+                            logger.debug(&quot;Ignoring invalid locale cookie &apos;&quot; + cookieName +
+                                    &quot;&apos; with value [&quot; + value + &quot;] due to error dispatch: &quot; + ex.getMessage());
+                        }
+                    }
+                    else {
+                        throw new IllegalStateException(&quot;Invalid locale cookie &apos;&quot; + cookieName +
+                                &quot;&apos; with value [&quot; + value + &quot;]: &quot; + ex.getMessage());
+                    }
+                }
+                if (logger.isDebugEnabled()) {
+                    logger.debug(&quot;Parsed cookie value [&quot; + cookie.getValue() + &quot;] into locale &apos;&quot; + locale +
+                            &quot;&apos;&quot; + (timeZone != null ? &quot; and time zone &apos;&quot; + timeZone.getID() + &quot;&apos;&quot; : &quot;&quot;));
+                }
+            }
+        }
+        // 把Locale设置到请求的Attribute区，客户端请求没有携带Cookie，取Spring MVC中配置的defaultLocale
+        request.setAttribute(LOCALE_REQUEST_ATTRIBUTE_NAME,
+                (locale != null ? locale : determineDefaultLocale(request)));
+        request.setAttribute(TIME_ZONE_REQUEST_ATTRIBUTE_NAME,
+                (timeZone != null ? timeZone : determineDefaultTimeZone(request)));
+    }
+}
+
+// 设置Locale
+@Override
+public void setLocale(HttpServletRequest request, @Nullable HttpServletResponse response, @Nullable Locale locale) {
+    setLocaleContext(request, response, (locale != null ? new SimpleLocaleContext(locale) : null));
+}
+
+// 主要是把Locale信息写回客户端
+@Override
+public void setLocaleContext(HttpServletRequest request, @Nullable HttpServletResponse response,
+        @Nullable LocaleContext localeContext) {
+
+    Assert.notNull(response, &quot;HttpServletResponse is required for CookieLocaleResolver&quot;);
+
+    Locale locale = null;
+    TimeZone timeZone = null;
+    if (localeContext != null) {
+        locale = localeContext.getLocale();
+        if (localeContext instanceof TimeZoneAwareLocaleContext) {
+            timeZone = ((TimeZoneAwareLocaleContext) localeContext).getTimeZone();
+        }
+        addCookie(response,
+                (locale != null ? toLocaleValue(locale) : &quot;-&quot;) + (timeZone != null ? &apos; &apos; + timeZone.getID() : &quot;&quot;));
+    }
+    else {
+        removeCookie(response);
+    }
+    request.setAttribute(LOCALE_REQUEST_ATTRIBUTE_NAME,
+            (locale != null ? locale : determineDefaultLocale(request)));
+    request.setAttribute(TIME_ZONE_REQUEST_ATTRIBUTE_NAME,
+            (timeZone != null ? timeZone : determineDefaultTimeZone(request)));
+}
+</code></pre><p><strong>3.1 配置xml文件</strong><br></p>
+<pre><code>&lt;context:component-scan base-package=&quot;mvc&quot;/&gt;
+&lt;mvc:annotation-driven/&gt;
+
+&lt;mvc:interceptors&gt;
+    &lt;!--添加拦截器，用于对Locale的切换--&gt;
+    &lt;bean class=&quot;org.springframework.web.servlet.i18n.LocaleChangeInterceptor&quot;/&gt;
+    &lt;bean class=&quot;mvc.interceptor.MyHandlerInterceptor&quot;/&gt;
+&lt;/mvc:interceptors&gt;
+
+&lt;!--指定ViewResolver是ResourceBundleViewResolver是因为其支持通过不同的Locale进行不同的视图切换--&gt;
+&lt;bean class=&quot;org.springframework.web.servlet.view.ResourceBundleViewResolver&quot;/&gt;
+
+&lt;!--指定LocaleResolver为CookieLocaleResolver--&gt;
+&lt;bean id=&quot;localeResolver&quot; class=&quot;org.springframework.web.servlet.i18n.CookieLocaleResolver&quot;&gt;
+    &lt;!--指定defaultlocal是zh_CN--&gt;
+    &lt;property name=&quot;defaultLocale&quot; value=&quot;zh_CN&quot;/&gt;
+&lt;/bean&gt;
+</code></pre><p><strong>3.2 声明接口</strong><br></p>
+<pre><code>@Controller
+@RequestMapping(&quot;/user&quot;)
+public class UserController {
+  @Autowired
+  private UserService userService;
+
+  @RequestMapping(value = &quot;/detail&quot;, method = RequestMethod.GET)
+  public ModelAndView detail(@RequestParam(&quot;id&quot;) long id, @ModelAttribute(&quot;message&quot;) String message, Locale locale) {
+    System.out.println(message);
+    ModelAndView view = new ModelAndView(&quot;user&quot;);
+    User user = userService.detail(id);
+    view.addObject(&quot;user&quot;, user);
+    view.addObject(&quot;locale&quot;, locale);
+    return view;
+  }
+}
+</code></pre><blockquote>
+<p>提示：这里返回的视图是：user 并将Locale信息返回给前端。这里获取Locale数据的方式就只需要简单的声明一个类型为Locale的参数。</p>
+</blockquote>
+<p><strong>3.3 视图的展示</strong><br><br>由于需要根据不同的Locale展示不同的视图，我们在上面的接口中没有发现这样的路由。在实际中，这个路由是根据ResourceBundleViewResolver类实现的，在使用该ViewResolver时，其会到class路径下查找名称为views的Resource Bundle，同时通过用户指定的Locale，唯一定位到某个 Resource Bundle。 然后在该Resource Bundle 中查找指定的视图信息。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>这里我们的LocaleResolver的bean名称必须是 localeResolver，并且需要指定的 ViewResolver 辅以支持，否则切换的视图可能无法工作。</p>
+
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+
+  <p><span>本文标题:</span>AOP</a></p>
+  <p><span>文章作者:</span>Bangjin-Hu</a></p>
+  <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
+  <p><span>最后更新:</span>2020年03月29日 - 09:54:18</p>
+  <p><span>原始链接:</span><a href="/undefined/第18章 LocaleResolver/" title="AOP">http://bangjinhu.github.io/undefined/第18章 LocaleResolver/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/第18章 LocaleResolver/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.jpg" alt="Bangjin-Hu wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎扫码关注微信公众号，订阅我的微信公众号.</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持是我创作的动力.</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat-reward-img.jpg" alt="Bangjin-Hu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay-reward-img.jpg" alt="Bangjin-Hu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Bangjin-Hu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://bangjinhu.github.io/undefined/第18章 LocaleResolver/" title="AOP">http://bangjinhu.github.io/undefined/第18章 LocaleResolver/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/AOP/" rel="tag"><i class="fa fa-tag"></i> AOP</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/undefined/第19章 ThemeResolver/" rel="next" title="AOP">
+                <i class="fa fa-chevron-left"></i> AOP
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/undefined/第16章 HandlerExceptionResolver/" rel="prev" title="AOP">
+                AOP <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/site.jpg"
+                alt="Bangjin-Hu" />
+            
+              <p class="site-author-name" itemprop="name">Bangjin-Hu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/BangjinHu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:2315378346@qq.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/Aaron_P_L" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-heart-o"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
+                      
+                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://iProgramering.github.io" target="_blank" title="iProgramer_ing">
+                      
+                        <i class="fa fa-fw fa-user"></i>iProgramer_ing</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          <div id="music163player">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src="//music.163.com/outchain/player?type=2&id=38358214&auto=0&height=66
+
+">
+    </iframe>
+</div>
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第18章-LocaleResolver"><span class="nav-text">第18章 LocaleResolver</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Spring针对LocaleResoler提供几种实现方式"><span class="nav-text">1.Spring针对LocaleResoler提供几种实现方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-LocaleResolver接口声明"><span class="nav-text">2.LocaleResolver接口声明</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-重写-resolveLocale-HttpServletRequest-request-方法"><span class="nav-text">2.1 重写 resolveLocale(HttpServletRequest request)方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-在SpringMVC配置文件中配置资源加载以及AcceptHeaderLocaleResolver-bean"><span class="nav-text">2.2 在SpringMVC配置文件中配置资源加载以及AcceptHeaderLocaleResolver bean</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-属性文件"><span class="nav-text">2.3 属性文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-Controller"><span class="nav-text">2.4 Controller</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-CookieLocaleResolver解析器"><span class="nav-text">3.CookieLocaleResolver解析器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-text">总结</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bangjin-Hu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">465.0k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/lib/clipboard/clipboard.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+</body>
+</html>

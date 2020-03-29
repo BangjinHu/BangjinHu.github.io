@@ -1,0 +1,2153 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/site.jpg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="IO," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="BangjinHu's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. 二进制I/OJava中处理输入输出，File对象封装文件或路径属性，不包含从/向文件读/写数据的方法。为了进行I/O操作，需要使用正确的Java I/O类创建对象。 1.File 类//检查指定路径下是否存在指定目录或者文件 File file = new File(&amp;quot;c:\\a.txt&amp;quot;);//在c:目录下创建一个file文件">
+<meta name="keywords" content="IO">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IO">
+<meta property="og:url" content="http://bangjinhu.github.io/undefined/Java 二进制IO/index.html">
+<meta property="og:site_name" content="BangjinHu&#39;s Blog">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. 二进制I/OJava中处理输入输出，File对象封装文件或路径属性，不包含从/向文件读/写数据的方法。为了进行I/O操作，需要使用正确的Java I/O类创建对象。 1.File 类//检查指定路径下是否存在指定目录或者文件 File file = new File(&amp;quot;c:\\a.txt&amp;quot;);//在c:目录下创建一个file文件">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-03-28T23:58:02.193Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="IO">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 二进制I/OJava中处理输入输出，File对象封装文件或路径属性，不包含从/向文件读/写数据的方法。为了进行I/O操作，需要使用正确的Java I/O类创建对象。 1.File 类//检查指定路径下是否存在指定目录或者文件 File file = new File(&amp;quot;c:\\a.txt&amp;quot;);//在c:目录下创建一个file文件">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://bangjinhu.github.io/undefined/Java 二进制IO/"/>
+
+
+
+
+
+  <title>IO | BangjinHu's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    
+    <a href="https://github.com/BangjinHu"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">BangjinHu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">让优秀成为习惯，让知识成为信仰</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            本站搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Java 二进制IO/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">IO</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-25T09:22:26+08:00">
+                2018-11-25
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T07:58:02+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/IO/" itemprop="url" rel="index">
+                    <span itemprop="name">IO</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4,592
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  21
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="二进制I-O"><a href="#二进制I-O" class="headerlink" title="二进制I/O"></a>二进制I/O</h2><p>Java中处理输入输出，File对象封装文件或路径属性，不包含从/向文件读/写数据的方法。为了进行I/O操作，需要使用正确的Java I/O类创建对象。</p>
+<h4 id="1-File-类"><a href="#1-File-类" class="headerlink" title="1.File 类"></a>1.File 类</h4><pre><code>//检查指定路径下是否存在指定目录或者文件
+File file = new File(&quot;c:\\a.txt&quot;);//在c:目录下创建一个file文件
+System.out.println(file.exists());//指定文件是否存在
+
+//File对象是否是目录
+System.out.println(file.isDirectory());
+
+//对象是否是文件
+System.out.println(file.isFile());
+</code></pre><blockquote>
+<p>注意：构建一个File实例不会在机器上创建一个文件，不管文件是否存在都可以创建任意文件名的File实例，调用File实例的exists()方法判断文件或目录是否存在。</p>
+</blockquote>
+<pre><code>//创建一个File类实例
+new File(String pathname);
+//通过制定路径创建一个新的File实例
+new File(String parent,String child);
+</code></pre><blockquote>
+<p>总结：I/O类可以分为文本I/O和二进制I/O，文本I/O将数据解释成字符序列，二进制I/O将数据解释成原始的二进制数值。Java自动完成对文本I/O的编码和解码。</p>
+</blockquote>
+<pre><code>File 类中常用的方法：
+    1.createNewFile()：在指定的位置创建一个文件，成功返回true，如果已经存在就不创建并返回false。
+    2.mkdir()：在指定位置创建目录，这只会创建最后一级目录，如果上级目录不存在就抛出异常。
+    3.mkdirs()：在指定位置创建目录，这会创建路径中所有不存在的目录。
+
+    exists() 文件或文件夹是否存在。
+    isFile() 是否是一个文件，如果不存在，则始终为false。
+    isDirectory() 是否是一个目录，如果不存在，则始终为false。
+    isHidden() 是否是一个隐藏的文件或是否是隐藏的目录。
+    isAbsolute() 测试此抽象路径名是否为绝对路径名。
+
+    getName() 获取文件或文件夹的名称，不包含上级路径。
+    getPath() 返回绝对路径，可以是相对路径，但是目录要指定
+    getAbsolutePath() 获取文件的绝对路径，与文件是否存在没关系
+    length() 获取文件的大小（字节数），如果文件不存在则返回0L，如果是文件夹也返回0L。
+    getParent() 返回此抽象路径名父目录的路径名字符串；如果此路径名没有指定父目录，则返回null。
+    lastModified() 获取最后一次被修改的时间。
+
+    文件夹相关：
+        staic File[] listRoots() 列出所有的根目录（Window中就是所有系统的盘符）
+        list() 返回目录下的文件或者目录名，包含隐藏文件。对于文件这样操作会返回null。
+        list(FilenameFilter filter)    返回指定当前目录中符合过滤条件的子文件或子目录。对于文件这样操作会返回null。
+        listFiles() 返回目录下的文件或者目录对象（File类实例），包含隐藏文件。对于文件这样操作会返回null。
+        listFiles(FilenameFilter filter) 返回指定当前目录中符合过滤条件的子文件或子目录。对于文件这样操作会返回null。
+</code></pre><p>案例：</p>
+<pre><code>//列出指定目录下所有包含的子文件与子目录
+public static void listAllFileAndDirs(String path){
+    //1.创建File对象，表示这个目录
+    File dir = new File(path);
+    //2.通过list方法得到所包含的所有目录与子文件的名称
+    String[] names = dir.list();
+    //3.显示这些名称
+    for(int i = 0; i &lt; names.length; i++){
+        System.out.println(names[i]);
+    }
+}
+
+//在上面案例的基础上判断哪些是文件，哪些是文件夹
+public static void listAllFilesAndDirs2(String path){
+    //1.创建File对象，表示这个目录
+    File dir = new File(path);
+    //2.通过listFiles()方法得到所包含的所有子目录与子文件名称
+    File[] names = dir.listFiles();
+    //3.分别显示文件夹名与文件名
+    for(int i = 0; i &lt; names.length; i++){
+        File file = names[i];
+        if(file.isFile()){
+            System.out.println(&quot;文件：&quot;);
+            System.out.println(&quot;\t&quot;+file.getName());
+        }else if(file.isDirectory()){
+            System.out.println(&quot;文件夹：&quot;);
+            System.out.println(&quot;\t&quot;+file.getName());
+        }
+    }
+}
+
+//或者通过集合的形式实现，列出所有的文件以及文件夹
+public static void listAllFilesAndDirs(String path) {
+    //1.创建File对象表示这个目录
+    File dir = new File(path);
+
+    //2.通过listFiles方法得到所包含的所有子目录与子文件名称
+    File[] names = dir.listFiles();
+
+    //3.得到所有的文件名集合，与所有的文件夹名集合
+    List&lt;File&gt; filesList = new ArrayList&lt;File&gt;();
+    List&lt;File&gt; dirsList = new ArrayList&lt;File&gt;();
+    for (int i = 0; i &lt; names.length; i++) {
+        File file = names[i];
+        //不管是用什么方式都需要用File相关的方法判断其是否是文件或者文件夹
+        if (file.isFile()) {
+            filesList.add(file);
+        } else if (file.isDirectory()) {
+            dirsList.add(file);
+        }
+    }
+
+    //4.分别显示文件名与文件夹名
+    System.out.println(&quot;子文件：&quot;);
+    for (int i = 0; i &lt; filesList.size(); i++) {
+        System.out.println(&quot;\t&quot; + filesList.get(i).getName());
+    }
+    System.out.println(&quot;子目录：&quot;);
+    for (int i = 0; i &lt; dirsList.size(); i++) {
+        System.out.println(&quot;\t&quot; + dirsList.get(i).getName());
+    }
+}
+
+//列出指定目录下所有扩展名为.java的文件
+public class FileTest2 {
+    public static void main(String[] args) {
+        String path = &quot;c:&quot; + File.separatorChar + &quot;test&quot;;
+        File file = new File(path);
+        listtAllFiles(file, &quot;java&quot;);
+    }
+
+    public static void listtAllFiles(File dir, String extension) {
+        // 1.获取所有的子文件和子文件夹
+        File[] files = dir.listFiles();
+
+        // 2.从中找出符合条件的文件并显示出来
+        for (int i = 0; i &lt; files.length; i++) {
+            File file = files[i];
+            // 3.需要以指定文件后缀结尾才算符合条件
+            if (file.getName().endsWith(extension)) {
+                System.out.println(file.getName());
+            }
+        }
+    }
+}
+
+//给FilenameFilter接口写一个工具类，可以传递指定的过滤规则，从指定目录中找出指定扩展名的文件，并列出来
+public class FileTest2 {
+    public static void main(String[] args) {
+        String path = &quot;c:&quot; + File.separatorChar + &quot;test&quot;;
+        File file = new File(path);
+        listtAllFiles2(file, &quot;txt&quot;);
+    }
+
+    public static void listtAllFiles2(File dir, String name) {
+        // 1.获取所有的子文件和子文件夹
+        String[] files = dir.list(new DirFilter(&quot;txt&quot;));
+
+        // 2.显示名称
+        for (int i = 0; i &lt; files.length; i++) {
+            System.out.println(files[i]);
+        }
+    }
+}
+
+class DirFilter implements FilenameFilter {
+    private String extension;
+
+    public DirFilter() {
+
+    }
+
+    public DirFilter(String extension) {
+        this.extension = extension;
+    }
+
+    @Override
+    public boolean accept(File dir, String name) {
+        return name.endsWith(extension);
+    }
+}
+</code></pre><hr>
+<h4 id="2-IO流技术"><a href="#2-IO流技术" class="headerlink" title="2.IO流技术"></a>2.IO流技术</h4><p>通过Java程序读取文件中的内容以及将程序中的数据保存早硬盘的文件中去都需要用到IO流技术。</p>
+<p>案例：</p>
+<pre><code>//使用IO流技术读写文件
+public class IOTest{
+    public static void mian(String[] args) throws FileNotFoundException,IOException {
+        writeFileTest();
+        readFileTest();
+    }
+    private static void writeFileTest() throws FileNotFoundException,IOException {
+        //1.创建文件对象
+        File file = new File(&quot;c:\\a.txt&quot;);
+        //2.创建文件输出流
+        FileOutputStream fos = new FileOutputStream(file);
+        fos.write(&apos;g&apos;);
+        fos.write(&apos;z&apos;);
+        fos.write(&apos;i&apos;);
+        fos.write(&apos;t&apos;);
+        fos.write(&apos;c&apos;);
+        fos.write(&apos;a&apos;);
+        fos.write(&apos;s&apos;);
+        fos.write(&apos;t&apos;);
+        fos.close();
+
+    }
+    private static void readFileTest() throws FileNotFoundException,IOException {
+    // 1.创建文件对象
+    File file = new File(&quot;c:\\a.txt&quot;);
+    // 2.创建文件输入流
+    FileInputStream fis = new FileInputStream(file);
+    // 3.有对多长，就读多少字节。
+    for (int i = 0; i &lt; file.length(); i++) {
+        System.out.print((char) fis.read());
+    }
+    //完成读写操作之后，应该通过调用close()方法来关闭它，释放有限的系统资源
+    fis.close();
+}
+}
+</code></pre><blockquote>
+<p>注意：读取硬盘上的文件应该使用输入流(InputStream)，但是InputStream是抽象类，具体使用时使用具体实现类来创建对象(FileInputStream)。</p>
+</blockquote>
+<pre><code>//输入流读取方式1：read()方法
+//根据read()方法返回值的特性，如果读到文件的末尾返回-1，如果不为-1继续往下读
+private static void showContent(String path) throws IOException {
+    FileInputStream fis = new FileInputStream(path);
+    int len = fis.read();
+    while(len != -1){
+        System.out.println((char)len);
+        len = fis.read();
+    }
+    //使用完之后关闭流
+    fis.close();
+}
+
+...
+</code></pre><blockquote>
+<p>注意：Java文件向指定文件中写入数据，使用字节流对象OutputStream。该类是抽象类，使用具体实现类FileOutputStream创建其流对象。</p>
+</blockquote>
+<pre><code>//输出流写出方式1：write(int b)方法
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class IOTest2 {
+    public static void main(String[] args){
+        String path = &quot;c:\\a.txt&quot;;
+        writeTxtFile(path);
+    }
+    private static void writeTxtFile(String path) throws IOException {
+        //1.打开文件输出流，流的目的地是指定的文件
+        FileOutputStream fos = new FileOutputStream(path);
+        //2.通过流向文件写数据
+        fos.write(&apos;j&apos;);
+        fos.write(&apos;a&apos;);
+        fos.write(&apos;v&apos;);
+        fos.write(&apos;a&apos;);
+        //3.用完流后关闭流
+        fos.close();
+    }
+}
+</code></pre><blockquote>
+<p>提示：如果在对应的path路径下不存在相应的文件时，其会自动创建一个，但不是创建多级目录。</p>
+</blockquote>
+<pre><code>//输出流写出方式2：write(byte[] b) 使用缓冲，提高效率
+public class IoTest2 {
+    public static void main(String[] args) throws IOException {
+        String path = &quot;c:\\a.txt&quot;;
+        writeTxtFile(path);
+    }
+    private static void writeTxtFile(String path) throws IOException {
+        //1.打开文件输出流，流的目的地是指定的文件
+        FileOutputStream fos = new FileOutputStream(path);
+
+        //2.通过流向文件写数据
+        byte[] byt = &quot;java&quot;.getBytes();
+        fos.write(byt);
+
+        //3.用完流后关闭流
+        fos.close();
+    }
+}
+
+//字节输入/输出流综合使用
+public class IoTest3 {
+    public static void main(String[] args) throws IOException {
+        String path = &quot;c:\\b.txt&quot;;
+        String content = &quot;hello java&quot;;
+
+        writeFile(path, content);
+
+        readFile(path);
+    }
+
+    public static void writeFile(String path, String content)
+            throws IOException {
+        // 打开文件输出流
+        FileOutputStream fos = new FileOutputStream(path);
+        byte[] buffer = content.getBytes();
+        // 向文件中写入内容
+        fos.write(buffer);
+        // 关闭流
+        fos.close();
+
+    }
+
+    public static void readFile(String path) throws IOException {
+        FileInputStream fis = new FileInputStream(path);
+        byte[] byt = new byte[1024];
+        int len = 0;
+        while ((len = fis.read(byt)) != -1) {
+            System.out.println(new String(byt, 0, len));
+        }
+        // 关闭流
+        fos.close();
+
+    }
+}
+
+//文件的拷贝 方式1
+public class IoTest3 {
+    public static void main(String[] args) throws IOException {
+        String srcPath = &quot;c:\\a.txt&quot;;
+        String destPath = &quot;d:\\a.txt&quot;;
+        copyFile(srcPath, destPath);
+    }
+    public static void copyFile(String srcPath, String destPath)
+            throws IOException {
+
+        // 打开输入流，输出流
+        FileInputStream fis = new FileInputStream(srcPath);
+        FileOutputStream fos = new FileOutputStream(destPath);
+
+        // 读取和写入信息
+        int len = 0;
+        while ((len = fis.read()) != -1) {
+            fos.write(len);
+        }
+
+        // 关闭流
+        fis.close();
+        fos.close();
+    }
+}
+
+//图片/视频/音频的拷贝
+public class IoTest3 {
+    public static void main(String[] args) throws IOException {
+
+        String srcPath = &quot;c:\\秋.jpg&quot;;
+        String destPath = &quot;d:\\秋.jpg&quot;;
+        copyFile(srcPath, destPath);
+    }
+    public static void copyFile(String srcPath, String destPath)
+            throws IOException {
+        // 打开输入流，输出流
+        FileInputStream fis = new FileInputStream(srcPath);
+        FileOutputStream fos = new FileOutputStream(destPath);
+
+        // 读取和写入信息
+        int len = 0;
+        while ((len = fis.read()) != -1) {
+            fos.write(len);
+        }
+
+        // 关闭流
+        fis.close();
+        fos.close();
+    }
+}
+
+//字节流拷问文件 方式2
+//使用字节数组作为缓冲区
+public static void copyFile2(String srcPath, String destPath)
+        throws IOException {
+    // 打开输入流，输出流
+    FileInputStream fis = new FileInputStream(srcPath);
+    FileOutputStream fos = new FileOutputStream(destPath);
+
+    // 读取和写入信息
+    int len = 0;
+
+    // 使用字节数组，当做缓冲区
+    byte[] byt = new byte[1024];
+    while ((len = fis.read(byt)) != -1) {
+        fos.write(byt);
+    }
+
+    // 关闭流
+    fis.close();
+    fos.close();
+}
+</code></pre><hr>
+<p><strong>字节流的异常处理</strong><br></p>
+<p>案例：</p>
+<pre><code>public class IoTest4 {
+    public static void main(String[] args) throws IOException,InterruptedException {
+        String path = &quot;c:\\b.txt&quot;;
+        readFile(path);
+    }
+
+    private static void readFile(String path) throws IOException,InterruptedException {
+        FileInputStream fis = new FileInputStream(path);
+        byte[] byt = new byte[1024];
+        int len = fis.read(byt);
+        System.out.println(new String(byt, 0, len));
+        // 让程序睡眠，无法执行到close方法。
+        Thread.sleep(1000 * 10);
+        fis.close();
+    }
+}
+</code></pre><blockquote>
+<p>提示：在上面的案例中如果进程Thread没有睡醒便不能执行关闭操作，所以这样的异常一般使用try…catch块来处理。</p>
+</blockquote>
+<h4 id="3-字节缓冲流"><a href="#3-字节缓冲流" class="headerlink" title="3.字节缓冲流"></a>3.字节缓冲流</h4><p>提供专门的字节缓冲流来提高效率，BufferedInputStream和BufferedOutputStream。虽然使用缓冲流来提升效率时，对于小文件看不到性能的提升，但是对于稍微大一些的文件就可以看到实质性的性能的提升。</p>
+<pre><code>public class IOTest{
+    public static void main(String[] args){
+        String srcPath = &quot;c:\\a.mp3&quot;;
+        String destPath = &quot;d:\\copy.mp3&quot;;
+        copyFile(srcPath,destPath);
+    }
+    public static void copyFile(String srcPath,String destPath) throws IOException {
+        //1.打开输入输出流
+        FileInputStream fis = new FileInputStream(srcPath);
+        FileOutputStream fos = new FileOutputStream(destPath);
+        //2.使用缓冲流
+        BufferedInputStream bis = new BufferedInputStream(fis);
+        BufferedOutputStream bos = new BufferedOutputStream(fos);
+        //3.读取和写入信息
+        int len = 0;
+        while((len = bis.read()) != -1){
+            bos.write(len);
+        }
+        //关闭流
+        bis.close();
+        bos.close();
+    }
+}
+</code></pre><h4 id="4-字符流"><a href="#4-字符流" class="headerlink" title="4.字符流"></a>4.字符流</h4><p>字符流=字节流+ 编码表，字符流的抽象基类：Reader/Writer 这些类派生出来的子类名称以其父类名作为子类名的后缀。如：FileReader/FileWriter</p>
+<p><strong>1.Reader</strong><br><br>使用Reader读取文本，可以使用InputStreamReader适配器从任何一种输入流获取一个Reader。</p>
+<pre><code>public class IoTest1_Reader {
+    public static void main(String[] args) throws Exception {
+        String path = &quot;c:/a.txt&quot;;
+        // readFileByInputStream(path);
+        readFileByReader(path);
+    }
+
+    //使用字节流读取文件内容
+    public static void readFileByInputStream(String path) throws Exception {
+        InputStream in = new FileInputStream(path);
+
+        int len = 0;
+        while ((len = in.read()) != -1) {
+            System.out.print((char) len);
+        }
+        in.close();
+    }
+
+    //使用字符流读取文件内容
+    public static void readFileByReader(String path) throws Exception {
+        Reader reader = new FileReader(path);
+        int len = 0;
+        while ((len = reader.read()) != -1) {
+            System.out.print((char) len);
+        }
+        reader.close();
+    }
+}
+</code></pre><p><strong>2.Writer</strong><br></p>
+<pre><code>1.write(ch): 将一个字符写入到流中。&lt;br&gt;
+2.write(char[]): 将一个字符数组写入到流中。&lt;br&gt;
+3.write(String): 将一个字符串写入到流中。&lt;br&gt;
+4.flush():刷新流，将流中的数据刷新到目的地中，流还存在。&lt;br&gt;
+5.close():关闭资源，在关闭前会先调用flush()，刷新流中的数据去目的地。然流关闭。
+</code></pre><hr>
+<pre><code>//将文本数据存储到一个文件中
+public class IoTest2_Writer {
+    public static void main(String[] args) throws Exception {
+        String path = &quot;c:/ab.txt&quot;;
+        writeToFile(path);
+    }
+
+    //写指定数据到指定文件中
+    public static void writeToFile(String path) throws Exception {
+        Writer writer = new FileWriter(path);
+        writer.write(&apos;中&apos;);
+        writer.write(&quot;世界&quot;.toCharArray());
+        writer.write(&quot;中国&quot;);
+        writer.close();
+    }
+}
+</code></pre><blockquote>
+<p>注意：程序执行完打开文件，发现没有内容写入。原来需要使用flush方法，刷新该流的缓冲。现在只需要调用close()方法即可，因为close()方法调用了flush()方法。</p>
+</blockquote>
+<pre><code>//字符流拷贝文件 方式1 这而是读一个字符，然后再写一个字符，效率不高
+public static void main(String[] args) throws Exception {
+    String path1 = &quot;c:/a.txt&quot;;
+    String path2 = &quot;c:/b.txt&quot;;
+
+    copyFile(path1, path2);
+}
+
+//使用字符流拷贝文件
+public static void copyFile(String path1, String path2) throws Exception {
+    Reader reader = new FileReader(path1);
+    Writer writer = new FileWriter(path2);
+
+    int ch = -1;
+    while ((ch = reader.read()) != -1) {
+        writer.write(ch);
+    }
+    //关闭字符流
+    reader.close();
+    writer.close();
+}
+
+//字符流拷贝文件 方式2
+public static void main(String[] args){
+    String path1 = &quot;c:\\a.txt&quot;;
+    String path2 = &quot;c:\\b.txt&quot;;
+    copyFile(path1,path2);
+}
+
+//拷贝文件
+public static void copyFile3(String path1,String path2){
+    Reader reader = new FileReader(path1);
+    Writer writer = new FileWriter(path2);
+
+    int ch = -1;
+    char [] arr = new char[1024];
+    while((ch = reader.read(arr)) != -1){
+        writer.write(arr,0,ch);
+    }
+    reader.close();
+    writer.close();
+}
+</code></pre><blockquote>
+<p>提示：字符流不可以拷贝视频以及音频等文件，是因为计算机中所有的信息都是以二进制形式进行存储的，在读取文件的时候，字符流自动对这些二进制按照码表进行编码处理，但图片本身就是二进制文件，不需要编码。字符流只能拷贝以字符为单位的文本文件（以ASCII码为例是127个，并不是所有的二进制都可以找到对应的ASCII，有些对不上的，就会丢失信息。）</p>
+</blockquote>
+<p><strong>3.字符流的异常处理</strong><br></p>
+<pre><code>public static void main(String[] args) throws Exception {
+    //首先创建两个File路径文件
+    String path1 = &quot;c:/a.txt&quot;;
+    String path2 = &quot;c:/b.txt&quot;;
+    //调用拷贝文件函数
+    copyFile2(path1, path2);
+}
+
+    //使用字符流拷贝文件，有完善的异常处理
+    public static void copyFile2(String path1, String path2) {
+        Reader reader = null;
+        Writer writer = null;
+        try {
+            // 打开流
+            reader = new FileReader(path1);//Java文件读取对应路径下的文件
+            writer = new FileWriter(path2);//Java文件中写入到对应的路径文件中
+
+            // 进行拷贝
+            int ch = -1;
+            while ((ch = reader.read()) != -1) {
+                writer.write(ch);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        } finally {
+            // 关闭流，注意一定要能执行到close()方法，所以都要放到finally代码块中
+            try {
+                if (reader != null) {
+                    reader.close();
+                }
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            } finally {
+                try {
+                    if (writer != null) {
+                        writer.close();
+                    }
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+    }
+</code></pre><p><strong>4.字符流的缓冲区</strong><br></p>
+<pre><code>public class IOTest_BufferedReader {
+    public static void main(String[] args) throws IOException {
+        readFile(&quot;c:\\a.txt&quot;);
+    }
+
+    private static void readFile(String path) throws IOException {
+        Reader reader = new FileReader(path);
+        BufferedReader br = new BufferedReader(read);
+        String line = null;
+        while((line = br.readLine()) != null){
+            System.out.println(line);
+        }
+    }
+}
+</code></pre><blockquote>
+<p>注意：在使用缓冲区对象时，我们应该明确缓冲的存在只是为了增强流的功能而存在，所以在建立缓冲区对象时，要先有流对象的存在。缓冲区的出现提高了对流的操作效率。其实就是将数组进行封装。</p>
+</blockquote>
+<pre><code>//使用字符流缓冲区拷贝文本文件
+public class Demo {
+    public static void main(String[] args) throws IOException {
+        //1.关联源文件
+        File srcFile = new File(&quot;c:\\a.txt&quot;);
+        //2.关联目标文件
+        File destFile = new File(&quot;d:\\b.txt&quot;);
+        //3.实现拷贝
+        copyFile(srcFile,destFile);
+    }
+    private static void copyFile(File srcFile,File destFile) throws IOException {
+        //1.创建字符输入流
+        FileReader fr = new FileReader(srcFile);
+        //2.创建字符输出流
+        FileWriter fw = new FileWriter(destFile);
+
+        //3.字符输入流的缓冲流
+        BufferedReader br = new BufferedReader(fr);
+        //4.字符输出流的缓冲流
+        BufferedWriter bw = new BufferedWriter(fw);
+
+        String line = null;
+        //一次读取一行
+        while((line = br.readLine()) != null) {
+            //一次读一行
+            bw.write(line);
+            //刷新缓冲
+            bw.flush();
+            //进行换行，由于readLine()方法默认没有换行，需要手动换行
+            bw.newLine();
+        }
+        //关闭流
+        br.close();
+        bw.close();
+    }
+}
+</code></pre><hr>
+<h4 id="4-装饰者模式"><a href="#4-装饰者模式" class="headerlink" title="4.装饰者模式"></a>4.装饰者模式</h4><p>案例1：在读取的文件的每一行添加行号</p>
+<pre><code>public class IoTest7_BufferedReader {
+    public static void main(String[] args) throws IOException {
+        readFile(&quot;c:\\a.txt&quot;);
+    }
+
+    private static void readFile(String path) throws IOException {
+        Reader read = new FileReader(path);
+
+        BufferedReader br = new BufferedReader(read);
+        int count = 0;
+        String line = null;
+        while ((line = br.readLine()) != null) {
+            count++;
+            System.out.println(count+&quot;:&quot;+line);        
+        }
+
+    }
+}
+</code></pre><p>案例2：每次使用BufferedReader输出时都需要显示行号</p>
+<pre><code>public class IoTest_BufferedReader {
+    public static void main(String[] args) throws IOException {
+        readFile(&quot;c:\\a.txt&quot;);
+    }
+    private static void readFile(String path) throws IOException {
+        Reader read = new FileReader(path);
+        BufferedReader br = new MyBufferedReader(read);
+        String line = null;
+        while ((line = br.readLine()) != null) {
+            System.out.println(line);
+        }
+    }
+}
+class MyBufferedReader extends BufferedReader {
+    public MyBufferedReader(Reader read) {
+        super(read);
+    }
+    int count;
+    @Override
+    public String readLine() throws IOException {
+        String line = super.readLine();
+        if (line != null) {
+            count++;
+            return count + &quot;:&quot; + line;
+        } else {
+            return null;
+        }
+    }
+}
+</code></pre><p>案例3：在输出的一行前加上引号，可以再定义一个BufferedReader的子类，继承BufferedReader增强功能。</p>
+<pre><code>public class IOTest_BufferedReader {
+    public static void main(String[] args) throws IOException {
+        readFile(&quot;c:\\a.txt&quot;);
+    }
+    private static void readFile(String path) throws IOException {
+        Reader reader = new FileReader(path);
+        BufferedReader br = new MyQutoBufferedReader(read);
+        int count = 0;
+        String line = null;
+        while((line = br.readLine()) != null) {
+            System.out.println(line);
+            count++;
+        }
+    }
+}
+
+//quotation 引号
+class MyQutoBufferedReader extends BufferedReader {
+    public MyQutoBufferedReader(Reader reader){
+        super(reader);
+    }
+    public String readLine() throws IOException {
+        String line = super.readLine();
+        if(line != null){
+            return &quot;\&quot;+line+&quot;\&quot;;
+        }else{
+            return null;
+        }
+    }
+}
+</code></pre><p>案例4：既要显示行号，也要显示引号</p>
+<pre><code>public class IoTest_BufferedReader {
+    public static void main(String[] args) throws IOException {
+        readFile(&quot;c:\\a.txt&quot;);
+    }
+    private static void readFile(String path) throws IOException {
+        Reader read = new FileReader(path);
+        BufferedReader bufferedReader = new BufferedReader(read);
+        BufferedReader br = new MyQutoBufferedReader2(bufferedReader);
+        br = new MyLineBufferedReader2(br);
+        String line = null;
+        while ((line = br.readLine()) != null) {
+            System.out.println(line);
+        }
+    }
+}
+// quotation 引号
+class MyQutoBufferedReader2 extends BufferedReader {
+    private BufferedReader bufferedReader;
+    public MyQutoBufferedReader2(BufferedReader bufferedReader) {
+        super(bufferedReader);
+        this.bufferedReader = bufferedReader;
+    }
+    public String readLine() throws IOException {
+        String line = super.readLine();
+        if (line != null) {
+            return &quot;\&quot;&quot; + line + &quot;\&quot;&quot;;
+        } else {
+            return null;
+        }
+    }
+}
+class MyLineBufferedReader2 extends BufferedReader {
+    private BufferedReader bufferedReader;
+    public MyLineBufferedReader2(BufferedReader bufferedReader) {
+        super(bufferedReader);
+        this.bufferedReader = bufferedReader;
+    }
+    int count;
+    @Override
+    public String readLine() throws IOException {
+        String line = super.readLine();
+        if (line != null) {
+            count++;
+            return count + &quot;:&quot; + line;
+        } else {
+            return null;
+        }
+    }
+}
+</code></pre><blockquote>
+<p>装饰者模式：1.使用分层对象来动态透明的向单个对象中添加功能。2.装饰器指定包装在最初的对象周围的所有对象都具有相同的基本接口。3.某些对象是可装饰的，可以通过将其它类包装在这个可装饰对象的周围，来将功能分层。4.装饰器必须具有和它装饰的对象相同的接口。</p>
+</blockquote>
+<hr>
+
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+
+  <p><span>本文标题:</span>IO</a></p>
+  <p><span>文章作者:</span>Bangjin-Hu</a></p>
+  <p><span>发布时间:</span>2018年11月25日 - 09:22:26</p>
+  <p><span>最后更新:</span>2020年03月29日 - 07:58:02</p>
+  <p><span>原始链接:</span><a href="/undefined/Java 二进制IO/" title="IO">http://bangjinhu.github.io/undefined/Java 二进制IO/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/Java 二进制IO/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.jpg" alt="Bangjin-Hu wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎扫码关注微信公众号，订阅我的微信公众号.</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持是我创作的动力.</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat-reward-img.jpg" alt="Bangjin-Hu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay-reward-img.jpg" alt="Bangjin-Hu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Bangjin-Hu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://bangjinhu.github.io/undefined/Java 二进制IO/" title="IO">http://bangjinhu.github.io/undefined/Java 二进制IO/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/IO/" rel="tag"><i class="fa fa-tag"></i> IO</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/undefined/西电体检信息管理系统 - 接口文档/" rel="next" title="西电体检信息管理系统 - 接口文档">
+                <i class="fa fa-chevron-left"></i> 西电体检信息管理系统 - 接口文档
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/undefined/Java 8 新特性/" rel="prev" title="Java 8 新特性">
+                Java 8 新特性 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/site.jpg"
+                alt="Bangjin-Hu" />
+            
+              <p class="site-author-name" itemprop="name">Bangjin-Hu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/BangjinHu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:2315378346@qq.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/Aaron_P_L" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-heart-o"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
+                      
+                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://iProgramering.github.io" target="_blank" title="iProgramer_ing">
+                      
+                        <i class="fa fa-fw fa-user"></i>iProgramer_ing</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          <div id="music163player">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src="//music.163.com/outchain/player?type=2&id=38358214&auto=0&height=66
+
+">
+    </iframe>
+</div>
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#二进制I-O"><span class="nav-text">二进制I/O</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-File-类"><span class="nav-text">1.File 类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-IO流技术"><span class="nav-text">2.IO流技术</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-字节缓冲流"><span class="nav-text">3.字节缓冲流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-字符流"><span class="nav-text">4.字符流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-装饰者模式"><span class="nav-text">4.装饰者模式</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bangjin-Hu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">465.0k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/lib/clipboard/clipboard.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+</body>
+</html>

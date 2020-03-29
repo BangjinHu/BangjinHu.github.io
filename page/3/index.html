@@ -1,0 +1,3034 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/site.jpg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="BangjinHu'Blog" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="BangjinHu's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="微信公众号：iProgrammer_ing">
+<meta property="og:type" content="website">
+<meta property="og:title" content="BangjinHu&#39;s Blog">
+<meta property="og:url" content="http://bangjinhu.github.io/page/3/index.html">
+<meta property="og:site_name" content="BangjinHu&#39;s Blog">
+<meta property="og:description" content="微信公众号：iProgrammer_ing">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BangjinHu&#39;s Blog">
+<meta name="twitter:description" content="微信公众号：iProgrammer_ing">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://bangjinhu.github.io/page/3/"/>
+
+
+
+
+
+  <title>BangjinHu's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+    
+    <a href="https://github.com/BangjinHu"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">BangjinHu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">让优秀成为习惯，让知识成为信仰</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            本站搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第11章 组件概览/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/第11章 组件概览/" itemprop="url">未命名</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-29T07:31:12+08:00">
+                2020-03-29
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-08-07T08:38:44+08:00">
+                2019-08-07
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  448
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="第11章-SpringMVC组件分析"><a href="#第11章-SpringMVC组件分析" class="headerlink" title="第11章 SpringMVC组件分析"></a>第11章 SpringMVC组件分析</h1><h2 id="11-1-HandlerMapping"><a href="#11-1-HandlerMapping" class="headerlink" title="11.1 HandlerMapping"></a>11.1 HandlerMapping</h2><p>它的作用是根据request找到相应的处理器Handler和Interceptors。在HandlerMapping接口中只有一个方法：HandlerExceptionChain getHandler(HttpServletRequest request); </p>
+<h2 id="11-2-HandlerAdapter"><a href="#11-2-HandlerAdapter" class="headerlink" title="11.2 HandlerAdapter"></a>11.2 HandlerAdapter</h2><p>HandlerAdapter理解为干活的人。在它里面有三个方法：1.supports(Object handler)，判断是否可以使用某个Handler。2.handle()方法是用来具体使用Handler干活。3.getLastModified()方法是获取最后一个修改的时间。</p>
+<h2 id="11-3-HandlerExceptionResolver"><a href="#11-3-HandlerExceptionResolver" class="headerlink" title="11.3 HandlerExceptionResolver"></a>11.3 HandlerExceptionResolver</h2><p>在SpringMVC中专门处理异常情况的。此组件的作用是根据异常设置ModelAndView，然后交给render()方法进行渲染。render负责将ModelAndView渲染成页面。该组件HandlerExceptionResolver结构中只有一个方法，只需要从异常中解析出ModelAndView。</p>
+<h2 id="11-4-ViewResolver"><a href="#11-4-ViewResolver" class="headerlink" title="11.4 ViewResolver"></a>11.4 ViewResolver</h2><p>该组件是将String类型视图名和Locale解析成View类型的视图。ViewResolver接口只有一个方法：View resolveViewName(String viewName, Locale locale);</p>
+<p>最常使用的UrlBasedViewResolver系列解析器都是针对单一视图类型进行解析，比如：InternalResourceViewResolver只针对jsp类型视图。FreeMarkerViewResolver只针对FreeMarker视图。</p>
+<h2 id="11-5-RequestToViewNameTranslator"><a href="#11-5-RequestToViewNameTranslator" class="headerlink" title="11.5 RequestToViewNameTranslator"></a>11.5 RequestToViewNameTranslator</h2><h2 id="11-6-LocaleResolver"><a href="#11-6-LocaleResolver" class="headerlink" title="11.6 LocaleResolver"></a>11.6 LocaleResolver</h2><p>在解析视图的时候需要两个参数：视图名和Locale。视图名是处理器返回的。Locale是LocaleResolver从request中解析出来的locale。locale表示一个区域，有了这个就可以对不同区域的用户显示不同的结果。该接口中主要有两个方法：Locale resolveLocale(HttpServletRequest request); setLocale(HttpServletRequest request, HttpServletResponse response, Locale locale); </p>
+<h2 id="11-7-ThemeResolver"><a href="#11-7-ThemeResolver" class="headerlink" title="11.7 ThemeResolver"></a>11.7 ThemeResolver</h2><p>该组件是用来解析主题。</p>
+<h2 id="11-8-MultipartResolver"><a href="#11-8-MultipartResolver" class="headerlink" title="11.8 MultipartResolver"></a>11.8 MultipartResolver</h2><p>该组件用于处理上传请求，处理方法是将普通的request包装成MultipartHttpServletRequest。该组件中有三个方法：1.isMultipart(HttpServletRequest request)：判断是否是上传请求。2.MultipartHttpServletRequest resolveMultipart(HttpServletRequest request)：将request包装成MultipartHttpServletRequest。3.cleanupMultipart(MultipartHttpServletRequest request)：清理上传过程中产生的临时资源。</p>
+<h2 id="11-9-FlashMapManager"><a href="#11-9-FlashMapManager" class="headerlink" title="11.9 FlashMapManager"></a>11.9 FlashMapManager</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第3章 Spring AOP的实现/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/第3章 Spring AOP的实现/" itemprop="url">未命名</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-29T07:31:12+08:00">
+                2020-03-29
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-11-13T09:07:32+08:00">
+                2019-11-13
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5,133
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  19
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="第3章-Spring-AOP的实现"><a href="#第3章-Spring-AOP的实现" class="headerlink" title="第3章 Spring AOP的实现"></a>第3章 Spring AOP的实现</h2><p>[toc]</p>
+<h3 id="3-1-AOP概念"><a href="#3-1-AOP概念" class="headerlink" title="3.1 AOP概念"></a>3.1 AOP概念</h3><h4 id="3-1-2-Advice通知"><a href="#3-1-2-Advice通知" class="headerlink" title="3.1.2 Advice通知"></a>3.1.2 Advice通知</h4><p>Advice（通知）定义在连接点做什么，为切面增强提供织入接口。在Spring AOP中主要描述Spring AOP围绕方法调用而注入的切面行为。</p>
+<p>在BeforeAdvice的继承关系中，定义了为待增强的目标方法设置的前置增强接口MethodBeforeAdvice，使用这个前置接口需要实现一个回调函数：</p>
+<pre><code>void before(Method method, Object[] args, Object target) throws Throwable;
+</code></pre><p>在AfterReturning-Advice接口中定义了接口方法：</p>
+<pre><code>void afterReturning(Object returnValue, Method method, Object[] args, Object target) throws Throwable;
+</code></pre><p>在对于ThrowsAdvice，并没有指定需要实现的接口方法，它在抛出异常时被回调，这个回调是AOP使用反射机制来完成的。</p>
+<h4 id="3-1-3-PointCut切点"><a href="#3-1-3-PointCut切点" class="headerlink" title="3.1.3 PointCut切点"></a>3.1.3 PointCut切点</h4><p>切点决定Advice通知应该作用于哪个连接点，即通过pointcut来定义需要增强方法的集合，这些集合可以选择按照一定的规则来完成。</p>
+<p>在Pointcut的基本接口定义中可以看到，需要返回一个MethodMatcher。对于Point的匹配判断功能，具体是由这个返回的MethodMatcher来完成的，也就是说，由这个MethodMatcher来判断是否需要对当前方法调用进行增强，或者是否需要对当前调用方法应用配置好的Advice通知。</p>
+<p>在JdkRegexpMethodPointcut的基类 StaticMethodMatcherPointcut的实现中可以看到，设置MethodMatcher为StaticMethodMatcher，同时JdkRegexpMethodPointcut也是这个MethodMatcher的子类。</p>
+<p>在Pointcut的类继承关系中，MethodMatcher对象实际上是可以被配置成JdkRegexpMethodPointcut来完成方法的匹配判断的。在JdkRegexpMethodPointcut中，可以看到一个matches方法，这个matches方法是MethodMatcher定义的接口方法。在JdkRegexpMethodPointcut的实现中，这个matches方法就是使用正则表达式来对方法名进行匹配的地方。</p>
+<p> 在JdkDynamicAopProxy的invoke方法中触发了对matches方法的调用。</p>
+<h4 id="3-1-4-Advisor通知器"><a href="#3-1-4-Advisor通知器" class="headerlink" title="3.1.4 Advisor通知器"></a>3.1.4 Advisor通知器</h4><p>将切面切面增强设计（Advice）与切点（pointcut）结合起来的方法就是Advisor。通过Advisor可以定义应该使用哪个通知并在哪个关注点使用它。</p>
+<p>在DefaultPointcutAdvisor中，有两个属性，分别是advice和pointcut。通过这两个属性，可以分别配置Advice和Pointcut。</p>
+<h3 id="3-2-Spring-AOP-的设计与实现"><a href="#3-2-Spring-AOP-的设计与实现" class="headerlink" title="3.2 Spring AOP 的设计与实现"></a>3.2 Spring AOP 的设计与实现</h3><h4 id="3-2-1-JVM动态代理实现"><a href="#3-2-1-JVM动态代理实现" class="headerlink" title="3.2.1 JVM动态代理实现"></a>3.2.1 JVM动态代理实现</h4><p>在Spring AOP实现中，使用的核心技术是动态代理，而这种动态代理实际上是JDK的一个特性（在JDK 1.3以上的版本里，实现了动态代理模式）。通过JDK的动态代理特性，可以为任意Java对象创建代理对象，对于具体使用来说，这个特性是通过Java Reflection API来完成的。</p>
+<p>JDK中已经实现了Proxy模式，在基于Java虚拟机设计应用程序时，只需要直接使用这个特性就可以了。具体来说，可以在Java的reflection包中看到Proxy对象，这个对象生成后，所起的作用就类似于Proxy模式中的Proxy对象。在使用时，还需要为代理对象（Proxy）设计一个回调方法，这个回调方法起到的作用是，在其中加入了作为代理需要额外处理的动作。在JDK中实现，需要实现下面所示的InvocationHandler接口：</p>
+<pre><code>public interface InvocationHandler {
+
+    public Object invoke(Object proxy, Method m, Object[] args) throws Throwable;
+
+}
+</code></pre><p>invoke方法的第一个参数是代理对象实例，第二个参数是Method方法对象，代表的是当前Proxy被调用的方法，最后一个参数是被调用的方法中的参数。</p>
+<p>Proxy类中invoke()方法在反射的基础上加载类里面的方法。Proxy.newInstance()方法生成具体Proxy对象时将InvocationHandler设置到参数里面便可。</p>
+<h4 id="3-2-2-Spring-AOP设计分析"><a href="#3-2-2-Spring-AOP设计分析" class="headerlink" title="3.2.2 Spring AOP设计分析"></a>3.2.2 Spring AOP设计分析</h4><p>Spring AOP的核心技术是JDK动态代理技术。以动态代理技术为基础，设计出了一系列AOP的横切实现，比如前置通知、返回通知、异常通知等。同时，Spring AOP还提供了一系列的Pointcut来匹配切入点，可以使用现有的切入点来设计横切面，也可以扩展相关的Pointcut方法来实现切入需求。</p>
+<p>在Spring AOP中，虽然对于AOP的使用者来说，只需要配置相关的Bean定义即可，但仔细分析Spring AOP的内部设计可以看到，为了让AOP起作用，需要完成一系列过程，比如，需要为目标对象建立代理对象，这个代理对象可以通过使用JDK的Proxy来完成，也可以通过第三方的类生成器cglib来完成。然后，还需要启动代理对象的拦截器来完成各种横切面的织入，这一系列的织入设计是通过一系列Adapter来实现的。通过一系列Adapter的设计，可以把AOP的横切面设计和Proxy模式有机地结合起来，从而实现在AOP中定义好的各种织入方式。</p>
+<h3 id="3-3-建立AopProxy代理对象"><a href="#3-3-建立AopProxy代理对象" class="headerlink" title="3.3 建立AopProxy代理对象"></a>3.3 建立AopProxy代理对象</h3><h4 id="3-3-1-设计原理"><a href="#3-3-1-设计原理" class="headerlink" title="3.3.1 设计原理"></a>3.3.1 设计原理</h4><p>在Spring AOP中，一个重要的部分是代理对象的生成，对于Spring应用，可以看到，是通过配置和调用Spring的ProxyFactoryBean来完成此任务的。在ProxyFactoryBean中，封装了主要代理对象的生成过程。在这个生成过程中，可以使用JDK的Proxy和CGLIB两种方式。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5376408-42bda1e019e97d1a.png?imageMogr2/auto-orient/strip|imageView2/2/format/webp" alt="继承关系"></p>
+<p>在这个类继承关系中，AspectPxoxyFactory、ProxyFactory和ProxyFactoryBean，都在同一个类的继承体系下，都是ProxyConfig、AdvicedSupport 和ProxyCreatorSupport的子类。</p>
+<blockquote>
+<p>共同基类ProxyConfig为ProxyFactoryBean这样的子类提供了配置属性。</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>基类AdvisedSupport的实现中，封装了AOP对通知后台通知器的相关操作，这些操作对于不同的AOP的代理对象的生成都是一样的，但对于具体的AOP代理对象的创建，AdvisedSupport把它交给它的子类们去完成</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>ProxyCreatorSupport，可以将它看成是其子类创建AOP代理对象的一个辅助类。</p>
+</blockquote>
+<p>在通过继承基类的功能实现，具体的AOP代理对象的生成，根据不同的需要，分别由ProxyFactoryBean、AspectJProxyFactory后台ProxyFactory来完成。</p>
+<blockquote>
+<p>提示：如果应用需要使用AspectJ AOP，AspectJProxyFactory起到集成Spring和AspectJ的作用。</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>提示：对于使用Spring AOP的应用，ProxyFactoryBean（可在IoC容器中完成声明式配置）和ProxyFactory（需要编程式使用Spring AOP）都提供了AOP功能的封装。</p>
+</blockquote>
+</blockquote>
+<h4 id="3-3-2-配置ProxyFactoryBean"><a href="#3-3-2-配置ProxyFactoryBean" class="headerlink" title="3.3.2 配置ProxyFactoryBean"></a>3.3.2 配置ProxyFactoryBean</h4><p>在基于XML配置Spring的Bean时，往往需要一系列的配置步骤来使用ProxyFactoryBean和AOP。</p>
+<pre><code>1. 定义使用的通知器Advisor，该通知器应该作为一个Bean来定义。该通知器的实现定义了需要对目标对象进行增强的切面行为，即Advice通知。
+
+2. （配置AOP，封装AOP功能的主要类）定义ProxyFactoryBean，将它作为另一个Bean来定义，它是封装AOP功能的主要类。
+
+    2.1 AOP代理接口
+
+    2.2 AOP切面增强的对象
+
+    2.3 代理拦截器，配置通知器的名称（通知器在AOP代理的配置下通过使用代理对象的拦截器机制发挥作用）
+
+3. 定义target属性，作为target属性注入的Bean，在需要AOP通知器中的切面应用来增强的对象。
+</code></pre><h5 id="1-配置-ProxyFactoryBean-分析Spring-AOP实现原理"><a href="#1-配置-ProxyFactoryBean-分析Spring-AOP实现原理" class="headerlink" title="1. 配置 ProxyFactoryBean 分析Spring AOP实现原理"></a>1. 配置 ProxyFactoryBean 分析Spring AOP实现原理</h5><p>ProxyFactoryBean是在 Spring IoC 环境中创建AOP应用的底层方法，是一个非常灵活的创建AOP应用的底层方法，Spring通过其完成对AOP使用的封装。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5376408-48158ac92e37feee.png?imageMogr2/auto-orient/strip|imageView2/2/w/650/format/webp" alt="配置ProxyFactoryBean"></p>
+<h4 id="3-3-3-ProxyFactoryBean生成AopProxy代理对象"><a href="#3-3-3-ProxyFactoryBean生成AopProxy代理对象" class="headerlink" title="3.3.3 ProxyFactoryBean生成AopProxy代理对象"></a>3.3.3 ProxyFactoryBean生成AopProxy代理对象</h4><p>我们知道通过 ProxyFactoryBean 来配置目标对象和切面行为。该 ProxyFactoryBean 是一个 FactoryBean。在ProxyFactoryBean中通过interceptorNames属性（通知器将切面行为Advice应用到目标对象中）来配置已经定义好的通知器 Advisor 。</p>
+<p>在 ProxyFactoryBean 中需要为 target目标对象 生成 Proxy 代理对象，从而为AOP横切面的编织做好准备工作。</p>
+<pre><code>initializeAdvisorChain()：初始化通知器链,通知器链中封装了一系列从配置中读取的拦截器,为代理对象的生成做好准备。 
+
+getSingletonInstance()：生成Singleton类型的Proxy 。
+
+DefaultAopProxyFactory ：AopProxy接口类,AopProxy有两个子类实现,一个是JdkDynamicAopProxy,一个是CglibProxyFactory 。
+</code></pre><p>从FactoryBean中获取对象是以getObject方法作为入口完成的，ProxyFactoryBean实现中的getObject()方法，是FactoryBean需要实现的接口。对ProxyFactoryBean来说，需要对目标对象增加的增强处理，都通过了getObject方法进行了封装，这些增强处理是为AOP功能的实现提供服务的。getObject的实现清单如下。getObect()方法首先对通知器进行了初始化，通知器封装了一系列的拦截器，这些拦截器都要从配置文件中获取，然后为代理对象的生成做好准备。在生成代理对象时，因为Spring中有singleton类型和prototype类型这两种不同的bean，所有要对代理对象进行一个区分。</p>
+<p>为Proxy代理对象配置Advisor链是在initializeAdvisorChain方法中实现的。这个初始化的工作发生在应用第一次通过ProxyFactoryBean去获取代理对象的时候。在完成这个初始化之后，接着读取配置中出现的所有通知器，这个取得通知器的过程也比较简单，把通知器的名字交给容器的getBean方法就可以了，这是通过对IOC容器实现的一个回调完成的。然后把从IOC容器中取得的通知器加入到拦截器链中，这个动作是由addAdvisorOnChainCreation方法来实现的。</p>
+<p>接着在getObject()方法中，将会执行getSingletonInstance()方法，该方法主要是生成代理对象并封装对target目标对象的调用（即加入拦截器）。具体的生成过程是，首先读取ProxyFactoryBean中的配置，为生成代理对象做好必要的准备，比如设置代理的方法接口调用等。Spring通过AopProxy类来具体生成代理对象。对于getSingletonInstance()方法中代理对象的生成过程。</p>
+<p>Spring利用AopProxy接口类把AOP代理对象的实现与框架其他部分有效隔离开来。AopProxy接口有两个子类实现，一个Cglib2AopProxy，另一个是JdkDynamicProxy。 具体代理对象的生成是在ProxyFactoryBean的基类AdvisedSupport中实现，借助AopProxyFactory完成，这个对象要么从JDK中生成，要么借助CGLIB获得。</p>
+<p>AOP Proxy的生成的两种方式（JDK或CGLIB提供的Proxy特性）。如果目标对象是接口类使用JDK来生成，否则Spring会使用CGLIB来生成目标的代理对象。</p>
+<p>在AopProxy代理对象的生成过程中，首先要从AdviseSupport对象中取得配置的目标对象，AOP完成的是切面应用对目标应用对象的增强。如果这里没有配置目标对象会直接抛出异常。一般而言，默认方式是使用JDK来产生AopProxy代理对象，但如果配置的目标对象不是接口类的实现，会使用CGLIB来产生AopProxy代理对象；在使用CGLIB来产生AopProxy代理对象时，因为CGLIB是第三方类库，本身不在JDK基类库中，所有需要在classPath中正确配置，以便能够加载和利用。在Spring中，使用JDK和CGLIB来生成AopProxy代理对象的工作，是由JdkDynamicAopProxy和CglibProxyFactory来完成。</p>
+<h4 id="3-3-4-JDK生成AopProxy代理对象"><a href="#3-3-4-JDK生成AopProxy代理对象" class="headerlink" title="3.3.4 JDK生成AopProxy代理对象"></a>3.3.4 JDK生成AopProxy代理对象</h4><p>newProxyInstance方法:需要指明3个参数（类装载器,代理接口,Proxy回调方法所在的对象,这个对象要实现InvocationHandler接口）。InvocationHandler接口:类装载器,代理接口,Proxy回调方法所在的对象,这个对象要实现InvocationHandler接口。反射类接口,定义了invoke方法,提供代理对象的回调入口。</p>
+<h4 id="3-3-5-CGLIB生成AopProxy代理对象"><a href="#3-3-5-CGLIB生成AopProxy代理对象" class="headerlink" title="3.3.5 CGLIB生成AopProxy代理对象"></a>3.3.5 CGLIB生成AopProxy代理对象</h4><p>配置Enhancer对象,通过Enhancer对象的callback回调设置生成代理对象。其中通过设置DynamicAdvisedInterceptor拦截器来完成AOP功能的。</p>
+<h3 id="3-4-Spring-AOP拦截器调用的实现"><a href="#3-4-Spring-AOP拦截器调用的实现" class="headerlink" title="3.4 Spring AOP拦截器调用的实现"></a>3.4 Spring AOP拦截器调用的实现</h3><h4 id="3-4-1-设计原理"><a href="#3-4-1-设计原理" class="headerlink" title="3.4.1 设计原理"></a>3.4.1 设计原理</h4><p>在Spring AOP通过JDK的Proxy方式或CGLIB方式生成代理对象的时候，相关的拦截器已经 配置到 代理对象中去了，拦截器在代理对象中起作用是通过对这些方法的回调来完成的。</p>
+<p>如果使用JDK的Proxy来生成代理对象，那么需要InvocationHandler来设置拦截器回调，而如果使用CGLIB来生成代理对象，通过DynamicAdvisedInterceptor来完成回调。</p>
+<h4 id="3-4-2-JdkDynamicAopProxy的invoke拦截"><a href="#3-4-2-JdkDynamicAopProxy的invoke拦截" class="headerlink" title="3.4.2 JdkDynamicAopProxy的invoke拦截"></a>3.4.2 JdkDynamicAopProxy的invoke拦截</h4><p>在 JdkDynamicAopProxy 生成代理对象时，它的AopProxy代理对象生成调用。</p>
+<pre><code>Proxy.newProxyInstance(classLoader, proxiedInterfaces, this);
+
+- this 表示InvocationHandler对象，InvocationHandler是JDK定义反射类的一个接口，这个接口定义了invoke方法，此方法为回调方法。
+</code></pre><p>通过invoke()方法的具体实现，来完成对目标对象方法调用的拦截器或者功能增强工作。在这个方法中，包含一个完整的拦截器链对目标对象的拦截过程，比如获取拦截器链中的拦截器进行配置，逐个运行拦截器链里的拦截器增强，知道最后的目标对象方法的运行。</p>
+<h4 id="3-4-3-CglibAopProxy的intercept拦截器"><a href="#3-4-3-CglibAopProxy的intercept拦截器" class="headerlink" title="3.4.3 CglibAopProxy的intercept拦截器"></a>3.4.3 CglibAopProxy的intercept拦截器</h4><h4 id="3-3-4-目标方法的调用"><a href="#3-3-4-目标方法的调用" class="headerlink" title="3.3.4 目标方法的调用"></a>3.3.4 目标方法的调用</h4><p>如果没有拦截器会对目标对象方法直接调用。对于JDKDynamicAopProxy代理对象是通过AopUtils使用反射机制实现的。在这个调用方法中首先得到调用方法的反射对象，然后使用invoke启动对方法反射对象的调用。</p>
+<p>使用Cglib2AopProxy的代理对象，其目标对象的调用是通过CGLIB的MethodProxy对象直接完成。</p>
+<pre><code>retVal=methodProxy.invoke(target,args);
+</code></pre><h4 id="3-4-5-AOP拦截器的调用"><a href="#3-4-5-AOP拦截器的调用" class="headerlink" title="3.4.5 AOP拦截器的调用"></a>3.4.5 AOP拦截器的调用</h4><p>在AOP如何完成对目标的增强时，这些都是封装在AOP拦截器链中，由具体的拦截器完成。</p>
+<p>无论是使用JDKDynamicAopProxy还是使用CglibAopProxy创建代理对象最终对AOP拦截链的调用都是在ReflectiveMethodInvocation中通过proceed方法实现的。</p>
+<p>在proceed方法中逐个运行拦截器的拦截方法。在运行拦截器的拦截方法之前需要对代理方法完成一个匹配，通过这个匹配判断来决定拦截器是否满足切面增强的要求。</p>
+<h4 id="3-4-6-配置通知器"><a href="#3-4-6-配置通知器" class="headerlink" title="3.4.6 配置通知器"></a>3.4.6 配置通知器</h4><p>在AopProxy代理对象拦截回调过程之前，我们先回到 ReflectionMethodInvocation 类的 proceed() 方法，在这个方法里，可以看到得到了配置的 interceptorOrInterceptionAdvice 。</p>
+<pre><code>Object interceptorOrInterceptionAdvice = this.interceptorsAndDynamicMethodMatchers.get(++this.currentInterceptorIndex);
+</code></pre><p>interceptorOrInterceptionAdvice是获得的拦截器，它通过拦截器机制对目标对象进行增强。这个拦截器来自interceptorsAndDynamicMethodMatchers。</p>
+<p>具体来说上面的interceptorOrInterceptionAdvice是interceptorsAndDynamicMathers持有的List中的一个元素。</p>
+<h4 id="3-4-7-Advice通知的实现"><a href="#3-4-7-Advice通知的实现" class="headerlink" title="3.4.7 Advice通知的实现"></a>3.4.7 Advice通知的实现</h4><p>AopProxy代理对象生成时，其拦截器也一并生成。</p>
+<p>在为AopProxy配置拦截器的实现中，有一个取得拦截器配置过程，这个过程由DefaultAvisorChainFactory实现的，而这个工厂类负责生成拦截器链，在它的getInterceptorsAndDynamicInterceptionAdvice方法中，有一个适配器的注册过程，通过配置Spring预先设计好的拦截器，Spring加入了它对Aop实现的处理。</p>
+<p>为详细了解这个过程，先从DefaultAdvisorChainFactory的实现开始，通过以下代码可以看到，在DefaultAdvisorChainFactory实现中，首先构造了一个GlobalAdvisorAdapterRegistry单件，然后对配置的Advisor通知器进行逐个遍历，这些通知链都是配置在interceptorNames中的，从getInterceptorsAndDynamicInterceptionAdvice传递进来的advised参数对象中，可以方便的取得配置的通知器，有了这些通知器，接着就是一个由 GlobalAdvisorAdapterRegistry来完成的拦截器的适配和注册。</p>
+<p>GlobalAdvisorAdapterRegistry 的 getInterceptors() 方法为AOP的实现做出了很大的贡献，这个方法封装着 advice 织入实现的入口，我们先从 GlobalAdvisorAdapterRegistry 的实现入手，它基本起一个适配器的作用，但同时也是单例模式。</p>
+<p>我们知道在DefaultAdvisorAdapterRegistry中，设置了一系列的adapter适配器，这是这些适配器的实现，为Spring的advice提供了编织能力。</p>
+<p>Adapter的具体作用：</p>
+<pre><code>1. 调用adapter的support方法，通过这个方法来判断取得的advice属于什么类型的advice通知，从而根据不同的advice类型来注册不同的AdviceInterceptor，也就是前面我们看到的拦截器。
+
+2. 这些AdviceInterceptor都是Spring AOP框架设计好的，是为实现不同的advice功能提供服务的。有了这些AdviceInterceptor，可以方便的使用由Spring提供的各种不同的advice来设计AOP应用。也就是说，正是这些AdviceInterceptor最终实现了advice通知在AopProxy对象中的织入功能。
+
+3. 在DefaultAdvisorRegistry的getInterceptors调用中，从MethodBeforeAdviceAdapter、AfterReturningAdviceAdapter、ThrowsAdviceAdaper这几个通知适配器的名字上可以看出和Advice一一对应，在这里，他们作为适配器被加入到adapter的List中，他们都是实现AdvisorAdapter接口的同一层次的类，只是各自承担着不同的适配的任务，一对一的服务于不同的advice实现。
+</code></pre><p>Spring AOP为了实现advice的织入，设计了特定拦截器对这些功能进行了封装。虽然应用不会直接用到这些拦截器，但却是advice发挥作用不可缺少的准备。</p>
+<h3 id="3-6-小结"><a href="#3-6-小结" class="headerlink" title="3.6 小结"></a>3.6 小结</h3><p>在通过ProxyFactoryBean实现AOP整个过程中，它的实现首先需要对 目标对象以及拦截器 进行正确的配置，以便 AopProxy代理对象 正确产生。（这些配置可以通过配置 ProxyFactoryBean 的属性来完成或通过编程式地使用ProxyFactory来实现）。</p>
+<blockquote>
+<p>提示：通过 ProxyFactory 类，我们可以控制哪些方面需要被织入到代理中去。</p>
+</blockquote>
+<p>在生成AopProxy代理对象的时候，Spring AOP专门设计了AopProxy代理对象的生产工厂（AopProxyFactory）来生产AopProxy代理对象。默认使用的生产工厂（DefaultAopProxyFactory - 该生产工厂定义了AopProxy代理对象的生成策略（JDK或CGLIB））。而最终的AopProxy对象的产生则交给JdkDynamicAopProxy和Cglib2AopProxy这两个具体的工厂来完成。</p>
+<blockquote>
+<p>提示：我们可以看到 ProxyFactory 内部将生成代理对象的过程转交给一个 DefaultAopProxyFactory 对象来完成。后者又根据程序中的设置将其转交给一个 Cglib2AopProxy 或者 JdkDynamicAopProxy 来完成。</p>
+</blockquote>
+<p>在得到AopProxy代理对象后，在代理的接口方法被调用执行的时候，在AopProxy暴露代理的方法被调用的时候，前面定义的Proxy机制就起作用。Proxy对象暴露的方法调用时，并不是直接运行目标对象中的方法。而是首先会触发对这些方法调用进行拦截，这些拦截对目标调用的增强提供了工作空间。</p>
+<p>拦截过程在JDK的Proxy代理对象中，通过invoke()方法来完成，该方法是虚拟机触发的一个回调。在CGLIB的Proxy代理对象中，拦截是由设置好的回调callback()方法来完成的。</p>
+<blockquote>
+<p>提示：在有了上面的拦截器的作用，才会有AOP切面的大作用。</p>
+</blockquote>
+<p>在ProxyFactoryBean的回调中，首先会根据配置来对拦截器是否与当前的调用方法相匹配进行判断。</p>
+<h4 id="声明式的Spring-AOP编程"><a href="#声明式的Spring-AOP编程" class="headerlink" title="声明式的Spring AOP编程"></a>声明式的Spring AOP编程</h4><p>首先看一下声明式的 Spring AOP 编程，在 ProxyFactoryBean 中，它的 AOP 实现需要依赖 JDK 或者 CGLIB 提供的 Proxy 特性。从 FactoryBean 中取得对象，是用 getObject() 方法作为入口完成的。</p>
+<p>在 getObject() 方法中， Spring 使用这个 AopProxy 接口把 AOP 代理对象的实现与框架的其他部分有效地分离。 AopProxy 接口有两个子类实现，一个时 cglib2AopProxy ，另一个是 JdkDynamicProxy 。</p>
+<p>创建 AopProxy 的过程是在 AopProxyFactory 中进行的，在 Spring 中， AopProxyFactory 使用的是 DefaultAopProxyFactory 。这个被使用的 DefaultAopProxyFactory ，作为 AopProxy 的创建工厂对象。有了这个 AopProxyFactory 对象以后，我们再到 DefaultAopProxyFactory 中看一下 AopProxy 是怎样生成的。</p>
+<p>关于 AopProxy 代理对象的生产，需要考虑使用哪种生成方法，如果目标对象是接口类，那么适合使用 JDK 来生成代理对象，否则 Spring 会使用 CGLIB 来生成目标对象的代理对象。为了满足不同的代理对象生成的要求， DefaultAopProxyFactory 作为 AopProxy 的生产工厂，可以根据不同的需要生成两种 AopProxy 对象。</p>
+<p>这样就分别得到了 JdkDynamicAopProxy 对象和 Cglib2AopProxy 对象，剩下的问题就是分别在两个产生代理对象的类中生成除代理对象。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第2章 Spring IoC容器的实现/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/第2章 Spring IoC容器的实现/" itemprop="url">未命名</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-29T07:31:12+08:00">
+                2020-03-29
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-28T12:35:56+08:00">
+                2020-02-28
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  7,158
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  26
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="第2章-Spring-Framework的核心-IoC容器的实现"><a href="#第2章-Spring-Framework的核心-IoC容器的实现" class="headerlink" title="第2章 Spring Framework的核心 - IoC容器的实现"></a>第2章 Spring Framework的核心 - IoC容器的实现</h2><p>[TOC]</p>
+<h3 id="2-1-Spring-IOC容器概述"><a href="#2-1-Spring-IOC容器概述" class="headerlink" title="2.1 Spring IOC容器概述"></a>2.1 Spring IOC容器概述</h3><h4 id="2-1-1-IOC容器依赖反转模式"><a href="#2-1-1-IOC容器依赖反转模式" class="headerlink" title="2.1.1 IOC容器依赖反转模式"></a>2.1.1 IOC容器依赖反转模式</h4><p>通过将对象的依赖注入交给框架或IOC容器来完成。它可以在对象生成或初始化时直接将数据注入到对象中，或可以通过将对象引用注入到对象数据域中的方式来注入对方法调用的依赖。IOC容器进行对象关系的管理，并由IOC容器完成对象的注入。</p>
+<h4 id="2-1-2-Spring-IOC的应用场景"><a href="#2-1-2-Spring-IOC的应用场景" class="headerlink" title="2.1.2 Spring IOC的应用场景"></a>2.1.2 Spring IOC的应用场景</h4><p>在Spring中，Spring IoC提供了基本的JavaBean容器，通过IoC模式管理以来关系，并通过依赖注入和AOP切面增强了为JavaBean这样的POJO对象赋予事务管理、生命周期管理等基本功能。</p>
+<h3 id="2-2-IoC容器系列的设计与实现-BeanFactory-ApplicationContext"><a href="#2-2-IoC容器系列的设计与实现-BeanFactory-ApplicationContext" class="headerlink" title="2.2 IoC容器系列的设计与实现 BeanFactory | ApplicationContext"></a>2.2 IoC容器系列的设计与实现 BeanFactory | ApplicationContext</h3><p>在SpringIoC容器的设计中，主要有两个容器系列：1.实现BeanFactory接口的简单容器系列，实现容器的基本功能。2.ApplicationContext应用上下文，在BeanFactory的基础上增添了功能，它作为容器的高级形态存在。扩展了BeanFactory。</p>
+<p>BeanFactory与ApplicationContext都是容器的具体表现形式。BeanFactory体现了Spring为提供给用户使用的IOC容器所设定的最基本的功能规范。在Spring提供IOC容器基本定义基础上，Spring通过定义BeanDefinition来管理基于Spring的应用中各种对象以及他们之间的相互依赖关系。</p>
+<p>BeanDefinition抽象了我们对Bean的定义，是让容器起作用的主要数据类型。对Ioc容器而言，BeanDefinition就是对反转依赖模式管理的对象的依赖关系的数据抽象。如：容器里面装的水。</p>
+<p>AbstractApplicationContext 是整个容器的核心处理类，是真正的Spring容器的执行者，在内部使用了模板方法。</p>
+<h4 id="2-2-2-Spring-Ioc容器设计"><a href="#2-2-2-Spring-Ioc容器设计" class="headerlink" title="2.2.2 Spring Ioc容器设计"></a>2.2.2 Spring Ioc容器设计</h4><p>从BeanFactory到HierarchicalBeanFactory，再到ConfigurableBeanFactory，这是一条主要的Beanfactory设计路径，该路径定义了基本的IoC容器的规范。而第二条接口设计主线是以ApplicationContext为主的接口设计。</p>
+<h5 id="1-BeanFactory应用场景"><a href="#1-BeanFactory应用场景" class="headerlink" title="1. BeanFactory应用场景"></a>1. BeanFactory应用场景</h5><p>BeanFactory提供最基本的IOc容器功能。其只是一个接口类，没有给出容器的具体实现。而其它的各种类(DefaultListableBeanFactory/XmlBeanFactory/ApplicationContext)等都可以看做是容器附加某种功能的具体实现。</p>
+<blockquote>
+<p>提示：FactoryBean 与 BeanFactory</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>通过转移字符&amp;来得到FactoryBean本身，用来区分通过容器来获取FactoryBean产生的对象和获FactoryBean本身。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>FactoryBean 和 BeanFactory ，前面是factory，是ioc容器或对象工厂。后者是bean，在spring中，所有的bean都是由BeanFactory（IOC容器）进行管理的。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>注意：FactoryBean不是简单的Bean，是一个能够产生或者修饰对象生成的工厂Bean，它的实现和设计模式中的工厂模式类似。</p>
+</blockquote>
+<h5 id="2-BeanFactory容器的设计原理"><a href="#2-BeanFactory容器的设计原理" class="headerlink" title="2. BeanFactory容器的设计原理"></a>2. BeanFactory容器的设计原理</h5><p>DefaultListableBeanFactory包含了基本IoC容器所具有的的重要功能，作为Spring中的默认的功能完整的IoC容器来使用。</p>
+<p>XmlBeanFactory继承DefaultListableBeanFactory，除了具备基本的功能之外，还具备读取以XML文件定义的BeanDefinition的能力。</p>
+<p>XML文件是由XmlBeanFactory初始化的XmlBeanDefinitionReader来处理以XML方式定义的BeanDefinition。构造XmlBeanFactory这个IoC容器需要Resource类给出BeanDefinition的信息来源。Resource是Spring用来封装I/O操作的类，例如ClassPathResource(“*.xml”)等。</p>
+<p>XmlBeanFactory 是一个与XML相关的BeanFacotory，也就是说它是一个读取以XML文件方式定义的BeanDefinition的IOC容器。</p>
+<p>在使用IOC容器的几个步骤：</p>
+<pre><code>1. 创建IOC配置文件的抽象资源，抽象资源包括BeanDefinition的定义信息。
+
+2. 创建一个BeanFactory，这里使用DefaultListableBeanFactory。
+
+3. 创建一个载入BeanDefinition的读取器，如XmlBeanDefinitionReader来载入XML文件形式的BeanDefinition，通过一个回调配置给BeanFactory。
+
+4. 从定义好的资源位置读入配置信息。在完成载入和注册Bean之后，需要的ioc容器建立起来，此时可以直接使用ioc容器。
+</code></pre><h5 id="3-ApplicationContext应用场景"><a href="#3-ApplicationContext应用场景" class="headerlink" title="3. ApplicationContext应用场景"></a>3. ApplicationContext应用场景</h5><p>ApplicationContext在已有IOC容器基本功能基础上提供附加功能，使得其更方便使用。</p>
+<pre><code>1. 支持不同信息源，ApplicationContext扩展了MessageSource接口。支持国际化实现。
+
+2. 访问资源，体现在ResourceLoader和Resource支持上。可从不同地方获取Bean定义的资源。
+
+3. 支持应用事件。继承了接口ApplicationEventPublisher，从而在上下文中引入了事件机制。这些事件和Bean 的生命周期的结合为Bean 的管理提供了便利。
+
+4. 在ApplicationContext 中提供的附加服务。这些服务使得基本的 IoC 容器的基本功能更加丰富。
+</code></pre><p>在经过上面的种种讨论我们清楚在应用开发的过程中使用ApplicationContext作为IOC容器的基本形式。</p>
+<h5 id="4-ApplicationContext容器设计原理"><a href="#4-ApplicationContext容器设计原理" class="headerlink" title="4. ApplicationContext容器设计原理"></a>4. ApplicationContext容器设计原理</h5><p>在ApplicationContext的容器中，常以 FileSystemXmlApplicationContext 来说明 ApplicationContext 容器的设计原理。</p>
+<p>ApplicationContext 主要功能在FileSystemXmlApplicationContext 的基类AbstractXmlApplicationContext中已经实现了，在FileSystemXmlApplicationContext 中，作为一个具体的应用上下文，只需要实现和它自身设计相关的2个功能。</p>
+<p>第1个功能，如果应用直接使用FileSystemXmlApplicationContext ，对于实例化这个应用上下文的支持，同时启动IoC容器的refresh()过程。</p>
+<p>第2个功能，与FileSystemXmlApplicationContext 设计具体相关的功能，这部分与怎样从文件系统中加载XML的bean定义资源有关。</p>
+<h3 id="2-3-Ioc容器初始化过程"><a href="#2-3-Ioc容器初始化过程" class="headerlink" title="2.3 Ioc容器初始化过程"></a>2.3 Ioc容器初始化过程</h3><p>IOc容器的初始化是由refresh()方法来启动的，该方法标志ioc容器的正式启动。该方法包括BeanDefinition的Resource定位、载入和注册三个基本过程。</p>
+<blockquote>
+<p>提示：Spring 把这三个过程分开，并使用不同的模块来完成，从而方便自己定义IoC 容器的初始化过程。</p>
+</blockquote>
+<pre><code>1. BeanDefinition的Resource定位过程。Resource定位表示BeanDefinition的资源定位过程，它是由ResourceLoader通过统一的Resource接口来完成，这个Resource对各种形式的BeanDefinition的使用都提供了统一接口。对于BeanDefinition 的存在形式，可以是文件系统中的通过FileSystemResource 来进行抽象；类路径中定义的Bean 信息可以通过ClassPathResource 来进行抽象。这个定位过程类似于容器寻找数据的过程。
+
+2. BeanDefinition的载入。载入过程是将用户定义好的Bean表示成IOC容器内部的数据结构，该容器内部的数据结构是BeanDefinition。BeanDefinition 实际上就是POJO 对象在IoC 容器中的抽象，通过这个BeanDefinition 定义的数据结构，使IoC 容器能够方便地管理Bean。
+
+3. BeanDefinition的注册。注册过程是通过BeanDefinitionRegistry 接口的实现来完成的。注册过程把载入过程中解析得到BeanDefinition 向IoC 容器进行注册。在IoC 容器内部将BeanDefinition 注入到一个HashMap 中去，IoC 容器就是通过这个HashMap 来持有这些Bean 数据的。
+</code></pre><blockquote>
+<p>提示：上面的IOC初始化过程不包括Bean依赖注入的实现。在Spring IoC 的设计中，Bean 定义的载入 和 依赖注入是两个独立的过程。依赖注入一般发生在第一个通过getBean() 向容器中获取Bean 的时候，也并不全是这样，例如某个Bean 设置了lazyinit 属性，那么Bean 的依赖注入在其初始化的过程中就已经完成了，而不需要等到整个容器初始化完成之后，第一次使用getBean()才会触发。</p>
+</blockquote>
+<h4 id="2-3-1-BeanDefinition的Resource定位过程"><a href="#2-3-1-BeanDefinition的Resource定位过程" class="headerlink" title="2.3.1 BeanDefinition的Resource定位过程"></a>2.3.1 BeanDefinition的Resource定位过程</h4><p>在以编程的方式使用 DefaultListableBeanFactory 时，首先定义一个Resource来定位容器使用的BeanDefinition。使用ClassPathResource，意味着Spring会在类路径中去寻找以文件形式存在的BeanDefinition信息 。</p>
+<pre><code>ClassPathResource res = new ClassPathResource(&quot;beans.xml&quot;);
+</code></pre><blockquote>
+<p>提示：这里定义的Resource并不能由DefaultListableBeanFactory直接使用，Spring通过BeanDefinitionReader来对这些信息进行处理。</p>
+</blockquote>
+<p>我们回到常用的ApplicationContext上，如：FileSystemXmlApplicationContext、ClassPathXmlApplicationContext、XmlWebApplicationContext等。简单地从这些类的名字上分析，可以清楚地看到它们可以提供哪些不同的Resource读入功能。</p>
+<blockquote>
+<p>提示：我们可以清楚的知道，对BeanDefinition 资源定位的过程，是由refresh() 方法触发的，refresh() 方法的调用是在FileSystemXmlApplicationContext 的构造函数中启动的。</p>
+</blockquote>
+<p>在BeanDefinition 定位完成基础上，就可通过返回的Resource 对象进行BeanDefinition 载入。在完成定位过程后，为BeanDefinition 的载入创造了I/O 操作的条件，但具体的数据还没有开始读入，读入将在BeanDefinition的载入和解析中完成。</p>
+<h4 id="2-3-2-BeanDefinition的载入和解析"><a href="#2-3-2-BeanDefinition的载入和解析" class="headerlink" title="2.3.2 BeanDefinition的载入和解析"></a>2.3.2 BeanDefinition的载入和解析</h4><p>在完成BeanDefinition的Resource定位的后，便可进行BeanDefinition信息的载入过程。该过程相当于把定义的BeanDefinition在IoC容器中转化成一个Spring内部表示的数据结构的过程。IoC容器对Bean的管理和依赖注入功能的实现，是通过对其持有的BeanDefinition进行各种相关操作来完成的。这些BeanDefinition数据在IoC容器中通过一个HashMap来保持和维护。</p>
+<p>将定义的BeanDefinition在ioc容器中转换成一个Spring内部表示的数据结构的过程。Ioc容器对Bean管理和依赖注入的实现是通过对其持有的BeanDefinition进行各种相关操作完成的。</p>
+<p>从DefaultListableBeanFactory的设计入手来看IoC容器是怎样完成BeanDefinition载入的。先回到IoC容器的初始化入口refresh（）方法。该方法最初是在FileSystemXmlApplicationContext的构造函数中被调用的，它的调用标志着容器初始化的开始，这些初始化对象就BeanDefinition数据，初始化入口函数：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5376408-ee4228c6fcf9aadd.png?imageMogr2/auto-orient/strip|imageView2/2/format/webp" alt="启动BeanDefinition的载入"></p>
+<p>于容器的启动来说，refresh()方法是一个很重要的方法。该方法在AbstractApplicationContext类（是FileSystemXmlApplicationContext的基类）中找到，它详细描述了整个ApplicationContext的初始化过程。如：BeanFactory的更新、MessageSource和PostProcessor的注册。</p>
+<pre><code>refresh()方法在ioc容器中执行的过程：
+
+    1. 子类启动refreshBeanFactory()
+
+    2. 设置BeanFactory的后置处理
+
+    ...
+</code></pre><p>读入器的配置，可以在FileSystemXmlApplicationContext 的基类AbstractRefreshableApplicationContext 中的refreshBeanFactory() 方法的实现中查看。refreshBeanFactory() 方法被FileSystemXmlApplicationContext 构造函数中的refresh() 方法所调用。在该方法中，通过createBeanFactory() 创建一个DefaultListableBeanFactory 的IoC 容器供ApplicationContext 使用。同时，还启动了loadBeanDefinitions() 来载入BeanDefinition。</p>
+<p>调用的loadBeanDefinitions(Resource res)方法在AbstractBeanDefinitionReader类里是没有实现的，具体的实现在XmlBeanDefinitionReader中。在读取器中，需要得到封装了对XML文件的I/O操作的代表XML文件的Resource，读取器可以在打开I/O流后得到XML的文件对象。有了这个文件对象以后，就可按照Spring的Bean定义规则来对这个XML的文档树进行解析了，该解析是交给BeanDefinitionParserDelegate来完成的。</p>
+<p>在完成资源的载入后，需要将载入的BeanDefinition进行解析并转化为IoC容器内部数据结构,这个过程在registerBeanDefinitions()成，具体是由BeanDefinitionsDocumentReader来完成。</p>
+<h5 id="BeanDefinition-的载入"><a href="#BeanDefinition-的载入" class="headerlink" title="BeanDefinition 的载入"></a>BeanDefinition 的载入</h5><p>首先，通过调用XML的解析器得到document对象。</p>
+<p>然后，按照Spring的Bean规则进行解析。按照Spring的Bean规则进行解析的过程是在默认设置好的DefaultBeanDefinitionDocumentReader中实现的。DefaultBeanDefinitionDocumentReader的创建是在后面的方法中完成的，然后再完成BeanDefinition的处理，处理的结果由BeanDefinitionHolder对象持有。这个BeanDefinitionHolder除了持有BeanDefinition对象外，还持有其他与BeanDefinition的使用相关的信息，比如Bean的名字、别名集合等。这个BeanDefinitionHolder的生成是通过对Document文档树的内容进行解析来完成的，可看到该解析过程是由BeanDefinitionParserDelegate实现的（processBeanDefinition方法中实现）的，同时这个解析是与Spring对BeanDefinition的配置规则紧密相关的。</p>
+<blockquote>
+<p>提示：具体的BeanDefinition的解析是在BeanDefinitionParserDelegate中完成的。</p>
+</blockquote>
+<p>在上面过程中介绍了对Bean元素进行解析的过程，也就是BeanDefinition依据XML的定义被创建的过程。这个BeanDefinition可以看成是对定义的抽象。这个数据对象中封装的数据大多都是与定义相关的，也有很多就是我们在定义Bean时看到的那些Spring标记，比如常见的init-method、destroy-method、factory-method等。</p>
+<p>beanClass、description、lazyInit这些属性都是在配置bean时经常碰到的，都集中在BeanDefinition。通过解析以后，便可对BeanDefinition元素进行处理，在这个过程中可以看到对Bean定义的相关处理，比如对元素attribute值的处理，对元素属性值的处理，对构造函数设置的处理，等等。</p>
+<h4 id="2-3-3-BeanDefinition在ioc容器中的注册"><a href="#2-3-3-BeanDefinition在ioc容器中的注册" class="headerlink" title="2.3.3 BeanDefinition在ioc容器中的注册"></a>2.3.3 BeanDefinition在ioc容器中的注册</h4><p>BeanDefinition在IoC容器中载入和解析的过程完成以后，用户定义的BeanDefinition信息已经在IoC容器内建立起了自己的数据结构以及相应的数据表示，但此时这些数据还不能供IoC容器直接使用，需要在IoC容器中对这些BeanDefinition数据进行注册。在DefaultListableBeanFactory中，是通过一个HashMap来持有载入的BeanDefinition的，这个HashMap的定义在DefaultListableBeanFactory中可以看到，如下所示。</p>
+<pre><code>private final Map beanDefinitionMap = new  ConcurrentHashMap();
+</code></pre><p>将解析得到的BeanDefinition向IoC容器中的beanDefinitionMap注册的过程是在载入BeanDefinition完成后进行的。</p>
+<p>在DefaultListableBeanFactory中实现了BeanDefinitionRegistry的接口，该接口的实现完成BeanDefinition向容器的注册。注册过程就是把解析得到的BeanDefinition设置到 hashMap中去。需要注意的是，如果遇到同名的BeanDefinition，进行处理的时候需要依据allowBeanDefinitionOverriding的配置来完成。</p>
+<p>完成了BeanDefinition的注册，就完成了IoC容器的初始化过程。此时，在使用的IoC容器DefaultListableBeanFactory中已经建立了整个Bean的配置信息，而且这些BeanDefinition已经可以被容器使用了，它们都在beanDefinitionMap里被检索和使用。容器的作用就是对这些信息进行处理和维护。</p>
+<blockquote>
+<p>总结：初始化过程主要工作是在ioc容器中建立BeanDefinition数据映射。</p>
+</blockquote>
+<h3 id="2-4-ioc容器的依赖注入"><a href="#2-4-ioc容器的依赖注入" class="headerlink" title="2.4 ioc容器的依赖注入"></a>2.4 ioc容器的依赖注入</h3><p>初始化过程主要工作是在ioc容器中建立BeanDefinition数据映射。</p>
+<p>当前IoC容器已经载入了用户定义的Bean信息，我们注意到用户第一次向IoC容器索要Bean时，即调用getBean（）的接口定义，触发依赖注入。</p>
+<p>在BeanDefinition信息中通过控制 lazy-init 属性来让容器完成对Bean的预实例化。它是在初始化过程中完成的。</p>
+<p>重点来说，getBean是依赖注入的起点，之后会调用createBean。在这个过程中，Bean对象会依据BeanDefinition定义的要求生成。在AbstractAutowireCapableBeanFactory中实现了这个createBean，createBean不但生成了需要的Bean，还对Bean初始化进行了处理，比如实现了在BeanDefinition中的init-method属性定义，Bean后置处理器等。</p>
+<p>与依赖注入关系特别密切的方法有createBeanInstance()和populateBean()。在createBeanInstance()中生成了Bean所包含的Java对象，这个对象的生成有很多种不同的方式，可以通过工厂方法生成，也可以通过容器的autowire特性生成，这些生成方式都是由相关的BeanDefinition来指定的。</p>
+<p>IoC容器中，要了解怎样使用cglib来生成Bean对象，需要看一下SimpleInstantiationStrategy类。这个Strategy是Spring用来生成Bean对象的默认类，它提供了两种实例化Java对象的方法，一种是通过BeanUtils，它使用了JDK的反射功能，一种是通过前面提到的CGLIB来生成，使用SimpleInstantiationStrategy生成Java对象。</p>
+<p>在实例化Bean对象生成的基础上，怎样把这些Bean对象的依赖关系设置好，完成整个依赖注入过程。这个过程涉及对各种Bean对象的属性的处理过程（即依赖关系处理的过程），这些依赖关系处理的依据就是已经解析得到的BeanDefinition。这个过程涉及到 populateBean() 方法。</p>
+<p>通过使用BeanDefinitionResolver来对BeanDefinition进行解析，然后注入到property中。下面到BeanDefinitionValueResolver中去看一下解析过程的实现。</p>
+<p>这两种属性的注入都调用了resolveValueIfNecessary，这个方法包含了所有对注入类型的处理。</p>
+<p>在完成这个解析过程后，已经为依赖注入准备好了条件，这是真正把Bean对象设置到它所依赖的另一个Bean的属性中去的地方，其中处理的属性是各种各样的。依赖注入的发生是在BeanWrapper的setPropertyValues中实现的，具体的完成却是在BeanWrapper的子类BeanWrapperImpl中实现的。</p>
+<p>在Bean的创建和对象依赖注入的过程中，需要依据BeanDefinition中的信息来递归地完成依赖注入。从上面的几个递归过程中可以看到，这些递归都是以getBean()方法为入口的。一个递归是在上下文体系中查找需要的Bean和创建Bean的递归调用。另一个递归是在依赖注入时，通过递归调用容器的getBean()方法，得到当前Bean的依赖Bean，同时也触发对依赖Bean的创建和注入。在对Bean的属性进行依赖注入时，解析的过程也是一个递归的过程。这样根据依赖关系，一层一层地完成Bean的创建和注入，直到最后完成当前Bean的创建。有了这个顶层Bean的创建和对它的属性依赖注入的完成，意味着和当前Bean相关的整个依赖链的注入也完成了。</p>
+<p>在Bean创建和依赖注入完成以后，在IoC容器中建立起一系列依靠依赖关系联系起来的Bean，这个Bean已经不是简单的Java对象了。该Bean系列以及Bean之间的依赖关系建立完成以后，通过IoC容器的相关接口方法，就可以非常方便地供上层应用使用了。</p>
+<h3 id="2-5-容器的其它特性的设计与实现"><a href="#2-5-容器的其它特性的设计与实现" class="headerlink" title="2.5 容器的其它特性的设计与实现"></a>2.5 容器的其它特性的设计与实现</h3><h4 id="2-5-1-ApplicationContext和Bean的初始化和销毁"><a href="#2-5-1-ApplicationContext和Bean的初始化和销毁" class="headerlink" title="2.5.1 ApplicationContext和Bean的初始化和销毁"></a>2.5.1 ApplicationContext和Bean的初始化和销毁</h4><ol>
+<li>初始化</li>
+</ol>
+<p>对于BeanFactory，特别是ApplicationContext，容器自身也有一个初始化和销毁关闭的过程。容器的实现是通过ioc管理Bean的生命周期来实现的。Ioc容器的Bean生命周期。</p>
+<p>在调用Bean初始化方法之前会调用一系列aware接口实现，将相关的BeanName、BeanClassLoader以及BeanFactory注入到Bean中。           </p>
+<p>对 ApplicationContext 启动 的过程是在AbstractApplicationContext中实现的。在使用应用上下文时需要做一些准备工作，这些准备工作在prepareBeanFactory（）方法中实现。在这个方法中，为容器配置了ClassLoader、PropertyEditor和BeanPostProcessor等，从而为容器的启动做好了必要的准备工作。</p>
+<p>在容器要关闭时，也需要完成一系列的工作，这些工作在doClose( )方法中完成。在这个方法中，先发出容器关闭的信号，然后将Bean逐个关闭，最后关闭容器自身。</p>
+<p>在容器的初始化和销毁的设计与实现过程中需要区分Bean的初始化和销毁过程。Spring IoC容器提供了相关的功能，可以让应用定制Bean的初始化和销毁过程。容器的实现是通过IoC管理Bean的生命周期来实现的。Spring IoC容器在对Bean的生命周期进行管理时提供了Bean生命周期各个时间点的回调。在分析Bean初始化和销毁过程的设计之前，简要介绍一下IoC容器中的Bean生命周期。</p>
+<pre><code>1. Bean实例的创建。
+
+2. 为Bean实例设置属性
+
+3. 调用Bean的初始化方法
+
+4. 应用可以通过Ioc容器使用Bean
+
+5. 当容器关闭时，调用Bean的销毁方法
+</code></pre><p>Bean的初始化方法调用是在initializeBean()方法实现的。</p>
+<p>在调用Bean的初始化方法之前，会调用一系列的aware接口实现，把相关的BeanName、BeanClassLoader，以及BeanFactoy注入到Bean中去。接着会看到对invokeInitMethods的调用，这时还会看到启动afterPropertiesSet的过程，当然，这需要Bean实现InitializingBean的接口，对应的初始化处理可以在InitializingBean接口的afterPropertiesSet方法中实现，这里同样是对Bean的一个回调。</p>
+<p>最后，还会看到判断Bean是否配置有initMethod，如果有，那么通过invokeCustomInitMethod方法来直接调用，最终完成Bean的初始化。</p>
+<p>在这个对initMethod的调用中，可以看到首先需要得到Bean定义的initMethod，然后通过JDK的反射机制得到Method对象，直接调用在Bean定义中声明的初始化方法。</p>
+<ol start="2">
+<li>销毁</li>
+</ol>
+<p>我们可以看到对Bean的销毁过程，首先对postProcessBeforeDestruction进行调用，然后调用Bean的destroy方法，最后是对Bean的自定义销毁方法的调用，整个过程和前面的初始化过程很类似。</p>
+<h4 id="2-5-2-lazy-init属性和预实例化"><a href="#2-5-2-lazy-init属性和预实例化" class="headerlink" title="2.5.2 lazy-init属性和预实例化"></a>2.5.2 lazy-init属性和预实例化</h4><p>在IOC容器初始化过程中，主语的工作是对BeanDefinition的定位、载入、解析和注册。此时依赖注入并没有发生，依赖注入发生在应用第一次向容器索要 Bean 时。向容器索要Bean是通过getBean()方法的调用完成的。该getBean是容器提供Bean服务的最基本的接口。</p>
+<h4 id="2-5-3-FactoryBean的实现"><a href="#2-5-3-FactoryBean的实现" class="headerlink" title="2.5.3 FactoryBean的实现"></a>2.5.3 FactoryBean的实现</h4><p>FactoryBean为应用生成需要的对象，这些对象往往是经过特殊处理的，如ProxyFactoryBean这样的特殊Bean。FactoryBean的生产特性是在getBean中起作用的，看下面的调用：</p>
+<pre><code>bean = getObjectForBeanInstance(sharedInstance, name, beanName, mbd);
+</code></pre><p>在getObjectForBeanInstance的实现方法中可以看到在FactoryBean中常见的getObject方法的接口。FactoryBean类似于AbstractFactory抽象工厂，getObjectForBeanInstance()方法类似于createProduceA()这样的生产接口，具体的FactoryBean实现如：TransactionProxyBean就是具体的工厂实现。</p>
+<h4 id="2-5-4-BeanPostProcessor的实现"><a href="#2-5-4-BeanPostProcessor的实现" class="headerlink" title="2.5.4 BeanPostProcessor的实现"></a>2.5.4 BeanPostProcessor的实现</h4><p>BeanPostProcessor是使用IoC容器时经常会遇到的一个特性，这个Bean的后置处理器是一个监听器，它可以监听容器触发的事件。将它向IoC容器注册后，容器中管理的Bean具备了接收IoC容器事件回调的能力。BeanPostProcessor的使用非常简单，只需要通过设计一个具体的后置处理器来实现。同时，这个具体的后置处理器需要实现接口类BeanPostProcessor，然后设置到XML的Bean配置文件中。这个BeanPostProcessor是一个接口类，它有两个接口方法，一个是postProcessBeforeInitialization，在Bean初始化前提供回调入口；一个是postProcessAfterInitialization，在Bean的初始化后提供回调入口，这两个回调的触发都是和容器管理Bean的生命周期相关的。这两个回调方法的参数都是一样的，分别是Bean的实例化对象和Bean的名字。</p>
+<p>postProcessBeforeInitialization是在populateBean完成之后被调用的。从BeanPostProcessor中的一个回调接口入手，对另一个回调接口postProcessAfterInitialization方法的调用，实际上也是在同一个地方封装完成的，这个地方就是populateBean方法中的initializeBean调用。在前面对IoC的依赖注入进行分析时，对这个populateBean有过分析，这个方法实际上完成了Bean的依赖注入。在容器中建立Bean的依赖关系，是容器功能实现的一个很重要的部分。</p>
+<p>在initializeBean方法中，需要使用Bean的名字，完成依赖注入以后的Bean对象，以及这个Bean对应的BeanDefinition。在这些输入的帮助下，完成Bean的初始化工作，这些工作包括为类型是BeanNameAware的Bean设置Bean的名字，类型是BeanClassLoaderAware的Bean设置类装载器，类型是BeanFactoryAware的Bean设置自身所在的IoC容器以供回调使用，当然，还有对postProcessBeforeInitialization/postProcessAfterInitialization的回调和初始化属性init-method的处理等。经过这一系列的初始化处理之后，得到的结果就是可以正常使用的由IoC容器托管的Bean了。</p>
+<h4 id="2-5-5-autowiring（自动依赖装配）的实现"><a href="#2-5-5-autowiring（自动依赖装配）的实现" class="headerlink" title="2.5.5 autowiring（自动依赖装配）的实现"></a>2.5.5 autowiring（自动依赖装配）的实现</h4><p>在之前我们一直是通过 BeanDefinition 的属性值和构造函数以显式的方式对Bean的依赖关系进行管理的。在Spring IoC容器中还提供了自动依赖装配的方式。在自动装配中，不需要对Bean属性做显式的依赖关系声明，只需要配置好autowiring属性，IoC容器会根据这个属性的配置，使用反射自动查找属性的类型或者名字，然后基于属性的类型或名字来自动匹配IoC容器中的Bean，从而自动地完成依赖注入。</p>
+<p>autowiring属性是在对Bean属性进行依赖注入时起作用。对autowirng属性进行处理，从而完成对Bean属性的自动依赖装配，是在populateBean中实现的。对属性autowiring的处理是populateBean处理过程的一个部分。在populateBean的实现中，在处理一般的Bean之前，先对autowiring属性进行处理。如果当前的Bean配置了autowire_by_name和autowire_by_type属性，那么调用相应的autowireByName方法和autowireByType方法。例如，对于autowire_by_name，它首先通过反射机制从当前Bean中得到需要注入的属性名，然后使用这个属性名向容器申请与之同名的Bean，这样实际又触发了另一个Bean的生成和依赖注入的过程。</p>
+<p> 在对autowiring类型做了一些简单的逻辑判断以后，通过调用autowireByName和autowireByType来完成自动依赖装配。</p>
+<p> 对autowireByName来说，它首先需要得到当前Bean的属性名，这些属性名已经在BeanWrapper和BeanDefinition中封装好了，然后是对这一系列属性名进行匹配的过程。在匹配的过程中，因为已经有了属性的名字，所以可以直接使用属性名作为Bean名字向容器索取Bean，这个getBean会触发当前Bean的依赖Bean的依赖注入，从而得到属性对应的依赖Bean。在执行完这个getBean后，把这个依赖Bean注入到当前Bean的属性中去，这样就完成了通过这个依赖属性名自动完成依赖注入的过程。autowireByType的实现和autowireByName的实现过程是非常类似的。</p>
+<h4 id="2-5-6-Bean的依赖检查"><a href="#2-5-6-Bean的依赖检查" class="headerlink" title="2.5.6 Bean的依赖检查"></a>2.5.6 Bean的依赖检查</h4><p>在一般情况下，Bean的依赖注入是在应用第一次向容器索取Bean的时候发生，在这个时候，不能保证注入一定能够成功，如果需要重新检查这些依赖关系的有效性，会是一件很繁琐的事情。为了解决这样的问题，在Spring IoC容器中，设计了一个依赖检查特性，通过它，Spring可以帮助应用检查是否所有的属性都已经被正确设置。在具体使用的时候，应用只需要在Bean定义中设置dependency-check属性来指定依赖检查模式即可，这里可以将属性设置为none、simple、object、all四种模式，默认的模式是none。</p>
+<h4 id="2-5-7-Bean对IoC容器的感知"><a href="#2-5-7-Bean对IoC容器的感知" class="headerlink" title="2.5.7 Bean对IoC容器的感知"></a>2.5.7 Bean对IoC容器的感知</h4><p>容器管理的Bean一般不需要了解容器的状态和直接使用容器，但在某些情况下，是需要在Bean中直接对IoC容器进行操作的，这时候，就需要在Bean中设定对容器的感知。Spring IoC容器也提供了该功能，它是通过特定的aware接口来完成的。aware接口有以下这些：</p>
+<pre><code>BeanNameAware ，可以在Bean中得到它在IoC容器中的Bean实例名称。
+
+BeanFactoryAware，可以在Bean中得到Bean所在的IoC容器，从而直接在Bean中使用IoC容器的服务。
+
+ApplicationContextAware，可以在Bean中得到Bean所在的应用上下文，从而直接在Bean中使用应用上下文的服务。
+
+MessageSourceAware，在Bean中可以得到消息源。
+
+ApplicationEventPublisherAware，在Bean中可以得到应用上下文的事件发布器，从而可以在Bean中发布应用上下文的事件。
+
+ResourceLoaderAware，在Bean中可以得到ResourceLoader，从而在Bean中使用ResourceLoader加载外部对应的Resource资源。
+</code></pre><p>在设置Bean的属性之后，调用初始化回调方法之前，Spring会调用aware接口中的setter方法。以ApplicationContextAware为例，分析对应的设计和实现。这个接口定义得很简单。</p>
+<p>这里只有一个方法setApplicationContext(ApplicationContext applicationContext)，它是一个回调函数，在Bean中通过实现这个函数，可以在容器回调该aware接口方法时使注入的applicationContext引用在Bean中保存下来，供Bean需要使用ApplicationContext的基本服务时使用。这个对setApplicationContext方法的回调是由容器自动完成的。可以看到，一个ApplicationContextAwareProcessor作为BeanPostProcessor的实现，对一系列的aware回调进行了调用，比如对ResourceLoaderAware接口的调用，对ApplicationEventPublisherAware接口的调用，以及对MessageSourceAware和ApplicationContextAware的接口调用等。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第5章 数据库操作组件的实现/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/第5章 数据库操作组件的实现/" itemprop="url">未命名</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-29T07:31:12+08:00">
+                2020-03-29
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-11-13T10:20:30+08:00">
+                2019-11-13
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  14
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="第5章-数据库操作组件的实现"><a href="#第5章-数据库操作组件的实现" class="headerlink" title="第5章 数据库操作组件的实现"></a>第5章 数据库操作组件的实现</h2><p>[toc]</p>
+<p>### </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/FastDFS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/FastDFS/" itemprop="url">未命名</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-29T07:30:26+08:00">
+                2020-03-29
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-27T20:01:48+08:00">
+                2019-12-27
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  214
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="FastDFS"><a href="#FastDFS" class="headerlink" title="FastDFS"></a>FastDFS</h2><p>[TOC]</p>
+<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>开源轻量级分布式文件系统，对文件进行管理。（文件存储、文件同步、文件访问（上传/下载））。</p>
+<p>FastDFS是一个开源的轻量级分布式文件系统，它解决了大数据量存储和负载均衡等问题，特别适合以中小文件（建议范围：4KB-500MB）为载体的在线服务。</p>
+<h4 id="分布式文件系统"><a href="#分布式文件系统" class="headerlink" title="分布式文件系统"></a>分布式文件系统</h4><p>分布式文件存储系统主要分为3部分。</p>
+<pre><code>1. 文件存储系统(保存文件)
+
+2. 文件容灾系统(相互备份)
+
+3. 文件访问调度仲裁系统(调配资源，决定存储位置)
+
+    优点(极大扩展能力，高可用性，弹性存储)
+
+    缺点(系统复杂度高，需要更多硬件资源)
+</code></pre><p><a href="http://www.ityouknow.com/springboot/2018/01/16/spring-boot-fastdfs." target="_blank" rel="noopener">SpringBoot集成FastDFS</a></p>
+<pre><code>1. 基于客户端/服务器的文件存储系统
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/结构型模式 - 总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/结构型模式 - 总结/" itemprop="url">未命名</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-29T07:30:16+08:00">
+                2020-03-29
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-08-07T08:38:41+08:00">
+                2019-08-07
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  168
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>结构型模式旨在通过改变程序结构来达到解耦的目的，使得程序更容易维护和扩展。</p>
+<p>代理模式是做方法增强的。</p>
+<p>适配器模式是将狗包装成鸭用来做适配器接口的。</p>
+<p>桥接模式是做解耦的。</p>
+<p>装饰者模式是装饰类或增强类场景的。</p>
+<p>外观模式是调用者不需要关心实例化过程，直接调用需要的方法就行的。</p>
+<p>组合模式用于描述具有层次结构的数据。</p>
+<p>享元模式是为了在特定的场景中缓存已经创建的对象，用于提高性能。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/行为型模式 - 总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/行为型模式 - 总结/" itemprop="url">未命名</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-29T07:30:16+08:00">
+                2020-03-29
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-08-07T08:38:37+08:00">
+                2019-08-07
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  0
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/UML/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/UML/" itemprop="url">未命名</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-29T07:30:16+08:00">
+                2020-03-29
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-09-01T15:09:53+08:00">
+                2019-09-01
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  194
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h2><h2 id="时序图"><a href="#时序图" class="headerlink" title="时序图"></a>时序图</h2><h4 id="UML-聚合关系与组合关系"><a href="#UML-聚合关系与组合关系" class="headerlink" title="UML - 聚合关系与组合关系"></a>UML - 聚合关系与组合关系</h4><ul>
+<li>聚合关系：空心菱形-箭头，是整体和局部的概念。菱形这一边可以理解为一个盘子，盛东西。</li>
+<li>组合关系：实心菱形-箭头，是同时存在生命周期的关系，如：鸟和翅膀。</li>
+</ul>
+<h4 id="UML-依赖关系与关联关系"><a href="#UML-依赖关系与关联关系" class="headerlink" title="UML - 依赖关系与关联关系"></a>UML - 依赖关系与关联关系</h4><ul>
+<li>依赖关系：虚线，若有若无的，在需要的时候调用依赖的对象。如：动物类里面依赖温度和水对象。</li>
+<li>关联关系：实线箭头，实打实的关系，表示一个对象里面包括另外一个对象。如：企鹅对象里面包括气候这个对象类。</li>
+</ul>
+<h4 id="UMML-实现和继承"><a href="#UMML-实现和继承" class="headerlink" title="UMML - 实现和继承"></a>UMML - 实现和继承</h4><ul>
+<li>实现，实线空心箭头，</li>
+<li>继承，虚线空心箭头，</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/IDEA 阅读源码 工具/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/IDEA 阅读源码 工具/" itemprop="url">未命名</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-29T07:30:16+08:00">
+                2020-03-29
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-08-07T08:38:39+08:00">
+                2019-08-07
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  24
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>IDEA阅读源码 类图结构</p>
+<pre><code>1.快捷键 ctrl + alt + shift + u
+
+2.选择 java class diagrams
+
+3. ...
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/设计模式 - 工厂方法源码解析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/设计模式 - 工厂方法源码解析/" itemprop="url">未命名</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-29T07:30:16+08:00">
+                2020-03-29
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-09-04T19:50:44+08:00">
+                2019-09-04
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  43
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="设计模式-工厂方法源码解析"><a href="#设计模式-工厂方法源码解析" class="headerlink" title="设计模式 - 工厂方法源码解析"></a>设计模式 - 工厂方法源码解析</h2><h4 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h4><pre><code>Collection（VideoFactory） -? ArrayList（JavaVideoFactory） -&gt; Iterator&lt;E&gt;方法（Video抽象类）-&gt; Itr()（实现的具体产品JavaVideo | PythonVideo）
+</code></pre><h4 id="URLStreamHandlerFactory-解决URL协议扩展use"><a href="#URLStreamHandlerFactory-解决URL协议扩展use" class="headerlink" title="URLStreamHandlerFactory (解决URL协议扩展use)"></a>URLStreamHandlerFactory (解决URL协议扩展use)</h4>
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/site.jpg"
+                alt="Bangjin-Hu" />
+            
+              <p class="site-author-name" itemprop="name">Bangjin-Hu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/BangjinHu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:2315378346@qq.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/Aaron_P_L" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-heart-o"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
+                      
+                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://iProgramering.github.io" target="_blank" title="iProgramer_ing">
+                      
+                        <i class="fa fa-fw fa-user"></i>iProgramer_ing</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          <div id="music163player">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src="//music.163.com/outchain/player?type=2&id=38358214&auto=0&height=66
+
+">
+    </iframe>
+</div>
+        </div>
+      </section>
+
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bangjin-Hu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">465.0k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/lib/clipboard/clipboard.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+</body>
+</html>

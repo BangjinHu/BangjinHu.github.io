@@ -1,0 +1,3514 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/site.jpg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="BangjinHu'Blog" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="BangjinHu's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="微信公众号：iProgrammer_ing">
+<meta property="og:type" content="website">
+<meta property="og:title" content="BangjinHu&#39;s Blog">
+<meta property="og:url" content="http://bangjinhu.github.io/page/18/index.html">
+<meta property="og:site_name" content="BangjinHu&#39;s Blog">
+<meta property="og:description" content="微信公众号：iProgrammer_ing">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BangjinHu&#39;s Blog">
+<meta name="twitter:description" content="微信公众号：iProgrammer_ing">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://bangjinhu.github.io/page/18/"/>
+
+
+
+
+
+  <title>BangjinHu's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+    
+    <a href="https://github.com/BangjinHu"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">BangjinHu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">让优秀成为习惯，让知识成为信仰</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            本站搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第八章 JVM内存管理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/第八章 JVM内存管理/" itemprop="url">JVM内存管理</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:16:44+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/多线程编程/" itemprop="url" rel="index">
+                    <span itemprop="name">多线程编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,329
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="第八章-JVM内存管理"><a href="#第八章-JVM内存管理" class="headerlink" title="第八章 JVM内存管理"></a>第八章 JVM内存管理</h2><p>[TOC]</p>
+<h3 id="8-3-Java中内存使用组件"><a href="#8-3-Java中内存使用组件" class="headerlink" title="8.3 Java中内存使用组件"></a>8.3 Java中内存使用组件</h3><h4 id="8-3-1-Java堆"><a href="#8-3-1-Java堆" class="headerlink" title="8.3.1 Java堆"></a>8.3.1 Java堆</h4><p>Java堆是用来存储Java对象的内存区域，堆的大小在JVM启动时就一次向操作系统申请完成，通过-Xmx | -Xms两个选项控制大小。一旦分配完成那么堆的大小就固定，不能在内存不够时再向操作系统重新申请。不能在内存空闲时将多余的空间交还给操作系统。</p>
+<pre><code>-Xmx 表示堆的最大大小
+</code></pre><hr>
+<pre><code>-Xms 表示初始大小
+</code></pre><blockquote>
+<p>提示：Java堆内存空间的管理由JVM控制，对象创建由Java应用程序控制，但是对象所占的空间释放由管理堆内存的垃圾收集器完成。</p>
+</blockquote>
+<h4 id="8-3-2-线程"><a href="#8-3-2-线程" class="headerlink" title="8.3.2 线程"></a>8.3.2 线程</h4><p>JVM运行实际程序的实体是线程，线程需要内存空间存储一些必要的数据。每个线程创建时，JVM都会3为它创建一个堆栈。堆栈的大小由不同的JVM实现而不同。</p>
+<h4 id="8-3-3-类和类加载器"><a href="#8-3-3-类和类加载器" class="headerlink" title="8.3.3 类和类加载器"></a>8.3.3 类和类加载器</h4><h4 id="8-3-4-NIO"><a href="#8-3-4-NIO" class="headerlink" title="8.3.4 NIO"></a>8.3.4 NIO</h4><p>NIO类库，新加一种基于通道和缓冲区来执行I/O的新方式。就如同Java堆上的内存支持I/O缓冲区一样，NIO使用java.nio.ByteBuffer.allocateDirect()方法分配内存。</p>
+<p>ByteBuffer.allocateDirect()分配的内存使用的是本机内存而不是Java堆上的内存。</p>
+<h4 id="8-3-5-JNI"><a href="#8-3-5-JNI" class="headerlink" title="8.3.5 JNI"></a>8.3.5 JNI</h4><p>JNI技术使得本机代码可以调用Java方法，也就是通常所说的native memory。在实际上Java运行时也依赖于JNI代码来实现类库功能，如：文件操作、网络IO操作或其它系统调用。</p>
+<h3 id="8-4-JVM内存结构"><a href="#8-4-JVM内存结构" class="headerlink" title="8.4 JVM内存结构"></a>8.4 JVM内存结构</h3><p>在Java虚拟机规范中将Java运行时数据划分为6种。</p>
+<pre><code>1. PC寄存器数据
+
+    PC寄存器严格来说是一个数据结构，它用于保存当前正常执行的程序的内存地址。
+
+2. Java栈
+
+    Java栈总是与线程关联起来的，每当创建一个线程时，JVM就会给这个线程创建一个对应的Java栈，这个Java栈中又会含有多个栈帧，这些栈帧是与每个方法关联起来的，每运行一个方法就创建一个栈帧，每个栈帧都包含一些内部变量（在方法内定义的变量），操作栈和方法返回值等信息。
+
+3. 堆
+
+    堆是存储Java对象的地方，它是JVM管理Java对象的核心存储区域。
+
+    注意：堆是被Java线程所共享的，所以对它的访问需要注意同步问题，方法和对应的属性都需要保证一致性。
+
+4. 方法区
+
+    Java方法区是用作存储类结构信息的地方，如：常量池、域、方法数据、方法体、构造函数。
+
+    方法区又是堆中的一部分，是永久区。
+
+5. 本地方法栈
+
+    本地方法栈是为JVM运行Native方法准备的空间，与Java栈的作用类似。
+
+6. 运行时常量池
+</code></pre><h3 id="8-5-JVM内存分配策略"><a href="#8-5-JVM内存分配策略" class="headerlink" title="8.5 JVM内存分配策略"></a>8.5 JVM内存分配策略</h3><h4 id="8-5-1-通常内存分配策略"><a href="#8-5-1-通常内存分配策略" class="headerlink" title="8.5.1 通常内存分配策略"></a>8.5.1 通常内存分配策略</h4><pre><code>1. 静态内存分配
+
+    表示程序在编译时能够确定每个数据在运行时刻的存储空间需求，所以在编译时能够为它们分配固定的内存空间。
+
+2. 栈内存分配
+
+    该内存分配又称动态内存分配，是类似于堆栈的运行栈实现。程序对数据区的需求在编译时未知，在运行时知道，在规定运行时进入程序模块时，必须知道程序模块所需的数据区大小才能为其分配内存。
+
+3. 堆内存分配
+
+    程序真正运行到相应代码时才会知道空间大小，这时候就需要堆内存分配策略。
+</code></pre><h4 id="8-5-2-Java内存分配"><a href="#8-5-2-Java内存分配" class="headerlink" title="8.5.2 Java内存分配"></a>8.5.2 Java内存分配</h4><p>JVM内存分配主要基于两种，堆和栈。</p>
+<p>Java栈的分配是与线程绑定在一起，在创建一个线程时，JVM会给该线程创建一个新的Java栈。在线程激活一个Java方法时，JVM就在线程的Java堆栈中新压入一个帧。帧存放当前方法在执行期间的参数、局部变量等。</p>
+<p>栈中主要存放一些基本变量数据和对象句柄（引用）。</p>
+<h3 id="8-6-Java内存回收机制"><a href="#8-6-Java内存回收机制" class="headerlink" title="8.6 Java内存回收机制"></a>8.6 Java内存回收机制</h3><h4 id="8-6-1-静态内存分配与回收"><a href="#8-6-1-静态内存分配与回收" class="headerlink" title="8.6.1 静态内存分配与回收"></a>8.6.1 静态内存分配与回收</h4><p>由前面知道的静态内存分配，我们知道在静态内存空间是在Java栈上分配的，当这个方法运行结束时，对应的栈帧也就撤销，所以分配的静态内存空间也就回收了。</p>
+<h4 id="8-6-2-动态内存分配与回收"><a href="#8-6-2-动态内存分配与回收" class="headerlink" title="8.6.2 动态内存分配与回收"></a>8.6.2 动态内存分配与回收</h4><p>动态内存回收与垃圾回收机制有关。</p>
+<h3 id="8-7-内存问题分析"><a href="#8-7-内存问题分析" class="headerlink" title="8.7 内存问题分析"></a>8.7 内存问题分析</h3><h4 id="8-7-1-GC日志分析"><a href="#8-7-1-GC日志分析" class="headerlink" title="8.7.1 GC日志分析"></a>8.7.1 GC日志分析</h4><p>GC日志输出如下参数：</p>
+<pre><code>1. -verbose:gc 辅助输出详细的GC信息
+
+2. -XX:+PrintGCDetails 输出GC的详细信息
+
+3. -XX:+PrintGCApplicationStoppedTime 输出GC造成应用程序暂停的时间
+
+4. -XX:+PrintGCDateStamps GC发生的时间信息
+
+5. -XX:+PrintHeapAtGC 在GC前后输出堆中各个区域的大小
+
+6. -Xloggc:[file] 将GC信息输出到单独的文件中
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第六章 任务执行/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/第六章 任务执行/" itemprop="url">任务执行</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:17:09+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/多线程编程/" itemprop="url" rel="index">
+                    <span itemprop="name">多线程编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  180
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<p>[TOC]</p>
+<h2 id="第六章-任务执行"><a href="#第六章-任务执行" class="headerlink" title="第六章 任务执行"></a>第六章 任务执行</h2><h3 id="6-2-Executor框架"><a href="#6-2-Executor框架" class="headerlink" title="6.2 Executor框架"></a>6.2 Executor框架</h3><p>通过使用Executor将请求处理任务的提交与任务的实际执行解耦开来，并且只需采用另一种不同的Executor实现，就能够改变服务器的行为。</p>
+<h4 id="6-2-3-线程池"><a href="#6-2-3-线程池" class="headerlink" title="6.2.3 线程池"></a>6.2.3 线程池</h4><p>线程池，指管理一组同构工作线程的资源池。线程池与工作队列密切相关，工作队列是保存了所有等待执行的任务。工作者线程的任务很简单，从工作队列中获取一个任务，执行任务，然后返回线程池并等待下一个任务。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第六章 单例模式与多线程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/第六章 单例模式与多线程/" itemprop="url">单例模式与多线程</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:17:36+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/多线程编程/" itemprop="url" rel="index">
+                    <span itemprop="name">多线程编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  508
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="第六章-单例模式与多线程"><a href="#第六章-单例模式与多线程" class="headerlink" title="第六章 单例模式与多线程"></a>第六章 单例模式与多线程</h2><p>[TOC]</p>
+<h3 id="6-1-立即加载-“饿汉模式”"><a href="#6-1-立即加载-“饿汉模式”" class="headerlink" title="6.1 立即加载/“饿汉模式”"></a>6.1 立即加载/“饿汉模式”</h3><p>立即加载，在使用类的时候已经将对象创建完毕，常见的实现是直接new实例化。</p>
+<h3 id="6-2-延迟加载-“懒汉模式”"><a href="#6-2-延迟加载-“懒汉模式”" class="headerlink" title="6.2 延迟加载/“懒汉模式”"></a>6.2 延迟加载/“懒汉模式”</h3><p>延迟加载就是在调用get()方法时实例才被创建，常见的方法是在get()方法中进行new实例化。</p>
+<h4 id="6-2-2-延迟加载-“懒汉模式的缺点”"><a href="#6-2-2-延迟加载-“懒汉模式的缺点”" class="headerlink" title="6.2.2 延迟加载/“懒汉模式的缺点”"></a>6.2.2 延迟加载/“懒汉模式的缺点”</h4><p>在多线程环境下创建的是多个对象，不是单例模式。</p>
+<pre><code>解决方案
+
+    1. 生命synchronized关键字
+
+        缺点：此种方法运行效率低，下一个线程想要取得对象需要等待上一个线程释放锁才行。
+
+    2. 同步代码块
+
+        缺点：和synchronized方法一样，效率低
+
+    3. 针对某些重要的程序进行单独的同步
+
+
+    4. DCL双检查锁机制
+
+        首先加入锁机制，然后再次判断对象是否存在
+</code></pre><h3 id="6-3-静态内置类实现单例模式"><a href="#6-3-静态内置类实现单例模式" class="headerlink" title="6.3 静态内置类实现单例模式"></a>6.3 静态内置类实现单例模式</h3><p>DCL可以解决多线程单例模式的非线程安全问题。但静态内置类也可以达到同样效果。</p>
+<pre><code>private static class handler {
+    private static MyObject hd = new MyObject();
+}
+
+//构造方法
+
+public static MyObject getInstance(){
+    return handler.hd;
+}
+</code></pre><h3 id="6-4-序列化与反序列化的单例模式"><a href="#6-4-序列化与反序列化的单例模式" class="headerlink" title="6.4 序列化与反序列化的单例模式"></a>6.4 序列化与反序列化的单例模式</h3><p>静态内置类可以达到线程安全问题，但如果遇到序列化对象时，使用默认的方式运行得到的结果还是多例的。</p>
+<pre><code>解决方法
+
+    在反序列化中使用 readResolve() 方法
+</code></pre><h3 id="6-5-static块实现单例模式"><a href="#6-5-static块实现单例模式" class="headerlink" title="6.5 static块实现单例模式"></a>6.5 static块实现单例模式</h3><p>因为静态块在使用类的时候就已经执行了，所以可以利用这一特性实现单例模式。</p>
+<pre><code>private static MyObject instance = null;
+
+static {
+    instance = new MyObject();
+}
+
+public static MyObject getInstance(){
+    return instance;
+}
+</code></pre><h3 id="6-6-枚举类enum实现单例模式"><a href="#6-6-枚举类enum实现单例模式" class="headerlink" title="6.6 枚举类enum实现单例模式"></a>6.6 枚举类enum实现单例模式</h3><p>在使用枚举类时构造方法会被自动调用，可以利用这一特性实现单例模式。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/自定义 FreeMarkerView/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/自定义 FreeMarkerView/" itemprop="url">Redis - Java集成</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:05:46+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  310
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<blockquote>
+<p>注意：这里自定义FreeMarkerView的目的是为了放一些公共的变量到FreeMarkerView模板里面。</p>
+</blockquote>
+<h4 id="1-配置文件-spring-application-xml"><a href="#1-配置文件-spring-application-xml" class="headerlink" title="1.配置文件 spring-application.xml"></a>1.配置文件 spring-application.xml</h4><pre><code>&lt;!-- ********************************************************************** 
+ ** FreeMaker解析器                                                      ** 
+ ********************************************************************** --&gt;
+&lt;bean class=&quot;org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver&quot;&gt;
+    &lt;!--&lt;property name=&quot;viewClass&quot; value=&quot;org.springframework.web.servlet.view.freemarker.FreeMarkerView&quot; /&gt;--&gt;
+    &lt;property name=&quot;viewClass&quot; value=&quot;net.mingyang.cms.util.FtlView&quot; /&gt;   
+    &lt;property name=&quot;contentType&quot; value=&quot;text/html;charset=UTF-8&quot; /&gt;
+    &lt;property name=&quot;exposeRequestAttributes&quot; value=&quot;true&quot; /&gt;  
+    &lt;property name=&quot;exposeSessionAttributes&quot; value=&quot;true&quot; /&gt;  
+    &lt;property name=&quot;exposeSpringMacroHelpers&quot; value=&quot;true&quot; /&gt;
+    &lt;!-- &lt;property name=&quot;suffix&quot; value=&quot;.ftl&quot; /&gt; --&gt;  
+    &lt;property name=&quot;order&quot; value=&quot;0&quot; /&gt;
+&lt;/bean&gt;
+&lt;bean class=&quot;org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer&quot;&gt; 
+    &lt;property name=&quot;templateLoaderPath&quot; value=&quot;/WEB-INF/views/&quot; /&gt; 
+    &lt;property name=&quot;freemarkerSettings&quot;&gt; 
+        &lt;props&gt; 
+            &lt;prop key=&quot;template_update_delay&quot;&gt;0&lt;/prop&gt; 
+            &lt;prop key=&quot;default_encoding&quot;&gt;UTF-8&lt;/prop&gt; 
+            &lt;prop key=&quot;number_format&quot;&gt;0.##########&lt;/prop&gt; 
+            &lt;prop key=&quot;datetime_format&quot;&gt;yyyy-MM-dd HH:mm:ss&lt;/prop&gt;
+            &lt;prop key=&quot;date_format&quot;&gt;yyyy-MM-dd&lt;/prop&gt; 
+            &lt;prop key=&quot;classic_compatible&quot;&gt;true&lt;/prop&gt; 
+            &lt;prop key=&quot;template_exception_handler&quot;&gt;ignore&lt;/prop&gt; 
+        &lt;/props&gt; 
+    &lt;/property&gt; 
+&lt;/bean&gt;
+</code></pre><h4 id="2-自定义实现类"><a href="#2-自定义实现类" class="headerlink" title="2.自定义实现类"></a>2.自定义实现类</h4><pre><code>package cn.edu.xidian.see.ext;
+
+import org.springframework.web.servlet.view.freemarker.FreeMarkerView;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
+
+public class FreeMarkerViewExt extends FreeMarkerView {
+
+    private static final String CONTEXT_PATH = &quot;basePath&quot;;
+
+    @Override
+    protected void exposeHelpers(Map&lt;String, Object&gt; model, HttpServletRequest request)
+            throws Exception {
+        //返回项目根目录
+        model.put(CONTEXT_PATH, request.getContextPath());
+        super.exposeHelpers(model, request);
+    }
+}
+
+//或者是这样...
+
+package net.mingyang.cms.util;
+
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.web.servlet.view.freemarker.FreeMarkerView;
+
+public class FtlView extends FreeMarkerView {
+    @Override
+    protected void exposeHelpers(Map&lt;String, Object&gt; model,
+            HttpServletRequest request) throws Exception {
+        model.put(&quot;contextPath&quot;, request.getContextPath());
+        super.exposeHelpers(model, request);
+    }
+
+}
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/自定义 HandlerExceptionResolver - 全局异常处理  HandlerMethodArgumentResolver - 入口参数解析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/自定义 HandlerExceptionResolver - 全局异常处理  HandlerMethodArgumentResolver - 入口参数解析/" itemprop="url">Redis - Java集成</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T08:44:21+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,076
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h3 id="1-Spring-使用-HandlerExceptionResolver-实现全局异常捕获"><a href="#1-Spring-使用-HandlerExceptionResolver-实现全局异常捕获" class="headerlink" title="1.Spring 使用 HandlerExceptionResolver 实现全局异常捕获"></a>1.Spring 使用 HandlerExceptionResolver 实现全局异常捕获</h3><p>首先实现的功能，我们在项目实现的过程中，项目会发生异常，但是我们并没有捕获这些异常，所以会经常出现bug等。在我们没有配置捕获全局异常时，容器会自动打印错误信息。但是如果我们在web.xml中配置，就会拦截错误，然后跳转到响应的处理错误页面。</p>
+<pre><code>//表示在web.xml中配置错误拦截，然后跳转到指定的错误处理界面
+&lt;error-page&gt;
+    &lt;error-code&gt;500&lt;/error-code&gt;
+    &lt;location&gt;/500.jsp&lt;/location&gt;
+&lt;/error-page&gt;
+</code></pre><p>但是现在我们在项目中通过实现Spring的HandlerExceptionResolver接口是实现所有的异常的捕获。</p>
+<ul>
+<li><p>方式一(通过实现HandlerExceptionResolver接口)使用步骤：</p>
+<p>  1.新建GlobalExceptionResolver</p>
+<pre><code>@Component
+//使用spring 利用 HandlerExceptionResolver实现全局异常捕获
+public class GlobalHandleExceptionResolver implements HandlerExceptionResolver {
+    private static Logger LOG = Logger.getLogger(GlobalHandleExceptionResolver.class);
+    private static  final int USER_EXCEPTION_CODE = 1;
+    private static  final int OTHER_EXCEPTION_CODE =2;
+
+    //编写自己需要的类
+    public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response,
+                                          Object handle, Exception ex){
+        ModelAndView mv = new ModelAndView(&quot;error&quot;);
+        if(ex instanceof  UserException){
+            mv.addObject(&quot;message&quot;, ex.getMessage());
+            mv.addObject(&quot;code&quot;,USER_EXCEPTION_CODE);
+            LOG.error(&quot;用户异常:&quot; +ex.getMessage(),ex);
+        }else{
+            mv.addObject(&quot;message&quot;,&quot;未知异常&quot;);
+            mv.addObject(&quot;code&quot;,OTHER_EXCEPTION_CODE);
+            LOG.error(&quot;未知异常:&quot;+ ex.getMessage(),ex);
+        }
+        return mv;
+    }
+}
+</code></pre><p>  2.在spring配置文件中配置新建的类</p>
+<pre><code>&lt;!--全局异常捕捉 --&gt;
+&lt;bean class=&quot;com.ssm.exception.GlobalExceptionResolver&quot; /&gt;
+</code></pre><p>  3.根据需求编写自己需要处理的方法</p>
+</li>
+</ul>
+<blockquote>
+<p>注意：在开发的过程中如果返回null，这样的话这个类如同不起作用。如果我们想返回错误页面，那么直接在ModleAndView里面写好即可。</p>
+</blockquote>
+<pre><code>ModelAndView modelAndView = new ModelAndView();
+modelAndView.setViewName(&quot;error&quot;);
+return modelAndView;
+</code></pre><ul>
+<li><p>方式二(通过使用注解)使用步骤：</p>
+<p>  1.创建GlobalExceptionResolver</p>
+<pre><code>//通过使用ControllerAdvice和ExceptionHandler这两个注解实现全局的异常捕获
+@ControllerAdvice
+public class GlobalExceptionResolver {
+    //这里的ServiceException是自定义的异常
+    @ExceptionHandler(value = ServiceException.class)
+    public @ResponseBody String serviceCommonExceptionHandler(ServiceException e) {
+        //对捕获的异常进行处理并打印日志等，之后返回json数据，方式与Controller相同
+        return &quot;{&apos;code&apos;:-1}&quot;;
+    }
+
+    @ExceptionHandler(value = Exception.class)
+    public ModelAndView exceptionHandler() {
+        //当然也可以直接返回ModelAndView等类型，然后跳转相应的错误页面，这都根据实际的需要进行使用
+        return new ModelAndView();
+    }
+}
+
+//自定义异常：
+public class ServiceException extends RuntimeException{
+    //...
+}
+</code></pre><blockquote>
+<p>注意：spring会根据@ExceptionHandler的value值进行匹配，如果我们项目中的一些异常没有被捕获，那么这里就会处理一些没有捕获的异常。</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h3 id="2-Spring-MVC-之-HandlerMethodArgumentResolver"><a href="#2-Spring-MVC-之-HandlerMethodArgumentResolver" class="headerlink" title="2.Spring MVC 之 HandlerMethodArgumentResolver"></a>2.Spring MVC 之 HandlerMethodArgumentResolver</h3><p>简言之，HandlerMethodArgumentResolver = HandlerMethod + Argument(参数) + Resolver(解析器),其实就是HandlerMethod方法的解析器, 将 HttpServletRequest(header + body 中的内容)解析为HandlerMethod方法的参数。</p>
+<blockquote>
+<p>SpringMVC中的HandlerAdapter会对Controller层方法的参数执行HandlerMethodArgumentResolver(对参数的解析器)中的方法。</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>HandlerMethodArgumentResolver接口主要有两个方法：supportsParameter和resolveArgument</p>
+</blockquote>
+</blockquote>
+<h4 id="2-1-supportsParameter-方法"><a href="#2-1-supportsParameter-方法" class="headerlink" title="2.1 supportsParameter()方法"></a>2.1 supportsParameter()方法</h4><pre><code>boolean supportsParameter(MethodParameter parameter);
+</code></pre><p>此方法返回的类型是boolean类型，作用是判断Controller层中参数是否满足条件，满足则执行resolveArgument()方法，不满足则跳过。</p>
+<pre><code>一般地，在supportParameter中执行getParameterAnnotations来判断是否包含这样的注解类型。getParameterAnnotations()方法表示在参数列表中经常会有添加注解的情况，所以在这种情况下使用getParameterAnnotations()方法来获得这些注解。
+
+//在下面这个方法中有四个参数，在参数上又有注解，所以可以通过这种方法来获得
+public void testa(@TestAnnocation(pat = &quot;5&quot;) String s,@TestAnnocation2 @TestAnnocation(pat = &quot;6&quot;) String s1,String s3,@TestAnnocation(pat = &quot;9&quot;) String s4) {
+    System.out.println(&quot;------------&quot; + s);
+}
+</code></pre><h4 id="2-2-resolveArgument-方法"><a href="#2-2-resolveArgument-方法" class="headerlink" title="2.2 resolveArgument()方法"></a>2.2 resolveArgument()方法</h4><p>此方法只会在supportsParameter()方法返回true的情况下才会调用，用于处理业务，将返回值赋值给Controller层中的参数。</p>
+<pre><code>Object resolveArgument(MethodParameter parameter, @Nullable ModelAndViewContainer mavContainer,NativeWebRequest webRequest, @Nullable WebDataBinderFactory binderFactory) throws Exception;
+</code></pre><hr>
+<pre><code>//判断 HandlerMethodArgumentResolver 是否支持 MethodParameter(PS: 一般都是通过 参数上面的注解|参数的类型)
+public interface HandlerMethodArgumentResolver {
+
+    //判断是否支持要转换的参数类型
+    boolean supportsParameter(MethodParameter var1);
+
+    //当支持后进行相应的转换
+    //此方法中包括四个参数
+    //MethodParameter parameter, M
+    //odelAndViewContainer mavContainer,
+    //NativeWebRequest webRequest, 
+    //WebDataBinderFactory binderFactory
+
+    Object resolveArgument(MethodParameter var1, ModelAndViewContainer var2, NativeWebRequest var3, WebDataBinderFactory var4) throws Exception;
+}
+</code></pre><blockquote>
+<blockquote>
+<p>总结：我们清楚，HandlerMethodArgumentResolver是一个参数解析器，我们可以通过写一个类实现HandlerMethodArgumentResolver接口来实现对Controller层中方法参数的修改。</p>
+</blockquote>
+</blockquote>
+<hr>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/自定义 HandlerMethodArgumentResolver 解决入参格式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/自定义 HandlerMethodArgumentResolver 解决入参格式/" itemprop="url">Redis - Java集成</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T08:44:13+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  445
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>自定义HandlerMethodArgumentResolver可以理解为用一个对象封装需要查询的参数到后台查询相关值。</p>
+<h2 id="1-自定义注解"><a href="#1-自定义注解" class="headerlink" title="1.自定义注解"></a>1.自定义注解</h2><pre><code>@Target({ElementType.PARAMETER, ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface PropertyNaming {
+
+}
+</code></pre><hr>
+<h2 id="2-实现方法"><a href="#2-实现方法" class="headerlink" title="2.实现方法"></a>2.实现方法</h2><pre><code>package cn.edu.xidian.see.ext;
+//这里省略导入的包文件
+...
+//在编写之前应该实现此解决入参问题的接口
+public class DataTableArgumentResolver implements HandlerMethodArgumentResolver {
+
+    //1.首先需要实现的方法是：supportsParameter()方法
+    @Override
+    public boolean supportsParameter(MethodParameter parameter) {
+        // 仅作用于添加了注解DataTableArgument的参数
+        return parameter.hasParameterAnnotation(DataTableArgument.class);
+    }
+
+    //2.然后重写resolveArgument方法
+    @Override
+    public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer,
+            NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
+
+        DataTableRequest dtRequest = new DataTableRequest();
+
+        if (webRequest.getParameter(&quot;draw&quot;) != null) {
+            dtRequest.setDraw(Integer.valueOf(webRequest.getParameter(&quot;draw&quot;)));
+        }
+        if (webRequest.getParameter(&quot;start&quot;) != null) {
+            dtRequest.setStart(Integer.valueOf(webRequest.getParameter(&quot;start&quot;)));
+        }
+        if (webRequest.getParameter(&quot;length&quot;) != null) {
+            dtRequest.setLength(Integer.valueOf(webRequest.getParameter(&quot;length&quot;)));
+        }
+
+        Map&lt;String, String[]&gt; parameterMap = webRequest.getParameterMap();
+
+        if (parameterMap.containsKey(&quot;search[value]&quot;)) {
+            Search search = new Search();
+            search.setValue(parameterMap.get(&quot;search[value]&quot;)[0]);
+            search.setRegex(Boolean.valueOf(parameterMap.get(&quot;search[regex]&quot;)[0]));
+            dtRequest.setSearch(search);
+        }
+
+        List&lt;Order&gt; orders = new ArrayList&lt;&gt;();
+        int i = 0;
+        String ockey = &quot;order[&quot; + i + &quot;][column]&quot;, odkey;
+        while (parameterMap.containsKey(ockey)) {
+
+            odkey = &quot;order[&quot; + i + &quot;][dir]&quot;;
+
+            Order order = new Order();
+            order.setColumn(Integer.valueOf(parameterMap.get(ockey)[0]));
+            order.setDir(parameterMap.get(odkey)[0]);
+            orders.add(order);
+
+            ockey = &quot;order[&quot; + (++i) + &quot;][column]&quot;;
+        }
+        dtRequest.setOrder(orders);
+
+        List&lt;Column&gt; columns = new ArrayList&lt;&gt;();
+        i = 0;
+        String cdkey, cnkey, cskey, cokey, csvkey, csrkey;
+        cdkey = &quot;columns[&quot; + i + &quot;][data]&quot;;
+        while (parameterMap.containsKey(cdkey)) {
+
+            cnkey = &quot;columns[&quot; + i + &quot;][name]&quot;;
+            cskey = &quot;columns[&quot; + i + &quot;][searchable]&quot;;
+            cokey = &quot;columns[&quot; + i + &quot;][orderable]&quot;;
+            csvkey = &quot;columns[&quot; + i + &quot;][search][value]&quot;;
+            csrkey = &quot;columns[&quot; + i + &quot;][search][regex]&quot;;
+
+            Column column = new Column();
+            column.setData(parameterMap.get(cdkey)[0]);
+            column.setName(parameterMap.get(cnkey)[0]);
+            column.setSearchable(Boolean.valueOf(parameterMap.get(cskey)[0]));
+            column.setOrderable(Boolean.valueOf(parameterMap.get(cokey)[0]));
+            Search search = new Search();
+            search.setValue(parameterMap.get(csvkey)[0]);
+            search.setRegex(Boolean.valueOf(parameterMap.get(csrkey)[0]));
+            column.setSearch(search);
+            columns.add(column);
+
+            cdkey = &quot;columns[&quot; + (++i) + &quot;][data]&quot;;
+        }
+        dtRequest.setColumns(columns);
+
+        return dtRequest;
+    }
+
+}
+</code></pre><hr>
+<h2 id="3-使用方法"><a href="#3-使用方法" class="headerlink" title="3.使用方法"></a>3.使用方法</h2><pre><code>@RequestMapping(value = &quot;/teacher/process&quot;, produces = {&quot;application/json;charset=UTF-8&quot;})
+@ResponseBody
+public String teacher_process(HttpSession session,
+                                @DataTableArgument DataTableRequest dtRequest,
+                                @RequestParam(value = &quot;showColumns[]&quot;, required = false) String[] showColumns) throws Exception{
+                                //controller程序实现  
+                              }
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/自定义注解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/自定义注解/" itemprop="url">Redis - Java集成</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T08:44:34+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,002
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<p>自定义注解是程序中特殊的标记，用于替代配置文件。传统方式通过配置文件告诉类如何运行，有了注解技术之后，开发人员可以通过注解告诉类如何执行。在Java技术里应用注解的典型应用：通过反射技术去得到类里面的注解，从而决定如何去运行类。</p>
+<blockquote>
+<p>提示：自定义使用场景，类属性自动赋值；验证对象属性完整性；代替配置文件功能，像Spring基于注解的配置；可以生成文档，像Java程序注释中的@see @param等。</p>
+</blockquote>
+<h2 id="Target-元注解"><a href="#Target-元注解" class="headerlink" title="@Target 元注解"></a>@Target 元注解</h2><p>@Target 元注解决定一个注解可以标识到哪些成分上。如：表示在类上或者属性上或者方法上 @Target 默认值为任何元素成分</p>
+<h2 id="自定义注解："><a href="#自定义注解：" class="headerlink" title="自定义注解："></a>自定义注解：</h2><p>使用 @interface 自定义注解，自动继承 java.lang.annotation.Annotation 接口。</p>
+<blockquote>
+<p>注意：在定义自定义注解时不能继承其他的注解或接口</p>
+</blockquote>
+<p>@interface 用来声明一个注解，其中的每一个方法实际上是声明了一个配置参数。方法的名称就是参数的名称，返回值类型就是参数的类型(返回值类型只有基本类型、class、String、enum)</p>
+<h4 id="1-定义注解的格式"><a href="#1-定义注解的格式" class="headerlink" title="1.定义注解的格式"></a>1.定义注解的格式</h4><pre><code>public @interface 注解名{定义体}
+</code></pre><h4 id="2-注解参数的可支持数据类型"><a href="#2-注解参数的可支持数据类型" class="headerlink" title="2.注解参数的可支持数据类型"></a>2.注解参数的可支持数据类型</h4><pre><code>1.所有基本数据类型（int,float,boolean,byte,double,char,long,short)
+2.String类型
+3.Class类型
+4.enum类型
+5.Annotation类型
+6.以上所有类型的数组
+</code></pre><h4 id="3-注解元素的默认值"><a href="#3-注解元素的默认值" class="headerlink" title="3.注解元素的默认值"></a>3.注解元素的默认值</h4><p>注解元素需要有确定的值，要么在定义注解的默认值中指定，要么在使用注解时指定，同时不是基本类型的注解元素不能为null。所以在使用空字符串或 0 作为默认值是一种常用的方法。</p>
+<h4 id="4-注解-Retention-用来修饰注解，是注解的注解，称为元注解"><a href="#4-注解-Retention-用来修饰注解，是注解的注解，称为元注解" class="headerlink" title="4.注解@Retention 用来修饰注解，是注解的注解，称为元注解"></a>4.注解@Retention 用来修饰注解，是注解的注解，称为元注解</h4><pre><code>@Retention 注解有一个属性 value 是RetentionPolicy类型的，Enum RetentionPolicy是一个枚举类型，这个枚举决定了Retention注解应该如何去保持，也可理解为Rentention 搭配 RententionPolicy使用。
+
+@Retention(RetentionPolicy.CLASS)修饰的注解，表示注解的信息被保留在class文件(字节码文件)中当程序编译时，但不会被虚拟机读取在运行的时候
+
+@Retention(RetentionPolicy.SOURCE )修饰的注解,表示注解的信息会被编译器抛弃，不会留在class文件中，注解的信息只会留在源文件中
+
+@Retention(RetentionPolicy.RUNTIME )修饰的注解，表示注解的信息被保留在class文件(字节码文件)中当程序编译时，会被虚拟机保留在运行时
+
+所以他们可以用反射方式来读取，RetentionPolicy.RUNTIME 可以让你从JVM中读取Annotation注解的信息，以便在分析程序的时候使用。
+</code></pre><h4 id="5-注解-Documented"><a href="#5-注解-Documented" class="headerlink" title="5.注解@Documented"></a>5.注解@Documented</h4><p>@Documented 注解表明这个注解应该被 JavaDoc 工具记录。默认情况下，javadoc是不包括注解的，如果声明注解时指定了@Documented 则其会被javadoc之类的工具处理，所以注解类型信息会被包括在生成的文档中。</p>
+<h4 id="6-Target-注解"><a href="#6-Target-注解" class="headerlink" title="6.@Target 注解"></a>6.@Target 注解</h4><p>@Target注解时为了说明Annotation所修饰的范围，Annotation可被用于 package、types(类、接口、枚举、Annotation类型)、类型成员、方法参数和本地变量</p>
+<pre><code>1.CONSTRUCTOR:用于描述构造器 
+
+2.FIELD:用于描述域 
+
+3.LOCAL_VARIABLE:用于描述局部变量
+
+4.METHOD:用于描述方法
+
+5.PACKAGE:用于描述包 
+
+6.PARAMETER:用于描述参数
+
+7.TYPE:用于描述类、接口(包括注解类型) 或enum声明
+</code></pre><h4 id="7-案例"><a href="#7-案例" class="headerlink" title="7.案例"></a>7.案例</h4><pre><code>package annotation;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+/**
+ * 是否需要从解析Excel赋值
+ * @author administrator
+ * @see [相关类/方法]
+ */
+@Retention(value = RetentionPolicy.RUNTIME)
+@Target(value = {ElementType.FIELD})
+public @interface IsNeeded {
+    boolean isNeeded() default true;
+}
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/计算机网络 - 传输层/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/计算机网络 - 传输层/" itemprop="url">计算机网络 - 传输层</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:20:16+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机网络/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,857
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<p>[TOC]</p>
+<h2 id="计算机网络-传输层"><a href="#计算机网络-传输层" class="headerlink" title="计算机网络 - 传输层"></a>计算机网络 - 传输层</h2><p>网络层只将 分组 发送到目的主机，但是真正通信的并不是主机而是主机中的进程。传输层提供了进程间的逻辑通信，传输层向高层用户屏蔽了下面网络层的核心细节，使应用程序看起来像是在两个传输层实体之间有一条端到端的逻辑通信通道。</p>
+<h3 id="UDP-TCP的特点"><a href="#UDP-TCP的特点" class="headerlink" title="UDP | TCP的特点"></a>UDP | TCP的特点</h3><p>用户数据报协议 UDP（User Datagram Protocol）是无连接的，尽最大可能交付，没有拥塞控制，面向报文（对于应用程序传下来的报文不合并也不拆分，只是添加 UDP 首部），支持一对一、一对多、多对一和多对多的交互通信。</p>
+<blockquote>
+<p>特点：1.面向非连接。2.不维护连接状态，支持同时向多个客户端传输相同的消息。3.数据包报头只有8个字节，额外开销小。4.吞吐量只受限于数据生成速率、传输速率以及机器性能。5.尽最大可能交付，不保证可靠交付，不需要维持复杂的链接状态表。6.面向报文，不对应用程序提交的报文信息进行拆分或者合并。</p>
+</blockquote>
+<p>传输控制协议 TCP（Transmission Control Protocol）是面向连接的，提供可靠交付，有流量控制，拥塞控制，提供全双工通信，面向字节流（把应用层传下来的报文看成字节流，把字节流组织成大小不等的数据块），每一条 TCP 连接只能是点对点的（一对一）。</p>
+<blockquote>
+<p>特点：1.基于字节流的传输层通信协议。2.将应用层的数据流分割成报文段并发送给目标节点的TCP层。3.数据包都有序号，对方收到则发送ACK确认，未收到则重传。4.使用奇偶校验来校验数据是否有错。5.数据包报头有20个字节。</p>
+</blockquote>
+<blockquote>
+<p>TCP FLAGS</p>
+<blockquote>
+<p>URG：紧急指针标志<br><br>ACK：确认序号标志<br><br>PSH：push标志<br><br>RST：重置连接标志<br><br>SYN：同步序号，用于建立连接过程<br><br>FIN：finish标志，用于释放连接</p>
+</blockquote>
+</blockquote>
+<h3 id="UDP首部格式"><a href="#UDP首部格式" class="headerlink" title="UDP首部格式"></a>UDP首部格式</h3><p>首部字段只有8个字节，然后包括源端口、目的端口、长度、校验和。12字节的伪首部是为了计算校验和临时添加的。</p>
+<h3 id="TCP首部格式"><a href="#TCP首部格式" class="headerlink" title="TCP首部格式"></a>TCP首部格式</h3><pre><code>1.序号：对字节流进行编号。
+
+2.确认号：期望收到的下一个报文段的序号。
+
+3.数据偏移：表示数据部分距离报文段起始处的偏移量，实际上指首部的长度。
+
+4.确认ACK：当ACK=1时确认号字段有效，否则无效。TCP 规定，在连接建立后所有传送的报文段都必须把 ACK 置 1。
+
+5.同步SYN：在连接建立时用来同步序号。当 SYN=1，ACK=0 时表示这是一个连接请求报文段。若对方同意建立连接，则响应报文中 SYN=1，ACK=1。
+
+6.终止FIN：用来释放一个连接，当 FIN=1 时，表示此报文段的发送方的数据已发送完毕，并要求释放连接。
+
+7.窗口：窗口值作为接收方让发送方设置其发送窗口的依据。之所以要有这个限制，是因为接收方的数据缓存空间是有限的。
+</code></pre><h3 id="TCP三次握手"><a href="#TCP三次握手" class="headerlink" title="TCP三次握手"></a>TCP三次握手</h3><pre><code>在TCP/IP协议中，TCP协议提供可靠的连接服务，采用三次握手建立一个连接。
+
+    1.第一次握手，建立连接时，客户端发送SYN包（SYN=j）到服务器，并进入SYN_SEND状态，等待服务器确认。
+
+    2.第二次握手，服务器收到SYN包，必须确认客户端的SYN（ACK = j+1），同时自己也发送一个SYN包（syn=k），即SYN+ACK包，此时服务器进入SYN_RECV状态。
+
+    3.第三次握手，客户端收到服务器的SYN+ACK包，向服务器发送确认包ACK（ack=k+1），此包发送完毕，客户端和服务器进入ESTABLISHED状态，完成三次握手。
+</code></pre><blockquote>
+<p>提示：三次握手的目的是为了初始化Sequence Number的初始值。</p>
+</blockquote>
+<h4 id="首次握手的隐患"><a href="#首次握手的隐患" class="headerlink" title="首次握手的隐患"></a>首次握手的隐患</h4><p><code>这里有一个问题就是在第一次客户端发送连接请求之后掉线，服务器接收到连接请求（SYN）之后，回复SYN-ACK时候没有收到ACK确认，会不断的重试直到超时。</code></p>
+<p>在这个超时等待过程中可能会存在 SYN Flood 恶意攻击</p>
+<h4 id="连接建立之后，客户端出现故障"><a href="#连接建立之后，客户端出现故障" class="headerlink" title="连接建立之后，客户端出现故障"></a>连接建立之后，客户端出现故障</h4><p>TCP有一个保活机制，在客户端出现故障之后，向对方发送保活探测报文，如果未收到则响应则继续发送。尝试次数达到保活探测数仍未收到响应则中断连接。</p>
+<h3 id="TCP四次挥手"><a href="#TCP四次挥手" class="headerlink" title="TCP四次挥手"></a>TCP四次挥手</h3><pre><code>TCP采用四次挥手是为了终止连接，流程：
+
+    1.第一次挥手，客户端发送一个FIN，用来关闭客户端到服务器的数据传送，客户端进入FIN_WAIT_1状态。
+
+    2.第二次挥手，服务器收到FIN后，发送一个ACK给客户端，确认序号为收到序号+1（与SYN相同，一个FIN占用一个序号），服务器进入CLOSE_WAIT状态。
+
+    3.第三次挥手，服务器发送一个FIN，用来关闭服务器到客户端的数据传送，服务器进入LAST_ACK状态。
+
+    4.第四次挥手，客户端收到FIN后，客户端进入TIME_WAIT状态（客户端在经过2*MSL时间后进入CLOSED状态），接着发送一个ACK到服务器，确认序号为收到序号+1，服务器进入CLOSED状态，完成四次挥手。
+</code></pre><blockquote>
+<p>提示：TCP连接在经过 2*MSL 时间之后才会进入CLOSED状态的原因是：1.确保对方有足够的时间收到ACK包。2.避免有足够时间避免新旧连接混淆。</p>
+</blockquote>
+<blockquote>
+<p>提示：为什么需要四次握手才能断开连接的原因是：因为全双工，发送方和接收方都需要FIN报文和ACK报文，所以看起来就是四次的挥手。</p>
+</blockquote>
+<blockquote>
+<p>提示：服务器出现大量CLOSE_WAIT状态的原因是：客户端一直在请求，但是返回给客户端的信息是异常的，服务端没有收到请求</p>
+</blockquote>
+<h3 id="TCP可靠传输"><a href="#TCP可靠传输" class="headerlink" title="TCP可靠传输"></a>TCP可靠传输</h3><p>TCP在使用超时重传实现可靠传输，如果一个已经发送的报文段在超时时间内没有收到确认，那么久重传这个报文段。</p>
+<h3 id="TCP滑动窗口"><a href="#TCP滑动窗口" class="headerlink" title="TCP滑动窗口"></a>TCP滑动窗口</h3><pre><code>RTT：发送一个数据包到收到对应的ACK所花费的时间
+
+RTO：重传时间间隔
+</code></pre><p>TCP使用滑动窗口做流量控制与乱序重排。作用是：1.保证TCP的可靠性。2.保证TCP的流控特性。</p>
+<p>滑动窗口的窗口数据计算过程：</p>
+<pre><code>window = maxRcvBuffer - (LastByteRcvd - LastByteRead)
+</code></pre><h3 id="TCP流量控制"><a href="#TCP流量控制" class="headerlink" title="TCP流量控制"></a>TCP流量控制</h3><p>流量控制是为了控制发送方发送速率，保证接收方来得及接收。接收方发送的确认报文中的窗口字段可以用来控制发送方窗口大小，而不影响发送方的发送速率。如果窗口字段设置为 0，则发送方不能发送数据。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/计算机网络 - 应用层/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/计算机网络 - 应用层/" itemprop="url">计算机网络 - 应用层</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:20:38+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机网络/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  28
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<p>[TOC]</p>
+<h2 id="计算机网络-应用层"><a href="#计算机网络-应用层" class="headerlink" title="计算机网络 - 应用层"></a>计算机网络 - 应用层</h2><p>### </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/计算机网络 - 概述/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/计算机网络 - 概述/" itemprop="url">计算机网络 - 概述</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:20:46+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机网络/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,304
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<p>[TOC]</p>
+<h2 id="计算机网络-概述"><a href="#计算机网络-概述" class="headerlink" title="计算机网络 - 概述"></a>计算机网络 - 概述</h2><h4 id="网络的网络"><a href="#网络的网络" class="headerlink" title="网络的网络"></a>网络的网络</h4><p>网络把主机连接起来，而互联网是把多种不同的网络连接起来，因此互联网是网络的网络。</p>
+<h4 id="OSI-七层网络参考模型"><a href="#OSI-七层网络参考模型" class="headerlink" title="OSI 七层网络参考模型"></a>OSI 七层网络参考模型</h4><h4 id="TCP-IP-四层网络模型"><a href="#TCP-IP-四层网络模型" class="headerlink" title="TCP/IP 四层网络模型"></a>TCP/IP 四层网络模型</h4><h4 id="ISP"><a href="#ISP" class="headerlink" title="ISP"></a>ISP</h4><p>互联网服务提供商 ISP 可以从互联网管理机构获得许多 IP 地址，同时拥有通信线路以及路由器等联网设备，个人或机构向 ISP 缴纳一定的费用就可以接入互联网。</p>
+<h4 id="主机之间的通信方式"><a href="#主机之间的通信方式" class="headerlink" title="主机之间的通信方式"></a>主机之间的通信方式</h4><pre><code>1.客户-服务区（C/S）：客户是服务的请求方，服务器是服务的提供方。
+
+2.对等（p2p）：不区分客户端和服务器。
+</code></pre><h4 id="电路交换和分组交换"><a href="#电路交换和分组交换" class="headerlink" title="电路交换和分组交换"></a>电路交换和分组交换</h4><p><strong>1.电路交换</strong><br></p>
+<p>电路交换用于电话通信系统，两个用户要通信之前需要建立一条专用的物理链路，并且在整个通信过程中始终占用该链路。由于通信的过程中不可能一直在使用传输线路，因此电路交换对线路的利用率很低，往往不到 10%。</p>
+<p><strong>2.分组交换</strong><br></p>
+<p>每个分组都有首部和尾部，包含了源地址和目的地址等控制信息，在同一个传输线路上同时传输多个分组互相不会影响，因此在同一条传输线路上允许同时传输多个分组，也就是说分组交换不需要占用传输线路。</p>
+<p>在一个邮局通信系统中，邮局收到一份邮件之后，先存储下来，然后把相同目的地的邮件一起转发到下一个目的地，这个过程就是存储转发过程，分组交换也使用了存储转发过程。</p>
+<h4 id="时延"><a href="#时延" class="headerlink" title="时延"></a>时延</h4><pre><code>总时延 = 排队时延 + 处理时延 + 传输时延 + 传播时延
+</code></pre><p><strong>1.排队时延</strong><br></p>
+<p>分组在路由器的输入队列和输出队列中排队等待的时间，取决于网络当前的通信量。</p>
+<p><strong>2.处理时延</strong><br></p>
+<p>主机或路由器收到分组时进行处理所需要的时间。如：分析首部、从分组中提取数据、进行差错校验或查找适当的路由等。</p>
+<p><strong>3.传输时延</strong><br></p>
+<p>主机或路由传输数据帧所需要的时间。</p>
+<pre><code>delay = l(m) / v(m/s) l-表示信道长度 v-表示电磁波在信道上的传播速度
+</code></pre><h4 id="计算机网络体系结构"><a href="#计算机网络体系结构" class="headerlink" title="计算机网络体系结构"></a>计算机网络体系结构</h4><pre><code>1.OSI模型 （从上到下）
+
+    应用层 | 表示层 | 会话层 | 运输层 | 网络层 | 数据链路层 | 物理层
+
+        表示层：数据压缩、加密以及数据描述，这使得应用程序不需要关系在各台主机中数据内部格式不同问题。
+
+        会话层：建立以及管理会话。
+
+2.五层协议模型 （从上到下）
+
+    应用层 | 运输层 | 网络层 | 数据链路层 | 物理层
+
+        应用层：为特定应用程序提供数据传输服务，例如 HTTP、DNS 等协议。数据单位为报文。
+
+        传输层：为进程提供通用数据传输服务。运输层包括两种协议：传输控制协议 TCP，提供面向连接、可靠的数据传输服务，数据单位为报文段；用户数据报协议 UDP，提供无连接、尽最大努力的数据传输服务，数据单位为用户数据报。TCP 主要提供完整性服务，UDP 主要提供及时性服务。
+
+        网络层：为主机提供数据传输服务。而传输层协议是为主机中的进程提供数据传输服务。网络层把传输层传递下来的报文段或者用户数据报封装成分组。
+
+        数据链路层：网络层针对的还是主机之间的数据传输服务，而主机之间可以有很多链路，链路层协议就是为同一链路的主机提供数据传输服务。数据链路层把网络层传下来的分组封装成帧。
+
+        物理层：考虑的是怎样在传输媒体上传输数据比特流，而不是指具体的传输媒体。物理层的作用是尽可能屏蔽传输媒体和通信手段的差异，使数据链路层感觉不到这些差异。
+
+3.TCP/IP （从上到下）
+
+    应用层 | 运输层 | 网际层 | 网络接口层 （相当于五层协议中的数据链路层和物理层合并为接口层）
+
+        注意：TCP/IP 体系结构不严格遵循 OSI 分层概念，应用层可能会直接使用 IP 层或者网络接口层。
+
+4.数据在各层之间的传递过程
+
+    在向下的过程中，需要添加下层协议所需要的首部和尾部，而在向上的过程中不断拆开首部和尾部。
+
+    注意：路由器只有下面三层协议，因为路由器位于网络核心中，不需要为进程或应用程序提供服务，因此也就不需要传输层和应用层。
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/17/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/19/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/site.jpg"
+                alt="Bangjin-Hu" />
+            
+              <p class="site-author-name" itemprop="name">Bangjin-Hu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/BangjinHu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:2315378346@qq.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/Aaron_P_L" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-heart-o"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
+                      
+                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://iProgramering.github.io" target="_blank" title="iProgramer_ing">
+                      
+                        <i class="fa fa-fw fa-user"></i>iProgramer_ing</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          <div id="music163player">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src="//music.163.com/outchain/player?type=2&id=38358214&auto=0&height=66
+
+">
+    </iframe>
+</div>
+        </div>
+      </section>
+
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bangjin-Hu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">465.0k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/lib/clipboard/clipboard.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+</body>
+</html>

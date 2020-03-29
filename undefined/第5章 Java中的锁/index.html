@@ -1,0 +1,1614 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/site.jpg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Redis," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="BangjinHu's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. 第五章 Java中的锁[TOC] 5.1 Lock接口Java SE 1.5 之后，在并发包中新增 Lock 接口用来实现锁功能。它提供了与synchronize关键字类似的同步功能，只是在使用时需要显式地获取和释放锁。  提示：使用synchronize关键字将会隐式地获取锁，但是它将锁的获取和释放固化了，也就是先获取后释放。这种方式简化了同步的管">
+<meta name="keywords" content="Redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis - Java集成">
+<meta property="og:url" content="http://bangjinhu.github.io/undefined/第5章 Java中的锁/index.html">
+<meta property="og:site_name" content="BangjinHu&#39;s Blog">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. 第五章 Java中的锁[TOC] 5.1 Lock接口Java SE 1.5 之后，在并发包中新增 Lock 接口用来实现锁功能。它提供了与synchronize关键字类似的同步功能，只是在使用时需要显式地获取和释放锁。  提示：使用synchronize关键字将会隐式地获取锁，但是它将锁的获取和释放固化了，也就是先获取后释放。这种方式简化了同步的管">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-03-29T02:05:45.573Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Redis - Java集成">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 第五章 Java中的锁[TOC] 5.1 Lock接口Java SE 1.5 之后，在并发包中新增 Lock 接口用来实现锁功能。它提供了与synchronize关键字类似的同步功能，只是在使用时需要显式地获取和释放锁。  提示：使用synchronize关键字将会隐式地获取锁，但是它将锁的获取和释放固化了，也就是先获取后释放。这种方式简化了同步的管">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://bangjinhu.github.io/undefined/第5章 Java中的锁/"/>
+
+
+
+
+
+  <title>Redis - Java集成 | BangjinHu's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    
+    <a href="https://github.com/BangjinHu"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">BangjinHu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">让优秀成为习惯，让知识成为信仰</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            本站搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第5章 Java中的锁/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Redis - Java集成</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:05:45+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,105
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="第五章-Java中的锁"><a href="#第五章-Java中的锁" class="headerlink" title="第五章 Java中的锁"></a>第五章 Java中的锁</h2><p>[TOC]</p>
+<h3 id="5-1-Lock接口"><a href="#5-1-Lock接口" class="headerlink" title="5.1 Lock接口"></a>5.1 Lock接口</h3><p>Java SE 1.5 之后，在并发包中新增 Lock 接口用来实现锁功能。它提供了与synchronize关键字类似的同步功能，只是在使用时需要显式地获取和释放锁。</p>
+<blockquote>
+<p>提示：使用synchronize关键字将会隐式地获取锁，但是它将锁的获取和释放固化了，也就是先获取后释放。这种方式简化了同步的管理，但是扩展性没有显式的锁获取和释放好。</p>
+</blockquote>
+<blockquote>
+<p>注意：不要将获取锁的过程写在try块中，如果在获取锁（自定义锁的实现）时发生异常，异常抛出的同时，也会导致锁的释放。</p>
+</blockquote>
+<p>Lock接口提供的 synchronize 关键字不具备的特性：</p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>尝试非阻塞地获取锁</td>
+<td>当前线程尝试获取锁，如果这一时刻锁没有被其它线程获取到，则成功获取并持有锁</td>
+</tr>
+<tr>
+<td>能被中断地获取锁</td>
+<td>与synchronize不同，获取到锁的线程能够响应中断，当获取到锁的线程被中断时，中断异常将会抛出，同时锁会被释放</td>
+</tr>
+<tr>
+<td>超时获取锁</td>
+<td>在指定的截止时间之前获取锁，如果截止时间到了仍旧无法获取锁，则返回</td>
+</tr>
+</tbody>
+</table>
+<p>Lock是一个接口，它定义了锁获取和释放的基本操作。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>void lock()</td>
+<td>获取锁</td>
+</tr>
+<tr>
+<td>void lockInterruptibly() throws InterruptedException</td>
+<td>可中断获取锁</td>
+</tr>
+<tr>
+<td>boolean tryLock()</td>
+<td>尝试非阻塞的获取锁</td>
+</tr>
+<tr>
+<td>boolean tryLock(long time, TimeUtil unit) throws InterruptedException</td>
+<td>超时的获取锁，当前线程在以下三种情况会返回：1.当前线程在超时时间内获得了锁。2.当前线程在超时时间内被终端。3.超时时间结束，返回false。</td>
+</tr>
+<tr>
+<td>void unlock</td>
+<td>释放锁</td>
+</tr>
+<tr>
+<td>Condition newCondition</td>
+<td>获取等待通知组件</td>
+</tr>
+</tbody>
+</table>
+<h3 id="5-2-队列同步器"><a href="#5-2-队列同步器" class="headerlink" title="5.2 队列同步器"></a>5.2 队列同步器</h3><p>队列同步器AbstractQueuedSynchronize（AQS），是用来构建锁或者其它同步组件的基础框架，其使用了一个int成员变量表示同步状态，通过内置的FIFO队列来完成资源获取线程的排队工作。</p>
+<p>同步器的设计基于模板方法模式，使用者需要继承同步器并重写指定的方法，随后将同步器组合在自定义同步组件的实现中，并调用同步器提供的模板方法，而这些模板方法将会调用使用者重写的方法。</p>
+<p>重写同步器指定的方法时，需要使用同步器提供的三个方法访问或修改：</p>
+<pre><code>1.getState() 获取当前同步状态
+
+2.setState() 设置当前同步状态
+
+3.compareAndSetState(int expect, int update) 使用CAS设置当前状态，该方法能够保证状态设置的原子性
+</code></pre><h4 id="5-2-2-队列同步器的实现分析"><a href="#5-2-2-队列同步器的实现分析" class="headerlink" title="5.2.2 队列同步器的实现分析"></a>5.2.2 队列同步器的实现分析</h4><p>1.同步队列</p>
+<h3 id="5-3-重入锁"><a href="#5-3-重入锁" class="headerlink" title="5.3 重入锁"></a>5.3 重入锁</h3><p>重入锁 ReentrantLock，支持重进入的锁，表示该锁能够支持一个线程对资源的重复加锁。该锁还支持获取锁时的公平和非公平性选择。</p>
+<blockquote>
+<p>提示：ReentrantLock虽然没能像synchronized关键字一样支持隐式的重进入，但是在调用lock()方法时，已经获取到锁的线程，能够再次调用lock()方法获取锁而不被阻塞。</p>
+</blockquote>
+<p>公平性问题：公平性的获取锁，也就是等待时间最长的线程最优先获取锁，也可以说锁获取是有顺序的。ReentrantLock 提供了一个构造函数，能够控制锁是否是公平。</p>
+<blockquote>
+<p>提示：公平的锁机制往往没有非公平的效率高，但是并不是任何场景都是以TPS作为唯一的标准，公平锁能够减少“饥饿”发生的概率，等待越久的请求越是能够得到优先满足。</p>
+</blockquote>
+<h4 id="5-3-1-实现重进入"><a href="#5-3-1-实现重进入" class="headerlink" title="5.3.1 实现重进入"></a>5.3.1 实现重进入</h4><p>重进入表示任意线程在获取到锁之后能够再次获取该锁而不会被锁阻塞，该特性的实现需要解决的问题：</p>
+<pre><code>1.线程再次获取锁：锁需要去识别获取锁的线程是否是当前占据锁的线程。如果是则再次成功获取。
+
+2.锁的最终释放：线程重复n次获取该锁，随后在第n次释放该锁后，其它线程能够获取到该锁。锁的最终释放要求锁对于获取进行计数自增，锁被释放时，计数自减。当计数为0时表示锁已经成功释放。
+</code></pre><blockquote>
+<p>提示：</p>
+</blockquote>
+<h4 id="5-3-2-公平与非公平获取锁的区别"><a href="#5-3-2-公平与非公平获取锁的区别" class="headerlink" title="5.3.2 公平与非公平获取锁的区别"></a>5.3.2 公平与非公平获取锁的区别</h4><p>公平性与否是针对获取锁而言的，如果一个锁是公平的，那么锁的获取顺序就应该符合请求的绝对时间顺序，FIFO。</p>
+<blockquote>
+<p>总结：公平性锁保证了锁的获取按照FIFO原则，而代价是<code>进行大量的线程切换</code>。非公平性锁虽然可能造成线程“饥饿”，但极少的线程切换，保证了其更大的吞吐量。</p>
+</blockquote>
+<h4 id="5-3-3-重入锁的方法"><a href="#5-3-3-重入锁的方法" class="headerlink" title="5.3.3 重入锁的方法"></a>5.3.3 重入锁的方法</h4><pre><code>1. lock() 获得锁，如果锁已经被占用则等待
+
+2. lockInterruptibly() 获得锁，但优先响应中断
+
+3. tryLock() 尝试获得锁，如果成功则返回true，否则返回false，该方法不等待，立即返回
+
+4. tryLock(long time, TimeUnit unit) 在给定时间内尝试获得锁
+
+5. unlock() 释放锁
+</code></pre><h3 id="5-4-读写锁"><a href="#5-4-读写锁" class="headerlink" title="5.4 读写锁"></a>5.4 读写锁</h3><p>之前的锁（Mutex | ReentrantLock）基本都是<code>排它锁</code>，这些锁在<code>同一时刻只允许一个线程进行访问</code>，而<code>读写锁</code>在同一时刻可以允许多个<code>读线程</code>进行访问，但是在<code>写线程</code>访问时，所有读线程和其它线程均被阻塞。</p>
+<blockquote>
+<p>提示：读写锁维护了一对锁，一个读锁，一个写锁，通过分离读锁和写锁，使得并发相比一般的排它锁有了很高提升。</p>
+</blockquote>
+<p>Java并发包中提供的读写锁实现是：ReentrantReadWriteLock，其提供特性为：</p>
+<pre><code>特性 | 说明
+--- | ---
+公平性选择 | 支持非公平和公平的锁获取方式，吞吐量还是非公平由于公平
+重进入 | 该锁支持重进入
+锁降级 | 遵循获取写锁、获取读锁再释放写锁的次序，写锁能够降级成为读锁
+</code></pre><h4 id="5-4-1-读写锁实例"><a href="#5-4-1-读写锁实例" class="headerlink" title="5.4.1 读写锁实例"></a>5.4.1 读写锁实例</h4><h3 id="5-6-Condition接口"><a href="#5-6-Condition接口" class="headerlink" title="5.6 Condition接口"></a>5.6 Condition接口</h3><p>任意一个Java对象都拥有一组监视器方法（定义在java.lang.Object上），主要包括wait() | wait(long timeout) | notify() | notifyAll()方法，这些方法与synchronize同步关键字配合，可以实现等待/通知模式。</p>
+<p>Condition接口也提供了类似Object的监视器方法，与Lock配合可以实现等待/通知模式，但是两者再使用方式以及功能特性上是有差别的。</p>
+<p>Condition的方法和描述：</p>
+<pre><code>方法名称 | 描述
+--- | ---
+await() | 当前线程进入等待状态直到被通知或中断
+signal() | 唤醒一个等待在Condition上的线程，该线程从等待方法返回前必须获得与Condition相关联的锁
+</code></pre><p>Condition定义了等待/通知两种类型的方法，当前线程调用这些方法时，需要<code>提前获取到Condition对象关联的锁</code>。Condition对象是由Lock对象（调用Lock对象的newCondition()方法）创建出来的，换句话说就是<code>Condition是依赖Lock对象</code>的。</p>
+<blockquote>
+<p>提示：Condition在调用方法前需要获取锁。</p>
+</blockquote>
+<pre><code>//1. 在调用方法之前获取锁
+Lock lock = new ReentrantLock();
+Condition condition = lock.newCondition();
+
+public void conditionWait() throws InterruptedException {
+    lock.lock();
+    try {
+        condition.await();
+    }finally {
+        lock.unlock();
+    }
+}
+
+public void conditionSignal(){
+    lock.lock();
+    try {
+        condition.signal();
+    }finally {
+        lock.unlock();
+    }
+}
+</code></pre><p>一般都会将Condition对象作为成员变量，在调用成员变量之后，当前线程会释放锁并在此等待，而其它线程调用Condition对象的signal()方法，通知当前线程后，当前线程才从await()方法返回，并且在返回前已经获取了锁。</p>
+<blockquote>
+<p>提示：获取一个Condition必须通过Lock的newCondition()方法。</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>提示：有界队列是一种特殊的队列，当队列为空时，队列的获取操作将会阻塞获取线程，直到队列中有新增元素，当队列已满时，队列的插入操作将会阻塞插入线程，直到队列出现空位。</p>
+</blockquote>
+</blockquote>
+<h4 id="5-6-1-Condition接口提供基本方法"><a href="#5-6-1-Condition接口提供基本方法" class="headerlink" title="5.6.1 Condition接口提供基本方法"></a>5.6.1 Condition接口提供基本方法</h4><pre><code>1. void await(); 
+
+2. void awaitUninterruptibly();
+
+3. awaitNanos(long nanosTimeout);
+
+4. boolean await(long time, TimeUnit unit);
+
+5. boolean awaitUnit(Date deadline);
+
+6. void signal();
+
+7. void signalAll();
+</code></pre><h4 id="5-6-2-Condition实现分析"><a href="#5-6-2-Condition实现分析" class="headerlink" title="5.6.2 Condition实现分析"></a>5.6.2 Condition实现分析</h4><p>每个Condition对象都包含着一个队列（等待队列），该队列是Condition对象实现等待/通知功能的关键。</p>
+<p><strong>1.等待队列</strong><br></p>
+<p>等待队列是一个FIFO的队列，在队列中的每个节点都包含一个线程引用，该线程就是在Condition对象上等待的线程。如果一个线程调用了 Condition.await() 方法，那么该线程将会被释放锁、构造成节点加入等待队列并进入等待状态。</p>
+<p><strong>2.等待</strong><br></p>
+<p>调用Condition的await()方法（或者以await()方法开头的方法）会使当前线程进入等待队列并释放锁，同时线程状态变成等待状态。当从await()方法返回时，当前线程一定获取了Condition相关联的锁。</p>
+<p><strong>3.通知</strong><br></p>
+<p>调用Condition的signal()方法，将会唤醒在等待队列中等待时间最长的节点（首节点），在唤醒结点之前，会将节点移到同步队列中。</p>
+<h3 id="5-6-锁"><a href="#5-6-锁" class="headerlink" title="5.6 锁"></a>5.6 锁</h3><h4 id="5-6-1-无锁"><a href="#5-6-1-无锁" class="headerlink" title="5.6.1 无锁"></a>5.6.1 无锁</h4><p>在并发控制层面，锁是一种悲观策略。无锁是一种乐观策略，所有线程都能够在不停顿的状态下持续执行，在遇到冲突的时候使用一种比较交换的策略（CAS）鉴别线程冲突。</p>
+<h5 id="1-CAS"><a href="#1-CAS" class="headerlink" title="1. CAS"></a>1. CAS</h5><p>CAS算法过程，包含三个参数 CAS(V,E,N)，V表示要更新的变量，E表示预期值，N表示新值。仅仅当V==E时，才会将V设置为N，如果E!=E，说明其它线程已经做了更新，当前线程什么都不用做。最后CAS返回当前V的真实值。</p>
+<p>CAS总是持乐观态度，在多个线程同时使用CAS操作一个变量时，只有一个会胜出，并成功更新，其余均会失败。失败的线程不会被挂起，仅仅是告知失败，并且允许再次尝试或放弃操作。</p>
+<h5 id="2-AtomicInteger"><a href="#2-AtomicInteger" class="headerlink" title="2. AtomicInteger"></a>2. AtomicInteger</h5><p>AtomicInteger直接使用CAS操作的线程安全的类型，可以将其看做一个整数。与Integer不一样的是它是可变的，并且线程安全。对其各种修改或其它操作都是CAS指令进行的。</p>
+<h5 id="3-Java中的指针-Unsafe类"><a href="#3-Java中的指针-Unsafe类" class="headerlink" title="3. Java中的指针 Unsafe类"></a>3. Java中的指针 Unsafe类</h5><p>Unsafe类是 sun.misc.Unsafe类型。该类封装了一些不安全的操作（指针是不安全的），所以该类封装了一些类似指针的操作。</p>
+<p>Unsafe类提供的一些方法</p>
+<pre><code>1. public native int getInt(Object o, long offset);//获取给定对象偏移量上的int值
+
+2. public native void putInt(Object o, long offset, int x);//设置给定对象偏移量上的int值
+
+3. public native long objectFieldOffset(Field f);
+
+...
+</code></pre><h5 id="4-无锁对象的引用-AtomicReference"><a href="#4-无锁对象的引用-AtomicReference" class="headerlink" title="4. 无锁对象的引用 AtomicReference"></a>4. 无锁对象的引用 AtomicReference</h5><p>该类型是对普通的对象的引用。保证我们在修改对象引用时线程安全性，</p>
+<h5 id="5-带有时间戳的对象引用-AtomicStampedReference"><a href="#5-带有时间戳的对象引用-AtomicStampedReference" class="headerlink" title="5. 带有时间戳的对象引用 AtomicStampedReference"></a>5. 带有时间戳的对象引用 AtomicStampedReference</h5><p>在其内部不仅维护了对象值，还维护了一个时间戳，当AtomicStampedReference对应的数值被修改时，除了更新数据本身外，还必须更新时间戳。</p>
+<h5 id="6-数组无锁-AtomicIntegerArray"><a href="#6-数组无锁-AtomicIntegerArray" class="headerlink" title="6. 数组无锁 AtomicIntegerArray"></a>6. 数组无锁 AtomicIntegerArray</h5><p>原子数组包括：AtomicIntegerArray | AtomicLongArray | AtomicReferenceArray。</p>
+<p>AtomicIntegerArray本质上是对int[]类型的封装，使用Unsafe类通过CAS的方式控制int[]在多线程下的安全性。</p>
+<h5 id="7-普通变量享受原子操作-AtomicIntegerFieldUpdater"><a href="#7-普通变量享受原子操作-AtomicIntegerFieldUpdater" class="headerlink" title="7. 普通变量享受原子操作 AtomicIntegerFieldUpdater"></a>7. 普通变量享受原子操作 AtomicIntegerFieldUpdater</h5><p>AtomicIntegerFieldUpdater 在不改动或极少改动原有程序的基础上让普通的变量享受CAS操作带来的线程安全性。</p>
+<p>根据数据类型不同，Updater有三种：AtomicIntegerFieldUpdater | AtomicLongFieldUpdater | AtomicReferenceFieldUpdater。</p>
+<blockquote>
+<p>注意：</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<ol>
+<li>Updater只能修改它可见范围内的变量，因为Updater使用反射得到这个变量。如果变量不可见，就会出错。如：score声明为private。</li>
+</ol>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<ol start="2">
+<li>为了确保变量被正确的读写，其必须是volatile类型的。</li>
+</ol>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<ol start="3">
+<li>由于CAS操作会通过对象实例中的偏移量直接进行复制，所以它不支持static字段。</li>
+</ol>
+</blockquote>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+
+  <p><span>本文标题:</span>Redis - Java集成</a></p>
+  <p><span>文章作者:</span>Bangjin-Hu</a></p>
+  <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
+  <p><span>最后更新:</span>2020年03月29日 - 10:05:45</p>
+  <p><span>原始链接:</span><a href="/undefined/第5章 Java中的锁/" title="Redis - Java集成">http://bangjinhu.github.io/undefined/第5章 Java中的锁/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/第5章 Java中的锁/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.jpg" alt="Bangjin-Hu wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎扫码关注微信公众号，订阅我的微信公众号.</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持是我创作的动力.</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat-reward-img.jpg" alt="Bangjin-Hu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay-reward-img.jpg" alt="Bangjin-Hu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Bangjin-Hu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://bangjinhu.github.io/undefined/第5章 Java中的锁/" title="Redis - Java集成">http://bangjinhu.github.io/undefined/第5章 Java中的锁/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Redis/" rel="tag"><i class="fa fa-tag"></i> Redis</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/undefined/第5章 深入class文件结构/" rel="next" title="Redis - Java集成">
+                <i class="fa fa-chevron-left"></i> Redis - Java集成
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/undefined/第4章 Spring MVC/" rel="prev" title="Redis - Java集成">
+                Redis - Java集成 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/site.jpg"
+                alt="Bangjin-Hu" />
+            
+              <p class="site-author-name" itemprop="name">Bangjin-Hu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/BangjinHu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:2315378346@qq.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/Aaron_P_L" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-heart-o"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
+                      
+                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://iProgramering.github.io" target="_blank" title="iProgramer_ing">
+                      
+                        <i class="fa fa-fw fa-user"></i>iProgramer_ing</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          <div id="music163player">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src="//music.163.com/outchain/player?type=2&id=38358214&auto=0&height=66
+
+">
+    </iframe>
+</div>
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第五章-Java中的锁"><span class="nav-text">第五章 Java中的锁</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-Lock接口"><span class="nav-text">5.1 Lock接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-队列同步器"><span class="nav-text">5.2 队列同步器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-2-队列同步器的实现分析"><span class="nav-text">5.2.2 队列同步器的实现分析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-重入锁"><span class="nav-text">5.3 重入锁</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-1-实现重进入"><span class="nav-text">5.3.1 实现重进入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-2-公平与非公平获取锁的区别"><span class="nav-text">5.3.2 公平与非公平获取锁的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-3-重入锁的方法"><span class="nav-text">5.3.3 重入锁的方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-读写锁"><span class="nav-text">5.4 读写锁</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-4-1-读写锁实例"><span class="nav-text">5.4.1 读写锁实例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-6-Condition接口"><span class="nav-text">5.6 Condition接口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-6-1-Condition接口提供基本方法"><span class="nav-text">5.6.1 Condition接口提供基本方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-6-2-Condition实现分析"><span class="nav-text">5.6.2 Condition实现分析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-6-锁"><span class="nav-text">5.6 锁</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-6-1-无锁"><span class="nav-text">5.6.1 无锁</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-CAS"><span class="nav-text">1. CAS</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-AtomicInteger"><span class="nav-text">2. AtomicInteger</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-Java中的指针-Unsafe类"><span class="nav-text">3. Java中的指针 Unsafe类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-无锁对象的引用-AtomicReference"><span class="nav-text">4. 无锁对象的引用 AtomicReference</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-带有时间戳的对象引用-AtomicStampedReference"><span class="nav-text">5. 带有时间戳的对象引用 AtomicStampedReference</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-数组无锁-AtomicIntegerArray"><span class="nav-text">6. 数组无锁 AtomicIntegerArray</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-普通变量享受原子操作-AtomicIntegerFieldUpdater"><span class="nav-text">7. 普通变量享受原子操作 AtomicIntegerFieldUpdater</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bangjin-Hu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">465.0k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/lib/clipboard/clipboard.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+</body>
+</html>

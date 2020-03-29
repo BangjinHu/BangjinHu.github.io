@@ -1,0 +1,4385 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/site.jpg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="BangjinHu'Blog" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="BangjinHu's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="微信公众号：iProgrammer_ing">
+<meta property="og:type" content="website">
+<meta property="og:title" content="BangjinHu&#39;s Blog">
+<meta property="og:url" content="http://bangjinhu.github.io/page/10/index.html">
+<meta property="og:site_name" content="BangjinHu&#39;s Blog">
+<meta property="og:description" content="微信公众号：iProgrammer_ing">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BangjinHu&#39;s Blog">
+<meta name="twitter:description" content="微信公众号：iProgrammer_ing">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://bangjinhu.github.io/page/10/"/>
+
+
+
+
+
+  <title>BangjinHu's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+    
+    <a href="https://github.com/BangjinHu"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">BangjinHu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">让优秀成为习惯，让知识成为信仰</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            本站搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Redis - 分布式锁/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/Redis - 分布式锁/" itemprop="url">Redis - 分布式锁</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:47:11+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,037
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="Redis-分布式"><a href="#Redis-分布式" class="headerlink" title="Redis - 分布式"></a>Redis - 分布式</h2><p>[TOC]</p>
+<h3 id="分布式锁-多JVM"><a href="#分布式锁-多JVM" class="headerlink" title="分布式锁(多JVM)"></a>分布式锁(多JVM)</h3><p>控制分布式系统有序的去对共享资源进行操作，通过互斥来保持一致性</p>
+<h4 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h4><ul>
+<li><p>互斥性：保证同一时间只有一个客户端可以拿到锁，也就是可以对共享资源进行操作</p>
+</li>
+<li><p>安全性：只有加锁的服务才能有解锁权限，也就是不能让a加的锁，bcd都可以解锁，如果都能解锁那分布式锁就没啥意义了</p>
+<p>  可能出现的情况就是a去查询发现持有锁，就在准备解锁，这时候忽然a持有的锁过期了，然后b去获得锁，因为a锁过期，b拿到锁，这时候a继续执行第二步进行解锁如果不加校验，就将b持有的锁就给删除了</p>
+</li>
+<li><p>避免死锁：出现死锁就会导致后续的任何服务都拿不到锁,不能再对共享资源进行任何操作了</p>
+</li>
+<li><p>保证加锁与解锁操作是原子性操作</p>
+<p>  这个其实属于是实现分布式锁的问题，假设a用redis实现分布式锁，假设加锁操作，操作步骤分为两步：1. 设置key set（key，value）。2. 给key设置过期时间，假设现在a刚实现set后，程序崩了就导致了没给key设置过期时间就导致key一直存在就发生了死锁。</p>
+</li>
+</ul>
+<h4 id="为了确保分布式锁可用，我们至少要确保锁的实现同时满足以下四个条件："><a href="#为了确保分布式锁可用，我们至少要确保锁的实现同时满足以下四个条件：" class="headerlink" title="为了确保分布式锁可用，我们至少要确保锁的实现同时满足以下四个条件："></a>为了确保分布式锁可用，我们至少要确保锁的实现同时满足以下四个条件：</h4><ul>
+<li><p>互斥性：在任意时刻，只有一个客户端能持有锁</p>
+</li>
+<li><p>不会发生死锁：即使有一个客户端在持有锁的期间崩溃而没有主动解锁，也能保证后续其他客户端能加锁</p>
+</li>
+<li><p>具有容错性：只要大部分的Redis节点正常运行，客户端就可以加锁和解锁</p>
+</li>
+<li><p>解铃还须系铃人：加锁和解锁必须是同一个客户端，客户端自己不能把别人加的锁给解</p>
+</li>
+</ul>
+<h4 id="如何实现分布式锁"><a href="#如何实现分布式锁" class="headerlink" title="如何实现分布式锁?"></a>如何实现分布式锁?</h4><h5 id="使用redis实现分布式锁"><a href="#使用redis实现分布式锁" class="headerlink" title="使用redis实现分布式锁"></a>使用redis实现分布式锁</h5><pre><code>set key value ex time nx
+</code></pre><h5 id="set-多参数，高版本jedis使用"><a href="#set-多参数，高版本jedis使用" class="headerlink" title="set()多参数，高版本jedis使用"></a>set()多参数，高版本jedis使用</h5><pre><code>public class RedisTool {
+      private static final String LOCK_SUCCESS = &quot;OK&quot;;
+      private static final String SET_IF_NOT_EXIST = &quot;NX&quot;;
+      private static final String SET_WITH_EXPIRE_TIME = &quot;PX&quot;;
+      /**
+      \* 尝试获取分布式锁
+      \* @param jedis Redis客户
+      \* @param lockKey 锁
+      \* @param requestId 请求标识
+      \* @param expireTime 超期时间
+      \* @return 是否获取成功
+      */
+      public static boolean tryGetDistributedLock(Jedis jedis, String lockKey, String requestId, int expireTime) {
+      String result = **jedis.set(lockKey, requestId, SET_IF_NOT_EXIST, SET_WITH_EXPIRE_TIME, expireTime);**
+      if (LOCK_SUCCESS.equals(result)) {
+          return true;
+      }
+      return false;
+      }
+}
+</code></pre><ul>
+<li><p>第一个为key，我们使用key来当锁，因为key是唯一的。</p>
+</li>
+<li><p>第二个为value，我们传的是requestId，很多童鞋可能不明白，有key作为锁不就够了吗，为什么还要用到value？原因就是我们在上面讲到可靠性时，分布式锁要满足第四个条件解铃还须系铃人，通过给value赋值为requestId，我们就知道这把锁是哪个请求加的了，在解锁的时候就可以有依据。requestId可以使用UUID.randomUUID().toString()方法生成。</p>
+</li>
+<li><p>第三个为nxxx，这个参数我们填的是NX，意思是SET IF NOT EXIST，即当key不存在时，我们进行set操作；若key已经存在，则不做任何操作；</p>
+</li>
+<li><p>第四个为expx，这个参数我们传的是PX，意思是我们要给这个key加一个过期的设置，具体时间由第五个参数决定。</p>
+</li>
+<li><p>第五个为time，与第四个参数相呼应，代表key的过期时间</p>
+</li>
+</ul>
+<p>set()加入了NX参数，可以保证如果已有key存在，则函数不会调用成功，也就是只有一个客户端能持有锁，满足互斥性。其次，由于我们对锁设置了过期时间，即使锁的持有者后续发生崩溃而没有解锁，锁也会因为到了过期时间而自动解锁（即key被删除），不会发生死锁。最后，因为我们将value赋值为requestId，代表加锁的客户端请求标识，那么在客户端在解锁的时候就可以进行校验是否是同一个客户端</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">wrongGetLock1</span><span class="params">(Jedis jedis, String lockKey, String requestId, <span class="keyword">int</span> expireTime)</span> </span>&#123;</span><br><span class="line">   Long result = jedis.setnx(lockKey, requestId);</span><br><span class="line">     <span class="keyword">if</span> (result == <span class="number">1</span>) &#123;</span><br><span class="line">         <span class="comment">// 若在这里程序突然崩溃，则无法设置过期时间，将发生死锁</span></span><br><span class="line">         jedis.expire(lockKey, expireTime);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">    setnx()方法作用就是SET IF NOT EXIST，expire()方法就是给锁加一个过期时间。乍一看好像和前面的set()方法结果一样，然而由于这是两条Redis命令，不具有原子性，如果程序在执行完setnx()之后突然崩溃，导致锁没有设置过期时间。那么将会发生死锁。网上之所以有人这样实现，是因为低版本的jedis并不支持多参数的set()方法</span><br></pre></td></tr></table></figure>
+<h4 id="解锁"><a href="#解锁" class="headerlink" title="解锁"></a>解锁</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RedisTool</span> </span>&#123;</span><br><span class="line">      <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Long RELEASE_SUCCESS = <span class="number">1L</span>; </span><br><span class="line">      <span class="comment">/****</span></span><br><span class="line"><span class="comment">       *** 释放分布式锁**</span></span><br><span class="line"><span class="comment">       *** <span class="doctag">@param</span> jedis Redis客户端**</span></span><br><span class="line"><span class="comment">       *** <span class="doctag">@param</span> lockKey 锁**</span></span><br><span class="line"><span class="comment">       *** <span class="doctag">@param</span> requestId 请求标识**</span></span><br><span class="line"><span class="comment">       *** <span class="doctag">@return</span> 是否释放成功**</span></span><br><span class="line"><span class="comment">       ***/</span></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">releaseDistributedLock</span><span class="params">(Jedis jedis, String lockKey, String requestId)</span> </span>&#123;</span><br><span class="line">           <span class="comment">//首先获取锁对应的value值，检查是否与requestId相等，如果相等则删除锁（解锁</span></span><br><span class="line">          String script = <span class="string">"if redis.call('get', KEYS[1]) == ARGV[1] then return redis.call('del', KEYS[1]) else return 0 end"</span>;</span><br><span class="line">         Object result = jedis.eval(script, Collections.singletonList(lockKey), Collections.singletonList(requestId));</span><br><span class="line">        <span class="keyword">if</span> (RELEASE_SUCCESS.equals(result)) &#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">         &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br><span class="line"><span class="comment">//就是在eval命令执行Lua代码的时候，Lua代码将被当成一个命令去执行，并且直到eval命令执行完成，Redis才会执行其他命令。</span></span><br></pre></td></tr></table></figure>
+<h5 id="错误解锁"><a href="#错误解锁" class="headerlink" title="错误解锁"></a>错误解锁</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">wrongReleaseLock2</span><span class="params">(Jedis jedis, String lockKey, String requestId)</span> </span>&#123;       </span><br><span class="line">    <span class="comment">// 判断加锁与解锁是不是同一个客户端</span></span><br><span class="line">    <span class="keyword">if</span> (requestId.equals(jedis.get(lockKey))) &#123;</span><br><span class="line">        <span class="comment">// 若在此时，这把锁突然不是这个客户端的，则会误解锁</span></span><br><span class="line">        jedis.del(lockKey);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>存在问题：问题在于如果调用<code>jedis.del()</code>方法的时候，这把锁已经不属于当前客户端的时候会解除他人加的锁。那么是否真的有这种场景?答案是肯定的，比如客户端A加锁，一段时间之后客户端A解锁，在执行<code>jedis.del()</code>之前，锁突然过期了，此时客户端B尝试加锁成功，然后客户端A再执行del()方法，则将客户端B的锁给解除了</p>
+</blockquote>
+<h4 id="setnx-过期时间依旧存在问题"><a href="#setnx-过期时间依旧存在问题" class="headerlink" title="setnx + 过期时间依旧存在问题"></a>setnx + 过期时间依旧存在问题</h4><p>在高并发场景下，会出现误删不是自己的锁，删除掉别人的锁，出现一个锁永久性失效的问题</p>
+<p>使用uuid解决，判断clientId跟redis中那把锁的value值是否一致，一致的话，才能进行删除锁。但还会出现有多个线程执行同一个代码块，对超时的锁进行续命，那么可以尝试使用==Redisson==实现分布式锁，这是Redis官方提供的Java组件。</p>
+<ul>
+<li><p>引入依赖</p>
+</li>
+<li><p>在启动类中注入 redisson 的bean，可以在配置文件中添加redis的连接地址、参数，然后在代码中引入配置文件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RedissonApplication</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		SpringApplication.run(RedissonApplication.class, args);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Bean</span></span><br><span class="line">	<span class="function">Redisson <span class="title">redissonSentinel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">//支持单机，主从，哨兵，集群等模式</span></span><br><span class="line">		<span class="comment">//此为哨兵模式</span></span><br><span class="line">		Config config = <span class="keyword">new</span> Config();</span><br><span class="line">		config.useSentinelServers()</span><br><span class="line">				.setMasterName(<span class="string">"mymaster"</span>)</span><br><span class="line">				.addSentinelAddress(<span class="string">"redis://192.168.1.1:26379"</span>)</span><br><span class="line">				.setPassword(<span class="string">"123456"</span>);</span><br><span class="line">		<span class="keyword">return</span> (Redisson)Redisson.create(config);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在redis中，设置一个库存数量为100</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">	<span class="comment">//设置一个key，aaa商品的库存数量为100</span></span><br><span class="line">	stringRedisTemplate.opsForValue().set(<span class="string">"aaa"</span>,<span class="string">"100"</span>);</span><br><span class="line">	Assert.assertEquals(<span class="string">"100"</span>, stringRedisTemplate.opsForValue().get(<span class="string">"aaa"</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">String lockKey = <span class="string">"testRedisson"</span>;<span class="comment">//分布式锁的key</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testDistributed</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="comment">//执行的业务代码</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; <span class="number">55</span>; i++)&#123;</span><br><span class="line">		RLock lock = redisson.getLock(lockKey);</span><br><span class="line">		lock.lock(<span class="number">60</span>, TimeUnit.SECONDS); <span class="comment">//设置60秒自动释放锁  （默认是30秒自动过期）</span></span><br><span class="line">		<span class="keyword">int</span> stock = Integer.parseInt(stringRedisTemplate.opsForValue().get(<span class="string">"aaa"</span>).toString());</span><br><span class="line">		<span class="keyword">if</span>(stock &gt; <span class="number">0</span>)&#123;</span><br><span class="line">			stringRedisTemplate.opsForValue().set(<span class="string">"aaa"</span>,(stock-<span class="number">1</span>)+<span class="string">""</span>);</span><br><span class="line">			System.out.println(<span class="string">"test2_:lockkey:"</span>+lockKey+<span class="string">",stock:"</span>+(stock-<span class="number">1</span>)+<span class="string">""</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		lock.unlock(); <span class="comment">//释放锁</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Redis - 面试总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/Redis - 面试总结/" itemprop="url">Redis - Java集成</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:05:50+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4,146
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  15
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h3 id="Redis-面试总结"><a href="#Redis-面试总结" class="headerlink" title="Redis - 面试总结"></a>Redis - 面试总结</h3><p>[TOC]</p>
+<h4 id="为什么要用redis而不用map做缓存"><a href="#为什么要用redis而不用map做缓存" class="headerlink" title="为什么要用redis而不用map做缓存?"></a>为什么要用redis而不用map做缓存?</h4><p>Java实现的Map是本地缓存，如果有多台实例(机器)的话，每个实例都需要各自保存一份缓存，缓存不具有一致性</p>
+<p>Redis实现的是分布式缓存，如果有多台实例(机器)的话，每个实例都共享一份缓存，缓存具有一致性。</p>
+<p>Java实现的Map不是专业做缓存的，JVM内存太大容易挂掉。一般用做于容器来存储临时数据，缓存的数据随着JVM销毁而结束。Map所存储的数据结构，缓存过期机制等等是需要程序员自己手写的。</p>
+<p>Redis是专业做缓存的，可以用几十个G内存来做缓存。Redis一般用作于缓存，可以将缓存数据保存在硬盘中，Redis重启了后可以将其恢复。原生提供丰富的数据结构、缓存过期机制等简单好用的功能。</p>
+<h4 id="为什么要用缓存"><a href="#为什么要用缓存" class="headerlink" title="为什么要用缓存?"></a>为什么要用缓存?</h4><p>如果网站出现了性能问题(访问时间慢)，按经验来说，一般是由于数据库撑不住了。因为一般数据库的读写都是要经过磁盘的，而磁盘的速度可以说是相当慢的(相对内存来说)。</p>
+<h4 id="如何解决缓存雪崩？"><a href="#如何解决缓存雪崩？" class="headerlink" title="如何解决缓存雪崩？"></a>如何解决缓存雪崩？</h4><p>对于==“对缓存数据设置相同的过期时间，导致某段时间内缓存失效，请求全部走数据库。”==这种情况，非常好解决：</p>
+<pre><code>解决方法：在缓存的时候给过期时间加上一个随机值，这样就会大幅度的减少缓存在同一时间过期。
+</code></pre><p>对于“Redis挂掉了，请求全部走数据库”这种情况，我们可以有以下的思路：</p>
+<pre><code>事发前：实现Redis的高可用(主从架构+Sentinel 或者Redis Cluster)，尽量避免Redis挂掉这种情况发生。
+
+事发中：万一Redis真的挂了，我们可以设置本地缓存(ehcache)+限流(hystrix)，尽量避免我们的数据库被干掉(起码能保证我们的服务还是能正常工作的)
+
+事发后：redis持久化，重启后自动从磁盘上加载数据，快速恢复缓存数据。
+</code></pre><h4 id="如何解决缓存穿透"><a href="#如何解决缓存穿透" class="headerlink" title="如何解决缓存穿透?"></a>如何解决缓存穿透?</h4><p>缓存穿透，表示每次请求的id都是数据库中不存在的数，这就会导致缓存没作用，请求全部查询数据库，但是数据库中没有这个值，所以每次返回null值回来。</p>
+<p>缓存穿透是指查询一个一定不存在的数据。由于缓存不命中，并且出于容错考虑，如果从数据库查不到数据则不写入缓存，这将导致这个不存在的数据每次请求都要到数据库去查询，失去了缓存的意义。</p>
+<p>解决：</p>
+<pre><code>1. 由于请求的参数是不合法的(每次都请求不存在的参数)，于是我们可以使用布隆过滤器(BloomFilter)或者压缩filter提前拦截，不合法就不让这个请求到数据库层。
+
+2. 当我们从数据库找不到的时候，我们也将这个空对象设置到缓存里边去。下次再请求的时候，就可以从缓存里边获取了。
+
+    提示：这种情况我们一般会将空对象设置一个较短的过期时间。
+</code></pre><h4 id="数据库与缓存双写一致"><a href="#数据库与缓存双写一致" class="headerlink" title="数据库与缓存双写一致?"></a>数据库与缓存双写一致?</h4><p>读操作，如果从数据库查询不到数据则不写入缓存。一般的读操作有一个固定套路：</p>
+<pre><code>1. 如果我们的数据在缓存里边有，那么就直接取缓存的。
+
+2. 如果缓存里没有我们想要的数据，我们会先去查询数据库，然后将数据库查出来的数据写到缓存中。
+
+3. 最后将数据返回给请求
+</code></pre><blockquote>
+<p>缓存与数据库双写一致问题：如果仅仅只是查询的话，缓存的数据和数据库的数据是没有问题的，但是当更新的时候很可能造成数据库和缓存的数据不一致</p>
+</blockquote>
+<p>从理论上说，只要我们设置了键的过期时间，我们就能保证缓存和数据库的数据最终是一致的。因为只要缓存数据过期了，就会被删除。随后读的时候，因为缓存里没有，就可以查数据库的数据，然后将数据库查出来的数据写入到缓存中。</p>
+<p>除了设置过期时间，我们还需要做更多的措施来尽量避免数据库与缓存处于不一致的情况发生。</p>
+<p>在进行更新操作的时候，一般有两种选择：1. 先操作数据库，后操作缓存。2. 先操作缓存，后操作数据库。</p>
+<blockquote>
+<p>我们需要明确的是，无论我们选择更新操作的哪一个，都希望两个操作同时成功或失败，所以这就演变为一个==分布式事务问题。==</p>
+</blockquote>
+<h5 id="1-操作缓存"><a href="#1-操作缓存" class="headerlink" title="1. 操作缓存"></a>1. 操作缓存</h5><pre><code>1. 更新缓存
+
+2. 删除缓存
+</code></pre><p>一般都是采用删除缓存的缓存策略，原因：</p>
+<pre><code>1. 在高并发环境下，无论是先操作数据库还是后操作数据库，如果加上更新缓存，那就更容易导致数据库与缓存数据不一致问题。
+
+2. 如果每次更新了数据库，都要更新缓存，倒不如直接删除缓存数据，等再次读取时，缓存里没有，那再去数据库找，然后将数据写入缓存里面。
+</code></pre><h5 id="2-先更新数据库，再删除缓存"><a href="#2-先更新数据库，再删除缓存" class="headerlink" title="2. 先更新数据库，再删除缓存"></a>2. 先更新数据库，再删除缓存</h5><pre><code>1. 在正常情况下，先操纵数据库，成功
+
+2. 再删除缓存，成功
+</code></pre><p>如果原子性被破坏：</p>
+<pre><code>1. 第1步成功（操作数据库），第2步失败（删除缓存），会导致数据库里是新数据，缓存中是旧数据
+
+2. 如果第一步失败，可以直接返回错误（Exception），不会出现数据不一致
+</code></pre><blockquote>
+<p>删除缓存失败的解决思路：1. 将需要删除的key发送到消息队列中。2. 自己消费消息，获得需要删除的key。3. 不断重试删除操作，直到成功。</p>
+</blockquote>
+<h5 id="3-先删除缓存，再更新数据库"><a href="#3-先删除缓存，再更新数据库" class="headerlink" title="3. 先删除缓存，再更新数据库"></a>3. 先删除缓存，再更新数据库</h5><p>将缓存数据删除，更新数据库，然后后期读操作的时候，查询缓存里面没有对应的数据则从数据库读取，再将数据写入缓存。</p>
+<h5 id="4-并发情况下解决数据库与缓存不一致的思路"><a href="#4-并发情况下解决数据库与缓存不一致的思路" class="headerlink" title="4. 并发情况下解决数据库与缓存不一致的思路"></a>4. 并发情况下解决数据库与缓存不一致的思路</h5><p>将删除缓存、修改数据库、读取缓存等的操作积压到队列里面，实现串行化。</p>
+<h4 id="Redis-数据结构"><a href="#Redis-数据结构" class="headerlink" title="Redis 数据结构?"></a>Redis 数据结构?</h4><ul>
+<li>字符串String、字典Hash、列表List、集合Set、有序集合SortedSet。</li>
+<li>如果你是Redis中高级用户，还需要加上下面几种数据结构HyperLogLog、Geo、Pub/Sub。</li>
+<li>如果你说还玩过Redis Module，像BloomFilter，RedisSearch，Redis-ML，面试官得眼睛就开始发亮了。</li>
+</ul>
+<hr>
+<h4 id="Redis分布式锁"><a href="#Redis分布式锁" class="headerlink" title="Redis分布式锁?"></a>Redis分布式锁?</h4><p>概念：分布式锁是控制分布式系统或不同系统之间共同访问共享资源的一种锁实现，如果不同的系统或同一个系统的不同主机之间共享了某个资源时，往往需要互斥来防止彼此干扰来保证一致性。</p>
+<p>条件：</p>
+<pre><code>互斥性：在任意一个时刻，只有一个客户端持有锁。
+
+无死锁：即便持有锁的客户端崩溃或者其他意外事件，锁仍然可以被获取。
+
+容错：只要大部分Redis节点都活着，客户端就可以获取和释放锁
+</code></pre><p>分布式锁的实现：</p>
+<pre><code>数据库
+
+Memcached（add命令）
+
+Redis（setnx命令）
+
+Zookeeper（临时节点）
+...
+</code></pre><p>先拿命令setnx来争抢锁，抢到之后，再用expire给锁加一个过期时间防止锁忘记了释放</p>
+<h4 id="如果在setnx之后执行expire之前进程意外crash或者要重启维护了，那会怎么样"><a href="#如果在setnx之后执行expire之前进程意外crash或者要重启维护了，那会怎么样" class="headerlink" title="如果在setnx之后执行expire之前进程意外crash或者要重启维护了，那会怎么样?"></a>如果在setnx之后执行expire之前进程意外crash或者要重启维护了，那会怎么样?</h4><ul>
+<li>按照逻辑来说这个锁就永远得不到释放了</li>
+<li>我记得set指令有非常复杂的参数，这个应该是可以同时把setnx和expire合成一条指令来用的</li>
+</ul>
+<hr>
+<h4 id="假如Redis里面有1亿个key，其中有10w个key是以某个固定的已知的前缀开头的，如何将它们全部找出来"><a href="#假如Redis里面有1亿个key，其中有10w个key是以某个固定的已知的前缀开头的，如何将它们全部找出来" class="headerlink" title="假如Redis里面有1亿个key，其中有10w个key是以某个固定的已知的前缀开头的，如何将它们全部找出来?"></a>假如Redis里面有1亿个key，其中有10w个key是以某个固定的已知的前缀开头的，如何将它们全部找出来?</h4><p>使用keys指令可以扫出指定模式的key列表。</p>
+<h4 id="如果这个redis正在给线上的业务提供服务，那使用keys指令会有什么问题"><a href="#如果这个redis正在给线上的业务提供服务，那使用keys指令会有什么问题" class="headerlink" title="如果这个redis正在给线上的业务提供服务，那使用keys指令会有什么问题?"></a>如果这个redis正在给线上的业务提供服务，那使用keys指令会有什么问题?</h4><ul>
+<li>这个时候你要回答redis关键的一个特性：==redis是单线程的。== keys指令会导致线程阻塞一段时间，线上服务会停顿，直到指令执行完毕，服务才能恢复。这个时候可以使用scan指令，==scan指令可以无阻塞的提取出指定模式的key列表，但是会有一定的重复概率，== 在客户端做一次去重就可以了，但是整体所花费的时间会比直接用keys指令长。</li>
+</ul>
+<hr>
+<h4 id="使用过Redis做异步队列么，你是怎么用的"><a href="#使用过Redis做异步队列么，你是怎么用的" class="headerlink" title="使用过Redis做异步队列么，你是怎么用的?"></a>使用过Redis做异步队列么，你是怎么用的?</h4><p>一般使用list结构作为队列，rpush生产消息，lpop消费消息。当lpop没有消息的时候，要适当sleep一会再重试。</p>
+<h4 id="可不可以不用sleep呢"><a href="#可不可以不用sleep呢" class="headerlink" title="可不可以不用sleep呢?"></a>可不可以不用sleep呢?</h4><p>list还有个指令叫blpop，在没有消息的时候，它会阻塞住直到消息到来。</p>
+<h4 id="能不能生产一次消费多次呢"><a href="#能不能生产一次消费多次呢" class="headerlink" title="能不能生产一次消费多次呢?"></a>能不能生产一次消费多次呢?</h4><p>使用pub/sub主题订阅者模式，可以实现1:N的消息队列。</p>
+<h4 id="pub-sub有什么缺点"><a href="#pub-sub有什么缺点" class="headerlink" title="pub/sub有什么缺点?"></a>pub/sub有什么缺点?</h4><p>在消费者下线的情况下，生产的消息会丢失，得使用专业的消息队列如rabbitmq,kafka等。</p>
+<h4 id="redis如何实现延时队列"><a href="#redis如何实现延时队列" class="headerlink" title="redis如何实现延时队列?"></a>redis如何实现延时队列?</h4><p>使用sortedset，拿时间戳作为score，消息内容作为key调用zadd来生产消息，消费者用zrangebyscore指令获取N秒之前的数据轮询进行处理。</p>
+<h4 id="如果有大量的key需要设置同一时间过期，一般需要注意什么"><a href="#如果有大量的key需要设置同一时间过期，一般需要注意什么" class="headerlink" title="如果有大量的key需要设置同一时间过期，一般需要注意什么?"></a>如果有大量的key需要设置同一时间过期，一般需要注意什么?</h4><ul>
+<li>如果大量的key过期时间设置的过于集中，到过期的那个时间点，redis可能会出现短暂的卡顿现象。==一般需要在时间上加一个随机值，使得过期时间分散一些。==</li>
+</ul>
+<h4 id="Redis如何做持久化的"><a href="#Redis如何做持久化的" class="headerlink" title="Redis如何做持久化的?"></a>Redis如何做持久化的?</h4><ul>
+<li>bgsave做镜像全量持久化，aof做增量持久化。因为bgsave会耗费较长时间，不够实时，在停机的时候会导致大量丢失数据，所以需要aof来配合使用。在redis实例重启时，会使用bgsave持久化文件重新构建内存，再使用aof重放近期的操作指令来实现完整恢复重启之前的状态。</li>
+</ul>
+<h4 id="如果突然机器掉电会怎样"><a href="#如果突然机器掉电会怎样" class="headerlink" title="如果突然机器掉电会怎样?"></a>如果突然机器掉电会怎样?</h4><ul>
+<li>取决于aof日志sync属性的配置，如果不要求性能，在每条写指令时都sync一下磁盘，就不会丢失数据。但是在高性能的要求下每次都sync是不现实的，一般都使用定时sync，比如1s1次，这个时候最多就会丢失1s的数据。</li>
+</ul>
+<h4 id="bgsave的原理是什么"><a href="#bgsave的原理是什么" class="headerlink" title="bgsave的原理是什么?"></a>bgsave的原理是什么?</h4><ul>
+<li>fork和cow。fork是指redis通过创建子进程来进行bgsave操作，cow指的是copy on write，子进程创建后，父子进程共享数据段，父进程继续提供读写服务，写脏的页面数据会逐渐和子进程分离开来。</li>
+</ul>
+<h4 id="Pipeline有什么好处，为什么要用pipeline"><a href="#Pipeline有什么好处，为什么要用pipeline" class="headerlink" title="Pipeline有什么好处，为什么要用pipeline?"></a>Pipeline有什么好处，为什么要用pipeline?</h4><ul>
+<li>可以将多次IO往返的时间缩减为一次，==前提是pipeline执行的指令之间没有因果相关性。==使用redis-benchmark进行压测的时候可以发现影响redis的QPS峰值的一个重要因素是==pipeline批次指令的数目。==</li>
+</ul>
+<h4 id="Redis的同步机制了解么"><a href="#Redis的同步机制了解么" class="headerlink" title="Redis的同步机制了解么?"></a>Redis的同步机制了解么?</h4><ul>
+<li>Redis可以使用主从同步，从从同步。第一次同步时，主节点做一次bgsave，并同时将后续修改操作记录到内存buffer，待完成后将rdb文件全量同步到复制节点，复制节点接受完成后将rdb镜像加载到内存。加载完成后，再通知主节点将期间修改的操作记录同步到复制节点进行重放就完成了同步过程。</li>
+</ul>
+<h4 id="是否使用过Redis集群，集群的原理是什么"><a href="#是否使用过Redis集群，集群的原理是什么" class="headerlink" title="是否使用过Redis集群，集群的原理是什么?"></a>是否使用过Redis集群，集群的原理是什么?</h4><ul>
+<li>Redis Sentinal着眼于高可用，在master宕机时会自动将slave提升为master，继续提供服务。</li>
+<li>Redis Cluster着眼于扩展性，在单个redis内存不足时，使用Cluster进行分片存储。</li>
+</ul>
+<h4 id="使用Redis有哪些好处"><a href="#使用Redis有哪些好处" class="headerlink" title="使用Redis有哪些好处?"></a>使用Redis有哪些好处?</h4><ul>
+<li>(1) 速度快，因为数据存在内存中，类似于HashMap，HashMap的优势就是查找和操作的时间复杂度都是O(1)</li>
+<li>(2) 支持丰富数据类型，支持string，list，set，sorted set，hash</li>
+<li>(3) 支持事务，操作都是原子性，所谓的原子性就是对数据的更改要么全部执行，要么全部不执行</li>
+<li>(4) 丰富的特性：可用于缓存，消息，按key设置过期时间，过期后将会自动删除</li>
+</ul>
+<h4 id="redis相比memcached有哪些优势"><a href="#redis相比memcached有哪些优势" class="headerlink" title="redis相比memcached有哪些优势?"></a>redis相比memcached有哪些优势?</h4><ul>
+<li>memcached所有的值均是简单的字符串，redis作为其替代者，支持更为丰富的数据类型</li>
+<li>redis的速度比memcached快很多</li>
+<li>redis可以持久化其数据</li>
+</ul>
+<h4 id="redis常见性能问题和解决方案："><a href="#redis常见性能问题和解决方案：" class="headerlink" title="redis常见性能问题和解决方案："></a>redis常见性能问题和解决方案：</h4><ul>
+<li>Master最好不要做任何持久化工作，如RDB内存快照和AOF日志文件。</li>
+<li>写内存快照时，save命令调度rdbSave函数，会阻塞主线程的工作；</li>
+<li>AOF在重写的时候会占大量的CPU和内存资源。如果不重写AOF文件，这个持久化方式对性能的影响是最小的，但是AOF文件会不断增大，AOF文件过大会影响Master重启的恢复速度。</li>
+<li>如果数据比较重要，某个Slave开启AOF备份数据，策略设置为每秒同步一次</li>
+<li>为了主从复制的速度和连接的稳定性，Master和Slave最好在同一个局域网内</li>
+<li>尽量避免在压力很大的主库上增加从库</li>
+<li>主从复制不要用图状结构，用单向链表结构更为稳定，即：Master &lt;- Slave1 &lt;- Slave2 &lt;- Slave3…这样的结构方便解决单点故障问题，实现Slave对Master的替换。如果Master挂了，可以立刻启用Slave1做Master，其他不变。</li>
+</ul>
+<h4 id="MySQL里有2000w数据，redis中只存20w的数据，如何保证redis中的数据都是热点数据"><a href="#MySQL里有2000w数据，redis中只存20w的数据，如何保证redis中的数据都是热点数据" class="headerlink" title="MySQL里有2000w数据，redis中只存20w的数据，如何保证redis中的数据都是热点数据?"></a>MySQL里有2000w数据，redis中只存20w的数据，如何保证redis中的数据都是热点数据?</h4><p>redis 内存数据集大小上升到一定大小的时候，就会施行数据淘汰策略。<br>redis 提供 6种数据淘汰策略：</p>
+<pre><code>voltile-lru：从已设置过期时间的数据集（server.db[i].expires）中挑选最近最少使用的数据淘汰
+
+volatile-ttl：从已设置过期时间的数据集（server.db[i].expires）中挑选将要过期的数据淘汰
+
+volatile-random：从已设置过期时间的数据集（server.db[i].expires）中任意选择数据淘汰
+
+allkeys-lru：从数据集（server.db[i].dict）中挑选最近最少使用的数据淘汰
+
+allkeys-random：从数据集（server.db[i].dict）中任意选择数据淘汰
+
+no-enviction（驱逐）：禁止驱逐数据
+</code></pre><p>由maxmemory-policy 参数设置淘汰策略：</p>
+<pre><code>CONFIG SET maxmemory-policy volatile-lru      #淘汰有过时期的最近最好使用数据
+</code></pre><h4 id="Redis过期策略"><a href="#Redis过期策略" class="headerlink" title="Redis过期策略"></a>Redis过期策略</h4><ul>
+<li><p>redis 会将每个设置了过期时间的 key 放入到一个独立的字典中,每秒进行十次过期扫描，过期扫描不会遍历过期字典中所有的 key，而是采用了一种简单的贪心策略。从过期字典中随机 20 个 key，删除这 20 个 key 中已经过期的 key，如果过期的 key 比率超过 1/4，那就重复步骤 1。</p>
+</li>
+<li><p>同时，为了保证过期扫描不会出现循环过度，导致线程卡死现象，算法还增加了扫描时间的上限，默认不会超过 25ms。</p>
+</li>
+</ul>
+<h4 id="从库的过期策略"><a href="#从库的过期策略" class="headerlink" title="从库的过期策略"></a>从库的过期策略</h4><ul>
+<li>从库不会进行过期扫描，从库对过期的处理是被动的。主库在 key 到期时，会在 AOF 文件里增加一条 del 指令，同步到所有的从库，从库通过执行这条 del 指令 来删除过期的 key</li>
+<li>因为指令同步是异步进行的，所以主库过期的 key 的 del 指令没有及时同步到从库的话，会出现主从数据的不一致，主库没有的数据在从库里还存在</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Redis 指南 - Windows/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/Redis 指南 - Windows/" itemprop="url">Redis - Java集成</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T08:39:12+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  354
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h4 id="Redis在Windows环境"><a href="#Redis在Windows环境" class="headerlink" title="Redis在Windows环境"></a>Redis在Windows环境</h4><p>打开cmd命令窗口，安装和注册redis到window服务，注意安装和启动服务这两个操作需要在解压Redis的根目录执行，这里才有Redis环境</p>
+<p>安装命令：redis-server.exe –service-install redis.windows.conf –loglevel verbose</p>
+<p>启动服务命令：redis-server.exe  –service-start</p>
+<p>关闭服务命令：redis-server.exe  –service-stop</p>
+<p>安装和注册服务，启动服务启动后我们都可以看到 successfully的字样，说明我们配置成功了，下面我们去window-service查看本地服务，如下图，Redis已存在和启动</p>
+<p>我们重新打开一个cmd ,作为一个客户端调用redis服务，如下图所示，调用命令是：redis-cli.exe -h 127.0.0.1 -p 6379，如下图显示地址和端口，说明调用成功</p>
+<p>然后我们使用set 和get 命令进行测试一下，set uname “abc”,然后使用get uname可以获取到对应set的值，说明调用成功</p>
+<p>修改redis.windows.conf和 redis.windows-service.conf文件找到requirepass这一行加上自己的密码即可</p>
+<p>进入客户端调用界面输入auth 密码，如果正切则返回OK，然后利用config get requirepass可以得到redis的密码，得到密码前需要</p>
+<p>用密码登录验证成功后才可以执行得到密码的命令</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Servlet - 续/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/Servlet - 续/" itemprop="url">Servlet 续</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:48:19+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Servlet/" itemprop="url" rel="index">
+                    <span itemprop="name">Servlet</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  989
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h2><p>开发步骤：</p>
+<ul>
+<li>编写一个java类，实现servlet接口</li>
+<li>把开发好的java类部署到web服务器</li>
+</ul>
+<p>API文档</p>
+<blockquote>
+<p><a href="https://tomcat.apache.org/tomcat-8.0-doc/servletapi/index.html" target="_blank" rel="noopener">Servlet API Documentation</a></p>
+</blockquote>
+<p>生命周期相关方法(life-cycle methods)</p>
+<p>Servlet的生命周期通过<code>java.servlet.Servlet</code>接口中的<code>init()</code>、<code>service()</code>、和<code>destroy()</code>方法表示。Servlet的生命周期有四个阶段：加载并实例化、初始化、请求处理、销毁。（见文末【参考链接】）</p>
+<h2 id="手动编写第一个servlet"><a href="#手动编写第一个servlet" class="headerlink" title="手动编写第一个servlet"></a>手动编写第一个servlet</h2><p>1.在tomcat中新建一个web应用<code>hello</code>，在web应用中新建一个<code>WEB-INF/classes</code>目录</p>
+<p>2.在<code>classes</code>目录新建一个<code>FirstServlet</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.iot;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstServlet</span> <span class="keyword">extends</span> <span class="title">GenericServlet</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(ServletRequest req,ServletResponse res)</span><span class="keyword">throws</span> ServletException,java.io.IOException</span>&#123;</span><br><span class="line">		OutputStream out = res.getOutputStream();</span><br><span class="line">		out.write(<span class="string">"hello servlet!!!"</span>.getBytes());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3.编译，<code>javac -cp %CATALINA_HOME%/lib/servlet-api.jar  -d . FirstServlet.java</code>,命令行手动编译参考<a href="http://www.iitshare.com/under-the-cmd-compile-the-java.html" target="_blank" rel="noopener">这里</a></p>
+<p>4.在<code>WEB-INF</code>目录中新建一个<code>web.xml</code>文件，配置servlet的对外访问路径</p>
+<p>5.启动tomcat访问</p>
+<h2 id="servlet的调用过程和生命周期"><a href="#servlet的调用过程和生命周期" class="headerlink" title="servlet的调用过程和生命周期"></a>servlet的调用过程和生命周期</h2><p>时序图</p>
+<p><img src="http://7xph6d.com1.z0.glb.clouddn.com/javaweb_servlet-lifecycle.png" alt="servlet的调用过程和生命周期"></p>
+<h2 id="servlet开发的一些细节"><a href="#servlet开发的一些细节" class="headerlink" title="servlet开发的一些细节"></a>servlet开发的一些细节</h2><ul>
+<li><strong>标签</strong>:<code>&lt;servlet&gt;</code>包含<code>&lt;servlet-name&gt;</code>和<code>&lt;servlet-class&gt;</code>；<code>&lt;servlet-mapping&gt;</code>包含<code>&lt;servlet-name&gt;</code>和<code>&lt;url-pattern&gt;</code></li>
+<li><strong>映射</strong>:<code>web.xml</code>中一个<code>&lt;servlet&gt;</code>可对应多个<code>&lt;servlet-mapping&gt;</code></li>
+<li><strong>通配符</strong>:<code>&lt;servlet-mapping&gt;</code>的<code>&lt;url-pattern&gt;</code>可以使用通配符，两种固定格式：<code>*.扩展名</code>；以<code>/</code>开头，以<code>/*</code>结尾</li>
+</ul>
+<p><img src="http://7xph6d.com1.z0.glb.clouddn.com/javaweb_servlet-url%E5%8C%B9%E9%85%8D.png" alt="javaweb_servlet-url匹配.png"></p>
+<ul>
+<li><strong>对象</strong>:servlet由servlet引擎调用，不能独立运行。客户端多次请求，服务器只创建一个servlet实例，之后驻留内存中继续服务直至web容器退出才销毁它。</li>
+<li><strong>请求</strong>:服务器针对客户端的每一次请求都会创建新的<code>request</code>和<code>response</code>对象(它们的生命周期很短)，传给<code>service</code>方法。</li>
+<li><strong>加载</strong>:servlet实例的创建和<code>init</code>方法的调用是在第一次请求时，而非服务器启动时，除非在<code>&lt;servlet&gt;</code>标签配置<code>&lt;load-on-start-up&gt;</code>,数字越小优先级越高</li>
+<li><strong>缺省</strong>:映射路径为正斜杠<code>/</code>，则为当前web应用的缺省servlet,不匹配的都交给缺省</li>
+<li><strong>线程安全</strong>:访问同一资源会引发线程安全问题; <code>SingleThreadModel</code>标记接口(已弃用)</li>
+<li><strong>ServletConfig</strong>:在<code>&lt;servlet&gt;</code>标签配置<code>&lt;init-param&gt;</code>，通过<code>getServletConfig</code>方法获得配置。可配置输出字符集，读哪个配置文件等等。</li>
+<li><strong>ServletContext</strong>:代表当前web应用，含有一些web应用全局性方法，实现web资源共享、servlet转发等。通过<code>ServletConfig.getServletContext</code>方法获得，在<code>&lt;context-param&gt;</code>标签配置。</li>
+</ul>
+<h2 id="ServletContext"><a href="#ServletContext" class="headerlink" title="ServletContext"></a>ServletContext</h2><p>API:<a href="https://tomcat.apache.org/tomcat-8.0-doc/servletapi/index.html?javax/servlet/ServletContext.html" target="_blank" rel="noopener">Interface ServletContext</a></p>
+<p>概念</p>
+<p>一个web应用所有servlet共享同一个ServletContext对象，可实现数据共享。ServletContext被称为context<strong>域</strong>对象。</p>
+<p>域：作用范围；context域：整个应用程序范围。</p>
+<p>ServletContext域：</p>
+<ol>
+<li>这是一个容器</li>
+<li>说明了这个容器的作用范围，也就是应用程序范围</li>
+</ol>
+<p>转发:客户机一次请求；重定向：客户机两次请求</p>
+<p>作用</p>
+<ul>
+<li>获取web应用的初始化参数</li>
+<li>实现servlet转发</li>
+<li>利用ServletContext对象读取资源文件<ul>
+<li>获得文件路径</li>
+<li>读取资源文件的三种方式</li>
+<li>.properties文件（属性文件）</li>
+</ul>
+</li>
+</ul>
+<p>配置文件：properties文件和xml文件；数据有关系使用xml文件，没有关系则使用properties文件。</p>
+<p>1.通过<code>ServletContext</code>的<code>getResourceAsStream</code>方法，读取properties文件</p>
+<p>模板代码(注意文件位置不同写路径会不同)：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">InputStream in = <span class="keyword">this</span>.getServletContext().getResourceAsStream(<span class="string">"/WEB-INF/classes/org/iot/servlet/db.properties"</span>);</span><br><span class="line">Properties properties = <span class="keyword">new</span> Properties();<span class="comment">//map</span></span><br><span class="line">properties.load(in);</span><br></pre></td></tr></table></figure>
+<p>2.通过<code>servletContext</code>的<code>getRealPath</code>方法得到资源的绝对路径，再通过传统方式(<code>FileInputStream</code>)读取</p>
+<p>3.通过类装载器去读，<code>ClassLoader</code>的<code>getResourceAsStream</code>(如果读取资源文件的程序不是servlet)，文件不能太大。<strong>只装载一次</strong>，所以如要读到更新后的数据，通过类装载的方式得到资源文件的位置，再通过传统方式读取资源文件的数据（用<code>getResource</code>得到path，再用<code>FileInputStream</code>）</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><blockquote>
+<p><a href="http://blog.csdn.net/evankaka/article/details/46673051" target="_blank" rel="noopener">servlet和Jsp生命周期解读</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Single Sign On/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/Single Sign On/" itemprop="url">SSO</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:49:08+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SSO/" itemprop="url" rel="index">
+                    <span itemprop="name">SSO</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  619
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>单点登录(SSO)是目前比较流行的企业业务整合的解决方案之一。SSO的定义是在多个应用系统中，用户只需要登录一次就可以访问所有相互信任的应用系统。</p>
+<h2 id="SSO的实现方式"><a href="#SSO的实现方式" class="headerlink" title="SSO的实现方式"></a>SSO的实现方式</h2><h4 id="1-以Cookie作为凭证媒介"><a href="#1-以Cookie作为凭证媒介" class="headerlink" title="1.以Cookie作为凭证媒介"></a>1.以Cookie作为凭证媒介</h4><p>这种方式是最简单的单点登录方式，使用Cookie作为媒介，存放用户凭证。用户在登录父应用之后，返回一个加密的Cookie，当用户访问子应用的时候，携带上这个Cookie，授权应用解密Cookie并进行校验，校验通过则登录当前用户。</p>
+<blockquote>
+<p>提示：这种方式有两个弊端：1.首先是Cookie不安全，虽然通过加密Cookie可以保证安全性，然这是在源程序不泄露的情况下。如果Cookie加密算法泄露，攻击者可以伪造Cookie则可以伪造特定用户身份。2.其次是不能实现跨域免登。</p>
+</blockquote>
+<h4 id="2-通过JSONP"><a href="#2-通过JSONP" class="headerlink" title="2.通过JSONP"></a>2.通过JSONP</h4><p>对于跨域问题可以使用JSONP实现，用户在登录父应用之后，跟Session匹配的Cookie会存到客户端中，当用户需要登录子应用的时候，授权应用访问父应用提供的JSONP接口，并在请求职工带上域名下的Cookie，父应用接收到请求，验证用户的登录状态，返回加密的信息，子应用通过解析返回来的加密信息来验证用户，如果通过验证则登录用户。虽然这样能够解决跨域问题，但是加密算法一旦泄露，攻击者可以在本地建立一个实现了登录接口的假冒父应用，通过绑定Host来把子应用发起的请求指向本地的假冒父应用，并作出回应。 </p>
+<h4 id="3-通过页面重定向"><a href="#3-通过页面重定向" class="headerlink" title="3.通过页面重定向"></a>3.通过页面重定向</h4><p>通过父应用于子应用来回重定向中进行通信，实现信息的安全传递。</p>
+<h4 id="4-独立登录系统"><a href="#4-独立登录系统" class="headerlink" title="4.独立登录系统"></a>4.独立登录系统</h4><p>用户中心不处理业务逻辑，只是处理用户信息的管理以及授权给第三方应用。第三方应用需要登录的时候，则把用户的登录请求转发给用户中心进行处理，用户处理完毕返回凭证，第三方应用验证凭证，通过后就登录用户。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/SprinMVC的由来：/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/SprinMVC的由来：/" itemprop="url">SpringMVC 由来</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:32:56+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SpringMVC/" itemprop="url" rel="index">
+                    <span itemprop="name">SpringMVC</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  537
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<p>jsp发展经历了两个模型时代，jsp模型一时代是把代码都写在jsp页面上，用户访问jsp页面时，jsp页面来对数据库进行操作并返回值到jsp页面，这样第一不好维护，第二安全性不高，第三代码结构不清晰，第四重用性不高。于是就有了jsp模型二时代，人们将所有的页面请求交给一个servlet控制器来接受，然后进行分发，由该servlet来决定调用其他servlet访问数据库还是进行页面跳转，这个servelt就是MVC中的C，web.xml中配置的就是总servlet控制器，为了更好的分层，重用，降低依赖性，就有了MVC，由M层接受和绑定用户的数据，V层进行展现，C层进行控制。</p>
+<p>目前主流的开发模式是四层开发模式：界面层（page）+动作处理层（action）+业务逻辑层（service）+数据访问层（dao），page层用于展现页面，action层用于捕获用户事件并调用service层处理业务逻辑，service要处理业务逻辑肯定就要对数据库进行增删改查，拼接SQL语句，然后调用dao层对数据库进行操作，但是这样一来action层对service层产生了依赖，因为要创建一个service接口的引用，service层对dao层产生了依赖，就是说实例化一个action层的对象，同时要至少实例化一个service层和至少实例化一个dao层，于是spring的IOC就可以起作用了，就可以降低各层之间的依赖。将各层做为接口对象实例配置到spring中，降低依赖。</p>
+ <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">web.xml</span><br><span class="line"></span><br><span class="line">&lt;web-app&gt;</span><br><span class="line">	&lt;display-name&gt;Archetype Created Web Application&lt;/display-name&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!-- 注册SpringMVC的核心SERVLET --&gt;</span><br><span class="line">	&lt;servlet&gt;</span><br><span class="line">		&lt;servlet-name&gt;springMVC&lt;/servlet-name&gt;</span><br><span class="line">		&lt;servlet-<span class="class"><span class="keyword">class</span>&gt;<span class="title">org</span>.<span class="title">springframework</span>.<span class="title">web</span>.<span class="title">servlet</span>.<span class="title">DispatcherServlet</span>&lt;/<span class="title">servlet</span>-<span class="title">class</span>&gt;</span></span><br><span class="line"><span class="class">		&lt;<span class="title">init</span>-<span class="title">param</span>&gt;</span></span><br><span class="line"><span class="class">			&lt;<span class="title">param</span>-<span class="title">name</span>&gt;<span class="title">contextConfigLocation</span>&lt;/<span class="title">param</span>-<span class="title">name</span>&gt;</span></span><br><span class="line">			&lt;param-value&gt;classpath:/springmvc.xml&lt;/param-value&gt;</span><br><span class="line">		&lt;/init-param&gt;</span><br><span class="line">	&lt;/servlet&gt;</span><br><span class="line">	&lt;servlet-mapping&gt;</span><br><span class="line">		&lt;servlet-name&gt;springMVC&lt;/servlet-name&gt;</span><br><span class="line">		&lt;url-pattern&gt;*.do&lt;/url-pattern&gt;</span><br><span class="line">	&lt;/servlet-mapping&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;/web-app&gt;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Shiro/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/Shiro/" itemprop="url">Shiro</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:48:49+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Shiro/" itemprop="url" rel="index">
+                    <span itemprop="name">Shiro</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5,421
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  25
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>Shiro是简洁易用的安全框架包括(Subject,securityManager,Realms)。权限管理包括：用户认证、用户授权。</p>
+<h3 id="1-Subject"><a href="#1-Subject" class="headerlink" title="1.Subject"></a>1.Subject</h3><p>这里表示用户，表示Shiro可以表示一个实际的用户，也可以是第三方的服务，系统，或者Job等。在用户认证过程中，可以将subject主体理解为用户或者程序，要去访问系统的资源，系统需要对subject进行身份认证。</p>
+<blockquote>
+<p>注意：每个Subject实例都会绑定对应的SecurityManager。</p>
+</blockquote>
+<h3 id="2-SecurityManager"><a href="#2-SecurityManager" class="headerlink" title="2.SecurityManager"></a>2.SecurityManager</h3><p>是整个Shiro的核心，典型的Facade模式，Shiro通过SecurityManager来管理内部组件实例，并通过它来提供安全管理的各种服务。是安全管理器，主体进行认证和授权都是通过securityManager进行的。</p>
+<h4 id="2-1-authenticator"><a href="#2-1-authenticator" class="headerlink" title="2.1.authenticator"></a>2.1.authenticator</h4><p>认证器，主体进行认证最终通过authenticator进行的。</p>
+<h4 id="2-2-authorizer"><a href="#2-2-authorizer" class="headerlink" title="2.2.authorizer"></a>2.2.authorizer</h4><p>授权器，主体进行授权最终通过authorizer进行的。</p>
+<h4 id="2-3-sessionManager"><a href="#2-3-sessionManager" class="headerlink" title="2.3.sessionManager"></a>2.3.sessionManager</h4><p>web应用中一般是用web容器对session进行管理，shiro也提供一套session管理的方式。</p>
+<h4 id="2-4-SessionDao"><a href="#2-4-SessionDao" class="headerlink" title="2.4.SessionDao"></a>2.4.SessionDao</h4><p>通过SessionDao管理session数据，针对个性化的session数据存储需要使用sessionDao。</p>
+<h4 id="2-5-cache-Manager"><a href="#2-5-cache-Manager" class="headerlink" title="2.5.cache Manager"></a>2.5.cache Manager</h4><p>缓存管理器，主要对session和授权数据进行缓存，比如将授权数据通过cacheManager进行缓存管理，和ehcache整合对缓存数据进行管理。</p>
+<h4 id="2-6-realms"><a href="#2-6-realms" class="headerlink" title="2.6.realms"></a>2.6.realms</h4><p>域，领域，相当于数据源，通过realm存取认证、授权相关数据。</p>
+<h4 id="2-6-1-Realms"><a href="#2-6-1-Realms" class="headerlink" title="2.6.1.Realms"></a>2.6.1.Realms</h4><p>是连接Shiro和应用程序安全数据之间的桥梁。当进行鉴权和授权的时候，Shiro会查询一个或者多个Realms。Shiro提供一些默认的Realm，例如LDAP， JDBC和INI文件中。</p>
+<h4 id="2-7-cryptography"><a href="#2-7-cryptography" class="headerlink" title="2.7.cryptography"></a>2.7.cryptography</h4><p>密码管理，提供了一套加密/解密的组件，方便开发。比如提供常用的散列、加/解密等功能。MD5散列算法。</p>
+<h2 id="详细架构"><a href="#详细架构" class="headerlink" title="详细架构"></a>详细架构</h2><h4 id="1-使用用户的登录信息创建令牌"><a href="#1-使用用户的登录信息创建令牌" class="headerlink" title="1.使用用户的登录信息创建令牌"></a>1.使用用户的登录信息创建令牌</h4><pre><code>UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+</code></pre><blockquote>
+<p>注：token理解为用户令牌，登录的过程被抽象为shiro验证令牌是否具有合法身份以及相关权限。</p>
+</blockquote>
+<h4 id="2-执行登录动作"><a href="#2-执行登录动作" class="headerlink" title="2.执行登录动作"></a>2.执行登录动作</h4><pre><code>SecurityUtils.setSecurityManager(securityManager); // 注入SecurityManager
+Subject subject = SecurityUtils.getSubject(); // 获取Subject单例对象
+subject.login(token); // 登陆
+</code></pre><blockquote>
+<p>注：SecurityManager负责安全认证与授权。SecurityUtils对象本质上类似spring中的applicationContext。</p>
+</blockquote>
+<h4 id="3-判断用户"><a href="#3-判断用户" class="headerlink" title="3.判断用户"></a>3.判断用户</h4><p>因为Shiro本身无法知道所持有令牌的合法性，所以Realm需要设计者自行实现。最重要的一种实现方式，数据库查询。</p>
+<h4 id="4-AuthenticationInfo代表了用户的角色信息集合，AuthorizationInfo代表了角色的权限信息集合"><a href="#4-AuthenticationInfo代表了用户的角色信息集合，AuthorizationInfo代表了角色的权限信息集合" class="headerlink" title="4.AuthenticationInfo代表了用户的角色信息集合，AuthorizationInfo代表了角色的权限信息集合"></a>4.AuthenticationInfo代表了用户的角色信息集合，AuthorizationInfo代表了角色的权限信息集合</h4><h2 id="实现Realm"><a href="#实现Realm" class="headerlink" title="实现Realm"></a>实现Realm</h2><h2 id="Shiro认证"><a href="#Shiro认证" class="headerlink" title="Shiro认证"></a>Shiro认证</h2><h4 id="1-导jar包"><a href="#1-导jar包" class="headerlink" title="1.导jar包"></a>1.导jar包</h4><pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.shiro&lt;/groupId&gt;
+    &lt;artifactId&gt;shiro-core&lt;/artifactId&gt;
+    &lt;version&gt;1.2.3&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.shiro&lt;/groupId&gt;
+    &lt;artifactId&gt;shiro-web&lt;/artifactId&gt;
+    &lt;version&gt;1.2.3&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.shiro&lt;/groupId&gt;
+    &lt;artifactId&gt;shiro-spring&lt;/artifactId&gt;
+    &lt;version&gt;1.2.3&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.shiro&lt;/groupId&gt;
+    &lt;artifactId&gt;shiro-ehcache&lt;/artifactId&gt;
+    &lt;version&gt;1.2.3&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.shiro&lt;/groupId&gt;
+    &lt;artifactId&gt;shiro-quartz&lt;/artifactId&gt;
+    &lt;version&gt;1.2.3&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><blockquote>
+<p>提示：或者直接导入shiro相关的全部jar包。</p>
+</blockquote>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.shiro&lt;/groupId&gt;
+    &lt;artifactId&gt;shiro-all&lt;/artifactId&gt;
+    &lt;version&gt;1.2.3&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><h4 id="2-认证流程"><a href="#2-认证流程" class="headerlink" title="2.认证流程"></a>2.认证流程</h4><pre><code>1.构建SecurityManager环境
+
+    DefaultSecurityManager defaultSecurityManager = new DefaultSecurityManager();
+
+2.Subject.login() 提交认证 (主体提交认证请求)
+
+    //0.1这里为了简单，使用SimpleAccountRealm创建简单的realm对象
+    SimpleAccountRealm simpleAccountRealm = new SimpleAccountRealm();
+    //0.2在执行之前给realm添加一个用户
+    @Before
+    public void addUser(){
+        simpleAccountRealm.addAccount(&quot;Brian&quot;,&quot;Brian_3365&quot;);
+    }
+
+    //1.1设置SecurityUtils的环境
+    SecurityUtils.setSecurityManager(defaultSecurityManager);
+    //1.2将simpleAccountRealm设置到环境中来
+
+    defaultSecurityManager.setRealm(simpleAccountRealm);
+    //2.获取主体
+    Subject subject = SecurityUtils.getSubject();
+
+3.SecurityManager.login() 执行认证
+
+    //3.获取登录的认证数据
+    UsernamePasswordToken token = new UsernamePasswordToken(&quot;Aaron&quot;,&quot;Aaron_2254&quot;);
+    //提交认证
+    subject.login(token);
+
+4.Authenticator 执行认证
+
+    //4.执行得到 是否已经得到认证
+    subject.isAuthenticated();
+
+5.Realm 根据身份获取验证信息
+
+    //这里可以输出查看结果
+    System.out.println(&quot;是否已经得到认证：&quot;+subject.isAuthenticated());
+
+    //5.在成功登陆之后，然后subject提供了一个登出的方法
+    subject.logout();
+</code></pre><hr>
+<h2 id="Shiro-授权"><a href="#Shiro-授权" class="headerlink" title="Shiro 授权"></a>Shiro 授权</h2><pre><code>1.构建SecurityManager环境
+2.主体授权
+3.SecurityManager授权
+4.Authorizer授权
+5.Realm 获取角色权限数据
+
+    //0.1这里为了简单，使用SimpleAccountRealm创建简单的realm对象
+    SimpleAccountRealm simpleAccountRealm = new SimpleAccountRealm();
+    //0.2在执行之前给realm添加一个用户并设置用户角色(admin)
+    @Before
+    public void addUser(){
+        simpleAccountRealm.addAccount(&quot;Brian&quot;,&quot;Brian_3365&quot;,&quot;admin&quot;);
+    }
+
+    //1.1设置SecurityUtils的环境
+    SecurityUtils.setSecurityManager(defaultSecurityManager);
+    //1.2将simpleAccountRealm设置到环境中来
+
+    defaultSecurityManager.setRealm(simpleAccountRealm);
+    //2.获取主体
+    Subject subject = SecurityUtils.getSubject();
+    //3.获取登录的认证数据
+            UsernamePasswordToken token = new UsernamePasswordToken(&quot;Aaron&quot;,&quot;Aaron_2254&quot;);
+            //提交认证
+            subject.login(token);
+    //4.执行得到 是否已经得到认证
+            subject.isAuthenticated();
+
+    //这里可以输出查看结果
+    System.out.println(&quot;是否已经得到认证：&quot;+subject.isAuthenticated());
+
+    //检查用户角色
+    subject.checkRole(&quot;admin&quot;);
+
+    //5.在成功登陆之后，然后subject提供了一个登出的方法
+    subject.logout();
+</code></pre><hr>
+<h2 id="Shiro-自定义Realm"><a href="#Shiro-自定义Realm" class="headerlink" title="Shiro 自定义Realm"></a>Shiro 自定义Realm</h2><h4 id="1-内置Realm"><a href="#1-内置Realm" class="headerlink" title="1.内置Realm"></a>1.内置Realm</h4><p><strong>1.1 IniRealm</strong><br></p>
+<pre><code>验证：
+
+//0.1 创建IniRealm对象
+IniRealm iniRealm = new IniRealm(&quot;classpath:user.ini&quot;);
+//0.2 然后在对应的路径下新建user.ini文件 （用户名 = 密码）
+[users]
+Aaron = Aaron_2235
+
+//1. 构建SecurityManager环境
+DefaultSecurityManager defaultSecurityManager = new DefaultSecurityManager();
+defaultSecurityManager.setRealm(iniRealm);
+
+//1.1设置SecurityUtils的环境
+SecurityUtils.setSecurityManager(defaultSecurityManager);
+//1.2将simpleAccountRealm设置到环境中来
+defaultSecurityManager.setRealm(simpleAccountRealm);
+//2.获取主体
+Subject subject = SecurityUtils.getSubject();
+//3.获取登录的认证数据
+UsernamePasswordToken token = new UsernamePasswordToken(&quot;Aaron&quot;,&quot;Aaron_2254&quot;);
+//提交认证
+subject.login(token);
+
+//这里可以输出查看结果
+System.out.println(&quot;是否已经得到认证：&quot;+subject.isAuthenticated());
+
+授权：
+
+//对应路径下创建user.ini文件
+[users]
+Aaron = Aaron_2235,admin
+[roles]
+//管理员用户删除用户的权限
+admin = user:delete
+//然后在 验证 的代码之后由命令检验角色信息
+subject.checkRole(&quot;admin&quot;);
+//以及验证是否具备删除用户权限
+subject.checkPermission(&quot;user:delete&quot;);
+</code></pre><p><strong>1.2 JdbcRealm</strong><br></p>
+<pre><code>//在最开始，需要创建一个数据源
+DruidDataSource dataSource = new DruidDataSource();
+{
+    dataSource.setUrl(&quot;jdbc:mysql://localhost:3306/test&quot;);
+    dataSource.setUsername(&quot;root&quot;);
+    dataSource.setPassword(&quot;root&quot;);
+}
+
+//0.1 创建JdbcRealm对象 其有默认的查询语句
+JdbcRealm jdbcRealm = new JdbcRealm();
+
+//0.2 jdbcRealm需要访问数据库，所以需要加入依赖
+
+//0.3 创建jdbc的数据源
+jdbcRealm.setDataSource(dataSource);
+//在使用jdbcRealm权限查询的时候，需要设置权限开关
+jdbcRealm.setPermissionLookupEnable(true);
+
+//1. 构建SecurityManager环境
+DefaultSecurityManager defaultSecurityManager = new DefaultSecurityManager();
+//1.2 将jdbcRealm设置到环境中来
+defaultSecurityManager.setRealm(jdbcRealm);
+
+//1.1设置SecurityUtils的环境
+SecurityUtils.setSecurityManager(defaultSecurityManager);
+
+//2.获取主体
+Subject subject = SecurityUtils.getSubject();
+
+//3.获取登录的认证数据
+UsernamePasswordToken token = new UsernamePasswordToken(&quot;Aaron&quot;,&quot;Aaron_2254&quot;);
+
+//4.这里可以输出查看结果
+System.out.println(&quot;是否已经得到认证：&quot;+subject.isAuthenticated());
+</code></pre><h4 id="2-自定义Realm-安全数据源"><a href="#2-自定义Realm-安全数据源" class="headerlink" title="2.自定义Realm(安全数据源)"></a>2.自定义Realm(安全数据源)</h4><p>Shiro从Realm域获取安全数据(如用户、角色、权限)，所以SecurityManager需要验证身份，那么就需要从Realm中获取相应的用户进行比较来确定用户身份是否合法，同时也需要从Realm中得到用户相应的角色、权限进行验证用户是否能够进行操作。</p>
+<pre><code>public class CustomRealm extends AuthorizingRealm{
+
+    //此方法是用来做授权
+    @Override
+    protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
+        //获取用户
+        String username = (String)PrincipalCollection.getPrincipalCollection();
+
+        //从数据库或者缓存中获取角色数据，数据库操作
+        Set&lt;String&gt; roles = getRolesByUserName(username);
+
+        Set&lt;String&gt; permissions = getPermissionsByUserName(username);
+
+        SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
+
+        //向其中加入相应的角色和权限
+        simpleAuthorizationInfo.setStringPermissions(permissions);
+        simpleAuthorizationInfo.setRoles(roles);
+
+        //开始授权操作
+        return simpleAuthorizationInfo;
+    }
+
+    private Set&lt;String&gt; getRolesByUserName(String username){
+        Set&lt;String&gt; sets = new HashSet&lt;&gt;();
+        sets.add(&quot;admin&quot;);
+        sets.add(&quot;user&quot;);
+        return sets;
+    }
+
+    private Set&lt;String&gt; getPermissionsByUserName(String username){
+        Set&lt;String&gt; sets = new HashSet&lt;&gt;();
+        sets.add(&quot;user:delete&quot;);
+        sets.add(&quot;user:select&quot;);
+        return sets;
+    }
+
+    //此方法是用来做认证
+    //AuthenticationToken 主体传过来的认证信息
+    @Override
+    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
+
+        //这里从简(数据库)
+        Map&lt;String, String&gt; userMap = new HashMap&lt;&gt;();
+        {
+            //userMap.put(&quot;Aaron&quot;,&quot;Aaron_2254&quot;);
+            //Shiro加密实验部分
+            userMap.put(&quot;Aaron&quot;,&quot;md5加密后的密文&quot;);
+            //Shiro加密加盐
+            userMap.put(&quot;Aaron&quot;,&quot;md5加密加盐后密文&quot;);
+            super.setName(&quot;cusRealm&quot;);
+        }
+        //1.从主体传递的认证信息中获取用户名
+        UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
+        String username = token.getUsername();
+
+        //2.通过用户名去到数据库中获取凭证
+        String password = getPasswordByUserName(username);
+        if(password == null ){
+            return null;
+        }
+
+        //用户存在 返回对象simpleAuthenticationInfo
+        SimpleAuthenticationInfo simpleAuthenticationInfo = new SimpleAuthenticationInfo(&quot;Aaron&quot;,password,&quot;cusRealm&quot;);
+
+        //这里登录的主要信息：实体类对象，但是该实体类对象一定是根据token的username查询得到的
+
+        //在这里需要将盐设置到simpleAuthenticationInfo
+        simpleAuthenticationInfo.setCredentialsSalt(ByteSource.Util.bytes(&quot;Aaron&quot;));
+
+        return simpleAuthenticationInfo;
+        }
+
+        //2.1 模拟数据库
+        private String getPasswordByUserName(String username){
+            return userMap.get(username);
+        }
+    }
+
+    //Shiro 加密设置 将明文密码改成密文密码
+    public static void main(String[] args){
+        Md5Hash md5Hash = new Md5Hash(&quot;Aaron_2254&quot;);
+        System.out.println(md5Hash.toString());
+    }
+
+    //然后在验证信息里面使用加密后的密文
+}
+
+测试类：测试上面两个自定义的Realm是否正确。
+</code></pre><hr>
+<h2 id="Shiro在Controller中实现"><a href="#Shiro在Controller中实现" class="headerlink" title="Shiro在Controller中实现"></a>Shiro在Controller中实现</h2><pre><code>//这里只截取主要部分
+//获取提交主体
+Subject subject = SecurityUtils.getSubject();
+//根据用户名获取数据库登录信息
+UsernamePasswordToken token = new UsernamePasswordToken(uid,&quot;&quot;);
+try {
+    //提交登录信息
+    subject.login(token);
+} catch (AuthenticationException e) {
+    LOG.error(e.getMessage());
+    //返回403界面
+    response.sendRedirect(&quot;/403.html&quot;);
+}
+
+...
+</code></pre><hr>
+<h2 id="Shiro加密"><a href="#Shiro加密" class="headerlink" title="Shiro加密"></a>Shiro加密</h2><h4 id="1-Shiro散列配置"><a href="#1-Shiro散列配置" class="headerlink" title="1.Shiro散列配置"></a>1.Shiro散列配置</h4><p><strong>1.1 HashedCredentialsMatcher</strong><br></p>
+<pre><code>//0.1 自定义Realm，这里的自定义customRealm沿用上面的自定义Realm
+CustomRealm customRealm = new CustomRealm();
+
+//1. 构建SecurityManager环境
+DefaultSecurityManager defaultSecurityManager = new DefaultSecurityManager();
+//1.2 将jdbcRealm设置到环境中来
+defaultSecurityManager.setRealm(jdbcRealm);
+
+//构建加密算法
+HashedCredentialsMatcher matcher = new HashedCredentialsMatcher();
+//设置加密算法的名称
+matcher.setHashAlgorithmName(&quot;md5&quot;);
+//设置加密的次数
+matcher.setHashIterations(1);
+
+//在自定义的Realm中设置加密的matcher对象
+customRealm.setCredentialsMatcher(matcher);
+
+
+//1.1设置SecurityUtils的环境
+SecurityUtils.setSecurityManager(defaultSecurityManager);
+
+//2.获取主体
+Subject subject = SecurityUtils.getSubject();
+
+//3.获取登录的认证数据
+UsernamePasswordToken token = new UsernamePasswordToken(&quot;Aaron&quot;,&quot;Aaron_2254&quot;);
+
+//4.这里可以输出查看结果
+System.out.println(&quot;是否已经得到认证：&quot;+subject.isAuthenticated());
+</code></pre><p><strong>1.2 自定义Realm中使用散列</strong><br></p>
+<pre><code>//Shiro 加密设置 将明文密码改成密文密码
+public static void main(String[] args){
+    Md5Hash md5Hash = new Md5Hash(&quot;Aaron_2254&quot;);
+    System.out.println(md5Hash.toString());
+}
+
+//然后在验证信息里面使用加密后的密文
+</code></pre><p><strong>1.3 盐的使用</strong><br></p>
+<pre><code>//1.加盐表示在MD5加密的基础上加上随机数
+public static void main(String[] args){
+    //加密之后再加上随机数
+    Md5Hash md5Hash = new Md5Hash(&quot;Aaron_2254&quot;,&quot;Aaron&quot;);
+    System.out.println(md5Hash.toString());
+}
+
+//2.然后将生成的随机数加到原先的Realm认证中
+SimpleAuthenticationInfo simpleAuthenticationInfo = new SimpleAuthenticationInfo(&quot;Aaron&quot;,password,&quot;cusRealm&quot;);
+//在这里需要将盐设置到simpleAuthenticationInfo
+simpleAuthenticationInfo.setCredentialsSalt(ByteSource.Util.bytes(&quot;Aaron&quot;));
+</code></pre><hr>
+<h2 id="Shiro与SpringMVC集成"><a href="#Shiro与SpringMVC集成" class="headerlink" title="Shiro与SpringMVC集成"></a>Shiro与SpringMVC集成</h2><h2 id="Shiro实战"><a href="#Shiro实战" class="headerlink" title="Shiro实战"></a>Shiro实战</h2><h4 id="0-pom-xml"><a href="#0-pom-xml" class="headerlink" title="0.pom.xml"></a>0.pom.xml</h4><p>在原先pom.xml的基础上加上如下的shiro依赖。</p>
+<pre><code>&lt;!--Shiro 相关--&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.shiro&lt;/groupId&gt;
+    &lt;artifactId&gt;shiro-core&lt;/artifactId&gt;
+    &lt;version&gt;1.4.0&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.shiro&lt;/groupId&gt;
+    &lt;artifactId&gt;shiro-spring&lt;/artifactId&gt;
+    &lt;version&gt;1.4.0&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.shiro&lt;/groupId&gt;
+    &lt;artifactId&gt;shiro-web&lt;/artifactId&gt;
+    &lt;version&gt;1.4.0&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><h4 id="1-配置前端过滤器-web-xml"><a href="#1-配置前端过滤器-web-xml" class="headerlink" title="1.配置前端过滤器(web.xml)"></a>1.配置前端过滤器(web.xml)</h4><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;web-app xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+    xmlns=&quot;http://java.sun.com/xml/ns/javaee&quot;
+    xsi:schemaLocation=&quot;http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd&quot;
+    id=&quot;WebApp_ID&quot; version=&quot;3.0&quot;&gt;
+    &lt;display-name&gt;Shiro_Project&lt;/display-name&gt;
+
+    &lt;welcome-file-list&gt;
+        &lt;welcome-file&gt;index.jsp&lt;/welcome-file&gt;
+    &lt;/welcome-file-list&gt;
+
+
+    &lt;!-- 配置spring容器的路径 --&gt;
+      &lt;context-param&gt;
+              &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+              &lt;param-value&gt;classpath*:/spring-context-*.xml&lt;/param-value&gt;
+      &lt;/context-param&gt;
+      &lt;!-- 对spring开始监听 --&gt;
+      &lt;listener&gt;
+          &lt;listener-class&gt;org.springframework.web.context.ContextLoaderListener&lt;/listener-class&gt;
+      &lt;/listener&gt;
+
+    &lt;!-- 配置springmvc.xml文件的位置 --&gt;
+     &lt;servlet&gt;
+         &lt;servlet-name&gt;SpringMVC&lt;/servlet-name&gt;
+         &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;
+         &lt;init-param&gt;
+             &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+             &lt;param-value&gt;classpath:springmvc.xml&lt;/param-value&gt;
+         &lt;/init-param&gt;
+         &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+     &lt;/servlet&gt;
+      &lt;servlet-mapping&gt;
+         &lt;servlet-name&gt;SpringMVC&lt;/servlet-name&gt;
+         &lt;url-pattern&gt;/&lt;/url-pattern&gt;
+     &lt;/servlet-mapping&gt;
+
+    &lt;!-- shiro配置开始，这里注意拦截器的名称 --&gt;
+    &lt;filter&gt;
+        &lt;filter-name&gt;shiroFilter&lt;/filter-name&gt;
+        &lt;filter-class&gt;org.springframework.web.filter.DelegatingFilterProxy&lt;/filter-class&gt;
+        &lt;async-supported&gt;true&lt;/async-supported&gt;
+        &lt;init-param&gt;
+            &lt;param-name&gt;shiroFilter&lt;/param-name&gt;
+            &lt;param-value&gt;true&lt;/param-value&gt;
+        &lt;/init-param&gt;
+    &lt;/filter&gt;
+
+    &lt;filter-mapping&gt;
+        &lt;filter-name&gt;shiroFilter&lt;/filter-name&gt;
+        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+    &lt;/filter-mapping&gt;
+
+    &lt;!-- shiro配置 结束 --&gt;
+&lt;/web-app&gt;
+</code></pre><blockquote>
+<p>注意：由于项目通过Spring管理，所以所有的配置原则上都是交给Spring，那么这里的DelegatingFilterProxy的功能就是通知Spring将所有的Filter叫个ShiroFilter管理。</p>
+</blockquote>
+<h4 id="2-在classpath路径下编写spring-context-xml文件"><a href="#2-在classpath路径下编写spring-context-xml文件" class="headerlink" title="2.在classpath路径下编写spring-context.xml文件"></a>2.在classpath路径下编写spring-context.xml文件</h4><p>在此文件下需要配置cacheManager（缓存框架，是因为shiro的session是自己实现的）。</p>
+<pre><code>&lt;!-- 缓存bean --&gt;
+&lt;bean id=&quot;cacheManager&quot; class=&quot;org.springframework.cache.ehcache.EhCacheManagerFactoryBean&quot;&gt;
+    &lt;property name=&quot;configLocation&quot; value=&quot;classpath:${ehcache.file}&quot;&gt;&lt;/property&gt;
+&lt;/bean&gt;
+
+&lt;!--在pom.xml文件中配置该缓存的依赖--&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;net.sf.ehcache&lt;/groupId&gt;
+  &lt;artifactId&gt;ehcache-core&lt;/artifactId&gt;
+  &lt;version&gt;2.6.9&lt;/version&gt;
+&lt;/dependency&gt;
+   &lt;dependency&gt;
+     &lt;groupId&gt;org.apache.shiro&lt;/groupId&gt;
+     &lt;artifactId&gt;shiro-ehcache&lt;/artifactId&gt;
+     &lt;version&gt;1.2.3&lt;/version&gt;
+   &lt;/dependency&gt;
+</code></pre><h4 id="3-在classpath路径下编写spring-shiro-web-xml文件-上面文件只是补充"><a href="#3-在classpath路径下编写spring-shiro-web-xml文件-上面文件只是补充" class="headerlink" title="3.在classpath路径下编写spring-shiro-web.xml文件 上面文件只是补充"></a>3.在classpath路径下编写spring-shiro-web.xml文件 上面文件只是补充</h4><pre><code>&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:p=&quot;http://www.springframework.org/schema/p&quot;
+    xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+    xmlns:mvc=&quot;http://www.springframework.org/schema/mvc&quot;
+    xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans    
+                        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd    
+                        http://www.springframework.org/schema/context    
+                        http://www.springframework.org/schema/context/spring-context-3.1.xsd    
+                        http://www.springframework.org/schema/mvc    
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd&quot;&gt;
+
+    &lt;!-- 1.缓存管理器 使用Ehcache实现 --&gt;
+    &lt;bean id=&quot;cacheManager&quot; class=&quot;org.apache.shiro.cache.ehcache.EhCacheManager&quot;&gt;
+        &lt;property name=&quot;cacheManagerConfigFile&quot; value=&quot;classpath:ehcache.xml&quot; /&gt;
+    &lt;/bean&gt;
+
+    &lt;!-- 2.加密算法 --&gt;
+    &lt;bean id=&quot;credentialsMatcher&quot; class=&quot;utils.RetryLimitHashedCredentialsMatcher&quot;&gt;
+        &lt;constructor-arg ref=&quot;cacheManager&quot; /&gt;
+        &lt;property name=&quot;hashAlgorithmName&quot; value=&quot;md5&quot; /&gt;
+        &lt;property name=&quot;hashIterations&quot; value=&quot;2&quot; /&gt;
+        &lt;property name=&quot;storedCredentialsHexEncoded&quot; value=&quot;true&quot; /&gt;
+    &lt;/bean&gt;
+
+    &lt;!-- Shiro的Web过滤器，启动shiro授权注解拦截方式，这里配置shiro拦截器 --&gt;
+    &lt;bean id=&quot;shiroFilter&quot; class=&quot;org.apache.shiro.spring.web.ShiroFilterFactoryBean&quot;&gt;
+        &lt;!--配置SecurityManager对象，此属性非常重要--&gt;
+        &lt;property name=&quot;securityManager&quot; ref=&quot;securityManager&quot; /&gt;
+
+        &lt;!--登录时的链接--&gt;
+        &lt;property name=&quot;loginUrl&quot; value=&quot;/&quot; /&gt;
+        &lt;!-- 登录成功后要跳转的连接(本例中此属性用不到,因为登录成功后的处理逻辑在LoginController里硬编码为main.jsp了) --&gt;  
+        &lt;!-- &lt;property name=&quot;successUrl&quot; value=&quot;/&quot;/&gt; --&gt;  
+
+        &lt;!--用户访问未授权的资源时所显示的链接--&gt;
+        &lt;property name=&quot;unauthorizedUrl&quot; value=&quot;/&quot; /&gt;
+
+        &lt;!--过滤器链,同时过滤器链是有顺序的,是从上往下匹配,匹配到之后就返回--&gt;
+        &lt;property name=&quot;filterChainDefinitions&quot;&gt;
+            &lt;!--内置的过滤规则--&gt;
+            &lt;value&gt;
+                /authc/admin = roles[admin]
+                &lt;!--此表示需要经过认证之后才能访问相应的路径--&gt;
+                /authc/** = authc
+                &lt;!--此表示不需要任何认证--&gt;
+                /** = anon
+            &lt;/value&gt;
+        &lt;/property&gt;
+    &lt;/bean&gt;
+
+    &lt;!-- 创建SecurityManager对象，从而得到自定义用户数据匹配--&gt;
+    &lt;bean id=&quot;securityManager&quot; class=&quot;org.apache.shiro.web.mgt.DefaultWebSecurityManager&quot;&gt;
+        &lt;!--将自定义的Realm对象设置到SecurityManager环境中--&gt;
+        &lt;property name=&quot;realm&quot; ref=&quot;userRealm&quot; /&gt;
+    &lt;/bean&gt;
+
+    &lt;!-- 创建自定义的Realm，来作为授权和认证的realm --&gt;
+    &lt;bean id=&quot;userRealm&quot; class=&quot;utils.UserRealm&quot;&gt;
+        &lt;!--以及自定义比对器，比对结果与form提交是否一致--&gt;
+        &lt;property name=&quot;credentialsMatcher&quot; ref=&quot;credentialsMatcher&quot; /&gt;
+    &lt;/bean&gt;
+
+    &lt;!--自定义比对器的bean注入，这一比对器是自定义实现--&gt;
+    &lt;bean class=&quot;cn.edu.xidian.B.authurity.CredentialMatcher&quot; id=&quot;credentialMatcher&quot;/&gt;
+
+    &lt;!--然后上面过程中的过滤器链可以用程序实现，这样不用每次都去添加一次--&gt;
+    &lt;bean class=&quot;cn.edu.xidian.B.authurity.FilterChainDefinitionMapBuilder&quot; id=&quot;filterChainDefinitionMapBuilder&quot;/&gt;
+    &lt;bean id=&quot;filterChainDefinitionMap&quot; factory-bean=&quot;filterChainDefinitionMapBuilder&quot; factory-method=&quot;getMap&quot;/&gt;
+
+    &lt;!-- 配置 Bean 后置处理器: 会自动的调用和 Spring 整合后各个组件的生命周期方法. --&gt;  
+    &lt;bean id=&quot;lifecycleBeanPostProcessor&quot; class=&quot;org.apache.shiro.spring.LifecycleBeanPostProcessor&quot; /&gt;
+&lt;/beans&gt;
+</code></pre><blockquote>
+<p>注意：filterChainDefinitions过滤器中对于路径的配置是有顺序的，当找到匹配的条目之后容器不会在继续寻找。因此带有通配符的路径要放在后面。三条配置的含义是： /authc/admin需要用户有用admin权限、/authc/<strong>用户必须登录才能访问、/</strong>其他所有路径任何人都可以访问。</p>
+</blockquote>
+<h4 id="4-在classpath路径下配置springmvc-xml文件-没必要配置springmvc-xml文件"><a href="#4-在classpath路径下配置springmvc-xml文件-没必要配置springmvc-xml文件" class="headerlink" title="4.在classpath路径下配置springmvc.xml文件 没必要配置springmvc.xml文件"></a>4.在classpath路径下配置springmvc.xml文件 没必要配置springmvc.xml文件</h4><pre><code>&lt;!--&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;--&gt;
+&lt;!--&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;--&gt;
+&lt;!--    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:p=&quot;http://www.springframework.org/schema/p&quot;--&gt;
+&lt;!--    xmlns:context=&quot;http://www.springframework.org/schema/context&quot;--&gt;
+&lt;!--    xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot; xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;--&gt;
+&lt;!--    xmlns:mvc=&quot;http://www.springframework.org/schema/mvc&quot; xmlns:task=&quot;http://www.springframework.org/schema/task&quot;--&gt;
+&lt;!--    xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans --&gt;
+&lt;!--       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd--&gt;
+&lt;!--       http://www.springframework.org/schema/context --&gt;
+&lt;!--       http://www.springframework.org/schema/context/spring-context-3.0.xsd--&gt;
+&lt;!--       http://www.springframework.org/schema/tx --&gt;
+&lt;!--       http://www.springframework.org/schema/tx/spring-tx-3.0.xsd--&gt;
+&lt;!--       http://www.springframework.org/schema/aop--&gt;
+&lt;!--       http://www.springframework.org/schema/aop/spring-aop-3.0.xsd--&gt;
+&lt;!--       http://www.springframework.org/schema/mvc  --&gt;
+&lt;!--         http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd--&gt;
+&lt;!--         http://www.springframework.org/schema/task     --&gt;
+&lt;!--       http://www.springframework.org/schema/task/spring-task-3.1.xsd&quot;&gt;--&gt;
+
+&lt;!--    &lt;context:annotation-config /&gt;--&gt;
+    &lt;!-- 使用注解时必须 --&gt;
+&lt;!--    &lt;mvc:annotation-driven&gt;--&gt;
+&lt;!--        &lt;mvc:argument-resolvers&gt;--&gt;
+&lt;!--            &lt;bean class=&quot;cn.edu.xidian.see.ext.DataTableArgumentResolver&quot;/&gt;--&gt;
+&lt;!--        &lt;/mvc:argument-resolvers&gt;--&gt;
+&lt;!--    &lt;/mvc:annotation-driven&gt;--&gt;
+
+&lt;!--    &lt;aop:config proxy-target-class=&quot;true&quot;&gt;&lt;/aop:config&gt;--&gt;
+
+&lt;!--&lt;/beans&gt;--&gt;
+</code></pre><h4 id="5-在classpath路径下配置ehcache-shiro-xml文件"><a href="#5-在classpath路径下配置ehcache-shiro-xml文件" class="headerlink" title="5.在classpath路径下配置ehcache-shiro.xml文件"></a>5.在classpath路径下配置ehcache-shiro.xml文件</h4><pre><code>&lt;ehcache updateCheck=&quot;false&quot; name=&quot;shiroCache&quot;&gt;  
+
+    &lt;defaultCache  
+            maxElementsInMemory=&quot;10000&quot;  
+            eternal=&quot;false&quot;  
+            timeToIdleSeconds=&quot;120&quot;  
+            timeToLiveSeconds=&quot;120&quot;  
+            overflowToDisk=&quot;false&quot;  
+            diskPersistent=&quot;false&quot;  
+            diskExpiryThreadIntervalSeconds=&quot;120&quot;  
+            /&gt;  
+&lt;/ehcache&gt;  
+</code></pre><h4 id="6-密码规则的实现-CredentialMatcher-比对登录信息和数据库信息是否一致"><a href="#6-密码规则的实现-CredentialMatcher-比对登录信息和数据库信息是否一致" class="headerlink" title="6.密码规则的实现 - CredentialMatcher 比对登录信息和数据库信息是否一致"></a>6.密码规则的实现 - CredentialMatcher 比对登录信息和数据库信息是否一致</h4><pre><code>public class CredentialMatcher extends SimpleCredentialsMatcher {
+    @Override
+    public boolean doCredentialsMatch(AuthenticationToken token, AuthenticationInfo info) {
+        UsernamePasswordToken usernamePasswordToken = (UsernamePasswordToken) token;
+        String password = new String(usernamePasswordToken.getPassword());
+        String dbpassword = (String)info.getCredentials();
+        return this.equals(password,dbpassword);
+    }
+}
+</code></pre><h4 id="7-自定义过滤器链的实现-有了这一方法之后就不用在配置文件重复添加过滤链接，接配置文件的getMap"><a href="#7-自定义过滤器链的实现-有了这一方法之后就不用在配置文件重复添加过滤链接，接配置文件的getMap" class="headerlink" title="7.自定义过滤器链的实现 有了这一方法之后就不用在配置文件重复添加过滤链接，接配置文件的getMap()"></a>7.自定义过滤器链的实现 有了这一方法之后就不用在配置文件重复添加过滤链接，接配置文件的getMap()</h4><pre><code>package cn.edu.xidian.B.authurity;
+
+public class FilterChainDefinitionMapBuilder {
+
+    @Autowired
+    private AuthoriseService authoriseService;
+
+    private LinkedHashMap&lt;String, String&gt; filterChainDefinitionMap = null;
+
+    public LinkedHashMap&lt;String, String&gt; getMap(){
+        if (filterChainDefinitionMap == null){
+            //一个线程访问完抛出之后，其它线程才能争取访问
+            synchronized (this){
+                if (filterChainDefinitionMap == null){
+                    filterChainDefinitionMap = new LinkedHashMap&lt;&gt;();
+                    setBeforeUrlPermissions();
+                    List&lt;Permission&gt; permissions = authoriseService.getAllPermission();
+                    for (Permission permission : permissions){
+                        if (permission.getStatus() == 0){
+                            //将访问的链接组装起来：perms[&quot;pname&quot;] 将之存放到链接的map集合中
+                            filterChainDefinitionMap.put(permission.getPurl(), &quot;perms[\&quot;&quot; + permission.getPname() + &quot;\&quot;&quot;);
+                        }
+                        setAfterUrlPermissions();
+                    }
+                }
+            }
+        }
+        return filterChainDefinitionMap;
+    }
+
+    //在用户登录之前以下这些链接能够在不登录的前提下访问
+    private void setBeforeUrlPermissions(){
+        filterChainDefinitionMap.put(&quot;/local/*&quot;,&quot;anon&quot;);
+        filterChainDefinitionMap.put(&quot;/403.ftl&quot;,&quot;anon&quot;);
+        filterChainDefinitionMap.put(&quot;/&quot;,&quot;anon&quot;);
+    }
+
+    //这些链接需要在用户登录之后才能访问
+    private void setAfterUrlPermissions(){
+        filterChainDefinitionMap.put(&quot;/*&quot;,&quot;authc&quot;);
+    }
+}
+</code></pre><h4 id="8-自定义Realm-AuthRealm"><a href="#8-自定义Realm-AuthRealm" class="headerlink" title="8.自定义Realm AuthRealm"></a>8.自定义Realm AuthRealm</h4><pre><code>public class ShiroRealm extends AuthorizingRealm{
+    @Autowired
+    private UserService userService;  
+
+    @Autowired  
+    private RoleService roleService;  
+
+    /**  
+     * shiro认证  
+     */  
+    @Override  
+    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken) throws AuthenticationException {  
+
+        // 这里首先通过登录信息获取登录用户名
+        UsernamePasswordToken token = (UsernamePasswordToken) authcToken;  
+        String loginName = token.getUsername();  
+
+        // 判断登录时用户名是否为空或者null
+        if (loginName != null &amp;&amp; !&quot;&quot;.equals(loginName)) {  
+
+            //通过登录名来查询响应的数据库中的用户
+            User user = userService.getUserByLoginName(loginName);  
+            if (user != null) {  
+                // 如果身份认证验证成功，返回一个AuthenticationInfo实现  
+                return new SimpleAuthenticationInfo(user.getLoginName(), user.getPassword(), getName());  
+            }  
+        }  
+        return null;  
+    }  
+
+    /**  
+     * shiro授权  
+     */  
+    @Override  
+    protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {  
+        //PrincipalCollection 是一个身份集合，因为在shiro中同时配置多个realm，所以身份信息有多个，从而提供此集合聚合这些信息
+
+        // 使用Shiro提供的方法获取用户名称  
+        String loginName = (String) getAvailablePrincipal(principals); 
+
+        if (loginName != null) {  
+            String roleId = userService.getRoleIdByLoginName(loginName);  
+
+            // 获取用户的权限  
+            List&lt;String&gt; permTokens = roleService.getPermTokens(roleId);  
+
+            SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();  
+
+            if (roleId != null) {  
+
+                // 加入用户角色
+                info.addRole(roleId);   
+            }  
+            if (permTokens != null) { 
+
+                // 加入用户许可标记
+                info.addStringPermissions(permTokens);   
+            }  
+            return info;  
+        }  
+        return null;  
+    }  
+}
+</code></pre><h4 id="10-Controller实现登录逻辑"><a href="#10-Controller实现登录逻辑" class="headerlink" title="10.Controller实现登录逻辑"></a>10.Controller实现登录逻辑</h4><pre><code>@Controller  
+@RequestMapping(&quot;/login&quot;)  
+public class LoginController {  
+
+    @Autowired  
+    private MenuService menuService;  
+
+    @Autowired  
+    private UserService userService;  
+
+    @Autowired  
+    private CompanyService companyService;  
+
+    @RequestMapping(method = {RequestMethod.GET})  
+    public String login(HttpServletRequest request) {  
+        System.out.println(&quot;欢迎登陆！&quot;);  
+        return &quot;/login&quot;;  
+    }  
+
+    @RequestMapping(method = {RequestMethod.POST})  
+    public String loginPost(User user, RedirectAttributes redirectAttributes, HttpServletRequest request) {
+
+        Subject currentUser = SecurityUtils.getSubject();  
+        UsernamePasswordToken token = new UsernamePasswordToken(user.getLoginName(), user.getPassword(), user.isRememberMe());  
+        try {  
+            //用户认证  
+            currentUser.login(token);  
+        } catch (AuthenticationException e) {  
+            System.out.println(e);  
+            redirectAttributes.addFlashAttribute(&quot;message&quot;, &quot;用户名或密码错误！&quot;);  
+            return &quot;redirect:/login&quot;;  
+        }  
+        if (currentUser.isAuthenticated()) {  
+            //登录成功，保存用户相关信息  
+            sessionHandle(user, request);  
+            //跳转成功页面  
+            return &quot;redirect:/index&quot;;  
+        } else {  
+            redirectAttributes.addFlashAttribute(&quot;message&quot;, &quot;用户名或密码错误！&quot;);  
+            return &quot;redirect:/login&quot;;  
+        }  
+    }  
+
+    private void sessionHandle(User user, HttpServletRequest request) {  
+        HttpSession session = request.getSession();  
+        User loginUser = userService.getUserByLoginName(user.getLoginName());  
+        if(loginUser != null){  
+            session.setAttribute(&quot;companyId&quot;, loginUser.getCompanyId());  
+            session.setAttribute(&quot;username&quot;, loginUser.getNickName());  
+            session.setAttribute(&quot;userId&quot;, loginUser.getId());  
+        }  
+        //menuService.updateMenuInSession(request);  
+    }  
+}  
+</code></pre><h4 id="11-本地LocalController实现"><a href="#11-本地LocalController实现" class="headerlink" title="11.本地LocalController实现"></a>11.本地LocalController实现</h4><pre><code>package cn.edu.xidian.B.controller;
+
+@Controller
+@RequestMapping(&quot;/local&quot;)
+public class LocalController {
+
+    private static Logger LOG = Logger.getLogger(LocalController.class);
+
+    @Autowired
+    private StudentService studentService;
+    @Autowired
+    private TeacherService teacherService;
+
+    @RequestMapping(&quot;/&quot;)
+    public String login() {
+        return &quot;local/local&quot;;
+    }
+
+    @RequestMapping(&quot;/dologin&quot;)
+    public String dologin(HttpServletRequest request, HttpServletResponse response, Model model)
+            throws Exception {
+
+        HttpSession session = request.getSession();
+
+        String uid = request.getParameter(&quot;uid&quot;);
+        System.out.println(uid);
+
+        Subject subject = SecurityUtils.getSubject();
+        UsernamePasswordToken token = new UsernamePasswordToken(uid,&quot;&quot;);
+        try {
+            subject.login(token);
+        } catch (AuthenticationException e) {
+            LOG.error(e.getMessage());
+//            response.sendRedirect(&quot;/403&quot;);
+            model.addAttribute(&quot;message&quot;, &quot;登录失败，系统没有您的信息&quot;);
+            return &quot;local/err&quot;;
+        }
+        if (uid == null) {
+            model.addAttribute(&quot;message&quot;, &quot;uid 为空&quot;);
+            return &quot;local/err&quot;;
+        } else {
+            session.setAttribute(&quot;uid&quot;, uid);
+            if (studentService.findStudentBySno(uid) != null) {
+                response.sendRedirect(&quot;/student/main&quot;);
+                } else if (teacherService.findByStaffno(uid) != null) {
+                if(teacherService.findByStaffno(uid).getType() == 2){
+                    response.sendRedirect(&quot;/teacher/main&quot;);
+                } else {
+                    response.sendRedirect(&quot;/testteacher/main&quot;);
+                }
+            } else {
+                model.addAttribute(&quot;message&quot;, &quot;不在表中 uid = &quot; + uid);
+                return &quot;local/err&quot;;
+            }
+        }
+        return null;
+    }
+}
+</code></pre><h4 id="12-前台实现-在这里省略"><a href="#12-前台实现-在这里省略" class="headerlink" title="12.前台实现 在这里省略"></a>12.前台实现 在这里省略</h4><blockquote>
+<p>总结：在这一系列实现之后，我们就能通过Shiro拦截认证来拦截用户的登录情况。对，还有数据库的实现，特别需要注意的是权限与用户对应，然后用户的类型与权限对应等。实践之后就会觉得，其实并没有那么简单，还是需要考虑很多情况的。</p>
+</blockquote>
+<hr>
+<h3 id="下面是在前期学习的时候，做的一些记录"><a href="#下面是在前期学习的时候，做的一些记录" class="headerlink" title="下面是在前期学习的时候，做的一些记录"></a>下面是在前期学习的时候，做的一些记录</h3><h2 id="通过注解配置授权"><a href="#通过注解配置授权" class="headerlink" title="通过注解配置授权"></a>通过注解配置授权</h2><p>这里授权有两种方式,编程方式和注解方式。编程方式，subject.hasRole();</p>
+<h4 id="1-在pom-xml中加入相关依赖"><a href="#1-在pom-xml中加入相关依赖" class="headerlink" title="1.在pom.xml中加入相关依赖"></a>1.在pom.xml中加入相关依赖</h4><pre><code>//加入aspectjweaver包
+&lt;dependency&gt;
+    &lt;groupId&gt;org.aspectj&lt;/groupId&gt;
+    &lt;artifactId&gt;aspectjweaver&lt;/artifactId&gt;
+    &lt;version&gt;1.8.13&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-aop&lt;/artifactId&gt;
+    &lt;version&gt;5.0.2.RELEASE&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><h4 id="2-在springmvc-xml中增加配置"><a href="#2-在springmvc-xml中增加配置" class="headerlink" title="2.在springmvc.xml中增加配置"></a>2.在springmvc.xml中增加配置</h4><pre><code>&lt;!--开启Shiro注解--&gt;
+&lt;aop:config proxy-target-class=&quot;true&quot;/&gt;
+&lt;bean class=&quot;org.apache.shiro.spring.LifecycleBeanPostProcessor&quot;/&gt;
+&lt;bean class=&quot;org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor&quot;&gt;
+    &lt;!--设置Shiro的securityManager--&gt;
+    &lt;property name=&quot;securityManager&quot; ref=&quot;securityManager&quot;/&gt;
+&lt;/bean&gt;
+</code></pre><h4 id="3-使用"><a href="#3-使用" class="headerlink" title="3.使用"></a>3.使用</h4><pre><code>在Controller中使用注解@RequiresPermissions(&quot;admin:delete&quot;);测试只有admin拥有delete权限才能访问。
+在Controller中使用注解@RequiresRoles(&quot;admin&quot;);测试只有是admin角色才能访问。
+</code></pre><hr>
+<h2 id="Shiro过滤器"><a href="#Shiro过滤器" class="headerlink" title="Shiro过滤器"></a>Shiro过滤器</h2><h4 id="1-Shiro内置过滤器"><a href="#1-Shiro内置过滤器" class="headerlink" title="1.Shiro内置过滤器"></a>1.Shiro内置过滤器</h4><p><strong>1.认证</strong><br></p>
+<pre><code>anon
+authBasic
+authc
+user
+logout
+</code></pre><p><strong>2.授权</strong><br></p>
+<pre><code>perms
+roles
+ssl
+port
+</code></pre><h4 id="2-自定义ShiroFilter"><a href="#2-自定义ShiroFilter" class="headerlink" title="2.自定义ShiroFilter"></a>2.自定义ShiroFilter</h4><hr>
+<h1 id="filterChainDefinitions-授权规则定义"><a href="#filterChainDefinitions-授权规则定义" class="headerlink" title="filterChainDefinitions - 授权规则定义"></a>filterChainDefinitions - 授权规则定义</h1><p>Shiro通过ShiroFilterFactoryBean类的filterChainDefinitions(授权规则定义)属性转换为一个filterChainDefinitionMap，转换完成后交给ShiroFilterFactoryBean保管。</p>
+<pre><code>//拦截数据库url
+public class FilterChainDefinitionMapBuilder {
+    @Autowired
+    private SysAuthoriseService sysAuthoriseService;
+
+    private LinkedHashMap&lt;String,String&gt; filterChainDefinitionMap = null;
+    public LinkedHashMap&lt;String,String&gt; getMap() {
+
+        if(filterChainDefinitionMap == null) {
+            synchronized (this) {
+                if(filterChainDefinitionMap == null) {
+                    filterChainDefinitionMap = new LinkedHashMap&lt;&gt;();
+                    setBeforeUrlPermissions();
+                    List&lt;SysPermission&gt; sysPermissions = sysAuthoriseService.getAllSysPermission();
+                    for(SysPermission p : sysPermissions) {
+                        if(p.getStatus() == 0)
+                            filterChainDefinitionMap.put(p.getPurl(), &quot;perms[\&quot;&quot; + p.getPname() + &quot;\&quot;]&quot;);
+                    }
+                    setAfterUrlPermissions();
+                }
+            }
+        }
+        return filterChainDefinitionMap;
+    }
+
+    private void setBeforeUrlPermissions() {
+        filterChainDefinitionMap.put(&quot;/local/*&quot;, &quot;anon&quot;);
+        filterChainDefinitionMap.put(&quot;/403.html&quot;, &quot;anon&quot;);
+        filterChainDefinitionMap.put(&quot;/&quot;,&quot;anon&quot;);
+        filterChainDefinitionMap.put(&quot;/student/logout&quot;,&quot;anon&quot;);
+        filterChainDefinitionMap.put(&quot;/teacher/logout&quot;,&quot;anon&quot;);
+    }
+
+    private void setAfterUrlPermissions() {
+        //需要用户登录才能访问
+        filterChainDefinitionMap.put(&quot;/*&quot;, &quot;authc&quot;);
+    }
+}
+</code></pre><blockquote>
+<p>注意：此处使用的拦截器还需要在spring.xml文件中配置。</p>
+</blockquote>
+<pre><code>&lt;bean class=&quot;cn.edu.xidian.see.authurity.FilterChainDefinitionMapBuilder&quot; id = &quot;filterChainDefinitionMapBuilder&quot;&gt;&lt;/bean&gt;
+&lt;bean id=&quot;filterChainDefinitionMap&quot; factory-bean=&quot;filterChainDefinitionMapBuilder&quot; factory-method=&quot;getMap&quot;&gt;&lt;/bean&gt;
+</code></pre><hr>
+<h2 id="Shiro会话-Session-管理"><a href="#Shiro会话-Session-管理" class="headerlink" title="Shiro会话(Session)管理"></a>Shiro会话(Session)管理</h2><h4 id="1-SessionManager"><a href="#1-SessionManager" class="headerlink" title="1.SessionManager"></a>1.SessionManager</h4><pre><code>//1.首先在pom.xml中加入Redis依赖
+&lt;dependency&gt;
+   &lt;groupId&gt;redis.clients&lt;/groupId&gt;
+   &lt;artifactId&gt;jedis&lt;/artifactId&gt;
+   &lt;version&gt;2.7.3&lt;/version&gt;
+ &lt;/dependency&gt;
+
+//2.然后重写SessionDao
+public class RedisSessionDao extends AbstractSessionDAO{
+    //在重写这个SessionDao之后由增删改查等方法
+
+}
+</code></pre><hr>
+<h4 id="2-SessionDAO"><a href="#2-SessionDAO" class="headerlink" title="2.SessionDAO"></a>2.SessionDAO</h4><h4 id="3-Redis实现Session共享"><a href="#3-Redis实现Session共享" class="headerlink" title="3.Redis实现Session共享"></a>3.Redis实现Session共享</h4><h4 id="4-Redis实现Session共享存在的问题"><a href="#4-Redis实现Session共享存在的问题" class="headerlink" title="4.Redis实现Session共享存在的问题"></a>4.Redis实现Session共享存在的问题</h4><hr>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Spring - IOC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/Spring - IOC/" itemprop="url">Spring IOC</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:27:55+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Spring/" itemprop="url" rel="index">
+                    <span itemprop="name">Spring</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,079
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="IoC容器"><a href="#IoC容器" class="headerlink" title="IoC容器"></a>IoC容器</h2><p><strong>1.IoC类型</strong><br><br>从注入方式可以将IoC划分成三种：1.构造函数注入。2.属性注入。3.接口注入。</p>
+<p><strong>2.通过容器完成依赖关系的注入</strong><br></p>
+<h4 id="相关Java基础"><a href="#相关Java基础" class="headerlink" title="相关Java基础"></a>相关Java基础</h4><pre><code>//通过Java反射机制以一种间接方式操控目标类
+public class ReflectTest {
+    public static Car initByDefaultConst() throws Throwable { 
+        //1.通过类装载器获取Car类对象
+        ClassLoader loader = Thread.currentThread().getContextClassLoader();
+        Class clazz = loader.loadClass(&quot;com.smart.reflect.Car&quot;);
+
+        //2.获取类的默认构造器对象并通过它实例化Car
+        Constructor cons = clazz.getDeclaredConstructor((Class[]) null);
+        Car car = (Car) cons.newInstance();
+
+        //3.通过反射方法设置属性
+        Method setBrand = clazz.getMethod(&quot;setBrand&quot;, String.class);
+        setBrand.invoke(car, &quot;宏碁&quot;);
+
+        ...
+
+        return car;
+    }
+
+    public static void main(String[] args) throws Throwable {
+        Car car = initByDefaultConst();
+        car.instroduce();
+    }
+}
+</code></pre><h4 id="类装载器-ClassLoader"><a href="#类装载器-ClassLoader" class="headerlink" title="类装载器 ClassLoader"></a>类装载器 ClassLoader</h4><p><strong>1.类装载器工作机制</strong><br><br>类装载器是寻找类的字节码文件并构造类在JVM内部表示对象的组件。在Java中，类装载器将一个类装入JVM中的步骤：</p>
+<pre><code>1.装载：查找和导入Class文件
+2.链接：执行校验、准备和解析步骤。
+    2.1 校验：检查载入Class文件数据的正确性。
+    2.2 准备：给类的静态变量分配存储空间。
+    2.3 解析：将符号引用转换成直接引用。
+3.初始化：对类的静态变量、静态代码块执行初始化工作。
+</code></pre><blockquote>
+<p>扩展：JVM在运行时会产生3个ClassLoader：根装载器、ExtClassLoader(扩展类装载器)和AppClassLoader(应用类装载器)。</p>
+</blockquote>
+<p><strong>2.Java反射机制</strong><br></p>
+<h4 id="BeanFactory-和-ApplicationContext"><a href="#BeanFactory-和-ApplicationContext" class="headerlink" title="BeanFactory 和 ApplicationContext"></a>BeanFactory 和 ApplicationContext</h4><p>BeanFactory使管理不同类型的Java对象成为可能，应用上下文建立在 BeanFactory 基础之上，提供更多面向应用的功能。ApplicationContext面向使用Spring框架的开发者，几乎所有的应用场合都可以使用ApplicationContext而非底层的BeanFactory。</p>
+<p><strong>1.BeanFactory</strong><br></p>
+<p>Spring为BeanFactory提供多种实现。XmlBeanDefinitionReader | DefaultListableBeanFactory。下面是该接口的扩展接口的说明：</p>
+<pre><code>1.ListableBeanFactory：该接口定义了访问容器中Bean的基本信息的若干方法。查看Bean的个数、获取某一类型Bean的配置名、查看容器中是否包含某一Bean等。
+
+2.HierarchicalBeanFactory：父子级联IoC容器的接口，子容器可以通过接口方法访问父容器。
+
+3.ConfigurableBeanFactory：增强IoC容器的可定制性。定义了设置类装载器、属性编辑器、容器初始化后置处理器等方法。
+
+4.AutowireCapableBeanFactory：定义将容器中的Bean按某种规则进行自动装配方法。
+
+5.SingletonBeanRegistry：定义允许在运行期间向容器注册单实例Bean的方法。
+
+6.BeanDefinitionRefistry：Spring配置文件中每一个&lt;bean&gt;结点元素。
+</code></pre><p><strong>2.初始化BeanFactory</strong><br><br>XmlBeanDefinitionReader通过Resource装载Spring配置信息并启动IoC容器，然后通过 BeanFactory#getBean(beanName)方法从IoC容器中获取Bean。Spring在DefaultSingletonBeanRegistry类中提供一个用于缓存单实例Bean的缓存器，是一个用HashMap实现的缓存器，单实例的Bean以beanName为键保存在这个HashMap中。</p>
+<p><strong>3.ApplicationContext</strong><br></p>
+<p>ApplicationContext的主要实现类是ClassPathXmlApplicationContext和FileSystemXmlApplicationContext，前者默认从类路径加载配置文件，后者默认从文件系统加载配置文件。ApplicationContext继承HierarchicalBeanFactory和ListableBeanFactory接口。同时还扩展其它BeanFactory接口。</p>
+<pre><code>1.ApplicationEventPublisher：让容器拥有发布应用上下文事件功能，包括容器启动和关闭事件。
+
+2.MessageSource：为应用提供i18n国际化消息访问的功能。
+
+3.ResourcePatternResolver：所有的ApplicationContext实现类都实现了类似于PathMatchingResourcePatternResolver的功能。
+</code></pre><p><strong>4.WebApplicationContext类体系</strong><br></p>
+<p>WebApplicationContext是专门为Web应用准备的，它允许从相对于Web根目录的路径中装载配置文件完成初始化工作。从WebApplicationContext中获得ServletContext的引用，整个Web应用上下文对象将作为属性放置到ServletContext中，以便Web应用环境可以访问Spring应用上下文。</p>
+<p><strong>5.WebApplicationContext初始化</strong><br></p>
+<p>WebApplicationContext初始化和BeanFactory、ApplicationContext有区别，WebApplicationContext需要ServletContext实例，即它必须拥有Web容器的前提下才能完成启动。Spring提供用于启动WebApplicationContext的Servlet和Web容器监听器：</p>
+<pre><code>1. ...ContextLoaderServlet
+2. ...ContextLoaderListener
+</code></pre><p>在两者内部都实现启动WebApplicationContext实例逻辑。在web.xml中配置即可。</p>
+<pre><code>&lt;!--1.指定配置文件--&gt;
+&lt;context-param&gt;
+
+&lt;/context-param&gt;
+
+&lt;!--声明Web容器监听器--&gt;
+&lt;listener&gt;
+    &lt;listener-class&gt;org.springframework.web.context.ContextLoaderListener&lt;/listener-class&gt;
+&lt;/listener&gt;
+</code></pre><h2 id="在IoC容器中装配Bean"><a href="#在IoC容器中装配Bean" class="headerlink" title="在IoC容器中装配Bean"></a>在IoC容器中装配Bean</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Spring - 事务配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/Spring - 事务配置/" itemprop="url">Spring 事务配置</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:27:14+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Spring/" itemprop="url" rel="index">
+                    <span itemprop="name">Spring</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,356
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>Spring MVC与Mybatis整合框架的事务管理方式有两种：1.声明式事务管理 2.编程式事务管理。</p>
+<h4 id="1-编程式事务管理和声明式事务管理"><a href="#1-编程式事务管理和声明式事务管理" class="headerlink" title="1.编程式事务管理和声明式事务管理"></a>1.编程式事务管理和声明式事务管理</h4><blockquote>
+<p>编程式事务管理使用TransactionTemplate或者直接使用底层的PlatformTransactionManager，对于编程式事务管理，spring推荐使用TransactionTemplate。</p>
+</blockquote>
+<blockquote>
+<p>声明式事务管理是建立在AOP基础上，本质是对方法前后进行拦截，然后在目标方法开始之前创建或者加入一个事务，在执行完目标方法之后根据执行情况提交或者回滚事务。该声明式事务最大的优点就是不需要通过编程的方式管理事务，只需要在配置文件中声明，然后通过@Transactionoal注解声明便可以将事务规则应用到业务逻辑中。</p>
+</blockquote>
+<h4 id="2-声明式事务的两种常用方式"><a href="#2-声明式事务的两种常用方式" class="headerlink" title="2.声明式事务的两种常用方式"></a>2.声明式事务的两种常用方式</h4><p><strong>1.基于tx和aop名字空间的xml配置文件</strong><br></p>
+<pre><code>&lt;!-- 事物切面配置 --&gt;
+&lt;bean id=&quot;transactionManager&quot; class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;
+    &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;
+&lt;/bean&gt;
+
+&lt;tx:advice id=&quot;advice&quot; transaction-manager=&quot;transactionManager&quot;&gt;
+    &lt;tx:attributes&gt; 
+        &lt;tx:method name=&quot;update*&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;false&quot; rollback-for=&quot;java.lang.Exception&quot;/&gt;
+        &lt;tx:method name=&quot;insert&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;false&quot;/&gt;
+    &lt;/tx:attributes&gt; 
+&lt;/tx:advice&gt;
+
+&lt;aop:config&gt;
+    &lt;aop:pointcut id=&quot;testService&quot; expression=&quot;execution (* com.baobao.service.MyBatisService.*(..))&quot;/&gt;
+    &lt;aop:advisor advice-ref=&quot;advice&quot; pointcut-ref=&quot;testService&quot;/&gt;  
+&lt;/aop:config&gt;
+</code></pre><blockquote>
+<p>注意：因为springmvc配置文件和spring配置文件不同时加载，如果这边不进行这样的设置，那么，spring就会将所有带@Service注解的类都扫描到容器中，等到加载spring的配置文件的时候，会因为容器已经存在Service类，使得cglib将不对Service进行代理，直接导致的结果就是在spring配置文件中的事务配置不起作用。所以在spring.xml配置文件中添加不扫描controller，然后在springmvc.xml中添加不扫描service。</p>
+</blockquote>
+<pre><code>&lt;!-- 1.在spring.xml配置文件中添加不扫描controller --&gt;
+&lt;context:component-scan base-package=&quot;cn.edu.xidian.see.*&quot;&gt;
+    &lt;context:exclude-filter type=&quot;annotation&quot;
+        expression=&quot;org.springframework.stereotype.Controller&quot; /&gt;
+&lt;/context:component-scan&gt;
+
+&lt;!--2.在springmvc.xml配置文件中添加不扫描service 要扫描controller--&gt;
+&lt;context:component-scan base-package=&quot;cn.edu.xidian.see.controller&quot;&gt;
+    &lt;context:include-filter type=&quot;annotation&quot;
+        expression=&quot;org.springframework.stereotype.Controller&quot; /&gt;
+    &lt;context:exclude-filter type=&quot;annotation&quot;
+        expression=&quot;org.springframework.stereotype.Service&quot; /&gt;
+&lt;/context:component-scan&gt;
+</code></pre><p><strong>2.基于@Transactional注解</strong><br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">1.在配置文件spring.xml中，去掉对controller的扫描</span><br><span class="line">&lt;context:component-scan base-package=&quot;com.digitalchina.*&quot;&gt;</span><br><span class="line">　      &lt;context:exclude-filter type=&quot;annotation&quot; expression=&quot;org.springframework.stereotype.Controller&quot; /&gt;</span><br><span class="line">　  &lt;/context:component-scan&gt;</span><br><span class="line">　  </span><br><span class="line">　  2.在配置文件springmvc.xml中，去掉对service的扫描，加入对controller的扫描</span><br><span class="line">　&lt;context:component-scan base-package=&quot;com.digitalchina.*&quot;&gt;</span><br><span class="line">    　&lt;context:include-filter type=&quot;annotation&quot; expression=&quot;org.springframework.stereotype.Controller&quot; /&gt;</span><br><span class="line">    　&lt;context:exclude-filter type=&quot;annotation&quot; expression=&quot;org.springframework.stereotype.Service&quot; /&gt;</span><br><span class="line">　&lt;/context:component-scan&gt;</span><br><span class="line">　</span><br><span class="line">　  3.事务的配置只有在spring.xml中才会起作用，即</span><br><span class="line">　  </span><br><span class="line">　  //该配置必须配置在 spring.xml 中才可以。</span><br><span class="line">　　&lt;bean id=&quot;transactionManager&quot; class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;</span><br><span class="line">　　    &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;</span><br><span class="line">　　&lt;/bean&gt;</span><br><span class="line">　　</span><br><span class="line">　　4.用事务去控制的service，不能加try-catch去捕获异常，否则不能被spring拦截到，事务就失效了。</span><br><span class="line"></span><br><span class="line">　　5.在Service实现类中增加@Transactional注解即可控制事务。</span><br></pre></td></tr></table></figure>
+<h4 id="3-事务配置"><a href="#3-事务配置" class="headerlink" title="3.事务配置"></a>3.事务配置</h4><pre><code>&lt;!-- 配置事务管理 --&gt;
+&lt;bean name=&quot;transactionManager&quot; class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;
+    &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;/&gt;
+&lt;/bean&gt;
+
+&lt;!-- 拦截器方式配置事物 --&gt;
+&lt;tx:advice id=&quot;transactionAdvice&quot; transaction-manager=&quot;transactionManager&quot;&gt;
+    &lt;tx:attributes&gt;
+        &lt;!-- 必须要有事务,没有则创建 
+            事务的传播级别表示事务的控制范围，主要是父子事务之间的相互影响关系
+            事务的隔离级别表示事务读写的控制范围，主要是两个事务之间的相互影响关系
+
+            1.REQUIRED 表示当前方法已经在事务中，那么就以父事务执行，不需要创建新事务
+        --&gt;
+        &lt;tx:method name=&quot;insert*&quot; propagation=&quot;REQUIRED&quot; /&gt;
+        &lt;tx:method name=&quot;update*&quot; propagation=&quot;REQUIRED&quot; /&gt;
+        &lt;tx:method name=&quot;delete*&quot; propagation=&quot;REQUIRED&quot; /&gt;
+        &lt;!-- 可以有可以没有 --&gt;
+        &lt;tx:method name=&quot;get*&quot; propagation=&quot;SUPPORTS&quot; read-only=&quot;true&quot; /&gt;
+        &lt;tx:method name=&quot;find*&quot; propagation=&quot;SUPPORTS&quot; read-only=&quot;true&quot; /&gt;
+        &lt;tx:method name=&quot;select*&quot; propagation=&quot;SUPPORTS&quot; read-only=&quot;true&quot; /&gt;
+    &lt;/tx:attributes&gt;
+&lt;/tx:advice&gt;
+
+&lt;!-- Spring aop事务管理 --&gt;
+&lt;aop:config&gt;
+    &lt;aop:pointcut id=&quot;transactionPointcut&quot; expression=&quot;execution(* com.sanguo.service.impl..*Impl.*(..))&quot; /&gt;
+    &lt;aop:advisor pointcut-ref=&quot;transactionPointcut&quot; advice-ref=&quot;transactionAdvice&quot;/&gt;
+&lt;/aop:config&gt;
+</code></pre><hr>
+<h2 id="ThreadLocal-知识"><a href="#ThreadLocal-知识" class="headerlink" title="ThreadLocal 知识"></a>ThreadLocal 知识</h2><p>ThreadLocal 在Spring中发挥着重要作用，在管理request作用域的bean | 事务管理 | 任务调度 | AOP等。Java 1.2版本提供 java.lang.ThreadLocal为解决多线程程序的并发问题。ThreadLocal不是一个线程，是一个保存线程本地化对象的容器。</p>
+<h4 id="ThreadLocal的接口方法"><a href="#ThreadLocal的接口方法" class="headerlink" title="ThreadLocal的接口方法"></a>ThreadLocal的接口方法</h4><pre><code>1.void set(Object value) 设置当前线程的线程局部变量的值
+2.public Object get() 返回当前线程所对应的线程局部变量
+3.public void remove() 将当前线程局部变量的值删除
+</code></pre><blockquote>
+<p>提示：在ThreadLocal类中有一个Map，用于存储每个线程的变量副本，Map中元素的键为线程对象，值为对应线程的变量副本。</p>
+</blockquote>
+<h4 id="ThreadLocal-与-同步机制的比较"><a href="#ThreadLocal-与-同步机制的比较" class="headerlink" title="ThreadLocal 与 同步机制的比较"></a>ThreadLocal 与 同步机制的比较</h4><p>在同步机制中通过对象的锁机制保证同一时间只有一个线程访问变量。ThreadLocal为每一个线程提供一个独立的变量副本，从而隔离了多个线程对访问数据的冲突。因为每一个线程都用有了一个变量副本。</p>
+<blockquote>
+<p>总结：在多线程资源共享的问题上，同步机制采用””以时间换空间”的方式，访问串行化，对象共享化。ThreadLocal采用””以空间换时间”的方式，访问并行化，对象独享化。</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Spring Cache/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/Spring Cache/" itemprop="url">Spring Cache</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:28:48+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Spring/" itemprop="url" rel="index">
+                    <span itemprop="name">Spring</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  310
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<blockquote>
+<p>注意：这里自定义FreeMarkerView的目的是为了放一些公共的变量到FreeMarkerView模板里面。</p>
+</blockquote>
+<h4 id="1-配置文件-spring-application-xml"><a href="#1-配置文件-spring-application-xml" class="headerlink" title="1.配置文件 spring-application.xml"></a>1.配置文件 spring-application.xml</h4><pre><code>&lt;!-- ********************************************************************** 
+ ** FreeMaker解析器                                                      ** 
+ ********************************************************************** --&gt;
+&lt;bean class=&quot;org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver&quot;&gt;
+    &lt;!--&lt;property name=&quot;viewClass&quot; value=&quot;org.springframework.web.servlet.view.freemarker.FreeMarkerView&quot; /&gt;--&gt;
+    &lt;property name=&quot;viewClass&quot; value=&quot;net.mingyang.cms.util.FtlView&quot; /&gt;   
+    &lt;property name=&quot;contentType&quot; value=&quot;text/html;charset=UTF-8&quot; /&gt;
+    &lt;property name=&quot;exposeRequestAttributes&quot; value=&quot;true&quot; /&gt;  
+    &lt;property name=&quot;exposeSessionAttributes&quot; value=&quot;true&quot; /&gt;  
+    &lt;property name=&quot;exposeSpringMacroHelpers&quot; value=&quot;true&quot; /&gt;
+    &lt;!-- &lt;property name=&quot;suffix&quot; value=&quot;.ftl&quot; /&gt; --&gt;  
+    &lt;property name=&quot;order&quot; value=&quot;0&quot; /&gt;
+&lt;/bean&gt;
+&lt;bean class=&quot;org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer&quot;&gt; 
+    &lt;property name=&quot;templateLoaderPath&quot; value=&quot;/WEB-INF/views/&quot; /&gt; 
+    &lt;property name=&quot;freemarkerSettings&quot;&gt; 
+        &lt;props&gt; 
+            &lt;prop key=&quot;template_update_delay&quot;&gt;0&lt;/prop&gt; 
+            &lt;prop key=&quot;default_encoding&quot;&gt;UTF-8&lt;/prop&gt; 
+            &lt;prop key=&quot;number_format&quot;&gt;0.##########&lt;/prop&gt; 
+            &lt;prop key=&quot;datetime_format&quot;&gt;yyyy-MM-dd HH:mm:ss&lt;/prop&gt;
+            &lt;prop key=&quot;date_format&quot;&gt;yyyy-MM-dd&lt;/prop&gt; 
+            &lt;prop key=&quot;classic_compatible&quot;&gt;true&lt;/prop&gt; 
+            &lt;prop key=&quot;template_exception_handler&quot;&gt;ignore&lt;/prop&gt; 
+        &lt;/props&gt; 
+    &lt;/property&gt; 
+&lt;/bean&gt;
+</code></pre><h4 id="2-自定义实现类"><a href="#2-自定义实现类" class="headerlink" title="2.自定义实现类"></a>2.自定义实现类</h4><pre><code>package cn.edu.xidian.see.ext;
+
+import org.springframework.web.servlet.view.freemarker.FreeMarkerView;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
+
+public class FreeMarkerViewExt extends FreeMarkerView {
+
+    private static final String CONTEXT_PATH = &quot;basePath&quot;;
+
+    @Override
+    protected void exposeHelpers(Map&lt;String, Object&gt; model, HttpServletRequest request)
+            throws Exception {
+        //返回项目根目录
+        model.put(CONTEXT_PATH, request.getContextPath());
+        super.exposeHelpers(model, request);
+    }
+}
+
+//或者是这样...
+
+package net.mingyang.cms.util;
+
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.web.servlet.view.freemarker.FreeMarkerView;
+
+public class FtlView extends FreeMarkerView {
+    @Override
+    protected void exposeHelpers(Map&lt;String, Object&gt; model,
+            HttpServletRequest request) throws Exception {
+        model.put(&quot;contextPath&quot;, request.getContextPath());
+        super.exposeHelpers(model, request);
+    }
+
+}
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/site.jpg"
+                alt="Bangjin-Hu" />
+            
+              <p class="site-author-name" itemprop="name">Bangjin-Hu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/BangjinHu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:2315378346@qq.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/Aaron_P_L" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-heart-o"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
+                      
+                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://iProgramering.github.io" target="_blank" title="iProgramer_ing">
+                      
+                        <i class="fa fa-fw fa-user"></i>iProgramer_ing</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          <div id="music163player">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src="//music.163.com/outchain/player?type=2&id=38358214&auto=0&height=66
+
+">
+    </iframe>
+</div>
+        </div>
+      </section>
+
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bangjin-Hu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">465.0k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/lib/clipboard/clipboard.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+</body>
+</html>

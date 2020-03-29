@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/site.jpg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java 8," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="BangjinHu's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. [TOC] Java8 新特性==一、Lambda 表达式==1. Lambda 表达式使用前后对比使用前：12345678910111213141516171819202122//例一：@Testpublic void test1() &amp;#123;	Runnable r1 = new Runnable() &amp;#123;		@Override		pu">
+<meta name="keywords" content="Java 8">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java8 新特性">
+<meta property="og:url" content="http://bangjinhu.github.io/undefined/Java8 新特性/index.html">
+<meta property="og:site_name" content="BangjinHu&#39;s Blog">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. [TOC] Java8 新特性==一、Lambda 表达式==1. Lambda 表达式使用前后对比使用前：12345678910111213141516171819202122//例一：@Testpublic void test1() &amp;#123;	Runnable r1 = new Runnable() &amp;#123;		@Override		pu">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-03-29T02:41:44.290Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java8 新特性">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. [TOC] Java8 新特性==一、Lambda 表达式==1. Lambda 表达式使用前后对比使用前：12345678910111213141516171819202122//例一：@Testpublic void test1() &amp;#123;	Runnable r1 = new Runnable() &amp;#123;		@Override		pu">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://bangjinhu.github.io/undefined/Java8 新特性/"/>
+
+
+
+
+
+  <title>Java8 新特性 | BangjinHu's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    
+    <a href="https://github.com/BangjinHu"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">BangjinHu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">让优秀成为习惯，让知识成为信仰</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            本站搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Java8 新特性/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Java8 新特性</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:41:44+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java-8/" itemprop="url" rel="index">
+                    <span itemprop="name">Java 8</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4,192
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  20
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<p>[TOC]</p>
+<h1 id="Java8-新特性"><a href="#Java8-新特性" class="headerlink" title="Java8 新特性"></a>Java8 新特性</h1><h2 id="一、Lambda-表达式"><a href="#一、Lambda-表达式" class="headerlink" title="==一、Lambda 表达式=="></a>==<strong>一、Lambda 表达式</strong>==</h2><h3 id="1-Lambda-表达式使用前后对比"><a href="#1-Lambda-表达式使用前后对比" class="headerlink" title="1. Lambda 表达式使用前后对比"></a>1. Lambda 表达式使用前后对比</h3><h4 id="使用前："><a href="#使用前：" class="headerlink" title="使用前："></a>使用前：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//例一：</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	Runnable r1 = <span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			System.out.println(<span class="string">"我爱北京天安门！"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">	r1.run();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//例二：</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	Consumer&lt;String&gt; con = <span class="keyword">new</span> Consumer&lt;String&gt;() &#123;</span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(String t)</span> </span>&#123;</span><br><span class="line">			System.out.println(t);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">	con.accept(<span class="string">"熙熙攘攘"</span>);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="使用后："><a href="#使用后：" class="headerlink" title="使用后："></a>使用后：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//例一：	</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	Runnable r2 = () -&gt; System.out.println(<span class="string">"我爱这三秦大地！"</span>);</span><br><span class="line">	r2.run();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//例二：</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	Consumer&lt;String&gt; con2 = (String t) -&gt; System.out.println(t);</span><br><span class="line">	con2.accept(<span class="string">"多么美丽"</span>);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-Lambda-表达式的基本语法"><a href="#2-Lambda-表达式的基本语法" class="headerlink" title="2.Lambda 表达式的基本语法"></a>2.Lambda 表达式的基本语法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">*   <span class="number">1</span>. 举例：</span><br><span class="line">*     (o1, o2) -&gt; Integer.compare(o1, o2);</span><br><span class="line">*  <span class="number">2</span>. 格式：</span><br><span class="line">*     -&gt; ：Lambda操作符 或 箭头操作符</span><br><span class="line">*     -&gt; 左边： Lambda形参列表（其实就是接口中的抽象方法的形参列表）</span><br><span class="line">*     -&gt; 右边： Lambda 体（其实就是重写的抽象方法的方法体）</span><br></pre></td></tr></table></figure>
+<h3 id="3-Lambda-表达式的使用（6种情况）"><a href="#3-Lambda-表达式的使用（6种情况）" class="headerlink" title="3.Lambda 表达式的使用（6种情况）"></a>3.Lambda 表达式的使用（6种情况）</h3><h4 id="无参，无返回值。"><a href="#无参，无返回值。" class="headerlink" title="无参，无返回值。"></a>无参，无返回值。</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   Runnable r1 = <span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">         System.out.println(<span class="string">"我爱北京天安门！"</span>);</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;;</span><br><span class="line">   r1.run();</span><br><span class="line">   System.out.println(<span class="string">"*********************************"</span>);</span><br><span class="line">   </span><br><span class="line">   Runnable r2 = () -&gt; System.out.println(<span class="string">"我爱这三秦大地！"</span>);</span><br><span class="line">   r2.run();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="需要一个参数，无返回值。"><a href="#需要一个参数，无返回值。" class="headerlink" title="需要一个参数，无返回值。"></a>需要一个参数，无返回值。</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   Consumer&lt;String&gt; con = <span class="keyword">new</span> Consumer&lt;String&gt;() &#123;</span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(String t)</span> </span>&#123;</span><br><span class="line">         System.out.println(t);</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;;</span><br><span class="line">   con.accept(<span class="string">"熙熙攘攘"</span>);</span><br><span class="line">   </span><br><span class="line">   System.out.println(<span class="string">"********************"</span>);</span><br><span class="line">   </span><br><span class="line">   Consumer&lt;String&gt; con2 = (String t) -&gt; System.out.println(t);</span><br><span class="line">   con2.accept(<span class="string">"多么美丽"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="类型推断。"><a href="#类型推断。" class="headerlink" title="类型推断。"></a>类型推断。</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   Consumer&lt;String&gt; con = (String t) -&gt; System.out.println(t);</span><br><span class="line">   con.accept(<span class="string">"西安城墙"</span>);</span><br><span class="line">   </span><br><span class="line">   System.out.println(<span class="string">"*********************"</span>);</span><br><span class="line">   <span class="comment">//类型推断</span></span><br><span class="line">   Consumer&lt;String&gt; con2 = (t) -&gt; System.out.println(t);</span><br><span class="line">   con2.accept(<span class="string">"威武雄壮"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Lambda-若只需要一个参数，参数的小括号可以省略"><a href="#Lambda-若只需要一个参数，参数的小括号可以省略" class="headerlink" title="Lambda 若只需要一个参数，参数的小括号可以省略"></a>Lambda 若只需要一个参数，参数的小括号可以省略</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test4</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   Consumer&lt;String&gt; con = (String t) -&gt; System.out.println(t);</span><br><span class="line">   con.accept(<span class="string">"西安城墙"</span>);</span><br><span class="line">   </span><br><span class="line">   System.out.println(<span class="string">"*********************"</span>);</span><br><span class="line">   </span><br><span class="line">   Consumer&lt;String&gt; con1 = t -&gt; System.out.println(t);</span><br><span class="line">   con1.accept(<span class="string">"威武雄壮"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Lambda-需要两个或者多个参数，多条执行语句，并且可以有返回值"><a href="#Lambda-需要两个或者多个参数，多条执行语句，并且可以有返回值" class="headerlink" title="Lambda 需要两个或者多个参数，多条执行语句，并且可以有返回值"></a>Lambda 需要两个或者多个参数，多条执行语句，并且可以有返回值</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test5</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   Comparator&lt;Integer&gt; com1 = <span class="keyword">new</span> Comparator&lt;Integer&gt;() &#123;</span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Integer o1, Integer o2)</span> </span>&#123;</span><br><span class="line">         <span class="keyword">return</span> o1.compareTo(o2);</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;;</span><br><span class="line">   System.out.println(com1.compare(<span class="number">12</span>, <span class="number">21</span>));</span><br><span class="line">   System.out.println(<span class="string">"******************************"</span>);</span><br><span class="line">   Comparator&lt;Integer&gt; com2 = (o1, o2) -&gt; &#123;</span><br><span class="line">      System.out.println(o1);</span><br><span class="line">      System.out.println(o2);</span><br><span class="line">      <span class="keyword">return</span> o1.compareTo(o2);</span><br><span class="line">   &#125;;</span><br><span class="line">   System.out.println(com2.compare(<span class="number">12</span>, <span class="number">21</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="当-lambda-体只有一条语句时，return-与大括号若有，都可以省略"><a href="#当-lambda-体只有一条语句时，return-与大括号若有，都可以省略" class="headerlink" title="当 lambda 体只有一条语句时，return 与大括号若有，都可以省略"></a>当 lambda 体只有一条语句时，return 与大括号若有，都可以省略</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test6</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   Comparator&lt;Integer&gt; com1 = (o1, o2) -&gt; &#123;</span><br><span class="line">      <span class="keyword">return</span> o1.compareTo(o2);</span><br><span class="line">   &#125;;</span><br><span class="line">   System.out.println(com1.compare(<span class="number">12</span>, <span class="number">21</span>));</span><br><span class="line">   </span><br><span class="line">   System.out.println(<span class="string">"***********************"</span>);</span><br><span class="line">   </span><br><span class="line">   Comparator&lt;Integer&gt; com2 = (o1, o2) -&gt; o1.compareTo(o2);</span><br><span class="line">   System.out.println(com2.compare(<span class="number">12</span>, <span class="number">21</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-总结："><a href="#4-总结：" class="headerlink" title="4.总结："></a>4.总结：</h3><p>​    <strong>-&gt; 左边</strong>：Lambda 形参列表的参数类型可以省略（类型推断），如果形参列表只有一个参数，其一对() 也可以省略</p>
+<p>​    <strong>-&gt; 右边</strong>： Lambda体 应该使用一对{} 包裹，如果只有一条执行语句（可能是return 语句），可以省略大括号以及 return 关键字</p>
+<h3 id="5-Lambda-表达式的实质"><a href="#5-Lambda-表达式的实质" class="headerlink" title="5.Lambda 表达式的实质"></a>5.Lambda 表达式的实质</h3><p>==Lambda表达式的本质： 作为函数式接口的实例。==</p>
+<h3 id="6-何时使用Lambda表达式："><a href="#6-何时使用Lambda表达式：" class="headerlink" title="6.何时使用Lambda表达式："></a>6.何时使用Lambda表达式：</h3><p><strong>当需要给一个函数式接口实例化的时候，可以使用Lambda表达式。</strong></p>
+<p>以前可以通过匿名实现类表示的现在都可以用Lambda表达式来书写.</p>
+<h3 id="7-常使用的Lambda表达式"><a href="#7-常使用的Lambda表达式" class="headerlink" title="7.常使用的Lambda表达式"></a>7.常使用的Lambda表达式</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//常用的Lambda 表达式</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test4</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   <span class="comment">// 集合遍历</span></span><br><span class="line">   List&lt;Integer&gt; list = Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">8</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">5</span>, <span class="number">7</span>);</span><br><span class="line">   list.forEach(<span class="keyword">new</span> Consumer&lt;Integer&gt;() &#123;</span><br><span class="line">      </span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(Integer t)</span> </span>&#123;</span><br><span class="line">         System.out.println(t);</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;);</span><br><span class="line">   </span><br><span class="line">   list.forEach(t -&gt; System.out.print(t + <span class="string">" "</span>));</span><br><span class="line">   list.forEach(System.out :: println);</span><br><span class="line">   </span><br><span class="line">   <span class="comment">// 集合排序</span></span><br><span class="line">   list.sort(<span class="keyword">new</span> Comparator&lt;Integer&gt;() &#123;</span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Integer o1, Integer o2)</span> </span>&#123;</span><br><span class="line">         <span class="keyword">return</span> o1.compareTo(o2);</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;);</span><br><span class="line">   </span><br><span class="line">   list.sort((o1, o2) -&gt; o1.compareTo(o2));</span><br><span class="line">   list.sort(Integer :: compareTo);</span><br><span class="line">   <span class="comment">//开启线程</span></span><br><span class="line">   <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">         System.out.println(<span class="string">"run"</span>);</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;).start();</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">new</span> Thread( () -&gt; System.out.println(<span class="string">"run1"</span>)).start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="二、函数式接口"><a href="#二、函数式接口" class="headerlink" title="二、函数式接口"></a>二、函数式接口</h2><h3 id="1-什么是函数接口："><a href="#1-什么是函数接口：" class="headerlink" title="1.什么是函数接口："></a>1.什么是函数接口：</h3><p>​    <strong>如果一个接口只声明了一个抽象方法，那么这个接口就成为函数式接口</strong>，我们可以在接口上面使用@FunctionalInterface 这个注解，用来检查它是否是一个函数式接口</p>
+<h3 id="2-Java内置四大核心函数式接口"><a href="#2-Java内置四大核心函数式接口" class="headerlink" title="2.Java内置四大核心函数式接口"></a>2.Java内置四大核心函数式接口</h3><p>消费型接口：Consumer<t>         void accept(T t)<br>供给型接口：Supplier<t>             T get()<br>函数型接口：Function&lt;T, R&gt;         R apply(T t)<br>断定型接口：Predicate<t>         boolean test(T t)</t></t></t></p>
+<h3 id="3-何时使用函数式接口："><a href="#3-何时使用函数式接口：" class="headerlink" title="3.何时使用函数式接口："></a>3.何时使用函数式接口：</h3><p>如果我们的开发中需要定义一个函数式接口，首先看看在已有的JDK提供的函数式接口是否提供了能满足需求的函数式接口，如果有则直接使用即可。</p>
+<h2 id="三、方法引用"><a href="#三、方法引用" class="headerlink" title="三、方法引用"></a>三、方法引用</h2><h3 id="1-理解"><a href="#1-理解" class="headerlink" title="1.理解"></a>1.理解</h3><p>方法引用可以看做是 Lambda 表达式的深层次的表达，换句话说，方法引用就是 Lambda 表达式，也就是函数式接口的一个实例，<strong>也可以认为是 Lambda 表达式的一个语法糖。</strong></p>
+<h3 id="2-使用场景"><a href="#2-使用场景" class="headerlink" title="2.使用场景"></a>2.使用场景</h3><p>​    当要传递给Lambda 体的操作，已经有实现的方法了，可以使用方法引用。</p>
+<h3 id="3-格式"><a href="#3-格式" class="headerlink" title="3.格式"></a>3.格式</h3><p>​    类（对象） :: 方法名</p>
+<h3 id="4-分为以下三种情况"><a href="#4-分为以下三种情况" class="headerlink" title="4.分为以下三种情况"></a>4.分为以下三种情况</h3><p>对象     ：：     非静态方法<br>类     ：：     静态方法</p>
+<p>类     ：：     非静态方法</p>
+<h3 id="5-要求"><a href="#5-要求" class="headerlink" title="5.要求"></a>5.要求</h3><p>要求接口中的抽象方法的形参列表和返回值类型与方法引用的方法的形参列表和返回值类型相同。(针对 情况1 或者 情况2)</p>
+<p><strong>当函数式接口方法的第一个参数是需要引用方法的调用者，并且第二个参数是需要引用方法的参数（或者无参数）时： ClassName  :: methodName</strong></p>
+<h3 id="6-使用建议"><a href="#6-使用建议" class="headerlink" title="6.使用建议"></a>6.使用建议</h3><p>如果给函数式接口提供实例，恰好满足我们的方法引用的要求，大家就可以考虑给我们的函数式接口提供实例，如果不熟悉方法引用，那么还可以使用 Lambda 表达式。</p>
+<h3 id="7-使用举例："><a href="#7-使用举例：" class="headerlink" title="7.使用举例："></a>7.使用举例：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LambdaTest3</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//情况一： 对象 ：： 实例方法</span></span><br><span class="line">   <span class="comment">//Consumer 中的void accept(T t)</span></span><br><span class="line">   <span class="comment">//PrintStream 中的 void println (T t)</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      Consumer&lt;String&gt; con1 = str -&gt; System.out.println(str);</span><br><span class="line">      con1.accept(<span class="string">"西安"</span>);</span><br><span class="line"></span><br><span class="line">      System.out.println(<span class="string">"*********************"</span>);</span><br><span class="line">      </span><br><span class="line">      <span class="comment">//对象调用非静态方法</span></span><br><span class="line">      PrintStream ps = System.out;</span><br><span class="line">      Consumer&lt;String&gt; con2 = ps :: println;</span><br><span class="line">      con2.accept(<span class="string">"XiAn"</span>);</span><br><span class="line">      </span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      Employee emp = <span class="keyword">new</span> Employee(<span class="number">1001</span>, <span class="string">"Tom"</span>, <span class="number">23</span>, <span class="number">8000.00</span>);</span><br><span class="line">      Supplier&lt;String&gt; sup1 = () -&gt; emp.getName();</span><br><span class="line">      System.out.println(sup1.get());</span><br><span class="line">      </span><br><span class="line">      System.out.println(<span class="string">"***********"</span>);</span><br><span class="line">      Supplier&lt;String&gt; sup2 = emp :: getName;</span><br><span class="line">      System.out.println(sup2.get());</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//情况二： 类 ：： 静态方法</span></span><br><span class="line">   <span class="comment">//Comparator 中的int compare(T t1, T t2)</span></span><br><span class="line">   <span class="comment">//Integer 中的 int compare(T t1, T t2)</span></span><br><span class="line">   </span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      Comparator&lt;Integer&gt; com1 = (t1, t2) -&gt; Integer.compare(t1, t2);</span><br><span class="line">      System.out.println(com1.compare(<span class="number">12</span>, <span class="number">32</span>));</span><br><span class="line">      </span><br><span class="line">      System.out.println(<span class="string">"***************************"</span>);</span><br><span class="line">      Comparator&lt;Integer&gt; com2 = Integer :: compare;</span><br><span class="line">      System.out.println(com1.compare(<span class="number">12</span>, <span class="number">32</span>));</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="comment">//Function 中的 R apply(T t)</span></span><br><span class="line">   <span class="comment">//Math 中的 round (Double d)</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test4</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      Function&lt;Double, Long&gt; func = <span class="keyword">new</span> Function&lt;Double, Long&gt;() &#123;</span><br><span class="line">         </span><br><span class="line">         <span class="meta">@Override</span></span><br><span class="line">         <span class="function"><span class="keyword">public</span> Long <span class="title">apply</span><span class="params">(Double t)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> Math.round(t);</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;;</span><br><span class="line">      System.out.println(func.apply(<span class="number">1.2324</span>));</span><br><span class="line">      System.out.println(<span class="string">"**************************"</span>);</span><br><span class="line"></span><br><span class="line">      Function&lt;Double, Long&gt; func1 = d -&gt; Math.round(d);</span><br><span class="line">      System.out.println(func1.apply(<span class="number">1.2324</span>));</span><br><span class="line">      System.out.println(<span class="string">"**************************"</span>);</span><br><span class="line">      </span><br><span class="line">      Function&lt;Double, Long&gt; func2 = Math :: round;</span><br><span class="line">      System.out.println(func2.apply(<span class="number">1.243</span>));</span><br><span class="line"></span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="comment">//情况三： 类 ：： 实例方法（有难度）</span></span><br><span class="line">   <span class="comment">//Comparator 中的int compare(T t1, T t2)</span></span><br><span class="line">   <span class="comment">//String 中的 int t1.compareTo(t2)</span></span><br><span class="line">   <span class="comment">// t1 作为调用者 调用 t2</span></span><br><span class="line">   <span class="meta">@Test</span> </span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test5</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      Comparator&lt;String&gt; com1 = (s1, s2) -&gt; s1.compareTo(s2);</span><br><span class="line">      System.out.println(com1.compare(<span class="string">"abc"</span>, <span class="string">"abd"</span>));</span><br><span class="line">      </span><br><span class="line">      System.out.println(<span class="string">"********************************"</span>);</span><br><span class="line">      Comparator&lt;String&gt; com2 = String :: compareTo;</span><br><span class="line">      System.out.println(com2.compare(<span class="string">"abc"</span>, <span class="string">"abd"</span>));</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Test</span> </span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test6</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      BiPredicate&lt;String,    String&gt; pre1 = (str1, str2) -&gt; str1.equals(str2);</span><br><span class="line">      System.out.println(pre1.test(<span class="string">"abc"</span>, <span class="string">"abc"</span>));</span><br><span class="line">      BiPredicate&lt;String,    String&gt; pre2 = String :: equals;</span><br><span class="line">      System.out.println(pre2.test(<span class="string">"abc"</span>, <span class="string">"abc"</span>));</span><br><span class="line">   &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="四、构造器引用以及数组引用"><a href="#四、构造器引用以及数组引用" class="headerlink" title="四、构造器引用以及数组引用"></a>四、构造器引用以及数组引用</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//构造器引用：</span></span><br><span class="line"><span class="comment">//Supplier 中的 T get()</span></span><br><span class="line"><span class="comment">//Employee 中的无参构造器： Employee()</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   Supplier&lt;Employee&gt; sup1 = () -&gt; <span class="keyword">new</span> Employee();</span><br><span class="line">   System.out.println(sup1.get());</span><br><span class="line">   System.out.println(<span class="string">"*****************************"</span>);</span><br><span class="line">   Supplier&lt;Employee&gt; sup2 = Employee :: <span class="keyword">new</span>;</span><br><span class="line">   System.out.println(sup2.get());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Function 中的 R apply (T t)</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   Function&lt;Integer, Employee&gt; func1 = id -&gt; <span class="keyword">new</span> Employee(id);</span><br><span class="line">   System.out.println(func1.apply(<span class="number">1001</span>));</span><br><span class="line">   </span><br><span class="line">   System.out.println(<span class="string">"*****************************"</span>);</span><br><span class="line">   Function&lt;Integer, Employee&gt; func2 = Employee :: <span class="keyword">new</span>;</span><br><span class="line">   System.out.println(func2.apply(<span class="number">1002</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//数组引用</span></span><br><span class="line"><span class="comment">//Function 中的 R apply(T t)</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   Function&lt;Integer , String[]&gt; function = length -&gt; <span class="keyword">new</span> String[length];</span><br><span class="line">   System.out.println(Arrays.toString(function.apply(<span class="number">3</span>)));</span><br><span class="line">   Function&lt;Integer , String[]&gt; function1 = String[] :: <span class="keyword">new</span>;</span><br><span class="line">   System.out.println(Arrays.toString(function1.apply(<span class="number">5</span>)));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="五、Stream-API"><a href="#五、Stream-API" class="headerlink" title="==五、Stream API=="></a>==<strong>五、Stream API</strong>==</h2><h3 id="1-Stream-API-的理解"><a href="#1-Stream-API-的理解" class="headerlink" title="1.Stream API 的理解"></a>1.Stream API 的理解</h3><ul>
+<li>Stream 关注的是对数据的运算，与CPU打交道。集合关注的是对数据的存储，与内存打交道。    </li>
+<li>Java8 提供了一套api，使用这套api可以对内存中的数据进行过滤，排序，映射，规约等操作，类似于sql语句。</li>
+</ul>
+<h3 id="2-注意点"><a href="#2-注意点" class="headerlink" title="2.注意点"></a>2.注意点</h3><p>①：Stream 自己不会存储元素<br>②：Stream 不会改变原对象，相反，他们会返回一个持有结果的新的Stream。<br>③：Stream 的操作时延迟执行的。这也就意味着他们会等到需要结果的时候才执行</p>
+<h3 id="3-Stream的使用流程"><a href="#3-Stream的使用流程" class="headerlink" title="3.Stream的使用流程"></a>3.Stream的使用流程</h3><p>①：Stream 的实例化<br>②：一系列的中间操作（过滤，映射，规约等）<br>③：终止操作。</p>
+<h3 id="4-使用流程的注意点"><a href="#4-使用流程的注意点" class="headerlink" title="4.使用流程的注意点"></a>4.使用流程的注意点</h3><p>4.1 一个中间操作链，对数据源的数据进行处理。<br>4.2 一旦执行终止操作，就执行中间操作链，之后，<strong>不会再被使用</strong></p>
+<h3 id="5-步骤一：Stream的实例化"><a href="#5-步骤一：Stream的实例化" class="headerlink" title="5.步骤一：Stream的实例化"></a>5.步骤一：Stream的实例化</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StreamAPITest1</span> </span>&#123;</span><br><span class="line">   </span><br><span class="line">   <span class="comment">//创建 Stream 方式一：通过集合</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      List&lt;Employee&gt; employees = EmployeeData.getEmployees();</span><br><span class="line">      </span><br><span class="line">      <span class="comment">//default Stream&lt;E&gt; stream() : 返回一个顺序流</span></span><br><span class="line">      Stream&lt;Employee&gt; stream = employees.stream();</span><br><span class="line">      </span><br><span class="line">      </span><br><span class="line">      <span class="comment">//default Stream&lt;E&gt; parallelstream() : 返回一个并行流</span></span><br><span class="line">      Stream&lt;Employee&gt; parallelstream = employees.parallelStream();</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="comment">//创建 Stream 方式二：通过数组</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">int</span>[] arr = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>&#125;;</span><br><span class="line">      <span class="comment">//调用Arrays类中的 static &lt;T&gt; Stream&lt;T&gt; stream(T[] array) 返回一个流</span></span><br><span class="line">      IntStream intStream = Arrays.stream(arr);</span><br><span class="line">      </span><br><span class="line">      Employee e1 = <span class="keyword">new</span> Employee(<span class="number">1001</span>, <span class="string">"Tyrone"</span>);</span><br><span class="line">      Employee e2 = <span class="keyword">new</span> Employee(<span class="number">1001</span>, <span class="string">"Monkey"</span>);</span><br><span class="line">      Employee[] emps = &#123;e1, e2&#125;;</span><br><span class="line">      Stream&lt;Employee&gt; stream1 = Arrays.stream(emps);</span><br><span class="line">      </span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="comment">//创建 Stream 方式三：通过Stream的of()</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      Stream&lt;Integer&gt; stream = Stream.of(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>);</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="comment">//创建 Stream 方式四：创建无限流</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test4</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="comment">//迭代</span></span><br><span class="line">      <span class="comment">//public static&lt;T&gt; Stream&lt;T&gt; iterate(final T seed, final UnaryOperator&lt;T&gt; f)</span></span><br><span class="line">      <span class="comment">// 遍历前十个偶数</span></span><br><span class="line">      Stream.iterate(<span class="number">0</span>, t -&gt; t + <span class="number">2</span>).limit(<span class="number">10</span>).forEach(System.out :: println);</span><br><span class="line">      </span><br><span class="line">      <span class="comment">//生成</span></span><br><span class="line">      <span class="comment">//public static&lt;T&gt; Stream&lt;T&gt; generate()</span></span><br><span class="line">      Stream.generate(Math :: random).limit(<span class="number">10</span>).forEach(System.out :: println);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="6-步骤二：中间操作"><a href="#6-步骤二：中间操作" class="headerlink" title="6.步骤二：中间操作"></a>6.步骤二：中间操作</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StreamAPITest2</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 1. 筛选与切片</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">      List&lt;Employee&gt; list = EmployeeData.getEmployees();</span><br><span class="line">      </span><br><span class="line">      <span class="comment">//filter ( Predicate p) —接收 Lambda ， 从流中排除某些元素</span></span><br><span class="line">      Stream&lt;Employee&gt; stream = list.stream();</span><br><span class="line">      <span class="comment">//练习查询员工工资大于 7000的 员工信息</span></span><br><span class="line">      stream.filter(e -&gt; e.getSalary() &gt; <span class="number">7000</span>).forEach(System.out :: println);</span><br><span class="line">      System.out.println(<span class="string">"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"</span>);</span><br><span class="line">      <span class="comment">//limit — 截断流，使其元素不超过给定数量 </span></span><br><span class="line">      <span class="comment">//这里一定要重新生成一个stream </span></span><br><span class="line">       list.stream().limit(<span class="number">3</span>).forEach(System.out :: println);</span><br><span class="line">       System.out.println(<span class="string">"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"</span>);</span><br><span class="line">       </span><br><span class="line">      <span class="comment">//skip—跳过元素，返回一个扔掉了前 n 个元素的流，若流中元素不足 n 个，则返回一个空流。 </span></span><br><span class="line">       list.stream().skip(<span class="number">3</span>).forEach(System.out :: println);</span><br><span class="line">       </span><br><span class="line">      <span class="comment">//distinct —筛选，通过流所生成的元素 hashcode 和 equals 去除重复元素。</span></span><br><span class="line">      list.stream().distinct();<span class="comment">//其实就是元素去重而已</span></span><br><span class="line">   &#125;</span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 2. 映射</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span> </span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="comment">//map(function f) 接受一个函数作为参数 将元素转换成其他形式的提取信息</span></span><br><span class="line">      List&lt;String&gt; list = Arrays.asList(<span class="string">"aa"</span>, <span class="string">"bb"</span>, <span class="string">"cc"</span>, <span class="string">"dd"</span>);</span><br><span class="line">      list.stream().map(str -&gt;str.toUpperCase()).forEach(System.out :: println);</span><br><span class="line">      </span><br><span class="line">      <span class="comment">//练习1： 获取员工姓名长度大于3的员工的姓名</span></span><br><span class="line">      List&lt;Employee&gt; employees = EmployeeData.getEmployees();</span><br><span class="line">        Stream&lt;String&gt; names = employees.stream().map(e -&gt; e.getName());</span><br><span class="line">        names.filter(name -&gt; name.length() &gt; <span class="number">3</span>).forEach(System.out :: println);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//练习2：</span></span><br><span class="line">      Stream&lt;Stream&lt;Character&gt;&gt; streamStream = list.stream().map(StreamAPITest2::StringToStream);</span><br><span class="line">      streamStream.forEach(s -&gt; &#123;</span><br><span class="line">         s.forEach(System.out :: println);</span><br><span class="line">      &#125;);</span><br><span class="line">      System.out.println(<span class="string">"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"</span>);</span><br><span class="line"></span><br><span class="line">      <span class="comment">//flatMap(Function f) ——接收一个函数作为参数，将流中的每个值都转换称为另外一个流，然后把所有的流连接成一个流。</span></span><br><span class="line">      <span class="comment">//适用于 Stream 套 Stream</span></span><br><span class="line">      Stream&lt;Character&gt; characterStream = list.stream().flatMap(StreamAPITest2::StringToStream);</span><br><span class="line">      characterStream.forEach(System.out :: println);</span><br><span class="line">   &#125;</span><br><span class="line">    <span class="comment">//将字符串中的多个字符添加到 list 之中</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span>  Stream&lt;Character&gt; <span class="title">StringToStream</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">      ArrayList list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">      <span class="keyword">for</span>(Character c : str.toCharArray() ) &#123;</span><br><span class="line">         list.add(c);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> list.stream();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 3. 排序</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="comment">//sorted() 自然排序</span></span><br><span class="line">      <span class="comment">//sorted(Comparator com) 定制排序</span></span><br><span class="line">      List&lt;Integer&gt; list1 = Arrays.asList(<span class="number">343</span>, <span class="number">45</span>, <span class="number">56</span>, <span class="number">76</span>, <span class="number">23</span>, <span class="number">12</span>, <span class="number">5646</span>, <span class="number">44</span>, -<span class="number">12</span>, -<span class="number">56</span>);</span><br><span class="line">      list1.stream().sorted().forEach(System.out :: println);</span><br><span class="line"></span><br><span class="line">      <span class="comment">//将会抛出异常</span></span><br><span class="line">      <span class="comment">//List&lt;Employee&gt; employees = EmployeeData.getEmployees();</span></span><br><span class="line">      <span class="comment">//employees.stream().sorted().forEach(System.out :: println);</span></span><br><span class="line">      <span class="comment">//定制排序</span></span><br><span class="line">      List&lt;Employee&gt; employees = EmployeeData.getEmployees();</span><br><span class="line">      employees.stream().sorted((e1, e2) -&gt; &#123;</span><br><span class="line">          <span class="keyword">int</span> index = Integer.compare(e1.getAge(), e2.getAge());</span><br><span class="line">          <span class="keyword">if</span>(index != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> index;</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> Double.compare(e1.getSalary(), e2.getSalary());</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;).forEach(System.out :: println);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="7-步骤三：终止操作"><a href="#7-步骤三：终止操作" class="headerlink" title="7.步骤三：终止操作"></a>7.步骤三：终止操作</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StreamAPITest3</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 1. 匹配与查找</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        List&lt;Employee&gt; employees = EmployeeData.getEmployees();</span><br><span class="line"><span class="comment">//        检查是否匹配所有元素</span></span><br><span class="line">        <span class="comment">//练习 ： 是否所有的员工的年龄全大于 18 岁</span></span><br><span class="line">        System.out.println(employees.stream().allMatch(e -&gt; e.getAge() &gt; <span class="number">18</span>));</span><br><span class="line"><span class="comment">//        检查是否至少匹配一个元素</span></span><br><span class="line">        <span class="comment">//是否存在员工工资大于 10000 的</span></span><br><span class="line">        System.out.println(employees.stream().anyMatch(e -&gt; e.getSalary() &gt; <span class="number">10000</span>));</span><br><span class="line"><span class="comment">//        检查是否没有匹配元素</span></span><br><span class="line">        <span class="comment">//是否存在员工姓 “小”</span></span><br><span class="line">        System.out.println(employees.stream().allMatch(e -&gt; e.getName().startsWith(<span class="string">"小"</span>)));</span><br><span class="line"><span class="comment">//        返回第一个元素</span></span><br><span class="line">        Optional&lt;Employee&gt; first = employees.stream().findFirst();</span><br><span class="line">        System.out.println(first);</span><br><span class="line"><span class="comment">//        返回任意一个元素</span></span><br><span class="line">        Optional&lt;Employee&gt; any = employees.parallelStream().findAny();</span><br><span class="line">        System.out.println(any);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        List&lt;Employee&gt; employees = EmployeeData.getEmployees();</span><br><span class="line">        <span class="comment">//        返回元素的个数</span></span><br><span class="line">        <span class="keyword">long</span> count = employees.stream().filter(e -&gt; e.getSalary() &gt; <span class="number">5000</span>).count();</span><br><span class="line">        System.out.println(count);</span><br><span class="line">        <span class="comment">//        返回流中的最大值(最大年龄)</span></span><br><span class="line">        Stream&lt;Double&gt; doubleStream = employees.stream().map(employee -&gt; employee.getSalary());</span><br><span class="line">        Optional&lt;Double&gt; max = doubleStream.max(Double::compareTo);</span><br><span class="line">        System.out.println(max);</span><br><span class="line">        <span class="comment">//返回流中的最小值 （最小年龄的员工）</span></span><br><span class="line">        Optional&lt;Employee&gt; min = employees.stream().min((e1, e2) -&gt; Integer.compare(e1.getAge(), e2.getAge()));</span><br><span class="line">        System.out.println(min);</span><br><span class="line">        <span class="comment">//内部迭代</span></span><br><span class="line">        employees.stream().forEach(System.out :: println);</span><br><span class="line">        System.out.println(<span class="string">"=-============================================="</span>);</span><br><span class="line">        employees.forEach(System.out :: println);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 2. 规约</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// reduce() 可以将流中的元素反复结合起来，得到一个值，返回</span></span><br><span class="line">        <span class="comment">//练习 ： 计算 1 - 10 的和</span></span><br><span class="line">        List&lt;Integer&gt; integers = Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>);</span><br><span class="line">        Integer sum = integers.stream().reduce(<span class="number">0</span>, Integer::sum);</span><br><span class="line">        System.out.println(sum);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//reduce()</span></span><br><span class="line">        <span class="comment">//计算所有员工的工资的总和</span></span><br><span class="line">        List&lt;Employee&gt; employees = EmployeeData.getEmployees();</span><br><span class="line">        Stream&lt;Double&gt; salary = employees.stream().map(e -&gt; e.getSalary());</span><br><span class="line">        Optional&lt;Double&gt; sumMoney = salary.reduce((d1, d2) -&gt; d1 + d2);</span><br><span class="line"><span class="comment">//        Optional&lt;Double&gt; sumMoney = salary.reduce(Double :: sum);</span></span><br><span class="line">        System.out.println(sumMoney);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 3. 收集</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test4</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//collect() —— 将流转换为其他形式。接受一个Collector 接口的实现，用于给Stream</span></span><br><span class="line">        <span class="comment">//练习： 查找工资大于 6000 的员工， 结果返回一个 List 或 Set</span></span><br><span class="line">        List&lt;Employee&gt; employees = EmployeeData.getEmployees();</span><br><span class="line">        List&lt;Employee&gt; employeeList = employees.stream().filter(e -&gt; e.getSalary() &gt; <span class="number">6000</span>).collect(Collectors.toList());</span><br><span class="line">        employeeList.forEach(System.out :: println);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="六、Optional类的使用"><a href="#六、Optional类的使用" class="headerlink" title="六、Optional类的使用"></a>六、Optional类的使用</h2><h3 id="1-理解："><a href="#1-理解：" class="headerlink" title="1.理解："></a>1.理解：</h3><p>==<strong>为了解决空指针而生</strong>==</p>
+<p>Optional<t> 类 是一个容器类，他可以保存类型T的值，代表这个值存在。或仅仅保存null，表示这个值不存在。原来用 null 表示一个值不存在，现在Optional 可以更好地表达这个概念，<strong>而且可以避免空指针异常。</strong></t></p>
+<h3 id="2-常用方法："><a href="#2-常用方法：" class="headerlink" title="2.常用方法："></a>2.常用方法：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OptionalTest2</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//生成一个空的opti 对象, 里面的 value 为 null</span></span><br><span class="line">        Optional&lt;Object&gt; op1 = Optional.empty();</span><br><span class="line">        <span class="keyword">if</span>(!op1.isPresent()) &#123; <span class="comment">//判断是否包含数据 （false 表示不包含）</span></span><br><span class="line">            System.out.println(<span class="string">"数据为空"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(op1);</span><br><span class="line">        <span class="comment">//如果封装到数据 value 为空 则 get 报错</span></span><br><span class="line">        <span class="comment">//System.out.println(op1.get());</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        String str = <span class="string">"hello"</span>;</span><br><span class="line">        <span class="comment">//把对象封装进 Optional ， of(T t)方法要求 t 不能为空</span></span><br><span class="line">        <span class="comment">//* @param value the value to be present, which must be non-null</span></span><br><span class="line">        Optional&lt;String&gt; op1 = Optional.of(str);</span><br><span class="line">        <span class="comment">// get 通常与 of 搭配使用 用于 获取 内部的数据</span></span><br><span class="line">        System.out.println(op1.get());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test3</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">//        String str  = "beijing";</span></span><br><span class="line">        String str = <span class="keyword">null</span>;</span><br><span class="line">        <span class="comment">// ofNullable( T t) : 封装数据 t 赋给 Optional， 不要求 t 非空</span></span><br><span class="line">        Optional&lt;String&gt; op1 = Optional.ofNullable(str);</span><br><span class="line">        <span class="comment">// orElse(T t) : 如果 Optional 内部的 value 为空，则返回 t，非空 返回 value</span></span><br><span class="line">        String str2 = op1.orElse(<span class="string">"shanghai"</span>);</span><br><span class="line">        System.out.println(str2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-典型练习："><a href="#3-典型练习：" class="headerlink" title="3.典型练习："></a>3.典型练习：</h3><p>总之 Optional 就是为了尽可能避免 空指针异常而出现的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用 Optional 类</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getGirlName2</span><span class="params">(Boy boy)</span></span>&#123;</span><br><span class="line">    Optional&lt;Boy&gt; boyOptional = Optional.ofNullable(boy);</span><br><span class="line">    Boy boy1 = boyOptional.orElse(<span class="keyword">new</span> Boy(<span class="keyword">new</span> Girl(<span class="string">"琪琪"</span>)));</span><br><span class="line">    Girl girl = boy1.getGirl();</span><br><span class="line">    Optional&lt;Girl&gt; girlOptional = Optional.ofNullable(girl);</span><br><span class="line">    Girl girl1 = girlOptional.orElse(<span class="keyword">new</span> Girl(<span class="string">"小芳"</span>));</span><br><span class="line">    <span class="keyword">return</span> girl1.getName();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+
+  <p><span>本文标题:</span>Java8 新特性</a></p>
+  <p><span>文章作者:</span>Bangjin-Hu</a></p>
+  <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
+  <p><span>最后更新:</span>2020年03月29日 - 10:41:44</p>
+  <p><span>原始链接:</span><a href="/undefined/Java8 新特性/" title="Java8 新特性">http://bangjinhu.github.io/undefined/Java8 新特性/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/Java8 新特性/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.jpg" alt="Bangjin-Hu wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎扫码关注微信公众号，订阅我的微信公众号.</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持是我创作的动力.</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat-reward-img.jpg" alt="Bangjin-Hu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay-reward-img.jpg" alt="Bangjin-Hu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Bangjin-Hu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://bangjinhu.github.io/undefined/Java8 新特性/" title="Java8 新特性">http://bangjinhu.github.io/undefined/Java8 新特性/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java-8/" rel="tag"><i class="fa fa-tag"></i> Java 8</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/undefined/Java容器框架 - List集合与源码分析/" rel="next" title="Java集合框架 - ArrayList与源码分析">
+                <i class="fa fa-chevron-left"></i> Java集合框架 - ArrayList与源码分析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/undefined/Java 集合框架 - 面试/" rel="prev" title="Java集合框架">
+                Java集合框架 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/site.jpg"
+                alt="Bangjin-Hu" />
+            
+              <p class="site-author-name" itemprop="name">Bangjin-Hu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/BangjinHu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:2315378346@qq.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/Aaron_P_L" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-heart-o"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
+                      
+                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://iProgramering.github.io" target="_blank" title="iProgramer_ing">
+                      
+                        <i class="fa fa-fw fa-user"></i>iProgramer_ing</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          <div id="music163player">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src="//music.163.com/outchain/player?type=2&id=38358214&auto=0&height=66
+
+">
+    </iframe>
+</div>
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java8-新特性"><span class="nav-text">Java8 新特性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、Lambda-表达式"><span class="nav-text">==一、Lambda 表达式==</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Lambda-表达式使用前后对比"><span class="nav-text">1. Lambda 表达式使用前后对比</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用前："><span class="nav-text">使用前：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用后："><span class="nav-text">使用后：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Lambda-表达式的基本语法"><span class="nav-text">2.Lambda 表达式的基本语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Lambda-表达式的使用（6种情况）"><span class="nav-text">3.Lambda 表达式的使用（6种情况）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#无参，无返回值。"><span class="nav-text">无参，无返回值。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#需要一个参数，无返回值。"><span class="nav-text">需要一个参数，无返回值。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类型推断。"><span class="nav-text">类型推断。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Lambda-若只需要一个参数，参数的小括号可以省略"><span class="nav-text">Lambda 若只需要一个参数，参数的小括号可以省略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Lambda-需要两个或者多个参数，多条执行语句，并且可以有返回值"><span class="nav-text">Lambda 需要两个或者多个参数，多条执行语句，并且可以有返回值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#当-lambda-体只有一条语句时，return-与大括号若有，都可以省略"><span class="nav-text">当 lambda 体只有一条语句时，return 与大括号若有，都可以省略</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-总结："><span class="nav-text">4.总结：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Lambda-表达式的实质"><span class="nav-text">5.Lambda 表达式的实质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-何时使用Lambda表达式："><span class="nav-text">6.何时使用Lambda表达式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-常使用的Lambda表达式"><span class="nav-text">7.常使用的Lambda表达式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、函数式接口"><span class="nav-text">二、函数式接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-什么是函数接口："><span class="nav-text">1.什么是函数接口：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Java内置四大核心函数式接口"><span class="nav-text">2.Java内置四大核心函数式接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-何时使用函数式接口："><span class="nav-text">3.何时使用函数式接口：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、方法引用"><span class="nav-text">三、方法引用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-理解"><span class="nav-text">1.理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-使用场景"><span class="nav-text">2.使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-格式"><span class="nav-text">3.格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-分为以下三种情况"><span class="nav-text">4.分为以下三种情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-要求"><span class="nav-text">5.要求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-使用建议"><span class="nav-text">6.使用建议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-使用举例："><span class="nav-text">7.使用举例：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、构造器引用以及数组引用"><span class="nav-text">四、构造器引用以及数组引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、Stream-API"><span class="nav-text">==五、Stream API==</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Stream-API-的理解"><span class="nav-text">1.Stream API 的理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-注意点"><span class="nav-text">2.注意点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Stream的使用流程"><span class="nav-text">3.Stream的使用流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-使用流程的注意点"><span class="nav-text">4.使用流程的注意点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-步骤一：Stream的实例化"><span class="nav-text">5.步骤一：Stream的实例化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-步骤二：中间操作"><span class="nav-text">6.步骤二：中间操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-步骤三：终止操作"><span class="nav-text">7.步骤三：终止操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、Optional类的使用"><span class="nav-text">六、Optional类的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-理解："><span class="nav-text">1.理解：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-常用方法："><span class="nav-text">2.常用方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-典型练习："><span class="nav-text">3.典型练习：</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bangjin-Hu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">465.0k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/lib/clipboard/clipboard.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+</body>
+</html>

@@ -1,0 +1,3348 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/site.jpg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="BangjinHu'Blog" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="BangjinHu's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="微信公众号：iProgrammer_ing">
+<meta property="og:type" content="website">
+<meta property="og:title" content="BangjinHu&#39;s Blog">
+<meta property="og:url" content="http://bangjinhu.github.io/page/8/index.html">
+<meta property="og:site_name" content="BangjinHu&#39;s Blog">
+<meta property="og:description" content="微信公众号：iProgrammer_ing">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BangjinHu&#39;s Blog">
+<meta name="twitter:description" content="微信公众号：iProgrammer_ing">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://bangjinhu.github.io/page/8/"/>
+
+
+
+
+
+  <title>BangjinHu's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+    
+    <a href="https://github.com/BangjinHu"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">BangjinHu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">让优秀成为习惯，让知识成为信仰</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            本站搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Maven/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/Maven/" itemprop="url">Maven</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:44:49+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Maven/" itemprop="url" rel="index">
+                    <span itemprop="name">Maven</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,815
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h1 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h1><h2 id="一、什么是Maven"><a href="#一、什么是Maven" class="headerlink" title="一、什么是Maven"></a>一、什么是Maven</h2><p><strong>1、 Maven是一款服务于Java平台的自动化构建工具</strong>。</p>
+<p>​     发展历史： Make -&gt; Ant -&gt; Maven -&gt; Gradle</p>
+<p>​    项目对象模型(POM)，可以通过一小段描述信息来管理项目的构建，报告和文档的项目管理工具软件。</p>
+<h2 id="二、为什么要使用Maven"><a href="#二、为什么要使用Maven" class="headerlink" title="二、为什么要使用Maven"></a>二、为什么要使用Maven</h2><h3 id="2-1-不使用Maven开发存在的问题"><a href="#2-1-不使用Maven开发存在的问题" class="headerlink" title="2.1 不使用Maven开发存在的问题"></a>2.1 不使用Maven开发存在的问题</h3><ol>
+<li>一个项目就是一个工程</li>
+<li>项目中需要的jar包必须手动“复制”、”粘贴” 到WEB-INF/lib 项目下</li>
+<li>项目中所需要的jar包都是必须是提前下载好的</li>
+<li>项目中一个jar包所依赖的其他jar包必须手动导进来</li>
+</ol>
+<h3 id="2-2-Maven-的优点"><a href="#2-2-Maven-的优点" class="headerlink" title="2.2 Maven 的优点"></a>2.2 Maven 的优点</h3><p>1、原来的项目中需要的jar包必须手动“复制”、”粘贴” 到WEB-INF/lib 项目下，而<strong>借助Maven，可以将jar包仅仅保存在“仓库”中，有需要使用的工程只需要“引用”这个文件，并不需要重复复制到工程中。</strong><br>2、原来的项目中所需要的jar包都是提前下载好的，而Maven在<strong>联网状态下会自动下载所需要的jar包</strong>。首<strong>先在本地仓库中找，找不到就在网上进行下载。</strong><br>3、原来的项目中一个jar包所依赖的其他jar包必须手动导进来，<strong>而Maven会自动将被依赖的jar包导进来。</strong><br>4、原来的项目一个项目就是一个工程，而<strong>借助Maven可以将一个项目拆分成多个工程。</strong></p>
+<h2 id="三、Maven-构建过程的环节"><a href="#三、Maven-构建过程的环节" class="headerlink" title="三、Maven 构建过程的环节"></a>三、Maven 构建过程的环节</h2><p>1、清理：将以前的编译得到的旧的class字节码文件删除</p>
+<p>2、编译：将Java源程序编译为class字节码文件</p>
+<p>3、测试：自动测试，自动调用 junit 程序</p>
+<p>4、报告：测试程序执行的结果</p>
+<p>5、打包：动态web工程打 war 包， Java工程打 jar 包</p>
+<p>6、安装：Maven特定的概念——将打包得到的文件复制到 “仓库” 中指定的位置</p>
+<p>7、部署：将动态生成的 war 包复制到 Servlet 容器指定的目录下，使其可以正常运行</p>
+<h2 id="四、Maven-的核心概念"><a href="#四、Maven-的核心概念" class="headerlink" title="四、Maven 的核心概念"></a>四、Maven 的核心概念</h2><h3 id="4-1-约定的目录概念（一般）"><a href="#4-1-约定的目录概念（一般）" class="headerlink" title="4.1 约定的目录概念（一般）"></a>4.1 约定的目录概念（一般）</h3><h4 id="4-1-1-约定的目录结构："><a href="#4-1-1-约定的目录结构：" class="headerlink" title="4.1.1 约定的目录结构："></a>4.1.1 约定的目录结构：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[1] 根目录：工程名</span><br><span class="line">[2] src目录：源码</span><br><span class="line">[3] pom.xml 文件： Maven 工程的核心配置文件</span><br><span class="line">[4] main 目录： 存放主程序 </span><br><span class="line">[5] test 目录： 存放测试程序</span><br><span class="line">[6] java 目录： 存放Java 源文件</span><br><span class="line">[7] resources 目录： 存放框架或者其他工具的配置文件</span><br></pre></td></tr></table></figure>
+<h4 id="4-1-2-为什么要使用约定的目录文件："><a href="#4-1-2-为什么要使用约定的目录文件：" class="headerlink" title="4.1.2 为什么要使用约定的目录文件："></a>4.1.2 为什么要使用约定的目录文件：</h4><ul>
+<li>Maven 要负责我们这个项目的自动化构建，以编译为例，Maven 想要自动进行构建，那么他必须知道Java的源文件保存在哪里</li>
+<li>如果想要我们自定义的东西被框架或者是工具知道。（配置文件）</li>
+</ul>
+<h3 id="4-2-POM（一般）"><a href="#4-2-POM（一般）" class="headerlink" title="4.2 POM（一般）"></a>4.2 POM（一般）</h3><p>​    含义：Project Object Model 项目对象模型</p>
+<p>​    POM.xml 是 Maven 工程的核心配置文件，与构建过程相关的一切设置都在这个文件之中进行配置。重要程度相当于 web.xml 对于动态web工程。</p>
+<h3 id="4-3-坐标（一般）"><a href="#4-3-坐标（一般）" class="headerlink" title="4.3 坐标（一般）"></a>4.3 坐标（一般）</h3><h4 id="​-4-3-1-数学中的坐标："><a href="#​-4-3-1-数学中的坐标：" class="headerlink" title="​    4.3.1 数学中的坐标："></a>​    4.3.1 数学中的坐标：</h4><p>​        [1] 在平面或者空间上 使用 x，y，z，来确定平面或者空间之中的任何一个点。</p>
+<h4 id="​-4-3-2-Maven-中的坐标："><a href="#​-4-3-2-Maven-中的坐标：" class="headerlink" title="​    4.3.2 Maven 中的坐标："></a>​    4.3.2 Maven 中的坐标：</h4><p>​        使用下面三个向量在仓库之中唯一定位一个Maven工程。</p>
+<h5 id="（-G-）groupid-公司或者组织域名倒序-项目名"><a href="#（-G-）groupid-公司或者组织域名倒序-项目名" class="headerlink" title="（==G==）groupid:公司或者组织域名倒序 + 项目名"></a>（==G==）groupid:公司或者组织域名倒序 + 项目名</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="​-（-A-）artifactid-模块名"><a href="#​-（-A-）artifactid-模块名" class="headerlink" title="​        （==A==）artifactid: 模块名"></a>​        （==A==）artifactid: 模块名</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;artifactId&gt;spring-web&lt;/artifactId&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="​-（-V-）version-版本信息"><a href="#​-（-V-）version-版本信息" class="headerlink" title="​        （==V==）version: 版本信息"></a>​        （==V==）version: 版本信息</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;version&gt;5.0.8.RELEASE&lt;/version&gt;</span><br><span class="line"></span><br><span class="line">文件路径：</span><br><span class="line">org\springframework\spring-web\5.0.8.RELEASE\spring-web-5.0.8.RELEASE.jar</span><br></pre></td></tr></table></figure>
+<h3 id="4-4-依赖（重要）"><a href="#4-4-依赖（重要）" class="headerlink" title="4.4 依赖（重要）"></a>4.4 依赖（重要）</h3><h4 id="4-4-1-依赖解析："><a href="#4-4-1-依赖解析：" class="headerlink" title="4.4.1 依赖解析："></a>4.4.1 依赖解析：</h4><p>​        Maven 解析依赖信息时，会到本地仓库之中查找被依赖的jar包。</p>
+<p>​        对于我们自己开发的 Maven 工程，使用 ==<strong>mvn install </strong>== 命令安装之后就可以进入仓库。</p>
+<h4 id="4-4-2-依赖的范围："><a href="#4-4-2-依赖的范围：" class="headerlink" title="4.4.2 依赖的范围："></a>4.4.2 依赖的范围：</h4><ul>
+<li><p><strong>compile</strong></p>
+<ul>
+<li>对主程序是否有效： 有效</li>
+<li>对测试程序是否有效： 有效</li>
+<li>是否参与打包： 参与</li>
+</ul>
+</li>
+<li><p><strong>test</strong></p>
+<ul>
+<li>对主程序是否有效： 无效<ul>
+<li>对测试程序是否有效：  有效</li>
+<li>是否参与打包： 不参与</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>provided</strong></p>
+<ul>
+<li>对主程序是否有效：  有效<ul>
+<li>对测试程序是否有效：  有效</li>
+<li>是否参与打包： 不参与</li>
+<li>是否参与部署： 不参与<h4 id="4-4-3-依赖的传递性"><a href="#4-4-3-依赖的传递性" class="headerlink" title="4.4.3 依赖的传递性"></a>4.4.3 依赖的传递性</h4></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>​    【1】好处：可以传递的依赖不必在每个工程模块之中都重复声明。只需要在‘最下面“声明一次即可。 </p>
+<p>​    【2】注意：<strong>非 compile 范围的依赖无法传递。</strong></p>
+<h4 id="4-4-4-依赖的排除"><a href="#4-4-4-依赖的排除" class="headerlink" title="4.4.4 依赖的排除"></a>4.4.4 依赖的排除</h4><p>​    【1】 需要依赖排除的场合</p>
+<p>​        不稳定的jar包，不想让他加入到工程之中。</p>
+<p>​    【2】如何排除(以排除AAAA为例)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;exclusions&gt;</span><br><span class="line">	&lt;exclusion&gt;</span><br><span class="line">		&lt;groupId&gt;AAAAAAAAA&lt;/groupId&gt;</span><br><span class="line">		&lt;artifactId&gt;AAAAA&lt;/artifactId&gt;</span><br><span class="line">	&lt;/exclusion&gt;</span><br><span class="line">&lt;/exclusions&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="4-4-5-依赖的原则："><a href="#4-4-5-依赖的原则：" class="headerlink" title="4.4.5 依赖的原则："></a>4.4.5 依赖的原则：</h4><p>​    【1】 路径最短者优先</p>
+<p>​    【2】 路径相同者先声明者优先</p>
+<h4 id="4-4-6-统一管理依赖的版本"><a href="#4-4-6-统一管理依赖的版本" class="headerlink" title="4.4.6 统一管理依赖的版本"></a>4.4.6 统一管理依赖的版本</h4><p>​    假设Spring 的 jar 包的依赖版本都是 4.0.0， 此时想要统一升级成为 4.1.1 怎么办？</p>
+<p>​    【1】 手动逐一修改，不可靠</p>
+<p>​    【2】 建议配置方式：</p>
+<p>​        i：使用 properties 标签统一声明版本号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;properties&gt;</span><br><span class="line">	&lt;spring.version&gt;5.0.8.RELEASE&lt;/spring.version&gt;</span><br><span class="line">&lt;/properties&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;spring-web&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;$&#123;spring.version&#125;&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="4-5-仓库（了解）"><a href="#4-5-仓库（了解）" class="headerlink" title="4.5 仓库（了解）"></a>4.5 仓库（了解）</h3><p>​    Maven 仓库分为：</p>
+<ul>
+<li>本地仓库<ul>
+<li>当前电脑上部署的仓库目录，为当前电脑上的所有Maven工程服务</li>
+</ul>
+</li>
+<li>远程仓库<ul>
+<li>私服：搭建在局域网上面的Maven仓库，为当前局域网范围内的所有 Maven 工程服务。</li>
+<li>中央仓库：架设在 Internet 之中，为全世界的 Maven 工程服务。</li>
+<li>中央仓库镜像： 为了分担中央仓库的流量，提升用户访问速度。<ul>
+<li>仓库之中保存了什么？</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Maven 自身需要的插件</li>
+<li>第三方工具或者工具的jar包</li>
+<li>我们自己开发的Maven工程</li>
+</ul>
+<h3 id="4-6-生命周期-插件-目标（了解）"><a href="#4-6-生命周期-插件-目标（了解）" class="headerlink" title="4.6 生命周期/插件/目标（了解）"></a>4.6 生命周期/插件/目标（了解）</h3><h3 id="4-7-继承（了解）"><a href="#4-7-继承（了解）" class="headerlink" title="4.7 继承（了解）"></a>4.7 继承（了解）</h3><h3 id="4-8-聚合（了解）"><a href="#4-8-聚合（了解）" class="headerlink" title="4.8 聚合（了解）"></a>4.8 聚合（了解）</h3><h2 id="五、Maven-常用命令："><a href="#五、Maven-常用命令：" class="headerlink" title="五、Maven 常用命令："></a>五、Maven 常用命令：</h2><h3 id="5-1-命令使用范围："><a href="#5-1-命令使用范围：" class="headerlink" title="5.1 命令使用范围："></a>5.1 命令使用范围：</h3><p><strong>执行与构建相关的 Maven 命令，必须进入 pom.xml 所在的目录。</strong></p>
+<h3 id="5-2-常用命令"><a href="#5-2-常用命令" class="headerlink" title="==5.2 常用命令=="></a>==5.2 常用命令==</h3><h4 id="1-mvn-clean：-清理"><a href="#1-mvn-clean：-清理" class="headerlink" title="1. mvn clean： 清理"></a>1. mvn clean： 清理</h4><h4 id="2-mvn-compile-：-编译主程序"><a href="#2-mvn-compile-：-编译主程序" class="headerlink" title="2. mvn compile ： 编译主程序"></a>2. mvn compile ： 编译主程序</h4><h4 id="3-mvn-test-compile-：编译测试程序"><a href="#3-mvn-test-compile-：编译测试程序" class="headerlink" title="3.mvn test-compile ：编译测试程序"></a>3.mvn test-compile ：编译测试程序</h4><h4 id="4-mvn-test-：-执行测试"><a href="#4-mvn-test-：-执行测试" class="headerlink" title="4. mvn test ： 执行测试"></a>4. mvn test ： 执行测试</h4><h4 id="5-mvn-package：-打包"><a href="#5-mvn-package：-打包" class="headerlink" title="5. mvn package： 打包"></a>5. mvn package： 打包</h4><h4 id="6-mvn-install-：将自己的-jar-包加入到本地仓库之中"><a href="#6-mvn-install-：将自己的-jar-包加入到本地仓库之中" class="headerlink" title="6. mvn install ：将自己的 jar 包加入到本地仓库之中"></a>6. mvn install ：将自己的 jar 包加入到本地仓库之中</h4><h2 id="六、Maven-生命周期："><a href="#六、Maven-生命周期：" class="headerlink" title="六、Maven 生命周期："></a>六、Maven 生命周期：</h2><p>​    1、各个构建环节的顺序：不能打乱顺序，必须按照既定的正确顺序来执行。</p>
+<p>​    2、Maven 的核心程序定义了抽象的生命周期，生命周期的各个阶段的具体任务是由插件来完成的。</p>
+<p>​    3、Maven 的核心程序为了更好地实现自动化构建，按照这一特点执行生命周期之中的各个阶段，不论要执行那个阶段，<strong>都是从这个生命周期的最初的位置开始执行的</strong>。</p>
+<p>​    </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/MyBatis 框架/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/MyBatis 框架/" itemprop="url">MyBatis 框架</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:45:38+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mybatis/" itemprop="url" rel="index">
+                    <span itemprop="name">Mybatis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  167
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="MyBatis-框架"><a href="#MyBatis-框架" class="headerlink" title="MyBatis 框架"></a>MyBatis 框架</h2><p><strong>1.执行流程</strong><br></p>
+<pre><code>1.配置sqlMapConfig.xml(mybatis全局配置文件)：配置数据源、事务等mybatis运行环境(后面直接交给spring)。
+
+2.配置映射文件：mapper.xml
+
+3.sqlSessionFactory(会话工厂)：根据配置文件创建sqlSession。
+
+4.sqlSession(会话)：面向用户的接口，根据会话工厂创建。作用是操作数据库。
+
+5.Excutor(执行器)：作用是sqlSession内部通过该执行器操作数据。
+
+6.mappedStatement(底层封装对象)：作用是对操作数据库存储对象，包括sql语句、输入参数、输出结果类型。
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/MyBatis缓存机制/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/MyBatis缓存机制/" itemprop="url">MyBatis缓存机制</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:45:16+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mybatis/" itemprop="url" rel="index">
+                    <span itemprop="name">Mybatis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,773
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  15
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="MyBatis缓存机制"><a href="#MyBatis缓存机制" class="headerlink" title="MyBatis缓存机制"></a>MyBatis缓存机制</h2><p>[TOC]</p>
+<h3 id="MyBatis的缓存机制以及流程"><a href="#MyBatis的缓存机制以及流程" class="headerlink" title="MyBatis的缓存机制以及流程"></a>MyBatis的缓存机制以及流程</h3><p>mybatis提供了<strong>缓存机制减轻数据库压力，提高数据库性能</strong></p>
+<p>mybatis的缓存分为两级：==一级缓存、二级缓存==</p>
+<h3 id="一级缓存"><a href="#一级缓存" class="headerlink" title="一级缓存"></a>一级缓存</h3><p>一级缓存是<strong>SqlSession级别</strong>的缓存，缓存的数据只在SqlSession内有效</p>
+<p>在操作数据库的时候需要先创建SqlSession会话对象，在对象中有一个<strong>HashMap用于存储缓存数据</strong>，此HashMap是当前会话对象私有的，别的SqlSession会话对象无法访问,<strong>每一个 session 会话都会有各自的缓存，这缓存是局部的，也就是所谓的一级缓存</strong></p>
+<p>每个SqlSession中持有了<a href="https://www.baidu.com/s?wd=Executor&amp;tn=24004469_oem_dg&amp;rsv_dl=gh_pl_sl_csd" target="_blank" rel="noopener">Executor</a>，每个Executor中有一个LocalCache。当用户发起查询时，MyBatis根据当前执行的语句生成<strong>MappedStatement</strong>，在Local Cache进行查询，如果缓存命中的话，直接返回结果给用户，如果缓存没有命中的话，查询数据库，结果写入Local Cache</p>
+<p><strong>配置：</strong></p>
+<p>开发者只需在MyBatis的配置文件中，添加如下语句，就可以使用一级缓存。共有两个选项，SESSION或者STATEMENT，默认是SESSION级别，即在一个MyBatis会话中执行的所有语句，都会共享这一个缓存。一种是STATEMENT级别，可以理解为缓存只对当前执行的这一个Statement有效</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;setting name=<span class="string">"localCacheScope"</span> value=<span class="string">"SESSION"</span>/&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>具体流程：</strong></p>
+<p>　　　　1.第一次执行select完毕会将查到的数据写入SqlSession内的HashMap中缓存起来</p>
+<p>　　　　2.第二次执行select会从缓存中查数据，如果select相同切传参数一样，那么就能从缓存中返回数据，不用去数据库了，从而提高了效率‘</p>
+<p><strong>源码</strong></p>
+<ul>
+<li><p>首先需要初始化SqlSession，通过<strong>DefaultSqlSessionFactory开启SqlSession</strong>    </p>
+</li>
+<li><p>SqlSession创建完毕后，根据Statment的不同类型，会进入SqlSession的不同方法中，如果是Select语句的话，最后会执行到SqlSession的selectList</p>
+</li>
+<li>SqlSession把具体的查询职责委托给了Executor。如果只开启了一级缓存的话，首先会进入BaseExecutor的query方法</li>
+<li>在query方法执行的最后，会判断一级缓存级别是否是STATEMENT级别，如果是的话，就清空缓存，这也就是STATEMENT级别的一级缓存无法共享localCache的原因</li>
+<li>SqlSession的insert方法和delete方法，都会统一走update的流程</li>
+<li>每次执行update前都会清空localCache</li>
+</ul>
+<p>==BaseExecutor==： BaseExecutor是一个实现了Executor接口的抽象类，定义若干抽象方法，在执行的时候，把具体的操作委托给子类进行执行。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keyword">int</span> <span class="title">doUpdate</span><span class="params">(MappedStatement ms, Object parameter)</span> <span class="keyword">throws</span> SQLException</span>;<span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> List&lt;BatchResult&gt; <span class="title">doFlushStatements</span><span class="params">(<span class="keyword">boolean</span> isRollback)</span> <span class="keyword">throws</span> SQLException</span>;<span class="keyword">protected</span> <span class="keyword">abstract</span> &lt;E&gt; <span class="function">List&lt;E&gt; <span class="title">doQuery</span><span class="params">(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler, BoundSql boundSql)</span> <span class="keyword">throws</span> SQLException</span>;<span class="keyword">protected</span> <span class="keyword">abstract</span> &lt;E&gt; <span class="function">Cursor&lt;E&gt; <span class="title">doQueryCursor</span><span class="params">(MappedStatement ms, Object parameter, RowBounds rowBounds, BoundSql boundSql)</span> <span class="keyword">throws</span> SQLException</span>;</span><br></pre></td></tr></table></figure>
+<p>在一级缓存的介绍中提到<strong>对Local Cache的查询和写入是在Executor内部完成</strong>的。在阅读BaseExecutor的代码后发现<strong>Local Cache是BaseExecutor内部的一个成员变量</strong>，如下代码所示。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseExecutor</span> <span class="keyword">implements</span> <span class="title">Executor</span> </span>&#123;<span class="keyword">protected</span> ConcurrentLinkedQueue&lt;DeferredLoad&gt; deferredLoads;</span><br><span class="line"><span class="keyword">protected</span> PerpetualCache localCache;</span><br></pre></td></tr></table></figure>
+<p> ==Cache==： MyBatis中的Cache接口，提供了和缓存相关的最基本的操作</p>
+<p>BaseExecutor成员变量之一的==PerpetualCache，是对Cache接口最基本的实现==，其实现非常简单，内部持有HashMap，对一级缓存的操作实则是对HashMap的操作</p>
+<p><strong>注意事项：</strong></p>
+<p>　　　　1.如果SqlSession执行了DML操作（insert、update、delete），并commit了，那么mybatis就会清空当前SqlSession缓存中的所有缓存数据，这样可以保证缓存中的存的数据永远和数据库中一致，避免出现脏读</p>
+<p>　　　　2.当一个SqlSession结束后那么他里面的一级缓存也就不存在了，mybatis默认是开启一级缓存，不需要配置t</p>
+<p>　　　　3.mybatis的缓存是基于[namespace:sql语句:参数]来进行缓存的，意思就是，SqlSession的HashMap存储缓存数据时，是使用<strong>[namespace:sql:参数]</strong>作为key，<strong>查询返回的语句作为value</strong>保存的</p>
+<h3 id="二级缓存"><a href="#二级缓存" class="headerlink" title="二级缓存"></a>二级缓存</h3><p>二级缓存是<strong>mapper级别</strong>的缓存，同一个namespace公用这一个缓存，所以对SqlSession是共享的</p>
+<p>就是同一个namespace的mappe.xml，当多个SqlSession使用同一个Mapper操作数据库的时候，得到的数据会缓存在同一个二级缓存区,  如果两个mapper的namespace相同，即使是两个mapper，那么这两个mapper中执行sql查询到的数据也将存在相同的二级缓存区域中</p>
+<p>　　<strong>1.</strong>二级缓存默认是没有开启的。需要在setting全局参数中配置开启二级缓存</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;setting name=<span class="string">"cacheEnabled"</span> value=<span class="string">"true"</span>/&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>2.</strong>在MyBatis的映射XML中配置cache或者 cache-ref 。</p>
+<p>cache标签用于声明这个namespace使用二级缓存，并且可以自定义配置。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;cache/&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>type：cache使用的类型，默认是<strong>PerpetualCache</strong>，这在一级缓存中提到过</li>
+<li>eviction： 定义回收的策略，常见的有FIFO，LRU。</li>
+<li>flushInterval： 配置一定时间自动刷新缓存，单位是毫秒。</li>
+<li>size： 最多缓存对象的个数。</li>
+<li>readOnly： 是否只读，若配置可读写，则需要对应的实体类能够序列化。</li>
+<li>blocking： 若缓存中找不到对应的key，是否会一直blocking，直到有对应的数据进入缓存。</li>
+</ul>
+<p>cache-ref代表引用别的命名空间的Cache配置，两个命名空间的操作使用的是同一个Cache。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;cache-ref namespace=<span class="string">"mapper.StudentMapper"</span>/&gt;</span><br></pre></td></tr></table></figure>
+<p>在userMapper.xml中配置：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;cache eviction=<span class="string">"LRU"</span> flushInterval=<span class="string">"60000"</span> size=<span class="string">"512"</span> readOnly=<span class="string">"true"</span>/&gt;当前mapper下所有语句开启二级缓存</span><br></pre></td></tr></table></figure>
+<p>　　这里配置了一个LRU缓存，并每隔60秒刷新，最大存储512个对象，而却返回的对象是只读的</p>
+<p>　　若想禁用当前select语句的二级缓存，添加<strong>useCache=”false”</strong>修改如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=<span class="string">"getCountByName"</span> parameterType=<span class="string">"java.util.Map"</span> resultType=<span class="string">"INTEGER"</span> statementType=<span class="string">"CALLABLE"</span> useCache=<span class="string">"false"</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>当开启缓存后，数据的查询执行的流程就是 <strong>二级缓存 -&gt; 一级缓存 -&gt; 数据库</strong></p>
+<p>开启二级缓存后，会使用==CachingExecutor==装饰Executor，进入一级缓存的查询流程前，先在CachingExecutor进行二级缓存的查询，具体的工作流程如下所示</p>
+<p><img src="E:\java\笔记\spring源码解析\images\16.png" alt=""></p>
+<p><img src="E:\java\笔记\spring源码解析\images\11.png" alt=""></p>
+<p><img src="E:\java\笔记\spring源码解析\images\12.png" alt=""></p>
+<p><strong>具体流程：</strong></p>
+<p>　　　　1.当一个sqlseesion执行了一次select后，在关闭此session的时候，会将查询结果缓存到二级缓存</p>
+<p>　　　　2.当另一个sqlsession执行select时，首先会在他自己的一级缓存中找，如果没找到，就回去二级缓存中找，找到了就返回，就不用去数据库了，从而减少了数据库压力提高了性能　</p>
+<ul>
+<li><p>CachingExecutor的query方法，首先会从MappedStatement中获得在配置初始化时赋予的Cache</p>
+</li>
+<li><p>然后是判断是否需要刷新缓存，代码如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flushCacheIfRequired(ms);</span><br></pre></td></tr></table></figure>
+<p>在默认的设置中SELECT语句不会刷新缓存，insert/update/delte会刷新缓存。进入该方法。代码如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">flushCacheIfRequired</span><span class="params">(MappedStatement ms)</span> </span>&#123;</span><br><span class="line">    Cache cache = ms.getCache();   </span><br><span class="line">    <span class="keyword">if</span> (cache != <span class="keyword">null</span> &amp;&amp; ms.isFlushCacheRequired()) &#123;      </span><br><span class="line">      tcm.clear(cache);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>MyBatis的CachingExecutor持有了<strong>TransactionalCacheManager</strong>，即上述代码中的tcm。</p>
+</li>
+</ul>
+<p>  TransactionalCacheManager中持有了一个Map，代码如下所示：</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Map&lt;Cache, TransactionalCache&gt; transactionalCaches = <span class="keyword">new</span> HashMap&lt;Cache, TransactionalCache&gt;();</span><br></pre></td></tr></table></figure>
+<p>  这个Map保存了Cache和用TransactionalCache包装后的Cache的映射关系。</p>
+<p>  TransactionalCache实现了Cache接口，CachingExecutor会默认使用他包装初始生成的Cache，作用是如果事务提交，对缓存的操作才会生效，如果事务回滚或者不提交事务，则不对缓存产生影响。</p>
+<p>  在TransactionalCache的clear，有以下两句。清空了需要在提交时加入缓存的列表，同时设定提交时清空缓存，代码如下所示：</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Overridepublic</span> <span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    clearOnCommit = <span class="keyword">true</span>;</span><br><span class="line">    entriesToAddOnCommit.clear();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  CachingExecutor继续往下走，ensureNoOutParams主要是用来处理存储过程的，暂时不用考虑。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (ms.isUseCache() &amp;&amp; resultHandler == <span class="keyword">null</span>) &#123;</span><br><span class="line">    ensureNoOutParams(ms, parameterObject, boundSql);</span><br></pre></td></tr></table></figure>
+<p>  之后会尝试从tcm中获取缓存的列表。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;E&gt; list = (List&lt;E&gt;) tcm.getObject(cache, key);</span><br></pre></td></tr></table></figure>
+<p>  在getObject方法中，会把获取值的职责一路传递，最终到PerpetualCache。如果没有查到，会把key加入Map集合，这个主要是为了统计命中率。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Object object = delegate.getObject(key);<span class="keyword">if</span> (object == <span class="keyword">null</span>) &#123;</span><br><span class="line">    entriesMissedInCache.add(key);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  CachingExecutor继续往下走，如果查询到数据，则调用tcm.putObject方法，往缓存中放入值。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (list == <span class="keyword">null</span>) &#123;</span><br><span class="line">    list = delegate.&lt;E&gt; query(ms, parameterObject, rowBounds, resultHandler, key, boundSql);</span><br><span class="line">    tcm.putObject(cache, key, list); <span class="comment">// issue #578 and #116&#125;</span></span><br></pre></td></tr></table></figure>
+<p>  tcm的put方法也不是直接操作缓存，只是在把这次的数据和key放入待提交的Map中。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Overridepublic</span> <span class="function"><span class="keyword">void</span> <span class="title">putObject</span><span class="params">(Object key, Object object)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    entriesToAddOnCommit.put(key, object);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  从以上的代码分析中，我们可以明白，如果不调用commit方法的话，由于TranscationalCache的作用，并不会对二级缓存造成直接的影响。因此我们看看Sqlsession的commit方法中做了什么。代码如下所示：</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Overridepublic</span> <span class="function"><span class="keyword">void</span> <span class="title">commit</span><span class="params">(<span class="keyword">boolean</span> force)</span> </span>&#123;    <span class="keyword">try</span> &#123;</span><br><span class="line">      executor.commit(isCommitOrRollbackRequired(force));</span><br></pre></td></tr></table></figure>
+<p>  因为我们使用了CachingExecutor，首先会进入CachingExecutor实现的<strong>commit</strong>方法。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Overridepublic</span> <span class="function"><span class="keyword">void</span> <span class="title">commit</span><span class="params">(<span class="keyword">boolean</span> required)</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    delegate.commit(required);</span><br><span class="line">    tcm.commit();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  会把具体commit的职责委托给包装的Executor。主要是看下tcm.commit()，tcm最终又会调用到TrancationalCache。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">commit</span><span class="params">()</span> </span>&#123;    <span class="keyword">if</span> (clearOnCommit) &#123;</span><br><span class="line">      delegate.clear();</span><br><span class="line">    &#125;</span><br><span class="line">    flushPendingEntries();</span><br><span class="line">    reset();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  看到这里的clearOnCommit就想起刚才TrancationalCache的clear方法设置的标志位，真正的清理Cache是放到这里来进行的。具体清理的职责委托给了包装的Cache类。之后进入flushPendingEntries方法。代码如下所示：</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">flushPendingEntries</span><span class="params">()</span> </span>&#123;    <span class="keyword">for</span> (Map.Entry&lt;Object, Object&gt; entry : entriesToAddOnCommit.entrySet()) &#123;</span><br><span class="line">      delegate.putObject(entry.getKey(), entry.getValue());</span><br><span class="line">    &#125;</span><br><span class="line">    ................</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  在flushPendingEntries中，将待提交的Map进行循环处理，委托给包装的Cache类，进行putObject的操作。</p>
+<p>  后续的查询操作会重复执行这套流程。如果是insert|update|delete的话，会统一进入CachingExecutor的update方法，其中调用了这个函数，代码如下所示：</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">flushCacheIfRequired</span><span class="params">(MappedStatement ms)</span></span></span><br></pre></td></tr></table></figure>
+<p><strong>useCache和flushCache</strong></p>
+<p>　　mybatis中还可以配置userCache和flushCache等配置项，userCache是用来设置<strong>是否禁用二级缓存</strong>的，在statement中设置useCache=false可以禁用当前select语句的二级缓存，即每次查询都会发出sql去查询，默认情况是true，即该sql使用二级缓存。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`&lt;select id=``"selectUserByUserId"` `useCache=``"false"` `resultType=``"com.ys.twocache.User"` `parameterType=``"int"``&gt;``    ``select * from user where id=#&#123;id&#125;``&lt;/select&gt;`</span><br></pre></td></tr></table></figure>
+<p>　　这种情况是针对每次查询都需要最新的数据sql，要设置成useCache=false，禁用二级缓存，直接从数据库中获取。 </p>
+<p>　　在mapper的同一个namespace中，如果有其它insert、update、delete操作数据后需要刷新缓存，如果不执行刷新缓存会出现脏读。</p>
+<p> 　  设置statement配置中的flushCache=”true” 属性，默认情况下为true，即<strong>刷新缓存</strong>，如果改成false则不会刷新。使用缓存时如果手动修改数据库表中的查询数据会出现脏读。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`&lt;select id=``"selectUserByUserId"` `flushCache=``"true"` `useCache=``"false"` `resultType=``"com.ys.twocache.User"` `parameterType=``"int"``&gt;``    ``select * from user where id=#&#123;id&#125;``&lt;/select&gt;`</span><br></pre></td></tr></table></figure>
+<p>　　一般下执行完commit操作都需要刷新缓存，flushCache=true表示刷新缓存，这样可以避免数据库脏读</p>
+<p><strong>注意事项：</strong></p>
+<p>　　　　1.如果SqlSession执行了DML操作（insert、update、delete），并commit了，那么mybatis就会清空当前mapper缓存中的所有缓存数据，这样可以保证缓存中的存的数据永远和数据库中一致，避免出现脏读</p>
+<p>　　　　2.mybatis的缓存是基于[namespace:sql语句:参数]来进行缓存的，意思就是，SqlSession的HashMap存储缓存数据时，是使用[namespace:sql:参数]作为key，查询返回的语句作为value保存的。</p>
+<h3 id="二级缓存整合ehcache"><a href="#二级缓存整合ehcache" class="headerlink" title="二级缓存整合ehcache"></a>二级缓存整合ehcache</h3><p>以上是mybatis自带的二级缓存，但是这个缓存是单服务器工作，无法实现<strong>分布式缓存</strong>。那么什么是分布式缓存呢？假设现在有两个服务器1和2，用户访问的时候访问了1服务器，查询后的缓存就会放在1服务器上，假设现在有个用户访问的是2服务器，那么他在2服务器上就无法获取刚刚那个缓存</p>
+<p><img src="E:\java\笔记\spring源码解析\images\17.png" alt=""></p>
+<p>在几个不同的服务器之间，我们使用第三方缓存框架，将缓存都放在这个第三方框架中，然后无论有多少台服务器，我们都能从缓存中获取数据,即mybaits和第三方框架ehcache的整合</p>
+<p>mybatis提供了一个cache接口，如果要实现自己的缓存逻辑，实现cache接口开发即可。mybatis本身默认实现了一个，但是这个缓存的实现无法实现分布式缓存，所以我们要自己来实现。ehcache分布式缓存就可以，mybatis提供了一个针对cache接口的ehcache实现类，这个类在mybatis和ehcache的整合包中。</p>
+<p><strong>①、导入 mybatis-ehcache 整合包（最上面的源代码中包含有）</strong></p>
+<p>　　<img src="https://images2017.cnblogs.com/blog/1120165/201708/1120165-20170814205927896-1579894274.png" alt="img"></p>
+<p><strong>②、在全局配置文件 mybatis-configuration.xml 开启缓存</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`&lt;!--开启二级缓存  --&gt;``&lt;settings&gt;``    ``&lt;setting name=``"cacheEnabled"` `value=``"true"``/&gt;``&lt;/settings&gt;`</span><br></pre></td></tr></table></figure>
+<p><strong>③、在 xxxMapper.xml 文件中整合 ehcache 缓存</strong></p>
+<p>将如下的类的全类名写入<cache type=""></cache>的type属性中</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`&lt;!-- 开启本mapper的namespace下的二级缓存``    ``type:指定cache接口的实现类的类型，不写type属性，mybatis默认使用PerpetualCache``    ``要和ehcache整合，需要配置type为ehcache实现cache接口的类型``--&gt;``&lt;cache type=``"org.mybatis.caches.ehcache.EhcacheCache"``&gt;&lt;/cache&gt;`</span><br></pre></td></tr></table></figure>
+<p><strong>④、配置缓存参数</strong></p>
+<p>在 classpath 目录下新建一个 ehcache.xml 文件，并增加如下配置：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`&lt;?xml version=``"1.0"` `encoding=``"UTF-8"``?&gt;``&lt;ehcache xmlns:xsi=``"http://www.w3.org/2001/XMLSchema-instance"``    ``xsi:noNamespaceSchemaLocation=``"../config/ehcache.xsd"``&gt;` `    ``&lt;diskStore path=``"F:\develop\ehcache"``/&gt;` `    ``&lt;defaultCache``            ``maxElementsInMemory=``"10000"``            ``eternal=``"false"``            ``timeToIdleSeconds=``"120"``            ``timeToLiveSeconds=``"120"``            ``maxElementsOnDisk=``"10000000"``            ``diskExpiryThreadIntervalSeconds=``"120"``            ``memoryStoreEvictionPolicy=``"LRU"``&gt;``        ``&lt;persistence strategy=``"localTempSwap"``/&gt;``    ``&lt;/defaultCache&gt;``    ` `&lt;/ehcache&gt;`</span><br></pre></td></tr></table></figure>
+<p>diskStore：指定数据在磁盘中的存储位置。<br>defaultCache：当借助CacheManager.add(“demoCache”)创建Cache时，EhCache便会采用   <defalutcache>指定的的管理策略<br><strong>以下属性是必须的</strong>：<br>​       maxElementsInMemory - 在内存中缓存的element的最大数目<br>​       maxElementsOnDisk - 在磁盘上缓存的element的最大数目，若是0表示无穷大<br>​      eternal - 设定缓存的elements是否永远不过期。如果为true，则缓存的数据始终有效，如果为false那么还要  根据timeToIdleSeconds，timeToLiveSeconds判断<br>​      overflowToDisk - 设定当内存缓存溢出的时候是否将过期的element缓存到磁盘上<br><strong>以下属性是可选的：</strong><br>​       timeToIdleSeconds - 当缓存在EhCache中的数据前后两次访问的时间超过timeToIdleSeconds的属性取值时，这些数据便会删除，默认值是0,也就是可闲置时间无穷大<br>​       timeToLiveSeconds - 缓存element的有效生命期，默认是0.,也就是element存活时间无穷大<br>​       diskSpoolBufferSizeMB 这个参数设置DiskStore(磁盘缓存)的缓存区大小.默认是30MB.每个Cache都应该有自己的一个缓冲区.<br>​        diskPersistent - 在VM重启的时候是否启用磁盘保存EhCache中的数据，默认是false。<br>​        diskExpiryThreadIntervalSeconds - 磁盘缓存的 清理线程运行间隔，默认是120秒。每个120s，相应的线程会进行一次EhCache中数据的清理工作<br>​       memoryStoreEvictionPolicy - 当内存缓存达到最大，有新的element加入的时候， 移除缓存中element的策略。默认是LRU（最近最少使用），可选的有LFU（最不常使用）和FIFO（先进先出）</defalutcache></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/MySQL 命令 视图/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/MySQL 命令 视图/" itemprop="url">MySQ-视图</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T08:23:32+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,805
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="视图-view"><a href="#视图-view" class="headerlink" title="视图 view"></a>视图 view</h2><h4 id="定义与概念"><a href="#定义与概念" class="headerlink" title="定义与概念"></a>定义与概念</h4><p>通俗的讲，视图就是一条SELECT语句执行后返回的结果集。所以我们在创建视图的时候，主要的工作就落在创建这条SQL查询语句上。</p>
+<h4 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h4><p>视图是对于若干张基本表的引用，是一张虚表，查询语句执行的结果，不存储具体的数据，可以进行有限制的增删改查。</p>
+<h4 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h4><p>方便操作，最主要的是查询操作，减少复杂的sql语句，增强可读性。</p>
+<h4 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h4><pre><code>1.分割数据，通过select与where来定义视图，从而可以分割数据基表中某些对于用户不关心的数据，使用户把注意力集中到所关心的数据列.进一步简化浏览数据工作。
+2.给数据提供一定的逻辑独立性，如果我们为某一个基表定义一个视图，即使以后基本表的内容的发生改变了也不会影响“视图定义”所得到的数据。
+3.视图能像基本表一样授予或撤消访问许可权，给用户是表的一部分访问权限而不是全部。
+4.视图可以间接对表进行更新,因此视图的更新就是表的更新。
+</code></pre><h4 id="规则和限制"><a href="#规则和限制" class="headerlink" title="规则和限制"></a>规则和限制</h4><pre><code>1.唯一命名，不能与表或者其它视图重名。
+2.视图可以嵌套，可以从其它视图中构造视图。
+3.order by可以用在视图定义中，但是如果select语句从视图中检索数据的时候，在视图中的order by语句将会被覆盖。
+</code></pre><h4 id="视图-基本表区别"><a href="#视图-基本表区别" class="headerlink" title="视图/基本表区别"></a>视图/基本表区别</h4><pre><code>1.视图是已经编译好的sql语句，表不是。
+2.视图没有实际的物理记录。表有。
+3.表是内容，视图是窗口。
+4.表只用物理空间，而视图不占用物理空间。视图只是逻辑概念的存在，表可以随时进行修改，但是视图只能由创建的语句来修改。
+5.视图是查看数据表的一种方法，可以查询数据表中某些字段构成的数据，只是一些SQL语句的集合。从安全的角度说，视图可以不给用户接触数据表，从而不知道表结构。
+6.视图的建立和删除只影响视图本身，不影响对应的基本表。
+</code></pre><hr>
+<hr>
+<h2 id="Java-数据库的操作"><a href="#Java-数据库的操作" class="headerlink" title="Java 数据库的操作"></a>Java 数据库的操作</h2><h4 id="1-如何通过JDBC访问数据库"><a href="#1-如何通过JDBC访问数据库" class="headerlink" title="1.如何通过JDBC访问数据库"></a>1.如何通过JDBC访问数据库</h4><pre><code>步骤：
+1.加载JDBC驱动器
+2.加载JDBC驱动(Class.forName(driver)) //driver=&quot;com.mysql.jdbc.Driver&quot;
+3.建立数据库连接，取得Connection对象
+4.建立Statement对象或是PreparedStatement对象
+5.执行sql语句
+6.访问结果集ResultSet对象
+7.依次将ResultSet、Statement、PreparedStatement、Connection对象关闭，释放掉所占用资源
+</code></pre><h4 id="2-JDBC处理事务采用的方法"><a href="#2-JDBC处理事务采用的方法" class="headerlink" title="2.JDBC处理事务采用的方法"></a>2.JDBC处理事务采用的方法</h4><p>一个事务是由一条或多条对数据库操作的SQL语句组成的一个不可分割的工作单元，只有当事务中的所有操作都正常执行完了，整个事务才会被提交给数据库。在JDBC中一般通过commit()方法或rollback()方法来结束事务的操作。</p>
+<blockquote>
+<p>扩展：JDBC有哪些事务隔离级别</p>
+</blockquote>
+<h4 id="3-Class-forName-方法的作用"><a href="#3-Class-forName-方法的作用" class="headerlink" title="3.Class.forName()方法的作用"></a>3.Class.forName()方法的作用</h4><p>此方法的作用就是将类加载到JVM中，它会返回一个与带有给定字符串名的类或接口相关联的class对象，并且jvm会执行该类的静态代码段</p>
+<h4 id="4-Statement、PreparedStatement、CallableStatement之间的区别"><a href="#4-Statement、PreparedStatement、CallableStatement之间的区别" class="headerlink" title="4.Statement、PreparedStatement、CallableStatement之间的区别"></a>4.Statement、PreparedStatement、CallableStatement之间的区别</h4><pre><code>1.Statement用于执行不带参数的简单SQL语句，并返回它所生成结果的对象，每次执行SQL语句时，数据库都要编译该SQL语句
+2.PreparedStatement表示预编译SQL语句的对象，用于执行带参数的预编译SQL语句
+3.CallableStatement提供用来调用数据库中存储过程的接口，如果有输出参数要注册，说明是输出参数
+</code></pre><h4 id="5-getString-方法与getObject-方法的区别"><a href="#5-getString-方法与getObject-方法的区别" class="headerlink" title="5.getString()方法与getObject()方法的区别"></a>5.getString()方法与getObject()方法的区别</h4><pre><code>1.getObject()方法可以解决当查询结果集中的数据量较大时，避免其不会抛出OracleException异常。
+2.getString()方法或getInt()方法被调用时，程序会一次性将数据都放在内存中，然后通过ResultSet的next()和getString()方法来获取数据。
+</code></pre><h4 id="6-使用JDBC需要注意的一些问题"><a href="#6-使用JDBC需要注意的一些问题" class="headerlink" title="6.使用JDBC需要注意的一些问题"></a>6.使用JDBC需要注意的一些问题</h4><pre><code>1.首先要建立数据库的连接，才能完成对数据库的访问
+2.正常关闭和释放JDBC连接，JDBC资源才可以被快速地重用，从而使得系统性能得到改善。
+</code></pre><hr>
+<hr>
+<h2 id="MySQL数据库字段-时间类型"><a href="#MySQL数据库字段-时间类型" class="headerlink" title="MySQL数据库字段 时间类型"></a>MySQL数据库字段 时间类型</h2><p>在MySQL中经常用来存储日期的数据类型包括：Date Datetime Timestamp</p>
+<p><strong>1.Date数据类型</strong><br><br>表示用来存储没有时间的日期，此类型的格式为：YYYY-MM-DD 范围是：1000-00-00到9999-12-31</p>
+<p><strong>2.Datetime类型</strong><br><br>存储有日期和时间的数据，此类型的格式：  YYYY-MM-DD HH:MM:SS 范围是：1000-00-00 00:00:00 - 9999-12-31 23:59:59 </p>
+<p><strong>3.Timestamp类型</strong><br><br>存储既有时间又有日期的数据，此类型的格式：  YYYY-MM-DD HH:MM:SS 范围是：1000-00-00 00:00:00 - 9999-12-31 23:59:59</p>
+<p><strong>4.TIMESTAMP和DATETIME相同点</strong><br><br> 两者都可用来表示YYYY-MM-DD HH:MM:SS[.fraction]类型的日期</p>
+<p><strong>5.TIMESTAMP和DATETIME的不同点</strong><br><br>1.两者的存储方式不一样，TIMESTAMP将客户端插入的时间从当前时区转换为UTC(世界标准时间)存储。查询的时候又转化为客户端当前时区时间进行返回。对于DATETIME两者不做任何的改变，基本都是原样的输入输出。</p>
+<p>2.两者能够存储的时间范围不一样，timestamp所能存储的时间范围为：’1970-01-01 00:00:01.000000’ 到 ‘2038-01-19 03:14:07.999999’。datetime所能存储的时间范围为：’1000-01-01 00:00:00.000000’ 到 ‘9999-12-31 23:59:59.999999’。</p>
+<hr>
+<hr>
+<h2 id="MySQL-命令"><a href="#MySQL-命令" class="headerlink" title="MySQL - 命令"></a>MySQL - 命令</h2><pre><code>1.存储引擎：ENGINE = engine_name
+存储引擎：InnoDB MyISAM Memory/Heap BDB Merge Example CSV MaxDB Archive 
+
+2.列属性：
+    1.unique 唯一索引(唯一约束) 使得某字段的值不能重复
+    2.auto_increment 自增约束 默认为1开始自动增长。可以通过表属性 auto_increment = x进行设置，或 alter table tbl auto_increment = x;
+    3.foreign key 外键约束 用于限制主表与从表的数据完整性。存在外键的表称之为从表，外键指向的表称之为主表。作用：保持数据的一致性，完整性，主要目的是控制存储在外键表(从表)中的数据。
+
+3.属性
+    1.group子句 group by 字段/别名 [排序方式]
+    group by 表示按照某种方式进行分组
+
+    排序方式：升序：ASC，降序：DESC
+
+        合计函数需要配合group by使用：
+            1.count 返回不同的非NULL值数目 count(*)、count(字段)
+            2.sum 求和
+            3.max 求最大值
+            4.min 求最小值
+            5.avg 求平均值
+
+    2.having子句 与where 功能 用法相同，执行时机不同
+
+        where 在开始时执行检测数据，对原数据进行过滤。having 对筛选出的结果再次进行过滤。having 字段必须是查询出来的，where 字段必须是数据表存在的。
+
+    3.order by 子句 排序子句
+        order by 排序字段/别名 排序方式 [,排序字段/别名 排序方式]... 升序：ASC，降序：DESC
+
+    4.limit 子句，限制结果数量子句
+        仅仅只对处理好的结果进行数量限制，将处理好的结果看作是一个集合，按照记录出现的顺序，索引从0开始。
+
+        limit 起始位置,获取条数 省略第一个参数，表示从索引0开始，limit获取条数。
+
+    5.distinct all 选项
+        distinct 表示去除重复记录，默认值为all，全部记录。
+
+    6.列子查询 
+        如果子查询结果返回的是一列，使用 in 或者 not in 完成查询。
+
+    7.JOIN
+        该命令用于根据两个或多个表中的列之间的关系，从这些表中查询数据。
+        select * from persons INNER JOIN Orders ON persons.id_p = Orders.id_p ORDER BY persons.LastName
+</code></pre><blockquote>
+<p>扩展：1.JOIN: 如果表中有至少一个匹配，则返回行。2.INNER JOIN：该语句表示产生的结果集中是两个表的交集。3.FULL[OUTER] JOIN：表示产生两个表的并集。 2.LEFT JOIN: 即使右表中没有匹配，也从左表返回所有的行。表示产生左边表的完全集，如果右表中有匹配则有值，否则由null代替。 3.RIGHT JOIN: 即使左表中没有匹配，也从右表返回所有的行  4.FULL JOIN: 只要其中一个表中存在匹配，就返回行</p>
+</blockquote>
+<pre><code>8.mysql操作查询结果(case when then else end)
+    在这里case有两种格式：
+        1.简单case函数
+            CASE sex 
+                WHEN &apos;1&apos; THEN &apos;男&apos; 
+                WHEN &apos;2&apos; THEN &apos;女&apos; 
+            ELSE &apos;其他&apos; END 
+
+        2.case搜索函数 
+            CASE WHEN sex = &apos;1&apos; THEN &apos;男&apos; 
+                WHEN sex = &apos;2&apos; THEN &apos;女&apos; 
+            ELSE &apos;其他&apos; END 
+</code></pre><blockquote>
+<p>注意：这两种方式，可以实现相同的功能。简单Case函数的写法相对比较简洁，但是和case搜索函数相比，功能方面会有些限制，比如写判断式。还有一个需要注意的问题，case函数只返回第一个符合条件的值，剩下的Case部分将会被自动忽略。 </p>
+</blockquote>
+<pre><code>9.mysql cast &amp; convert函数
+    MySQL的CAST()和CONVERT()函数可用来获取一个类型的值，并产生另一个类型的值。
+    用法：
+        CAST(value as type);
+        CONVERT(value, type);
+</code></pre><blockquote>
+<p>注意：转换的类型是有限制的，该类型可包括(BINARY,CHAR,DATE,TIME,DATETIME,DECIMAL,SIGNED,UNSIGNED)。</p>
+</blockquote>
+<pre><code>10.mysql using &amp; on 
+    在用join进行多表查询的时候，通常使用on来建立两表的关系，但还有一个更方便的关键字using
+        例：
+            select a.name,b.age from test as a
+                join test2 as b
+                on a.id=b.id
+
+            select a.name,b.age from test as a
+                join test2 as b
+                using(id)
+        //上面的两个程序实等价的。
+
+11.mysql FIND_IN_SET()函数
+    FIND_IN_SET(str, strList)：str表示要查询的字符串 strList表示查询字段中包含str结果。
+
+        select * from tt_course WHERE FIND_IN_SET(&apos;15&apos;, btype);
+</code></pre><blockquote>
+<p>注意：FIND_IN_SET与like的区别：like是广泛的模糊查询，字符串中没有分隔符。FIND_IN_SET是精确匹配，字段值以英文”,”分割，FIND_IN_SET查询的结果小于like查询的结果。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>提示：在mysql中使用Navicat可视化界面的时候如果遇到错误：<code>1045 Access denied for user &#39;root&#39;@&#39;localhost&#39; (using password:YES)</code>或许是因为误删了root用户，然后在Navicat中直接添加上root用户即可。密码和你数据库密码一致。(user:root pass:xxx)。</p>
+</blockquote>
+<hr>
+<h2 id="MySQL的主从分离实现"><a href="#MySQL的主从分离实现" class="headerlink" title="MySQL的主从分离实现"></a>MySQL的主从分离实现</h2><p>利用mysql的主从配置实现主从分离。1.从数据库层面实现主从分离的配置。2.从程序的读写方面实现(不需要改变现有的程序)。</p>
+<h4 id="主从库理论"><a href="#主从库理论" class="headerlink" title="主从库理论"></a>主从库理论</h4><p>主从同步工作原理：1.主数据库将数据信息记录到二进制文件当中。2.然后从服务器就会同步主服务器的数据信息。3.然后从服务器上的线程同步执行操作。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/MySQL 联合查询/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/MySQL 联合查询/" itemprop="url">MySQ-联合查询</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T08:22:54+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  44
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h4 id="联合查询"><a href="#联合查询" class="headerlink" title="联合查询"></a>联合查询</h4><pre><code>SELECT
+    curriculum_design.tname
+FROM
+    curriculum_design
+INNER JOIN teacher
+WHERE
+    score = 0
+AND `status` = 1
+AND `year` = 2018
+GROUP BY curriculum_design.tid
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/MySQL优化 - Explain详解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/MySQL优化 - Explain详解/" itemprop="url">MySQL优化-explain详解</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T08:18:25+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL优化/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL优化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,533
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h1 id="数据访问缓慢原因查询命令"><a href="#数据访问缓慢原因查询命令" class="headerlink" title="数据访问缓慢原因查询命令"></a>数据访问缓慢原因查询命令</h1><h2 id="mysql-explain"><a href="#mysql-explain" class="headerlink" title="mysql explain"></a>mysql explain</h2><p>在数据查询或者访问过程中出现访问慢等情况时，可以使用<code>explain</code>命令能够查看sql语句的执行计划，sql语句有没有使用上索引，有没有做全表检查，所以深入了解mysql的基于开销的优化器，还可以获得很多可能被优化器考虑到的访问策略的细节。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/MySQL优化 - Explain详解/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/MySQL优化 - show profile/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/MySQL优化 - show profile/" itemprop="url">MySQL优化-show profile</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T08:19:12+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL优化/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL优化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  118
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h4 id="1-通过show-profile分析SQL"><a href="#1-通过show-profile分析SQL" class="headerlink" title="1.通过show profile分析SQL"></a>1.通过show profile分析SQL</h4><p>1.通过@@have_profiling参数可以看出MySQL是否支持profile。</p>
+<pre><code>SELECT @@have_profiling
+</code></pre><p>2.通过set profiling = 1 命令开启Session级别的profile。</p>
+<pre><code>SELECT @@profiling
+SET profiling=1
+</code></pre><p>3.通过show PROFILE FOR QUERY 命令可以看到执行过程中线程的每个状态和消耗的时间。</p>
+<p>4.show profile命令能够在做SQL优化时帮助我们了解时间都耗费到哪里。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/MySQL优化 - trace分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/MySQL优化 - trace分析/" itemprop="url">MySQL优化-trace分析</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T08:19:51+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL优化/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL优化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  79
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="mysql优化-trace分析"><a href="#mysql优化-trace分析" class="headerlink" title="mysql优化 - trace分析"></a>mysql优化 - trace分析</h2><p>通过trace文件能够进一步了解为什么优化器选择A执行计划而不选择B执行计划，帮助我们更好的理解优化器是如何选择执行计划的。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/MySQL优化 - 索引优化及SQL优化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/MySQL优化 - 索引优化及SQL优化/" itemprop="url">MySQL优化-索引优化</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T08:21:51+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL优化/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL优化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,766
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  14
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="MySQL-索引优化"><a href="#MySQL-索引优化" class="headerlink" title="MySQL - 索引优化"></a>MySQL - 索引优化</h2><p>[TOC]<br>通过索引可以帮助我们解决大多数的SQL性能问题。</p>
+<p>MySQL索引类比是一本书前面的目录，能加快数据库的查询速度。</p>
+<p>在没有索引的情况下，数据库会遍历全部数据后选择符合条件的。而有了相应的索引之后，数据库会直接在索引中查找符合条件的选项。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/MySQL优化 - 索引优化及SQL优化/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/MySQL优化 - 表结构优化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/MySQL优化 - 表结构优化/" itemprop="url">MySQL优化-数据表结构优化</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T08:20:39+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL优化/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL优化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  662
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="MySQL优化-数据表结构优化"><a href="#MySQL优化-数据表结构优化" class="headerlink" title="MySQL优化 - 数据表结构优化"></a>MySQL优化 - 数据表结构优化</h2><h4 id="选择合适的数据类型"><a href="#选择合适的数据类型" class="headerlink" title="选择合适的数据类型"></a>选择合适的数据类型</h4><pre><code>1.使用可以存下我们数据最小的数据类型。
+2.使用简单的数据类型，int要比varchar类型在mysql处理上简单。
+3.尽可能的使用not null定义字段。
+4.尽量少用text类型，非用不可的时候考虑分表。
+</code></pre>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/MySQL优化 - 表结构优化/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/site.jpg"
+                alt="Bangjin-Hu" />
+            
+              <p class="site-author-name" itemprop="name">Bangjin-Hu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/BangjinHu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:2315378346@qq.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/Aaron_P_L" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-heart-o"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
+                      
+                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://iProgramering.github.io" target="_blank" title="iProgramer_ing">
+                      
+                        <i class="fa fa-fw fa-user"></i>iProgramer_ing</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          <div id="music163player">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src="//music.163.com/outchain/player?type=2&id=38358214&auto=0&height=66
+
+">
+    </iframe>
+</div>
+        </div>
+      </section>
+
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bangjin-Hu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">465.0k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/lib/clipboard/clipboard.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+</body>
+</html>

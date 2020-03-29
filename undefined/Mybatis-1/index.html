@@ -1,0 +1,2542 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/site.jpg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Mybatis," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="BangjinHu's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. Mybatis - FD前言1.原生态JDBC程序存在问题public static void main(String[] args) {     //设置连接为null     Connection connection = null;     //设置预处理状态为null     PreparedStatement preparedStateme">
+<meta name="keywords" content="Mybatis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MyBatis 学习">
+<meta property="og:url" content="http://bangjinhu.github.io/undefined/Mybatis-1/index.html">
+<meta property="og:site_name" content="BangjinHu&#39;s Blog">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. Mybatis - FD前言1.原生态JDBC程序存在问题public static void main(String[] args) {     //设置连接为null     Connection connection = null;     //设置预处理状态为null     PreparedStatement preparedStateme">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-03-29T02:46:32.707Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MyBatis 学习">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. Mybatis - FD前言1.原生态JDBC程序存在问题public static void main(String[] args) {     //设置连接为null     Connection connection = null;     //设置预处理状态为null     PreparedStatement preparedStateme">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://bangjinhu.github.io/undefined/Mybatis-1/"/>
+
+
+
+
+
+  <title>MyBatis 学习 | BangjinHu's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    
+    <a href="https://github.com/BangjinHu"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">BangjinHu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">让优秀成为习惯，让知识成为信仰</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            本站搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Mybatis-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">MyBatis 学习</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:46:32+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mybatis/" itemprop="url" rel="index">
+                    <span itemprop="name">Mybatis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  11,699
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  47
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h1 id="Mybatis-FD"><a href="#Mybatis-FD" class="headerlink" title="Mybatis - FD"></a>Mybatis - FD</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h4 id="1-原生态JDBC程序存在问题"><a href="#1-原生态JDBC程序存在问题" class="headerlink" title="1.原生态JDBC程序存在问题"></a>1.原生态JDBC程序存在问题</h4><pre><code>public static void main(String[] args) {
+    //设置连接为null
+    Connection connection = null;
+    //设置预处理状态为null
+    PreparedStatement preparedStatement = null;
+    //设置结果集为null
+    ResultSet resultSet = null;
+    //检查异常并抛出异常
+        try {
+            //1、加载数据库驱动
+            Class.forName(&quot;com.mysql.jdbc.Driver&quot;);
+            //2、通过驱动管理类获取数据库链接
+            connection =  DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/mybatis?characterEncoding=utf-8&quot;, &quot;root&quot;, &quot;root&quot;);
+            //3、定义sql语句 ?表示占位符
+            String sql = &quot;select * from user where username = ?&quot;;
+            //4、获取预处理statement
+            preparedStatement = connection.prepareStatement(sql);
+            //5、设置参数，第一个参数为sql语句中参数的序号（从1开始），第二个参数为设置的参数值
+            preparedStatement.setString(1, &quot;Aaron&quot;);
+            //6、向数据库发出sql执行查询，查询出结果集
+            resultSet =  preparedStatement.executeQuery();
+            //7、遍历查询结果集
+            while(resultSet.next()){
+                System.out.println(resultSet.getString(&quot;id&quot;)+&quot;  &quot;+resultSet.getString(&quot;username&quot;));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            //8、释放资源
+            if(resultSet!=null){
+                try {
+                    resultSet.close();
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+            if(preparedStatement!=null){
+                try {
+                    preparedStatement.close();
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+            if(connection!=null){
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+</code></pre><blockquote>
+<p>总结：1.JDBC在使用过程中数据库连接会频繁开启和关闭，会严重影响到数据库的性能。2.在程序中存在硬编码，数据库部分以及SQL执行部分。</p>
+</blockquote>
+<h2 id="Mybatis-框架原理"><a href="#Mybatis-框架原理" class="headerlink" title="Mybatis 框架原理"></a>Mybatis 框架原理</h2><pre><code>1.mybatis配置文件，包括Mybatis全局配置文件和Mybatis映射文件，其中全局配置文件配置了数据源、事务等信息。映射文件配置了SQL执行相关的信息。
+
+2.mybatis通过读取配置文件信息（全局配置文件和映射文件），构造出SqlSessionFactory，即会话工厂(sqlSessionFactory)。
+
+3.通过SqlSessionFactory(会话工厂)，可以创建SqlSession即会话。Mybatis是通过SqlSession来操作数据库的。
+
+4.SqlSession(会话)其本身不能直接操作数据库，它是通过底层的Executor执行器接口来操作数据库的。Executor接口有两个实现类，一个是普通执行器，一个是缓存执行器（默认）。
+
+5.Executor执行器要处理的SQL信息是封装到一个底层对象 MappedStatement 中。该对象包括：SQL语句、输入参数映射信息、输出结果集映射信息。其中输入参数和输出结果的映射类型包括Java的简单类型、HashMap集合对象、POJO对象类型。
+</code></pre><hr>
+<h2 id="Mybatis-入门程序"><a href="#Mybatis-入门程序" class="headerlink" title="Mybatis 入门程序"></a>Mybatis 入门程序</h2><h4 id="1-实现步骤"><a href="#1-实现步骤" class="headerlink" title="1.实现步骤"></a>1.实现步骤</h4><pre><code>1.创建数据表
+2.添加相关依赖文件
+3.添加log4j.properties文件(因为mybatis使用的日志包是log4j(在classpath路径下创建该文件))
+
+    # Global logging configuration
+    log4j.rootLogger=DEBUG, stdout
+    # Console output...
+    log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+    log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+    log4j.appender.stdout.layout.ConversionPattern=%5p [%t] - %m%n
+</code></pre><blockquote>
+<p>注意：日志级别在开发阶段设置成DEBUG，在生产阶段设置成INFO或者ERROR。</p>
+</blockquote>
+<pre><code>4.编程步骤
+    1.创建PO类，根据需求创建
+        Public class User {
+            private int id;
+            private String username;// 用户姓名
+            private String sex;// 性别
+            private Date birthday;// 生日
+            private String address;// 地址
+            //以及一系列的get/set方法
+            }
+</code></pre><blockquote>
+<p>注意：创建的po类属性名称应该和数据库表中的列名一致，如果表中的列名带有下划线，那么PO类中对应的属性名要采用驼峰式命名。驼峰式命名：骆驼式命名法就是当变量名或函数名是由一个或多个单词连结在一起，而构成的唯一识别字时，第一个单词以小写字母开始；从第二个单词开始以后的每个单词的首字母都采用大写字母，例如：myFirstName、myLastName，这样的变量名看上去就像骆驼峰一样此起彼伏，故得名。</p>
+</blockquote>
+<pre><code>    2.创建全局配置文件SqlMapConfig.xml(是在classpath路径下创建配置文件)
+        &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+        &lt;!DOCTYPE configuration
+        PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;
+        &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
+        &lt;configuration&gt;
+        &lt;!-- 配置mybatis的环境信息 --&gt;
+        &lt;environments default=&quot;development&quot;&gt;
+            &lt;environment id=&quot;development&quot;&gt;
+                &lt;!-- 配置JDBC事务控制，由mybatis进行管理 --&gt;
+                &lt;transactionManager type=&quot;JDBC&quot;&gt;&lt;/transactionManager&gt;
+                &lt;!-- 配置数据源，采用dbcp连接池 --&gt;
+                &lt;dataSource type=&quot;POOLED&quot;&gt;
+                    &lt;!—驱动和URL设置--&gt;
+                    &lt;property name=&quot;driver&quot; value=&quot;com.mysql.jdbc.Driver&quot;/&gt;
+                    &lt;property name=&quot;url&quot; value=&quot;jdbc:mysql://localhost:3306/mybatis?useUnicode=true&amp;amp;characterEncoding=utf8&quot;/&gt;
+                    &lt;property name=&quot;username&quot; value=&quot;root&quot;/&gt;
+                    &lt;property name=&quot;password&quot; value=&quot;root&quot;/&gt;
+                &lt;/dataSource&gt;
+            &lt;/environment&gt;
+        &lt;/environments&gt;
+        &lt;/configuration&gt;
+
+    3.编写映射文件(xxxMapper.xml(mapper接口的实现类))
+        &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+        &lt;!DOCTYPE mapper    
+        PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;    
+        &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+
+    4.加载映射文件，在SqlMapConfig.xml中进行加载
+        &lt;!-- 加载mapper --&gt;
+        &lt;mappers&gt;
+            &lt;mapper resource=&quot;sqlmap/User.xml&quot;/&gt;
+        &lt;/mappers&gt;
+
+    5.编写测试程序，即编写Java代码，连接并操作数据库
+        public class MybatisFirst {
+
+        @Test
+        public void findUserByIdTest() throws Exception{
+            //1、读取配置文件
+            String resource = &quot;SqlMapConfig.xml&quot;;
+            InputStream inputStream = Resources.getResourceAsStream(resource);
+            //2、根据配置文件创建SqlSessionFactory
+            SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+            //3、SqlSessionFactory创建SqlSession
+            SqlSession sqlSession = sqlSessionFactory.openSession();
+            //4、SqlSession执行statement，并返回映射结果
+            //第一个参数：statement的id，建议：namespace.statementId（确保唯一）
+            //第二个参数：入参的值，它的类型要和映射文件中对应的statement的入参类型一致
+            User user = sqlSession.selectOne(&quot;findUserById&quot;, 1);
+            //打印输出结果集
+            System.out.println(user);
+            //5、关闭SqlSession
+            sqlSession.close();
+        }
+    }
+
+5.mybatis.xml配置文件
+
+    1.SqlSession 说明
+
+        1.SqlSessionFactoryBuider
+            通过SqlSessionFactoryBuilder创建会话工厂SqlSessionFactory，将SqlSessionFactoryBuilder当成一个工具类使用即可，不需要使用单例模式管理，在创建SqlSessionFactory的时候，只需要new一次SqlSessionFactoryBuilder即可。
+
+        2.SqlSessionFactory
+            通过SqlSessionFactory创建SqlSession，使用单例模式来管理SqlSessionFactory（工厂一旦创建，只使用一个实例）。
+
+        3.SqlSession
+            SqlSession是一个面向用户的接口，其提供了很多操作数据库的方法，同时其是线程不安全的，其最佳的应用场合是方法体内，将其定义为局部变量来使用。
+
+    2.mybatis.xml配置文件
+
+        &lt;!-- 3.配置SqlSessionFactory spring和MyBatis整合，不需要在mybatis的配置文件中写每个entity的映射文件 --&gt;
+        &lt;bean id=&quot;sqlSessionFactory&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;
+            &lt;!--1.配置数据源--&gt;
+            &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;
+            &lt;!--2.指定mybatis的全局配置文件--&gt;
+            &lt;property name=&quot;configLocation&quot; value=&quot;classpath:mybatis-config.xml&quot;&gt;&lt;/property&gt;
+            &lt;!-- 自动扫描mapper.xml文件 --&gt;
+            &lt;property name=&quot;mapperLocations&quot; value=&quot;classpath:sqlmapper/*.xml&quot;&gt;&lt;/property&gt;
+        &lt;/bean&gt;
+
+        &lt;!--批量配置mapper代理类，默认bean的id为类名首字母小写--&gt;
+        &lt;bean class=&quot;org.mybatis.spring.mapper.MapperScannerConfigurer&quot;&gt;
+            &lt;!--1.配置扫描包--&gt;
+            &lt;property name=&quot;basePackage&quot; value=&quot;cn.edu.xidian.c2.mapper&quot; /&gt;
+            &lt;!--2.只有一个sqlSessionFactory时，默认不需要配置SqlSessionFactory,单独配置也可以--&gt;
+            &lt;property name=&quot;sqlSessionFactoryBeanName&quot; value=&quot;sqlSessionFactory&quot;&gt;&lt;/property&gt;
+        &lt;/bean&gt;
+</code></pre><blockquote>
+<p>总结：1.首先读取配置文件，然后通过SqlSessionFactoryBuilder创建SqlSessionFactory会话工厂。<br>2.通过SqlSessionFactory创建SqlSession，然后调用SqlSession的操作数据库的方法。<br>3.最后关闭SqlSession。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>小结</p>
+<blockquote>
+<p>1.parameterType 指定输入参数的Java类型，可以填写别名或Java类的全限定名。</p>
+<blockquote>
+<p>2.resultType 指定输出结果的Java类型，可以填写别名或Java类的全限定名。</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<pre><code>#{}和${}
+    #{}：相当于预处理中的占位符？。
+
+    #{}里面的参数表示接收java输入参数的名称。
+
+    #{}可以接受HashMap、简单类型、POJO类型的参数。
+
+    当接受简单类型的参数时，#{}里面可以是value，也可以是其他。
+
+    #{}可以防止SQL注入。
+
+    ${}：相当于拼接SQL串，对传入的值不做任何解释的原样输出。
+
+    ${}会引起SQL注入，所以要谨慎使用。
+
+    ${}可以接受HashMap、简单类型、POJO类型的参数。
+
+    当接受简单类型的参数时，${}里面只能是value。
+
+selectOne：只能查询0或1条记录，大于1条记录的话，会报错
+selectList：可以查询0或N条记录
+</code></pre><hr>
+<h2 id="Mybatis-开发DAO"><a href="#Mybatis-开发DAO" class="headerlink" title="Mybatis 开发DAO"></a>Mybatis 开发DAO</h2><p>我们知道，mybatis在项目开发中主要使用的地方就是开发DAO(数据访问层)。所以开发方式有两种。1.原始的DAO开发方式。2.Mapper代理开发方式。</p>
+<h4 id="1-原始DAO开发方式"><a href="#1-原始DAO开发方式" class="headerlink" title="1.原始DAO开发方式"></a>1.原始DAO开发方式</h4><pre><code>实现步骤：
+    1.根据需求创建po类
+      这一步骤的实现所对应的属性名要与数据库中的属性名相对应
+    2.编写全局配置文件
+      这一步骤的实现是配置数据源等信息
+    3.根据需求编写映射文件
+      实现实体类与数据库之间的数据操作
+    4.加载映射文件
+    5.编写dao接口
+        public interface UserDao {
+            //根据用户ID来查询用户信息
+            public User findUserById(int id);
+            //根据用户名称来模糊查询用户信息列表
+            public List&lt;User&gt; findUsersByName(String username);
+            //添加用户
+            public void insertUser(User user);
+        }
+
+    6.编写dao实现类
+        public class UserDaoImpl implements UserDao {
+
+            //注入SqlSessionFactory
+            private SqlSessionFactory sqlSessionFactory;
+            //使用构造方法来初始化SqlSessionFactory
+            public UserDaoImpl(SqlSessionFactory sqlSessionFactory){
+                this.sqlSessionFactory = sqlSessionFactory;
+            }
+
+            @Override
+            public User findUserById(int id) {
+                //通过工厂，在方法内部获取SqlSession，这样就可以避免线程不安全
+                SqlSession sqlSession = sqlSessionFactory.openSession();
+                //返回结果集
+                return sqlSession.selectOne(&quot;test.findUserById&quot;, id);
+            }
+
+            @Override
+            public List&lt;User&gt; findUsersByName(String username) {
+                //通过工厂，在方法内部获取SqlSession，这样就可以避免线程不安全
+                SqlSession sqlSession = sqlSessionFactory.openSession();
+                return sqlSession.selectList(&quot;test.findUsersByName&quot;, username);
+            }
+
+            @Override
+            public void insertUser(User user) {
+                //通过工厂，在方法内部获取SqlSession，这样就可以避免线程不安全
+                SqlSession sqlSession = sqlSessionFactory.openSession();
+                sqlSession.insert(&quot;test.insertUser&quot;, user);
+            }
+
+        }
+
+    7.编写测试代码
+        public class UserDaoTest {
+
+            //声明全局的SqlSessionFactory
+            private SqlSessionFactory sqlSessionFactory;
+
+            @Before
+            //此方法在测试方法执行之前执行，spring开发方式
+            public void setUp() throws Exception {
+                // 1、读取配置文件
+                String resource = &quot;SqlMapConfig.xml&quot;;
+                InputStream inputStream = Resources.getResourceAsStream(resource);
+                // 2、根据配置文件创建SqlSessionFactory
+                sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+            }
+
+            @Test
+            public void testFindUserById() {
+                //构造UserDao对象
+                UserDao userDao = new UserDaoImpl(sqlSessionFactory);
+                //调用UserDao对象的方法
+                User user = userDao.findUserById(1);
+
+                System.out.println(user);
+            }
+
+            @Test
+            public void testFindUsersByName() {
+                //构造UserDao对象
+                UserDao userDao = new UserDaoImpl(sqlSessionFactory);
+                //调用UserDao对象的方法
+                List&lt;User&gt; list = userDao.findUsersByName(&quot;小明&quot;);
+
+                System.out.println(list);
+            }
+
+            @Test
+            public void testInsertUser() {
+                //构造UserDao对象
+                UserDao userDao = new UserDaoImpl(sqlSessionFactory);
+                //构造User对象
+                User user = new User();
+                user.setUsername(&quot;东哥3&quot;);
+                user.setAddress(&quot;清河宝盛西里3&quot;);
+
+                //调用UserDao对象的方法
+                userDao.insertUser(user);
+
+                System.out.println(user.getId());
+            }
+
+        }
+</code></pre><h4 id="2-mapper开发代理方式"><a href="#2-mapper开发代理方式" class="headerlink" title="2.mapper开发代理方式"></a>2.mapper开发代理方式</h4><p>使用Mapper代理的开发方式，我们只需要编写mapper接口，然后mybatis会自动为mapper接口生成动态代理实现类。</p>
+<pre><code>1.mapper接口的全限定名要和mapper映射文件的namespace的值相同。
+2.mapper接口的方法名称要和mapper映射文件中的statement的id相同。
+3.mapper接口的方法参数只能有一个，且类型要和mapper映射文件中statement的parameterType的值保持一致。
+4.mapper接口的返回值类型要和mapper映射文件中statement的resultType值或resultMap中的type值保持一致。
+</code></pre><blockquote>
+<p>提示：statement表示Java执行数据库操作的一个重要接口，用于在已经建立的数据库连接的基础上，向数据库发送要执行的SQL语句，Statement对象用于执行不带参数的简单SQL语句。</p>
+</blockquote>
+<h2 id="Mybatis-映射文件"><a href="#Mybatis-映射文件" class="headerlink" title="Mybatis 映射文件"></a>Mybatis 映射文件</h2><pre><code>1.输入映射
+    ParameterType
+
+2.输出映射
+    resultType
+
+3.高级映射
+    resultMap
+</code></pre><h2 id="mybatis-高级映射"><a href="#mybatis-高级映射" class="headerlink" title="mybatis 高级映射"></a>mybatis 高级映射</h2><pre><code>1.mybatis框架执行过程：
+  1.配置mybatis的配置文件(mybatis-config.xml)（名称不固定）。
+
+  2.通过配置文件(mybatis-config.xml)，加载mybatis运行环境，创建SqlSessionFactory会话工厂,SqlSessionFactory在实际使用时按单例方式。
+
+  3.通过SqlSessionFactory创建SqlSession，SqlSession是一个面向用户接口（提供操作数据库方法），实现对象是线程不安全的，建议sqlSession应用场合在方法体内。
+
+  4.调用sqlSession的方法去操作数据。如果需要提交事务，需要执行SqlSession的commit()方法。
+
+  5.释放资源，关闭SqlSession
+
+2.mybatis开发dao的方法
+  1.使用原始的dao的方法
+    这样需要编写dao接口和实现类，需要在dao实现类注入一个SqlSessionFactory工厂。
+
+  2.mapper代理开发方法(推荐)
+    0.编写mapper接口(dao接口)
+      注意：在编写mapper.xml(映射文件)和mapper.java(接口)需要遵循开发规范
+
+    1.mapper.xml中的namespace就是mapper.java的类的全路径名
+
+    2.mapper.xml中statement的id值和mapper.java中方法名一致(如：insert/delete/update中的id值)
+
+    3.mapper.xml中statement的parameterType指定输入参数的类型和mapper.java的方法数据参数类型一致(parameterType类型与对应的接口方法参数类型一致)
+
+    4.mapper.xml中statement的resultType指定输出结果的类型和mapper.java的方法返回值类型一致(resultMap：定义出参，调用已经定义的&lt;resultMap&gt;&lt;/resultMap&gt;映射管理器的id值 
+
+    resultType：定义出参，匹配普通Java类型或自定义pojo类型(出参类型若不指定，将为语句默认类型))
+</code></pre><blockquote>
+<p>注意：全局配置文件(mybatis-config.xml)可以配置properties属性、别名、mapper加载等。</p>
+</blockquote>
+<pre><code>3.输入映射
+  1.parameterType：指定输入参数类型可以是简单类型、POJO、HashMap，而对于综合查询，建议parameterType使用包装的pojo，有利于系统扩展。
+
+4.输出映射
+  1.resultType：查询到的列名和resultType指定的POJO的属性名一致，这样才能映射成功。
+    作用：将查询结果按照sql列名pojo属性名一致性映射到pojo中
+    场合：
+
+  2.resultMap：可以通过resultMap完成高级映射，如果查询到的列名和映射的POJO的属性名不一致时，通过resultMap设置别名和属性名之间的对应关系(映射关系)，可以完成映射。
+
+    association
+    作用：将关联查询信息映射到一个pojo对象中
+    场合：为了方便查询关联信息可以使用association将关联 订单信息 映射为 用户对象 的pojo属性中。association适用于一对一查询。
+</code></pre><blockquote>
+<p>注意：使用resultType无法将查询结果映射到pojo对象的pojo属性中，根据对结果集查询遍历的需要选择使用resultType还是resultMap</p>
+</blockquote>
+<pre><code>collection
+作用：将关联查询信息映射到一个list集合中
+场合：为了方便查询遍历关联信息可以使用collection将关联信息映射到list集合中，而如果使用resultType无法将查询结果映射到list集合中。collection适用于一对多和多对多的查询。
+</code></pre><blockquote>
+<p>扩展：映射管理器<code>resultMap</code>：是<code>mybatis</code>中强大的工具，使用其可以进行 实体类之间 的映射，并且管理 结果和实体类 之间的映射关系。</p>
+</blockquote>
+<pre><code>resultMap映射管理器需要配置的属性：
+
+    &lt;resultMap id=&quot;&quot; type=&quot;&quot;&gt;&lt;/resutlMap&gt;   
+        id=&quot; &quot;:表示这个映射管理器的唯一标识，外部通过该值引用
+        type = &quot; &quot;:表示需要映射的实体类
+
+resultMap映射管理器需要配置的参数：
+
+    &lt;id column = &quot; &quot; property= &quot; &quot; /&gt; 
+        &lt;id&gt;标签指的是：结果集中结果唯一的列column(column：指定唯一标识用户信息的数据列)和实体属性property(property:映射到user实体类的哪个属性)的映射关系
+            注意：&lt;id&gt;标签管理的列未必是主键列，需要根据具体需求指定
+
+    &lt;result column= &quot; &quot; property=&quot; &quot; /&gt;  
+        &lt;result&gt;标签指的是：结果集中普通列column和实体属性property的映射关系
+
+resultMap映射管理器需要维护的关系：所谓关系维护是值在 主表查询时将其关联子表的结果也查询出来
+</code></pre><hr>
+<pre><code>resultMap元素中，允许有如下直接子元素：
+    1.constructor：类在实例化时，用来注入结果到构造方法中,作用与result相同，同时可以标识出用这个字段值可以区分其他对象实例
+        arg：注入到构造方法的一个普通结果
+        idArg：ID参数，标记结果作为ID，可以帮助提高整体效能
+
+    2.result：将数据表中的字段注入到Java对象属性中
+
+    3.association：关联(一对一的关系)，表示在resultMap映射器中，通过&lt;association&gt;&lt;/association&gt;进行维护，在查询一个对象时，可以将关联的对应信息也查询出来。
+
+      作用：将关联查询的信息映射到一个POJO中
+      &lt;association property=&quot;&quot; javaType=&quot;&quot;&gt;
+          property：对象属性的名称，被维护实体在宿主实体(POJO)中的属性名
+           javaType：对象属性的类型，被维护实体的类型
+           column：所对应的外键字段名称
+           select：使用另一个查询封装的结果
+
+    4.collection：集合(一对多/多对多关系的维护)，对关联查询到的多条记录映射到集合对象中。
+
+      作用：将关联查询用户信息映射到一个list集合中
+      &lt;collection property=&quot;&quot; ofType=&quot;&quot;&gt;
+      property=&quot;&quot; 将查询到的多条记录映射到相应的POJO类上对应的属性中
+      ofType=&quot;&quot; 指定映射到List集合的pojo类型
+
+    5.discriminator：使用结果集决定使用哪个个结果映射
+</code></pre><blockquote>
+<p>拓展：sql片段标签<sql>：通过该标签可定义能复用的sql语句片段，在执行sql语句标签中直接引用。</sql></p>
+</blockquote>
+<pre><code>注意：需要配置的属性，id=&quot;&quot; 表示需要改sql语句片段的唯一标识 引用：通过&lt;include refid=&quot;&quot;/&gt;标签引用，refid=&quot;&quot;中的值指向需要引用的&lt;sql&gt;中的id=&quot;&quot;属性。
+</code></pre><blockquote>
+<p>注意：在resultMap中应该注意两点</p>
+</blockquote>
+<pre><code>1.关联关系的维护可以根据实体类之间的实际情况进行嵌套维护
+
+2.出现重复列名的处理，在实际操作过程中，查询到的结果可能会出现相同的列名，这样会对映射到实体属性带来影响甚至报错，所以可以通过对列取别名的方式来处理
+</code></pre><p>5.高级映射<br>  1.将关联查询的列映射到一个POJO属性中(一对一)<br>  2.将关联查询的列映射到一个List<pojo>中(一对多)</pojo></p>
+<hr>
+<h2 id="mybatis动态sql语句"><a href="#mybatis动态sql语句" class="headerlink" title="mybatis动态sql语句"></a>mybatis动态sql语句</h2><p>6.常用的动态语句标签(通过动态sql标签可以进行条件判断，条件遍历等操作从而能够满足结果中的需要)</p>
+<pre><code>&lt;where&gt;：这一标签的使用可以代替sql语句中的where关键字，一般放置在条件查询的最外层 
+   where后面跟查询条件，简化sql语句中判断条件的书写 此中，mybatis会智能的将首个and或or给忽略
+
+&lt;if&gt;：这一标签配置属性test=&quot;条件字符串&quot;，判断是否满足条件
+
+&lt;set&gt;：这一标签常用于&lt;update&gt;更新语句中，替代sql的set关键字，特别是在联合&lt;if&gt;进行判断是否符合条件时，可以有效方式当某个参数为空或者不合法是错误的更新到数据库中
+ mybatis set标签的使用：sql语句中的最后一个逗号会被set标记自动忽略
+
+&lt;trim&gt;：在mapper.xml中对statement的定义，可以使用&lt;trim&gt;标签来填充和隐藏sql语句。
+    功能：1.如果标签体中有SQL语句，就把修饰后的SQL语句拼接到之前的SQL语句上，如果标签体中没有SQL语句，那么这标签相当于不存在。2.这四个属性的默认值都是空字符串。
+
+      trim属性 prefix：前缀   suffix：后缀 
+
+      &lt;trim prefix=&quot;(&quot; suffix=&quot;)&quot; prefixOverrides=&quot;,&quot; suffixOverrides=&quot;,&quot;&gt;
+
+      属性：
+        1.prefix=&quot;(&quot; 在trim标签定义的内容前填充对应内容
+        2.suffix=&quot;)&quot; 在trim标签定义的内容后填充对应内容
+
+        3.prefixOverrides=&quot;,&quot;  在trim定义中，隐藏头部对应的内容。这个属性指定一个字符串，这个字符串一定是SQL语句的前缀，如果不是前缀，这个属性不起作用。会用prefix属性指定的字符串替换掉这个属性指定的字符串。
+
+        4.suffixOverrides=&quot;,&quot; 在trim定义的中，隐藏尾部对应的内容。这个属性指定一个字符串，这个字符串位一定是SQL语句的后缀，如果不是后缀，这个属性不起作用。其会用suffix属性指定的字符串替换这个属性指定的字符串。
+
+mysql对查询结果排序：从表中查询出来的数据，可能是无序的，或者其排列顺序表示用户期望的，使用order by对查询结果进行排序。
+
+    SELECT 字段名1，字段名2，... FROM 表名 ORDER BY 字段名1 [ASC|DESC]，字段名2[ASC|DESC],...
+
+    参数说明：
+        1.字段名1，字段名2,...：表示对查询结果排序的依据
+        2.参数ASC：表示按照升序进行排序
+        3.参数DESC：表示按照降序的方式进行排序
+        4.默认情况下是按照ASC方式进行升序排序
+</code></pre><blockquote>
+<p>注意：当按照执行字段进行升序排序时，如果其中的某条记录的字段值是null时，则这条记录会在第一条显示，因为null值会被认为是最小值。</p>
+</blockquote>
+<pre><code>标签组：
+  &lt;choose&gt;
+    &lt;when&gt; //此元素的作用与Java中的switch效果差不多
+    &lt;/when&gt;
+    &lt;otherwise&gt;
+    &lt;/otherwise&gt;
+  &lt;/choose&gt; 
+  也是一个用于条件判断的标签组，和&lt;if&gt;的不同之处在于条件从&lt;choose&gt;进入，去匹配&lt;when&gt;中的添加，一旦匹配马上结束，若到找不到匹配项，将执行&lt;otherwise&gt;中的语句；可以理解为&lt;if&gt;是 &amp;&amp; 关系 &lt;choose&gt;是 || 关系
+
+  &lt;foreach&gt;标签：遍历集合类型的条件(在实现 mybatis in 语句查询时特别有用)
+  属性：collection=&quot;array/list&quot; 是数组类型还是集合类型
+        item=&quot; &quot; 参数名
+    open=&quot;(&quot; separator=&quot;,&quot; close=&quot;)&quot;  开始符号，分隔符号，结束符号
+    index=&quot;&quot; 结束下标位置，不配置该参数时，默认为全部遍历
+</code></pre><blockquote>
+<p>扩展：</p>
+</blockquote>
+<pre><code>MySQL JOIN语法
+    join用于多表中字段之间的联系(...FROM table1(左表) INNER|LEFT|RIGHT JOIN table2(右表) ON condition)
+大致功能：
+    1.INNER JOIN（内连接取两表的交集）：取得两个表中存在连接匹配关系的记录(产生一组同时符合A和B的数据)。
+    2.LEFT JOIN（左连接）：返回左表中所有的行，即在右表中没有匹配的记录。
+    3.RIGHT JOIN（右连接）：返回右表中所有的行，即在左表中没有匹配的记录。
+    4.OUTER JOIN(外连接)：求两个集合的并集。
+    5.FULL JOIN：在两张表进行连接查询时，返回左表和右表中所有没有匹配的行。
+
+
+条件ON与Where的执行顺序
+    ON：用来决定如何从B表中检索数据行
+        如：A LEFT JOIN B ON 条件表达式 ON条件用来决定如何从B表中检索数据行，如果在B表中没有任何一行数据匹配ON的条件，将会额外生成一行所有列都为null的数据，在匹配阶段，where子句的条件不会使用吗，仅在匹配阶段完成以后，WHERE子句条件才会被使用。它将从匹配阶段产生的数据中检索过滤。
+</code></pre><hr>
+<h2 id="mybatis高级查询"><a href="#mybatis高级查询" class="headerlink" title="mybatis高级查询"></a>mybatis高级查询</h2><p>1.关联查询<br>  在查询一个结果的时候，查询出其他关联的结果集</p>
+<p>2.子查询<br>  关联查询一般可以使用子查询来实现，但是一般情况下子查询的效率低于关联查询</p>
+<p>3.集合查询<br>  集合查询是关联查询的一种，只不过它是一对多而已</p>
+<p>4.mapper.xml源码分析</p>
+<pre><code>1.namespace：对应mapper接口(类似dao接口)
+2.resultMap：
+  1.id：
+</code></pre><p>5.一对一查询(resultType 实现)</p>
+<p>使用resultType来进行一对一结果映射，查询出的列的个数和映射的属性的个数要一致。而且映射的属性要存在与一个大的对象中，它是一种平铺式的映射，即数据库查询出多少条记录，则映射成多少个对象。</p>
+<pre><code>一对一查询(resultMap 实现)
+
+使用resultMap来进行一对一结果映射，它是将关联对象添加到主信息的对象中，具体说是一种对象嵌套另一种对象的一种映射方式。
+
+&lt;resultMap type=&quot;mybatis.po.OrdersExt&quot; id=&quot;OrdersAndUserRstMap&quot;&gt;
+    &lt;!-- 订单信息 --&gt;
+    &lt;id column=&quot;id&quot; property=&quot;id&quot;/&gt;
+    &lt;result column=&quot;user_id&quot; property=&quot;userId&quot;/&gt;
+    &lt;result column=&quot;number&quot; property=&quot;number&quot;/&gt;
+    &lt;!-- 对象嵌套映射 --&gt;
+    &lt;!-- association：一对一关联映射 --&gt;
+    &lt;!-- property：关联信息查询的结果将要映射的扩展类中的对象属性名称 --&gt;
+    &lt;!-- id标签：建议在关联查询时必须写上，不写不会报错，但是会影响性能 --&gt;
+    //association：表示在resultMap映射器中，通过&lt;association&gt;进行维护，在查询一个对象时，可以将关联的对应信息也查询出来
+    &lt;association property=&quot;user&quot; javaType=&quot;mybatis.po.User&quot;&gt;
+        &lt;id column=&quot;user_id&quot; property=&quot;id&quot;/&gt;
+        &lt;result column=&quot;username&quot; property=&quot;username&quot;/&gt;
+        &lt;result column=&quot;sex&quot; property=&quot;sex&quot;/&gt;
+    &lt;/association&gt;
+</code></pre><blockquote>
+<p>总结：在一对一映射结果时，使用<code>resultType</code>更加简单方便，如果有特殊要求(对象嵌套对象)时，需要使用<code>resultMap</code>进行映射，关联查询出其关联信息。</p>
+</blockquote>
+<p>6.一对多查询</p>
+<pre><code>1.多对一的查询引入association，进行联合查询
+
+     &lt;resultMap id=&quot;resultUserArticleList&quot; type=&quot;Article&quot;&gt;
+            &lt;id property=&quot;id&quot; column=&quot;aid&quot; /&gt;
+            &lt;result property=&quot;title&quot; column=&quot;title&quot; /&gt;
+            &lt;result property=&quot;content&quot; column=&quot;content&quot; /&gt;
+            &lt;association property=&quot;user&quot; javaType=&quot;User&quot;&gt;
+                    &lt;id property=&quot;id&quot; column=&quot;id&quot; /&gt;
+                    &lt;result property=&quot;userName&quot; column=&quot;userName&quot; /&gt;
+                    &lt;result property=&quot;userAddress&quot; column=&quot;userAddress&quot; /&gt;            
+            &lt;/association&gt;        
+        &lt;/resultMap&gt;
+
+    &lt;select id=&quot;getUserArticles&quot; parameterType=&quot;int&quot; resultMap=&quot;resultUserArticleList&quot;&gt;
+           select user.id,user.userName,user.userAddress,article.id aid,article.title,article.content from user,article where user.id=article.userid and user.id=#{id}
+    &lt;/select&gt;
+</code></pre><blockquote>
+<p>总结：在上述配置之后，将select语句与resultMap对应的映射结合起来，可以看出，用association来得到关联的用户，得到的所有文章都是同一个用户的。</p>
+</blockquote>
+<pre><code>2.复用已经定义好的resultMap，将association中对应的映射独立抽取出来，以至于能够达到复用的目的
+
+    1.首先定义好一个resultMap
+            &lt;resultMap type=&quot;User&quot; id=&quot;resultListUser&quot;&gt;
+                &lt;id column=&quot;id&quot; property=&quot;id&quot; /&gt;
+                &lt;result column=&quot;userName&quot; property=&quot;userName&quot; /&gt;
+                &lt;result column=&quot;userAge&quot; property=&quot;userAge&quot; /&gt;
+                &lt;result column=&quot;userAddress&quot; property=&quot;userAddress&quot; /&gt;
+            &lt;/resultMap&gt;
+
+    2.然后在新定义的resultMap中引用已定义的resultMap
+        &lt;resultMap id=&quot;resultUserArticleList-2&quot; type=&quot;Article&quot;&gt;
+                &lt;id property=&quot;id&quot; column=&quot;aid&quot; /&gt;
+                &lt;result property=&quot;title&quot; column=&quot;title&quot; /&gt;
+                &lt;result property=&quot;content&quot; column=&quot;content&quot; /&gt;        
+                &lt;association property=&quot;user&quot; javaType=&quot;User&quot; resultMap=&quot;resultListUser&quot; /&gt;  //在这里使用association复用已经定义好的resultMap           
+           &lt;/resultMap&gt;
+</code></pre><p>7.多对多映射查询(只是一对多映射的特例)</p>
+<pre><code>多对多映射查询只不过是一对多映射的特例，其是在一对多的基础上添加多个&lt;collection&gt;来表明多个数据表单之间的关系的。
+
+如：
+
+    1.定义resultMap
+
+    &lt;!-- 查询用户即购买的商品信息的ResultMap --&gt;
+    &lt;resultMap type=&quot;com.mybatis.entity.User&quot; id=&quot;userAndItemsResultMap&quot;&gt;
+        &lt;!-- 用户信息 --&gt;
+        &lt;id column=&quot;user_id&quot; property=&quot;id&quot;/&gt;
+        &lt;result column=&quot;username&quot; property=&quot;username&quot;/&gt;
+        &lt;result column=&quot;sex&quot; property=&quot;sex&quot;/&gt;
+        &lt;result column=&quot;address&quot; property=&quot;address&quot;/&gt;
+    &lt;!-- 订单信息
+        一个用户对应多个订单，使用collection映射 
+        在用户信息中关联映射商品订单信息--&gt;
+        &lt;collection property=&quot;ordersList&quot; ofType=&quot;com.mybatis.entity.Orders&quot;&gt;
+             &lt;id column=&quot;id&quot; property=&quot;id&quot;/&gt;
+             &lt;result column=&quot;user_id&quot; property=&quot;userid&quot;/&gt;
+            &lt;result column=&quot;number&quot; property=&quot;number&quot;/&gt;
+            &lt;result column=&quot;createtime&quot; property=&quot;createTime&quot;/&gt;
+            &lt;result column=&quot;note&quot; property=&quot;note&quot;/&gt;
+
+         &lt;!-- 订单明细
+                 一个订单包括多个明细
+                 在商品订单中关联映射商品订单的多个明细
+              --&gt;
+              &lt;collection property=&quot;orderdetails&quot; ofType=&quot;com.mybatis.entity.OrderDetail&quot;&gt;
+                      &lt;id column=&quot;orderdetail_id&quot; property=&quot;id&quot;/&gt;
+                     &lt;result column=&quot;items_id&quot;   property=&quot;itemsId&quot;/&gt;
+                     &lt;result column=&quot;items_num&quot;  property=&quot;itemsNum&quot;/&gt;
+                     &lt;result column=&quot;orders_id&quot;  property=&quot;ordersId&quot;/&gt;
+                     &lt;!-- 商品信息
+                          一个订单明细对应一个商品
+                          然后这儿是一对一的关联映射，所以使用的association进行两者之间的映射 
+                       --&gt;
+                   &lt;association property=&quot;items&quot; javaType=&quot;com.mybatis.entity.Items&quot;&gt;
+                       &lt;id column=&quot;items_id&quot; property=&quot;id&quot;/&gt;
+                       &lt;result column=&quot;items_name&quot; property=&quot;itemsName&quot;/&gt;
+                       &lt;result column=&quot;items_detail&quot; property=&quot;detail&quot;/&gt;
+                       &lt;result column=&quot;items_price&quot; property=&quot;price&quot;/&gt;
+                   &lt;/association&gt;
+              &lt;/collection&gt;
+          &lt;/collection&gt;
+
+    &lt;/resultMap&gt;
+&lt;!-- 查询用户及用户购买的商品信息，使用resulaMap--&gt;
+
+2.定义statement(statement表示Java执行数据库操作的一个重要接口，用于在已经建立的数据库连接的基础上向数据库发送要执行的SQL语句，Statement用于执行不带参数的简单SQL语句)
+
+&lt;select id=&quot;findUserAndItemsResultMap&quot; resultMap=&quot;userAndItemsResultMap&quot;&gt;
+        SELECT 
+               t1.*,
+               t2.username,
+               t2.sex,
+               t2.address,
+               t3.id orderdetail_id,
+               t3.items_id,
+               t3.items_num,
+               t3.orders_id,
+               t4.itemsname items_name,
+               t4.detail items_detail,
+               t4.price items_price
+        FROM
+              orders t1,
+              t_user t2,
+              orderdetail t3,
+              items t4
+        WHERE t1.user_id =  t2.id AND  t3.orders_id=t1.id AND t3.items_id = t4.id
+&lt;/select&gt;
+</code></pre><blockquote>
+<p>扩展<br><br>为了验证上述得到的结果是否正确，可以对其进行junit测试。</p>
+</blockquote>
+<pre><code>public class OrdersCustomMapperTest {
+    //创建会话工厂
+    private SqlSessionFactory sqlSessionFactory;
+    //查询订单，关联查询用户信息，使用resultType实现的测试
+    @Test
+    public void TestFindOrdersUser() {
+        //利用会话工厂创建会话
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        // 创建代理对象
+        OrdersCustomMapper oc = sqlSession.getMapper(OrdersCustomMapper.class);
+        // 调用mapper接口中的方法
+        List&lt;OrdersCustom&gt; list = oc.findOrdersUser();
+        //作为验证是否输出的list是否和要查询的结果正确
+        System.out.println(list);
+        //关闭会话
+        sqlSession.close();
+}
+</code></pre><hr>
+<h1 id="mybatis开发总结"><a href="#mybatis开发总结" class="headerlink" title="mybatis开发总结"></a>mybatis开发总结</h1><pre><code>1.一般的查询直接返回实体类型即可，而对于关联查询，处理方式之一就是：自己构造一个resultMap，名称为Map1。然后将自己所需要的字段在新建的resultMap中做一个映射，然后将查询结果设置为新建的Map1。
+  注意：在Map1中可以多映射一些字段，为空的查询默认不映射
+
+2.在Mapper层接口，我们一般设置该方法的返回值类型是：List&lt;Map&lt;String,Object&gt;&gt; 每一个list里面放有很多的map键值对
+
+3.#{} 表示一个占位符，通过#{}可以实现preparedStatement向占位符中设置值，自动进行java类型和jdbc类型转换，此外，#{}可以有效防止sql注入
+  ${} 表示拼接sql串，通过${}可以将parameterType传入的内容拼接在sql中不进行jdbc类型转换
+
+4.mybatis解决JDBC编程问题
+  1.在SqlMapConfig.xml中配置数据库连接池管理数据库连接可以解决因为数据库频繁创建、释放连接而影响系统性能的问题
+
+  2.模糊查询，resultType：表示是List的泛型类型 ${value} 固定写法只能写value表示拼接字符串
+</code></pre><hr>
+<h2 id="Mybatis整合Spring"><a href="#Mybatis整合Spring" class="headerlink" title="Mybatis整合Spring"></a>Mybatis整合Spring</h2><p>1.整合思路：</p>
+<pre><code>1.数据源信息交给Spring管理
+2.SqlSessionFactory交给Spring进行单例管理
+3.由Spring来管理原始DAO的实现类或者Mapper代理的代理类
+</code></pre><h4 id="2-1-具体整合步骤1："><a href="#2-1-具体整合步骤1：" class="headerlink" title="2.1 具体整合步骤1："></a>2.1 具体整合步骤1：</h4><pre><code>1.Mybatis
+  1.在配置文件文件夹(config)下创建SqlMapConfig.xml
+  2.配置属性文件(db.properties/log4j.properties)
+
+注意：mybatis的配置文件中的数据源配置去掉，由spring进行管理配置。
+
+2.Spring
+  1.在配置文件文件夹(config)下创建application.xml
+    1.加载Java的配置文件
+    &lt;context:property-placeholder location=&quot;db.properties&quot;&gt;
+    2.创建数据源
+    &lt;bean id=&quot;dataSource&quot; class=&quot;org.apache.commons.dbcp.BasicDataSource&quot;&gt;
+    //将数据库的驱动(driverClassName)、URL、username、password、maxActive、maxIdle属性值配置完
+
+    3.配置SqlSessionFactory
+    &lt;bean id=&quot;sqlSessionFactory&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;
+        //1.指定mybatis的全局配置文件路径
+        &lt;property name=&quot;configLocation&quot; value=&quot;mybatis/SqlMapConfig.xml&quot;&gt;
+        //2.配置数据源
+        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;&gt;&lt;/property&gt;
+    &lt;/bean&gt;
+3.整合代码
+  1.原始DAO开发方式
+    1.映射文件(User.xml)
+    2.DAO接口代码以及DAO的实现类代码
+    3.在application.xml中配置UserDao的实现类
+        &lt;bean id=&quot;userDao&quot; class=&quot;xxx.xx.xxx.UserDaoImpl&quot;&gt;
+            //依赖注入SqlSessionFactory
+            &lt;property name=&quot;sqlSessionFactory&quot; ref=&quot;sqlSessionFactory&quot;&gt;&lt;/proerty&gt;
+        &lt;/bean&gt;
+    4.编写测试代码
+
+  2.mapper代理的方式
+    1.映射文件(UserMapper.xml)
+    2.Mapper接口
+    3.配置mapper代理类
+    1.单个mapper代理类的配置
+        &lt;bean id=&quot;userMapper&quot; class=&quot;org.mybatis.spring.mapper.MapperFactoryBean&quot;&gt;
+            //设置代理类接口
+            &lt;property name=&quot;mapperInterface&quot; value=&quot;com.xx.xxx.xx.UserMapper&quot;&gt;&lt;/property&gt;
+            //依赖注入SqlSessionFactory
+            &lt;property name=&quot;sqlSessionFactory&quot; ref=&quot;sqlSessionFactory&quot;&gt;&lt;/property&gt;    
+        &lt;/bean&gt;
+    2.批量设置mapper代理类
+
+              &lt;!--批量配置mapper代理类，默认bean的id为类名首字母小写--&gt;
+            //通过MapperScannerConfigurer批量扫描创建代理对象
+            &lt;bean class=&quot;org.mybatis.spring.mapper.MapperScannerConfigurer&quot;&gt;
+                &lt;!--配置扫描包--&gt;
+                &lt;property name=&quot;basePackage&quot; value=&quot;cn.edu.xidian.c2.mapper&quot; /&gt;
+                &lt;!--只有一个sqlSessionFactory时，默认不需要配置SqlSessionFactory,单独配置也可以--&gt;
+                &lt;property name=&quot;sqlSessionFactoryBeanName&quot; value=&quot;sqlSessionFactory&quot;&gt;&lt;/property&gt;
+            &lt;/bean&gt;
+</code></pre><hr>
+<h4 id="2-2-具体整合步骤2："><a href="#2-2-具体整合步骤2：" class="headerlink" title="2.2 具体整合步骤2："></a>2.2 具体整合步骤2：</h4><pre><code>1.Maven引入需要的jar包(添加依赖 基本的依赖)
+
+2.Spring与Mybatis的整合
+
+  1.建立JDBC属性文件(jdbc.properties 文件编码改为utf-8)
+  2.建立spring-mybatis.xml配置文件(用来完成spring和mybatis整合 主要是：自动扫描、自动注入、配置数据库)
+
+3.Log4j的配置
+
+  配置LOG4j的目的是为了更方便测试，使用日志来输出信息，然后所有的项目基本上都是这样一个基本的配置
+
+  1.建立log4j.properties配置文件
+
+4.JUnit测试
+
+  1.创建测试用表
+  2.利用MyBatis Generator自动创建代码 这个根据表自动创建实体类、mybatis映射文件、DAO接口
+
+    使用MyBatis Generator自动创建代码 
+
+  3.建立Service接口和实现类
+
+  4.建立测试类
+
+5.整合SpringMVC(springmvc的配置文件单独放，然后在web.xml文件中配置整合)
+
+  1.配置springmvc.xml(主要是自动扫描控制器、视图模式、注解启动这三个的配置)
+  2.配置web.xml文件 这里对spring-mybatis.xml配置文件的引入以及配置springmvc的servlet
+</code></pre><hr>
+<h2 id="Mybatis的逆向工程"><a href="#Mybatis的逆向工程" class="headerlink" title="Mybatis的逆向工程"></a>Mybatis的逆向工程</h2><p>概念：Mybatis提供来一个逆向工程工具，通过逆向工程，可以帮助程序员根据数据表单表来生成po类、mapper映射文件、mapper接口。<br>      就是通过数据库中的单表自动生成Java代码。</p>
+<p>具体笔记见mybatis教案</p>
+<h4 id="1-逆向工程使用步骤："><a href="#1-逆向工程使用步骤：" class="headerlink" title="1.逆向工程使用步骤："></a>1.逆向工程使用步骤：</h4><pre><code>1.创建generator配置文件
+  generator.xml文件内容可以从逆向工程的jar包下的docs目录下的index.html文件中找到相关的源代码
+
+2.使用java类来执行逆向工程
+
+  public class Generator {
+    public static void main(String[] args)  throws Exception{
+        List&lt;String&gt; warnings = new ArrayList&lt;String&gt;();
+        boolean overwrite = true;
+        File configFile = new File(&quot;config/generator.xml&quot;);
+        ConfigurationParser cp = new ConfigurationParser(warnings);
+        Configuration config = cp.parseConfiguration(configFile);
+        DefaultShellCallback callback = new DefaultShellCallback(overwrite);
+        MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config,
+                callback, warnings);
+        myBatisGenerator.generate(null);
+    }
+
+}
+
+3.把生成的代码拷贝到项目中
+  如果正式项目中已经有po类所在的包了，那么就只需要拷贝po类到指定包下就可以。如果正式项目中没有po包，那么就把逆向工程中整个po类的包拷贝过去。
+Mapper.xml和mapper.java的拷贝与po类一样
+
+
+4.在正式项目中使用逆向工程生成的代码
+
+  public class ItemsMapperTest {
+
+// spring上下文
+private ApplicationContext ctx;
+
+@Before
+public void setUp() throws Exception {
+    // 读取spring的上下文，然后封装到ctx
+    ctx = new ClassPathXmlApplicationContext(
+            &quot;spring/applicationContext.xml&quot;);
+}
+
+@Test
+public void testSelectByExample() {
+    ItemsMapper mapper = (ItemsMapper) ctx.getBean(&quot;itemsMapper&quot;);
+
+    ItemsExample example = new ItemsExample();
+    //使用它进行参数封装传递
+    Criteria criteria = example.createCriteria();
+    //设置参数
+    criteria.andNameEqualTo(&quot;背包&quot;);
+
+    List&lt;Items&gt; list = mapper.selectByExample(example);
+
+    System.out.println(list);
+}
+</code></pre><p>}</p>
+<pre><code>注意：
+1.mapper.xml文件已经存在时，如果进行重新生成mapper.xml文件，内容不会被覆盖，而是进行mapper.xml文件内容的追加，结果会导致mybatis解析失败
+解决方法：删除原来已经生成的mapper.xml文件再进行生成
+
+2.mybatis自动生成的po以及mapper.java文件不是追加而是直接覆盖，所以不会出现此问题。
+</code></pre><hr>
+<h2 id="Mybatis-的查询缓存"><a href="#Mybatis-的查询缓存" class="headerlink" title="Mybatis 的查询缓存"></a>Mybatis 的查询缓存</h2><h4 id="1-mybatis缓存分析"><a href="#1-mybatis缓存分析" class="headerlink" title="1.mybatis缓存分析"></a>1.mybatis缓存分析</h4><p>mybatis提供查询缓存，如果缓存中有数据就不用从数据库中获取，用于减轻数据压力，提高系统性能。</p>
+<pre><code>一级缓存：SqlSession级别的缓存，在操作数据库时需要构造sqlSession对象，在对象中有一个数据结构(HashMap)用于存储缓存数据，不同的sqlSession之间的缓存数据区域(HashMap)互相不影响。
+
+二级缓存：mapper级别的缓存，多个SqlSession去操作同一个mapper的sql语句，多个sqlSession可以共用二级缓存，二级缓存是跨SqlSession的。
+
+注意：mybatis默认支持一级缓存
+
+应用：在开发项目过程中，将mybatis与spring进行整合开发，事务控制在service中，一个service方法中包括很多mapper方法调用。
+</code></pre><blockquote>
+<p>注意：mybatis默认没有开启二级缓存</p>
+</blockquote>
+<h4 id="2-mybatis-开启二级缓存"><a href="#2-mybatis-开启二级缓存" class="headerlink" title="2.mybatis 开启二级缓存"></a>2.mybatis 开启二级缓存</h4><pre><code>1.在核心配置文件SqlMapConfig.xml中添加开启二级缓存总开关
+  &lt;setting name=&quot;cacheEnable&quot; value=&quot;true&quot;/&gt;
+
+2.在UserMapper映射文件中开启二级缓存（开启mapper下的namespace的二级缓存，默认使用mybatis提供的PerpetualCache）
+  &lt;cache&gt;&lt;/cache&gt;
+
+3.实现序列化(因为二级缓存的数据不一定都是存储在内存中的，所以需要给缓存的对象执行序列化，如果该类存在父类，也需要给父类实现序列化)
+</code></pre><h4 id="3-mybatis-禁用二级缓存"><a href="#3-mybatis-禁用二级缓存" class="headerlink" title="3.mybatis 禁用二级缓存"></a>3.mybatis 禁用二级缓存</h4><pre><code>在statement中设置userCache=false禁用当前select语句的二级缓存，每次查询都要去数据库中查询，默认情况下是true，该statement使用二级缓存。
+
+&lt;select id=&quot;findUserById&quot;  parameterType=&quot;int&quot;  resultType=&quot;cn.itcast.mybatis.po.User&quot;  useCache=&quot;true&quot;&gt;
+        SELECT * FROM user WHERE id = #{id}
+&lt;/select&gt;
+</code></pre><h4 id="4-mybatis刷新二级缓存"><a href="#4-mybatis刷新二级缓存" class="headerlink" title="4.mybatis刷新二级缓存"></a>4.mybatis刷新二级缓存</h4><pre><code>见mybatis教案
+</code></pre><hr>
+<h4 id="5-mybatis-延迟加载"><a href="#5-mybatis-延迟加载" class="headerlink" title="5.mybatis 延迟加载"></a>5.mybatis 延迟加载</h4><pre><code>见mybatis教案
+</code></pre><hr>
+<h2 id="SSM整合"><a href="#SSM整合" class="headerlink" title="SSM整合"></a>SSM整合</h2><h4 id="1-Spring-MVC"><a href="#1-Spring-MVC" class="headerlink" title="1.Spring MVC"></a>1.Spring MVC</h4><pre><code>作用于WEB层，相当于Controller，用来处理用户请求。例：用户在地址栏输入http://网站域名/login，那么springmvc就会拦截到这个请求，并且调用controller层中相应的方法(虽然中间可能会包含很多业务，但是这些都不是SpringMVC来处理)
+最终将结果返回给用户，并且返回相应的页面(可以只返回json/xml等格式数据)
+
+总结：SpringMVC只负责跟用户打交道，做前面和后面的活，中间的实现过程等业务不是它负责。
+</code></pre><h4 id="2-Spring"><a href="#2-Spring" class="headerlink" title="2.Spring"></a>2.Spring</h4><pre><code>最常见，经常用到的是IOC容器，其可以装载bean(Java中的类，也包括service dao里面的)有了这个机制，我们就不用在每次使用这个类的时候为它初始化，很少看到关键字new。另外spring的aop，事务管理等等都是我们经常用到的。
+</code></pre><h4 id="3-mybatis"><a href="#3-mybatis" class="headerlink" title="3.mybatis"></a>3.mybatis</h4><pre><code>1.能够自由控制SQL
+2.可以使用xml的方式来组织管理我们的SQL
+</code></pre><hr>
+<p>1.SSM整合</p>
+<pre><code>1.Java各种对象的区分
+
+PO 持久对象(entity) PO每个属性基本上都对应数据库表里面的某个字段，完全是一个符合Java Bean规范的Java对象，没有增强别的属性和方法。持久对象是由&lt;insert&gt;&lt;/insert&gt;数据库创建，由数据库&lt;delete&gt;&lt;/delete&gt;删除的。基本上持久对象生命周期和数据库密切相关。
+
+VO 值对象 通常用于业务层(Service层)之间的数据传输，与PO一样只包含数据,此外应该抽象出业务对象。表现层对象(View Object)，主要对应展示界面显示的数据对象，用一个VO对象来封装整个界面展示所需要的对象数据。
+
+DTO 数据传输对象 是一种设计模式之间传输数据的软件应用系统 作用仅在应用程序的各个子系统间传输数据，在表现层展示。与POJO对应一个数据库实体不同，DTO不对应一个实体，可能仅存储实体的部分属性或加入符合传输需求的其他的属性。
+
+POJO 简单的Java对象 实际上可以理解POJO为简单的实体类 方便开发者使用数据库中的数据表
+</code></pre><hr>
+<h2 id="DTO-数据传输对象（起到数据封装与隔离的作用）"><a href="#DTO-数据传输对象（起到数据封装与隔离的作用）" class="headerlink" title="DTO 数据传输对象（起到数据封装与隔离的作用）"></a>DTO 数据传输对象（起到数据封装与隔离的作用）</h2><p>在实际的项目中，DTO分为两层传输</p>
+<pre><code>1.Service层向Controller层，这一层的DTO封装Service执行结果给Controller简化业务数据，只提取部分业务相关字段或补充处理相关字段，不同业务可能有不同的此类dto，具有业务相关性。
+
+2.Controller层向WEB前端，这一层DTO封装Controller执行结果，返回前端WEB，请求返回实体封装类，适用于所有ajax请求返回的类型实体，无业务相关性。
+</code></pre><hr>
+<h2 id="SSM整合知识点概括"><a href="#SSM整合知识点概括" class="headerlink" title="SSM整合知识点概括"></a>SSM整合知识点概括</h2><pre><code>1.Controller方法返回值(指定返回到哪个页面，指定返回到页面的数据)
+
+    1)ModelAndView 
+
+        modelAndView.addObject(&quot;itemList&quot;, list); 指定返回页面的数据
+
+        modelAndView.setViewName(&quot;itemList&quot;);     指定返回的页面
+
+    2)String(推荐使用)
+
+        返回普通字符串,就是页面去掉扩展名的名称, 返回给页面数据通过Model来完成
+
+        返回的字符串以forward:开头为请求转发
+
+        返回的字符串以redirect:开头为重定向
+
+    3)返回void(使用它破坏了springMvc的结构,所以不建议使用)
+
+        可以使用request.setAttribut(因为我们写的是服务端，所以使用request对象向view中传输数据) 来给页面返回数据
+
+        可以使用request.getRquestDispatcher().forward()来指定返回的页面
+
+        如果controller返回值为void则不走springMvc的组件,所以要写页面的完整路径名称
+
+    相对路径:相对于当前目录,也就是在当前类的目录下,这时候可以使用相对路径跳转
+
+    绝对路径:从项目名后开始.
+</code></pre><blockquote>
+<p>注意：在springMvc中不管是forward还是redirect后面凡是以/开头的为绝对路径,不以/开头的为相对路径。</p>
+</blockquote>
+<pre><code>例如:
+    forward:/items/itemEdit.action 为绝对路径
+
+    forward:itemEdit.action为相对路径
+</code></pre><hr>
+<pre><code>2.架构级别异常处理
+
+    此异常编写是实现全局异常处理器接口，目的主要为了防止项目上线后给用户抛500等异常信息,所以需要在架构级别上整体处理.hold住异常
+
+    1.首先自定义全局异常处理器实现HandlerExceptionResolver接口
+        public class GlobalHandleExceptionResolver implements HandlerExceptionResolver {//....
+
+    2.在spirngMvc.xml中配置生效
+</code></pre><hr>
+<pre><code>3.上传图片
+
+    1)在tomcat中配置虚拟图片服务器
+
+    2)导入fileupload的jar包
+
+    3)在springMvc.xml中配置上传组件
+
+    4)在页面上编写上传域,更改form标签的类型
+
+    5)在controller方法中可以使用MultiPartFile接口接收上传的图片
+
+    6)将文件名保存到数据库,将图片保存到磁盘中
+</code></pre><hr>
+<pre><code>4.JSON数据交互
+
+    1.首先在pom.xml中配置好需要的jar包(jackson的jar包)
+
+    2.@Requestbody:将页面传到controller中的json格式字符串自动转换成java的pojo对象
+      @ResponseBody:将java中pojo对象自动转换成json格式字符串返回给页面
+</code></pre><hr>
+<pre><code>5.RestFul风格支持
+
+    此风格就是对URL的命名标准，此标准要求URL中只能有名词，要求URL中不能用?传参
+
+    传参数：
+        页面：${pageContext.request.contextPath}/items/itemEdit/${item.id}
+        方法：@RequestMapping(&quot;/itemEdit/{id}&quot;)
+        方法：@PathVariable(&quot;id&quot;) Integer id
+</code></pre><hr>
+<pre><code>6.拦截器
+
+    作用：拦截请求，一般在登录的时候用得比较多
+    1.需要编写自定义拦截器类,实现HandlerInterceptor接口
+        public class AuthorizedInterceptor implements HandlerInterceptor {//......
+    2.在spirngMvc.xml中配置拦截器生效
+</code></pre><hr>
+<pre><code>7.登录权限验证
+
+    1)编写登录的Controller，编写跳转到登录页面，编写登录验证方法
+    2)编写登录页面
+    3)编写拦截器
+</code></pre><blockquote>
+<p>总结：随意访问一个页面，拦截器会拦截请求，会验证session是否有登录信息。如果已经登录，放。如果未登录，跳转到登录页面<br>          在登录页面输入用户名、密码，点击登录按钮，拦截器会拦截请求，如果登录路径在Controller方法中判断用户名和密码正确则将登录信息方法session中。</p>
+</blockquote>
+<hr>
+<p>更新时间：2018/09/22</p>
+<h2 id="Mybatis-项目开发经验"><a href="#Mybatis-项目开发经验" class="headerlink" title="Mybatis - 项目开发经验"></a>Mybatis - 项目开发经验</h2><h4 id="1-mybatis中selectkey的作用"><a href="#1-mybatis中selectkey的作用" class="headerlink" title="1.mybatis中selectkey的作用"></a>1.mybatis中selectkey的作用</h4><blockquote>
+<blockquote>
+<p><code>selectkey</code>在mybatis中是为了解决<code>insert</code>数据时不支持主键自动生成的问题，<code>selectkey</code>可以很随意的设置生成主键的方式。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>在<code>selectkey</code>中的属性有：<br><code>1.keyProperty</code>：selectkey语句结果应该被设置的目标属性,指定存放生成主键的属性<br><code>2.resultType</code>：结果的类型，mybatis允许任何简单的类型用作主键的类型,包括字符串。<br>3.<code>order</code>：可以被设置为 <code>BEFORE</code> 或 <code>AFTER</code>。如果设置为 <code>BEFORE</code>,那么它会首先选择主键,设置 <code>keyProperty</code> 然后执行插入语句。如果设置为 <code>AFTER</code>,那么先执行插入语句,然后是 <code>selectKey</code> 元素-这和，如 Oracle 数据库相似,可以在插入语句中嵌入序列调用。所以<code>order</code>指定了查询主键的sql与insert的执行顺序，只要不是自增主键，<code>order</code>都设置为<code>before</code>。<br>4.<code>statementType</code>：MyBatis 支持 <code>STATEMENT PREPARED</code>和<code>CALLABLE</code> 语句的映射类型,分别代表 <code>reparedStatement</code> 和<code>CallableStatement</code> 类型。<br>4.<code>last_insert_id</code>：mysql的函数，配合insert语句一起使用。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>注意：selectkey需要注意order属性，比如在mysql一类的自动增长类型的数据库中，order需要设置为after才能够取得正确的值。</p>
+</blockquote>
+<hr>
+<h2 id="Mybatis-案例"><a href="#Mybatis-案例" class="headerlink" title="Mybatis - 案例"></a>Mybatis - 案例</h2><pre><code>package cn.edu.xidian.tjxt.dao;
+
+import cn.edu.xidian.tjxt.vo.BodyCheckInfoVo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowCallbackHandler;
+import org.springframework.stereotype.Repository;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Logger;
+
+@Repository
+public class BodyCheckInfoDao {
+    public static final Logger LOG = Logger.getLogger(String.valueOf(BodyCheckInfoDao.class));
+    private JdbcTemplate jdbcTemplate;
+    @Autowired
+    public void setJdbcTemplate(JdbcTemplate jdbcTemplate){
+        this.jdbcTemplate = jdbcTemplate;
+    }
+    //查看列是否存在函数
+//    public boolean isColumnExist(ResultSet rs, String columnName) {
+//        try {
+//            if (rs.findColumn(columnName) &gt; 0 ) {
+//                return true;
+//            }
+//        }
+//        catch (SQLException e) {
+//            return false;
+//        }
+//        return false;
+//    }
+
+    /**
+     * 方法：bodyCheckInfoResultMap
+     * 作用：数据库信息返回，controller中调用
+     */
+    public void bodyCheckInfoResultMap(ResultSet resultSet, BodyCheckInfoVo bodyCheckInfoVo) throws SQLException{
+        bodyCheckInfoVo.setStudentId(resultSet.getInt(&quot;id&quot;));
+        bodyCheckInfoVo.setName(resultSet.getString(&quot;name&quot;));
+        bodyCheckInfoVo.setSex(resultSet.getString(&quot;sex&quot;));
+        bodyCheckInfoVo.setStudentNum(resultSet.getString(&quot;student_num&quot;));//学生学号
+        bodyCheckInfoVo.setIdNum(resultSet.getString(&quot;id_num&quot;));//学生身份证号
+        bodyCheckInfoVo.setCheckTime(resultSet.getDate(&quot;check_time&quot;));//体检时间
+
+//        bodyCheckInfoVo.setTuberculosis(resultSet.getString(&quot;tuberculosis&quot;));//肺结核检查结果，因为数据库中肺结核一栏为null值
+        bodyCheckInfoVo.setListSubmit(resultSet.getInt(&quot;list_submit&quot;));//是否提交体检表单
+
+        bodyCheckInfoVo.setPpdCheck(resultSet.getString(&quot;ppd_check&quot;));//ppd检查结果
+        bodyCheckInfoVo.setKidney(resultSet.getString(&quot;kidney&quot;));//肾功检查结果
+        bodyCheckInfoVo.setLiverFunction(resultSet.getString(&quot;liver_function&quot;));//肝功检查结果
+        bodyCheckInfoVo.setBodyCheck(resultSet.getString(&quot;body_check&quot;));//体检结果
+
+        bodyCheckInfoVo.setHepatitisBCheck(resultSet.getString(&quot;hepatitis_b_check&quot;));//乙肝检查结果
+        bodyCheckInfoVo.setHemorrhagic1(resultSet.getString(&quot;hemorrhagic1&quot;));//出血热一
+        bodyCheckInfoVo.setHemorrhagic2(resultSet.getString(&quot;hemorrhagic2&quot;));//出血热二
+        bodyCheckInfoVo.setHemorrhagic3(resultSet.getString(&quot;hemorrhagic3&quot;));//出血热三
+
+        bodyCheckInfoVo.setMeasles(resultSet.getString(&quot;measles&quot;));//麻腮风检查结果
+        bodyCheckInfoVo.setHepatitisB1(resultSet.getString(&quot;hepatitis_b1&quot;));//乙肝一检查结果
+        bodyCheckInfoVo.setHepatitisB2(resultSet.getString(&quot;hepatitis_b2&quot;));//乙肝二检查结果
+        bodyCheckInfoVo.setHepatitisB3(resultSet.getString(&quot;hepatitis_b3&quot;));//乙肝三检查结果
+        bodyCheckInfoVo.setHepatitisA1(resultSet.getString(&quot;hepatitis_a1&quot;));//甲肝一检查结果
+        bodyCheckInfoVo.setHepatitisA2(resultSet.getString(&quot;hepatitis_a2&quot;));//甲肝二检查结果
+
+    }
+
+    //sql语句通过姓名、学号以及身份证号三者联合查询
+    private static final String FIND_BODY_CHECK_INFOS = &quot;SELECT *,examination_record.id AS eid FROM student LEFT JOIN examination_record ON student.id = examination_record.sid &quot;
+            + &quot; WHERE student_num = ? AND name = ? AND id_num LIKE ? &quot;;
+
+    //sql语句
+    private static final String FIND_BODY_CHECK_INFO_BY_ID_NUM_SQL = &quot;SELECT *,examination_record.id AS eid FROM student LEFT JOIN examination_record ON student.id = examination_record.sid &quot;
+            + &quot; WHERE id_num LIKE ?&quot;;
+    private static final String FIND_BODY_CHECK_INFO_BY_STUDENT_NUM =  &quot;SELECT *,examination_record.id AS eid FROM student LEFT JOIN examination_record ON student.id = examination_record.sid &quot;
+            + &quot; WHERE student_num = ? &quot;;
+    private static final String FIND_BODY_CHECK_INFO_BY_NOTICE_NUM = &quot;SELECT *,examination_record.id AS eid FROM student LEFT JOIN examination_record ON student.id = examination_record.sid &quot;
+            + &quot; WHERE notice_num = ? &quot;;
+    private static final String FIND_BODY_CHECK_INFO_BY_NAME = &quot;SELECT *,examination_record.id AS eid FROM student LEFT JOIN examination_record ON student.id = examination_record.sid &quot;
+            + &quot; WHERE name = ?&quot;;
+
+    //通过三个变量联合查询，得到的结果认为只有一个
+    public BodyCheckInfoVo findBodyCheckInfos(String studentNum,String name,String idNum){
+        if (studentNum == null || studentNum.equals(&quot;&quot;)) return null;
+        if (name == null || name.equals(&quot;&quot;)) return null;
+        if (idNum == null || idNum.equals(&quot;&quot;)) return null;
+        if (idNum.length() != 6) return null;
+        final BodyCheckInfoVo bodyCheckInfoVos = new BodyCheckInfoVo();
+        jdbcTemplate.query(FIND_BODY_CHECK_INFOS, new Object[]{studentNum,name,&quot;%&quot;+idNum},
+                new RowCallbackHandler() {
+                    @Override
+                    public void processRow(ResultSet resultSet) throws SQLException {
+                        bodyCheckInfoResultMap(resultSet,bodyCheckInfoVos);
+                    }
+                });
+        if(bodyCheckInfoVos.getStudentId() == null) return null;
+        return bodyCheckInfoVos;
+    }
+
+    //通过身份证号码查询，可能有多条信息，所以用返回List
+//    public List&lt;BodyCheckInfoVo&gt; findBodyCheckInfoVoByIdNum(String idNum) {
+//        if (idNum.length() != 6) return null;
+//        if (idNum == null || idNum.equals(&quot;&quot;)) return null;
+//            return jdbcTemplate.query(FIND_BODY_CHECK_INFO_BY_ID_NUM_SQL, new Object[]{&quot;%&quot; + idNum}, new RowMapper&lt;BodyCheckInfoVo&gt;() {
+//                public BodyCheckInfoVo mapRow(ResultSet resultSet, int i) throws SQLException {
+//                    BodyCheckInfoVo bodyCheckInfoVo = new BodyCheckInfoVo();
+//                    bodyCheckInfoResultMap(resultSet, bodyCheckInfoVo);
+//                    return bodyCheckInfoVo;
+//                }
+//            });
+//    }
+
+    //通过学号查询，可能有多条信息(留级保留学号的情况)，所以用返回List
+//    public List&lt;BodyCheckInfoVo&gt; findBodyCheckInfoVoByStudentNum(String studentNum) {
+//        if(studentNum == null || studentNum.equals(&quot;&quot;)) return null;
+//        return jdbcTemplate.query(FIND_BODY_CHECK_INFO_BY_STUDENT_NUM, new Object[]{studentNum},
+//                new RowMapper&lt;BodyCheckInfoVo&gt;() {
+//                    public BodyCheckInfoVo mapRow(ResultSet resultSet,int i) throws SQLException {
+//                        BodyCheckInfoVo bodyCheckInfoVo = new BodyCheckInfoVo();
+//                        bodyCheckInfoResultMap(resultSet,bodyCheckInfoVo);
+//                        return  bodyCheckInfoVo;
+//                    }
+//                });
+//    }
+
+    //通过通知书号码查询，认为只有一个
+//    public BodyCheckInfoVo findBodyCheckInfoVoByNoticeNum(String noticeNum) {
+//        if(noticeNum == null || noticeNum.equals(&quot;&quot;)) return null;
+//        final BodyCheckInfoVo bodyCheckInfoVo= new BodyCheckInfoVo();
+//        jdbcTemplate.query(FIND_BODY_CHECK_INFO_BY_NOTICE_NUM, new Object[]{noticeNum},
+//                new RowCallbackHandler() {
+//                    @Override
+//                    public void processRow(ResultSet resultSet) throws SQLException {
+//                        bodyCheckInfoResultMap(resultSet,bodyCheckInfoVo);
+//                    }
+//                });
+//        if(bodyCheckInfoVo.getStudentId() == null) return null;
+//        return bodyCheckInfoVo;
+//    }
+
+    //新增查询方式
+    //通过学生姓名查询学生体检信息,因为可能有重名的情况，所以返回用List
+//    public List&lt;BodyCheckInfoVo&gt; findBodyCheckInfoVoByName(String name) {
+//        if(name == null || name.equals(&quot;&quot;)) return null;
+//        return jdbcTemplate.query(FIND_BODY_CHECK_INFO_BY_NAME, new Object[]{name},
+//                new RowMapper&lt;BodyCheckInfoVo&gt;() {
+//                    public BodyCheckInfoVo mapRow(ResultSet resultSet,int i) throws SQLException{
+//                        BodyCheckInfoVo bodyCheckInfoVo = new BodyCheckInfoVo();
+//                        bodyCheckInfoResultMap(resultSet,bodyCheckInfoVo);
+//                        return  bodyCheckInfoVo;
+//                    }
+//                });
+//    }
+}
+</code></pre>
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+
+  <p><span>本文标题:</span>MyBatis 学习</a></p>
+  <p><span>文章作者:</span>Bangjin-Hu</a></p>
+  <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
+  <p><span>最后更新:</span>2020年03月29日 - 10:46:32</p>
+  <p><span>原始链接:</span><a href="/undefined/Mybatis-1/" title="MyBatis 学习">http://bangjinhu.github.io/undefined/Mybatis-1/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/Mybatis-1/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.jpg" alt="Bangjin-Hu wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎扫码关注微信公众号，订阅我的微信公众号.</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持是我创作的动力.</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat-reward-img.jpg" alt="Bangjin-Hu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay-reward-img.jpg" alt="Bangjin-Hu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Bangjin-Hu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://bangjinhu.github.io/undefined/Mybatis-1/" title="MyBatis 学习">http://bangjinhu.github.io/undefined/Mybatis-1/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Mybatis/" rel="tag"><i class="fa fa-tag"></i> Mybatis</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/undefined/Nginx/" rel="next" title="Nginx">
+                <i class="fa fa-chevron-left"></i> Nginx
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/undefined/Python/" rel="prev" title="Python">
+                Python <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/site.jpg"
+                alt="Bangjin-Hu" />
+            
+              <p class="site-author-name" itemprop="name">Bangjin-Hu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/BangjinHu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:2315378346@qq.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/Aaron_P_L" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-heart-o"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
+                      
+                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://iProgramering.github.io" target="_blank" title="iProgramer_ing">
+                      
+                        <i class="fa fa-fw fa-user"></i>iProgramer_ing</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          <div id="music163player">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src="//music.163.com/outchain/player?type=2&id=38358214&auto=0&height=66
+
+">
+    </iframe>
+</div>
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Mybatis-FD"><span class="nav-text">Mybatis - FD</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-原生态JDBC程序存在问题"><span class="nav-text">1.原生态JDBC程序存在问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mybatis-框架原理"><span class="nav-text">Mybatis 框架原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mybatis-入门程序"><span class="nav-text">Mybatis 入门程序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-实现步骤"><span class="nav-text">1.实现步骤</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mybatis-开发DAO"><span class="nav-text">Mybatis 开发DAO</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-原始DAO开发方式"><span class="nav-text">1.原始DAO开发方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-mapper开发代理方式"><span class="nav-text">2.mapper开发代理方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mybatis-映射文件"><span class="nav-text">Mybatis 映射文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mybatis-高级映射"><span class="nav-text">mybatis 高级映射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mybatis动态sql语句"><span class="nav-text">mybatis动态sql语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mybatis高级查询"><span class="nav-text">mybatis高级查询</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mybatis开发总结"><span class="nav-text">mybatis开发总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Mybatis整合Spring"><span class="nav-text">Mybatis整合Spring</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-具体整合步骤1："><span class="nav-text">2.1 具体整合步骤1：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-具体整合步骤2："><span class="nav-text">2.2 具体整合步骤2：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mybatis的逆向工程"><span class="nav-text">Mybatis的逆向工程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-逆向工程使用步骤："><span class="nav-text">1.逆向工程使用步骤：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mybatis-的查询缓存"><span class="nav-text">Mybatis 的查询缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-mybatis缓存分析"><span class="nav-text">1.mybatis缓存分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-mybatis-开启二级缓存"><span class="nav-text">2.mybatis 开启二级缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-mybatis-禁用二级缓存"><span class="nav-text">3.mybatis 禁用二级缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-mybatis刷新二级缓存"><span class="nav-text">4.mybatis刷新二级缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-mybatis-延迟加载"><span class="nav-text">5.mybatis 延迟加载</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSM整合"><span class="nav-text">SSM整合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Spring-MVC"><span class="nav-text">1.Spring MVC</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Spring"><span class="nav-text">2.Spring</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-mybatis"><span class="nav-text">3.mybatis</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DTO-数据传输对象（起到数据封装与隔离的作用）"><span class="nav-text">DTO 数据传输对象（起到数据封装与隔离的作用）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSM整合知识点概括"><span class="nav-text">SSM整合知识点概括</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mybatis-项目开发经验"><span class="nav-text">Mybatis - 项目开发经验</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-mybatis中selectkey的作用"><span class="nav-text">1.mybatis中selectkey的作用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mybatis-案例"><span class="nav-text">Mybatis - 案例</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bangjin-Hu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">465.0k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/lib/clipboard/clipboard.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+</body>
+</html>

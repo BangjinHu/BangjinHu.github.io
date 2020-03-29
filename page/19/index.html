@@ -1,0 +1,3867 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/site.jpg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="BangjinHu'Blog" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="BangjinHu's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="微信公众号：iProgrammer_ing">
+<meta property="og:type" content="website">
+<meta property="og:title" content="BangjinHu&#39;s Blog">
+<meta property="og:url" content="http://bangjinhu.github.io/page/19/index.html">
+<meta property="og:site_name" content="BangjinHu&#39;s Blog">
+<meta property="og:description" content="微信公众号：iProgrammer_ing">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BangjinHu&#39;s Blog">
+<meta name="twitter:description" content="微信公众号：iProgrammer_ing">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://bangjinhu.github.io/page/19/"/>
+
+
+
+
+
+  <title>BangjinHu's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+    
+    <a href="https://github.com/BangjinHu"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">BangjinHu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">让优秀成为习惯，让知识成为信仰</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            本站搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/计算机网络/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/计算机网络/" itemprop="url">计算机网络</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:21:12+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机网络/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,601
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h1 id="计算机网络（针对面试）"><a href="#计算机网络（针对面试）" class="headerlink" title="计算机网络（针对面试）"></a>计算机网络（针对面试）</h1><h2 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h2><h3 id="IP协议"><a href="#IP协议" class="headerlink" title="IP协议"></a>IP协议</h3><h4 id="​IP-数据报格式"><a href="#​IP-数据报格式" class="headerlink" title="​IP 数据报格式"></a>​IP 数据报格式</h4><p>​    <img src="images/31.png" alt=""></p>
+<h4 id="IP-分片"><a href="#IP-分片" class="headerlink" title="IP 分片"></a>IP 分片</h4><ul>
+<li><strong>标识</strong>：统一数据报的分片使用统一标识，同一个数据报使用同一个标识。</li>
+<li><strong>DF 不分片标识</strong>： DF = 1 禁止分片。 <strong>DF = 0 允许分片</strong></li>
+<li><strong>MF 更多分片标识</strong>： MF = 1后面还有分片。 <strong>MF = 0，代表最后一片，或者是没分片。</strong> </li>
+<li><strong>片偏移：</strong>指的是分片后在原分组中的位置。单位是 8 字节</li>
+</ul>
+<h5 id="如何确定分片顺序"><a href="#如何确定分片顺序" class="headerlink" title="如何确定分片顺序"></a>如何确定分片顺序</h5><p>​    <strong>标识 + 片偏移</strong></p>
+<h4 id="报文的两大分类"><a href="#报文的两大分类" class="headerlink" title="报文的两大分类"></a>报文的两大分类</h4><h5 id="2-种查询报文"><a href="#2-种查询报文" class="headerlink" title="2 种查询报文"></a>2 种查询报文</h5><h5 id="5-种差错报文"><a href="#5-种差错报文" class="headerlink" title="5 种差错报文"></a>5 种差错报文</h5><h2 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h2><h3 id="UDP协议"><a href="#UDP协议" class="headerlink" title="UDP协议"></a>UDP协议</h3><h4 id="UDP特点"><a href="#UDP特点" class="headerlink" title="UDP特点"></a>UDP特点</h4><ol>
+<li>无连接的，减少开销和发送数据之前的时延</li>
+<li>UDP 使用最大努力交付，不保证可靠交付</li>
+<li>UDP 是面向报文的，适合一次性传输少量数据</li>
+<li><p>UDP 无拥塞控制，适合很多实时应用</p>
+<ol start="5">
+<li>UDP 首部开销比较小，8个字节</li>
+</ol>
+</li>
+</ol>
+<h4 id="首部各个字段解析"><a href="#首部各个字段解析" class="headerlink" title="首部各个字段解析"></a>首部各个字段解析<img src="images/6.png" alt="UDP首部格式"></h4><ul>
+<li><p>16位源端口号</p>
+<ul>
+<li>2B 可有可无 看是否要回发</li>
+</ul>
+</li>
+<li><p>16位目的端口号</p>
+</li>
+<li><p>16位UDP长度</p>
+<ul>
+<li>UDP 用户数据报的整个长度</li>
+</ul>
+</li>
+<li><p>16位检验和</p>
+<ul>
+<li>检测整个UDP数据报是否有错</li>
+</ul>
+</li>
+</ul>
+<h4 id="UDP-校验"><a href="#UDP-校验" class="headerlink" title="UDP 校验"></a>UDP 校验</h4><p>  <img src="images/7.png" alt=""></p>
+<ul>
+<li>伪首部只在计算校验和的时候才出现，不会进行传输<ul>
+<li>17 UDP 协议的值</li>
+<li>UDP 长度 ： UDP 首部 8B + 数据部分长度（不包括伪首部）</li>
+</ul>
+</li>
+</ul>
+<p>发送端： ==加上伪首部之后，二进制反码求和 在取反==</p>
+<p>接收端： ==加上伪首部之后，二进制反码求和 在取反 结果为全 1 则代表无差错==</p>
+<h3 id="TCP-协议"><a href="#TCP-协议" class="headerlink" title="==TCP 协议=="></a>==TCP 协议==</h3><h4 id="TCP特点"><a href="#TCP特点" class="headerlink" title="TCP特点"></a>TCP特点</h4><ul>
+<li>面向连接</li>
+<li>每一条连接都是点对点的</li>
+<li>提供可靠交付，无差错，不丢失，不重复，按序到达==可靠有序，不丢不重==</li>
+<li>TCP 提供全双工通信（发送缓存 + 接收缓存）</li>
+<li>TCP 是面向字节流的</li>
+</ul>
+<h4 id="TCP报文"><a href="#TCP报文" class="headerlink" title="TCP报文"></a>TCP报文</h4><p>  <img src="images/8.png" alt=""></p>
+<p><strong>序号：</strong> 代表本报文段所发送数据的第一个字节的序号</p>
+<p><strong>确认号</strong>： 期望收到对方下一个报文段得第一个数据字节的序号</p>
+<p><strong>数据偏移</strong>： TCP 报文距离数据的距离（可能加了数据填充等）</p>
+<p><strong>6个控制位</strong>：</p>
+<ul>
+<li>URG 紧急指针：不用在发送缓存中排队，配合<strong>紧急指针</strong>使用</li>
+<li>ACK 确认位： ACK = 1，小写的 ack 才有效</li>
+<li>PSH  推送位： 接受放应该尽快交付上层应用，不用等缓存填满</li>
+<li>RST 复位： 表示TCP 连接出现了问题，要释放连接，再重新建立连接</li>
+<li>SYN 同步位：表示是一个连接报文</li>
+<li>FIN 终止位： 表明发送方已经发送完毕，要求释放连接</li>
+</ul>
+<p><strong>窗口位</strong>：表示接收方的接收缓存大小</p>
+<p><strong>检验和</strong>：加上伪包头之后的二进制反码求和在取反</p>
+<p><strong>紧急位：</strong> 指出本报文段得紧急数据的字节数</p>
+<h4 id="可靠手段"><a href="#可靠手段" class="headerlink" title="可靠手段"></a>可靠手段</h4><h5 id="TCP连接控制"><a href="#TCP连接控制" class="headerlink" title="TCP连接控制"></a>TCP连接控制</h5><h6 id="​三次握手："><a href="#​三次握手：" class="headerlink" title="​三次握手："></a>​三次握手：</h6><p>  <img src="images/9.png" alt=""></p>
+<p>  <img src="images/11.png" alt=""></p>
+<h6 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h6><p>  <img src="images/10.png" alt=""></p>
+<p>  <img src="images/12.png" alt=""></p>
+<h5 id="TCP流量-拥塞控制"><a href="#TCP流量-拥塞控制" class="headerlink" title="==TCP流量/拥塞控制=="></a>==TCP流量/拥塞控制==</h5><p>​    <strong>超时重传</strong>：在规定时间内没有收到确认就重发（RTTs 加权平均往返时间）</p>
+<p>​    <strong>快速重传</strong>： 连续收到三个冗余ACK之后便认为，该数据报已经丢失，则重新发送</p>
+<p>​    <strong>滑动窗口</strong>： 让发送方慢点，使得接收方来得及接收，让接收方根据自己的接收缓存的大小，动态的调整发送窗口的大小。（窗口值 取 rrwd  和 crwd 的最小值）</p>
+<p>​    <strong>当滑动窗口的值为 0 是，启动一个计时器。进行窗口探测，防止报文丢失，导致窗口一直为0</strong></p>
+<p>​    <strong>慢启动</strong>： 从一开始，每次扩增二倍</p>
+<p>​    <strong>拥塞避免</strong>：线性增长</p>
+<p>​    <strong>快速恢复</strong>：不在回退到0， 而是消减一半</p>
+<h3 id="TCP-和-UDP-的区别"><a href="#TCP-和-UDP-的区别" class="headerlink" title="==TCP 和 UDP 的区别=="></a>==TCP 和 UDP 的区别==</h3><ul>
+<li><p>1、 TCP面向连接 ； UDP是无连接的</p>
+</li>
+<li><p>2、 TCP提供可靠的服务，<strong>不丢不重按序不错。</strong>UDP尽最大努力交付</p>
+</li>
+<li><p>3 、TCP面向字节流，UDP是面向报文的且 <strong>UDP没有拥塞控制</strong></p>
+</li>
+<li><p>4、 每一条TCP连接只能是<strong>点到点</strong>的 ； UDP支持一对一，一对多，多对一和多对多的交互通信</p>
+</li>
+<li><p>5 、TCP首部开销<strong>20字节</strong>   ;   UDP的首部开销小，只有<strong>8个字节</strong></p>
+</li>
+</ul>
+<h2 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h2><h3 id="HTTP-协议"><a href="#HTTP-协议" class="headerlink" title="==HTTP 协议=="></a>==HTTP 协议==</h3><h4 id="请求报文："><a href="#请求报文：" class="headerlink" title="请求报文："></a>请求报文：</h4><h5 id="​1-请求行："><a href="#​1-请求行：" class="headerlink" title="​1.请求行："></a>​1.请求行：</h5><p>​            请求方式（get post put delete） URL   HTTP协议版本    </p>
+<h5 id="2-请求头："><a href="#2-请求头：" class="headerlink" title="2.请求头："></a>2.请求头：</h5><p>​        <img src="images/14.png" alt=""></p>
+<h5 id="3-空行："><a href="#3-空行：" class="headerlink" title="3.空行："></a>3.空行：</h5><h5 id="4-请求体："><a href="#4-请求体：" class="headerlink" title="4.请求体："></a>4.请求体：</h5><p>​    你输入的 账号 密码等</p>
+<h4 id="响应报文："><a href="#响应报文：" class="headerlink" title="响应报文："></a>响应报文：</h4><h5 id="1-响应行："><a href="#1-响应行：" class="headerlink" title="1.响应行："></a>1.响应行：</h5><p>Http 版本  状态码</p>
+<h5 id="2-响应头："><a href="#2-响应头：" class="headerlink" title="2.响应头："></a>2.响应头：</h5><p><img src="images/15.png" alt=""></p>
+<h5 id="3-空行：-1"><a href="#3-空行：-1" class="headerlink" title="3.空行："></a>3.空行：</h5><h5 id="4-响应体："><a href="#4-响应体：" class="headerlink" title="4.响应体："></a>4.响应体：</h5><p>​    html代码 等</p>
+<h4 id="HTTP-状态码"><a href="#HTTP-状态码" class="headerlink" title="HTTP 状态码"></a>HTTP 状态码</h4><h5 id="2XX——表明请求被正常处理了"><a href="#2XX——表明请求被正常处理了" class="headerlink" title="2XX——表明请求被正常处理了"></a>2XX——表明请求被正常处理了</h5><p><strong>200 OK</strong>：请求已正常处理。</p>
+<p><strong>204 No Content</strong>：请求处理成功，但没有任何资源可以返回给客户端，一般在只需要从客户端往服务器发送信息，而对客户端不需要发送新信息内容的情况下使用。</p>
+<h5 id="3XX——表明浏览器需要执行某些特殊的处理以正确处理请求"><a href="#3XX——表明浏览器需要执行某些特殊的处理以正确处理请求" class="headerlink" title="3XX——表明浏览器需要执行某些特殊的处理以正确处理请求"></a>3XX——表明浏览器需要执行某些特殊的处理以正确处理请求</h5><p><strong>==301 Moved Permanently==</strong>：资源的uri已更新，你也更新下你的书签引用吧。<strong>永久性重定向</strong>，请求的资源已经被分配了新的URI，以后应使用资源现在所指的URI。</p>
+<p><strong>==302 Found==</strong>：资源的URI<strong>已临时定位</strong>到其他位置了，姑且算你已经知道了这个情况了。<strong>临时性重定向</strong>。和301相似，但302代表的资源不是永久性移动，只是临时性性质的。换句话说，已移动的资源对应的URI将来还有可能发生改变。</p>
+<p><strong>303 See Other</strong>：资源的URI已更新，你是否能临时按新的URI访问。该状态码表示由于请求对应的资源存在着另一个URL，应使用GET方法定向获取请求的资源。<strong>303状态码和302状态码有着相同的功能</strong>，但303状态码明确表示客户端应当<strong>采用GET方法获取资源</strong>，这点与302状态码有区别。</p>
+<h5 id="4XX——表明客户端是发生错误的原因所在。"><a href="#4XX——表明客户端是发生错误的原因所在。" class="headerlink" title="4XX——表明客户端是发生错误的原因所在。"></a>4XX——表明客户端是发生错误的原因所在。</h5><p><strong>400 Bad Request</strong>：服务器端无法理解客户端发送的请求，请求报文中可能存在语法错误。</p>
+<p><strong>403 Forbidden</strong>：不允许访问那个资源。该状态码表明对请求资源的访问被服务器拒绝了。（权限，未授权IP等）</p>
+<p><strong>404 Not Found</strong>：服务器上没有请求的资源。路径错误等。</p>
+<h5 id="5XX——服务器本身发生错误"><a href="#5XX——服务器本身发生错误" class="headerlink" title="5XX——服务器本身发生错误"></a>5XX——服务器本身发生错误</h5><p><strong>500 Internal Server Error：</strong>貌似内部资源出故障了。该状态码表明服务器端在执行请求时发生了错误。也有可能是web应用存在bug或某些临时故障。</p>
+<p><strong>503 Service Unavailable：</strong>抱歉，我现在正在忙着。该状态码表明服务器暂时处于超负载或正在停机维护，现在无法处理请求。</p>
+<h3 id="HTTP-过程"><a href="#HTTP-过程" class="headerlink" title="==HTTP 过程=="></a>==<strong>HTTP 过程</strong>==</h3><ol>
+<li>浏览器 分析 URL</li>
+<li>DNS 请求解析 IP 地址</li>
+<li>DNS 解析出 IP 地址</li>
+<li>建立 TCP 连接</li>
+<li>取文件</li>
+<li>服务器响应</li>
+<li>释放 TCP 连接</li>
+<li>浏览器显示</li>
+</ol>
+<h3 id="Ping-命令的过程"><a href="#Ping-命令的过程" class="headerlink" title="==Ping 命令的过程=="></a>==Ping 命令的过程==</h3><h4 id="同一个网段下"><a href="#同一个网段下" class="headerlink" title="同一个网段下"></a>同一个网段下</h4><ul>
+<li>如果主机A，要去ping主机B，那么主机A，他会先查自己的MAC地址表，如果没有B的MAC地址，就会向外发送一个ARP广播包</li>
+<li>交换机会收到这个报文后，所以他会检索自己有没有保存主机B的MAC地址，如果有，就返回给主机A，如果没有，就会向所有端口发送ARP广播，其它主机收到后，发现不是在找自己，就纷纷丢弃了该报文，不去理会。直到主机B收到了报文后，就立即响应，我的MAC地址是多少，同时学到主机A的MAC地址，并按同样的ARP报文格式返回给主机A。</li>
+<li>这时候主机A学到了主机B的MAC地址，就把这个MAC地址封装到ICMP协议的二层报文中向主机B发送</li>
+<li>主机B收到了这个报文后，发现是主机A 的ICPM回显请求，就按同样的格式，返回一个值给主机A，这样就完成了同一网段内的ping过程。</li>
+</ul>
+<h4 id="不同网段内（多了一个或者几个路由器的过程）"><a href="#不同网段内（多了一个或者几个路由器的过程）" class="headerlink" title="不同网段内（多了一个或者几个路由器的过程）"></a>不同网段内（多了一个或者几个路由器的过程）</h4><ul>
+<li>如果主机A要ping主机C，那么主机A发现主机C的IP和自己不是同一网段，他就去找网关转发，但是他也不知道网关的MAC地址情况下呢？他就会向之前那个步骤一样先发送一个ARP广播，学到网关的MAC地址，再发封装ICMP报文给网关路由器.。</li>
+<li>当路由器收到主机A发过来的ICMP报文，根据目的的IP，查路由表，得到一个出口指针，去掉原来的MAC头部，加上自己的MAC地址向主机C转发。(如果网关也没有主机C的MAC地址，还是要向前面一个步骤一样，ARP广播一下即可相互学到。路由器2端口能学到主机D的MAC地址，主机D也能学到路由器2端口的MAC地址。)报文格式如下：</li>
+<li>最后，在主机C已学到路由器2端口MAC地址，路由器2端口转发给路由器1端口，路由1端口学到主机A的MAC地址的情况下，他们就不需要再做ARP解析，就将ICMP的回显请求回复过来。</li>
+</ul>
+<h3 id="HTTPS-协议"><a href="#HTTPS-协议" class="headerlink" title="==HTTPS 协议=="></a>==HTTPS 协议==</h3><h4 id="什么是-HTTPS"><a href="#什么是-HTTPS" class="headerlink" title="什么是 HTTPS"></a>什么是 HTTPS</h4><p>​    HTTP + SSL 安全套接字</p>
+<h4 id="HTTPS-的详细握手过程"><a href="#HTTPS-的详细握手过程" class="headerlink" title="==HTTPS 的详细握手过程=="></a>==HTTPS 的详细握手过程==</h4><ul>
+<li><strong>浏览器向服务端发送请求，请求中包含浏览器支持的加密协议，以及一个随机数。</strong></li>
+<li><strong>服务器收到请求后，选择一种非对称加密的算法，把数字证书，签名公钥，身份信息，以及一个随机数发送给浏览器。</strong></li>
+<li><strong>浏览器收到后，验证证书的真实性，并用服务器的公钥加密握手信息发给服务器。</strong></li>
+<li><strong>服务器解密后，用之前的随机数计算出一个 对称加密的秘钥，以此作为加密信息发送</strong></li>
+<li><strong>后续所有的信息发送都是以对称加密的方式进行的。</strong></li>
+<li>总结一句话：==就是用对称加密加密了非对称加密的秘钥。在进行传输==</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/计算机网络 - 网络层/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/计算机网络 - 网络层/" itemprop="url">计算机网络 - 网络层</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:39:30+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机网络/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,056
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<p>[TOC]</p>
+<h2 id="计算机网络-网络层"><a href="#计算机网络-网络层" class="headerlink" title="计算机网络 - 网络层"></a>计算机网络 - 网络层</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>因为网络层是整个互联网的核心，因此应当让网络层尽可能简单。网络层向上只提供简单灵活的、无连接的、尽最大努力交互的数据报服务。使用 IP 协议，可以把异构的物理网络连接起来，使得在网络层看起来好像是一个统一的网络。与IP配套的三个协议：</p>
+<pre><code>1.地址解析协议 ARP
+2.网际控制报文协议 ICMP
+3.网际组管理协议 IGMP
+</code></pre><h3 id="IP数据报格式"><a href="#IP数据报格式" class="headerlink" title="IP数据报格式"></a>IP数据报格式</h3>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/计算机网络 - 网络层/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/计算机网路 - HTTP协议/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/计算机网路 - HTTP协议/" itemprop="url">计算机网络 - HTTP协议</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:21:40+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机网络/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  989
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="计算机网络-HTTP协议"><a href="#计算机网络-HTTP协议" class="headerlink" title="计算机网络 - HTTP协议"></a>计算机网络 - HTTP协议</h2><p>HTTP协议是属于应用层的协议，是超文本传输协议。</p>
+<blockquote>
+<p>特点：1.支持客户端与服务器模式。2.简单快速。3.无连接。4.无状态。</p>
+</blockquote>
+<blockquote>
+<p>问题：在浏览器地址栏输入URL之后，按下回车之后经历的流程：1.DNS解析（DNS缓存，浏览器缓存…）。2.在DNS找到ip地址之后会根据ip地址进行TCP连接。3.之后浏览器会发送HTTP请求。4.紧接着服务器请求并返回HTTP报文。5.浏览器解析渲染页面。6.浏览器释放TCP连接。</p>
+</blockquote>
+<blockquote>
+<p>GET请求和POST请求的区别：1.HTTP报文层面，GET请求将信息放在URL中，POST请求将请求信息放在报文体中。2.在数据库层面，GET符合幂等性（对数据库一次操作和多次操作获得的结果是一致的）和安全性，POST不符合。3.GET请求可以被缓存、被存储，而POST请求不行。</p>
+</blockquote>
+<blockquote>
+<p>Cookie和Session的区别：</p>
+</blockquote>
+<h3 id="1-Cookie"><a href="#1-Cookie" class="headerlink" title="1.Cookie"></a>1.Cookie</h3><pre><code>1.Cookie是由服务器发送给客户端的特殊信息，以文本的形式存放在客户端。
+
+2.客户端再次请求的时候，会把Cookie回发。
+
+3.服务器接收到后，会解析Cookie生成与客户端相对应的内容。
+</code></pre><h4 id="Cookie的设置和发送过程"><a href="#Cookie的设置和发送过程" class="headerlink" title="Cookie的设置和发送过程"></a>Cookie的设置和发送过程</h4><pre><code>1.客户端向服务器发送一个HTTP请求
+
+2.服务器发送一个HTTP Response 和 Set-Cookie到客户端
+
+3.客户端发送一个HTTP request 和 Cookie到服务器
+
+4.服务器发送一个Http响应到客户端
+</code></pre><h3 id="2-Session"><a href="#2-Session" class="headerlink" title="2.Session"></a>2.Session</h3><pre><code>1.Session是服务器端的机制，在服务器上保存的信息
+
+2.解析客户端请求并操作SessionId，按需保存状态信息
+</code></pre><h4 id="Session的实现方式"><a href="#Session的实现方式" class="headerlink" title="Session的实现方式"></a>Session的实现方式</h4><pre><code>1.使用Cookie实现
+
+    在客户端发起http请求之后，服务器返回response和一个sessionId
+
+2.使用URL回写实现
+</code></pre><blockquote>
+<p>两者之间的区别：1.Cookie数据存放在客户的浏览器上，Session数据存放在服务器上。2.Session相对于Cookie更安全。3.如果考虑减轻服务器负担，应当使用Cookie。</p>
+</blockquote>
+<blockquote>
+<p>HTTP和HTTPS的区别：</p>
+</blockquote>
+<pre><code>1.SSL：安全套接层，为网络通信提供安全及数据完整性的一种安全协议。是操作系统对外的API，SSL3.0之后更名TLS。采用身份验证和数据加密保证网络通信的安全和数据的完整性。
+</code></pre><h4 id="HTTPS数据传输流程"><a href="#HTTPS数据传输流程" class="headerlink" title="HTTPS数据传输流程"></a>HTTPS数据传输流程</h4><pre><code>1.浏览器将支持的加密算法信息发送给服务器
+
+2.服务器选择一套浏览器支持的加密算法，以证书的形式回发浏览器
+
+3.浏览器验证证书合法性，并结合证书公钥加密信息发送给服务器
+
+4.服务器使用私密解密信息，验证哈希，加密响应消息回发浏览器
+
+5.浏览器解密响应信息，对消息进行验真，之后进行加密交互数据
+</code></pre><blockquote>
+<p>两者之间的区别：1.HTTPS需要到CA申请证书，HTTP不需要。2.HTTPS密文传输，HTTP明文传输。3.连接方式不同，HTTPS默认使用443端口，HTTP使用80端口。4.HTTPS=HTTP+加密+认证+完整性保护，相对于HTTP来说安全。</p>
+</blockquote>
+<h4 id="HTPS"><a href="#HTPS" class="headerlink" title="HTPS"></a>HTPS</h4><h3 id="Socket"><a href="#Socket" class="headerlink" title="Socket"></a>Socket</h3><pre><code>在网络中可以利用 协议+ip地址+端口号 唯一标识一个网络进程。
+</code></pre><p>Socket是对TCP/IP协议的抽象，是操作系统对外开放的接口。</p>
+<h4 id="Socket通信流程"><a href="#Socket通信流程" class="headerlink" title="Socket通信流程"></a>Socket通信流程</h4><pre><code>1.服务器
+
+    1.创建socket socket()
+
+    2.绑定socket和端口号 bind()
+
+    3.监听该端口号 listen()
+
+    4.接收来自客户端的连接请求 accept()
+
+    5.从socket中读取字符 recv()
+
+    6.关闭socket close()
+
+
+2.客户端
+
+    1.创建socket socket()
+
+    2.连接指定的计算机的端口 connect()
+
+    3.向socket中写入信息 send()
+
+    4.关闭socket close()
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/计算机网路 - 链路层/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/计算机网路 - 链路层/" itemprop="url">计算机网络 - 链路层</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:21:21+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机网络/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  441
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<p>[TOC]</p>
+<h2 id="计算机网络-链路层"><a href="#计算机网络-链路层" class="headerlink" title="计算机网络 - 链路层"></a>计算机网络 - 链路层</h2><h4 id="基本问题"><a href="#基本问题" class="headerlink" title="基本问题"></a>基本问题</h4><p><strong>1.封装成帧</strong><br></p>
+<p>表示将网络层传下来的分组添加首部和尾部，用于标记帧的开始和结束。即在ip数据报之前和之后添加首部和尾部。</p>
+<p><strong>2.透明传输</strong><br></p>
+<blockquote>
+<p>提示：透明表示一个实际存在的事物好像不存在一般。</p>
+</blockquote>
+<p>帧使用首部和尾部进行定界，如果帧的数据部分含有和首部尾部相同的内容，那么帧的开始和结束位置就会被错误的判断。所以我们需要在数据部分出现与首部尾部相同内容的前面插入转义字符。</p>
+<p>如果数据部分出现转义字符，那么就在转义字符前面再加个转义字符。在接收端进行处理之后可以还原出原始数据。在这个过程透明传输的内容是转义字符，用户察觉不到转义字符的存在。</p>
+<p><strong>3.差错检测</strong><br></p>
+<p>循环冗余检验（CRC）来检查比特差错。</p>
+<h4 id="信道分类"><a href="#信道分类" class="headerlink" title="信道分类"></a>信道分类</h4><p><strong>1.广播信道</strong><br></p>
+<p>一对多通信，一个节点发送的数据能够被广播信道上所有的节点接收到。所有节点都在同一广播信道上发送数据，因此需要有专门的控制方法进行协调，避免发生冲突（碰撞）。主要有两种控制方法进行协调：1.信道复用技术。2.CSMA/CD协议。</p>
+<p><strong>2.点对点信道</strong><br></p>
+<p>一对一通信，因为不会发生碰撞，所以比较简单，使用ppp协议进行控制。</p>
+<h4 id="信道复用技术"><a href="#信道复用技术" class="headerlink" title="信道复用技术"></a>信道复用技术</h4><p><strong>1.频分复用</strong><br></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/设计模式 - 中介者模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/设计模式 - 中介者模式/" itemprop="url">设计模式 - 中介</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:23:17+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  290
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>该模式是用来降低多个对象和类之间的通信复杂性。该模式提供一个中介类，该类负责处理不同类之间的通信。</p>
+<h4 id="中介者模式"><a href="#中介者模式" class="headerlink" title="中介者模式"></a>中介者模式</h4><p><strong>1.创建中介类</strong><br></p>
+<pre><code>import java.util.Date;
+public class ChatRoom {
+   public static void showMessage(User user, String message){
+      System.out.println(new Date().toString()
+         + &quot; [&quot; + user.getName() +&quot;] : &quot; + message);
+   }
+}
+</code></pre><p><strong>2.创建user类</strong><br></p>
+<pre><code>public class User {
+   private String name;
+
+   public String getName() {
+      return name;
+   }
+
+   public void setName(String name) {
+      this.name = name;
+   }
+
+   public User(String name){
+      this.name  = name;
+   }
+
+   public void sendMessage(String message){
+      ChatRoom.showMessage(this,message);
+   }
+}
+</code></pre><p><strong>3.使用User对象来显示它们之间的通信</strong><br></p>
+<pre><code>public class MediatorPatternDemo {
+   public static void main(String[] args) {
+      User robert = new User(&quot;Robert&quot;);
+      User john = new User(&quot;John&quot;);
+
+      robert.sendMessage(&quot;Hi! John!&quot;);
+      john.sendMessage(&quot;Hello! Robert!&quot;);
+   }
+}
+</code></pre><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>中介者模式提供了一种简化复杂交互的解决方案，其引入一个中介者，将原本对象之间的两两交互转换成为每一个对象与中介者之间的交互，中介者可以对对象之间的通信进行控制和协调，极大降低原有系统的耦合度，使得系统更加灵活，易于扩展。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/设计模式 - 享元模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/设计模式 - 享元模式/" itemprop="url">计算机网络 - 享元</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:22:48+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  982
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><blockquote>
+<p>提示：享元，表示共享元器件，即复用已经生成的对象。而复用最简单的方式是用一个HashMap来存放每次新生成的对象。每次需要一个对象时，就去HashMap里面找。如果没有再生成新的对象不迟。</p>
+</blockquote>
+<p>该模式主要用于减少创建对象的数量，从而能够减少内存的占用和提高性能。其提供减少对象数量从而改善应用所需的对象结构的方式。该模式尝试重用现有的类对象，如果没有找到匹配的对象，则创建新对象。也就是在大量对象存在的时候将共同的部分抽象出来，如果有相同的业务请求，直接返回在内存中已有的对象，避免重新创建。</p>
+<blockquote>
+<p>提示：如果系统中存在大量的对象，且这些对象消耗大量的内存，这些对象的状态大部分可以外部化。</p>
+</blockquote>
+<p>概括：减少对象创建的数量，减少内存的占用，提高性能</p>
+<p>场景</p>
+<pre><code>1. 系统底层开发，以便解决系统的性能问题。如：java.lang.String、数据库连接池，如果有则返回，没有则创建一个字符串并保存在缓存池里面
+
+2. 系统中有大量相似的对象，需要缓冲池的场景
+</code></pre><p>优点</p>
+<pre><code>1. 减少对象的创建，降低内存中对象的数量，降低系统的内存，提高效率
+
+2. 减少内存之外的其它资源占用
+</code></pre><p>缺点</p>
+<pre><code>1. 关注内/外部状态、关注线程安全问题
+
+2. 系统、程序逻辑比较复杂
+</code></pre><p>扩展</p>
+<pre><code>1. 内部状态 不会随着环境改变而改变的状态，在享元对象的内部
+
+    是享元对象的属性
+
+    private String title = &quot;manager&quot;;//final属性，不可改变
+
+2. 外部状态 随着环境的改变而改变的状态，不可共享的状态
+</code></pre><p>相关的设计模式</p>
+<pre><code>1. 享元模式与代理模式
+
+2. 享元模式与单例模式
+
+是一种复用对象的思想
+</code></pre><h4 id="享元模式"><a href="#享元模式" class="headerlink" title="享元模式"></a>享元模式</h4><p><strong>1.创建一个接口</strong><br></p>
+<pre><code>public interface Shape {
+    void draw();
+}
+</code></pre><p><strong>2.创建实现接口的实体类</strong><br></p>
+<pre><code>public class Circle implements Shape {
+   private String color;
+   private int x;
+   private int y;
+   private int radius;
+
+   public Circle(String color){
+      this.color = color;     
+   }
+
+   public void setX(int x) {
+      this.x = x;
+   }
+
+   public void setY(int y) {
+      this.y = y;
+   }
+
+   public void setRadius(int radius) {
+      this.radius = radius;
+   }
+
+   @Override
+   public void draw() {
+      System.out.println(&quot;Circle: Draw() [Color : &quot; + color 
+         +&quot;, x : &quot; + x +&quot;, y :&quot; + y +&quot;, radius :&quot; + radius);
+   }
+}
+</code></pre><p><strong>3.创建一个工厂 生成基于给定信息的实体类的对象</strong><br></p>
+<pre><code>import java.util.HashMap;
+public class ShapeFactory {
+
+   //这里先创建一个存储新生成对象的HashMap
+   private static final HashMap&lt;String, Shape&gt; circleMap = new HashMap&lt;&gt;();
+
+   public static Shape getCircle(String color) {
+      Circle circle = (Circle)circleMap.get(color);
+
+      if(circle == null) {
+         circle = new Circle(color);
+         circleMap.put(color, circle);
+         System.out.println(&quot;Creating circle of color : &quot; + color);
+      }
+      return circle;
+   }
+}
+</code></pre><p><strong>4.使用该工厂 通过传递颜色信息来获取实体类的对象</strong><br></p>
+<pre><code>public class FlyweightPatternDemo {
+   private static final String colors[] = 
+      { &quot;Red&quot;, &quot;Green&quot;, &quot;Blue&quot;, &quot;White&quot;, &quot;Black&quot; };
+   public static void main(String[] args) {
+
+      for(int i=0; i &lt; 20; ++i) {
+         Circle circle = 
+            (Circle)ShapeFactory.getCircle(getRandomColor());
+         circle.setX(getRandomX());
+         circle.setY(getRandomY());
+         circle.setRadius(100);
+         circle.draw();
+      }
+   }
+   private static String getRandomColor() {
+      return colors[(int)(Math.random()*colors.length)];
+   }
+   private static int getRandomX() {
+      return (int)(Math.random()*100 );
+   }
+   private static int getRandomY() {
+      return (int)(Math.random()*100);
+   }
+}
+</code></pre><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>享元模式就是共享对象，在某些对象需要重复创建，且最终只需要得到单一结果的情况下，可以使用享元模式。所以此模式是先利用已创建的对象，通过某种规则判断当前所需对象是否可以利用已存在对象作相应修改后得到想要的效果。</p>
+<h4 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h4><pre><code>1. Integer
+
+    - valueOf() 在这了解IntegerCache 如果在-128-127之间，会直接从缓存中取值，否则会新建对象
+
+2. Long
+
+    - LongCache
+
+3. GenericObjectPool
+
+    - Tomcat连接池，在连接池中保存Deque对象。
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/设计模式 - 代理模式 - 重点/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/设计模式 - 代理模式 - 重点/" itemprop="url">设计模式 - 代理</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:23:07+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  875
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>该模式中一个类代表另一个类的功能，我们创建具有现有对象的对象，以便向外界提供功能接口。</p>
+<blockquote>
+<p>注意：该模式和适配器模式的区别：适配器模式主要改变所考虑对象的接口，而代理模式不能改变所代理类的接口。该模式和装饰器模式的区别：装饰器模式为了增强功能，而代理模式为了加以控制。</p>
+</blockquote>
+<blockquote>
+<p>提示：是最常用的模式之一，用一个代理来隐藏具体实现细节，通常还用于在真实的实现前后添加一部分逻辑。</p>
+</blockquote>
+<h4 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h4><p><strong>1.创建接口</strong><br></p>
+<pre><code>public interface Image {
+    void display();
+}
+</code></pre><p><strong>2.创建实现接口的实体类</strong><br></p>
+<pre><code>public class RealImage implements Image {
+
+   private String fileName;
+
+   public RealImage(String fileName){
+      this.fileName = fileName;
+      loadFromDisk(fileName);
+   }
+
+   @Override
+   public void display() {
+      System.out.println(&quot;Displaying &quot; + fileName);
+   }
+
+   private void loadFromDisk(String fileName){
+      System.out.println(&quot;Loading &quot; + fileName);
+   }
+}
+
+//这里的代理要表现得就像是真实类
+public class ProxyImage implements Image{
+
+   //在内部需要一个真实实现类
+   private RealImage realImage;
+
+   private String fileName;
+
+   public ProxyImage(String fileName){
+      this.fileName = fileName;
+   }
+
+   @Override
+   public void display() {
+      if(realImage == null){
+         realImage = new RealImage(fileName);
+      }
+      realImage.display();
+   }
+}
+</code></pre><p><strong>3.当被请求时 使用 ProxyImage 来获取 RealImage 类的对象</strong><br></p>
+<pre><code>public class ProxyPatternDemo {
+   public static void main(String[] args) {
+      Image image = new ProxyImage(&quot;test_10mb.jpg&quot;);
+
+      // 图像将从磁盘加载
+      image.display(); 
+      System.out.println(&quot;&quot;);
+      // 图像不需要从磁盘加载
+      image.display();  
+   }
+}
+</code></pre><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>代理在实际意义上就是 方法包装 和 方法增强。在AOP中就是动态代理的过程。</p>
+<p><strong>1.JDK动态代理</strong><br></p>
+<pre><code>1.java.lang.reflect.Proxy 生成动态代理类和对象
+2.java.lang.reflect.InvocationHandler(处理器接口) 可通过invoke()方法实现
+</code></pre><blockquote>
+<p>注意：此动态代理对真实角色的代理访问，每次都是通过Proxy生成的代理类对象都要指定对应的处理器对象。</p>
+</blockquote>
+<pre><code>1.接口
+
+    public interface Subject {
+        public int sellBooks();
+        public String speak();
+    }
+
+2.真实对象
+
+    public class RealSubject implements Subject {
+        @Override 
+        public int sellBooks(){
+            System.out.println(&quot;sellbooks&quot;);
+            return 1;
+        }
+
+        @Override
+        public String speak() {
+            System.out.println(&quot;说话&quot;);
+            return &quot;张三&quot;;
+        }
+    }
+
+3.处理对象
+
+    public class MyInvocationHandler implements InvocationHandler {
+
+        //这里需要处理真实角色 所以传入真实角色
+        Subject realSubject;
+
+        public MyInvocationHandler(Subject subject){
+            this.realSubject = subject;
+        }
+
+        @Override
+        public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+            System.out.println(&quot;调用代理类&quot;);
+            if(method.getName().equals(&quot;sellBooks&quot;)){
+                int invoke = (int)method.invoke(realSubject, args);
+                System.out.println(&quot;调用的是卖书的方法&quot;);
+                return invoke ;
+            }else {
+                String string = (String) method.invoke(realSubject,args) ;
+                System.out.println(&quot;调用的是说话的方法&quot;);
+                return  string ;
+            }
+        }
+    }
+
+4.调用 main.java
+
+    public class Client {
+        public static void main(String[] args){
+            //真实对象
+            Subject subject = new RealSubject();
+
+            MyInvocationHandler myInvocationHandler = new MyInvocationHandler(realSubject);
+
+            //代理对象
+            Subject proxyClass = (Subject) Proxy.newProxyInstance(ClassLoader.getSystemClassLoader, new Class[]{Subject.class}, myInvocationHandler);
+
+            proxyClass.sellBooks();
+            proxyClass.speak();
+        }
+    }
+</code></pre><p><strong>2.Cglib动态代理</strong><br></p>
+<pre><code>1.被代理类
+
+    public class Engineer {
+        //该方法可以被代理
+        public void eat(){
+            System.out.println(&quot;正在吃饭...&quot;);
+        }
+
+        //final方法不会被生成的子类覆盖
+        public final void work(){
+            System.out.println(&quot;正在工作...&quot;);
+        }
+
+        //private方法不会被生成的子类覆盖
+        private void play(){
+            System.out.println(&quot;正在玩耍...&quot;);
+        }
+    }
+
+2.cglib代理类
+
+    ...
+    public class CglibProxy implements MethodInterceptor {
+        private Object target;
+
+        public CglibProxy(Object target){
+            this.target = target;
+        }
+
+        @Override
+        public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
+            System.out.println(&quot;###   before invocation&quot;);
+            Object result = method.invoke(target, objects);
+            System.out.println(&quot;###   end invocation&quot;);
+            return result;
+        }
+
+        public static Object getProxy(Object target) {
+        Enhancer enhancer = new Enhancer();
+        // 设置需要代理的对象
+        enhancer.setSuperclass(target.getClass());
+        // 设置代理人
+        enhancer.setCallback(new CglibProxy(target));
+        return enhancer.create();
+
+        }
+    }
+
+3.测试
+
+    public class CglibMainTest {
+        public static void main(String[] args) {
+            // 生成 Cglib 代理类
+            Engineer engineerProxy = (Engineer) CglibProxy.getProxy(new Engineer());
+            // 调用相关方法
+            engineerProxy.eat();
+        }
+    }
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/设计模式 - 单例模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/设计模式 - 单例模式/" itemprop="url">设计模式 - 单例</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:23:41+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,101
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>该类型模式属于创建型模式，提供了一种创建对象的最佳方式。该模式涉及到一个单一的类，该类负责创建自己的对象，同时确保只有单个对象被创建。此类提供一种访问其唯一的对象的方式，可直接访问，不需要实例化该类对象。</p>
+<blockquote>
+<p>注意：1.单例类只能有一个实例 2.单例类必须自己创建自己的唯一实例 3.单例类必须给所有其它对象提供这一实例</p>
+</blockquote>
+<p>单例模式的优点：</p>
+<pre><code>1. 对于频繁使用的对象，可以省略new操作花费的时间，这对于那些重量级对象而言，是非常可观的一笔系统开销。
+
+2. 由于new操作的次数减少，因为对系统内存的使用频率也会降低，这将减轻GC压力，缩短GC停顿时间。
+</code></pre><h4 id="单例模式的具体实现"><a href="#单例模式的具体实现" class="headerlink" title="单例模式的具体实现"></a>单例模式的具体实现</h4><p><strong>1.创建Singleton类</strong><br></p>
+<pre><code>public class SingleObject {
+
+   //创建 SingleObject 的一个对象
+   private static SingleObject instance = new SingleObject();
+
+   //让构造函数为 private，这样该类就不会被实例化 new Singleton()
+   private SingleObject(){}
+
+   //获取唯一可用的对象
+   public static SingleObject getInstance(){
+      return instance;
+   }
+
+   public void showMessage(){
+      System.out.println(&quot;Hello World!&quot;);
+   }
+}
+</code></pre><p><strong>2.从新创建的Singleton类获取唯一对象</strong><br></p>
+<pre><code>public class SingletonPatternDemo {
+    public static void main(String[] args){
+          //不合法的构造函数
+          //编译时错误：构造函数 SingleObject() 是不可见的
+          //SingleObject object = new SingleObject();
+
+          //获取唯一可用的对象
+          SingleObject object = SingleObject.getInstance();
+
+          //显示消息
+          object.showMessage();
+    }
+}
+</code></pre><h4 id="单例模式的几种实现方式"><a href="#单例模式的几种实现方式" class="headerlink" title="单例模式的几种实现方式"></a>单例模式的几种实现方式</h4><p><strong>1.懒汉式(线程不安全)</strong><br><br>这种方式是基本的实现方式，但是此实现不支持多线程，因为没有加锁synchronized。</p>
+<pre><code>public class Singleton {  
+    private static Singleton instance; 
+    //堵死 new Singleton() 路
+    private Singleton (){}  
+
+    public static Singleton getInstance() {  
+    if (instance == null) {  
+        instance = new Singleton();  
+    }  
+    return instance;  
+    }  
+}
+</code></pre><p><strong>2.懒汉式(线程安全)</strong><br><br>这种方式具备很好的 lazy loading，能够在多线程中很好的工作，但是效率很低。必须加锁 synchronized 才能保证单例，但加锁会影响效率。</p>
+<pre><code>public class Singleton {  
+    private static Singleton instance;  
+
+    //堵死 new Singleton() 路
+    private Singleton (){}  
+
+    public static synchronized Singleton getInstance() {  
+    if (instance == null) {  
+        instance = new Singleton();  
+    }  
+    return instance;  
+    }  
+}
+</code></pre><p><strong>3.饿汉式</strong><br><br>该模式先将单例进行实例化，获取的时候通过静态方法直接获取即可。缺点是类加载后就完成了类的实例化，浪费部分空间。这种方式常用，但是容易产生垃圾对象，这种方式没有加锁，执行效率很高。但是在类加载时就初始化，浪费内存。</p>
+<pre><code>public class Singleton {  
+    //这一句是饿汉模式的核心
+    private static Singleton instance = new Singleton();  
+
+    private Singleton (){}  
+
+    public static Singleton getInstance() {  
+    return instance;  
+    }  
+}
+</code></pre><p><strong>4.双检锁/双重校验锁（DCL double-checked locking）</strong><br><br>这种方式采用双锁机制，安全且在多线程情况下能保持高性能。</p>
+<pre><code>public class Singleton { 
+    //采用volatile修饰单例，然后通过一次检查判断单例是否初始化
+    private volatile static Singleton singleton;  
+
+    private Singleton (){}  
+    public static Singleton getSingleton() {  
+        if (singleton == null) {  
+            synchronized (Singleton.class) {  
+            if (singleton == null) {  
+                singleton = new Singleton();  
+            }  
+        }  
+    }  
+    return singleton;  
+    }  
+}
+</code></pre><p><strong>5.登记式/静态内部类</strong><br><br>这种方式能达到双检锁方式一样的功效。这种方式同样利用了 classloader 机制来保证初始化 instance 时只有一个线程</p>
+<pre><code>public class Singleton {  
+
+    //静态内部类只有在被使用的时候才会初始化
+    private static class SingletonHolder {
+        private static final Singleton INSTANCE = new Singleton();  
+    }  
+
+    private Singleton (){}  
+
+    public static final Singleton getInstance() { 
+
+        return SingletonHolder.INSTANCE;  
+    }  
+}
+</code></pre><p><strong>6.枚举</strong><br><br>这种实现方式还没有被广泛采用，但这是实现单例模式的最佳方法。它更简洁，自动支持序列化机制，绝对防止多次实例化。枚举类在类加载的时候会初始化里面所有的实例，而且JVM保证它们不会被实例化，所以天生是单例的。</p>
+<pre><code>public enum Singleton {  
+    //枚举类确保每一个列对象在全局是唯一的。
+    INSTANCE;  
+    public void whateverMethod() {  
+    }  
+}
+</code></pre><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>懒汉式和饿汉式的根本区别在于是否在类内方法外创建自己的对象，同时声明对象私有化，构造方法私有化，从而外部不能通过new对象的方式来访问。而饿汉式的话是声明并且创建对象，懒汉式只是声明对象，在调用该类的getInstance()方法时才会进行new对象。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/设计模式 - 原型模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/设计模式 - 原型模式/" itemprop="url">计算机网络 - 原型</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:23:55+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  899
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>该模式是用于创建重复的对象，同时又能够保证性能。这种类型的设计模式是一种创建对象的模式。这种模式实现了一个原型接口，该接口用于创建当前对象的克隆。</p>
+<blockquote>
+<p>注意：与通过对一个类进行实例化来构造新对象不同的是，原型模式是通过拷贝一个现有对象生成新对象的。浅拷贝实现 Cloneable 重写，深拷贝是通过实现 Serializable 读取二进制流。</p>
+</blockquote>
+<blockquote>
+<p>提示：该模式一般通过一个实例进行克隆从而获得更多同一原型的实例，使用实例的clone()方法即可完成。</p>
+</blockquote>
+<h4 id="原型模式（深克隆和浅克隆）"><a href="#原型模式（深克隆和浅克隆）" class="headerlink" title="原型模式（深克隆和浅克隆）"></a>原型模式（深克隆和浅克隆）</h4><p>浅克隆：所谓浅克隆只在类那一层进行克隆。</p>
+<p>深克隆：在clone()方法那块儿进行clone()设置。</p>
+<h4 id="原型模式在JDK源码中应用"><a href="#原型模式在JDK源码中应用" class="headerlink" title="原型模式在JDK源码中应用"></a>原型模式在JDK源码中应用</h4><ul>
+<li>clone() 方法</li>
+<li>Cloneable 接口</li>
+<li></li>
+</ul>
+<h4 id="原型模式"><a href="#原型模式" class="headerlink" title="原型模式"></a>原型模式</h4><p><strong>1.创建一个实现Cloneable接口的抽象类(原型角色)</strong><br></p>
+<pre><code>//1.（抽象类或者接口）实现 java.lang.Cloneable 接口
+public abstract class Shape implements Cloneable {
+
+   private String id;
+   protected String type;
+
+   abstract void draw();
+
+   public String getType(){
+      return type;
+   }
+
+   public String getId() {
+      return id;
+   }
+
+   public void setId(String id) {
+      this.id = id;
+   }
+
+   //具体原型角色
+   public Object clone() {//2.定义复制现有实例来生成新实例的方法
+      Object clone = null;
+      try {
+         clone = super.clone();
+      } catch (CloneNotSupportedException e) {
+         e.printStackTrace();
+      }
+      return clone;
+   }
+}
+</code></pre><p><strong>2.创建扩展上面抽象类的实体类</strong><br></p>
+<pre><code>public class Rectangle extends Shape {
+
+   public Rectangle(){
+     type = &quot;Rectangle&quot;;
+   }
+
+   @Override
+   public void draw() {
+      System.out.println(&quot;Inside Rectangle::draw() method.&quot;);
+   }
+}
+
+public class Square extends Shape {
+
+   public Square(){
+     type = &quot;Square&quot;;
+   }
+
+   @Override
+   public void draw() {
+      System.out.println(&quot;Inside Square::draw() method.&quot;);
+   }
+}
+
+public class Circle extends Shape {
+
+   public Circle(){
+     type = &quot;Circle&quot;;
+   }
+
+   @Override
+   public void draw() {
+      System.out.println(&quot;Inside Circle::draw() method.&quot;);
+   }
+}
+</code></pre><p><strong>3.创建一个类 从数据库获取实体类 并把它们存储在一个 Hashtable 中 </strong><br></p>
+<pre><code>import java.util.Hashtable;
+
+public class ShapeCache {
+    //维护一个注册表
+    private static Hashtable&lt;String, Shape&gt; shapeMap 
+      = new Hashtable&lt;String, Shape&gt;();
+
+    public static Shape getShape(String shapeId) {//提供一个获取新实例的方法
+      Shape cachedShape = shapeMap.get(shapeId);//提供一个找出正确实例原型的方法
+      return (Shape) cachedShape.clone();//委托复制实例的方法生成新实例。
+   }
+
+   // 对每种形状都运行数据库查询，并创建该形状
+   // shapeMap.put(shapeKey, shape);
+   // 例如，我们要添加三种形状
+   public static void loadCache() {
+      Circle circle = new Circle();
+      circle.setId(&quot;1&quot;);
+      shapeMap.put(circle.getId(),circle);
+
+      Square square = new Square();
+      square.setId(&quot;2&quot;);
+      shapeMap.put(square.getId(),square);
+
+      Rectangle rectangle = new Rectangle();
+      rectangle.setId(&quot;3&quot;);
+      shapeMap.put(rectangle.getId(),rectangle);
+   }
+}
+</code></pre><p><strong>4.PrototypePatternDemo 使用 ShapeCache 类来获取存储在 Hashtable 中的形状的克隆</strong><br></p>
+<pre><code>public class PrototypePatternDemo {
+   public static void main(String[] args) {
+      ShapeCache.loadCache();
+
+      Shape clonedShape = (Shape) ShapeCache.getShape(&quot;1&quot;);
+      System.out.println(&quot;Shape : &quot; + clonedShape.getType());        
+
+      Shape clonedShape2 = (Shape) ShapeCache.getShape(&quot;2&quot;);
+      System.out.println(&quot;Shape : &quot; + clonedShape2.getType());        
+
+      Shape clonedShape3 = (Shape) ShapeCache.getShape(&quot;3&quot;);
+      System.out.println(&quot;Shape : &quot; + clonedShape3.getType());        
+   }
+}
+</code></pre><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>在原型模式中有三个角色：原型角色，定义用于复制现有实例来生成新实例的方法。 具体原型角色，实现用于复制现有实例来生成新实例的方法。 使用者角色，维护一个注册表，并提供一个找出正确实例原型的方法。最后提供一个获取新实例的方法，用来委托复制实例的方法生成新实例。</p>
+<blockquote>
+<p>总结：对于原型模式，我们可以理解为对象的复制。在原型模式中因为复制的对象之间有差别，所以存在有深复制和浅复制。浅拷贝，其实就是引用，两者之间指向同一块内存区域。深拷贝，其实就是开辟另一块内存空间。</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/设计模式 - 备忘录模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/设计模式 - 备忘录模式/" itemprop="url">设计模式 - 备忘录</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:24:29+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  381
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>该模式表示保存一个对象的某个状态，以便在适当的时候恢复对象。</p>
+<p>概括：后悔药</p>
+<p>场景</p>
+<pre><code>1. 保存和恢复数据相关业务场景
+
+2. 后悔的时候，即想恢复到之前的状态
+</code></pre><p>优点</p>
+<pre><code>1. 为用户提供一种可恢复机制
+
+2. 存档信息的封装
+</code></pre><p>缺点</p>
+<pre><code>1. 资源占用
+</code></pre><p>相关设计模式</p>
+<pre><code>1. 备忘录模式与状态模式
+
+2. 
+</code></pre><h4 id="备忘录模式"><a href="#备忘录模式" class="headerlink" title="备忘录模式"></a>备忘录模式</h4><p><strong>1.创建Memento类</strong><br></p>
+<pre><code>public class Memento {
+   private String state;
+
+   public Memento(String state){
+      this.state = state;
+   }
+
+   public String getState(){
+      return state;
+   }  
+}
+</code></pre><p><strong>2.创建Originato类</strong><br></p>
+<pre><code>public class Originator {
+   private String state;
+
+   public void setState(String state){
+      this.state = state;
+   }
+
+   public String getState(){
+      return state;
+   }
+
+   public Memento saveStateToMemento(){
+      return new Memento(state);
+   }
+
+   public void getStateFromMemento(Memento Memento){
+      state = Memento.getState();
+   }
+}
+</code></pre><p><strong>3.创建CareTask类</strong><br></p>
+<pre><code>import java.util.ArrayList;
+import java.util.List;
+
+public class CareTaker {
+   private List&lt;Memento&gt; mementoList = new ArrayList&lt;Memento&gt;();
+
+   public void add(Memento state){
+      mementoList.add(state);
+   }
+
+   public Memento get(int index){
+      return mementoList.get(index);
+   }
+}
+</code></pre><p><strong>4.使用 CareTaker 和 Originator 对象</strong><br></p>
+<pre><code>public class MementoPatternDemo {
+   public static void main(String[] args) {
+      Originator originator = new Originator();
+      CareTaker careTaker = new CareTaker();
+      originator.setState(&quot;State #1&quot;);
+      originator.setState(&quot;State #2&quot;);
+
+      //这里只存储了2,1没有存（被覆盖了）
+      careTaker.add(originator.saveStateToMemento());
+
+      originator.setState(&quot;State #3&quot;);
+      careTaker.add(originator.saveStateToMemento());
+
+      originator.setState(&quot;State #4&quot;);
+
+      System.out.println(&quot;Current State: &quot; + originator.getState());    
+      originator.getStateFromMemento(careTaker.get(0));
+      System.out.println(&quot;First saved State: &quot; + originator.getState());
+      originator.getStateFromMemento(careTaker.get(1));
+      System.out.println(&quot;Second saved State: &quot; + originator.getState());
+   }
+}
+</code></pre><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>该模式是将之前已有的操作存储起来，到需要用到的时候直接去之前存好的内存中取出来用即可。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/18/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/20/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/site.jpg"
+                alt="Bangjin-Hu" />
+            
+              <p class="site-author-name" itemprop="name">Bangjin-Hu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/BangjinHu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:2315378346@qq.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/Aaron_P_L" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-heart-o"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
+                      
+                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://iProgramering.github.io" target="_blank" title="iProgramer_ing">
+                      
+                        <i class="fa fa-fw fa-user"></i>iProgramer_ing</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          <div id="music163player">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src="//music.163.com/outchain/player?type=2&id=38358214&auto=0&height=66
+
+">
+    </iframe>
+</div>
+        </div>
+      </section>
+
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bangjin-Hu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">465.0k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/lib/clipboard/clipboard.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+</body>
+</html>

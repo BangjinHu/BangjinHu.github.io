@@ -1,0 +1,2725 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/site.jpg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Redis," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="BangjinHu's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. Redis[TOC] Redis 概述 IDEA集成Redis可视化插件，直接在IDEA的setting的plugin中下载Iedis安装就行(付费)。 Redis可视化工具 RedisDestopManager  Redis 是一个基于内存的高性能key-value数据库，通过提供多种键值数据类型来适应不同场景下的存储需求。  应用场景：1.会话缓">
+<meta name="keywords" content="Redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis">
+<meta property="og:url" content="http://bangjinhu.github.io/undefined/Redis/index.html">
+<meta property="og:site_name" content="BangjinHu&#39;s Blog">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. Redis[TOC] Redis 概述 IDEA集成Redis可视化插件，直接在IDEA的setting的plugin中下载Iedis安装就行(付费)。 Redis可视化工具 RedisDestopManager  Redis 是一个基于内存的高性能key-value数据库，通过提供多种键值数据类型来适应不同场景下的存储需求。  应用场景：1.会话缓">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-03-29T02:47:28.779Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Redis">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. Redis[TOC] Redis 概述 IDEA集成Redis可视化插件，直接在IDEA的setting的plugin中下载Iedis安装就行(付费)。 Redis可视化工具 RedisDestopManager  Redis 是一个基于内存的高性能key-value数据库，通过提供多种键值数据类型来适应不同场景下的存储需求。  应用场景：1.会话缓">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://bangjinhu.github.io/undefined/Redis/"/>
+
+
+
+
+
+  <title>Redis | BangjinHu's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    
+    <a href="https://github.com/BangjinHu"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">BangjinHu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">让优秀成为习惯，让知识成为信仰</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            本站搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Redis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Redis</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:47:28+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  14,152
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  56
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><p>[TOC]</p>
+<h3 id="Redis-概述"><a href="#Redis-概述" class="headerlink" title="Redis 概述"></a>Redis 概述</h3><ul>
+<li>IDEA集成Redis可视化插件，直接在IDEA的setting的plugin中下载Iedis安装就行(付费)。</li>
+<li>Redis可视化工具 RedisDestopManager</li>
+</ul>
+<p>Redis 是一个基于内存的高性能key-value数据库，通过提供多种键值数据类型来适应不同场景下的存储需求。<br></p>
+<blockquote>
+<p>应用场景：1.会话缓存(session cache)(数据查询、短链接、新闻内容、商品内容等) 2.全页缓存(FPC) 3.任务队列(秒杀、抢购、12306) 4.排行榜/计数器 5.发布/订阅 6.分布式集群架构中的session分离 7.数据过期处理</p>
+</blockquote>
+<blockquote>
+<p>扩展：为了解决高并发、高可扩展、高可用、大数据存储问题而产生的数据库解决方案，就是NoSql数据库。NoSQL：not-Only SQL表示非关系型数据库，作为关系型数据库的良好补充。</p>
+</blockquote>
+<h4 id="1-Redis特点"><a href="#1-Redis特点" class="headerlink" title="1.Redis特点"></a>1.Redis特点</h4><p>优点：<br><br>1.速度快，因为数据都是存储在内存中的，类似于HashMap，HashMap的优势就在于查找和操作的时间复杂度都为O(1)。Redis在本质上是一个<code>KEY-VALUE</code>类型的内存数据库，很像<code>memcached</code>，整个数据库统统加载在内存当中进行操作，定期通过异步操作把数据库数据flush到硬盘上进行保存。<br></p>
+<p>2.由于其是纯内存操作，所以性能非常好，是已知性能最快的key-value DB。<br></p>
+<p>3.reids支持保存多种数据结构，此外单个value的最大限制是1GB，不像memcached只能保存1MB数据。<br></p>
+<p>4.支持丰富的数据类型，支持string，list，set，sorted set，hash。</p>
+<p>5.支持事务，操作都是原子性，所谓的原子性就是对数据的更改要么全部执行，要么全部不执行</p>
+<p>6.丰富的特性：可用于缓存，消息，按key设置过期时间，过期后将会自动删除</p>
+<p>缺点：<br><br>7.reids的缺点主要是，数据库容量受到物理内存的限制，不能用作海量数据的高性能读写，因此Redis适合的场景主要局限在较小数据量的高性能操作和运算上。</p>
+<h4 id="2-Redis支持的数据类型"><a href="#2-Redis支持的数据类型" class="headerlink" title="2.Redis支持的数据类型"></a>2.Redis支持的数据类型</h4><ul>
+<li>String  可以是字符串，整数或浮点数，对整个字符串或者字符串中的一部分执行操作。</li>
+<li>List 表示一个链表</li>
+<li>Sets 求交集/并集</li>
+<li>Sorted Set</li>
+<li>hashs</li>
+</ul>
+<h4 id="3-Redis需要将所有数据放到内存中的原因"><a href="#3-Redis需要将所有数据放到内存中的原因" class="headerlink" title="3.Redis需要将所有数据放到内存中的原因"></a>3.Redis需要将所有数据放到内存中的原因</h4><p>1.Redis为了达到最快的读写速度将数据都读到内存中，并通过异步的方式将数据写入磁盘。所以redis具有快速和数据持久化的特征。<br><br>2.如果不将数据放在内存中，磁盘I/O速度为严重影响redis的性能。在内存越来越便宜的今天，redis将会越来越受欢迎。<br><br>3.如果设置了最大使用的内存，则数据已有记录数达到内存限值后不能继续插入新值。</p>
+<blockquote>
+<p>注意：1.reids是单进程单线程的，利用队列技术将并发访问变成串行访问，消除传统数据库串行控制的开销。<br>2.</p>
+</blockquote>
+<h4 id="4-Redis常见性能问题解决"><a href="#4-Redis常见性能问题解决" class="headerlink" title="4.Redis常见性能问题解决"></a>4.Redis常见性能问题解决</h4><p>1.master最好不要做任何持久化工作，如RDB内存快照和AOF日志文件。<br><br>2.如果数据比较重要，某个<code>Slave</code>开启<code>AOF</code>备份数据，策略设置为每秒同步一次。(slave?aof?是啥)<br><br>3.为了主从复制的速度和连接的稳定性，Master和Slave最好在同一个局域网内。<br><br>4.尽量避免在压力很大的主库上增加从库。<br><br>5.从复制不要用图状结构，用单向链表结构更为稳定，即：Master &lt;- Slave1 &lt;- Slave2 &lt;- Slave3等，这样的结构方便解决单点故障问题，实现Slave对Master的替换，如果Master挂了可以立刻启用Slave1做Master，其他不变。</p>
+<h4 id="5-Redis与memcached的区别"><a href="#5-Redis与memcached的区别" class="headerlink" title="5.Redis与memcached的区别"></a>5.Redis与memcached的区别</h4><p>1.memcached所有的值均是简单的字符串，redis作为其替代者，支持更为丰富的数据类型。<br><br>2.redis的速度比memcached快很多。<br><br>3.redis可以持久化其数据。(数据的持久化就是将内存中的数据模型转化为存储模型，数据模型是任何的数据结构或者是对象，存储模型可以是关系型/xml文件/二进制流) </p>
+<p>狭义：持久化仅仅是将对象数据永久保存在数据库中。</p>
+<p>广义：持久化包括和数据库相关的各种操作，封装数据访问细节，为大部分业务逻辑提供面向对象的API。</p>
+<h4 id="6-Redis持久化方案区别-优缺点"><a href="#6-Redis持久化方案区别-优缺点" class="headerlink" title="6.Redis持久化方案区别/优缺点"></a>6.Redis持久化方案区别/优缺点</h4><p>首先我们知道，Redis为我们提供两种持久化的方式，RDB(Redis DataBase)/AOF(Append Only File)。<br>1.RDB方式：快照式的持久化方法，将某一时刻的数据持久化到磁盘中。</p>
+<pre><code>1.因为Redis在持久化的过程中，会首先将数据写入到一临时文件中，在持久化过程都结束之后才会用此临时文件替换已经持久化好的文件。所以因为这个特性让我随时进行备份。
+2.于RDB方式，Redis单独创建一个子进程来进行持久化，主进程不会进行任何IO操作，这就确保Redis很好的性能。
+3.如果需要进行大规模数据的恢复，且对于数据恢复的完整性不是非常敏感，那RDB方式要比AOF方式更加的高效。
+</code></pre><p>2.AOF方式：将执行过的 <code>写指令</code> 记录下来，在数据恢复时按照<code>从前到后</code>的顺序再将指令执行一遍。</p>
+<pre><code>1.AOF 命令以Redis协议追加保存每次写的操作到文件末尾。Redis还能对AOF文件进行后台重写，使得AOF文件的体积不至于过大。默认的 AOF 持久化策略是每秒钟 fsync 一次（fsync是指把缓存中的写指令记录到磁盘中），因为在这种情况下，redis仍然可以保持很好的处理性能，即使redis故障，也只会丢失最近1秒钟的数据。
+
+2.如果在追加日志时，恰好遇到磁盘空间满、inode满或断电等情况导致日志写入不完整，也没有关系，redis提供了redis-check-aof工具，可以用来进行日志修复。
+
+3.因为此种是采用追加的方式，所以如果我们不做任何处理的话，AOF文件会变得越来越大。所以在此Redis提供AOF文件重写机制，即当AOF文件的大小超过所设定的阈值时，redis就会启动AOF文件的内容压缩，只保留可以恢复数据的最小指令集。
+
+4.在进行AOF重写时，我们仍然采用是先写临时文件，最后在全部完成之后再替换掉的流程，所以在断电、磁盘满等问题都不会影响AOF文件的可用性。
+</code></pre><h4 id="7-如何维护集群之间的关系-集群之间如何建立连接"><a href="#7-如何维护集群之间的关系-集群之间如何建立连接" class="headerlink" title="7.如何维护集群之间的关系(集群之间如何建立连接)"></a>7.如何维护集群之间的关系(集群之间如何建立连接)</h4><h4 id="8-Redis存取实体的方式"><a href="#8-Redis存取实体的方式" class="headerlink" title="8.Redis存取实体的方式"></a>8.Redis存取实体的方式</h4><p>在存储的时候需要将实体 <code>序列化</code> ，然后可以当字符串一样存储，取数据也一样，取出来的数据要 <code>反序列化</code> 。</p>
+<h4 id="9-Redis保留时间"><a href="#9-Redis保留时间" class="headerlink" title="9.Redis保留时间"></a>9.Redis保留时间</h4><p>Redis保留时间在未设置的情况下会一直存在，除非服务停掉且没有保存到磁盘。如果已手动或自动保存过，则再次启动服务还会存在。</p>
+<hr>
+<h3 id="将Redis配置成服务"><a href="#将Redis配置成服务" class="headerlink" title="将Redis配置成服务"></a>将Redis配置成服务</h3><p>将redis做成服务之后，后面就可以直接在cmd中输入命令 redis-server –service-start 启动</p>
+<pre><code>redis-server --service-install redis-windows-conf 在redis的目录执行，将redis做成服务
+</code></pre><h3 id="cmd命令框进入Redis目录，输入-redis-server-exe-redis-windows-conf-命令启动redis服务"><a href="#cmd命令框进入Redis目录，输入-redis-server-exe-redis-windows-conf-命令启动redis服务" class="headerlink" title="cmd命令框进入Redis目录，输入 redis-server.exe  redis.windows.conf 命令启动redis服务"></a>cmd命令框进入Redis目录，输入 redis-server.exe  redis.windows.conf 命令启动redis服务</h3><hr>
+<blockquote>
+<p>提示：Redis虽然是作为数据库开发，但是还可以作为缓存、队列系统使用。Redis可以为每个键设置生存时间TTL，到时间之后就是自动删除。</p>
+</blockquote>
+<h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h3><p>所谓事务就是一组命令的集合，事务同命令一样都是Redis最小执行单位，一个事务中的命令要么执行，要么都不执行。</p>
+<h2 id="NoSql"><a href="#NoSql" class="headerlink" title="NoSql"></a>NoSql</h2><h4 id="1-概念"><a href="#1-概念" class="headerlink" title="1.概念"></a>1.概念</h4><p>NoSql是一种解决高并发、高可用、高可扩展性以及大数据存储等系列问题的解决方案。</p>
+<blockquote>
+<p>提示：NoSql是非关系型数据库，不能代替关系型数据库，只是关系型数据库的一个良好补充。</p>
+</blockquote>
+<h4 id="2-分类"><a href="#2-分类" class="headerlink" title="2.分类"></a>2.分类</h4><pre><code>1.键值存储（key-value）
+
+2.列存储
+
+3.文档数据库（mogondb）
+
+4.图形数据库
+</code></pre><h4 id="Redis的应用场景"><a href="#Redis的应用场景" class="headerlink" title="Redis的应用场景"></a>Redis的应用场景</h4><p>缓存、分布式集群架构session分离、任务队列等。然后它的应用场景真的很多。</p>
+<h4 id="Redis处理逻辑"><a href="#Redis处理逻辑" class="headerlink" title="Redis处理逻辑"></a>Redis处理逻辑</h4><p>用户请求过来之后，首先判断Redis里面是否存在，如果存在则直接返回Redis中的数据给用户，没有则查询数据库。如果数据库中不存在则返回空或者提醒用户。</p>
+<p><strong>1.添加操作</strong><br><br>如果是需要放入缓存的数据，那么在向mysql数据库中插入成功后，生成对应的key值，并存入Redis中。</p>
+<p><strong>2.修改操作</strong><br><br>向mysql数据库中修改成功后，修改Redis中的数据，但是Redis并没有更新语句，所以只能先删除，再添加完成更新操作。</p>
+<blockquote>
+<p>注意：程序操作Redis的操作可能会失败，那么此时mysql中的数据已经修改，但是Redis中的数据依旧是上一次的数据，从而导致数据不一致的问题，所以是先操作Redis还是mysql需要注意。</p>
+</blockquote>
+<p><strong>3.删除操作</strong><br><br>和修改操作一样，先删除数据，然后再更新缓存，但是还得注意数据一致性的问题。</p>
+<p><strong>4.查询操作</strong><br><br>首先通过Redis查询，如果缓存中已经存在数据则直接返回即可，此时就不再需要通过mysql数据库来获取数据，减少对mysql的请求，如果缓存中不存在数据，则依然通过mysql数据库查询，查询到数据后，存入Redis缓存中。</p>
+<h4 id="缓存存储策略"><a href="#缓存存储策略" class="headerlink" title="缓存存储策略"></a>缓存存储策略</h4><p><strong>1.缓存数据特点</strong><br></p>
+<pre><code>1.热点数据
+2.实时性要求不高数据
+3.业务逻辑简单数据
+</code></pre><p><strong>2.缓存失效策略</strong><br></p>
+<ul>
+<li>定时删除，在设置key的过期时间的同时，为该key创建一个定时器，让定时器在key的过期时间来临时，对key进行删除。</li>
+<li>惰性删除，key过期的时候不删除，每次从数据库获取key的时候去检查是否过期，若过期则删除，返回null。</li>
+<li>定期删除，每隔一段时间执行一次删除过期key操作。</li>
+<li></li>
+</ul>
+<hr>
+<blockquote>
+<p>在Linux中安装并配置好redis之后启动</p>
+</blockquote>
+<pre><code>1. ./redis-server 命令只是前端启动，在启动之后不能做任何操作
+
+    ctrl + c 停止启动前端模式
+
+2. ./redis-server ./redis.conf 这里的redis配置文件已经修改过
+
+3. ./bin/redis-cli shutdown 停止redis客户端
+
+4. ./bin/redis-cli 进入当前redis的客户端
+</code></pre><hr>
+<h2 id="Redis可执行文件说明"><a href="#Redis可执行文件说明" class="headerlink" title="Redis可执行文件说明"></a>Redis可执行文件说明</h2><pre><code>命令名 | 命令说明
+---|---
+redis-server | redis服务器
+redis-cli | redis命令行客户端
+redis-benchmark | redis性能测试工具
+redis-check-aof | aof文件修复工具
+redis-check-dump | RDB文件检查工具
+redis-sentinel | sentinel服务器（2.8以后）
+</code></pre><hr>
+<h2 id="Redis-API的理解和使用"><a href="#Redis-API的理解和使用" class="headerlink" title="Redis API的理解和使用"></a>Redis API的理解和使用</h2><pre><code>1.keys[pattern] 遍历所有key，时间复杂度是O(N)
+2.dbsize 遍历所有key，时间复杂度O(1)
+3.expire key seconds key在seconds秒后过期，时间复杂度是O(1)
+4.ttl key 查看key剩余的过期时间 时间复杂度是O(1)
+5.persist key 去掉key的过期时间    O(1)
+6.exists 检查key是否存在 O(1)
+7.del key 删除指定的key-value O(1)
+</code></pre><hr>
+<h2 id="Redis数据类型"><a href="#Redis数据类型" class="headerlink" title="Redis数据类型"></a>Redis数据类型</h2><p>Redis支持五种数据类型：string（字符串），hash（哈希），list（列表），set（集合）及zset(sorted set：有序集合)。</p>
+<h4 id="1-String（字符串）"><a href="#1-String（字符串）" class="headerlink" title="1.String（字符串）"></a>1.String（字符串）</h4><p>string 是 redis 最基本的类型，你可以理解成与 Memcached 一模一样的类型，一个 key 对应一个 value。</p>
+<pre><code>字符串常用的命令：
+
+    1.赋值
+
+        1. set key value
+
+    2.取值
+
+        1. get key
+
+    3.先获取值在设置值
+
+        1. getset key value
+
+    4.删除
+
+        1. del key
+
+    5.数值的增减
+
+        1. incr key 将指定的key的value递增1，如果该值不存在则初始化为0之后再incr后为1，如果value值不能转换成整型，操作失败
+
+        2. decr key 将指定的key的value递减1，如果该值不存在则初始化为0之后再decr后为-1，如果value值不能转换成整型，操作失败
+
+    6.扩展命令
+
+        1. incrby key m 将指定的key的value值递增m，其它的类似上面的操作
+
+        2. decrby key m 将指定的key的value值递减m，其它的类似上面的操作
+
+        3. append key m 将在指定的key之后追加m，然后返回的是该字符串的长度（3 + 5 = 35）
+</code></pre><h4 id="2-Hash（哈希）"><a href="#2-Hash（哈希）" class="headerlink" title="2.Hash（哈希）"></a>2.Hash（哈希）</h4><p>Redis hash 是一个键值(key=&gt;value)对集合。Redis hash 是一个 string 类型的 field 和 value 的映射表，hash 特别适合用于存储对象。</p>
+<blockquote>
+<p>提示：可以看作是具有string的key和string的value的类型的map容器</p>
+</blockquote>
+<pre><code>哈希常用命令：
+
+    1. 存储
+
+        1. hset key keyOne value 表示在名字为key的哈希中存放一个键值对（keyOne，value）
+
+        2. hmset key keyOne valueOne keyTwo valueTwo 表示在名字为key的哈希中一次性存放多个键值对
+
+    2. 取值
+
+        1. hget key keyone 表示在key的哈希中取到哪个属性
+
+        2. hmget key keyone keytwo 表示一次性可以取得多个属性值
+
+        3. hgetall key 获取key中的所有属性和属性值
+
+    3. 删除
+
+        1. hdel key keyone 删除一个或多个
+
+        2. del key 删除整个集合
+
+    4. 数值的增加
+
+        1. hincrby key value m 表示给key集合中的value值增加m
+
+    5. 自学命令
+
+        1. hexists key keyOne 判断哈希key中的keyone是否存在，存在返回1
+
+        2. hlen key 得到哈希key中有多少个属性
+
+        3. hkeys key 获取所有的属性
+
+        4. hvals key 获取key集合里面所有的值
+</code></pre><blockquote>
+<p>提示： Redis HMSET, HGET 命令，HMSET 设置了两个 field=&gt;value 对, HGET 获取对应 field 对应的 value。每个 hash 可以存储 2^32 -1 键值对（40多亿）。</p>
+</blockquote>
+<h4 id="3-List（列表）"><a href="#3-List（列表）" class="headerlink" title="3.List（列表）"></a>3.List（列表）</h4><p>Redis 列表是简单的字符串列表，按照插入顺序排序。你可以添加一个元素到列表的头部（左边）或者尾部（右边）。</p>
+<pre><code>链表常用命令：
+
+    1. 两端添加
+
+        1. lpush key valueOne valueTwo valueThree ... 从左端向list中添加数据
+
+        2. rpush key valone valtwo valthree ... 从右侧向list中添加数据
+
+    2. 查看列表
+
+        1. lrange key m n 查看m到n之间的数据元素
+
+    3. 两端弹出
+
+        1. lpop key 左端弹出
+
+        2. rpop key 右端弹出
+
+    4. 获取列表元素个数
+
+        1. llen key 获取列表中元素的个数
+
+    5. 扩展命令
+
+        1. lpushx key x 只有在key列表存在的时候才会向其头部插入x
+
+        2. rpush key x ...右侧insert
+
+        3. lrem key count keyone 在list列表中删除count个keyone，当count为0时，删除里面所有的keyone
+
+        4. lset key count keytwo 在list列表中指定的count角标处插入某一个值keytwo
+
+        5. linsert key before keyOne valueOne 在key列表中的keyone之前插入valueone（之后只需要before改成after）
+
+        6. rpoplpush listOne listTwo 将listone里面的尾部数据弹出压入到listTwo的头部
+</code></pre><h4 id="4-Set（集合）"><a href="#4-Set（集合）" class="headerlink" title="4.Set（集合）"></a>4.Set（集合）</h4><p>Redis的Set是string类型的无序集合。集合是通过哈希表实现的，所以添加，删除，查找的复杂度都是O(1)。</p>
+<blockquote>
+<p>sadd 命令 添加一个 string 元素到 key 对应的 set 集合中，成功返回1，如果元素已经在集合中返回 0，如果 key 对应的 set 不存在则返回错误。</p>
+</blockquote>
+<pre><code>set常用命令：
+
+    1. 添加
+
+        1. sadd key value1 value2 value3 ... 向set中添加值
+
+    2. 删除
+
+        1. srem key value1 value2 ... 删除set中存在的value
+
+
+    3. 获得集合中元素
+
+        2. smembers key 查看key的set中有哪些元素
+
+        3. sismember key m 判断m是否存在set集合中 
+
+    4. 集合中差集的运算
+
+        1. sdiff setone settwo 比较两个set集合中的差集
+
+    5. 集合的交集运算
+
+        1. sinter setone settwo 比较两个set集合中相同的部分
+
+    6. 集合的并集运算
+
+        1. sunion setone settwo 并集操作
+
+    7. 扩展命令
+
+        1. scard setOne 获取set集合中的元素个数
+
+        2. srandmember setone 随机获取set集合中的元素
+
+        3. sdiffstore setstore setOne setTwo 将setOne与setTwo集合之间相差的值存储到setstore中
+
+        4. sinterstore ... 求两个集合的交集然后存储到新的set中去
+
+        5. sunionstore ... 求两个集合的并集然后存储到新的set中去
+</code></pre><h4 id="5-zset-sorted-set：有序集合"><a href="#5-zset-sorted-set：有序集合" class="headerlink" title="5.zset(sorted set：有序集合)"></a>5.zset(sorted set：有序集合)</h4><p>Redis zset 和 set 一样也是string类型元素的集合,且不允许重复的成员。不同的是每个元素都会关联一个double类型的分数。redis正是通过分数来为集合中的成员进行从小到大的排序。zset的成员是唯一的,但分数(score)却可以重复。</p>
+<blockquote>
+<p>zadd 命令 添加元素到集合，元素在集合中存在则更新对应score</p>
+</blockquote>
+<pre><code>常用命令：
+
+    1. 添加
+
+        1. zadd keyset socre keyOne ... 向zset中添加元素
+
+    2. 获取
+
+        1. zscore keyset keyone 获取keyone的分数
+
+        2. zcard keyset 获取keyset中具体的成员数量
+
+    3. 删除
+
+        1. zrem keyset keyOne 删除keyone这个元素
+
+        2. zremrangebyrank keyset 0 4 按照范围来进行删除
+
+        3. zremrangebyscore keyset 80 100 按照分数进行删除，删除80-100之间的元素
+
+
+
+    4. 查看
+
+        1. zrange keyset 0 -1 查看所有的元素
+
+        2. zrange keyset 0 -1 withscores 查看所有带有分数的元素
+
+    5. 扩展命令
+
+        1. zincrby keyset count keyOne 将keyOne的值加上count
+
+        2. zcount keyset 80 90 查看80-90之间成员的个数
+
+        3. 
+</code></pre><h4 id="6-Redis的keys的通用操作"><a href="#6-Redis的keys的通用操作" class="headerlink" title="6.Redis的keys的通用操作"></a>6.Redis的keys的通用操作</h4><pre><code>常用命令：
+
+    1. keys * 查看所有key
+
+    2. keys keyset? 查看keyset开头的key名称
+
+    3. expire key 1000 设置时间
+
+    4. type keyset 查看类型
+
+    5. ttl keyset 查看ttl
+</code></pre><h4 id="7-Redis事务特性"><a href="#7-Redis事务特性" class="headerlink" title="7.Redis事务特性"></a>7.Redis事务特性</h4><pre><code>1. multi 开启事务
+
+2. exec 提交事务
+
+3. discard 回滚事务
+
+4. watch 是一个乐观锁，可以在执行exec命令之前监视任意数量的数据库键，在exec命令执行时，检查被监视的键是否有一个是否已经被修改，如果是则服务器拒绝执行事务。
+</code></pre><h4 id="8-Redis脚本命令"><a href="#8-Redis脚本命令" class="headerlink" title="8.Redis脚本命令"></a>8.Redis脚本命令</h4><p>Redis 脚本使用 Lua 解释器来执行脚本。 Reids 2.6 版本通过内嵌支持 Lua 环境。执行脚本的常用命令为 EVAL。</p>
+<pre><code>脚本常用命令：
+
+    1. 
+</code></pre><h4 id="9-数据备份与恢复"><a href="#9-数据备份与恢复" class="headerlink" title="9.数据备份与恢复"></a>9.数据备份与恢复</h4><p>Redis SAVE 命令用于创建当前数据库的备份。</p>
+<h4 id="10-Redis管道技术"><a href="#10-Redis管道技术" class="headerlink" title="10.Redis管道技术"></a>10.Redis管道技术</h4><p>Redis是一种基于客户端-服务端模型以及请求/响应协议的TCP服务。客户端向服务端发送一个查询请求，并监听Socket返回，通常是以阻塞模式，等待服务端响应。服务端处理命令，并将结果返回给客户端。</p>
+<p>Redis 管道技术可以在服务端未响应时，客户端可以继续向服务端发送请求，并最终一次性读取所有服务端的响应。</p>
+<h4 id="11-Redis数据库"><a href="#11-Redis数据库" class="headerlink" title="11.Redis数据库"></a>11.Redis数据库</h4><p>Redis服务器将所有数据库都保存在服务器状态redis.h/redisServer结构的db数组中。</p>
+<blockquote>
+<p>提示：dbnum属性的值由服务器配置的database选项决定，默认情况下是16，所以Redis服务器默认会创建16个数据库。</p>
+</blockquote>
+<p><strong>1.切换数据库</strong><br></p>
+<pre><code>1.默认情况下会选择0号数据库，SELECT 命令来切换到目标数据库
+
+    通过修改redisClient.db指针，让它指向服务器中的不同数据库，从而实现切换目标数据库的功能，这是SELECT命令的实现原理。
+
+
+2.清空整个数据库的 flushdb 命令，通过删除键空间中所有键值对实现。
+</code></pre><p><strong>4.设置键的生存时间或过期时间</strong><br></p>
+<pre><code>1. 设置过期时间
+
+    通过expire命令或者pexpipe命令，客户端可以以秒或者毫秒精度为数据库中的某个键设置生存时间TTL，在经过指定的时间之后服务器会删除生存时间为0的键。
+
+    1. expire key ttl 将key的生存时间设置为ttl秒
+
+    2. pexpire key ttl 将key的生存时间设置为ttl毫秒
+
+    3. expireat key timestamp 将key过期时间设置为timestamp所指定的秒数时间戳
+
+    4. pexpireat key timestamp 将key过期时间设置为timestamp所指定的毫秒数时间戳
+
+    提示：pexpire、expire、expireat命令在最终转换之后的执行效果与pexpireat命令一样
+
+2. 保存过期时间
+
+    1. 
+
+3. 移除过期时间
+
+    1. persist命令可以移除一个键的过期时间 persist key
+
+4. 计算并返回剩余生存时间
+
+    1. TTL 命令以秒为单位返回键的剩余生存时间
+
+    2. PTTL 命令以毫秒为单位返回键的剩余生存时间
+
+5. 过期键的判定
+
+    步骤：
+
+        1. 检查给定键是否存在于过期字典，如果存在则取得键的过期时间
+
+        2. 检查当前Unix时间戳是否大于键的过期时间，大于则过期，否则未过期
+</code></pre><p><strong>5.过期键的删除策略</strong><br></p>
+<pre><code>1. 定时删除，设置键的过期时间的同时，创建一个定时器，让定时器在键的过期时间来临时，立即执行对键的删除操作。
+
+2. 惰性删除，放任键过期不管，但是每次获取键时，都检查取得的键是否过期，过期则删除
+
+3. 定期删除，每隔一段时间都对数据库进行一次检查，删除里面的过期键
+</code></pre><p><strong>6.AOF | RDB和复制功能对过期键的处理</strong><br></p>
+<pre><code>1. 生存RDB文件
+
+    在执行save命令或者bgsave命令创建新的RDB文件时，程序会对数据库中的键进行检查，已过期的键不会被保存到新创建的RDB文件中。
+
+2. 载入RDB文件
+
+
+3. AOF文件写入
+
+    过期键在被惰性删除或定期删除之后，程序会向AOF文件追加一个del命令，显式记录该键已经被删除。
+</code></pre><hr>
+<h2 id="第9章-数据库"><a href="#第9章-数据库" class="headerlink" title="第9章 数据库"></a>第9章 数据库</h2><p>服务器中的数据库，服务器将素有数据库都保存在服务器状态 redis.h/redisServer结构的db数组中。</p>
+<h3 id="9-1-切换数据库"><a href="#9-1-切换数据库" class="headerlink" title="9.1 切换数据库"></a>9.1 切换数据库</h3><p>Redis客户端在默认情况下，目标数据库是0号数据库，但客户端可以通过执行 SELECT 命令来切换目标数据库。</p>
+<h3 id="9-4-设置键的生存时间或过期时间"><a href="#9-4-设置键的生存时间或过期时间" class="headerlink" title="9.4 设置键的生存时间或过期时间"></a>9.4 设置键的生存时间或过期时间</h3><p>通过 EXPIRE 命令或者 PEXPIRE 命令客户端可以以秒或者毫秒精度为数据库中的某个键设置生存时间（TTL），在经过指定的秒数或毫秒数之后，服务器会自动删除生存时间为0的键。</p>
+<p>SETEX 命令可以在设置一个字符串键的同时为键设置过期时间。</p>
+<h3 id="9-5-过期键删除策略"><a href="#9-5-过期键删除策略" class="headerlink" title="9.5 过期键删除策略"></a>9.5 过期键删除策略</h3><p>定时删除：在设置键的过期时间的同时，创建一个定时器（timer），让定时器的过期时间来临时，立即执行对键的删除操作。</p>
+<p>…</p>
+<hr>
+<h2 id="Redis持久化方案"><a href="#Redis持久化方案" class="headerlink" title="Redis持久化方案"></a>Redis持久化方案</h2><h4 id="1-Rdb方式"><a href="#1-Rdb方式" class="headerlink" title="1.Rdb方式"></a>1.Rdb方式</h4><p>这种方式是Redis默认的方式，redis通过快照来将数据持久化到磁盘。恢复时直接将快照文件读到内存中，来达到恢复数据。RDB持久化是指在==指定的时间间隔内将内存中的数据集快照写入磁盘。== 这种方式是就是将内存中数据以快照的方式写入到二进制文件中,默认的文件名为dump.rdb。</p>
+<pre><code>命令生成RDB文件
+
+    1. SAVE 该命令会阻塞Redis服务器进程，直到RDB文件创建完毕，在服务器阻塞期间，不能处理任何命令请求
+
+    2. BGSAVE 该命令会派生出一个子进程，然后由子进程负责创建RDB文件，服务器进程继续处理命令请求
+
+        BGSAVE命令被触发的条件：
+
+            1.服务器在900秒内，对数据库进行至少一次操作
+
+                save 900 1  #900秒内如果超过1个key被修改，则发起快照保存
+
+            2.服务器在300秒内，对数据库进行至少10次操作
+
+                save 300 10 #300秒内容如超过10个key被修改，则发起快照保存
+
+            3.服务器在60秒内，对数据库进行至少10000次操作
+
+                save 60 10000
+1.优点
+
+    1. 如果要进行大规模数据的恢复，RDB方式要比AOF方式恢复速度要快。
+
+    2. RDB可以最大化Redis性能，父进程做的就是fork子进程，然后继续接受客户端请求，让子进程负责持久化操作，父进程无需进行IO操作。
+
+    3. RDB是一个非常紧凑(compact)的文件,它保存了某个时间点的数据集，非常适合用作备份，同时也非常适合用作灾难性恢复，它只有一个文件，内容紧凑，通过备份原文件到本机外的其他主机上，一旦本机发生宕机，就能将备份文件复制到redis安装目录下，通过启用服务就能完成数据的恢复。
+</code></pre><blockquote>
+<p>注意：如果redis非法关闭，那么就会丢失最后一次持久化之后的数据。如果数据不重要，则可以不用关心。如果数据不允许丢失，那么使用aof方式。</p>
+</blockquote>
+<h4 id="2-Aof方式"><a href="#2-Aof方式" class="headerlink" title="2.Aof方式"></a>2.Aof方式</h4><p>Redis默认不使用该方式持久化，Aof方式的持久化，是操作一次Redis数据库，则将操作的记录存储到aof持久化文件中。将每一个收到的写命令都通过write函数追加到文件中(默认是 appendonly.aof)。当redis重启时会通过重新执行文件中保存的写命令来在内存中重建整个数据库的内容。</p>
+<pre><code>默认的保存配置：
+
+    appendonly yes              //启用aof持久化方式
+
+    # appendfsync always      //每次收到写命令就立即强制写入磁盘，最慢的，但是保证完全的持久化，不推荐使用
+
+    appendfsync everysec     //每秒钟强制写入磁盘一次，在性能和持久化方面做了很好的折中，推荐
+
+    # appendfsync no    //完全依赖os，性能最好,持久化没保证
+</code></pre><p>RDB持久化保存数据库状态的方法是将msg/fruits/numbers三个键的键值对保存到RDB文件中。</p>
+<p>AOF持久化则是将服务器执行的SET/SADD/RPUSH三个命令保存到AOF文件。</p>
+<p>AOF持久化功能可以分为：命令追加（append）、文件写入、文件同步（sync）。</p>
+<hr>
+<h2 id="Redis-命令"><a href="#Redis-命令" class="headerlink" title="Redis 命令"></a>Redis 命令</h2><p>Redis 命令用于在 redis 服务上执行操作。要在 redis 服务上执行命令需要一个 redis 客户端。Redis客户端在我们之前下载的的 redis 的安装包中。</p>
+<h4 id="1-redis-cli"><a href="#1-redis-cli" class="headerlink" title="1.$ redis-cli"></a>1.$ redis-cli</h4><p>启动 redis 客户端，打开终端并输入命令 redis-cli。该命令会连接本地的 redis 服务。如果需要在远程 redis 服务上执行命令，同样我们使用的也是 redis-cli 命令。</p>
+<pre><code>语法：$ redis-cli -h host -p port -a password
+</code></pre><hr>
+<h2 id="Redis-键-key"><a href="#Redis-键-key" class="headerlink" title="Redis 键(key)"></a>Redis 键(key)</h2><p>Redis 键命令用于管理 redis 的键。</p>
+<pre><code>1.DEL key 该命令用于在 key 存在时删除 key。
+2.DUMP key  序列化给定 key ，并返回被序列化的值。
+3.EXISTS key 检查给定 key 是否存在。
+4.EXPIRE key seconds 为给定 key 设置过期时间，以秒计。
+5.EXPIREAT key timestamp  EXPIREAT 的作用和 EXPIRE 类似，都用于为 key 设置过期时间。 不同在于 EXPIREAT 命令接受的时间参数是 UNIX 时间戳(unix timestamp)。
+6.PEXPIRE key milliseconds 设置 key 的过期时间以毫秒计。
+7.PEXPIREAT key milliseconds-timestamp 设置 key 过期时间的时间戳(unix timestamp) 以毫秒计
+8.KEYS pattern  查找所有符合给定模式( pattern)的 key 。
+9.MOVE key db 将当前数据库的 key 移动到给定的数据库 db 当中。
+10.PERSIST key  移除 key 的过期时间，key 将持久保持。
+11.PTTL key  以毫秒为单位返回 key 的剩余的过期时间。
+12.TTL key 以秒为单位，返回给定 key 的剩余生存时间(TTL, time to live)。
+13.RANDOMKEY 从当前数据库中随机返回一个 key 。
+14.RENAME key newkey  修改 key 的名称
+15.RENAMENX key newkey 仅当 newkey 不存在时，将 key 改名为 newkey 。
+16.TYPE key 返回 key 所储存的值的类型。
+</code></pre><hr>
+<h2 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h2><p>执行slaveof命令或者设置slaveof选项，让一个服务器去复制另一个服务器，称被复制的服务器是主服务器（master），而对主服务器进行复制的服务器是从服务器（slave）。</p>
+<pre><code>1. 主服务器：能够进行读写操作
+
+2. 从服务器：只能进行读操作
+</code></pre><h4 id="1-主从复制的优点"><a href="#1-主从复制的优点" class="headerlink" title="1. 主从复制的优点"></a>1. 主从复制的优点</h4><pre><code>1. 数据冗余，实现数据的热备份
+
+2. 故障恢复，避免单点故障带来的服务不可用
+
+3. 读写分离，负载均衡。主节点负载读写，从节点负责读，提高服务器并发量
+
+4. 高可用基础，是哨兵机制和集群实现的基础
+</code></pre><h4 id="2-主从复制的配置"><a href="#2-主从复制的配置" class="headerlink" title="2. 主从复制的配置"></a>2. 主从复制的配置</h4><pre><code>1. 首先在xshell中建立三个连接窗口，并将redis.conf配置文件复制三份，将它们的端口改掉
+
+2. 然后分别启动三个端口的redis客户端
+
+3. info 命令查看每个redis服务在小型集群中扮演的角色
+
+4. 然后在master中设置name值为name，那么在slave中也能得到name的值
+</code></pre><h4 id="3-主从复制的实现原理"><a href="#3-主从复制的实现原理" class="headerlink" title="3. 主从复制的实现原理"></a>3. 主从复制的实现原理</h4><p>主从复制可以分为三个阶段：1.连接建立 2.数据同步 3.命令传播。</p>
+<pre><code>1. 连接建立
+
+    1. slaveof命令之后，从服务器根据设置的master的ip地址和端口号，创建连向主服务器的socket套接字连接。
+
+    2. 然后确认是否主服务器可用，发送ping命令。
+
+    3. 身份验证，如果主服务器设置了requirepass选项，那么从服务器必须配置masterauth选项。
+
+    4. 在身份验证完之后，从服务器会发送自己的监听端口，主服务器会保存下来。
+
+2. 数据同步
+
+    在主服务器与从服务器连接确认各自身份之后，就开始同步数据，从服务器向主服务器发送 PSYNC 命令，执行同步操作，并将自己的数据库状态更新到主服务器的数据库状态。主要分为完整重同步和部分重同步。
+
+    1. 完整重同步
+
+        1. slave连接上master第一次复制的时候是完整同步
+
+        2. 如果当主从断线，重新连接复制的时候有可能是完成重同步。
+
+    2. 部分重同步
+
+        用于处理断线后重复制的情况
+
+3. 命令传播
+
+    在完成数据同步之后，主从服务器的数据暂时达到一定状态，在主服务器执行了客户端的写命令之后，主从数据库不再一致。所以此时为了保持一致性，每执行一个命令都会向从服务器发送同样的写命令。
+
+4. 心跳检测
+
+    在命令传播阶段，从服务器默认会以每秒一次的频率向主服务器发送命令：
+
+        REPLCONF ACK &lt;replication_offset&gt; replication_offset是从服务器当前的复制偏移量。
+
+        发送replconf ack对于主服务器作用：
+
+            1. 检测主从服务器的网络连接状态
+            2. 辅助实现min-slave选项
+            3. 检测命令丢失
+</code></pre><hr>
+<h2 id="Sentinel"><a href="#Sentinel" class="headerlink" title="Sentinel"></a>Sentinel</h2><p>岗哨、哨兵是Redis的高可用性解决方案，其可以监视任意多个主服务器以及这些主服务器下的从服务器。</p>
+<pre><code>1. 监控：哨兵会不断的检查master和slave是否运行正常
+
+2. 提醒：当被监控的某个redis异常，哨兵可以通过API或者其它应用程序发送通知
+
+3. 自动故障迁移：当一个master不能正常工作时，哨兵会开始一次自动故障迁移操作，会将失效的master的其中一个slave升级为新的master。
+</code></pre><blockquote>
+<p>提示：只靠redis主从复制和哨兵机制不足以实现redis高可用，理由是：因为如果某一节点死机之后，不会实现自动重启。</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>提示：最稳健实现高可用的方式，redis主从复制+哨兵监控（监控、提醒、自动故障迁移）+keepalived（自动重启），如果重启多次仍然不成功可以通过邮件或短信方式提醒。</p>
+</blockquote>
+</blockquote>
+<h4 id="1-检测主观下线状态"><a href="#1-检测主观下线状态" class="headerlink" title="1. 检测主观下线状态"></a>1. 检测主观下线状态</h4><p>在默认的情况下，sentinel会以每秒一次的频率向所有与它创建了命令连接的实例发送ping命令，并通过ping命令回复来判断实例是否在线。</p>
+<p>down-after-milliseconds选项值不仅会被sentinel用来判断主服务器的主观下线状态，还会被用于判断主服务器属下的所有从服务器，以及其他的主观下线状态。</p>
+<h4 id="2-检测客观下线状态"><a href="#2-检测客观下线状态" class="headerlink" title="2. 检测客观下线状态"></a>2. 检测客观下线状态</h4><p>当sentinel将一个主服务器判断为主观下线之后，为了确认这个主服务器是否真的下线，它会向同样监视这一主服务器的其它sentinel进行询问，其它监控是否回答认为主服务器已经进入下线状态。</p>
+<h4 id="3-选举领头羊"><a href="#3-选举领头羊" class="headerlink" title="3. 选举领头羊"></a>3. 选举领头羊</h4><p>在判断主服务器下线时，监视这个下线主服务器的各个sentinel会进行协商，选举出一个领头sentinel，并由领头sentinel对下线主服务器执行故障转移操作。</p>
+<h4 id="4-故障转移"><a href="#4-故障转移" class="headerlink" title="4. 故障转移"></a>4. 故障转移</h4><p>在选举产生出领头sentinel之后，领头sentinel将对已下线的主服务器执行故障转移操作，该操作包括：</p>
+<pre><code>1. 在已下线的主服务器属下的所有从服务器里面挑选出一个从服务器，并将其转换成主服务器。
+
+2. 让已下线的主服务器属下的所有从服务器改为复制新的主服务器。
+
+3. 将已下线的主服务器设置为新的主服务器的从服务器。
+</code></pre><hr>
+<h2 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h2><p>Redis集群是Redis提供的分布式数据库方案，集群通过==分片来进行数据共享，并提供复制符故障转移功能。==</p>
+<pre><code>优点：
+
+    1. 将数据自动切分到多个节点的能力
+
+    2. 当集群中一部分节点失效或者无法进行通讯时，仍然可以继续处理命令请求的能力
+
+    3. 支持动态扩容
+
+数据共享：
+
+    Redis使用数据分片而非一致性哈希
+
+主从复制：
+
+    集群中的每个节点都有1-n个复制品
+
+一致性保证：
+
+    集群不保证数据的强一致性，在特定条件下，Redis集群可能会丢失已经被执行过的写命令。
+</code></pre><h3 id="1-节点"><a href="#1-节点" class="headerlink" title="1.节点"></a>1.节点</h3><p>一个redis集群通常由多个节点组成，要组建一个真正意思上的集群需要将各个独立节点连接起来，构成一个包含多个节点的集群。</p>
+<p>连接各个节点的工作可以使用 CLUSTER MEET 命令完成。</p>
+<pre><code>CLUSTER MEET &lt;ip&gt; &lt;port&gt;
+</code></pre><p>CLUSTER NODES 命令查看集群中的各个节点。</p>
+<p>一个节点就是一个运行在集群模式下的Redis服务器，Redis服务器在启动时会根据 cluster-enable 配置选项是否为 yes 来决定是否开启服务器的集群模式。</p>
+<h3 id="2-槽指派"><a href="#2-槽指派" class="headerlink" title="2. 槽指派"></a>2. 槽指派</h3><p>Redis集群==通过分片的方式来保存数据库中的键值对，集群的整个数据库被分为16384个槽（slot），数据库中的每个键都属于这些槽中的其中一个，集群中每个节点可以处理0个或最多16384个槽。==</p>
+<p>集群中内置这些槽之后，会将所有的物理节点映射到这些槽上，或者说将这些槽均等的分配给各个节点。当需要在Redis集群中存放一个数据（key-value）时，Redis会先对key进行crc16算法，然后得到一个结果，再将这个结果对16384取余，这个余数则对应【0-16383】中的一个槽，然后决定key-value存放在哪个节点中，所以某一个节点挂了，那么该节点对应的槽就无法使用，从而导致集群无法正常工作。</p>
+<p>通过向节点发送 CLUSTER ADDSLOTS 命令，可以将一个或多个槽指派给节点负责。</p>
+<h3 id="3-重新分片"><a href="#3-重新分片" class="headerlink" title="3. 重新分片"></a>3. 重新分片</h3><p>重新分片操作可以将任意数量的已经指派给某个节点的槽改为指派给另一个节点，并且相关槽所属的键值对也会从源节点被移动到目标节点。</p>
+<hr>
+<h3 id="Linux集群搭建"><a href="#Linux集群搭建" class="headerlink" title="Linux集群搭建"></a>Linux集群搭建</h3><pre><code>1. 新建目录cluster存放将要配置的文件
+
+    1. conf：存放配置文件
+    2. data：存放数据
+    3. logs：存放日志
+    4. script：存放脚本
+
+2. 配置redis.conf文件，配置端口号、cluster-enabled yes 的注释打开、然后配置文件的logs等。
+
+3. 启动redis服务器
+
+4. 查看是否启动服务器进程
+
+    ps aux|grep redis
+
+5. redis 5.0之后支持cluster
+
+    ./bin/redis-cli --cluster create 127.0.0.1:7001 127.0.0.1:7002 127.0.0.1:7003 127.0.0.1:7004 127.0.0.1:7005 127.0.0.1:7006
+</code></pre><h2 id="Pipeline-流水线"><a href="#Pipeline-流水线" class="headerlink" title="Pipeline 流水线"></a>Pipeline 流水线</h2><h4 id="1-1次网络命令通信模型"><a href="#1-1次网络命令通信模型" class="headerlink" title="1. 1次网络命令通信模型"></a>1. 1次网络命令通信模型</h4><p>在客户端将命令通过网路传递到服务器，然后服务器经过计算之后返回结果给客户端的过程所用的时间为：</p>
+<pre><code>1次时间 = 1次网络时间 + 1次命令时间
+</code></pre><h4 id="2-批量网络命令模型"><a href="#2-批量网络命令模型" class="headerlink" title="2.批量网络命令模型"></a>2.批量网络命令模型</h4><p>表示在1次网络命令通信模型的迭代n次。那么在这过程中所用掉的时间时：</p>
+<pre><code>n次时间 = n次网络时间 + n次命令时间
+</code></pre><h4 id="3-流水线"><a href="#3-流水线" class="headerlink" title="3.流水线"></a>3.流水线</h4><p>在这里使用流水线技术，那么就是将所有命令打包在一起，然后用掉一次网络时间将所有的命令传递到服务器，然后服务器用掉n此命令时间处理计算这些命令，然后将计算结果返回给客户端。</p>
+<pre><code>1次pipeline(n条命令) = 1次网络时间 + n次命令时间
+</code></pre><blockquote>
+<p>注意：Redis的命令时间时微秒级的。然后pipeline每次条数需要控制。</p>
+</blockquote>
+<blockquote>
+<p>提示：pipeline只能作用在一个redis节点上面。</p>
+</blockquote>
+<hr>
+<h2 id="第18章-Redis-发布-订阅"><a href="#第18章-Redis-发布-订阅" class="headerlink" title="第18章 Redis 发布/订阅"></a>第18章 Redis 发布/订阅</h2><p>Redis 发布订阅(pub/sub)是一种消息通信模式：发送者(pub)发送消息，订阅者(sub)接收消息。Redis 客户端可以订阅任意数量的频道。这中机制类似于电台的发布，用户可以订阅多个电台的消息，然后电台发布消息供用户读取。</p>
+<blockquote>
+<p>理解：实现订阅和发布，那么在这里就有消息的发送方和接收方。</p>
+<blockquote>
+<p>发送方：1.通过JedisConnection的Pub/Sub相关的方法来向Redis服务发布消息。2.通过RedisTemplate的convertAndSend方法来实现这一功能。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>接收方：在接收方包括监听消息并输出，需要实现消息监听类，并且在xml中注册实现此类。</p>
+</blockquote>
+</blockquote>
+<p><strong>1.两种方式实现监听类</strong><br></p>
+<pre><code>1.实现MessageListener接口，实现onMessage()方法。
+2.使用自定义的类。
+</code></pre><h4 id="发布订阅和消息队列"><a href="#发布订阅和消息队列" class="headerlink" title="发布订阅和消息队列"></a>发布订阅和消息队列</h4><p>通过执行SUBSCRIBE命令客户端可以订阅一个或多个频道，从而成为这些频道的订阅者。</p>
+<p>通过命令 UNSUBSCRIBE 命令退订某个或某些频道。</p>
+<p>PUBSUB CHANNELS [pattern] 命令用于返回服务器当前被订阅的频道，其中pattern参数是可选的。</p>
+<p>PUBSUB NUMSUB [channel-1 channel-2 ..] 命令接受任意多个频道作为输入参数，并返回这些频道的订阅者数量</p>
+<h2 id="PUBSUB-NUMPAT-命令用于返回服务器当前被订阅模式的数量。"><a href="#PUBSUB-NUMPAT-命令用于返回服务器当前被订阅模式的数量。" class="headerlink" title="PUBSUB NUMPAT 命令用于返回服务器当前被订阅模式的数量。"></a>PUBSUB NUMPAT 命令用于返回服务器当前被订阅模式的数量。</h2><h2 id="第19章-Redis-事务"><a href="#第19章-Redis-事务" class="headerlink" title="第19章 Redis 事务"></a>第19章 Redis 事务</h2><p>Redis 事务可以一次执行多个命令， 并且带有以下两个重要的保证：</p>
+<pre><code>批量操作在发送 EXEC 命令前被放入队列缓存。
+收到 EXEC 命令后进入事务执行，事务中任意命令执行失败，其余的命令依然被执行。
+在事务执行过程，其他客户端提交的命令请求不会插入到事务执行命令序列中。
+</code></pre><p>一个事务从开始到执行会经历以下三个阶段：</p>
+<pre><code>开始事务。
+命令入队。
+执行事务。
+</code></pre><p>MULTI 命令表示一个事务的开始。WATCH命令是一个乐观锁，它可以在EXEC命令执行之前，监视任意数量的数据库键，并在EXEC命令执行时，检查被监视的键是否至少有一个已经被修改过，如果是，服务器拒绝执行事务，并返回执行失败的空回复。</p>
+<p>当一个处于事务状态的客户端向服务器发送EXEC命令时，该EXEC命令将立即被服务器执行。服务器会遍历这个客户端的事务队列，执行队列中保存的所有命令，最后将执行命令所得的结果全部返回给客户端。</p>
+<p>DISCARD命令表示关闭事务操作。</p>
+<hr>
+<h2 id="第20章-Redis-Lua脚本"><a href="#第20章-Redis-Lua脚本" class="headerlink" title="第20章 Redis Lua脚本"></a>第20章 Redis Lua脚本</h2><p>Redis 脚本使用 Lua 解释器来执行脚本。 Redis 2.6 版本通过内嵌支持 Lua 环境。执行脚本的常用命令为 EVAL。</p>
+<p>EVALSHA命令可以根据脚本的SHA1校验来对脚本进行求职，但这个命令要求校验和对应的脚本必须至少被EVAL命令执行过一次。</p>
+<hr>
+<h2 id="第21章-排序"><a href="#第21章-排序" class="headerlink" title="第21章 排序"></a>第21章 排序</h2><p>Redis的sort命令可以对==列表键、集合或有序集合的值==进行排序。</p>
+<pre><code>1. lrange：按插入顺序进行排序
+
+    lrange numbers 0 -1
+
+2. sort：按值从小到大进行排序
+
+    sort numbers
+
+    1. sort alphabet ALPHA sort命令使用ALPHA选项对一个包含字符串值的集合键进行排序
+
+    2. sort &lt;key&gt; ASC 命令执行升序排序
+
+    3. sort &lt;key&gt; DESC 命令执行降序排序
+</code></pre><hr>
+<h2 id="第22章-二进制位数组"><a href="#第22章-二进制位数组" class="headerlink" title="第22章 二进制位数组"></a>第22章 二进制位数组</h2><p>Redis提供了setbit/getbit/bitcount/bitop四个命令用于处理二进制位数组（位数组）。</p>
+<pre><code>1. setbit 命令用于为位数组指定偏移量上的二进制位设置值，位数组的偏移量从0开始计数，而二进制位的值为0或1。
+
+2. getbit 命令获取位数组指定偏移量上的二进制位的值。
+
+3. bitcount 命令用于统计位数组里面值为1的二进制位的数量。
+
+4. bitop 命令用于对多个位数组进行按位与|或|异或运算。
+</code></pre><hr>
+<h2 id="第23章-慢查询日志"><a href="#第23章-慢查询日志" class="headerlink" title="第23章 慢查询日志"></a>第23章 慢查询日志</h2><p>Redis的慢查询日志功能用于记录执行时间超过给定时长的命令请求，用户可通过该功能产生的日志监视和优化查询速度。</p>
+<pre><code>1. 配置慢查询日志
+
+    1. 指定执行时间超过多少微秒的命令请求会被记录到日志中
+
+        CONFIG SET slowlog-log-slower-than 0
+
+    2. 指定服务器最多保存多少条慢查询日志
+
+        CONFIG SET slowlog-max-len 5
+
+2. 输入查询命令
+
+    set msg &quot;...&quot;
+
+    set num 000
+
+    set database &quot;redis&quot;
+
+3. slowlog get 命令查看服务器所保存的慢查询日志
+</code></pre><hr>
+<h2 id="第24章-监控器"><a href="#第24章-监控器" class="headerlink" title="第24章 监控器"></a>第24章 监控器</h2><p>通过monitor命令，客户端可以将自己变为一个监视器，实时接收并打印出服务器当前处理的命令请求相关信息。</p>
+<hr>
+<h2 id="Redis-连接"><a href="#Redis-连接" class="headerlink" title="Redis 连接"></a>Redis 连接</h2><p>Redis 连接命令主要是用于连接 redis 服务。</p>
+<h2 id="Redis-服务器"><a href="#Redis-服务器" class="headerlink" title="Redis 服务器"></a>Redis 服务器</h2><p>Redis 服务器命令主要是用于管理 redis 服务。</p>
+<hr>
+<h2 id="Redis-数据备份与恢复"><a href="#Redis-数据备份与恢复" class="headerlink" title="Redis 数据备份与恢复"></a>Redis 数据备份与恢复</h2><h4 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h4><p>Redis SAVE 命令用于创建当前数据库的备份。</p>
+<h4 id="恢复"><a href="#恢复" class="headerlink" title="恢复"></a>恢复</h4><p>果需要恢复数据，只需将备份文件 (dump.rdb) 移动到 redis 安装目录并启动服务即可。获取 redis 目录可以使用 CONFIG 命令</p>
+<pre><code>redis 127.0.0.1:6379&gt; CONFIG GET dir
+</code></pre><h4 id="Bgsave"><a href="#Bgsave" class="headerlink" title="Bgsave"></a>Bgsave</h4><p>创建 redis 备份文件也可以使用命令 BGSAVE，该命令在后台执行。</p>
+<hr>
+<h2 id="Redis-安全"><a href="#Redis-安全" class="headerlink" title="Redis 安全"></a>Redis 安全</h2><p>我们可以通过 redis 的配置文件设置密码参数，这样客户端连接到 redis 服务就需要密码验证，这样可以让你的 redis 服务更安全。</p>
+<h4 id="设置密码与否"><a href="#设置密码与否" class="headerlink" title="设置密码与否"></a>设置密码与否</h4><pre><code>127.0.0.1:6379&gt; CONFIG get requirepass
+</code></pre><h4 id="修改密码参数"><a href="#修改密码参数" class="headerlink" title="修改密码参数"></a>修改密码参数</h4><pre><code>127.0.0.1:6379&gt; CONFIG set requirepass &quot;runoob&quot;
+127.0.0.1:6379&gt; CONFIG get requirepass
+</code></pre><h4 id="用户登录"><a href="#用户登录" class="headerlink" title="用户登录"></a>用户登录</h4><pre><code>127.0.0.1:6379&gt; AUTH password
+</code></pre><hr>
+<h2 id="Redis-性能测试"><a href="#Redis-性能测试" class="headerlink" title="Redis 性能测试"></a>Redis 性能测试</h2><p>Redis 性能测试是通过同时执行多个命令实现的。</p>
+<pre><code>命令：redis-benchmark [option] [option value]
+</code></pre><h2 id="Redis-客户端连接"><a href="#Redis-客户端连接" class="headerlink" title="Redis 客户端连接"></a>Redis 客户端连接</h2><hr>
+<h2 id="Redis-分区"><a href="#Redis-分区" class="headerlink" title="Redis 分区"></a>Redis 分区</h2><p>分区是分割数据到多个Redis实例的处理过程，因此每个实例只保存key的一个子集。</p>
+<h4 id="分区的优势"><a href="#分区的优势" class="headerlink" title="分区的优势"></a>分区的优势</h4><pre><code>通过利用多台计算机内存的和值，允许我们构造更大的数据库。
+通过多核和多台计算机，允许我们扩展计算能力；通过多台计算机和网络适配器，允许我们扩展网络带宽。
+</code></pre><h4 id="分区的不足"><a href="#分区的不足" class="headerlink" title="分区的不足"></a>分区的不足</h4><hr>
+<h2 id="Java使用Redis"><a href="#Java使用Redis" class="headerlink" title="Java使用Redis"></a>Java使用Redis</h2><p>在Java使用Redis之前要确定已经安装Redis服务以及Java Redis驱动</p>
+<h4 id="1-连接到Redis服务"><a href="#1-连接到Redis服务" class="headerlink" title="1.连接到Redis服务"></a>1.连接到Redis服务</h4><pre><code>//Java程序连接到redis服务 在编写完下面的程序之后编译便可
+import redis.clients.jedis.Jedis;
+
+public class RedisJava {
+    public static void main(String[] args) {
+        //连接本地的 Redis 服务
+        Jedis jedis = new Jedis(&quot;localhost&quot;);
+        System.out.println(&quot;连接成功&quot;);
+        //查看服务是否运行
+        System.out.println(&quot;服务正在运行: &quot;+jedis.ping());
+    }
+}
+</code></pre><h4 id="2-Java使用redis服务实例"><a href="#2-Java使用redis服务实例" class="headerlink" title="2.Java使用redis服务实例"></a>2.Java使用redis服务实例</h4><pre><code>//redis Java String 实例
+import redis.clients.jedis.Jedis;
+
+public class RedisStringJava {
+    public static void main(String[] args) {
+        //连接本地的 Redis 服务
+        Jedis jedis = new Jedis(&quot;localhost&quot;);
+        System.out.println(&quot;连接成功&quot;);
+        //设置 redis 字符串数据
+        jedis.set(&quot;runoobkey&quot;, &quot;www.runoob.com&quot;);
+        // 获取存储的数据并输出
+        System.out.println(&quot;redis 存储的字符串为: &quot;+ jedis.get(&quot;runoobkey&quot;));
+    }
+}
+
+//Redis Java List(列表) 实例
+import java.util.List;
+import redis.clients.jedis.Jedis;
+
+public class RedisListJava {
+    public static void main(String[] args) {
+        //连接本地的 Redis 服务
+        Jedis jedis = new Jedis(&quot;localhost&quot;);
+        System.out.println(&quot;连接成功&quot;);
+        //存储数据到列表中
+        jedis.lpush(&quot;site-list&quot;, &quot;Runoob&quot;);
+        jedis.lpush(&quot;site-list&quot;, &quot;Google&quot;);
+        jedis.lpush(&quot;site-list&quot;, &quot;Taobao&quot;);
+        // 获取存储的数据并输出
+        List&lt;String&gt; list = jedis.lrange(&quot;site-list&quot;, 0 ,2);
+        for(int i=0; i&lt;list.size(); i++) {
+            System.out.println(&quot;列表项为: &quot;+list.get(i));
+        }
+    }
+}
+
+//Redis Java Keys 实例
+import java.util.Iterator;
+import java.util.Set;
+import redis.clients.jedis.Jedis;
+
+public class RedisKeyJava {
+    public static void main(String[] args) {
+        //连接本地的 Redis 服务
+        Jedis jedis = new Jedis(&quot;localhost&quot;);
+        System.out.println(&quot;连接成功&quot;);
+
+        // 获取数据并输出
+        Set&lt;String&gt; keys = jedis.keys(&quot;*&quot;); 
+        Iterator&lt;String&gt; it=keys.iterator() ;   
+        while(it.hasNext()){   
+            String key = it.next();   
+            System.out.println(key);   
+        }
+    }
+}
+</code></pre><hr>
+<h4 id="1-单实例连接Redis"><a href="#1-单实例连接Redis" class="headerlink" title="1.单实例连接Redis"></a>1.单实例连接Redis</h4><pre><code>@Test
+public void JedisClient(){
+    //Jedis
+    Jedis jedis = new Jedis(&quot;localhost&quot;,6379);
+    //通过redis赋值
+    jedis.set(&quot;s2&quot;,&quot;222&quot;);
+    //通过redis取值
+    String result = jedis.get(&quot;s2&quot;);
+    System.out.println(result);
+    //关闭jedis
+    jedis.close();
+}
+</code></pre><h4 id="2-使用Jedis连接池连接Redis服务器"><a href="#2-使用Jedis连接池连接Redis服务器" class="headerlink" title="2.使用Jedis连接池连接Redis服务器"></a>2.使用Jedis连接池连接Redis服务器</h4><pre><code>@Test
+public void JedisPool(){
+    //JedisPool
+    JedisPool pool = new JedisPool(&quot;localhost&quot;,6379);
+    //通过连接池获取jedis对象
+    Jedis jedis = pool.getResource();
+    jedis.set(&quot;s4&quot;,&quot;12&quot;);
+    String result = jedis.get(&quot;s4&quot;);
+    System.out.println(result);
+
+    //关闭Jedis客户端
+    jedis.close();
+    //关闭连接池
+    pool.close();
+}
+</code></pre><h4 id="3-Spring整合JedisPool"><a href="#3-Spring整合JedisPool" class="headerlink" title="3.Spring整合JedisPool"></a>3.Spring整合JedisPool</h4><p><strong>3.1 pom.xml添加依赖</strong><br></p>
+<p><strong>3.2 applicationContext.xml配置文件</strong><br></p>
+<pre><code>&lt;!--1.首先是连接池配置--&gt;
+&lt;bean id=&quot;jedisPoolConfig&quot; class=&quot;redis.clients.jedis.JedisPoolConfig&quot;&gt;
+    &lt;!--1.1 最大连接数--&gt;
+    ...
+    //这些需要配置的东西可以得到，略
+&lt;/bean&gt;
+
+&lt;bean id=&quot;jedisPool&quot; class=&quot;redis.clients.jedis.JedisPool&quot; destroy-method=&quot;close&quot;&gt;
+    ...
+&lt;/bean&gt;
+</code></pre><h4 id="4-测试实例"><a href="#4-测试实例" class="headerlink" title="4.测试实例"></a>4.测试实例</h4><pre><code>@Test
+public void JedisPoolTest(){
+    JedisPool pool = (JedisPool) applicationContext.getBean(&quot;jedisPool&quot;);
+    Jedis jedis = null;
+    try{
+        jedis = pool.getResource();
+        jedis.set(&quot;name&quot;,&quot;lisi&quot;);
+        String name = jedis.get(&quot;name&quot;);
+        System.out.println(name);
+    }catch(Exception e){
+        e.printStackTrace();
+    }finally{
+        if(jedis != null){
+            jedis.close();
+        }
+    }
+}
+</code></pre><hr>
+<hr>
+<p>前言：1.声明式缓存注解：Spring提供四个注解来声明缓存规则。</p>
+<pre><code>@Cacheable 在方法执行前Spring先查看缓存中是否有数据。如果有数据则直接返回缓存数据，没有则调用方法返回值放入缓存中。
+
+@CachePut 无论如何都会将方法的返回值放入缓存中。
+
+@CacheEvict 将一条或多条数据从缓存中删除。
+
+@Caching 可通过@Caching 注解组合多个注解策略在一个方法上。
+</code></pre><blockquote>
+<p>注意：@Cacheable | @CachePut | @CacheEvict 都有 value 属性，指定的是要使用的缓存名称。key 属性指定的是数据在缓存中存储的键。</p>
+</blockquote>
+<hr>
+<h2 id="Redis实战"><a href="#Redis实战" class="headerlink" title="Redis实战"></a>Redis实战</h2><h3 id="SpringMVC集成Redis"><a href="#SpringMVC集成Redis" class="headerlink" title="SpringMVC集成Redis"></a>SpringMVC集成Redis</h3><p>一般的思路是首先加载配置文件，创建redis连接池，然后实例化RedisTemplate对象，最后持有这个实例开始读写操作。</p>
+<h4 id="1-pom-xml"><a href="#1-pom-xml" class="headerlink" title="1.pom.xml"></a>1.pom.xml</h4><pre><code>&lt;dependency&gt;
+  &lt;groupId&gt;org.springframework.data&lt;/groupId&gt;
+  &lt;artifactId&gt;spring-data-redis&lt;/artifactId&gt;
+  &lt;version&gt;1.0.2.RELEASE&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;redis.clients&lt;/groupId&gt;
+  &lt;artifactId&gt;jedis&lt;/artifactId&gt;
+  &lt;version&gt;2.1.0&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><h4 id="2-spring-mybatis-xml-spring-dao-xml"><a href="#2-spring-mybatis-xml-spring-dao-xml" class="headerlink" title="2.spring-mybatis.xml(spring-dao.xml)"></a>2.spring-mybatis.xml(spring-dao.xml)</h4><pre><code>&lt;!--Jedis配置--&gt;
+&lt;bean id=&quot;poolConfig&quot; class=&quot;redis.clients.jedis.JedisPoolConfig&quot;&gt;
+    &lt;property name=&quot;maxIdle&quot; value=&quot;${redis.maxIdle}&quot; /&gt;
+    &lt;property name=&quot;maxActive&quot; value=&quot;${redis.maxActive}&quot; /&gt;
+    &lt;property name=&quot;maxWait&quot; value=&quot;${redis.maxWait}&quot; /&gt;
+    &lt;property name=&quot;testOnBorrow&quot; value=&quot;${redis.testOnBorrow}&quot; /&gt;
+&lt;/bean&gt;
+
+&lt;!--Redis服务器配置相关信息--&gt;
+&lt;bean id=&quot;connectionFactory&quot; class=&quot;org.springframework.data.redis.connection.jedis.JedisConnectionFactory&quot;
+      p:host-name=&quot;${redis.host}&quot;
+      p:port=&quot;${redis.port}&quot;
+      p:password=&quot;${redis.pass}&quot;
+      p:pool-config-ref=&quot;poolConfig&quot;/&gt;
+
+&lt;!--Redis操作模板，面向对象的模板--&gt;
+&lt;bean id=&quot;redisTemplate&quot; class=&quot;org.springframework.data.redis.core.StringRedisTemplate&quot;&gt;
+    &lt;property name=&quot;connectionFactory&quot; ref=&quot;connectionFactory&quot; /&gt;
+    &lt;!--如果不配置Serializer，那么存储的时候只能使用String，如果使用对象类型存储会提示错误--&gt;
+    &lt;property name=&quot;keySerializer&quot;&gt;
+        &lt;bean class=&quot;org.springframework.data.redis.serializer.StringRedisSerializer&quot; /&gt;
+    &lt;/property&gt;
+    &lt;property name=&quot;valueSerializer&quot;&gt;
+        &lt;bean class=&quot;org.springframework.data.redis.serializer.JdkSerializationRedisSerializer&quot; /&gt;
+    &lt;/property&gt;
+&lt;/bean&gt;
+</code></pre><blockquote>
+<blockquote>
+<p>提示：Spring Data Redis提供了RedisTemplate 和 StringRedisTemplate模板。模板封装了对redis操作，提供了较高级的数据访问方案。从名字可以看出后者只关注字符串类型，当redis的key和value都是字符串时候建议使用StringRedisTemplate。RedisTemplate的很多功能以子API的形式提供，他们区分了单个值和集合值得场景。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>注意：在使用Redis的时候首先是注入了RedisTemplate对象，我们可以根据Spring中的JdbcTemplate，RedisTemplate封装了RedisConnection，具有连接管理，序列化和Redis操作等功能。还有针对String的支持对象StringRedisTemplate。</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>注意：Redis操作视图接口类是 ValueOperations，对应的Redis String/value操作。还有其他的操作视图：ListOperations | SetOperations | ZSetOperations 和 HashOperations 。ValueOperations 插入缓存是可以设置失效时间，这里设置的失效时间是 10 s。</p>
+</blockquote>
+</blockquote>
+<h4 id="3-使用key和value的序列化器"><a href="#3-使用key和value的序列化器" class="headerlink" title="3.使用key和value的序列化器"></a>3.使用key和value的序列化器</h4><p>当某个key-value保存到Redis存储的时候，key和value都会使用Redis序列化器进行序列化。这一步已经在上面的配置文件中配置过。</p>
+<pre><code>1.JdkSerializationRedisSerializer POJO对象的存取场景，使用JDK本身序列化机制，然后将普通POJO类进行序列化操作。
+
+2.StringRedisSerializer key或者value是字符串的场景，将会根据指定charset对数据的字节序列编码成string。
+
+3.JacksonJsonRedisSerializer Jackson-Json工具提供了JavaBean与Json之间的转换能力，可以将pojo实例序列化成json格式存储在redis中，也可以将json格式的数据转换成pojo实例。
+
+4.OxmSerializer 提供了将JavaBean与xml之间的转换能力，目前可用的三方支持包括jaxb,apache-xmlbeans。redis存储的数据将是xml工具。
+</code></pre><blockquote>
+<p>注意：RedisTemplate中需要声明4种serializer，默认为“JdkSerializationRedisSerializer”：</p>
+</blockquote>
+<pre><code>a) keySerializer ：对于普通K-V操作时，key采取的序列化策略
+b) valueSerializer：value采取的序列化策略
+c) hashKeySerializer： 在hash数据结构中，hash-key的序列化策略
+d) hashValueSerializer：hash-value的序列化策略
+</code></pre><blockquote>
+<blockquote>
+<p>注意：同样地，StringRedisTemplate也需要申明4中serializer，但是默认为“StringRedisSerializer”。</p>
+</blockquote>
+</blockquote>
+<h4 id="4-RedisTemplate-使用"><a href="#4-RedisTemplate-使用" class="headerlink" title="4.RedisTemplate 使用"></a>4.RedisTemplate 使用</h4><p><strong>1.opsForXXX</strong><br><br>这里可以针对不同的数据结构(String, List, ZSet, Hash）读封装了比较使用的调用方式 opsForXXX。</p>
+<h4 id="4-Util"><a href="#4-Util" class="headerlink" title="4.Util"></a>4.Util</h4><p><strong>1.RedisCache</strong><br></p>
+<pre><code>package cn.edu.xidian.B.redis;
+
+//这一工具类的实现是为能够使用redis的客户端操作数据
+public class RedisCache implements Cache {
+
+    private static JedisConnectionFactory jedisConnectionFactory;
+
+    private final ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
+
+    //Redis客户端
+    @Autowired
+    private Jedis redisClient = createClient();
+
+    private String id;
+
+    public RedisCache(final String id){
+        if (id == null){
+            throw new IllegalArgumentException(&quot;此处必须传入参数id&quot;);
+        }
+        System.out.println(&quot;id:&quot; + id);
+        this.id = id;
+    }
+
+    @Override
+    public String getId() {
+        return this.id;
+    }
+
+    @Override
+    public void putObject(Object key, Object value) {
+        redisClient.set(SerializeUtil.serialize(key.toString()), SerializeUtil.serialize(value));
+
+    }
+
+    @Override
+    public Object getObject(Object o) {
+        byte[] ob = redisClient.get(SerializeUtil.serialize(o.toString()));
+        if (ob == null) {
+            return null;
+        }
+        Object value = SerializeUtil.unSerialize(ob);
+        return value;
+    }
+
+    @Override
+    public Object removeObject(Object key) {
+        return redisClient.expire(SerializeUtil.serialize(key.toString()), 0);
+    }
+
+    @Override
+    public void clear() {
+        redisClient.flushDB();
+
+    }
+
+    @Override
+    public int getSize() {
+        return Integer.valueOf(redisClient.dbSize().toString());
+    }
+
+    @Override
+    public ReadWriteLock getReadWriteLock() {
+        return readWriteLock;
+    }
+
+    protected static Jedis createClient(){
+        try {
+            @SuppressWarnings(&quot;resource&quot;)
+            JedisPool pool = new JedisPool(new JedisPoolConfig(), &quot;127.0.0.1&quot;, 6379);
+            return pool.getResource();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        throw new RuntimeException(&quot;初始化连接池错误！&quot;);
+    }
+
+    public static void setJedisConnectionFactory(JedisConnectionFactory jedisConnectionFactory){
+        RedisCache.jedisConnectionFactory = jedisConnectionFactory;
+    }
+}
+</code></pre><p><strong>2.RedisCacheTransfer</strong><br></p>
+<pre><code>package cn.edu.xidian.B.redis;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
+//此中实现的是为了将bean里面注入的给到rediscache
+public class RedisCacheTransfer {
+    @Autowired
+    public void setJedisConnectionFactory(JedisConnectionFactory jedisConnectionFactory){
+        RedisCache.setJedisConnectionFactory(jedisConnectionFactory);
+    }
+}
+</code></pre><p><strong>3.SerializeUtil</strong><br></p>
+<pre><code>package cn.edu.xidian.B.redis;
+
+import java.io.*;
+//此类实现的是存储数据的序列化与反序列化
+public class SerializeUtil {
+
+    /**
+     * 序列化
+     * @param object
+     * @return
+     */
+    public static byte[] serialize(Object object){
+        ObjectOutputStream oos = null;
+        ByteArrayOutputStream baos = null;
+        try {
+            baos = new ByteArrayOutputStream();
+            oos = new ObjectOutputStream(baos);
+
+            oos.writeObject(object);
+            byte[] bytes = baos.toByteArray();
+            return bytes;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * 反序列化
+     * @param bytes
+     * @return
+     */
+    public static Object unSerialize(byte[] bytes){
+        ByteArrayInputStream bais = null;
+        try {
+            bais = new ByteArrayInputStream(bytes);
+            ObjectInputStream ois = new ObjectInputStream(bais);
+            return ois.readObject();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+}
+</code></pre><h4 id="5-entity"><a href="#5-entity" class="headerlink" title="5.entity"></a>5.entity</h4><pre><code>User.java
+package cn.edu.xidian.B.entity;
+
+import java.io.Serializable;
+//这里的User.java类作序列化为了后面能够持久化数据
+public class User implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    private Integer id;
+    private String userName;
+    private String password;
+    private Integer age;
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return &quot;User{&quot; + &quot;id=&quot; + id + &quot;, userName=&apos;&quot; + userName + &apos;\&apos;&apos; + &quot;, password=&apos;&quot; + password + &apos;\&apos;&apos; + &quot;, age=&quot; + age + &apos;}&apos;;
+    }
+}
+</code></pre><h4 id="6-Service"><a href="#6-Service" class="headerlink" title="6.Service"></a>6.Service</h4><p><strong>1.Service接口</strong><br></p>
+<pre><code>package cn.edu.xidian.B.service;
+
+import cn.edu.xidian.B.entity.User;
+//在此接口中只声明了一个方法
+public interface UserService {
+    User selectByPrimaryKey(Integer id);
+}
+</code></pre><p><strong>2.Service实现类</strong><br></p>
+<pre><code>package cn.edu.xidian.B.service.impl;
+
+import cn.edu.xidian.B.entity.User;
+import cn.edu.xidian.B.mapper.UserMapper;
+import cn.edu.xidian.B.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service(&quot;userService&quot;)
+public class UserServiceImpl implements UserService {
+
+    @Autowired
+    private UserMapper userMapper;
+
+    @Override
+    public User selectByPrimaryKey(Integer id) {
+        return userMapper.selectByPrimaryKey(id);
+    }
+}
+</code></pre><h4 id="7-mapper"><a href="#7-mapper" class="headerlink" title="7.mapper"></a>7.mapper</h4><p><strong>1.接口</strong><br></p>
+<pre><code>package cn.edu.xidian.B.mapper;
+
+import cn.edu.xidian.B.entity.User;
+import org.springframework.stereotype.Component;
+
+@Component
+public interface UserMapper {
+    User selectByPrimaryKey(Integer id);
+}
+</code></pre><p><strong>2.xml文件</strong><br></p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;!DOCTYPE mapper
+        PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;
+        &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+&lt;mapper namespace=&quot;cn.edu.xidian.B.mapper.UserMapper&quot;&gt;
+    &lt;cache type=&quot;cn.edu.xidian.B.redis.RedisCache&quot;/&gt;
+    &lt;resultMap id=&quot;BaseResultMapper&quot; type=&quot;cn.edu.xidian.B.entity.User&quot;&gt;
+        &lt;id property=&quot;id&quot; column=&quot;id&quot;/&gt;
+        &lt;result property=&quot;userName&quot; column=&quot;username&quot;/&gt;
+        &lt;result property=&quot;password&quot; column=&quot;password&quot;/&gt;
+        &lt;result property=&quot;age&quot; column=&quot;age&quot;/&gt;
+    &lt;/resultMap&gt;
+    &lt;select id=&quot;selectByPrimaryKey&quot; parameterType=&quot;java.lang.Integer&quot;
+            resultMap=&quot;BaseResultMapper&quot;&gt;
+        select
+        id,username,password,age
+        from user
+        where id = #{id}
+    &lt;/select&gt;
+
+&lt;/mapper&gt;
+</code></pre><h4 id="8-controller"><a href="#8-controller" class="headerlink" title="8.controller"></a>8.controller</h4><pre><code>package cn.edu.xidian.B.controller;
+
+import cn.edu.xidian.B.entity.User;
+import cn.edu.xidian.B.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpServletRequest;
+
+@Controller
+@RequestMapping(&quot;/user&quot;)
+public class UserController {
+
+    @Autowired
+    private UserService userService;
+
+    @RequestMapping(&quot;/showuser&quot;)
+    public String toIndex(HttpServletRequest request, Model model){
+//        int userId = Integer.parseInt(request.getParameter(&quot;id&quot;));
+        int userId = 1;
+        User user = userService.selectByPrimaryKey(userId);
+
+        model.addAttribute(&quot;user&quot;,user);
+        return &quot;/showuser&quot;;
+    }
+}
+</code></pre><hr>
+<blockquote>
+<p>注意：上面的系列步骤是将数据库的数据存储到redis中，然后查询相关的数据时候直接到redis中查询。</p>
+</blockquote>
+<hr>
+<h2 id="Redis-查询数据"><a href="#Redis-查询数据" class="headerlink" title="Redis 查询数据"></a>Redis 查询数据</h2><p>此方法配置文件都和上面的一样，只是在工具类实现上与上面方法不一致。是使用redis自带的StringRedisTemplate实现的数据增删改查。</p>
+<h4 id="1-RedisCacheUtil"><a href="#1-RedisCacheUtil" class="headerlink" title="1.RedisCacheUtil"></a>1.RedisCacheUtil</h4><pre><code>package cn.edu.xidian.B.util;
+
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
+
+@Component(&quot;redisCache&quot;)
+public class RedisCacheUtil {
+    @Resource
+    private StringRedisTemplate stringRedisTemplate;
+
+    /**
+     * 此方法表示向Hash中添加值
+     * @param key 对应数据库表名
+     * @param field 对应数据表中唯一索引
+     * @param value 存入redis的值
+     */
+    public void hashSet(String key, String field, String value){
+        if (key == null || &quot;&quot;.equals(key)){
+            return;
+        }
+        stringRedisTemplate.opsForHash().put(key,field,value);
+    }
+
+    /**
+     * 此方法表示从redis中取值
+     * @param key
+     * @param filed
+     * @return
+     */
+    public String hashGet(String key, String filed){
+        if (key == null || &quot;&quot;.equals(key)){
+            return null;
+        }
+        return (String) stringRedisTemplate.opsForHash().get(key,filed);
+    }
+
+    /**
+     * 此方法是判断存在key以及hash key
+     * @param key
+     * @param field
+     * @return
+     */
+    public boolean hashExists(String key, String field){
+        if (key == null || &quot;&quot;.equals(key)){
+            return false;
+        }
+        return stringRedisTemplate.opsForHash().hasKey(key,field);
+    }
+
+    /**
+     * 此方法查询key中对应多少条数据
+     * @param key
+     * @return
+     */
+    public long hashSize(String key){
+        if (key == null || &quot;&quot;.equals(key)){
+            return 0L;
+        }
+        return stringRedisTemplate.opsForHash().size(key);
+    }
+
+    public void hashDel(String key, String field){
+        if (key == null || &quot;&quot;.equals(key)){
+            return;
+        }
+        stringRedisTemplate.opsForHash().delete(key,field);
+    }
+}
+</code></pre><h4 id="2-Controller"><a href="#2-Controller" class="headerlink" title="2.Controller"></a>2.Controller</h4><pre><code>package cn.edu.xidian.B.controller;
+
+import cn.edu.xidian.B.util.RedisCacheUtil;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@Controller
+@RequestMapping(&quot;/redis&quot;)
+public class RedisController {
+    @Resource
+    private RedisCacheUtil redisCacheUtil;
+
+    @RequestMapping(&quot;/list&quot;)
+    @ResponseBody
+    public String getList(HttpServletResponse response, HttpServletRequest request){
+        String redis = redisCacheUtil.hashGet(&quot;student&quot;,&quot;test&quot;);
+        System.out.println(redis);
+        return &quot;success&quot;;
+    }
+
+    @RequestMapping(&quot;/add&quot;)
+    @ResponseBody
+    public String add(HttpServletResponse response, HttpServletRequest request){
+        redisCacheUtil.hashSet(&quot;student&quot;, &quot;test&quot;, &quot;小明&quot;);
+        return &quot;success&quot;;
+    }
+}
+</code></pre><hr>
+<h3 id="SpringBoot整合Redis"><a href="#SpringBoot整合Redis" class="headerlink" title="SpringBoot整合Redis"></a>SpringBoot整合Redis</h3><h4 id="1-开启声明缓存支持"><a href="#1-开启声明缓存支持" class="headerlink" title="1.开启声明缓存支持"></a>1.开启声明缓存支持</h4><p>在配置类上使用 @EnableCaching 注解。</p>
+<pre><code>@Configuration
+@EnableCaching
+public class AppConfig{
+    //....
+}
+</code></pre><h4 id="2-SpringBoot的支持"><a href="#2-SpringBoot的支持" class="headerlink" title="2.SpringBoot的支持"></a>2.SpringBoot的支持</h4>
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+
+  <p><span>本文标题:</span>Redis</a></p>
+  <p><span>文章作者:</span>Bangjin-Hu</a></p>
+  <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
+  <p><span>最后更新:</span>2020年03月29日 - 10:47:28</p>
+  <p><span>原始链接:</span><a href="/undefined/Redis/" title="Redis">http://bangjinhu.github.io/undefined/Redis/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/Redis/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.jpg" alt="Bangjin-Hu wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎扫码关注微信公众号，订阅我的微信公众号.</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持是我创作的动力.</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat-reward-img.jpg" alt="Bangjin-Hu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay-reward-img.jpg" alt="Bangjin-Hu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Bangjin-Hu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://bangjinhu.github.io/undefined/Redis/" title="Redis">http://bangjinhu.github.io/undefined/Redis/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Redis/" rel="tag"><i class="fa fa-tag"></i> Redis</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/undefined/Servlet/" rel="next" title="Servlet">
+                <i class="fa fa-chevron-left"></i> Servlet
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/undefined/项目开发过程记录/" rel="prev" title="Redis - Java集成">
+                Redis - Java集成 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/site.jpg"
+                alt="Bangjin-Hu" />
+            
+              <p class="site-author-name" itemprop="name">Bangjin-Hu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/BangjinHu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:2315378346@qq.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/Aaron_P_L" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-heart-o"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
+                      
+                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://iProgramering.github.io" target="_blank" title="iProgramer_ing">
+                      
+                        <i class="fa fa-fw fa-user"></i>iProgramer_ing</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          <div id="music163player">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src="//music.163.com/outchain/player?type=2&id=38358214&auto=0&height=66
+
+">
+    </iframe>
+</div>
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis"><span class="nav-text">Redis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis-概述"><span class="nav-text">Redis 概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Redis特点"><span class="nav-text">1.Redis特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Redis支持的数据类型"><span class="nav-text">2.Redis支持的数据类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Redis需要将所有数据放到内存中的原因"><span class="nav-text">3.Redis需要将所有数据放到内存中的原因</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Redis常见性能问题解决"><span class="nav-text">4.Redis常见性能问题解决</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-Redis与memcached的区别"><span class="nav-text">5.Redis与memcached的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-Redis持久化方案区别-优缺点"><span class="nav-text">6.Redis持久化方案区别/优缺点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-如何维护集群之间的关系-集群之间如何建立连接"><span class="nav-text">7.如何维护集群之间的关系(集群之间如何建立连接)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-Redis存取实体的方式"><span class="nav-text">8.Redis存取实体的方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-Redis保留时间"><span class="nav-text">9.Redis保留时间</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将Redis配置成服务"><span class="nav-text">将Redis配置成服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cmd命令框进入Redis目录，输入-redis-server-exe-redis-windows-conf-命令启动redis服务"><span class="nav-text">cmd命令框进入Redis目录，输入 redis-server.exe  redis.windows.conf 命令启动redis服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事务"><span class="nav-text">事务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NoSql"><span class="nav-text">NoSql</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-概念"><span class="nav-text">1.概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-分类"><span class="nav-text">2.分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Redis的应用场景"><span class="nav-text">Redis的应用场景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Redis处理逻辑"><span class="nav-text">Redis处理逻辑</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缓存存储策略"><span class="nav-text">缓存存储策略</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis可执行文件说明"><span class="nav-text">Redis可执行文件说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-API的理解和使用"><span class="nav-text">Redis API的理解和使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis数据类型"><span class="nav-text">Redis数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-String（字符串）"><span class="nav-text">1.String（字符串）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Hash（哈希）"><span class="nav-text">2.Hash（哈希）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-List（列表）"><span class="nav-text">3.List（列表）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Set（集合）"><span class="nav-text">4.Set（集合）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-zset-sorted-set：有序集合"><span class="nav-text">5.zset(sorted set：有序集合)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-Redis的keys的通用操作"><span class="nav-text">6.Redis的keys的通用操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-Redis事务特性"><span class="nav-text">7.Redis事务特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-Redis脚本命令"><span class="nav-text">8.Redis脚本命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-数据备份与恢复"><span class="nav-text">9.数据备份与恢复</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-Redis管道技术"><span class="nav-text">10.Redis管道技术</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-Redis数据库"><span class="nav-text">11.Redis数据库</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第9章-数据库"><span class="nav-text">第9章 数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#9-1-切换数据库"><span class="nav-text">9.1 切换数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-4-设置键的生存时间或过期时间"><span class="nav-text">9.4 设置键的生存时间或过期时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-5-过期键删除策略"><span class="nav-text">9.5 过期键删除策略</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis持久化方案"><span class="nav-text">Redis持久化方案</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Rdb方式"><span class="nav-text">1.Rdb方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Aof方式"><span class="nav-text">2.Aof方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-命令"><span class="nav-text">Redis 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-redis-cli"><span class="nav-text">1.$ redis-cli</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-键-key"><span class="nav-text">Redis 键(key)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复制"><span class="nav-text">复制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-主从复制的优点"><span class="nav-text">1. 主从复制的优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-主从复制的配置"><span class="nav-text">2. 主从复制的配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-主从复制的实现原理"><span class="nav-text">3. 主从复制的实现原理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sentinel"><span class="nav-text">Sentinel</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-检测主观下线状态"><span class="nav-text">1. 检测主观下线状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-检测客观下线状态"><span class="nav-text">2. 检测客观下线状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-选举领头羊"><span class="nav-text">3. 选举领头羊</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-故障转移"><span class="nav-text">4. 故障转移</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集群"><span class="nav-text">集群</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-节点"><span class="nav-text">1.节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-槽指派"><span class="nav-text">2. 槽指派</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-重新分片"><span class="nav-text">3. 重新分片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux集群搭建"><span class="nav-text">Linux集群搭建</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pipeline-流水线"><span class="nav-text">Pipeline 流水线</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1次网络命令通信模型"><span class="nav-text">1. 1次网络命令通信模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-批量网络命令模型"><span class="nav-text">2.批量网络命令模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-流水线"><span class="nav-text">3.流水线</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第18章-Redis-发布-订阅"><span class="nav-text">第18章 Redis 发布/订阅</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#发布订阅和消息队列"><span class="nav-text">发布订阅和消息队列</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PUBSUB-NUMPAT-命令用于返回服务器当前被订阅模式的数量。"><span class="nav-text">PUBSUB NUMPAT 命令用于返回服务器当前被订阅模式的数量。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第19章-Redis-事务"><span class="nav-text">第19章 Redis 事务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第20章-Redis-Lua脚本"><span class="nav-text">第20章 Redis Lua脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第21章-排序"><span class="nav-text">第21章 排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第22章-二进制位数组"><span class="nav-text">第22章 二进制位数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第23章-慢查询日志"><span class="nav-text">第23章 慢查询日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第24章-监控器"><span class="nav-text">第24章 监控器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-连接"><span class="nav-text">Redis 连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-服务器"><span class="nav-text">Redis 服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-数据备份与恢复"><span class="nav-text">Redis 数据备份与恢复</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#备份"><span class="nav-text">备份</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#恢复"><span class="nav-text">恢复</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bgsave"><span class="nav-text">Bgsave</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-安全"><span class="nav-text">Redis 安全</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#设置密码与否"><span class="nav-text">设置密码与否</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改密码参数"><span class="nav-text">修改密码参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用户登录"><span class="nav-text">用户登录</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-性能测试"><span class="nav-text">Redis 性能测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-客户端连接"><span class="nav-text">Redis 客户端连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-分区"><span class="nav-text">Redis 分区</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分区的优势"><span class="nav-text">分区的优势</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分区的不足"><span class="nav-text">分区的不足</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java使用Redis"><span class="nav-text">Java使用Redis</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-连接到Redis服务"><span class="nav-text">1.连接到Redis服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Java使用redis服务实例"><span class="nav-text">2.Java使用redis服务实例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-单实例连接Redis"><span class="nav-text">1.单实例连接Redis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-使用Jedis连接池连接Redis服务器"><span class="nav-text">2.使用Jedis连接池连接Redis服务器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Spring整合JedisPool"><span class="nav-text">3.Spring整合JedisPool</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-测试实例"><span class="nav-text">4.测试实例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis实战"><span class="nav-text">Redis实战</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringMVC集成Redis"><span class="nav-text">SpringMVC集成Redis</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-pom-xml"><span class="nav-text">1.pom.xml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-spring-mybatis-xml-spring-dao-xml"><span class="nav-text">2.spring-mybatis.xml(spring-dao.xml)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-使用key和value的序列化器"><span class="nav-text">3.使用key和value的序列化器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-RedisTemplate-使用"><span class="nav-text">4.RedisTemplate 使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Util"><span class="nav-text">4.Util</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-entity"><span class="nav-text">5.entity</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-Service"><span class="nav-text">6.Service</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-mapper"><span class="nav-text">7.mapper</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-controller"><span class="nav-text">8.controller</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-查询数据"><span class="nav-text">Redis 查询数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-RedisCacheUtil"><span class="nav-text">1.RedisCacheUtil</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Controller"><span class="nav-text">2.Controller</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringBoot整合Redis"><span class="nav-text">SpringBoot整合Redis</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-开启声明缓存支持"><span class="nav-text">1.开启声明缓存支持</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-SpringBoot的支持"><span class="nav-text">2.SpringBoot的支持</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bangjin-Hu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">465.0k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/lib/clipboard/clipboard.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+</body>
+</html>

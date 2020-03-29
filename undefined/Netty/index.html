@@ -1,0 +1,1709 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/site.jpg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Netty," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="BangjinHu's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. Netty[TOC] 概念官方定义，它是一个异步的，基于时间Client/Server的网络框架，目标是提供一种简单、快速构建网络应用的方式，同时保证高吞吐量、低延时、高可靠性。  提示：Netty其实就是一个NIO框架，它适用于服务器通讯相关的多种应用场景，主要还是针对于TCP协议下，面向Clients端的高并发应用，或者Peer-to-Peer场">
+<meta name="keywords" content="Netty">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Netty">
+<meta property="og:url" content="http://bangjinhu.github.io/undefined/Netty/index.html">
+<meta property="og:site_name" content="BangjinHu&#39;s Blog">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. Netty[TOC] 概念官方定义，它是一个异步的，基于时间Client/Server的网络框架，目标是提供一种简单、快速构建网络应用的方式，同时保证高吞吐量、低延时、高可靠性。  提示：Netty其实就是一个NIO框架，它适用于服务器通讯相关的多种应用场景，主要还是针对于TCP协议下，面向Clients端的高并发应用，或者Peer-to-Peer场">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3959253-76284b64125a8673.png?imageMogr2/auto-orient/strip|imageView2/2/w/1200/format/webp">
+<meta property="og:updated_time" content="2020-03-29T00:27:42.509Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Netty">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. Netty[TOC] 概念官方定义，它是一个异步的，基于时间Client/Server的网络框架，目标是提供一种简单、快速构建网络应用的方式，同时保证高吞吐量、低延时、高可靠性。  提示：Netty其实就是一个NIO框架，它适用于服务器通讯相关的多种应用场景，主要还是针对于TCP协议下，面向Clients端的高并发应用，或者Peer-to-Peer场">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/3959253-76284b64125a8673.png?imageMogr2/auto-orient/strip|imageView2/2/w/1200/format/webp">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://bangjinhu.github.io/undefined/Netty/"/>
+
+
+
+
+
+  <title>Netty | BangjinHu's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    
+    <a href="https://github.com/BangjinHu"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">BangjinHu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">让优秀成为习惯，让知识成为信仰</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            本站搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Netty/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Netty</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T08:27:42+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Netty/" itemprop="url" rel="index">
+                    <span itemprop="name">Netty</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5,570
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  21
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="Netty"><a href="#Netty" class="headerlink" title="Netty"></a>Netty</h2><p>[TOC]</p>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>官方定义，它是一个异步的，基于时间Client/Server的网络框架，目标是提供一种简单、快速构建网络应用的方式，同时保证高吞吐量、低延时、高可靠性。</p>
+<blockquote>
+<p>提示：Netty其实就是一个NIO框架，它适用于服务器通讯相关的多种应用场景，主要还是针对于TCP协议下，面向Clients端的高并发应用，或者Peer-to-Peer场景下的大量数据持续传输的应用。</p>
+</blockquote>
+<h3 id="NIO"><a href="#NIO" class="headerlink" title="NIO"></a>NIO</h3><p>NIO，非阻塞IO，在JAVA中NIO的核心就是Selector机制。简单而言，创建一个Socket Channel，并将其注册到一个Selector上（多路复用器），这个Selector将会“关注”Channel上发生的IO读写事件，并在事件发生（数据就绪）后执行相关的处理逻辑。对于阻塞IO，它需要在read()、write()操作上阻塞而直到数据操作完毕，但是NIO则不需要，只有当Selector检测到此Channel上有事件时才会触发调用read、write操作。</p>
+<blockquote>
+<p>提示：NIO本身不是严格意义上的异步IO，最大的原因是因为Selector本身是阻塞的（selector需要通过线程阻塞的方式（其select方法）获取底层通道的事件变更，然后获取SelectionKey列表）。</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>总结：我觉得最好的学习方式就是学好netty包里面的所有example代码。</p>
+</blockquote>
+</blockquote>
+<h3 id="Channel接口"><a href="#Channel接口" class="headerlink" title="Channel接口"></a>Channel接口</h3><p>通道，一个逻辑通道，维护Socket上IO的write、read、connect等相关操作。我们可以看到Bootstrap、ServerBootstrap初始化之后都需要在channel(Channel channel)方法中指定内部需要创建的channel类型。</p>
+<blockquote>
+<p>提示：Channel中所有的操作均是异步的，IO操作都会返回一个ChannelFuture实例</p>
+</blockquote>
+<p> Channel接口中还包含了一个子接口：Unsafe；这个Unsafe和JDK自带的Unsafe没有关系，Netty中的Unsafe只是框架内部使用，主要用来操作底层的Socket，比如connect、close、read、write；即Channel接口中有关底层Socket操作的，将会有Unsafe来操作javaChannel()即可。</p>
+<h3 id="ChannelFuture"><a href="#ChannelFuture" class="headerlink" title="ChannelFuture"></a>ChannelFuture</h3><p>ChannelFuture表示Channel IO异步操作的结果。IO调用方法立即返回，但此时并不表示IO实际操作已经实际执行结束，只是返回一个ChannelFuture实例，具体执行的结果状态可以通过检测Future才能得到。</p>
+<pre><code>boolean isDone()：操作是否完成，completed 还是 uncompleted
+
+boolean isCanclled()：如果Future已经完成，则判断操作是否被取消。
+
+boolean isSuccess()：同上。
+
+Throwable cause()：如果执行失败，此处可以获取导致失败的exception信息。
+
+ChannelFuture await()：等待，直到异步操作执行完毕，内部基于wait实现。
+
+ChannelFuture sync()：等待，直到异步操作执行完毕，核心思想同await。我们得到Future实例后，可以使用sync()方法来阻塞当前线程，直到异步操作执行完毕。和await的区别为，如果异步操作失败，那么将会重新抛出异常（将上述cause()方法中的异常抛出）。await和sync一样，当异步操作执行完毕后，通过notifyAll()唤醒。
+
+ChannelFuture addListener(GenericFutureListener listener)：向Future添加一个listener，当异步操作执行完毕后（无论成败），会依次调用listener的operationCompleted方法。
+</code></pre><h3 id="EventLoopGroup"><a href="#EventLoopGroup" class="headerlink" title="EventLoopGroup"></a>EventLoopGroup</h3><p>我们可以简单的认为EventLoopGroup是一个线程池调度服务，这和我们常用的FixedThreadPool在设计思想上没有太大区别；在Netty中比较常用的子类就是NioEventLoopGroup，它继承了ScheduledExecutorService。我们在创建NioEventLoopGroup时，可以指定线程池的容量，默认为：CPU处理器个数 * 2。</p>
+<p>在NioEventLoop创建实例时会同时创建一个Selector，即每个NioEventLoop都持有一个Selector实例。由此可见，NioEventLoopGroup的线程池容量，就是线程的个数，也是Bootstrap中持有的Selector的数量。</p>
+<p>每个NioEventLoop实例内部Thread负责select多个Channel的IO事件（NIO Selector.select），如果某个Channel有事件发生，则在内部线程中直接使用此Channel的Unsafe实例进行底层实际的IO操作。简单而言，就是让每个NioEventLoop管理一组Channel。</p>
+<p>在ServerBootstrap中，创建两个NioEventLoopGroup，其中“bossGroup”为Acceptor 线程池，这个线程池只需要一个线程（大于1，事实上没有意义），它主要是负责accept客户端链接，并创建SocketChannel，此后从“workerGroup”线程池（reactor）中以轮询的方式(next)取出一个NioEventLoop实例，并将此Channel注册到NioEventLoop的selector上，此后将由此selector负责监测Channel上的读写事件（并由此NioEventLoop线程负责执行）。</p>
+<p>由此可见，对于ServerBootstrap而言，bossGroup中的一个线程的selector只关注SelectionKey.OPT_ACCEPT事件。</p>
+<h4 id="EventLoop-线程模型"><a href="#EventLoop-线程模型" class="headerlink" title="EventLoop | 线程模型"></a>EventLoop | 线程模型</h4><h3 id="ChannelHandler-Pipeline"><a href="#ChannelHandler-Pipeline" class="headerlink" title="ChannelHandler | Pipeline"></a>ChannelHandler | Pipeline</h3><pre><code>@Sharable 表示一个ChannelHandler可以被多个Channel安全的共享
+</code></pre><p>在Netty中，从Socket通道中read数据进入Netty Handler的方向为inbound，从Netty handler向Socket通道write数据的方向为outbound。</p>
+<h4 id="ChannelInboundHandler"><a href="#ChannelInboundHandler" class="headerlink" title="ChannelInboundHandler"></a>ChannelInboundHandler</h4><h5 id="void-channelRegistered-ChannelHandlerContext-ctx"><a href="#void-channelRegistered-ChannelHandlerContext-ctx" class="headerlink" title="void channelRegistered(ChannelHandlerContext ctx)"></a>void channelRegistered(ChannelHandlerContext ctx)</h5><p>当channel注册成功后执行，即channel绑定到NioEventLoop上，且将Channel注册到selector之后执行。</p>
+<h5 id="void-channelActive-ChannelHandlerContext-ctx"><a href="#void-channelActive-ChannelHandlerContext-ctx" class="headerlink" title="void channelActive(ChannelHandlerContext ctx)"></a>void channelActive(ChannelHandlerContext ctx)</h5><p>channel注册首次成功后执行，即channelRegistered方法执行后调用。</p>
+<h5 id="void-channelRead-ChannelHandlerContext-ctx-Object-msg"><a href="#void-channelRead-ChannelHandlerContext-ctx-Object-msg" class="headerlink" title="void channelRead(ChannelHandlerContext ctx,Object msg)"></a>void channelRead(ChannelHandlerContext ctx,Object msg)</h5><p>socket将已经读取到数据传递给handler，此方法在NIO中READ事件触发后并读取到任意字节数据后被fire</p>
+<h5 id="void-channelReadComplete-ChannelHandlerContext-ctx"><a href="#void-channelReadComplete-ChannelHandlerContext-ctx" class="headerlink" title="void channelReadComplete(ChannelHandlerContext ctx)"></a>void channelReadComplete(ChannelHandlerContext ctx)</h5><p>read操作结束后调用；read数据首先被添加到Bytebuf中，如果这个Bytebuf已满，则会终止read操作，调用此方法。</p>
+<h4 id="ChannelOutboundHandler"><a href="#ChannelOutboundHandler" class="headerlink" title="ChannelOutboundHandler"></a>ChannelOutboundHandler</h4><h5 id="void-read-ChannelHandlerContext-ctx"><a href="#void-read-ChannelHandlerContext-ctx" class="headerlink" title="void read(ChannelHandlerContext ctx)"></a>void read(ChannelHandlerContext ctx)</h5><p>…</p>
+<blockquote>
+<p>总结：Channel创建后，初始化其pipeline，当Channel注册到Selector后（包括绑定到NioEventLoop线程），执行ChannelInitializer这个特殊的handler并将开发者指定的其他多个handler添加到pipeline中；当NioEventLoop线程中，selector检测到NIO事件后，将会依次执行此Channel pipeline中的相应的fire方法（比如fireChannelRead()）,那么fire方法将会从head或者tail这两个特殊的handler开始，依次调用pipeline中其他handler的实际方法（比如channelRead()）。</p>
+</blockquote>
+<blockquote>
+<p>注意：pipeline中的某个handler认为操作需要继续传递下去，那么在此handler的实际业务执行完毕之后要通过调用ChannelHandlerContext相应的fire方法，将事件继续传递给下一个handler；如果没有调用fire方法，那么此事件将会被终止。</p>
+</blockquote>
+<hr>
+<h2 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h2><p>该协议是完全重新设计的协议，旨在为了Web上的双向数据传输问题提供一个解决方案，可以让客户端与服务器之间在任意时刻传输消息。此要求它们能够异步处理消息回执。</p>
+<h3 id="添加WebSocket支持"><a href="#添加WebSocket支持" class="headerlink" title="添加WebSocket支持"></a>添加WebSocket支持</h3><p>在从标准的HTTP或HTTPS协议切换到WebSocket时，将会使用一种称为升级握手的机制。因此在使用WebSocket应用程序将始终以HTTP/S作为开始，然后再执行升级。</p>
+<p>我们应用程序将采用下面的约定：如果被请求的URL以/ws结尾，那我们将会把该协议升级为WebSocket。否则服务器将使用基本的HTTP/S。</p>
+<p>在连接完成升级之后，所有数据传输都将使用WebSocket进行。</p>
+<blockquote>
+<p>WEBSOCKET帧 WebSocket以帧的方式进行传输数据，每一帧代表消息的一部分。一个完整的消息可能包含许多帧。</p>
+</blockquote>
+<h2 id="Protobuf"><a href="#Protobuf" class="headerlink" title="Protobuf"></a>Protobuf</h2><h3 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h3><p>RMI:remote method invocation 只针对Java</p>
+<pre><code>client 
+
+server
+</code></pre><p>序列化与反序列化：或叫做编码与解码。</p>
+<p>RPC Remote Procedure Call 远程过程调用 很多RPC框架是跨语言的。</p>
+<pre><code>1. 定义一个接口说明文件：描述了对象（结构体）、对象成员、接口方法等一系列信息。
+
+2. 通过RPC框架所提供的编译器，将接口说明文件编译成具体的语言文件。
+
+3. 在客户端与服务器端分别引入RPC编译器所生成的文件，即可像调用本地方法一样调用远程方法。
+</code></pre><blockquote>
+<p>提示：在idea引入protobuf的时候注意pc上安装的protobuf版本号与gradle引入的版本号的一致性。</p>
+</blockquote>
+<h5 id="protobuf工程中使用git作为版本控制系统："><a href="#protobuf工程中使用git作为版本控制系统：" class="headerlink" title="protobuf工程中使用git作为版本控制系统："></a>protobuf工程中使用git作为版本控制系统：</h5><pre><code>1. git submodule git仓库里面的一个仓库
+
+    这一命令可以关联到一个新的git仓库，是专门用来存放protobuf项目的。
+
+    在原先的工程里面生成了一个protobuf工程，在新生成的protoc编译之后的文件放在对一个的仓库下面
+
+2. git subtree 类似于git submodule
+
+    这一命令是将这一仓库pull到该项目，但是是在合并而不是分成两个
+</code></pre><h2 id="Thrift"><a href="#Thrift" class="headerlink" title="Thrift"></a>Thrift</h2><h3 id="Thrift-传输格式"><a href="#Thrift-传输格式" class="headerlink" title="Thrift 传输格式"></a>Thrift 传输格式</h3><pre><code>1. TBinaryProtocol 二进制格式
+
+2. TCompactProtocol 压缩格式
+
+3. TJSONProtocol JSON格式
+
+4. TSimpleJSONProtocol 提供JSON只写协议，生成的文件很容易通过脚本语言解析
+
+5. TDebugProtocol 使用易懂的可读文本格式，以便于debug
+</code></pre><h3 id="Thrift-数据传输方式"><a href="#Thrift-数据传输方式" class="headerlink" title="Thrift 数据传输方式"></a>Thrift 数据传输方式</h3><pre><code>1. TSocket 阻塞式socket
+
+2. TFramedTransport 以frame为单位进行传输，非阻塞式服务中使用
+
+3. TFileTransport 以文本形式进行传输
+
+4. TMemoryTransport 将内存用于IO，Java实现时内部实际使用了简单的ByteArrayOutputStream。
+
+5. TZlibTransport 使用zlib进行压缩，与其它传输方式联合使用。当前无Java实现。
+</code></pre><h3 id="Thrift-支持的服务类型"><a href="#Thrift-支持的服务类型" class="headerlink" title="Thrift 支持的服务类型"></a>Thrift 支持的服务类型</h3><pre><code>1. TSimpleServer 简单的单线程服务模型，常用于测试
+
+2. TThreadPoolServer 多线程服务模型，使用标准的阻塞IO
+
+3. TNonblockingServer 多线程服务模型，使用非阻塞IO(需要使用TFramedTransport数据传输方式)
+
+4. THsHaServer THsHa引入了线程池去处理，其模型将读写任务放到线程池去处理。Half-sync/Half-async的处理模式：Half-aysnc是在处理IO事件上(accept/read/write io) 异步处理。 | Half-sync用于handler对rpc的同步处理。
+</code></pre><h2 id="gRPC"><a href="#gRPC" class="headerlink" title="gRPC"></a>gRPC</h2><p><a href="https://www.grpc.io/" target="_blank" rel="noopener">gRPC官方</a> <a href="https://github.com/grpc/grpc-java" target="_blank" rel="noopener">gRPC仓库</a> <a href="https://developers.google.cn/protocol-buffers" target="_blank" rel="noopener">Protobuf官网</a></p>
+<p>RPC（远程过程调用）框架实际上是提供了一套机制，使得应用程序之间可以进行通信，同时遵循Server/Client模型。在我们使用的时候，客户端调用Server端的接口就像是调用本地的函数一样。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3959253-76284b64125a8673.png?imageMogr2/auto-orient/strip|imageView2/2/w/1200/format/webp" alt="RPC通信"></p>
+<h3 id="gRPC-Restful"><a href="#gRPC-Restful" class="headerlink" title="gRPC | Restful"></a>gRPC | Restful</h3><p>gRPC和Restful API都提供了一套通信机制，用于server/client模型通信，而且它们都使用http作为底层的传输协议(严格地说, gRPC使用的http2.0，而Restful api则不一定)。不过gRPC还是有些特有的优势。</p>
+<pre><code>1. gRPC通过Protobuf定义接口，更加严格的接口约束。
+
+2. Protobuf可以将数据序列化为二进制编码，从而大幅度减少需要传输的数据量，大幅度的提高性能。
+
+3. gRPC可以方便地支持流式通信(理论上通过http2.0就可以使用streaming模式, 但是通常web服务的restful api似乎很少这么用，通常的流式数据应用如视频流，一般都会使用专门的协议如HLS，RTMP等，这些就不是我们通常web服务了，而是有专门的服务器应用。）
+
+4. 对于性能有更高的要求时。有时我们的服务需要传递大量的数据，而又希望不影响我们的性能，这个时候也可以考虑gRPC服务，因为通过protobuf我们可以将数据压缩编码转化为二进制格式，通常传递的数据量要小得多，而且通过http2我们可以实现异步的请求，从而大大提高了通信效率。
+</code></pre><blockquote>
+<p>提示：我们不会单独的使用gRPC，而是将gRPC作为一个部件进行使用，这是因为在生产环境中，我们面对高并发的情况下，需要使用分布式系统去处理，而gRPC并没有提供分布式系统相关的一些组件，而且真正的线上服务还需要提供包括负载均衡，限流熔断，监控报警，服务注册和发现等必要的组件。</p>
+</blockquote>
+<h3 id="gRPC-开发的通用步骤"><a href="#gRPC-开发的通用步骤" class="headerlink" title="gRPC 开发的通用步骤"></a>gRPC 开发的通用步骤</h3><pre><code>1. 编写Protobuf来定义接口和数据类型
+
+2. 编写gRPC Server端程序
+
+3. 编写gRPC Client端程序
+</code></pre><h3 id="proto3"><a href="#proto3" class="headerlink" title="proto3"></a>proto3</h3><h3 id="回调钩子"><a href="#回调钩子" class="headerlink" title="回调钩子"></a>回调钩子</h3><p>注册一个关闭Java虚拟机的钩子。Java虚拟机关闭响应两种类型的事件。</p>
+<pre><code>1. 程序执行完之后正常的退出。
+
+2. 用户主动中断或者系统事件导致的退出。
+
+更多的看源码。
+
+Runtime.getRuntime().addShutdownHook(new Thread(
+    ()-&gt;{
+        System.out.println(&quot;close jvm&quot;);
+        GrpcServer.this.stop();
+    }
+));
+</code></pre><blockquote>
+<p>提示：回调钩子的作用在于在JVM关闭之前先关闭 GrpcServer.this.stop(); 。</p>
+</blockquote>
+<h3 id="gRPC-流式调用处理"><a href="#gRPC-流式调用处理" class="headerlink" title="gRPC 流式调用处理"></a>gRPC 流式调用处理</h3><blockquote>
+<p>提示：gRPC的四种通信方式（1. 一般的RPC调用，一个请求对象，一个返回对象。2. 服务端流式RPC，一个请求对象，服务端可以传回多个结果对象。3. 客户端流式RPC，客户端传入多个请求，服务器返回一个响应结果。4. 双向流式RPC，结合客户端流式rpc和服务端流式rpc，可以传入多个对象，返回多个响应对象。）。</p>
+</blockquote>
+<pre><code>syntax = &quot;proto3&quot;;
+
+package com.proto.xidian.edu.cn;
+
+option java_package = &quot;com.proto.xidian.edu.cn&quot;;
+option java_outer_classname = &quot;StudentProto&quot;;
+option java_multiple_files = true;
+
+service StudentService {
+    rpc GetRealNameByUsername (MyRequest) returns (MyResponse) {}
+
+//    rpc GetStudentsByAge(int32) returns (stream StudentResponse) {}
+
+//    rpc GetStudentsByAge(StudentRequest) returns (stream StudentResponse) {}
+
+    rpc GetStudentsWrapperByAges(stream StudentRequest ) returns (StudentResponseList) {}
+
+}
+
+message MyRequest {
+    string username = 1;
+}
+
+message MyResponse {
+    string realname = 2;
+}
+
+message StudentResponse {
+    string name = 1;
+    int32 age = 2;
+    string city = 3;
+}
+
+message StudentRequest {
+    int32 age = 1;
+}
+
+message StudentResponseList {
+    repeated StudentResponse studentResponse = 1;
+}
+</code></pre><p>在处理过程中主要在返回stream类型的结果类型。在客户端发出一个请求之后，服务器返回的类型是tream（实际上就是一个迭代器）。</p>
+<blockquote>
+<p>提示：在编写.proto文件之后利用gradle构建工具对项目进行build操作，得到新生成的文件。</p>
+</blockquote>
+<h5 id="错误-error"><a href="#错误-error" class="headerlink" title="错误 error"></a>错误 error</h5><blockquote>
+<p>  What went wrong:<br>    Some problems were found with the configuration of task ‘:generateProto’.</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>Value ‘directory ‘D:\projects\SSM_practice\netty_lecture\build/extracted-protos/main’’ specified for property ‘$2’ cannot be converted to a file.</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>Value ‘main Proto source’ specified for property ‘$1’ cannot be converted to a file.</p>
+</blockquote>
+</blockquote>
+<p>解决：将Protobuf-Gradle-plugin版本更新到0.8.4或更高版本。</p>
+<h2 id="Gradle"><a href="#Gradle" class="headerlink" title="Gradle"></a>Gradle</h2><h3 id="gradlew"><a href="#gradlew" class="headerlink" title="gradlew"></a>gradlew</h3><p>gradlew 等价于gradle wrapper。使用者在本地pc上没有安装gradle工具的前提下，会自动构建项目。</p>
+<h2 id="EventLoopGroup-1"><a href="#EventLoopGroup-1" class="headerlink" title="EventLoopGroup"></a>EventLoopGroup</h2><pre><code>1. 在一个EventLoopGroup中可能会包含一个或多个EventGroup。
+
+2. 一个EventLoop在它的整个生命周期当中都只会与唯一一个Thread进行绑定。
+
+3. 所有由EventLoop所处理的各种IO事件都将在它所关联的那个Thread上进行处理。
+
+4. 一个Channel在它的整个生命周期中只会注册在一个EventLoop上。
+
+5. 一个EventLoop在运行过程中，会被分配给一个或多个Channel。
+</code></pre><p>在Nettt中，Channel的实现一定是线程安全的。基于此，我们可以存储一个Channel的引用，并且在需要向远程端点发送数据时，通过这个引用来调用Channel相应的方法，即便当时有很多线程都在使用它也不会出现多线程问题，而且消息一定会按照顺序发送出去。</p>
+<blockquote>
+<p>重要结论：我们在业务开发过程中，不要将长时间执行的耗时任务放入到EventLoop的执行队列中，因为它将会一直阻塞该线程所对应的所有Channel上的其它执行任务，如果我们需要进行阻塞调用或耗时的操作（通常在开发中很常见），那么我们需要使用一个专门的EventExecutor（业务线程池）。</p>
+</blockquote>
+<pre><code>业务线程池（EventExecutor）通常的两种实现方式：
+
+    1. 在ChannelHandler的回调方法中，使用自己定义的业务线程池，这样就可以实现异步调用。
+
+    2. 借助Netty提供的向ChannelPipeline添加ChannelHandler时调用的addLast()方法来传递EventExecutor。
+</code></pre><blockquote>
+<p>说明：默认情况下（调用addLast(handler)），ChannelHandler中回调方法都是由IO线程所执行，如果调用了 ChannelPipeline addLast(EventExecutorGroup group, ChannelHandler… handlers);方法，那么ChannelHandler中的回调方法就是由参数中的group线程组所执行的。</p>
+</blockquote>
+<h2 id="Future"><a href="#Future" class="headerlink" title="Future"></a>Future</h2><p>JDK所提供的Future只能通过手工方式检查执行结果，而这个操作是会阻塞的。Netty则对ChannelFuture进行了增强，通过ChannelFutureListener以回调的方式来获取执行结果，去除了手工检查阻塞的操作。值得注意的是：ChannelFutureListener的operationComplete()方法是由IO线程执行的，因此要注意的是不要在这里执行耗时操作，否则需要通过另外的线程或线程池来执行。</p>
+<h2 id="Channel-ChannelHandler-ChannelHandlerContext"><a href="#Channel-ChannelHandler-ChannelHandlerContext" class="headerlink" title="Channel | ChannelHandler | ChannelHandlerContext"></a>Channel | ChannelHandler | ChannelHandlerContext</h2><p>在Netty中有两种发送消息的方式，可以直接写到Channel中，也可以写到与ChannelHandler所关联的那个ChannelHandlerContext中。对于前一种方式来说，消息会从ChannelPipeline的末尾开始流动，而对于后一种方式来说，消息将从ChannelHandlerContext的下一个ChannelHandler开始流动。</p>
+<p>结论：</p>
+<pre><code>1. ChannelHandlerContext与ChannelHandler之间的关联绑定关系是永远都不会发生改变的，因此对其进行缓冲是没有任何问题的。
+
+2. 对于与Channel的同名方法来说，ChannelHandlerContext的方法将会产生更短的事件流，所以我们应该在可能的情况下利用这个特性来提升应用的性能。
+</code></pre><h2 id="Netty-提供的3种缓冲区类型"><a href="#Netty-提供的3种缓冲区类型" class="headerlink" title="Netty 提供的3种缓冲区类型"></a>Netty 提供的3种缓冲区类型</h2><pre><code>1. Heap Buffer (堆缓冲区)
+
+    这是最常用的类型，ByteBuf将数据存储到JVM的堆空间中，并且将实际的数据存放到byte array中来实现。
+
+    优点：由于数据存放在JVM的堆中，因此可以快速的创建与释放，并且他提供了直接访问内部字节数组的方法。
+
+    缺点：每次读写数据时，都需要先将数据复制到直接缓冲区中再进行网络传输。
+
+2. Direct Buffer (直接缓冲区)
+
+    在堆之外直接分配内存空间，直接缓冲区并不会占用堆的容量空间，因为它是有操作系统在本地内存中进行的数据分配。
+
+    优点：在使用Socket进行数据传递时，性能非常好，因为数据直接位于操作系统的本地内存中，所以不需要从JVM将数据复制到直接缓冲区中，性能很好。
+
+    缺点：因为Direct Buffer是直接在操作系统内存中的，所以内存空间的分配与释放要比堆空间更加复杂，而且速度要慢一些。
+
+    这里Netty提供内存池来解决这个问题。DirectBuf可以放在内存池里面。直接缓冲区并不支持通过字节数组的方式来访问数据。
+</code></pre><blockquote>
+<p>提示：对于后端的业务消息的编解码来说，推荐使用HeapByteBuf。对于IO通信线程在读写缓冲区时，推荐使用DirectByteBuf。</p>
+</blockquote>
+<pre><code>3. Composite Buffer (复合缓冲区)
+</code></pre><h2 id="JDK的ByteBuffer与Netty的ByteBuf之间的差异"><a href="#JDK的ByteBuffer与Netty的ByteBuf之间的差异" class="headerlink" title="JDK的ByteBuffer与Netty的ByteBuf之间的差异"></a>JDK的ByteBuffer与Netty的ByteBuf之间的差异</h2><pre><code>1. Netty的ByteBuf采用了读写分离的策略（readerIndex | writerIndex），一个初始化（里面尚未有任何数据）的ByteBuf的readerIndex | writerIndex值都为0。
+
+2. 当读索引与写索引处于同一个位置时，如果我们继续读取，就会抛出异常IndexOutBoundsException。
+
+3. 对于ByteBuf的任何读写操作都会分别单独维护读索引和写索引。maxCapacity最大容量默认的限制就是Integer.MAX_VALUE。
+</code></pre><h3 id="JDK的ByteBuffer的缺点"><a href="#JDK的ByteBuffer的缺点" class="headerlink" title="JDK的ByteBuffer的缺点"></a>JDK的ByteBuffer的缺点</h3><pre><code>1. final byte[] hb;这是JDK的ByteBuffer对象中用于存储数据的对象声明。可以看到，字节数组被声明为final的，也就是长度是固定不变的。一旦分配好之后就不能动态扩容和收缩。而且当待存储的数据字节很大时就很有可能抛出IndexOutBoundsException异常。如果要预防这个异常的抛出，那就需要在存储之前完全确定好待存储的字节大小。如果ByteBuffer的空间不足，我们只有一种解决方案：创建一个全新的ByteBuffer对象，然后再将之前的ByteBuffer中的数据复制过去，这些操作都需要我们自发完成。
+
+2. ByteBuffer只使用一个position指针来表示位置信息，在进行读写切换的时候需要调用flip()方法或rewind()方法，使用起来不方便。
+</code></pre><h3 id="Netty的ByteBuf的优点"><a href="#Netty的ByteBuf的优点" class="headerlink" title="Netty的ByteBuf的优点"></a>Netty的ByteBuf的优点</h3><pre><code>1. 存储字节的数组是动态的，其最大值默认是Integer.MAX_VALUE。这里的动态性是体现在write()方法中的，write()方法在执行时会判断
+</code></pre><blockquote>
+<p>提示：自旋锁，不断占用CPU进行自旋，直到条件满足跳出死循环为止。</p>
+</blockquote>
+<pre><code>//自旋锁的应用
+for (;;) {
+    int refCnt = this.refCnt;
+    final int nextCnt = refCnt + increment;
+
+    if (nextCnt &lt;= increment) {
+        throw new IllegalReferenceCountException(refCnt, increment);
+    }
+    //判断或跳出
+    if (refCntUpdater.compareAndSet(this, refCnt, nextCnt)) {
+        break;
+    }
+}
+</code></pre><h2 id="AtomicIntegerFieldUpdater-要点总结"><a href="#AtomicIntegerFieldUpdater-要点总结" class="headerlink" title="AtomicIntegerFieldUpdater 要点总结"></a>AtomicIntegerFieldUpdater 要点总结</h2><pre><code>1. 更新器更新的必须是int类型变量，不能是其包装类型。
+
+2. 更新器更新的必须是volatile类型变量，确保线程之间共享变量时的立即可见性。
+
+3. 待更新的变量不能是static的，必须要是实例变量。因为Unsafe.objectFieldOffset()方法不支持静态变量（CAS操作本质上是通过对象实例的偏移量来直接进行赋值）。
+
+4. 更新器只能修改它可见范围内的变量，因为更新器是通过反射来得到这变量，如果变量不可见就会报错。
+</code></pre><blockquote>
+<p>提示：如果要更新的变量是包装类型的话，可以使用AtomicReferenceFieldUpdater来进行更新。</p>
+</blockquote>
+<h2 id="Netty-处理器概念"><a href="#Netty-处理器概念" class="headerlink" title="Netty 处理器概念"></a>Netty 处理器概念</h2><pre><code>1. Netty处理分类：入站处理器 | 出站处理器。
+
+2. 入站处理器的顶层是ChannelInBoundHandler，出站处理器的顶层是ChannelOutBoundHandler。
+
+3. 数据处理时常用的各种编解码器本质上都是处理器。
+
+4. 编解码器：无论我们向网络中写入的数据是什么类型（int | char | String | 二进制等），数据在网络中传递时，其都是以字节流形式呈现的。
+
+    编码：将数据由原本形式转换为字节流的操作称为编码（encode）。
+
+    解码：将字节流转换成它原本的数据形式或其它格式称为解码（decode）。
+
+    编解码统一称为codec。
+
+5. 编码（从程序到网络 - 本质上是一种出站处理器（ChannelOutBoundHandler））
+
+6. 解码（从网络到程序 - 本质上是一种入站处理器（ChannelInBoundHandler））
+
+7. 在Netty中，编码器通常以XXXEncoder命名。解码器通常以XXXDecoder命名。
+</code></pre><h2 id="TCP-粘包与拆包"><a href="#TCP-粘包与拆包" class="headerlink" title="TCP 粘包与拆包"></a>TCP 粘包与拆包</h2><p>粘包表示将多条数据粘在一起。拆包的概念与粘包相反，是将多条数据拆分开来。</p>
+<h2 id="关于Netty编解码器的结论"><a href="#关于Netty编解码器的结论" class="headerlink" title="关于Netty编解码器的结论"></a>关于Netty编解码器的结论</h2><pre><code>1. 无论是编码器还是解码器，其所接受的消息类型必须要与待处理的参数类型一致，否则该编码器或解码器并不会执行。
+
+2. 
+</code></pre>
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+
+  <p><span>本文标题:</span>Netty</a></p>
+  <p><span>文章作者:</span>Bangjin-Hu</a></p>
+  <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
+  <p><span>最后更新:</span>2020年03月29日 - 08:27:42</p>
+  <p><span>原始链接:</span><a href="/undefined/Netty/" title="Netty">http://bangjinhu.github.io/undefined/Netty/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/Netty/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.jpg" alt="Bangjin-Hu wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎扫码关注微信公众号，订阅我的微信公众号.</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持是我创作的动力.</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat-reward-img.jpg" alt="Bangjin-Hu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay-reward-img.jpg" alt="Bangjin-Hu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Bangjin-Hu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://bangjinhu.github.io/undefined/Netty/" title="Netty">http://bangjinhu.github.io/undefined/Netty/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Netty/" rel="tag"><i class="fa fa-tag"></i> Netty</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/undefined/Python/" rel="next" title="Python">
+                <i class="fa fa-chevron-left"></i> Python
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/undefined/Nginx-Apache/" rel="prev" title="Nginx-Apache">
+                Nginx-Apache <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/site.jpg"
+                alt="Bangjin-Hu" />
+            
+              <p class="site-author-name" itemprop="name">Bangjin-Hu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/BangjinHu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:2315378346@qq.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/Aaron_P_L" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-heart-o"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
+                      
+                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://iProgramering.github.io" target="_blank" title="iProgramer_ing">
+                      
+                        <i class="fa fa-fw fa-user"></i>iProgramer_ing</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          <div id="music163player">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src="//music.163.com/outchain/player?type=2&id=38358214&auto=0&height=66
+
+">
+    </iframe>
+</div>
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Netty"><span class="nav-text">Netty</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-text">概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#NIO"><span class="nav-text">NIO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Channel接口"><span class="nav-text">Channel接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ChannelFuture"><span class="nav-text">ChannelFuture</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EventLoopGroup"><span class="nav-text">EventLoopGroup</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#EventLoop-线程模型"><span class="nav-text">EventLoop | 线程模型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ChannelHandler-Pipeline"><span class="nav-text">ChannelHandler | Pipeline</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ChannelInboundHandler"><span class="nav-text">ChannelInboundHandler</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#void-channelRegistered-ChannelHandlerContext-ctx"><span class="nav-text">void channelRegistered(ChannelHandlerContext ctx)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#void-channelActive-ChannelHandlerContext-ctx"><span class="nav-text">void channelActive(ChannelHandlerContext ctx)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#void-channelRead-ChannelHandlerContext-ctx-Object-msg"><span class="nav-text">void channelRead(ChannelHandlerContext ctx,Object msg)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#void-channelReadComplete-ChannelHandlerContext-ctx"><span class="nav-text">void channelReadComplete(ChannelHandlerContext ctx)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ChannelOutboundHandler"><span class="nav-text">ChannelOutboundHandler</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#void-read-ChannelHandlerContext-ctx"><span class="nav-text">void read(ChannelHandlerContext ctx)</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WebSocket"><span class="nav-text">WebSocket</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加WebSocket支持"><span class="nav-text">添加WebSocket支持</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Protobuf"><span class="nav-text">Protobuf</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念-1"><span class="nav-text">概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#protobuf工程中使用git作为版本控制系统："><span class="nav-text">protobuf工程中使用git作为版本控制系统：</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Thrift"><span class="nav-text">Thrift</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Thrift-传输格式"><span class="nav-text">Thrift 传输格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Thrift-数据传输方式"><span class="nav-text">Thrift 数据传输方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Thrift-支持的服务类型"><span class="nav-text">Thrift 支持的服务类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gRPC"><span class="nav-text">gRPC</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#gRPC-Restful"><span class="nav-text">gRPC | Restful</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gRPC-开发的通用步骤"><span class="nav-text">gRPC 开发的通用步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#proto3"><span class="nav-text">proto3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#回调钩子"><span class="nav-text">回调钩子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gRPC-流式调用处理"><span class="nav-text">gRPC 流式调用处理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#错误-error"><span class="nav-text">错误 error</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradle"><span class="nav-text">Gradle</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#gradlew"><span class="nav-text">gradlew</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EventLoopGroup-1"><span class="nav-text">EventLoopGroup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Future"><span class="nav-text">Future</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Channel-ChannelHandler-ChannelHandlerContext"><span class="nav-text">Channel | ChannelHandler | ChannelHandlerContext</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Netty-提供的3种缓冲区类型"><span class="nav-text">Netty 提供的3种缓冲区类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JDK的ByteBuffer与Netty的ByteBuf之间的差异"><span class="nav-text">JDK的ByteBuffer与Netty的ByteBuf之间的差异</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JDK的ByteBuffer的缺点"><span class="nav-text">JDK的ByteBuffer的缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Netty的ByteBuf的优点"><span class="nav-text">Netty的ByteBuf的优点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AtomicIntegerFieldUpdater-要点总结"><span class="nav-text">AtomicIntegerFieldUpdater 要点总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Netty-处理器概念"><span class="nav-text">Netty 处理器概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP-粘包与拆包"><span class="nav-text">TCP 粘包与拆包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于Netty编解码器的结论"><span class="nav-text">关于Netty编解码器的结论</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bangjin-Hu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">465.0k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/lib/clipboard/clipboard.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+</body>
+</html>

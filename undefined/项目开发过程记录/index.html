@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/site.jpg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Redis," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="BangjinHu's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. 1.Tomcat与jettyjetty和Tomcat是两款著名的开源webserver/servlet容器。 两者之间的比较：      1.jetty更加的轻量级     2.jetty更加灵活，表现在可扩展性  2.web.xml文件配置修改在webapp路径下的web.xml文件需要根据规定的顺序添加操作权限，否则会报错。或者将&amp;lt;!DOC">
+<meta name="keywords" content="Redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis - Java集成">
+<meta property="og:url" content="http://bangjinhu.github.io/undefined/项目开发过程记录/index.html">
+<meta property="og:site_name" content="BangjinHu&#39;s Blog">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. 1.Tomcat与jettyjetty和Tomcat是两款著名的开源webserver/servlet容器。 两者之间的比较：      1.jetty更加的轻量级     2.jetty更加灵活，表现在可扩展性  2.web.xml文件配置修改在webapp路径下的web.xml文件需要根据规定的顺序添加操作权限，否则会报错。或者将&amp;lt;!DOC">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-03-29T00:42:42.250Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Redis - Java集成">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 1.Tomcat与jettyjetty和Tomcat是两款著名的开源webserver/servlet容器。 两者之间的比较：      1.jetty更加的轻量级     2.jetty更加灵活，表现在可扩展性  2.web.xml文件配置修改在webapp路径下的web.xml文件需要根据规定的顺序添加操作权限，否则会报错。或者将&amp;lt;!DOC">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://bangjinhu.github.io/undefined/项目开发过程记录/"/>
+
+
+
+
+
+  <title>Redis - Java集成 | BangjinHu's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    
+    <a href="https://github.com/BangjinHu"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">BangjinHu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">让优秀成为习惯，让知识成为信仰</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            本站搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/项目开发过程记录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Redis - Java集成</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T08:42:42+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,919
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h3 id="1-Tomcat与jetty"><a href="#1-Tomcat与jetty" class="headerlink" title="1.Tomcat与jetty"></a>1.Tomcat与jetty</h3><p>jetty和Tomcat是两款著名的开源webserver/servlet容器。</p>
+<pre><code>两者之间的比较：
+
+    1.jetty更加的轻量级
+    2.jetty更加灵活，表现在可扩展性
+</code></pre><hr>
+<h3 id="2-web-xml文件配置"><a href="#2-web-xml文件配置" class="headerlink" title="2.web.xml文件配置"></a>2.web.xml文件配置</h3><p>修改在<code>webapp</code>路径下的<code>web.xml</code>文件需要根据规定的顺序添加操作权限，否则会报错。或者将<code>&lt;!DOCTYPE web-app PUBLIC &quot;-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN&quot; &quot;http://java.sun.com/dtd/web-app_2_3.dtd&quot;&gt;</code>这一段校验代码删掉，问题就解决了。这时因为我们添加的部分的代码符合<code>xml</code>文档规范，但是不符合<code>web-app_2_3.dtd</code>所定义的规范。</p>
+<hr>
+<h3 id="3-测试"><a href="#3-测试" class="headerlink" title="3.测试"></a>3.测试</h3><blockquote>
+<p>注意：在使用IDEA开发的时候，mapper类只能建立在resource目录下，不能建立在Java的包下面，不然会映射不了。</p>
+</blockquote>
+<pre><code>1.首先编写entity
+2.然后编写接口
+3.接下来使用mapper
+4.最后编写测试用例，直接使用junit测试
+    //测试dao层
+    // 使用Springtest测试框架
+    @RunWith(SpringJUnit4ClassRunner.class)
+    // 加载配置
+    @ContextConfiguration(&quot;/spring/spring-*.xml&quot;) 
+    public class MyBatisTest {
+        @Autowired
+        private ScoreDao scoreDao;
+
+        @Test
+        public void testAddScore() {
+            Score score = new Score();
+            score.setChangeType(&quot;充钱钱&quot;);
+            score.setScore(10);
+            int insert = scoreDao.insertScore(score);
+            System.out.print(&quot;insert :&quot;+insert);
+        }
+    }
+
+5.测试整个框架(使用SpringMVC)
+    1.编写业务逻辑接口
+    2.然后编写业务逻辑接口的实现类
+    3.然后编写controller将springmvc的解析视图解析出来
+</code></pre><hr>
+<h3 id="4-Redis-单机版以及测试版"><a href="#4-Redis-单机版以及测试版" class="headerlink" title="4.Redis 单机版以及测试版"></a>4.Redis 单机版以及测试版</h3><hr>
+<h3 id="5-SSM-项目开发"><a href="#5-SSM-项目开发" class="headerlink" title="5.SSM 项目开发"></a>5.SSM 项目开发</h3><h4 id="1-配置文件"><a href="#1-配置文件" class="headerlink" title="1.配置文件"></a>1.配置文件</h4><h4 id="Service接口文件与ServiceImpl实现类文件"><a href="#Service接口文件与ServiceImpl实现类文件" class="headerlink" title="Service接口文件与ServiceImpl实现类文件"></a>Service接口文件与ServiceImpl实现类文件</h4><p>1.ServiceImpl文件<br>对于ServiceImpl中的文件只是实现Service接口中的方法函数，在Service接口的返回类型：<br>1.一般表示操作(删除/更新/添加)的方法函数返回Boolean类型。<br>2.表示查找返回其需要的类型(实体类型/实体类型的List)。<br><br>实现步骤：<br><br>    1.在接口类实现之前添加@Service注解<br><br>    2.然后在class中注入相关的mapper接口<br><br>    3.最后实现相关的方法函数</p>
+<p>2.Service文件<br><br>对于Service文件只是声明此文件中将要实现的方法函数。</p>
+<hr>
+<h4 id="1-http-400-error"><a href="#1-http-400-error" class="headerlink" title="1.http 400 error"></a>1.http 400 error</h4><p>http 400 错误表示请求无效(bad request) 在ajax请求后台数据时会报http 400 错误，表示这个请求没有进入后台服务里。</p>
+<ul>
+<li><p>原因：<br>  1.前端提交数据的字段名称或者或者字段类型和后台的实体类不一致，或者前端提交的参数跟后台需要的参数不一致，导致参数无法封装。<br>  2.前端提交到后台的数据应该是JSON字符串类型，而前端没有将此对象转化为字符串类型。</p>
+</li>
+<li><p>解决方案：<br>  1.对照字段名称、类型保证一致性。<br>  2.使用stringify将前端传递的对象转化为字符串 如：data:JSON.stringify(param);</p>
+</li>
+</ul>
+<hr>
+<p>1.<code>JSON.toJSON()</code>方法可以将Date对象转换为字符串，并格式化为JSON数据格式。</p>
+<pre><code>var Date = new Date();
+var Date_New = Date.toJSON();
+</code></pre><p>2.<code>JSON.toJSONString()</code>方法将对象转换为JSON格式数据。</p>
+<hr>
+<h2 id="Spring-开发注解"><a href="#Spring-开发注解" class="headerlink" title="Spring 开发注解"></a>Spring 开发注解</h2><pre><code>1.@Transactional(propagation=Propagation.REQUIRED,isolation=Isolation.DEFAULT) 表示该类需要Spring加入事务，propagation=Propagation.REQUIRED 属性指有事务就处于当前事务中，没有事务就创建一个事务。isolation=Isolation.DEFAULT 表示使用事务的默认隔离级别。
+</code></pre><hr>
+<h4 id="tld文件"><a href="#tld文件" class="headerlink" title=".tld文件"></a>.tld文件</h4><hr>
+<h2 id="调试错误-状态码-400-404等"><a href="#调试错误-状态码-400-404等" class="headerlink" title="调试错误 状态码(400 404等)"></a>调试错误 状态码(400 404等)</h2><h4 id="1-http-400-Bad-request"><a href="#1-http-400-Bad-request" class="headerlink" title="1. http 400(Bad request)"></a>1. http 400(Bad request)</h4><p>在ajax请求后台数据时有时会报 HTTP 400 错误 - 请求无效 (Badrequest)，出现这个请求无效报错说明<code>请求没有进入到后台服务</code>里。</p>
+<p><strong>原因：</strong></p>
+<pre><code>1）前端提交数据的字段名称或者是字段类型和后台的实体类不一致，导致无法封装。
+2）前端提交的到后台的数据应该是json字符串类型，而前端没有将对象转化为字符串类型。
+</code></pre><p><strong>解决方案：</strong></p>
+<pre><code>1）对照字段名称，类型保证一致性
+2）使用stringify将前端传递的对象转化为字符串
+    data: JSON.stringify(param)。
+</code></pre><h4 id="2-空指针异常"><a href="#2-空指针异常" class="headerlink" title="2. 空指针异常"></a>2. 空指针异常</h4><p><strong>1.空指针异常发生情况</strong></p>
+<pre><code>1.字符串变量没有初始化
+2.接口类型的对象没有用具体的类初始化
+    如：
+        List list;//这个就会报错
+        List list = new ArrayList();//这就不会报错
+
+3.在一个对象的值为空，而我们没有判断为空的情况时会报错
+</code></pre><p><strong>2.空指针异常解决方案</strong><br><br>重点关注报错发生在的行，通过空指针异常产生的两条主要原因诊断具体的错误。同时为了避免空指针的发生，最好在做判断处理时将“null”或者空值放于设定的值之前。</p>
+<blockquote>
+<p>注意：大多数的空指针异常都是与对象的操作相关</p>
+</blockquote>
+<h4 id="3-springmvc"><a href="#3-springmvc" class="headerlink" title="3. springmvc"></a>3. springmvc</h4><pre><code>//判断obj是否空指针，如果是则抛出空指针异常
+Objects.requireNonNull(obj);
+</code></pre><p><strong>1.修</strong><br></p>
+<pre><code>//这表示修改之前首先获取到需要修改的信息，返回给前台
+@RequestMapping(&quot;/student/mod/{sid}&quot;)
+public String student_modify(@PathVariable(&quot;sid&quot;) Integer sid, Model model, HttpSession session) {
+    Objects.requireNonNull(sid);
+
+    Student student = studentService.findById(sid);
+    Integer tid = (Integer) session.getAttribute(Constant.SESSION_KEY_FOR_TEACHER_ID);
+    Teacher admin = teacherService.findById(tid);
+
+    model.addAttribute(&quot;student&quot;, student);
+    model.addAttribute(&quot;admin&quot;, admin);
+    return &quot;admin/student_mod&quot;;
+}
+
+//表示在上面的获取修改的值之后，在这里执行修改操作
+@RequestMapping(&quot;/student/mod/do&quot;)
+public String student_modify_do(Student student) {
+
+    LOG.info(&quot;modify: &quot; + student);
+    student.setYear(Integer.valueOf(student.getGrade()) + 4 + &quot;&quot;);
+    studentService.saveOrUpdate(student);
+
+    return &quot;redirect:/admin/student&quot;;
+}
+</code></pre><p><strong>2.删</strong><br></p>
+<pre><code>//这里表示根据所在项的id值删除该项
+@RequestMapping(&quot;/student/dlt/{sid}&quot;)
+@ResponseBody
+public Object student_delete(@PathVariable(&quot;sid&quot;) Integer sid, Model model) {
+    Map&lt;String, Object&gt; result = new HashMap&lt;&gt;();
+
+    LOG.info(&quot;delete student: sid = &quot; + sid);
+    Student student = studentService.findById(sid);
+    try {
+        studentService.delete(sid);
+        LOG.info(&quot;delete student = &quot; + student);
+        result.put(&quot;code&quot;, ResultCodeEnum.SUCCESS.getVal());
+    } catch (Exception e) {
+        result.put(&quot;code&quot;, ResultCodeEnum.FAILED.getVal());
+    }
+    return result;
+}
+</code></pre><p><strong>3.增</strong><br></p>
+<pre><code>//首先给出添加页面
+@RequestMapping(&quot;/student/add&quot;)
+public String student_add(Model model, HttpSession session) {
+    Integer tid = (Integer) session.getAttribute(Constant.SESSION_KEY_FOR_TEACHER_ID);
+    Teacher admin = teacherService.findById(tid);
+
+    model.addAttribute(&quot;admin&quot;, admin);
+    return &quot;admin/student_add&quot;;
+}
+
+//增加操作
+@RequestMapping(&quot;/student/add/do&quot;)
+public String student_add_do(Student student) {
+
+    LOG.info(&quot;add student = &quot; + student);
+    studentService.saveOrUpdate(student);
+
+    return &quot;redirect:/admin/student&quot;;
+}
+</code></pre><p><strong>4.DataTables分页插件</strong><br></p>
+<pre><code>@RequestMapping(value = &quot;/thesis-varify/process/{year}/{modify}&quot;, produces = {&quot;application/json;charset=UTF-8&quot;})
+@ResponseBody
+public Object thesisVarifyProcess(@PathVariable(&quot;year&quot;) String year,
+                                  @PathVariable(&quot;modify&quot;) Integer modify,
+                                  //这标签的作用是将其绑定在request上面
+                                  @DataTableArgument DataTableRequest dtRequest,
+                                  @RequestParam(value = &quot;showColumns[]&quot;, required = false) String[] showColumns) {
+
+    //新建的接收前台的数据容器
+    DataTableResponse&lt;ThesisVarifyVo&gt; dtResponse = new DataTableResponse&lt;&gt;();
+    if (modify == -1) modify = null;
+    List&lt;ThesisVarifyVo&gt; thesisVarifyVos = adminService
+            .queryThesisVarifyVoForDataTable(dtRequest, showColumns, year, modify);
+    //然后将从数据库中查询到的数据封装到返回前台的容器中
+    dtResponse.setData(thesisVarifyVos);
+    //表示查询的数据
+    dtResponse.setRecordsFiltered(adminService
+            .countFilteredThesisVarifyVoForDataTable(dtRequest, showColumns, year, modify));
+    //表示总的记录
+    dtResponse.setRecordsTotal(adminService.countTotalThesisVarifyVoForDataTable());
+    dtResponse.setDraw(dtRequest.getDraw());
+
+    return JSON.toJSONString(dtResponse);
+}
+</code></pre><p><strong>5.DataTables服务端参数</strong><br></p>
+<pre><code>1.发送到服务器端的参数
+    draw 计数器，返回数据用这个记录
+    start 开始记录
+    length 每页条数
+    search[value] 检索文字
+    order[i][column] int 排列列的序号，i表示有几个排序 order[0][column]表示有一个服务器端
+    order[i][dir] 排序方式“desc” “asc”
+
+    注：下面comuns中的i取值从0~columns.length，所有的columns信息都发送到了服务器
+        columns[i][data]：columns上定义的data属性值
+        columns[i][name]：columns上定义的name属性值
+        columns[i][searchable]：列能不能检索
+        columns[i][orderable]：列能不能排序
+        columns[i][search][value]：列的检索值 string
+
+2.服务器返回的数据
+    draw：和Request的draw设定成一样的值
+    recordsTotal：所有的总件数
+    recordsFiltered：筛选后的总件数
+    data：返回的数据
+        每一行数据上面，可以包含这几个可选项
+            DT_RowId：加在行上的ID值
+            DT_RowClass：加在行上的Class
+            DT_RowData：加在行上的额外数据（object）
+            DT_RowAttr：加在行上的属性（object）
+            error:如果有错误，就设定这个值，没有错误，不要包含这个值
+</code></pre><hr>
+<h2 id="前台向后端传参数"><a href="#前台向后端传参数" class="headerlink" title="前台向后端传参数"></a>前台向后端传参数</h2><h4 id="1-get方式"><a href="#1-get方式" class="headerlink" title="1.get方式"></a>1.get方式</h4><pre><code>&lt;a href=&quot;/teacher/coursework/export?courseName=${tWorks.courseName}&quot; class=&quot;btn btn-success&quot;&gt;&lt;i class=&quot;fa fa-download&quot;&gt;&lt;/i&gt; 下载《${tWorks.courseName}》作业表&lt;/a&gt;
+</code></pre><h4 id="2-post方式"><a href="#2-post方式" class="headerlink" title="2.post方式"></a>2.post方式</h4><hr>
+<h2 id="mysql联合查询-3表联合查询"><a href="#mysql联合查询-3表联合查询" class="headerlink" title="mysql联合查询(3表联合查询)"></a>mysql联合查询(3表联合查询)</h2><pre><code>//最开始的mysql 3表联合查询语句
+SELECT
+    student_course_work.sclass,
+    student.sname,
+    student.sno,
+    student_course_work.submit_time,
+    teacher_course_work.course_name
+FROM
+    student_course_work
+INNER JOIN student ON student.id = student_course_work.sid
+INNER JOIN teacher_course_work ON teacher_course_work.tid = student_course_work.tid
+WHERE
+    course_id = #{courseId}
+</code></pre><blockquote>
+<p>注意：这里需要说明一点的就是，这里的联合查询会出现重复的结果，所以在这种情况下的查询是不能使用的。</p>
+</blockquote>
+<pre><code>//修改后的mysql联合查询语句
+SELECT
+    student_course_work.sclass,
+    student.sname,
+    student.sno,
+    student_course_work.submit_time,
+    teacher_course_work.course_name
+FROM
+    student_course_work
+INNER JOIN student ON student.id = student_course_work.sid
+INNER JOIN teacher_course_work ON teacher_course_work.id = student_course_work.course_id
+WHERE
+    course_id = #{courseId}
+</code></pre><hr>
+<h2 id="FreeMarker-contains-amp-seq-contains"><a href="#FreeMarker-contains-amp-seq-contains" class="headerlink" title="FreeMarker - contains &amp; seq_contains"></a>FreeMarker - contains &amp; seq_contains</h2><h4 id="1-contains"><a href="#1-contains" class="headerlink" title="1.contains"></a>1.contains</h4><p>该字段是String上的方法，作用与字符串上，主要用来查找字符串或者字符是否存在在指定的字符串中，返回true or false。</p>
+<h4 id="2-seq-contains"><a href="#2-seq-contains" class="headerlink" title="2.seq_contains"></a>2.seq_contains</h4><p>如果要判断序列中是否包含某个指定的元素，可以使用序列的内建函数seq_contains。</p>
+<blockquote>
+<p>注1：seq_contains这个内建函数从FreeMarker 2.3.1 版本开始可用。而在2.3版本中不存在。</p>
+<blockquote>
+<p>注2：在开发过程中，该查找的参数大多数情况下都是返回数据，需要注意数据类型一致，如果数据类型不一致会报错。</p>
+</blockquote>
+</blockquote>
+<hr>
+<h2 id="权限-Permissions"><a href="#权限-Permissions" class="headerlink" title="权限 Permissions"></a>权限 Permissions</h2><p>权限控制可以限制用户对于视图的访问和对于具体数据对象的访问。</p>
+<pre><code>1.在执行视图的dispatch()方法前，会先进行视图访问权限的判断
+2.在通过get_object()获取具体对象时，会进行对象访问权限的判断
+</code></pre><hr>
+<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><p>在向map中插入值的时候，注意前后类型的区别。</p>
+<pre><code>Map&lt;String, String&gt; map = new HashMap&lt;&gt;();
+//key和value值的类型都是String
+map.put(&quot;name&quot;,name);
+
+Map&lt;String, Integer&gt; map = new HashMap&lt;&gt;();
+//key和value的值分别是String和Integer
+map.put(&quot;sno&quot;,sno);
+
+Map&lt;String, Object&gt; map = new HashMap&lt;&gt;();
+//key的类型必须是String，而sno的类型可以是任意的，Integer，String等。
+map.put(&quot;sno&quot;,sno);
+</code></pre><hr>
+<h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><p>获取List集合中的一行，使用<code>list.get(i)</code>，然后再获取该行中的某一列<code>list.get(i).getName();</code></p>
+<hr>
+<h2 id="Ajax提交表单-SpringMVC接收"><a href="#Ajax提交表单-SpringMVC接收" class="headerlink" title="Ajax提交表单 SpringMVC接收"></a>Ajax提交表单 SpringMVC接收</h2><h4 id="1-serialize-方法"><a href="#1-serialize-方法" class="headerlink" title="1.serialize()方法"></a>1.serialize()方法</h4><p><strong>1.1 前台JavaScript的编写</strong><br></p>
+<pre><code>function insert(){
+    $.ajax({
+        type:&quot;POST&quot;,
+        url:&quot;${pageContext.request.contextPath}/order/insert&quot;,
+        data : $(&quot;#fom&quot;).serialize(),             
+        success  :function (res) {
+            console.log(res); 
+        error:function () {                
+        }
+    });
+}
+</code></pre><p><strong>1.2 后台SpringMVC的数据接收</strong><br></p>
+<pre><code>@RequestMapping(value = &quot;/insert&quot;,method = RequestMethod.POST)
+public String insert( Order order){
+   int result=this.orderSerivce.insert(order);
+   if(result==1){
+       System.out.println(&quot;添加失败&quot;);
+       return &quot;101&quot;;
+   }
+   return &quot;100&quot;;
+}
+</code></pre><blockquote>
+<p>注意：后台SpringMVC用对象参数接收，可以自动转换为对象，需要注意name要和对象中的参数名相同。</p>
+</blockquote>
+<h4 id="2-JSON-stringify"><a href="#2-JSON-stringify" class="headerlink" title="2.JSON.stringify()"></a>2.JSON.stringify()</h4><p><strong>2.1 前台程序的编写</strong><br></p>
+<pre><code>function insert(){
+    $.ajax({
+        type:&quot;POST&quot;,
+        url:&quot;${pageContext.request.contextPath}/user/insert&quot;,
+        async:false,
+        data :JSON.stringify({
+            username : $(&quot;input[name=&apos;username&apos;]&quot;).val(),
+            password: $(&quot;input[name=&apos;password&apos;]&quot;).val(),
+            role : {
+                id : &quot;&quot;,
+                name: $(&quot;select[name=&apos;name&apos;]&quot;).val()
+            }
+        }),
+        contentType: &quot;application/json;charset=UTF-8&quot;,
+      /*如果不写这个,仔细看后台会出现Content type &apos;application/x-www-form-urlencoded;charset=UTF-8&apos; not supported   */ 
+        dataType:&quot;json&quot;,
+        success  :function (res) {
+            console.log(res);
+            if(res==100){
+                $(&quot;#msg&quot;).html(&quot;&lt;font size=&apos;60px&apos;&gt; success &lt;/font&gt;&quot;).show(700).delay(3000).hide(500);
+            }else {
+                $(&quot;#msg&quot;).html(&quot;&lt;font size=&apos;60px&apos;&gt;  fail &lt;/font&gt;&quot;).show(700).delay(3000).hide(500);
+            }
+            window.location.href=&quot;http://localhost:8080/user/findall?page=1&quot;
+        },
+        error:function () {
+            $(&quot;#msg&quot;).html(&quot;&lt;font size=&apos;60px&apos;&gt;  fail &lt;/font&gt;&quot;).show(700).delay(3000).hide(500);
+            window.location.href=&quot;http://localhost:8080/user/findall?page=1&quot;
+        }
+    });
+}
+</code></pre><p><strong>2.2 后台程序的编写</strong><br></p>
+<pre><code>@ResponseBody
+@RequestMapping(value = &quot;/insert&quot;,method = RequestMethod.POST)
+public String insert(@RequestBody User user){
+   int result=this.userSerivce.insert(user);
+   if(result==0){
+       return &quot;101&quot;;
+   }
+   return &quot;100&quot;;
+}
+</code></pre><blockquote>
+<p>注意：后台用@RequestBody接收, @RequestBody只接收JSON对象的字符串，所以在前台开始的时候需要将json格式对象转换成json格式对象的字符串格式。</p>
+</blockquote>
+<p><strong>2.3 JSON.parseObject() | JSON.toJSONString() 区别</strong><br><br>JSON.parseObject，是将Json字符串转化为相应的对象；JSON.toJSONString则是将对象转化为Json字符串。</p>
+<hr>
+<h2 id="SpringMVC-项目开发经验"><a href="#SpringMVC-项目开发经验" class="headerlink" title="SpringMVC 项目开发经验"></a>SpringMVC 项目开发经验</h2><h2 id="Java-文件流"><a href="#Java-文件流" class="headerlink" title="Java 文件流"></a>Java 文件流</h2><p>我们衡量输入、输出时总是站在运行本程序所在内存的角度。</p>
+<hr>
+<h3 id="javascript-–-gt-replace-g-“-“-g-是正则表达式，表示素有短横线替换为斜杠，其中g表示全局替换。"><a href="#javascript-–-gt-replace-g-“-“-g-是正则表达式，表示素有短横线替换为斜杠，其中g表示全局替换。" class="headerlink" title="javascript –&gt; replace(/-/g, “/“) /-/g 是正则表达式，表示素有短横线替换为斜杠，其中g表示全局替换。"></a>javascript –&gt; replace(/-/g, “/“) /-/g 是正则表达式，表示素有短横线替换为斜杠，其中g表示全局替换。</h3><hr>
+
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+
+  <p><span>本文标题:</span>Redis - Java集成</a></p>
+  <p><span>文章作者:</span>Bangjin-Hu</a></p>
+  <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
+  <p><span>最后更新:</span>2020年03月29日 - 08:42:42</p>
+  <p><span>原始链接:</span><a href="/undefined/项目开发过程记录/" title="Redis - Java集成">http://bangjinhu.github.io/undefined/项目开发过程记录/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/项目开发过程记录/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.jpg" alt="Bangjin-Hu wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎扫码关注微信公众号，订阅我的微信公众号.</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持是我创作的动力.</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat-reward-img.jpg" alt="Bangjin-Hu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay-reward-img.jpg" alt="Bangjin-Hu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Bangjin-Hu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://bangjinhu.github.io/undefined/项目开发过程记录/" title="Redis - Java集成">http://bangjinhu.github.io/undefined/项目开发过程记录/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Redis/" rel="tag"><i class="fa fa-tag"></i> Redis</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/undefined/Redis/" rel="next" title="Redis">
+                <i class="fa fa-chevron-left"></i> Redis
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/undefined/项目开发经验/" rel="prev" title="Redis - Java集成">
+                Redis - Java集成 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/site.jpg"
+                alt="Bangjin-Hu" />
+            
+              <p class="site-author-name" itemprop="name">Bangjin-Hu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/BangjinHu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:2315378346@qq.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/Aaron_P_L" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-heart-o"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
+                      
+                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://iProgramering.github.io" target="_blank" title="iProgramer_ing">
+                      
+                        <i class="fa fa-fw fa-user"></i>iProgramer_ing</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          <div id="music163player">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src="//music.163.com/outchain/player?type=2&id=38358214&auto=0&height=66
+
+">
+    </iframe>
+</div>
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Tomcat与jetty"><span class="nav-text">1.Tomcat与jetty</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-web-xml文件配置"><span class="nav-text">2.web.xml文件配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-测试"><span class="nav-text">3.测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Redis-单机版以及测试版"><span class="nav-text">4.Redis 单机版以及测试版</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-SSM-项目开发"><span class="nav-text">5.SSM 项目开发</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-配置文件"><span class="nav-text">1.配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Service接口文件与ServiceImpl实现类文件"><span class="nav-text">Service接口文件与ServiceImpl实现类文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-http-400-error"><span class="nav-text">1.http 400 error</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-开发注解"><span class="nav-text">Spring 开发注解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#tld文件"><span class="nav-text">.tld文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调试错误-状态码-400-404等"><span class="nav-text">调试错误 状态码(400 404等)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-http-400-Bad-request"><span class="nav-text">1. http 400(Bad request)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-空指针异常"><span class="nav-text">2. 空指针异常</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-springmvc"><span class="nav-text">3. springmvc</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前台向后端传参数"><span class="nav-text">前台向后端传参数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-get方式"><span class="nav-text">1.get方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-post方式"><span class="nav-text">2.post方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql联合查询-3表联合查询"><span class="nav-text">mysql联合查询(3表联合查询)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FreeMarker-contains-amp-seq-contains"><span class="nav-text">FreeMarker - contains &amp; seq_contains</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-contains"><span class="nav-text">1.contains</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-seq-contains"><span class="nav-text">2.seq_contains</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#权限-Permissions"><span class="nav-text">权限 Permissions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Map"><span class="nav-text">Map</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List"><span class="nav-text">List</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ajax提交表单-SpringMVC接收"><span class="nav-text">Ajax提交表单 SpringMVC接收</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-serialize-方法"><span class="nav-text">1.serialize()方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-JSON-stringify"><span class="nav-text">2.JSON.stringify()</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SpringMVC-项目开发经验"><span class="nav-text">SpringMVC 项目开发经验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-文件流"><span class="nav-text">Java 文件流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#javascript-–-gt-replace-g-“-“-g-是正则表达式，表示素有短横线替换为斜杠，其中g表示全局替换。"><span class="nav-text">javascript –&gt; replace(/-/g, “/“) /-/g 是正则表达式，表示素有短横线替换为斜杠，其中g表示全局替换。</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bangjin-Hu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">465.0k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/lib/clipboard/clipboard.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+</body>
+</html>

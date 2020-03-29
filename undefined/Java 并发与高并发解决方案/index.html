@@ -1,0 +1,1910 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/site.jpg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java 并发编程," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="BangjinHu's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. Java 并发与高并发解决方案[TOC] 线程3种使用线程的方法： 1.实现Runnable接口  2.实现Callable接口  3.继承Thread类  提示：实现 Runnable 和 Callable 接口的类只能当做一个可以在线程中运行的任务，不是真正意义上的线程，因此最后还需要通过 Thread 来调用。可以说任务是通过线程驱动从而执行的">
+<meta name="keywords" content="Java 并发编程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 并发与高并发解决方案">
+<meta property="og:url" content="http://bangjinhu.github.io/undefined/Java 并发与高并发解决方案/index.html">
+<meta property="og:site_name" content="BangjinHu&#39;s Blog">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. Java 并发与高并发解决方案[TOC] 线程3种使用线程的方法： 1.实现Runnable接口  2.实现Callable接口  3.继承Thread类  提示：实现 Runnable 和 Callable 接口的类只能当做一个可以在线程中运行的任务，不是真正意义上的线程，因此最后还需要通过 Thread 来调用。可以说任务是通过线程驱动从而执行的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-03-29T02:36:45.988Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java 并发与高并发解决方案">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. Java 并发与高并发解决方案[TOC] 线程3种使用线程的方法： 1.实现Runnable接口  2.实现Callable接口  3.继承Thread类  提示：实现 Runnable 和 Callable 接口的类只能当做一个可以在线程中运行的任务，不是真正意义上的线程，因此最后还需要通过 Thread 来调用。可以说任务是通过线程驱动从而执行的">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://bangjinhu.github.io/undefined/Java 并发与高并发解决方案/"/>
+
+
+
+
+
+  <title>Java 并发与高并发解决方案 | BangjinHu's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    
+    <a href="https://github.com/BangjinHu"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">BangjinHu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">让优秀成为习惯，让知识成为信仰</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            本站搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Java 并发与高并发解决方案/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Java 并发与高并发解决方案</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-21T09:22:26+08:00">
+                2019-06-21
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:36:45+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java-多线程/" itemprop="url" rel="index">
+                    <span itemprop="name">Java 多线程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4,256
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  16
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="Java-并发与高并发解决方案"><a href="#Java-并发与高并发解决方案" class="headerlink" title="Java 并发与高并发解决方案"></a>Java 并发与高并发解决方案</h2><p>[TOC]</p>
+<h3 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h3><p>3种使用线程的方法：</p>
+<pre><code>1.实现Runnable接口
+
+2.实现Callable接口
+
+3.继承Thread类
+</code></pre><blockquote>
+<p>提示：实现 Runnable 和 Callable 接口的类只能当做一个可以在线程中运行的任务，不是真正意义上的线程，因此最后还需要通过 Thread 来调用。可以说任务是通过线程驱动从而执行的。</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>注意：实现接口和继承之间，实现接口会好一些。Java不支持多重继承，因此继承了Thread类就无法继承其它类，但是可以实现多个接口。类可能只要求可执行就行，继承整个Thread类开销大。</p>
+</blockquote>
+</blockquote>
+<h3 id="并发"><a href="#并发" class="headerlink" title="并发"></a>并发</h3><p>多个线程操作相同的资源，保证线程安全，合理使用资源。</p>
+<h3 id="高并发"><a href="#高并发" class="headerlink" title="高并发"></a>高并发</h3><p>高并发是互联网分布式系统架构设计中必须考虑的因素之一，它通常指通过设计保证系统能够同时并行处理很多请求。</p>
+<p>服务能够同时处理很多请求，提高程序性能。</p>
+<h3 id="CPU多级缓存"><a href="#CPU多级缓存" class="headerlink" title="CPU多级缓存"></a>CPU多级缓存</h3><p>CPU的频率太快，快到主存跟不上，这样在处理器时钟周期内，CPU经常需要等待主存，浪费资源。所以cache的出现，是为了解决CPU与内存之间速度不匹配的问题。</p>
+<h4 id="1-CPU-cache的意义"><a href="#1-CPU-cache的意义" class="headerlink" title="1. CPU cache的意义"></a>1. CPU cache的意义</h4><pre><code>局部性原理：
+
+    1. 时间局部性： 如果某个数据被访问，那么在不久的将来它很可能被再次访问。
+
+    2. 空间局部性： 如果某个数据被访问，那么与它相邻的数据很快也可能被访问。
+</code></pre><h4 id="2-CPU多级缓存-缓存一致性（MESI）"><a href="#2-CPU多级缓存-缓存一致性（MESI）" class="headerlink" title="2. CPU多级缓存 - 缓存一致性（MESI）"></a>2. CPU多级缓存 - 缓存一致性（MESI）</h4><p>MESI目的用于保证多个CPU Cache之间缓存共享数据的一致性。</p>
+<pre><code>MESI 四种状态各自代表的含义
+
+四种操作：
+
+    1. local read
+
+    2. local write
+
+    3. remote read
+
+    4. remote write
+</code></pre><h4 id="3-CPU多级缓存-乱序执行优化"><a href="#3-CPU多级缓存-乱序执行优化" class="headerlink" title="3. CPU多级缓存 - 乱序执行优化"></a>3. CPU多级缓存 - 乱序执行优化</h4><p>乱序执行优化，表示处理器为了提高运算速度而做出违背代码原则原有顺序的优化。</p>
+<h4 id="4-Java内存模型-JMM"><a href="#4-Java内存模型-JMM" class="headerlink" title="4. Java内存模型(JMM)"></a>4. Java内存模型(JMM)</h4><pre><code>1. JMM规定
+
+
+2. 抽象结构
+
+
+3. 同步八种操作及规则
+
+    1. lock（锁定），作用于主内存的变量，将一个变量标识为一条线程独占状态
+
+    2. unlock（解锁），作用于主内存的变量，将一个处于锁定状态的变量释放出来，释放后的变量才可以被其它线程锁定
+
+    3. read（读取），作用于主内存的变量，将一个变量值从主内存传输到线程的工作内存中，以便随后的load动作使用
+
+    4. load（载入），作用于工作内存的变量，将read操作从主内存中得到的变量值放入工作内存的变量副本中
+
+    5. use（使用），作用于工作内存的变量，将工作内存中的一个变量值传递给执行引擎
+
+    6. assign（赋值），作用于工作内存的变量，将一个从执行引擎接收到的值赋值给工作内存中的变量
+
+    7. store（存储），作用于工作内存的变量，将工作内存中的一个变量的值传送到主内存中，以便随后的write操作
+
+    8. write（写入），作用于主内存的变量，将store操作从工作内存中一个变量的值传送到主内存的变量中
+
+    ---
+
+    1. ...
+</code></pre><h3 id="并发的优势和风险"><a href="#并发的优势和风险" class="headerlink" title="并发的优势和风险"></a>并发的优势和风险</h3><h4 id="1-优势"><a href="#1-优势" class="headerlink" title="1. 优势"></a>1. 优势</h4><pre><code>1. 速度
+
+    同时处理多个请求，响应更快，复杂的操作可以分成多个进程同时进行
+
+2. 设计
+
+    程序设计在某些情况下更简单，也可以有更多的选择
+
+3. 资源利用
+
+    CPU能够在等待IO的时候做一些其它事情
+</code></pre><h4 id="2-风险"><a href="#2-风险" class="headerlink" title="2. 风险"></a>2. 风险</h4><pre><code>1. 安全性
+
+    多个线程共享数据时可能会产生于期望不相符的结果
+
+2. 活跃性
+
+    某个操作无法继续进行下去时，就会发生活跃性问题，如死锁、饥饿等问题。
+
+3. 性能
+
+    线程过多时会使得CPU频繁切换、调度时间增多、同步机制、消耗过多内存
+</code></pre><h3 id="并发模拟"><a href="#并发模拟" class="headerlink" title="并发模拟"></a>并发模拟</h3><pre><code>1. Postman HTTP请求工具
+
+2. Apache Bench（AB）Apache附带工具-测试网站性能
+
+3. JMeter Apache组织开发的压力测试工具
+
+    测试工具建议使用Apache-JMeter
+
+4. Semaphore | CountDownLatch等
+</code></pre><h3 id="线程安全性"><a href="#线程安全性" class="headerlink" title="线程安全性"></a>线程安全性</h3><p>在多个线程访问某个类时，不管运行的环境采用何种调度方式或这些进程如何交替执行，并且在主调代码中不需要任何额外的同步或协同，这个类都表现出正确的行为，所以这类是线程安全的。</p>
+<h4 id="1-原子性"><a href="#1-原子性" class="headerlink" title="1. 原子性"></a>1. 原子性</h4><p>提供互斥访问，同一时刻只能有一个线程对它进行操作</p>
+<pre><code>1. Atomic包
+
+    AtomicXXX:CAS | Unsafe.compareAndSwapInt
+
+        AtomicLong | LongAdder
+
+2. 锁
+
+    1. synchronized 依赖于JVM
+
+        1. 修饰代码块：大括号括起来的代码，作用于调用的对象
+
+        2. 修饰方法：整个方法，作用于调用的对象
+
+        3. 修饰静态方法：整个静态方法，作用于所有对象
+
+        4. 修饰类：括号括起来的部分，作用于所有对象
+
+    2. Lock 依赖特殊的CPU指令，代码实现，ReentrantLock
+</code></pre><blockquote>
+<p>提示：synchronized是不可中断锁，适合竞争不激烈可读性好的业务场景。Lock是可中断锁，多样化同步，竞争激烈时能够维持常态。Atomic竞争激烈时维持常态，比Lock性能好，只能同步一个值。</p>
+</blockquote>
+<h4 id="2-可见性"><a href="#2-可见性" class="headerlink" title="2. 可见性"></a>2. 可见性</h4><p>一个线程对主内存的修改可以及时的被其它线程观察到。</p>
+<p>导致线程共享变量在线程间不可见的原因：1. 线程交叉执行。2.重排序组合线程交叉执行。3.共享变量更新后的值没有在工作内存与主内存间及时更新。</p>
+<blockquote>
+<p>JMM关于synchronized的两条规定：</p>
+</blockquote>
+<pre><code>1. 线程解锁前，必须将共享变量的最新值刷新到主内存
+
+2. 线程加锁时，将清空工作内存中共享变量的值，从而使用共享变量时需要从主内存中重新读取最新的值（提示：加锁与解锁是同一把锁）。
+</code></pre><blockquote>
+<p>volatitle</p>
+</blockquote>
+<pre><code>通过加入内存屏障和禁止重排序优化来实现。
+
+    1. 对volatile变量写操作时，会在写操作后加入一条store屏障指令，将本地内存中共享变量值刷新到主内存。
+
+    2. 对volatile变量读操作时，会在读操作前加入一条load屏障指令，从主内存中读取共享变量。
+
+    注意：volatile的的操作：1. 对变量的写操作不影响当前值。2. 
+</code></pre><h4 id="3-有序性"><a href="#3-有序性" class="headerlink" title="3. 有序性"></a>3. 有序性</h4><p>一个线程观察其它线程中的指令执行顺序，由于指令重排序的存在，该结果一般杂乱无序。</p>
+<p>Java内存模型中，允许编译器和处理器对指令进行重排序，但是重排序过程不会影响单线程程序的执行，却会影响到多线程并发执行的正确性。</p>
+<p>在并发操作过程中，可以通过 volatile | synchronized | Lock 关键字避免编译器和处理器对指令进行重排序。</p>
+<blockquote>
+<p>Happens - Before原则</p>
+</blockquote>
+<pre><code>1. 程序次序原则，一个线程内，按照代码顺序，书写在前面的操作会先发生书写在后面的操作。（单线程内）
+
+2. 锁定规则，一个unlock操作先发生于后面对同一个锁的lock操作。（不论是单线程或多线程）
+
+3. volatile变量规则，对一个变量的写操作先行发生于后面对这个变量的读操作。
+
+4. 传递规则，如果操作A先发生于操作B，而操作B又先发生于操作C，则可以得出操作A先发生于操作C。
+
+5. 线程启动规则，Thread对象的start()方法先发生于此线程的每个动作。
+
+6. 线程中断规则，对线程的interrupt()方法的调用先发生于被中断线程的代码检测到中断事件的发生。
+
+7. 线程终结规则，线程中所有的操作都先发生于线程的终止检测，可以通过Thread.join()方法结束，Thread.isAlive()的返回值手段检测到线程已经终止。
+
+8. 对象终结规则，一个对象的初始化完成先发生于它的finalize()方法的开始。
+</code></pre><h4 id="4-线程安全性-总结"><a href="#4-线程安全性-总结" class="headerlink" title="4. 线程安全性 - 总结"></a>4. 线程安全性 - 总结</h4><p>原子性：Atomic包 | CAS算法 | synchronized | Lock</p>
+<p>可见性：synchronized | volatile</p>
+<p>有序性：happens-before原则</p>
+<hr>
+<h3 id="安全发布对象"><a href="#安全发布对象" class="headerlink" title="安全发布对象"></a>安全发布对象</h3><p>发布对象，指使一个对象能够被当前范围之外的代码使用。</p>
+<pre><code>package com.ccpc.edu.xidian.cn.ccpc.example.publish;
+
+import com.ccpc.edu.xidian.cn.ccpc.annoations.NotThreadSafe;
+import lombok.extern.slf4j.Slf4j;
+
+import java.util.Arrays;
+
+@Slf4j
+@NotThreadSafe
+public class UnsafePublish {
+
+    private String[] states = {&quot;a&quot;, &quot;b&quot;, &quot;c&quot;};
+
+    public String[] getStates(){
+        return states;
+    }
+
+    public static void main(String[] args) {
+        UnsafePublish unsafePublish = new UnsafePublish();
+        log.info(&quot;{}&quot;, Arrays.toString(unsafePublish.getStates()));
+
+        unsafePublish.getStates()[0] = &quot;d&quot;;
+        log.info(&quot;{}&quot;, Arrays.toString(unsafePublish.getStates()));
+
+    }
+}
+</code></pre><p>对象溢出，指一种错误的发布方式，当一个对象还没有构造完成时，就使它被其它线程所见。</p>
+<pre><code>package com.ccpc.edu.xidian.cn.ccpc.example.publish;
+
+import com.ccpc.edu.xidian.cn.ccpc.annoations.NotRecommend;
+import com.ccpc.edu.xidian.cn.ccpc.annoations.NotThreadSafe;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@NotThreadSafe
+@NotRecommend
+public class Escape {
+
+    private int thisCanBeEscape = 0;
+
+    public Escape(){
+        //还未构建完成就发布
+        new InnerClass();
+    }
+
+    private class InnerClass {
+        public InnerClass(){
+            log.info(&quot;{}&quot;, Escape.this.thisCanBeEscape);
+        }
+    }
+
+    public static void main(String[] args) {
+        new Escape();
+    }
+}
+</code></pre><h4 id="1-安全发布对象方法"><a href="#1-安全发布对象方法" class="headerlink" title="1. 安全发布对象方法"></a>1. 安全发布对象方法</h4><pre><code>1. 在静态初始化函数中初始化一个对象引用
+
+2. 将对象的引用保存到volatile类型域或者AtomicRefernce对象中
+
+3. 将对象的引用保存到某个正确构造对象的final类型域中
+
+4. 将对象的引用保存到一个由锁保护的域中
+</code></pre><h3 id="线程安全策略"><a href="#线程安全策略" class="headerlink" title="线程安全策略"></a>线程安全策略</h3><h4 id="1-不可变对象"><a href="#1-不可变对象" class="headerlink" title="1. 不可变对象"></a>1. 不可变对象</h4><pre><code>不可变对象满足的条件：
+
+    1. 对象创建以后其状态不能修改
+
+    2. 对象所有域都是final类型
+
+    3. 对象是正确创建的（在对象创建期间，this引用没有溢出）
+
+final关键字
+
+    修饰类：不能被继承
+
+    修饰方法：效率、锁定方法不能被继承类修改
+
+    修饰变量：基本数据类型变量、引用类型变量
+
+效果类似final的方法（Java 8 提供）
+
+    1. Collections.unmodifiableXXX:Collectino List Set Map
+
+        package com.ccpc.edu.xidian.cn.ccpc.example.immutable;
+
+        import com.ccpc.edu.xidian.cn.ccpc.annoations.ThreadSafe;
+        import com.google.common.collect.Maps;
+        import lombok.extern.slf4j.Slf4j;
+
+        import java.util.Collections;
+        import java.util.Map;
+
+        @Slf4j
+        @ThreadSafe
+        public class ImmutableExample3 {
+            private static Map&lt;Integer, Integer&gt; map = Maps.newHashMap();
+
+            static {
+                map.put(1, 3);
+                map.put(2, 4);
+                map.put(3, 5);
+                map = Collections.unmodifiableMap(map);
+            }
+
+            public static void main(String[] args) {
+                map.put(1, 4);
+                log.info(&quot;{}&quot;, map.get(1));
+            }
+        }
+
+
+    2. Guava：ImmutableXXX:Collection List Set Map ..
+</code></pre><blockquote>
+<p>总结：在使用的时候尽可能的将一些对象变成不可变对象，那么就不会产生线程不安全问题。</p>
+</blockquote>
+<h4 id="2-线程封闭"><a href="#2-线程封闭" class="headerlink" title="2. 线程封闭"></a>2. 线程封闭</h4><pre><code>1. Ad-hoc线程封闭：程序控制实现，最糟糕，忽略
+
+2. 堆栈封闭：局部变量，无并发问题
+
+3. ThreadLocal线程封闭：很好的封闭方法
+</code></pre><h3 id="线程不安全类"><a href="#线程不安全类" class="headerlink" title="线程不安全类"></a>线程不安全类</h3><pre><code>1. StringBuilder | StringBuffer 
+
+    在多线程环境中使用StringBuffer，是为了安全。但是在不那么在意线程执行安全的时候考虑到上下文切换的开销，那么使用StringBuilder会更有效一些。
+
+2. SimpleDateFormat | JodaTime
+
+3. ArrayList | HashSet | HashMap 等Collections
+
+4. 先检查再执行（if(condition(a)){handle(a);}）//线程非安全
+</code></pre><h3 id="线程安全类-同步容器"><a href="#线程安全类-同步容器" class="headerlink" title="线程安全类 - 同步容器"></a>线程安全类 - 同步容器</h3><pre><code>1. ArrayList -&gt; Vector | Stack
+
+2. HashMap -&gt; Hashtable(key|value不能为null)
+
+3. Collections.synchronizedXXX(List | Set | Map)
+</code></pre><h3 id="线程安全-并发容器-J-U-C"><a href="#线程安全-并发容器-J-U-C" class="headerlink" title="线程安全 - 并发容器 J.U.C"></a>线程安全 - 并发容器 J.U.C</h3><pre><code>1. ArrayList -&gt; CopyOnWriteArrayList
+
+2. HashSet | TreeSet -&gt; CopyOnWriteArraySet | ConcurrentSkipListSet
+
+3. HashMap | TreeMap -&gt; ConcurrentHashMap | ConcurrentSkipListMap
+</code></pre><p>CopyOnWriteArrayList和CopyOnWriteArraySet是线程安全的集合，其中所有的修改线程对底层数组进行复制。如果在集合上迭代的线程数超过修改线程数，这样的安排是很有用的。</p>
+<p>当构建一个迭代器的时候，它包含一个对当前数组的引用。如果数组后来被修改了，迭代器仍然引用旧数组，但集合的数组已经被修改。所以旧的迭代器拥有一致的试图。</p>
+<h3 id="安全共享对象策略-总结"><a href="#安全共享对象策略-总结" class="headerlink" title="安全共享对象策略 - 总结"></a>安全共享对象策略 - 总结</h3><pre><code>1. 线程限制：一个被线程限制的对象，由线程独占，并且只能被占有它的线程修改
+
+2. 共享只读：一个共享只读的对象，在没有额外同步的情况下，可以被多个线程并发访问，但是任何线程都不能修改它
+
+3. 线程安全对象：一个线程安全的对象或者容器，在内部通过同步机制来保证线程安全，所以其它线程无需额外的同步就可以通过公共接口随意访问它
+
+4. 被守护的线程：被守护的线程只能通过获取特定的锁来访问
+</code></pre><hr>
+<h3 id="AQS"><a href="#AQS" class="headerlink" title="AQS"></a>AQS</h3><ol>
+<li><p>使用Node实现FIFO队列，可以用于构建锁或者其它同步装置的基础框架。</p>
+</li>
+<li><p>利用一个int类型表示状态</p>
+</li>
+<li><p>使用方法是继承</p>
+</li>
+<li><p>子类通过继承并通过实现它的方法管理其它状态（acquire和release）的方法操作状态</p>
+</li>
+<li><p>可以同时实现排它锁和共享锁模式（独占、共享）</p>
+</li>
+</ol>
+<h4 id="1-JUC-AQS同步组件"><a href="#1-JUC-AQS同步组件" class="headerlink" title="1. JUC - AQS同步组件"></a>1. JUC - AQS同步组件</h4><h5 id="1-CountDownLatch"><a href="#1-CountDownLatch" class="headerlink" title="1. CountDownLatch"></a>1. CountDownLatch</h5><h5 id="2-Semaphore"><a href="#2-Semaphore" class="headerlink" title="2. Semaphore"></a>2. Semaphore</h5><h5 id="3-CyclicBarrier"><a href="#3-CyclicBarrier" class="headerlink" title="3. CyclicBarrier"></a>3. CyclicBarrier</h5><h5 id="4-ReentrantLock-与-锁"><a href="#4-ReentrantLock-与-锁" class="headerlink" title="4. ReentrantLock 与 锁"></a>4. ReentrantLock 与 锁</h5><pre><code>1. ReentrantLock | synchronized 之间的区别
+
+    1. 可重入性
+
+    2. 锁的实现
+
+    3. 性能的区别
+
+    4. 功能的区别
+
+
+    注意：ReentrantLock独有功能
+
+        1. 可指定是公平锁还是非公平锁
+
+        2. 提供了一个Condition类，可以分组唤醒需要唤醒的线程
+
+        3. 提供能够中断等待锁的线程机制，lock.lockInterruptibly()
+</code></pre><h4 id="2-JUC-FutureTask"><a href="#2-JUC-FutureTask" class="headerlink" title="2. JUC - FutureTask"></a>2. JUC - FutureTask</h4><h5 id="1-Callable与Runnable接口对比"><a href="#1-Callable与Runnable接口对比" class="headerlink" title="1. Callable与Runnable接口对比"></a>1. Callable与Runnable接口对比</h5><p>Callable是一个泛型，其中有一个call()方法，有返回值。</p>
+<p>FutureTask包装器是一种非常便利的机制，可将Callable转换成Future和Runnable。</p>
+<h4 id="3-Fork-Join"><a href="#3-Fork-Join" class="headerlink" title="3. Fork | Join"></a>3. Fork | Join</h4><h4 id="4-BlockingQueue-阻塞队列"><a href="#4-BlockingQueue-阻塞队列" class="headerlink" title="4. BlockingQueue 阻塞队列"></a>4. BlockingQueue 阻塞队列</h4><p>该情况用于生产消费模式。</p>
+<p>阻塞队列给出4套方法</p>
+<table>
+<thead>
+<tr>
+<th>-</th>
+<th>Throws Exception</th>
+<th>Special Value</th>
+<th>Blocks</th>
+<th>Times Out </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>insert</td>
+<td>add(o)</td>
+<td>offer(o)</td>
+<td>put(o)</td>
+<td>offer(o, timeout, timeout)</td>
+</tr>
+<tr>
+<td>remove</td>
+<td>remove(o)</td>
+<td>poll(o)</td>
+<td>take()</td>
+<td>poll(timeout, timeout) </td>
+</tr>
+<tr>
+<td>examine</td>
+<td>element()</td>
+<td>peek()</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>ArrayBlockingQueue </li>
+<li>DelayQueue</li>
+<li>LinkedBlockingQueue</li>
+<li>PriorityBlockingQueue</li>
+<li>SynchronousQueue</li>
+</ul>
+<h4 id="5-Condition"><a href="#5-Condition" class="headerlink" title="5. Condition"></a>5. Condition</h4><hr>
+<h3 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h3><pre><code>1. new Thread 弊端
+
+    1. 每次都需要new Thread新建对象，性能较差
+
+    2. 线程缺乏统一管理，可能无限制的新建线程，相互竞争，有可能占用过多系统资源导致死机或OOM
+
+    3. 缺少更多的功能。如：更多执行、定期执行、线程中断
+
+2. 线程池的优势
+
+    1. 重用存在的线程，减少对象创建、消亡的开销，性能优
+
+    2. 可以有效控制最大并发线程数，提高系统资源利用率，同时可以避免过多资源竞争，避免阻塞
+
+    3. 线程池可以提供定时执行、定期执行、单线程、并发数控制等功能
+</code></pre><h4 id="1-ThreadPoolExecutor"><a href="#1-ThreadPoolExecutor" class="headerlink" title="1. ThreadPoolExecutor"></a>1. ThreadPoolExecutor</h4><pre><code>1. 参数
+
+    1. corePoolSize 核心线程数量
+
+    2. maximumPoolSize 线程最大线程数
+
+    3. workQueue 阻塞队列，存储等待执行的任务（重要），会对线程池运行过程产生很大影响
+
+    4. keepAliveTime 线程没有任务执行时最多保持多久时间终止
+
+    5. unit keepAliveTime的时间单位
+
+    6. threadFactory 线程工厂，用来创建线程
+
+    7. rejectHandler 当拒绝处理任务时的策略
+
+        源码
+
+2. 方法
+
+    1. execute() 提交任务，交给线程池执行
+
+    2. submit() 提交任务，能够返回执行结果 execute+Future
+
+    3. shutdown() 关闭线程池，等待任务被执行完
+
+    4. shutdownNow() 关闭线程池，不等待任务执行完
+
+    5. getTaskCount() 线程池已经执行或未执行的任务总数
+
+    6. getCompletedTaskCount() 已完成的任务数量
+
+    7. getPoolSize() 线程池当前的线程数量
+
+    8. getActiveCount 当前线程池中正在执行任务的线程数量
+
+    9. 
+</code></pre><h4 id="2-Executor框架接口"><a href="#2-Executor框架接口" class="headerlink" title="2. Executor框架接口"></a>2. Executor框架接口</h4><pre><code>1. Executors.newCachedThreadPool
+
+2. Executors.newFixedThreadPool
+
+3. Executors.newScheduledThreadPool
+
+4. Executors.newSingleThreadExecutor
+</code></pre><h4 id="3-线程池-合理配置"><a href="#3-线程池-合理配置" class="headerlink" title="3. 线程池 - 合理配置"></a>3. 线程池 - 合理配置</h4><pre><code>1. CPU密集型任务需要尽量压榨CPU，参考值可以设置为NCPU+1
+
+2. IO密集型任务，参考值可以设置为2*NCPU
+
+3. 
+</code></pre><h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><h4 id="1-死锁必要条件"><a href="#1-死锁必要条件" class="headerlink" title="1. 死锁必要条件"></a>1. 死锁必要条件</h4><pre><code>1. 互斥条件
+
+2. 请求和保持条件
+
+3. 不剥夺条件
+
+4. 环路等待条件
+</code></pre><hr>
+<h3 id="高并发处理"><a href="#高并发处理" class="headerlink" title="高并发处理"></a>高并发处理</h3><h4 id="高并发处理思路手段"><a href="#高并发处理思路手段" class="headerlink" title="高并发处理思路手段"></a>高并发处理思路手段</h4><pre><code>1. 扩容
+
+    1. 垂直扩容，提高系统部件的能力（内存）
+
+    2. 水平扩容，增加更多系统成员来实现（添加多台服务器）
+
+2. 扩容 - 数据库
+
+    1. 读操作扩展
+
+        memcache
+
+        redis
+
+        CDN
+
+    2. 写操作扩展
+
+        Cassandra
+
+        Hbase
+
+3. 缓存
+
+    1. 缓存特征
+
+        1. 命中率
+
+            命中数 / (命中数 + 没有命中数)
+
+        2. 最大元素（空间）
+
+        3. 清空策略
+
+            FIFO（先进先出策略） LFU（最早使用策略） LRU 过期时间 随机等。
+
+    2. Guava Cache
+
+
+    3. Memcache
+
+    4. Redis 
+</code></pre><h4 id="高并发场景下缓存常见问题"><a href="#高并发场景下缓存常见问题" class="headerlink" title="高并发场景下缓存常见问题"></a>高并发场景下缓存常见问题</h4><pre><code>1. 缓存一致性
+
+
+2. 缓存并发问题
+
+
+
+3. 缓存穿透问题
+
+
+
+4. 缓存的雪崩现象
+</code></pre><h4 id="消息队列-Kafka-RabbitMQ"><a href="#消息队列-Kafka-RabbitMQ" class="headerlink" title="消息队列 Kafka RabbitMQ"></a>消息队列 Kafka RabbitMQ</h4><h3 id="应用拆分"><a href="#应用拆分" class="headerlink" title="应用拆分"></a>应用拆分</h3>
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+
+  <p><span>本文标题:</span>Java 并发与高并发解决方案</a></p>
+  <p><span>文章作者:</span>Bangjin-Hu</a></p>
+  <p><span>发布时间:</span>2019年06月21日 - 09:22:26</p>
+  <p><span>最后更新:</span>2020年03月29日 - 10:36:45</p>
+  <p><span>原始链接:</span><a href="/undefined/Java 并发与高并发解决方案/" title="Java 并发与高并发解决方案">http://bangjinhu.github.io/undefined/Java 并发与高并发解决方案/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/Java 并发与高并发解决方案/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.jpg" alt="Bangjin-Hu wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎扫码关注微信公众号，订阅我的微信公众号.</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持是我创作的动力.</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat-reward-img.jpg" alt="Bangjin-Hu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay-reward-img.jpg" alt="Bangjin-Hu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Bangjin-Hu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://bangjinhu.github.io/undefined/Java 并发与高并发解决方案/" title="Java 并发与高并发解决方案">http://bangjinhu.github.io/undefined/Java 并发与高并发解决方案/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java-并发编程/" rel="tag"><i class="fa fa-tag"></i> Java 并发编程</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/undefined/Java 并发编程/" rel="next" title="Java 并发编程">
+                <i class="fa fa-chevron-left"></i> Java 并发编程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/undefined/Spring Boot/" rel="prev" title="SpringBoot">
+                SpringBoot <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/site.jpg"
+                alt="Bangjin-Hu" />
+            
+              <p class="site-author-name" itemprop="name">Bangjin-Hu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/BangjinHu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:2315378346@qq.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/Aaron_P_L" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-heart-o"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
+                      
+                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://iProgramering.github.io" target="_blank" title="iProgramer_ing">
+                      
+                        <i class="fa fa-fw fa-user"></i>iProgramer_ing</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          <div id="music163player">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src="//music.163.com/outchain/player?type=2&id=38358214&auto=0&height=66
+
+">
+    </iframe>
+</div>
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-并发与高并发解决方案"><span class="nav-text">Java 并发与高并发解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线程"><span class="nav-text">线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#并发"><span class="nav-text">并发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高并发"><span class="nav-text">高并发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CPU多级缓存"><span class="nav-text">CPU多级缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-CPU-cache的意义"><span class="nav-text">1. CPU cache的意义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-CPU多级缓存-缓存一致性（MESI）"><span class="nav-text">2. CPU多级缓存 - 缓存一致性（MESI）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-CPU多级缓存-乱序执行优化"><span class="nav-text">3. CPU多级缓存 - 乱序执行优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Java内存模型-JMM"><span class="nav-text">4. Java内存模型(JMM)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#并发的优势和风险"><span class="nav-text">并发的优势和风险</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-优势"><span class="nav-text">1. 优势</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-风险"><span class="nav-text">2. 风险</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#并发模拟"><span class="nav-text">并发模拟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程安全性"><span class="nav-text">线程安全性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-原子性"><span class="nav-text">1. 原子性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-可见性"><span class="nav-text">2. 可见性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-有序性"><span class="nav-text">3. 有序性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-线程安全性-总结"><span class="nav-text">4. 线程安全性 - 总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安全发布对象"><span class="nav-text">安全发布对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-安全发布对象方法"><span class="nav-text">1. 安全发布对象方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程安全策略"><span class="nav-text">线程安全策略</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-不可变对象"><span class="nav-text">1. 不可变对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-线程封闭"><span class="nav-text">2. 线程封闭</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程不安全类"><span class="nav-text">线程不安全类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程安全类-同步容器"><span class="nav-text">线程安全类 - 同步容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程安全-并发容器-J-U-C"><span class="nav-text">线程安全 - 并发容器 J.U.C</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安全共享对象策略-总结"><span class="nav-text">安全共享对象策略 - 总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AQS"><span class="nav-text">AQS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-JUC-AQS同步组件"><span class="nav-text">1. JUC - AQS同步组件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-CountDownLatch"><span class="nav-text">1. CountDownLatch</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-Semaphore"><span class="nav-text">2. Semaphore</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-CyclicBarrier"><span class="nav-text">3. CyclicBarrier</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-ReentrantLock-与-锁"><span class="nav-text">4. ReentrantLock 与 锁</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-JUC-FutureTask"><span class="nav-text">2. JUC - FutureTask</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-Callable与Runnable接口对比"><span class="nav-text">1. Callable与Runnable接口对比</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Fork-Join"><span class="nav-text">3. Fork | Join</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-BlockingQueue-阻塞队列"><span class="nav-text">4. BlockingQueue 阻塞队列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-Condition"><span class="nav-text">5. Condition</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池"><span class="nav-text">线程池</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-ThreadPoolExecutor"><span class="nav-text">1. ThreadPoolExecutor</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Executor框架接口"><span class="nav-text">2. Executor框架接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-线程池-合理配置"><span class="nav-text">3. 线程池 - 合理配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#死锁"><span class="nav-text">死锁</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-死锁必要条件"><span class="nav-text">1. 死锁必要条件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高并发处理"><span class="nav-text">高并发处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#高并发处理思路手段"><span class="nav-text">高并发处理思路手段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#高并发场景下缓存常见问题"><span class="nav-text">高并发场景下缓存常见问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#消息队列-Kafka-RabbitMQ"><span class="nav-text">消息队列 Kafka RabbitMQ</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用拆分"><span class="nav-text">应用拆分</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bangjin-Hu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">465.0k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/lib/clipboard/clipboard.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+</body>
+</html>
