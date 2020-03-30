@@ -161,7 +161,7 @@
 <meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. Netty[TOC] 概念官方定义，它是一个异步的，基于时间Client/Server的网络框架，目标是提供一种简单、快速构建网络应用的方式，同时保证高吞吐量、低延时、高可靠性。  提示：Netty其实就是一个NIO框架，它适用于服务器通讯相关的多种应用场景，主要还是针对于TCP协议下，面向Clients端的高并发应用，或者Peer-to-Peer场">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3959253-76284b64125a8673.png?imageMogr2/auto-orient/strip|imageView2/2/w/1200/format/webp">
-<meta property="og:updated_time" content="2020-03-29T00:27:42.509Z">
+<meta property="og:updated_time" content="2020-03-30T00:04:51.696Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Netty">
 <meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. Netty[TOC] 概念官方定义，它是一个异步的，基于时间Client/Server的网络框架，目标是提供一种简单、快速构建网络应用的方式，同时保证高吞吐量、低延时、高可靠性。  提示：Netty其实就是一个NIO框架，它适用于服务器通讯相关的多种应用场景，主要还是针对于TCP协议下，面向Clients端的高并发应用，或者Peer-to-Peer场">
@@ -421,8 +421,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T08:27:42+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:04:51+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -515,7 +515,7 @@
 <blockquote>
 <p>提示：Netty其实就是一个NIO框架，它适用于服务器通讯相关的多种应用场景，主要还是针对于TCP协议下，面向Clients端的高并发应用，或者Peer-to-Peer场景下的大量数据持续传输的应用。</p>
 </blockquote>
-<h3 id="NIO"><a href="#NIO" class="headerlink" title="NIO"></a>NIO</h3><p>NIO，非阻塞IO，在JAVA中NIO的核心就是Selector机制。简单而言，创建一个Socket Channel，并将其注册到一个Selector上（多路复用器），这个Selector将会“关注”Channel上发生的IO读写事件，并在事件发生（数据就绪）后执行相关的处理逻辑。对于阻塞IO，它需要在read()、write()操作上阻塞而直到数据操作完毕，但是NIO则不需要，只有当Selector检测到此Channel上有事件时才会触发调用read、write操作。</p>
+<h3 id="NIO"><a href="#NIO" class="headerlink" title="NIO"></a>NIO</h3><p>NIO，非阻塞IO，在JAVA中NIO的核心就是Selector机制。简单而言，创建一个Socket Channel，并将其注册到一个Selector上（多路复用器），这个Selector将会“关注”Channel上发生的IO读写事件，并在事件发生（数据就绪）后执行相关的处理逻辑。对于阻塞IO，它需要在read()、write()操作上阻塞而直到数据操作完毕，但是NIO则不需要，只有当Selector检测到此Channel上有事件时才会触发调用read、write操作。<br><a id="more"></a></p>
 <blockquote>
 <p>提示：NIO本身不是严格意义上的异步IO，最大的原因是因为Selector本身是阻塞的（selector需要通过线程阻塞的方式（其select方法）获取底层通道的事件变更，然后获取SelectionKey列表）。</p>
 </blockquote>
@@ -841,7 +841,7 @@ for (;;) {
   <p><span>本文标题:</span>Netty</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 08:27:42</p>
+  <p><span>最后更新:</span>2020年03月30日 - 08:04:51</p>
   <p><span>原始链接:</span><a href="/undefined/Netty/" title="Netty">http://bangjinhu.github.io/undefined/Netty/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/Netty/"  aria-label="复制成功！"></i></span>
   </p>
@@ -1063,7 +1063,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1074,7 +1074,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1085,7 +1085,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1127,12 +1127,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -1210,7 +1204,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

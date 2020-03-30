@@ -373,7 +373,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/SpringMVC 文件上传/">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第15章 RequestToViewNameTranslator/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bangjin-Hu">
@@ -392,7 +392,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/undefined/SpringMVC 文件上传/" itemprop="url">SpringMVC 文件上传</a></h2>
+                <a class="post-title-link" href="/undefined/第15章 RequestToViewNameTranslator/" itemprop="url">RequestToViewNameTranslator</a></h2>
         
 
         <div class="post-meta">
@@ -420,8 +420,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:32:11+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:17:03+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -439,8 +439,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/SpringMVC/" itemprop="url" rel="index">
-                    <span itemprop="name">SpringMVC</span>
+                  <a href="/categories/SpringMVC源码分析/" itemprop="url" rel="index">
+                    <span itemprop="name">SpringMVC源码分析</span>
                   </a>
                 </span>
 
@@ -470,7 +470,1568 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,287
+                  330
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h1 id="第15章-RequestToViewNameTranslator"><a href="#第15章-RequestToViewNameTranslator" class="headerlink" title="第15章 RequestToViewNameTranslator"></a>第15章 RequestToViewNameTranslator</h1>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/第15章 RequestToViewNameTranslator/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第17章 MultipartResolver/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/第17章 MultipartResolver/" itemprop="url">StandardServletMultipartResolver</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:17:15+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SpringMVC源码分析/" itemprop="url" rel="index">
+                    <span itemprop="name">SpringMVC源码分析</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  330
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h1 id="第17章-MultipartResolver"><a href="#第17章-MultipartResolver" class="headerlink" title="第17章 MultipartResolver"></a>第17章 MultipartResolver</h1>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/第17章 MultipartResolver/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第18章 LocaleResolver/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/第18章 LocaleResolver/" itemprop="url">LocaleResolver</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:17:21+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SpringMVC源码分析/" itemprop="url" rel="index">
+                    <span itemprop="name">SpringMVC源码分析</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,927
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h1 id="第18章-LocaleResolver"><a href="#第18章-LocaleResolver" class="headerlink" title="第18章 LocaleResolver"></a>第18章 LocaleResolver</h1>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/第18章 LocaleResolver/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第20章 FlashMapManager/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/第20章 FlashMapManager/" itemprop="url">FlashMapManager</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:17:51+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SpringMVC源码分析/" itemprop="url" rel="index">
+                    <span itemprop="name">SpringMVC源码分析</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,051
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h1 id="第20章-FlashMapManager"><a href="#第20章-FlashMapManager" class="headerlink" title="第20章 FlashMapManager"></a>第20章 FlashMapManager</h1><p>FlashMapManager用来管理FlashMap，FlashMap用于在redirect时传递参数。FlashMapManager实现结构简单，只有一个抽象类和一个实现类。抽象类采用模板模式定义整体流程。具体实现类SessionFlashManager通过模板方法提供具体操作FlashMap的功能。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/第20章 FlashMapManager/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第19章 ThemeResolver/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/第19章 ThemeResolver/" itemprop="url">ThemeResolver</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:17:26+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SpringMVC源码分析/" itemprop="url" rel="index">
+                    <span itemprop="name">SpringMVC源码分析</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,299
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h1 id="第19章-ThemeResolver"><a href="#第19章-ThemeResolver" class="headerlink" title="第19章 ThemeResolver"></a>第19章 ThemeResolver</h1>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/第19章 ThemeResolver/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第2章 Java并发机制的底层实现原理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/第2章 Java并发机制的底层实现原理/" itemprop="url">Java并发机制的底层实现原理</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:17:39+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/多线程与并发/" itemprop="url" rel="index">
+                    <span itemprop="name">多线程与并发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,332
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<p>[TOC]</p>
+<h2 id="第二章-Java并发机制的底层实现原理"><a href="#第二章-Java并发机制的底层实现原理" class="headerlink" title="第二章 Java并发机制的底层实现原理"></a>第二章 Java并发机制的底层实现原理</h2><h3 id="2-1-volatile的应用"><a href="#2-1-volatile的应用" class="headerlink" title="2.1 volatile的应用"></a>2.1 volatile的应用</h3>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/第2章 Java并发机制的底层实现原理/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第2章 Spring IoC容器的实现/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/第2章 Spring IoC容器的实现/" itemprop="url">Spring IOC</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:17:46+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Spring/" itemprop="url" rel="index">
+                    <span itemprop="name">Spring</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  7,177
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  26
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="第2章-Spring-Framework的核心-IoC容器的实现"><a href="#第2章-Spring-Framework的核心-IoC容器的实现" class="headerlink" title="第2章 Spring Framework的核心 - IoC容器的实现"></a>第2章 Spring Framework的核心 - IoC容器的实现</h2><p>[TOC]</p>
+<h3 id="2-1-Spring-IOC容器概述"><a href="#2-1-Spring-IOC容器概述" class="headerlink" title="2.1 Spring IOC容器概述"></a>2.1 Spring IOC容器概述</h3><h4 id="2-1-1-IOC容器依赖反转模式"><a href="#2-1-1-IOC容器依赖反转模式" class="headerlink" title="2.1.1 IOC容器依赖反转模式"></a>2.1.1 IOC容器依赖反转模式</h4>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/第2章 Spring IoC容器的实现/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第3章 Spring - AOP 续一/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/第3章 Spring - AOP 续一/" itemprop="url">SPRING AOP 续</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:17:55+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AOP/" itemprop="url" rel="index">
+                    <span itemprop="name">AOP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,046
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="AOP-面向切面-方面-编程"><a href="#AOP-面向切面-方面-编程" class="headerlink" title="AOP(面向切面(方面)编程)"></a>AOP(面向切面(方面)编程)</h2><p><strong>1.使用AOP原因</strong><br></p>
+<pre><code>1.在开发完核心业务程序之后，可能还会遇到非核心业务程序(如：权限校验，记录日志等)。
+2.如果在原有程序基础上添加新功能程序就会出现代码混乱等情况。
+</code></pre><p>动态代理实现的过程，这里可理解AOP是，将核心业务代码过程比作一个柱体，其他的日志记录，权限校验等就像是横切核心业务的面，这些面需要完成一些非核心的业务。然后定义的这些切面各自完成多个非核心的业务。</p>
+<blockquote>
+<p>所以这是一种通过预编译方式和运行期动态代理实现在不修改源码的情况下给程序动态统一添加功能的技术。</p>
+</blockquote>
+<p><strong>2.AOP与OOP关系</strong><br><br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/第3章 Spring - AOP 续一/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第2章 深入分析Java IO的工作机制/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/第2章 深入分析Java IO的工作机制/" itemprop="url">第二章 深入分析Java IO的工作机制</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:17:34+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AOP/" itemprop="url" rel="index">
+                    <span itemprop="name">AOP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,617
                 </span>
               
 
@@ -508,239 +2069,17 @@
 
       
         
-          
-            <blockquote class="blockquote-center"></blockquote>
+          <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="SpringMVC-文件上传"><a href="#SpringMVC-文件上传" class="headerlink" title="SpringMVC 文件上传"></a>SpringMVC 文件上传</h2><p>这里SpringMVC为文件上传提供最直接的支持，这种支持是由即插即用的MultipartResolve实现。</p>
-<blockquote>
-<p>提示：我们在上传文件之前需要：<br><br>    1.创建虚拟目录来保存文件，此虚拟目录会对应磁盘上的一个实际的目录，在实际中肯定有一个服务器专门存储资源，然后将该路径映射成一个虚拟目录，用来在程序中指定获取文件的路径<br><br>        创建的方法：<br>            1.在tomcat的配置文件中配置一下(server.xml)。</p>
-</blockquote>
-<pre><code>            &lt;Context docBase=&quot;E:\BangjinHu\projects\upload\&quot; path=&quot;/file&quot; reloadable=&quot;true&quot;/&gt;
-
-2.然后编写后台Controller方法
-
-1.配置CommonsMultipartResolver
-    SpringMVC配置文件配置支持文件上传类CommonsMultipartResolver
-    //配置文件上传解析器
-    //id名称必须是如此class名称后面的部分
-    &lt;bean id=&quot;multipartResolver&quot; class=&quot;org.springframework.web.multipart.CommonsMultipartResolver&quot;&gt;
-        //配置文件上传解析器参数
-        //上传文件的最大大小
-        &lt;property name=&quot;maxUploadSize&quot; value=&quot;10240000&quot;&gt;&lt;/property&gt;
-        //上传文件的编码
-        &lt;property name=&quot;defaultEncoding&quot; value=&quot;utf-8&quot;&gt;&lt;/property&gt;
-    &lt;/bean&gt;
-
-
-2.控制层controller程序
-
-    提示：上传文件的逻辑是，首先判断有没有上传文件，如果已经上传了，那么对文件重命名然后写到磁盘中。如果没有上传文件，那么应该用原来的文件。
-
-    @Controller
-    public class UploadController {
-
-        @Resource
-        HttpServletRequest request;
-
-        /**
-         * @return  返回相对路径RelativePath
-         */
-        public String RelPath() {
-            String path = request.getContextPath();
-            return request.getScheme()+&quot;://&quot;+request.getServerName()+&quot;:&quot;+request.getServerPort()+path+&quot;/&quot;;
-        }
-
-        /**
-         * @return  返回服务器目录的真实路径
-         */
-        public String RealPath() {
-            return request.getSession().getServletContext().getRealPath(&quot;/&quot;);
-        }
-
-        /**
-         *  单文件上传
-         * 
-         * @param imageFile
-         * @param request
-         * @return
-         */
-        @RequestMapping(&quot;/singleUpload&quot;)    
-        public String singleUpload(@RequestParam(&quot;imageFile&quot;) MultipartFile imageFile, HttpServletRequest request){
-
-            //0.获取文件原来的名字
-            String filename = imageFile.getOriginalFilename();
-
-            //1.新建一个文件夹对象
-            File dir = new File(RealPath()+&quot;upload/&quot;);
-
-            //2.检查路径下upload文件夹是否存在
-            if(!dir.exists()){              
-                dir.mkdirs();
-            }
-
-            System.out.println(&quot;文件上传到:&quot;+RelPath()+&quot;upload/&quot;+ filename);
-
-            //3.在文件夹下新建一个filename文件的文件对象,此处新建文件应该新建在确切的物理路径下
-            File targetFile = new File(RealPath()+&quot;upload/&quot;+ filename);
-
-            //4.判断真实路径下是否存在filename文件
-            if(!targetFile.exists()){
-                try {
-                    //5.在真实路径下创建filename空文件
-                    targetFile.createNewFile();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            try {
-                //6.复制文件到真实路径下，这里的文件只是一个路径？
-                imageFile.transferTo(targetFile);
-            } catch (IllegalStateException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-            System.out.println(&quot;真实路径:&quot;+RealPath()+&quot;upload/&quot;);
-            System.out.println(&quot;相对路径:&quot;+RelPath()+&quot;upload/&quot;);
-
-            //非安全目录下使用(可用)
-            return &quot;redirect:&quot;+RelPath()+&quot;upload/&quot;+filename;   
-
-            //重定向到真实地址(不可用)
-            //return &quot;redirect:&quot;+RealPath()+&quot;upload/&quot;+filename;                 
-            //return &quot;redirect:http://localhost:8080/SpringMvcTest/upload/&quot;+filename;
-        }
-</code></pre><hr>
-<pre><code>    /**
-     * 多文件上传
-     * @param request
-     * @return
-     */
-    @RequestMapping(&quot;/multiUpload&quot;)
-    public String multiUpload(HttpServletRequest request){
-
-        //1、将请求进行转义
-        MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest)request;
-
-        //2、获取同一表单提交过来的所有文件
-        Map&lt;String, MultipartFile&gt; files = multipartHttpServletRequest.getFileMap();
-
-        //3、在真实路径创建文件
-        File dir = new File(RealPath()+&quot;upload/&quot;);
-        if(!dir.exists()) {
-            dir.mkdirs();
-        }
-
-        //4、将上传的文件的相对地址保存在一个列表中(客户端只能请求服务器的相对地址)
-        List&lt;String&gt; fileList = new ArrayList&lt;String&gt;();
-        for(MultipartFile file : files.values()) { 
-
-            //5、在服务器的绝对地址下新建文件,并将上传的文件复制过去,将相对路径保存进List列表中,服务器的相对路径和绝对路径是相互映射的，客户端只能请求相对路径
-            File targetFile = new File(RealPath()+&quot;upload/&quot; + file.getOriginalFilename()); 
-            if(!targetFile.exists()) {
-                try {
-                    targetFile.createNewFile();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                try {
-                    file.transferTo(targetFile);
-                    fileList.add(RelPath()+&quot;upload/&quot;+file.getOriginalFilename());
-                } catch (IllegalStateException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }else{
-                //文件如果存在直接访问
-                fileList.add(RelPath()+&quot;upload/&quot;+file.getOriginalFilename());
-            }
-        }
-        System.out.println(fileList);
-        request.setAttribute(&quot;files&quot;, fileList);
-        return &quot;/WEB-INF/jsp/multiUploadResult.jsp&quot;;    
-    }
-}
-</code></pre><hr>
-<h2 id="图片上传"><a href="#图片上传" class="headerlink" title="图片上传"></a>图片上传</h2><h4 id="SpringMVC对多部件类型解析"><a href="#SpringMVC对多部件类型解析" class="headerlink" title="SpringMVC对多部件类型解析"></a>SpringMVC对多部件类型解析</h4><pre><code>1.首先需要在页面form表单中提交`enctype=&quot;multipart/form-data`的数据。
-2.然后需要在springmvc.xml文件中对multipart类型的数据进行解析。
-
-    &lt;!-- 文件上传 --&gt;
-    &lt;bean id=&quot;multipartResolver&quot;
-          class=&quot;org.springframework.web.multipart.commons.CommonsMultipartResolver&quot;&gt;
-        &lt;!-- 设置上传文件的最大尺寸为5MB --&gt;
-        &lt;property name=&quot;maxUploadSize&quot;&gt;
-            &lt;value&gt;5242880&lt;/value&gt;
-        &lt;/property&gt;
-    &lt;/bean&gt;
-
-3.在pom.xml中添加文件上传的依赖
-
-    &lt;!-- 文件上传 --&gt;
-    &lt;dependency&gt;
-        &lt;groupId&gt;commons-fileupload&lt;/groupId&gt;
-        &lt;artifactId&gt;commons-fileupload&lt;/artifactId&gt;
-        &lt;version&gt;1.3.1&lt;/version&gt;
-    &lt;/dependency&gt;
-
-4.创建图片虚拟目录存储图片
-
-    直接在tomcat的conf/server.xml文件中添加虚拟路径。
-</code></pre><blockquote>
-<p>注意：在图片虚拟目录中，一定将图片目录分级创建（提高i/o性能），一般我们采用按日期(年、月、日)进行分级创建。</p>
-</blockquote>
-<pre><code>5.上传图片的前台实现
-
-    &lt;tr&gt;
-        &lt;td&gt;商品图片&lt;/td&gt;
-        &lt;td&gt;
-            &lt;c:if test=&quot;${items.pic !=null}&quot;&gt;
-                &lt;img src=&quot;/pic/${items.pic}&quot; width=100 height=100/&gt;
-                &lt;br/&gt;
-            &lt;/c:if&gt;
-            &lt;input type=&quot;file&quot;  name=&quot;items_pic&quot;/&gt;
-        &lt;/td&gt;
-    &lt;/tr&gt;
-
-6.上传图片的controller实现
-
-    //这里表示修改图片的controller方法
-    @RequestMapping(&quot;/editItemsSubmit&quot;)
-    public String editItemsSubmit(
-            Model model,
-            HttpServletRequest request,
-            Integer id,
-            @ModelAttribute(&quot;items&quot;)
-            @Validated(value = ValidGroup1.class)ItemsCustom itemsCustom,
-            BindingResult bindingResult,
-            MultipartFile items_pic
-    )throws Exception {
-     //原始名称
-    String originalFilename = items_pic.getOriginalFilename();
-    //上传图片
-    if(items_pic!=null &amp;&amp; originalFilename!=null &amp;&amp; originalFilename.length()&gt;0){
-
-    //存储图片的物理路径
-    String pic_path = &quot;D:\\tmp\\&quot;;
-
-    //新的图片名称
-    String newFileName = UUID.randomUUID() + originalFilename.substring(originalFilename.lastIndexOf(&quot;.&quot;));
-    //新图片
-    File newFile = new File(pic_path+newFileName);
-
-    //将内存中的数据写入磁盘
-    items_pic.transferTo(newFile);
-
-    //将新图片名称写到itemsCustom中
-    itemsCustom.setPic(newFileName);
-
-}
-</code></pre>
-          
+<p>[TOC]</p>
+<h2 id="第二章-深入分析Java-IO的工作机制"><a href="#第二章-深入分析Java-IO的工作机制" class="headerlink" title="第二章 深入分析Java IO的工作机制"></a>第二章 深入分析Java IO的工作机制</h2><h3 id="2-1-Java-的I-O库的基本架构"><a href="#2-1-Java-的I-O库的基本架构" class="headerlink" title="2.1 Java 的I/O库的基本架构"></a>2.1 Java 的I/O库的基本架构</h3>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/第2章 深入分析Java IO的工作机制/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -790,7 +2129,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/SpringMVC 文件下载/">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第3章 Spring - AOP 续二/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bangjin-Hu">
@@ -809,7 +2148,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/undefined/SpringMVC 文件下载/" itemprop="url">SpringMVC 文件下载</a></h2>
+                <a class="post-title-link" href="/undefined/第3章 Spring - AOP 续二/" itemprop="url">SPRING AOP 续二</a></h2>
         
 
         <div class="post-meta">
@@ -837,8 +2176,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:32:24+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:18:02+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -856,8 +2195,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/SpringMVC/" itemprop="url" rel="index">
-                    <span itemprop="name">SpringMVC</span>
+                  <a href="/categories/AOP/" itemprop="url" rel="index">
+                    <span itemprop="name">AOP</span>
                   </a>
                 </span>
 
@@ -887,7 +2226,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  434
+                  5,945
                 </span>
               
 
@@ -903,7 +2242,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  26
                 </span>
               
             </div>
@@ -925,2601 +2264,25 @@
 
       
         
-          
-            <blockquote class="blockquote-center"></blockquote>
+          <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="SpringMVC-文件下载"><a href="#SpringMVC-文件下载" class="headerlink" title="SpringMVC 文件下载"></a>SpringMVC 文件下载</h2><pre><code>@Controller
-public class DownloadController {
+<h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1 概述"></a>1 概述</h2><h4 id="1-2-AOP术语"><a href="#1-2-AOP术语" class="headerlink" title="1.2 AOP术语"></a>1.2 AOP术语</h4><pre><code>...
 
-    @Resource
-    HttpServletRequest request;
+引介：是一种特殊的增强，它为类添加一些属性和方法，由此即使一个业务类原本没有实现接口，通过AOP的引介功能可以动态的为业务类添加接口的实现逻辑。
 
-    @Resource
-    HttpServletResponse response;
+织入：将增添添加到目标类的具体连接点上的过程。
 
-    @RequestMapping(&quot;/download&quot;)
-    public String download(@RequestParam String fileName){
-
-        //1.设置响应的文件类型和文件编码
-        response.setContentType(&quot;text/html;charset=utf-8&quot;);
-
-        try {
-            //2.确保请求的编码类型为UTF-8,不然文件下载后有可能因为类型不一致出现乱码
-            request.setCharacterEncoding(&quot;UTF-8&quot;);
-        } catch (UnsupportedEncodingException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        BufferedInputStream bis = null;
-        BufferedOutputStream bos = null;
-
-        String ctxPath = request.getSession().getServletContext().getRealPath(&quot;/&quot;)+&quot;upload/&quot;;
-        String downLoadPath = ctxPath + fileName;
-        System.out.println(downLoadPath);
-
-        try{
-            long fileLength = new File(downLoadPath).length();
-
-            //3.设置响应头文件内容,文件类型、弹出下载对话框、文件大小
-            response.setContentType(&quot;application/x-msdownload&quot;);
-            response.setHeader(&quot;Content-disposition&quot;, &quot;attachment; filename=&quot; + new String(fileName.getBytes(&quot;utf-8&quot;), &quot;ISO8859-1&quot;));
-            response.setHeader(&quot;Content-Length&quot;, String.valueOf(fileLength));
-
-            //4.新建一个输入流缓存对象,并将文件输入流对象传递进去,将文件路径传递进文件输入流对象中，这是一个逐步处理的过程
-            bis = new BufferedInputStream(new FileInputStream(downLoadPath));
-
-            //5.新建一个输出流缓存对象,将服务器响应输出流对象至于其中
-            bos = new BufferedOutputStream(response.getOutputStream());
-
-            //6.新建一个缓存
-            byte[] buff = new byte[2048];
-
-            //7.内容字节总数
-            int bytesRead;              
-
-            //8.输入到到buff缓存中,当文件为空是read()会return -1,否则返回读取的字节总数
-            while (-1 != (bytesRead = bis.read(buff, 0, buff.length))) {
-
-                //9.将buff的字节写到响应体的输出流中，输出流持续输出到客户端
-                bos.write(buff, 0, bytesRead);
-            }
-
-        } catch(Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (bis != null)
-                try {
-                    //10.关闭缓存输入流对象
-                    bis.close();
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            if (bos != null)
-                try {
-                    //10.关闭缓存输出流对象
-                    bos.close();
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }       
-            return null;    
-        }
-    }
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/SpringMVC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/SpringMVC/" itemprop="url">SpringMVC</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:32:43+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/SpringMVC/" itemprop="url" rel="index">
-                    <span itemprop="name">SpringMVC</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1,492
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  7
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h1 id="SpringMVC-解析"><a href="#SpringMVC-解析" class="headerlink" title="SpringMVC 解析"></a>SpringMVC 解析</h1><h2 id="1-什么是拦截器："><a href="#1-什么是拦截器：" class="headerlink" title="1.什么是拦截器："></a>1.什么是拦截器：</h2><p>SpringMVC提供了拦截器机制：</p>
-<p>HandlerInterceptor：SpringMVC</p>
-<p>​    允许在目标方法之前进行一些拦截工作，或者在目标方法之后进行一些其他的处理。</p>
-<p><img src="images/1.png" alt=""></p>
-<p>perHandle：在目标方法执行之前，返回boolean，return true（放行）；return false 不放行；</p>
-<p>postHandle:在目标方法执行之后调用，目标方法调用之后；</p>
-<p>aftercompletion：在整个请求完成之后，来到目标页面之后；资源响应之后；</p>
-<h2 id="2-拦截器怎么使用："><a href="#2-拦截器怎么使用：" class="headerlink" title="2.拦截器怎么使用："></a>2.拦截器怎么使用：</h2><h4 id="1-实现HandlerInterceptor-接口-实现三个方法！"><a href="#1-实现HandlerInterceptor-接口-实现三个方法！" class="headerlink" title="1.实现HandlerInterceptor 接口 实现三个方法！"></a>1.实现HandlerInterceptor 接口 实现三个方法！</h4><p><img src="images/2.png" alt=""></p>
-<h4 id="2-配置这个拦截器需要拦截那些请求"><a href="#2-配置这个拦截器需要拦截那些请求" class="headerlink" title="2.配置这个拦截器需要拦截那些请求"></a>2.配置这个拦截器需要拦截那些请求</h4><ol>
-<li>拦截器是一个接口！</li>
-<li>实现HandleInterceptor接口：</li>
-<li>配置拦截器</li>
-</ol>
-<p><img src="images/3.png" alt=""></p>
-<h4 id="3-拦截器的运行流程"><a href="#3-拦截器的运行流程" class="headerlink" title="3.拦截器的运行流程"></a>3.拦截器的运行流程</h4><p><img src="images/4.png" alt=""></p>
-<h5 id="3-1-正常运行流程："><a href="#3-1-正常运行流程：" class="headerlink" title="3.1.正常运行流程："></a>3.1.正常运行流程：</h5><p>​    拦截器的preHandle———目标方法———拦截器的postHandle———页面———拦截器的afterCompletion</p>
-<h5 id="3-2-其他流程："><a href="#3-2-其他流程：" class="headerlink" title="3.2.其他流程："></a>3.2.其他流程：</h5><pre><code>1. 只要preHandle 不放行，其他流程均完蛋。
-2. 放行之后，目标方法炸了，preHandle 放行，postHandle没有执行，**但是afterCompletion执行了。**
-</code></pre><h5 id="3-3-多个拦截器的流程："><a href="#3-3-多个拦截器的流程：" class="headerlink" title="3.3.多个拦截器的流程："></a>3.3.多个拦截器的流程：</h5><p>正常流程：</p>
-<p><img src="images/5.png" alt=""></p>
-<p>异常流程：</p>
-<p>​    1）、First只要不放行，后面全都没有</p>
-<p>​    2)、First 放行，但是Second 不放行。但是First 的<strong>afterCompletion还要执行。</strong></p>
-<p>​    总结：==<strong>已放行的拦截器的 afterCompletion 都要执行</strong>==</p>
-<p>​    <img src="images/6.png" alt=""></p>
-<p>==拦截器的 preHandle 是顺序执行的，但是 postHandle 和 afterCompletion 是逆序执行的。==</p>
-<h2 id="3-拦截器的源码流程"><a href="#3-拦截器的源码流程" class="headerlink" title="3.拦截器的源码流程"></a>3.拦截器的源码流程</h2><h5 id="doDispatch"><a href="#doDispatch" class="headerlink" title="doDispatch"></a>doDispatch</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doDispatch</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">	HttpServletRequest processedRequest = request;</span><br><span class="line">	HandlerExecutionChain mappedHandler = <span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">boolean</span> multipartRequestParsed = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">	WebAsyncManager asyncManager = WebAsyncUtils.getAsyncManager(request);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		ModelAndView mv = <span class="keyword">null</span>;</span><br><span class="line">		Exception dispatchException = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			processedRequest = checkMultipart(request);</span><br><span class="line">			multipartRequestParsed = (processedRequest != request);</span><br><span class="line"></span><br><span class="line">			<span class="comment">// Determine handler for the current request.</span></span><br><span class="line">               <span class="comment">//先获取到处理器，并拿到执行链</span></span><br><span class="line">			mappedHandler = getHandler(processedRequest);</span><br><span class="line">			<span class="keyword">if</span> (mappedHandler == <span class="keyword">null</span>) &#123;</span><br><span class="line">				noHandlerFound(processedRequest, response);</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="comment">// Determine handler adapter for the current request.</span></span><br><span class="line">               <span class="comment">//在获取适配器</span></span><br><span class="line">			HandlerAdapter ha = getHandlerAdapter(mappedHandler.getHandler());</span><br><span class="line"></span><br><span class="line">			<span class="comment">// Process last-modified header, if supported by the handler.</span></span><br><span class="line">			String method = request.getMethod();</span><br><span class="line">			<span class="keyword">boolean</span> isGet = <span class="string">"GET"</span>.equals(method);</span><br><span class="line">			<span class="keyword">if</span> (isGet || <span class="string">"HEAD"</span>.equals(method)) &#123;</span><br><span class="line">				<span class="keyword">long</span> lastModified = ha.getLastModified(request, mappedHandler.getHandler());</span><br><span class="line">				<span class="keyword">if</span> (logger.isDebugEnabled()) &#123;</span><br><span class="line">					logger.debug(<span class="string">"Last-Modified value for ["</span> + getRequestUri(request) + <span class="string">"] is: "</span> + lastModified);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">if</span> (<span class="keyword">new</span> ServletWebRequest(request, response).checkNotModified(lastModified) &amp;&amp; isGet) &#123;</span><br><span class="line">					<span class="keyword">return</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//执行所有拦截器的preHandle （返回false 就是 true 就直接返回了）</span></span><br><span class="line">               <span class="comment">//如果有一个拦截器返回false 那么目标方法之后都不会执行了。</span></span><br><span class="line">               <span class="comment">//直接跳到 afterCompletion 执行</span></span><br><span class="line">			<span class="keyword">if</span> (!mappedHandler.applyPreHandle(processedRequest, response)) &#123;</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="comment">// Actually invoke the handler.</span></span><br><span class="line">			mv = ha.handle(processedRequest, response, mappedHandler.getHandler());</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> (asyncManager.isConcurrentHandlingStarted()) &#123;</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			applyDefaultViewName(processedRequest, mv);</span><br><span class="line">			mappedHandler.applyPostHandle(processedRequest, response, mv);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">catch</span> (Exception ex) &#123;</span><br><span class="line">			dispatchException = ex;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">catch</span> (Throwable err) &#123;</span><br><span class="line">			<span class="comment">// As of 4.3, we're processing Errors thrown from handler methods as well,</span></span><br><span class="line">			<span class="comment">// making them available for @ExceptionHandler methods and other scenarios.</span></span><br><span class="line">			dispatchException = <span class="keyword">new</span> NestedServletException(<span class="string">"Handler dispatch failed"</span>, err);</span><br><span class="line">		&#125;</span><br><span class="line">           </span><br><span class="line">           <span class="comment">//页面渲染（如果渲染失败出现了异常，catch中也会执行afterCompletion）</span></span><br><span class="line">		processDispatchResult(processedRequest, response, mappedHandler, mv, dispatchException);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">catch</span> (Exception ex) &#123;</span><br><span class="line">		triggerAfterCompletion(processedRequest, response, mappedHandler, ex);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">catch</span> (Throwable err) &#123;</span><br><span class="line">		triggerAfterCompletion(processedRequest, response, mappedHandler,</span><br><span class="line">				<span class="keyword">new</span> NestedServletException(<span class="string">"Handler processing failed"</span>, err));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">finally</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (asyncManager.isConcurrentHandlingStarted()) &#123;</span><br><span class="line">			<span class="comment">// Instead of postHandle and afterCompletion</span></span><br><span class="line">			<span class="keyword">if</span> (mappedHandler != <span class="keyword">null</span>) &#123;</span><br><span class="line">				mappedHandler.applyAfterConcurrentHandlingStarted(processedRequest, response);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="comment">// Clean up any resources used by a multipart request.</span></span><br><span class="line">			<span class="keyword">if</span> (multipartRequestParsed) &#123;</span><br><span class="line">				cleanupMultipart(processedRequest);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="PreHandle"><a href="#PreHandle" class="headerlink" title="PreHandle"></a>PreHandle</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">applyPreHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">	HandlerInterceptor[] interceptors = getInterceptors();</span><br><span class="line">	<span class="keyword">if</span> (!ObjectUtils.isEmpty(interceptors)) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; interceptors.length; i++) &#123;</span><br><span class="line">			HandlerInterceptor interceptor = interceptors[i];</span><br><span class="line">               </span><br><span class="line">               <span class="comment">//preHandle - true -false </span></span><br><span class="line">			<span class="keyword">if</span> (!interceptor.preHandle(request, response, <span class="keyword">this</span>.handler)) &#123;</span><br><span class="line">                   <span class="comment">//先去执行 afterCompletion </span></span><br><span class="line">				triggerAfterCompletion(request, response, <span class="keyword">null</span>);</span><br><span class="line">                   <span class="comment">//返回false</span></span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">			&#125;</span><br><span class="line">               <span class="comment">//记录了索引</span></span><br><span class="line">			<span class="keyword">this</span>.interceptorIndex = i;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="PostHandle"><a href="#PostHandle" class="headerlink" title="PostHandle"></a>PostHandle</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">applyPostHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, @Nullable ModelAndView mv)</span></span></span><br><span class="line"><span class="function">		<span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"></span><br><span class="line">	HandlerInterceptor[] interceptors = getInterceptors();</span><br><span class="line">	<span class="keyword">if</span> (!ObjectUtils.isEmpty(interceptors)) &#123;</span><br><span class="line">	</span><br><span class="line">		<span class="comment">//逆序执行</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = interceptors.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">			HandlerInterceptor interceptor = interceptors[i];</span><br><span class="line">			interceptor.postHandle(request, response, <span class="keyword">this</span>.handler, mv);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="processDispatchResult"><a href="#processDispatchResult" class="headerlink" title="processDispatchResult"></a>processDispatchResult</h5><pre><code>private void processDispatchResult(HttpServletRequest request, HttpServletResponse response,
-        @Nullable HandlerExecutionChain mappedHandler, @Nullable ModelAndView mv,
-        @Nullable Exception exception) throws Exception {
-
-    boolean errorView = false;
-
-    if (exception != null) {
-        if (exception instanceof ModelAndViewDefiningException) {
-            logger.debug(&quot;ModelAndViewDefiningException encountered&quot;, exception);
-            mv = ((ModelAndViewDefiningException) exception).getModelAndView();
-        }
-        else {
-            Object handler = (mappedHandler != null ? mappedHandler.getHandler() : null);
-            mv = processHandlerException(request, response, handler, exception);
-            errorView = (mv != null);
-        }
-    }
-
-    // Did the handler return a view to render?
-    if (mv != null &amp;&amp; !mv.wasCleared()) {
-
-        //页面渲染
-        render(mv, request, response);
-        if (errorView) {
-            WebUtils.clearErrorRequestAttributes(request);
-        }
-    }
-    else {
-        if (logger.isDebugEnabled()) {
-            logger.debug(&quot;Null ModelAndView returned to DispatcherServlet with name &apos;&quot; + getServletName() +
-                    &quot;&apos;: assuming HandlerAdapter completed request handling&quot;);
-        }
-    }
-
-    if (WebAsyncUtils.getAsyncManager(request).isConcurrentHandlingStarted()) {
-        // Concurrent handling started during a forward
-        return;
-    }
-    if (mappedHandler != null) {
-
-        //页面正常，执行afterCompletion，即使没有走到这里afterCompletion 也会执行
-        mappedHandler.triggerAfterCompletion(request, response, null);
-    }
-}
-</code></pre><h5 id="triggerAfterCompletion"><a href="#triggerAfterCompletion" class="headerlink" title="triggerAfterCompletion"></a>triggerAfterCompletion</h5><pre><code>void triggerAfterCompletion(HttpServletRequest request, HttpServletResponse response, @Nullable Exception ex)
-        throws Exception {
-
-    HandlerInterceptor[] interceptors = getInterceptors();
-    if (!ObjectUtils.isEmpty(interceptors)) {
-
-        //逆序执行（通过之前记录的索引），把之前所有放行的拦截器的AfterCompletion全部执行
-        for (int i = this.interceptorIndex; i &gt;= 0; i--) {
-            HandlerInterceptor interceptor = interceptors[i];
-            try {
-                interceptor.afterCompletion(request, response, this.handler, ex);
-            }
-            catch (Throwable ex2) {
-                logger.error(&quot;HandlerInterceptor.afterCompletion threw exception&quot;, ex2);
-            }
-        }
-    }
-}
-</code></pre><p>流程总结：</p>
-<p><img src="images/7.png" alt=""></p>
-<p>就一句话：<strong>==所有已经放行的拦截器的afterCompletion 一定会执行==</strong></p>
-<h2 id="SpringMVC的流程总结："><a href="#SpringMVC的流程总结：" class="headerlink" title="SpringMVC的流程总结："></a>SpringMVC的流程总结：</h2><p><strong>1、所有的请求，==前端控制器（DispatcherServlet），调用doDispatch==进行处理；</strong></p>
-<p><strong>2、根据==HandleMapping中保存的映射信息==找到，处理当前请求的==，处理器执行链==（包含了拦截器）。</strong></p>
-<p><strong>3、==根据当前处理器找到他的适配器==；</strong></p>
-<p><strong>4、==拦截器的preHandle 先执行==</strong></p>
-<p><strong>5、==适配器执行目标方法==</strong></p>
-<p>​    1）、ModelAttribute注解标注的方法提前执行</p>
-<p>​    2）、执行目标方法的时候（确定目标方法的参数）</p>
-<p>​        1）有注解：</p>
-<p>​        2）没注解：</p>
-<p>​            1）、看看是否是Model 、Map 或者其他的</p>
-<p>​            2）、如果是自定义类型</p>
-<p>​                1）先从隐含模型中看有没有，如果有就从隐含模型中拿</p>
-<p>​                2）如果没有，看看是否是SessionAttributes标注的属性，如果是从session中拿，拿不到抛出异常</p>
-<p>​                3）如果都不是，利用反射创建对象。</p>
-<p><strong>6、==拦截器的 postHandle 执行==</strong></p>
-<p><strong>7、处理结果（==页面渲染流程==）</strong></p>
-<p>​    <strong>1）、如果有异常使用==异常解析器==处理异常，返回ModelAndView</strong></p>
-<p>​    <strong>2）、调用  ==render==  进行页面渲染</strong></p>
-<p>​        1）视图解析器通过视图名得到视图对象</p>
-<p>​        2）、视图对象调用 render 方法；</p>
-<p>​    <strong>3）、==执行拦截器的afterCompletion==</strong>        </p>
-<h2 id="SpringMVC流程图："><a href="#SpringMVC流程图：" class="headerlink" title="SpringMVC流程图："></a>SpringMVC流程图：</h2><p>​    <img src="images/8.png" alt=""></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Spring源码 - Spring IoC核心流程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/Spring源码 - Spring IoC核心流程/" itemprop="url">Spring源码 - IOC</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:26:28+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Spring源码/" itemprop="url" rel="index">
-                    <span itemprop="name">Spring源码</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1,002
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  5
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="Spring源码-Spring-IoC核心流程"><a href="#Spring源码-Spring-IoC核心流程" class="headerlink" title="Spring源码 - Spring IoC核心流程"></a>Spring源码 - Spring IoC核心流程</h2><h3 id="1-初始化"><a href="#1-初始化" class="headerlink" title="1.初始化"></a>1.初始化</h3><p>Spring IoC的初始化过程很复杂，大致过程就是读取XML文件，然后解析XML文件，最终注册到BeanFactory中去。</p>
-<pre><code>xml -读取-&gt; Resource -解析-&gt; BeanDefinition -注册-&gt; BeanFactory
-</code></pre><p>初始化过程完成之后，Bean就存在与BeanFactory中可以被调用。</p>
-<h5 id="1-准备"><a href="#1-准备" class="headerlink" title="1 准备"></a>1 准备</h5><p><strong>1.1 详细的Spring IoC初始化过程</strong><br></p>
-<pre><code>&lt;bean id=&quot;Aaron&quot; class=&quot;com.springstudy.talentshow.SuperInstrumentalist&quot;&gt;
-    &lt;property name=&quot;instruments&quot;&gt;
-        &lt;list&gt;
-            &lt;ref bean=&quot;piano&quot;/&gt;
-            &lt;ref bean=&quot;saxophone&quot;/&gt;
-        &lt;/list&gt;
-    &lt;/property&gt;
-&lt;/bean&gt;
+代理：类被AOP织入增强之后，就产生了一个结果类，它是融合了原类和增强逻辑的代理类。根据不同的代理方式，代理类可能是和原类具有相同接口的类，或者是是原类的子类。
 </code></pre><blockquote>
-<p>提示：加载时需要读取|解析|注册bean。</p>
+<p>重点：AOP的重点在于如何将增强应用于目标对象的连接点上。1.如何通过切点和增强定位到连接点上。2.如何在增强中编写切面的程序。</p>
 </blockquote>
-<p><strong>1.2 加载配置文件</strong><br></p>
-<p>在调用 ClassPathXmlApplicationContext 后，先会将配置位置信息保存到 configLocations ，供后面解析使用，之后，会调用 AbstractApplicationContext 的 refresh 方法进行刷新。</p>
-<pre><code>//构造器
-public ClassPathXmlApplicationContext(String[] configLocations, boolean refresh, ApplicationContext parent) throws BeansException {
-    super(parent);
-    //保存位置信息
-    this.setConfigLocations(configLocations);
-    if (refresh) {
-        //刷新
-        this.refresh();
-    }
-}
-
-public void refresh() throws BeansException, IllegalStateException {
-    synchronized(this.startupShutdownMonitor) {
-        this.prepareRefresh();
-        ConfigurableListableBeanFactory beanFactory = this.obtainFreshBeanFactory();
-        this.prepareBeanFactory(beanFactory);
-
-        try {
-            this.postProcessBeanFactory(beanFactory);
-            this.invokeBeanFactoryPostProcessors(beanFactory);
-            this.registerBeanPostProcessors(beanFactory);
-            this.initMessageSource();
-            this.initApplicationEventMulticaster();
-            this.onRefresh();
-            this.registerListeners();
-            this.finishBeanFactoryInitialization(beanFactory);
-            this.finishRefresh();
-        } catch (BeansException var9) {
-            if (this.logger.isWarnEnabled()) {
-                this.logger.warn(&quot;Exception encountered during context initialization - cancelling refresh attempt: &quot; + var9);
-            }
-
-            this.destroyBeans();
-            this.cancelRefresh(var9);
-            throw var9;
-        } finally {
-            this.resetCommonCaches();
-        }
-
-    }
-}
-</code></pre><p><strong>1.3 创建载入BeanFactory</strong><br></p>
-<pre><code>protected final void refreshBeanFactory() throws BeansException {
-    // ... ...
-    DefaultListableBeanFactory beanFactory = createBeanFactory();
-    // ... ...
-    loadBeanDefinitions(beanFactory);
-    // ... ...
-}
-</code></pre><p><strong>1.4 创建XMLBeanDefinitionReader</strong><br></p>
-<pre><code>protected void loadBeanDefinitions(DefaultListableBeanFactory beanFactory)
-     throws BeansException, IOException {
-
-    XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
-
-    initBeanDefinitionReader(beanDefinitionReader);
-    loadBeanDefinitions(beanDefinitionReader);
-}
-</code></pre><h5 id="2-读取"><a href="#2-读取" class="headerlink" title="2 读取"></a>2 读取</h5><p><strong>2.1 创建处理每个Resource</strong><br></p>
-<pre><code>public int loadBeanDefinitions(String location, Set&lt;Resource&gt; actualResources)
-     throws BeanDefinitionStoreException {
-    // ... ...
-    // 通过Location来读取Resource
-    Resource[] resources = ((ResourcePatternResolver) resourceLoader).getResources(location);
-    int loadCount = loadBeanDefinitions(resources);
-    // ... ...
-}
-
-public int loadBeanDefinitions(Resource... resources) throws BeanDefinitionStoreException {
-    Assert.notNull(resources, &quot;Resource array must not be null&quot;);
-    int counter = 0;
-    for (Resource resource : resources) {
-        // 载入每一个resource
-        counter += loadBeanDefinitions(resource);
-    }
-    return counter;
-}
-</code></pre><p><strong>2.2 处理xml每个元素</strong><br></p>
-<pre><code>protected void parseBeanDefinitions(Element root, BeanDefinitionParserDelegate delegate) {
-    // ... ...
-    NodeList nl = root.getChildNodes();
-    for (int i = 0; i &lt; nl.getLength(); i++) {
-        Node node = nl.item(i);
-        if (node instanceof Element) {
-            Element ele = (Element) node;
-            if (delegate.isDefaultNamespace(ele)) {
-                // 处理每个xml中的元素，可能是import、alias、bean
-                parseDefaultElement(ele, delegate);
-            }
-            else {
-                delegate.parseCustomElement(ele);
-            }
-        }
-    }
-    // ... ...
-}
-</code></pre><p><strong>2.3 解析和注册bean</strong><br></p>
-<pre><code>protected void processBeanDefinition(Element ele, BeanDefinitionParserDelegate delegate) {
-    // 将XML的元素解析为BeanDefinition存储到BeanDefinitionHolder
-    BeanDefinitionHolder bdHolder = delegate.parseBeanDefinitionElement(ele);
-    if (bdHolder != null) {
-        bdHolder = delegate.decorateBeanDefinitionIfRequired(ele, bdHolder);
-        try {
-            // 注册 将BeanDefinition实例put到BeanFactory
-            // Register the final decorated instance.
-            BeanDefinitionReaderUtils.registerBeanDefinition(
-                bdHolder, getReaderContext().getRegistry());
-        }
-        catch (BeanDefinitionStoreException ex) {
-            getReaderContext().error(&quot;Failed to register bean definition with name &apos;&quot; +
-                    bdHolder.getBeanName() + &quot;&apos;&quot;, ele, ex);
-        }
-        // Send registration event.
-        getReaderContext().fireComponentRegistered(new BeanComponentDefinition(bdHolder));
-    }
-}
-</code></pre><h5 id="3-解析"><a href="#3-解析" class="headerlink" title="3 解析"></a>3 解析</h5><p><strong>3.1 处理每个Bean的元素</strong><br></p>
-<pre><code>public AbstractBeanDefinition parseBeanDefinitionElement(
-    Element ele, String beanName, BeanDefinition containingBean) {
-
-    // ... ...
-    // 创建beandefinition
-    AbstractBeanDefinition bd = createBeanDefinition(className, parent);
-
-    parseBeanDefinitionAttributes(ele, beanName, containingBean, bd);
-    bd.setDescription(DomUtils.getChildElementValueByTagName(ele, DESCRIPTION_ELEMENT));
-
-    parseMetaElements(ele, bd);
-    parseLookupOverrideSubElements(ele, bd.getMethodOverrides());
-    parseReplacedMethodSubElements(ele, bd.getMethodOverrides());
-    // 处理“Constructor”
-    parseConstructorArgElements(ele, bd);
-    // 处理“Preperty”
-    parsePropertyElements(ele, bd);
-    parseQualifierElements(ele, bd);
-    // ... ...
-}
-</code></pre><p><strong>3.2 处理属性的值</strong><br></p>
-<pre><code>public Object parsePropertyValue(Element ele, BeanDefinition bd, String propertyName) {
-    String elementName = (propertyName != null) ?
-                    &quot;&lt;property&gt; element for property &apos;&quot; + propertyName + &quot;&apos;&quot; :
-                    &quot;&lt;constructor-arg&gt; element&quot;;
-
-    // ... ...
-    if (hasRefAttribute) {
-    // 处理引用
-        String refName = ele.getAttribute(REF_ATTRIBUTE);
-        if (!StringUtils.hasText(refName)) {
-            error(elementName + &quot; contains empty &apos;ref&apos; attribute&quot;, ele);
-        }
-        RuntimeBeanReference ref = new RuntimeBeanReference(refName);
-        ref.setSource(extractSource(ele));
-        return ref;
-    }
-    else if (hasValueAttribute) {
-    // 处理值
-        TypedStringValue valueHolder = new TypedStringValue(ele.getAttribute(VALUE_ATTRIBUTE));
-        valueHolder.setSource(extractSource(ele));
-        return valueHolder;
-    }
-    else if (subElement != null) {
-    // 处理子类型（比如list、map等）
-        return parsePropertySubElement(subElement, bd);
-    }
-    // ... ...
-}
-</code></pre><h5 id="4-注册"><a href="#4-注册" class="headerlink" title="4 注册"></a>4 注册</h5><pre><code>public static void registerBeanDefinition(
-    BeanDefinitionHolder definitionHolder, BeanDefinitionRegistry registry)
-    throws BeanDefinitionStoreException {
-
-    // Register bean definition under primary name.
-    String beanName = definitionHolder.getBeanName();
-    registry.registerBeanDefinition(beanName, definitionHolder.getBeanDefinition());
-
-    // Register aliases for bean name, if any.
-    String[] aliases = definitionHolder.getAliases();
-    if (aliases != null) {
-        for (String alias : aliases) {
-            registry.registerAlias(beanName, alias);
-        }
-    }
-}
-
-public void registerBeanDefinition(String beanName, BeanDefinition beanDefinition)
-        throws BeanDefinitionStoreException {
-
-    // ......
-
-    // 将beanDefinition注册
-    this.beanDefinitionMap.put(beanName, beanDefinition);
-
-    // ......
-}
-</code></pre><blockquote>
-<p>总结：注册的实质就是以beanName为key，以beanDefinition为value，将其put到HashMap的过程。</p>
-</blockquote>
-<h3 id="2-注入依赖"><a href="#2-注入依赖" class="headerlink" title="2.注入依赖"></a>2.注入依赖</h3><p>在IoC容器完成初始化之后，如果bean没有设置lazy-init属性，那么bean的实例就会在初始化IOC完成之后，及时地进行初始化。初始化时会先建立实例，然后根据配置利用反射对实例进行进一步操作。</p>
-<pre><code>初始化IoC容器 -&gt; 初始化Bean -&gt; 创建Bean实例 -&gt; 注入Property
-</code></pre><p>在创建Bean和注入Bean属性时，都是在doCreateBean()函数中进行的。</p>
-<pre><code>protected Object doCreateBean(final String beanName, final RootBeanDefinition mbd,
-    final Object[] args) {
-    // Instantiate the bean.
-    BeanWrapper instanceWrapper = null;
-    if (mbd.isSingleton()) {
-        instanceWrapper = this.factoryBeanInstanceCache.remove(beanName);
-    }
-    if (instanceWrapper == null) {
-        // 创建bean的实例
-        instanceWrapper = createBeanInstance(beanName, mbd, args);
-    }
-
-    // ... ...
-
-    // Initialize the bean instance.
-    Object exposedObject = bean;
-    try {
-        // 初始化bean的实例，如注入属性
-        populateBean(beanName, mbd, instanceWrapper);
-        if (exposedObject != null) {
-            exposedObject = initializeBean(beanName, exposedObject, mbd);
-        }
-    }
-
-    // ... ...
-}
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Spring源码 - 事务概述/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/Spring源码 - 事务概述/" itemprop="url">Spring源码 - 事务概述</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:50:19+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Spring源码/" itemprop="url" rel="index">
-                    <span itemprop="name">Spring源码</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  679
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="Spring源码-事务概述"><a href="#Spring源码-事务概述" class="headerlink" title="Spring源码 - 事务概述"></a>Spring源码 - 事务概述</h2><p>事务首先是一系列操作组成的工作单元，该工作单元内的操作时不可分割的，要么所有操作都做，要么所有操作都不做，这就是事务。</p>
-<h4 id="ACID"><a href="#ACID" class="headerlink" title="ACID"></a>ACID</h4><h4 id="并发操作"><a href="#并发操作" class="headerlink" title="并发操作"></a>并发操作</h4><p>在并发操作过程中会出现如下问题：</p>
-<pre><code>1.丢失更新：两个事务更新同一行数据，最后一个事务的更新会覆盖第一个事务的更新。
-
-2.脏读：一个事务看到另一个事务未提交的更新数据。
-
-3.不可重复读：在同一事务中，多次读取同一个数据却返回不同的结果。其它事务更改这些数据。
-
-4.幻读：一个事务在执行过程中读取到了另一个事务已提交的插入数据；即在第一个事务开始时读取到一批数据，但此后另一个事务又插入了新数据并提交，此时第一个事务又读取这批数据但发现多了一条，即好像发生幻觉一样。
-</code></pre><p>为了解决上面的问题，需要通过数据库隔离级别来解决。</p>
-<pre><code>1.未提交读：最低级别，一个事务能够读取到别的事务未提交的更新数据，所以这是不安全的，可能出现丢失更新、脏读、不可重复读、幻读。
-
-2.提交读：一个事务能读取到别的事务提交的更新数据，不能看到未提交的更新数据，不可能出现丢失更新、脏读，但可能出现不可重复读、幻读。
-
-3.可重复读：保证同一事务中先后执行的多次查询将返回同一结果，不受其他事务影响，不可能出现丢失更新、脏读、不可重复读，但可能出现幻读。
-
-4.序列化：最高隔离级别，不允许事务并发执行，而必须串行化执行，最安全，不可能出现更新、脏读、不可重复读、幻读。
-</code></pre><blockquote>
-<p>注意：隔离级别越高，数据库事务并发执行性能越差，能处理的操作就越少。在实际项目中采用 提交读 的事务隔离级别，其能够避免丢失更新和脏度，尽管不能避免 不可重复读和幻读，但是可以在可能出现的场合使用 悲观锁和乐观锁 来解决这些问题。</p>
-</blockquote>
-<h4 id="Spring-事务管理"><a href="#Spring-事务管理" class="headerlink" title="Spring 事务管理"></a>Spring 事务管理</h4><p>Spring 支持声明式事务和编程式事务类型。特性：Spring所有的事务管理策略类都继承自：org.springframework.transaction.PlatformTransactionManager接口。</p>
-<p>…</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Spring源码 - 概述/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/Spring源码 - 概述/" itemprop="url">Spring源码 - 概述</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:26:14+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Spring源码/" itemprop="url" rel="index">
-                    <span itemprop="name">Spring源码</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1,126
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="Spring源码-概述"><a href="#Spring源码-概述" class="headerlink" title="Spring源码 - 概述"></a>Spring源码 - 概述</h2><p>Spring核心是IoC容器，所以在一开始我们需要透彻理解IoC容器，以及如何配置和使用容器，其它技术都是基于容器实现。然后是AOP编程(面向切面编程)。然后是数据库事务管理，Spring管理事务是通过AOP实现。</p>
-<p><strong>核心容器包括：Core | Beans | Context | EL模块</strong><br></p>
-<pre><code>1.Core模块：封装框架依赖最底层部分，包括资源访问、类型转换以及常用工具类
-
-2.Beans模块：提供框架基础部分，包括反转控制和依赖注入其中 BeanFactory 是容器核心，本质是“工厂设计模式”的实现，而且无需编程实现“单例设计模式”，单例完全由容器控制，而且提倡面向接口编程，而非面向实现编程。所有应用程序对象及对象间关系由框架管理，从而真正把你从程序逻辑中把维护对象之间的依赖关系提取出来，所有这些依赖关系都由BeanFactory来维护。
-
-3.Context模块：以Core模块和Beans模块为基础，继承Beans模块功能并添加资源绑定、数据验证、国际化、JavaEE支持、容器生命周期、事件传播等。核心接口是：ApplicationContext。
-
-4.EL模块：提供强大的表达式语言支持，支持访问和修改属性值，方法调用，支持访问以及修改数组、容器和索引器，支持算数和逻辑运算，支持从Spring容器获取Bean。
-</code></pre><p><strong>AOP | Aspects模块</strong><br></p>
-<pre><code>1.AOP模块：Spring AOP模块提供符合aop规范的面向方面编程的实现，提供如日志记录、权限控制等通用功能与业务逻辑分离的技术。
-
-2.Aspects模块：提供对AspectJ的集成，AspectJ提供了比Spring AOP 更强大的功能。
-</code></pre><p><strong>数据访问/集成模块：模块包括了JDBC、ORM、OXM、JMS和事务管理</strong><br></p>
-<pre><code>1.事务模块：该模块用于Spring管理事务，只要是Spring管理对象都能得到Spring管理事务的好处，无需在代码中进行事务控制了，而且支持编程和声明性的事物管理。
-
-2.JDBC模块：提供了一个JBDC的样例模板，使用这些模板能消除传统冗长的JDBC编码还有必须的事务控制，而且能享受到Spring管理事务的好处。
-
-3.ORM模块：提供与流行的“对象-关系”映射框架的无缝集成，包括Hibernate、JPA、Ibatiss等。而且可以使用Spring事务管理，无需额外控制事务。
-
-4.OXM模块：提供了一个对Object/XML映射实现，将java对象映射成XML数据，或者将XML数据映射成java对象，Object/XML映射实现包括JAXB、Castor、XMLBeans和XStream。
-
-5.JMS模块：用于JMS(Java Messaging Service)，提供一套 “消息生产者、消息消费者”模板用于更加简单的使用JMS，JMS用于用于在两个应用程序之间，或分布式系统中发送消息，进行异步通信。
-
-6.Web/Remoting模块：Web/Remoting模块包含了Web、Web-Servlet、Web-Struts、Web-Porlet模块。
-
-7.Web模块：提供了基础的web功能。例如多文件上传、集成IoC容器、远程过程访问（RMI、Hessian、Burlap）以及Web Service支持，并提供一个RestTemplate类来提供方便的Restful services访问。
-
-8.Web-Servlet模块：提供了一个Spring MVC Web框架实现。Spring MVC框架提供了基于注解的请求资源注入、更简单的数据绑定、数据验证等及一套非常易用的JSP标签，完全无缝与Spring其他技术协作。
-
-9.Web-Struts模块：提供了与Struts无缝集成，Struts1.x 和Struts2.x都支持
-
-10.Test模块：Spring支持Junit和TestNG测试框架，而且还额外提供了一些基于Spring的测试功能，比如在测试Web框架时，模拟Http请求的功能。
-</code></pre><p><strong>典型应用场景</strong><br></p>
-<pre><code>在Web应用程序应用场景中，典型的三层架构：数据模型层实现域对象；数据访问层实现数据访问；逻辑层实现业务逻辑；web层提供页面展示；所有这些层组件都由Spring进行管理，享受到Spring事务管理、AOP等好处，而且请求唯一入口就是DispachterServlet，它通过把请求映射为相应web层组件来实现相应请求功能。
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/TCP/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/TCP/" itemprop="url">TCP</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:33:16+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/计算机网络/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机网络</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  2,254
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  10
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>我们想要进行网络编程，首先需要服务端通过ServerSocket对某一个端口进行监听。通过accept()来判断是否有客户端与之相连，若成功连上，则通过readline()和println()函数来进行数据的发送和接收，从而实现网络编程。</p>
-<h4 id="网络通信协议"><a href="#网络通信协议" class="headerlink" title="网络通信协议"></a>网络通信协议</h4><pre><code>HTTP协议：超文本传输协议，互联网应用最广泛的。
-
-FTP协议：文件传输协议。
-
-SMTP协议：简单邮件传输协议。
-
-TCP协议（Transmission Control Protocol 传输控制协议）：面向连接的、可靠的、基于字节流的传输通信协议。
-
-UDP协议（User Datagram Protocol用户数据报协议）：无连接的协议，在传输数据之前，客户端和服务器并不建立和维护连接，效率很快。
-</code></pre><h4 id="Socket"><a href="#Socket" class="headerlink" title="Socket"></a>Socket</h4><p>通信链路的端点就被称为“套接字”(英文名Socket)，是提供给应用程序的接口。这里因为Socket的底层机制复杂，Java平台提供了一些简单的API，可以更简单有效的使用Socket开发而无需了解底层机制。</p>
-<p><strong>1.Socket分类</strong><br></p>
-<pre><code>1.流式套接字（SOCK_ STREAM）【面向连接、可靠的数据传输服务（对应服务是TCP链接）】
-
-2.数据报式套接字（SOCK_ DGRAM）【无连接服务（数据报似的，基于UDP）更高效】
-
-3.原始式套接字(SOCK_ RAW)
-</code></pre><blockquote>
-<p>提示：基于TCP协议的Socket网络通信，用来实现双向安全连接网络通信。Socket通信模型，表示在进行网络通信时，Socket需要借助数据流来完成数据的传递工作。</p>
-</blockquote>
-<p><strong>2.Socket网络编程步骤</strong><br></p>
-<pre><code>1.服务端
-    1.创建ServerSocket(…)对象，绑定某一端口号。
-    2.通过accept()侦听方法，阻塞，等待对方连接。
-    3.通过输入、输出流传递信息【客户端是输出输入，服务器是输入输出】。
-    4.关闭释放资源。
-
-2.客户端
-    1.创建Socket(&quot;…&quot;,…)要指定服务器的IP地址，也要指定端口号。
-    2.发送请求并被accept()侦听到，并建立连接。
-    3.通过输入、输出流传递信息【客户端是输出输入，服务器是输入输出】。
-    4.关闭释放资源。
-</code></pre><h4 id="Socket编程"><a href="#Socket编程" class="headerlink" title="Socket编程"></a>Socket编程</h4><p><strong>1.直接传参的方式</strong><br></p>
-<pre><code>1.客户端程序
-
-    package cn.edu.xidian.see.*.Inet;
-    import java.io.*;
-    import java.net.Socket;
-    import java.net.UnknownHostException;
-
-    public class LogicClient {
-        public static void main(String[] args) {
-            //创建一个客户端的Socket
-            try {
-                Socket socket = new Socket(&quot;localhost&quot;,5000);
-                //通过输出流发送请求
-                //直接输出数据流
-                String info = &quot;用户名：樱桃小丸子；密码：123456&quot;;
-                OutputStream os = socket.getOutputStream();
-                //打散成数据数组
-                byte[] infos = info.getBytes();
-                os.write(infos);
-                //关闭输出流，这是一个半关闭
-                socket.shutdownOutput();
-                //通过输入流接收服务器给我的响应
-                InputStream is = socket.getInputStream();
-                BufferedReader br = new BufferedReader(new InputStreamReader(is));
-                String reply;
-                while((reply = br.readLine())!=null){
-                    System.out.println(&quot;服务器：&quot;+reply);
-                }
-                //释放资源
-                os.close();
-                socket.close();
-            } catch (UnknownHostException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-    }
-
-2.服务端程序
-
-    package cn.edu.xidian.see.*.Inet;
-    import java.io.*;
-    import java.net.ServerSocket;
-    import java.net.Socket;
-
-    public class LogicServicer {
-        public static void main(String[] args) {
-            try {
-                //接收客户端请求
-                //创建一个Socket
-                ServerSocket serverSocket = new ServerSocket(5000);
-                //使用accept()侦听并接收到此ServerSocket的连接
-                Socket socket = serverSocket.accept();//侦听到之前都是阻塞的
-                //获得输入流，获得用户的请求
-                //数据流输入
-                InputStream is = socket.getInputStream();
-                // BufferedReader读取字符流
-                BufferedReader br = new BufferedReader(new InputStreamReader(is));
-                String info;
-                // BufferedReader的方法可以一行一行的读
-                while((info = br.readLine())!=null){
-                    System.out.println(&quot;客户端：&quot;+info);
-                }
-                //给客户端一个响应
-                String reply = &quot;欢迎登陆&quot;;
-                //通过输出流将响应发送回给客户端
-                OutputStream os = socket.getOutputStream();
-                os.write(reply.getBytes());
-                //释放相应资源
-                os.close();
-                br.close();
-                is.close();
-                socket.close();
-                serverSocket.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-</code></pre><p><strong>2.通过用户对象传参的方式</strong><br></p>
-<pre><code>1.用户类程序
-
-    package cn.edu.xidian.see.*.Inet.user;
-    import java.io.Serializable;
-    public class User implements Serializable {
-        private String username;
-        private String password;
-
-        public User() {
-        }
-
-        public User(String username, String password) {
-            this.username = username;
-            this.password = password;
-        }
-
-        public String getUsername() {
-            return username;
-        }
-
-        public void setUsername(String username) {
-            this.username = username;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-    }
-
-2.客户端程序
-
-    package cn.edu.xidian.see.*.Inet.user;
-    import java.io.*;
-    import java.net.Socket;
-    import java.net.UnknownHostException;
-
-    public class LogicClient {
-        public static void main(String[] args) {
-            //创建一个客户端的Socket
-            try {
-                Socket socket = new Socket(&quot;localhost&quot;,5000);
-                //通过输出流发送请求
-                //将对象序列化变成输出流
-                User user = new User(&quot;樱桃小丸子&quot;,&quot;123456&quot;);
-                OutputStream os = socket.getOutputStream();
-                ObjectOutputStream oos = new ObjectOutputStream(os);
-                oos.writeObject(user);
-                //关闭输出流，这是一个半关闭
-                socket.shutdownOutput();
-                //通过输入流接收服务器给我的响应
-                InputStream is = socket.getInputStream();
-                BufferedReader br = new BufferedReader(new InputStreamReader(is));
-                String reply;
-                while((reply = br.readLine())!=null){
-                    System.out.println(&quot;服务器：&quot;+reply);
-                }
-                //释放资源
-                os.close();
-                oos.close();
-                socket.close();
-            } catch (UnknownHostException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-3.服务端程序
-
-    package cn.edu.xidian.see.*.Inet.user;
-
-    import java.io.IOException;
-    import java.io.InputStream;
-    import java.io.ObjectInputStream;
-    import java.io.OutputStream;
-    import java.net.ServerSocket;
-    import java.net.Socket;
-
-    public class LogicServicer {
-        public static void main(String[] args) {
-            try {
-                //接收客户端请求
-                //创建一个Socket
-                ServerSocket serverSocket = new ServerSocket(5000);
-                //使用accept()侦听并接收到此ServerSocket的连接
-                Socket socket = serverSocket.accept();//侦听到之前都是阻塞的
-                //获得输入流，获得用户的请求
-                //将对象反序列化变成输入流
-                InputStream is = socket.getInputStream();
-                ObjectInputStream ois = new ObjectInputStream(is);
-                User user = (User)ois.readObject();
-                System.out.println(&quot;客户端：&quot;+user.getUsername()+&quot;-&quot;+user.getPassword());
-                //给客户端一个响应
-                String reply = &quot;欢迎登陆&quot;;
-                //通过输出流将响应发送回给客户端
-                OutputStream os = socket.getOutputStream();
-                os.write(reply.getBytes());
-                //释放相应资源
-                ois.close();
-                os.close();
-                is.close();
-                socket.close();
-                serverSocket.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        }
-    }
-</code></pre><blockquote>
-<p>提示：关于如何实现多客户请求，采用多线程的方式，然后写一个专门负责监听的应用主服务程序，以及一个专门负责处理请求的线程程序。</p>
-</blockquote>
-<h4 id="服务器与客户端的多线程连接-服务器与客户端可以无限对话"><a href="#服务器与客户端的多线程连接-服务器与客户端可以无限对话" class="headerlink" title="服务器与客户端的多线程连接(服务器与客户端可以无限对话)"></a>服务器与客户端的多线程连接(服务器与客户端可以无限对话)</h4><pre><code>1.服务器
-
-    1.一直监听客户请求。
-    2.一旦监听到有客户请求，立即创建一个线程，开启线程。
-
-1.1 程序实现
-
-    package cn.edu.xidian.see.*.Inet.ThreadUser;
-
-    import java.io.IOException;
-    import java.net.ServerSocket;
-    import java.net.Socket;
-
-    public class LogicServicer {
-        //一直监听客户请求
-        //一旦监听到有客户请求，立即创建一个线程，开启线程
-        public static void main(String[] args) {
-            try {
-                //接收客户端请求
-                //创建一个Socket
-                ServerSocket serverSocket = new ServerSocket(8848);
-                System.out.println(&quot;启动服务器&quot;);
-                //使用accept()侦听并接收到此ServerSocket的连接
-                //一直监听客户请求
-                while(true){
-                    Socket socket = serverSocket.accept();//侦听到之前都是阻塞的
-                    System.out.println(&quot;已连接&quot;);
-                    //创建一个和该客户端响应的线程
-                    LogicThread logicThread = new LogicThread(socket);
-                    logicThread.start();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-2.线程
-
-    1.接收客户请求，基于客户的一个响应(这过程在之前是服务器要做的事情)。
-    2.线程构造方法中绑定客户端的Socket。
-
-2.1 程序实现
-
-    package cn.edu.xidian.see.*.Inet.ThreadUser;
-
-    import java.io.*;
-    import java.net.Socket;
-    import java.util.Scanner;
-
-    public class LogicThread extends Thread{
-        //接收客户请求，基于客户一个响应(这在之前是服务器所需要做的事情)
-        //线程构造方法中去绑定客户端的Socket
-
-        private Socket socket;
-
-        public LogicThread(Socket socket) {
-            this.socket = socket;
-        }
-
-        //接收客户请求，基于客户的一个响应
-        public void run(){
-            InputStream is = null;
-            BufferedReader br = null;
-            PrintWriter pw = null;
-            OutputStream os = null;
-            try {
-                Scanner sc = new Scanner(System.in);
-                //获得输入流，获得用户的请求
-                while (true){
-                    is = socket.getInputStream();
-                    br = new BufferedReader(new InputStreamReader(is));
-                    System.out.println(socket.getInetAddress() + &quot;说&quot; + br.readLine());
-
-                    //给客户端一个响应，通过输出流将响应发送回客户端
-                    String reply = sc.next();
-                    os = socket.getOutputStream();
-                    pw = new PrintWriter(os);
-                    pw.println(reply);
-                    pw.flush();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }finally {
-                try {
-                    pw.close();
-                    os.close();
-                    br.close();
-                    is.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-
-3.客户端
-
-    1.发送请求到服务器。
-    2.接收服务器的响应。
-
-3.1 程序实现
-
-    package cn.edu.xidian.see.*.Inet.ThreadUser;
-
-    import java.io.*;
-    import java.net.Socket;
-    import java.net.UnknownHostException;
-    import java.util.Scanner;
-
-    public class LogicClient {
-        //发送请求到服务器
-        //接收服务器的响应
-        public static void main(String[] args) {
-            Scanner input = new Scanner(System.in);
-            OutputStream os=null;
-            PrintWriter pw=null;
-            InputStream is=null;
-            BufferedReader br=null;
-            //创建一个客户端的Socket
-            try {
-                Socket socket = new Socket(&quot;localhost&quot;,8848);
-                System.out.println(&quot;客户端已启动&quot;);
-                //通过输出流发送请求
-                while(true){
-                    String info =input.next();
-                    os = socket.getOutputStream();
-                    pw = new PrintWriter(os);
-                    pw.println(info);
-                    pw.flush();
-                    //通过输入流接收服务器给我的响应
-                    is = socket.getInputStream();
-                    br = new BufferedReader(new InputStreamReader(is));
-                    System.out.println(&quot;服务器：&quot;+br.readLine());
-                }
-                //释放资源
-            } catch (UnknownHostException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }finally{
-                try {
-                    os.close();
-                    pw.close();
-                    br.close();
-                    is.close();
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-</code></pre><h4 id="使用代理服务器"><a href="#使用代理服务器" class="headerlink" title="使用代理服务器"></a>使用代理服务器</h4><p><strong>1.代理的作用</strong><br></p>
-<pre><code>1.出于安全原因防止远程主机了解到本地网络配置的秘密细节。
-
-2.为了通过滤出站请求，限制可以浏览的网络。
-
-3.出于性能考虑，运行多个用户从本地缓存获取同样的一些经常访问的文档，而不是重复从远程主机下载。
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/UDP/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/UDP/" itemprop="url">UDP</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:34:13+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/计算机网络/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机网络</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1,120
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  5
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h2><p>[TOC]</p>
-<h3 id="基于UDP协议的Socket编程"><a href="#基于UDP协议的Socket编程" class="headerlink" title="基于UDP协议的Socket编程"></a>基于UDP协议的Socket编程</h3><h4 id="1-基于UDP协议的Socket网络编程步骤"><a href="#1-基于UDP协议的Socket网络编程步骤" class="headerlink" title="1. 基于UDP协议的Socket网络编程步骤"></a>1. 基于UDP协议的Socket网络编程步骤</h4><pre><code>1.利用 DatagramPacket 对象封装数据报
-
-    DatagramPacket类将数据字节填充到UDP数据包中，是数据报
-
-2.利用 DatagramSocket 对象发送数据报
-
-    DatagramSocket类收发数据报。
-
-3.利用 DatagramSocket 对象接收数据报
-
-4.利用 DatagramPacket 对象处理数据报
-</code></pre><blockquote>
-<p>提示：DatagramPacket类，封装了数据报的数据、数据长度、目标地址和目标端口。DatagramSocket类，接收和发送DatagramPacket对象封装好的数据报。</p>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>提示：UDP的这种职责划分与TCP使用的Socket与ServerSocket不一样。1. UDP没有两台主机间唯一连接的概念。一个Socket会收发所有指向指定端口的数据，不需要知道对方是哪一个远程主机。一个 DatagramSocket 可以从多个独立主机收发数据。与TCP不一样的是，UDP的Socket不专用与一个连接。</p>
-</blockquote>
-</blockquote>
-<h4 id="2-基于UDP协议的Socket通信"><a href="#2-基于UDP协议的Socket通信" class="headerlink" title="2. 基于UDP协议的Socket通信"></a>2. 基于UDP协议的Socket通信</h4><p>这一过程可以类比与快递礼物的收发过程，礼物-数据，包裹-DatagramPacket，快递点-DatagramSocket，寄礼物-send()，收礼物-receive()。</p>
-<h5 id="2-1-基于UDP协议的Socket通信-服务端"><a href="#2-1-基于UDP协议的Socket通信-服务端" class="headerlink" title="2.1 基于UDP协议的Socket通信(服务端)"></a>2.1 基于UDP协议的Socket通信(服务端)</h5><pre><code>package cn.edu.xidian.see.*.Inet.UDPSocket;
-
-import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.SocketAddress;
-import java.net.SocketException;
-
-public class LogicServicer {
-    public static void main(String[] args) {
-        byte[] infos = new byte[1024];
-        DatagramPacket dp = new DatagramPacket(infos,infos.length);
-        //快递点
-        DatagramSocket socket=null;
-        try {
-            socket = new DatagramSocket(5000);
-            //在快递点取礼物
-            socket.receive(dp);
-            //拆礼物
-            String info = new String(dp.getData(),0,dp.getData().length);
-            System.out.println(&quot;客户端说：&quot;+info);
-            //给客户端一个响应
-            String reply =&quot;一件羽绒服&quot;;
-            byte[] reply2 = reply.getBytes();
-            //客户端地址
-            SocketAddress sa = dp.getSocketAddress();
-            //打开一个包裹
-            DatagramPacket dp1 = new DatagramPacket(reply2,reply2.length,sa);
-            //寄出去
-            socket.send(dp1);
-        } catch (SocketException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }finally{
-            socket.close();
-        }
-    }
-}
-</code></pre><h5 id="2-2-基于UDP协议的Socket通信-客户端"><a href="#2-2-基于UDP协议的Socket通信-客户端" class="headerlink" title="2.2 基于UDP协议的Socket通信(客户端)"></a>2.2 基于UDP协议的Socket通信(客户端)</h5><pre><code>package cn.edu.xidian.see.*.Inet.UDPSocket;
-
-import java.io.IOException;
-import java.net.*;
-
-public class LogicClient {
-    public static void main(String[] args) {
-        //买礼物
-        String info=&quot;心形巧克力！&quot;;
-        byte[] infos = info.getBytes();
-        //对方地址和邮编（端口号）
-        InetAddress ia;
-        //快递点
-        DatagramSocket socket = null;
-        try {
-            //localhost = 127.0.0.1 回环地址
-            ia = InetAddress.getByName(&quot;localhost&quot;);
-            //包裹包装礼物
-            DatagramPacket dp = new DatagramPacket(infos, infos.length, ia, 5000);
-            socket = new DatagramSocket();
-            //通过快递点往外寄出礼物
-            try {
-                socket.send(dp);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            //接收服务器的响应
-            byte[] replys = new byte[1024];
-            DatagramPacket dp1 = new DatagramPacket(replys,replys.length);
-            socket.receive(dp1);
-            String reply = new String(dp1.getData(),0,dp.getData().length);
-            System.out.println(&quot;服务器的响应：&quot;+reply);
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        } catch (SocketException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }finally{
-            socket.close();
-        }
-    }
-}
-</code></pre><h3 id="DatagramPacket-类"><a href="#DatagramPacket-类" class="headerlink" title="DatagramPacket 类"></a>DatagramPacket 类</h3><h3 id="DatagramSocket-类"><a href="#DatagramSocket-类" class="headerlink" title="DatagramSocket 类"></a>DatagramSocket 类</h3><h3 id="DatagramChannel"><a href="#DatagramChannel" class="headerlink" title="DatagramChannel"></a>DatagramChannel</h3><p>DatagramChannel类用与非阻塞UDP应用程序，与SocketChannel和ServerSocketChannel用于非阻塞TCP应用程序一样。类似于SocketChannel和ServerSocketChannel，DatagramChannel是SelectableChannel的子类，可以注册到一个Selector。</p>
-<p>在UDP中，一个数据报Socket可以处理多个客户端的输入和输出请求。而DatagramChannel类所增加的就是能够以非阻塞的方式做到这一点。这样的话如果网络没有立即准备好收发数据，这些方法可以迅速返回。</p>
-<h4 id="1-打开socket"><a href="#1-打开socket" class="headerlink" title="1. 打开socket"></a>1. 打开socket</h4><pre><code>//1. 创建通道
-DatagramChannel channel = DatagramChannel.open();
-
-//2. 监听通道的地址
-SocketAddress address = new InetSocketAddress(3122);
-
-//3. 监听连接
-DatagramSocket socket = channel.socket();
-
-//4. 绑定端口
-socket.bind(address);
-</code></pre><h4 id="2-接收"><a href="#2-接收" class="headerlink" title="2. 接收"></a>2. 接收</h4><p>receive()方法从通道读取一个数据报包，放在一个ByteBuffer中。返回这个包的主机地址。</p>
-<pre><code>public SocketAddress receive(ByteBuffer dst) throws IOException;
-</code></pre><p>如果通道是阻塞的话，上面方法在读取到包之前不会返回。如果通道是非阻塞的话，没有包可以在读取的情况下该方法立即返回null。</p>
-<h4 id="3-发送"><a href="#3-发送" class="headerlink" title="3. 发送"></a>3. 发送</h4><p>send()方法将一个数据报从ByteBuffer写入通道，要写到第二个参数指定的地址。</p>
-<pre><code>public int send(ByteBuffer src, SocketAddress target) throws IOException;
-</code></pre><blockquote>
-<p>注意：如果希望向多个客户端发送相同的数据，可以重用源ByteBuffer。不过在之前需要将其回倒（rewind/flip()）。</p>
-</blockquote>
-<h4 id="4-连接"><a href="#4-连接" class="headerlink" title="4. 连接"></a>4. 连接</h4><p>我们在打开一个数据通道之后，能够通过connect()方法将它连接到一个特定的远程地址。</p>
-<pre><code>SocketAddress address = new InetSocketAddress();
-channel.connect(address);
-</code></pre><h4 id="5-读取"><a href="#5-读取" class="headerlink" title="5. 读取"></a>5. 读取</h4><h4 id="6-写入"><a href="#6-写入" class="headerlink" title="6. 写入"></a>6. 写入</h4><p>选择TCP通道与选择数据报通道之间有一个主要区别。因为数据报通道实际上是无连接的（尽管有connect()方法），所以需要注意传输何时结束何时关闭。</p>
-<h4 id="7-关闭"><a href="#7-关闭" class="headerlink" title="7. 关闭"></a>7. 关闭</h4><p>在结束操作时关闭通道，释放其占用的端口和其它资源。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/URLConnection/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/URLConnection/" itemprop="url">URLConnection</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:34:54+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/网络编程/" itemprop="url" rel="index">
-                    <span itemprop="name">网络编程</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  349
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="URLConnection"><a href="#URLConnection" class="headerlink" title="URLConnection"></a>URLConnection</h2><p>[TOC]</p>
-<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>URLConnection类是抽象类，表示指向URL指定资源的活动连接。URLConnection 可以检查服务器发送的首部，并相应的做出响应。它可以设置客户端请求使用的首部字段。</p>
-<h4 id="读取服务器数据"><a href="#读取服务器数据" class="headerlink" title="读取服务器数据"></a>读取服务器数据</h4><p>URLConnection对象从一个URL获取数据的步骤：</p>
-<pre><code>1. 构造一个URL对象
-
-2. 调用这个URL对象的openConnection()方法，获取对应URL的URLConnection对象
-
-3. 调用这个URLConnection的getInputStream()方法
-
-4. 使用通常的流api读取输入流
-</code></pre><blockquote>
-<p>提示：URL类的openStream()方法只是从它自己的URLConnection对象返回一个InputStream。输出也是如此。</p>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>URL类于URLConnection类的区别：1. URLConnection类提供对HTTP首部的访问。 2. URLConnection可以配置发送给服务器的请求参数。 3. URLConnection除了读取服务器数据外，还可以向服务器写入数据。</p>
-</blockquote>
-</blockquote>
-<h4 id="读取首部"><a href="#读取首部" class="headerlink" title="读取首部"></a>读取首部</h4><p>HTTP服务器每个响应前面的首部中提供大量信息。</p>
-<h4 id="向服务器写入数据"><a href="#向服务器写入数据" class="headerlink" title="向服务器写入数据"></a>向服务器写入数据</h4><p>向URLConnection写入数据。getOutputStream()方法返回一个OutputStream，可以用来写入数据传给服务器。</p>
-<pre><code>public OutputStream getOutputStream();
-</code></pre><p>由于URLConnection默认情况下不允许输出，所以在请求输出流之前必须调用setDoOutput(true)。将一个 http URL 的 doOutput()方法设置为true时，请求方法由get变成post。</p>
-<h4 id="HTTPURLConnection"><a href="#HTTPURLConnection" class="headerlink" title="HTTPURLConnection"></a>HTTPURLConnection</h4>
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/WordUtil/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/WordUtil/" itemprop="url">word - util</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:35:53+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/util/" itemprop="url" rel="index">
-                    <span itemprop="name">util</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  151
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>这个工具的目的在于下载.doc文档</p>
-<pre><code>package cn.edu.xidian.see.util;
-
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletResponse;
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.InputStream;
-
-/**
- * Windows Word
- * Created by llq on 2017/2/21.
- */
-public class WordUtil {
-
-    public static void download(HttpServletResponse response, InputStream in,
-                                String downloadFileName) throws Exception {
-        BufferedInputStream bis;
-        BufferedOutputStream bos;
-
-        response.reset();
-        response.setContentType(&quot;application/msword;charset=utf-8&quot;);
-        response.setHeader(&quot;Content-Disposition&quot;, &quot;attachment;filename=&quot;
-                + new String((downloadFileName + &quot;.doc&quot;).getBytes(), &quot;iso-8859-1&quot;));
-        ServletOutputStream out = response.getOutputStream();
-
-        bis = new BufferedInputStream(in);
-        bos = new BufferedOutputStream(out);
-        byte[] buff = new byte[1024];
-        int readlen = 0;
-        while ((readlen = bis.read(buff, 0, buff.length)) != -1) {
-            bos.write(buff, 0, readlen);
-        }
-
-        bis.close();
-        bos.close();
-    }
-
-}
-</code></pre>
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/第3章 Spring - AOP 续二/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -3560,7 +2323,7 @@ public class WordUtil {
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -3612,7 +2375,7 @@ public class WordUtil {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -3623,7 +2386,7 @@ public class WordUtil {
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -3634,7 +2397,7 @@ public class WordUtil {
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -3676,12 +2439,6 @@ public class WordUtil {
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -3743,7 +2500,7 @@ public class WordUtil {
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

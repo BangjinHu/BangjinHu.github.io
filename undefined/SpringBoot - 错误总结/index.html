@@ -160,7 +160,7 @@
 <meta property="og:site_name" content="BangjinHu&#39;s Blog">
 <meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. 1.错误：java.lang.UnsatisfiedLinkError: F:\Software\Apache-Tomcat\apache-tomcat-7.0.90\bin\tcnative-1.dll: Can’t load AMD 64-bit .dll on a IA 32-bit platform解决：直接在网上下载一个 tcnative-">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-29T03:30:40.700Z">
+<meta property="og:updated_time" content="2020-03-29T23:59:51.935Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot 错误总结">
 <meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 1.错误：java.lang.UnsatisfiedLinkError: F:\Software\Apache-Tomcat\apache-tomcat-7.0.90\bin\tcnative-1.dll: Can’t load AMD 64-bit .dll on a IA 32-bit platform解决：直接在网上下载一个 tcnative-">
@@ -419,8 +419,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:30:40+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T07:59:51+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -509,6 +509,7 @@
         <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
 <h5 id="1-错误：java-lang-UnsatisfiedLinkError-F-Software-Apache-Tomcat-apache-tomcat-7-0-90-bin-tcnative-1-dll-Can’t-load-AMD-64-bit-dll-on-a-IA-32-bit-platform"><a href="#1-错误：java-lang-UnsatisfiedLinkError-F-Software-Apache-Tomcat-apache-tomcat-7-0-90-bin-tcnative-1-dll-Can’t-load-AMD-64-bit-dll-on-a-IA-32-bit-platform" class="headerlink" title="1.错误：java.lang.UnsatisfiedLinkError: F:\Software\Apache-Tomcat\apache-tomcat-7.0.90\bin\tcnative-1.dll: Can’t load AMD 64-bit .dll on a IA 32-bit platform"></a>1.错误：java.lang.UnsatisfiedLinkError: F:\Software\Apache-Tomcat\apache-tomcat-7.0.90\bin\tcnative-1.dll: Can’t load AMD 64-bit .dll on a IA 32-bit platform</h5><p>解决：直接在网上下载一个 tcnative-1.dll 64位的复制到tomcat/bin目录下即可，这里是因为两者冲突造成。</p>
+<a id="more"></a>
 <h5 id="2-错误：Failed-to-configure-a-DataSource-‘url’-attribute-is-not-specified-and-no-embedded-datasource-could-be-configured"><a href="#2-错误：Failed-to-configure-a-DataSource-‘url’-attribute-is-not-specified-and-no-embedded-datasource-could-be-configured" class="headerlink" title="2.错误：Failed to configure a DataSource: ‘url’ attribute is not specified and no embedded datasource could be configured."></a>2.错误：Failed to configure a DataSource: ‘url’ attribute is not specified and no embedded datasource could be configured.</h5><p>解决：排除此类的autoconfig。启动以后就可以正常运行。@SpringBootApplication(exclude= {DataSourceAutoConfiguration.class})</p>
 <p>…</p>
 <h5 id="3-错误：Field-userMapper-in-com-shop-service-impl-UserServiceImpl-required-a-bean-of-type-‘com-shop-mapper-UserMapper’-that-could-not-be-found"><a href="#3-错误：Field-userMapper-in-com-shop-service-impl-UserServiceImpl-required-a-bean-of-type-‘com-shop-mapper-UserMapper’-that-could-not-be-found" class="headerlink" title="3.错误：Field userMapper in com.shop.service.impl.UserServiceImpl required a bean of type ‘com.shop.mapper.UserMapper’ that could not be found."></a>3.错误：Field userMapper in com.shop.service.impl.UserServiceImpl required a bean of type ‘com.shop.mapper.UserMapper’ that could not be found.</h5><p>解决：这里是因为注解未找到对一个的mapper，所以报错，去inspections取消对应的提示。</p>
@@ -543,7 +544,7 @@ public SqlSessionFactory sqlSessionFactory() throws Exception {
   <p><span>本文标题:</span>SpringBoot 错误总结</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 11:30:40</p>
+  <p><span>最后更新:</span>2020年03月30日 - 07:59:51</p>
   <p><span>原始链接:</span><a href="/undefined/SpringBoot - 错误总结/" title="SpringBoot 错误总结">http://bangjinhu.github.io/undefined/SpringBoot - 错误总结/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/SpringBoot - 错误总结/"  aria-label="复制成功！"></i></span>
   </p>
@@ -644,8 +645,8 @@ public SqlSessionFactory sqlSessionFactory() throws Exception {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/undefined/Spring/" rel="next" title="Spring">
-                <i class="fa fa-chevron-left"></i> Spring
+              <a href="/undefined/SpringBoot 配置 Redis/" rel="next" title="SpringBoot 配置 Redis">
+                <i class="fa fa-chevron-left"></i> SpringBoot 配置 Redis
               </a>
             
           </div>
@@ -654,8 +655,8 @@ public SqlSessionFactory sqlSessionFactory() throws Exception {
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/undefined/Spring 容器高级主题/" rel="prev" title="Spring源码 - 主题">
-                Spring源码 - 主题 <i class="fa fa-chevron-right"></i>
+              <a href="/undefined/Spring 解析/" rel="prev" title="Spring 源码解析">
+                Spring 源码解析 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -765,7 +766,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -776,7 +777,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -787,7 +788,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -829,12 +830,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -912,7 +907,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

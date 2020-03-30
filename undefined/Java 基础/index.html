@@ -1,0 +1,1677 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/site.jpg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java基础," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="BangjinHu's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. Java开发前奏[TOC] 计算机基础电子计算机，俗称电脑，是一种能够按照程序运行，自动、高速处理海量数据的现代化智能电子设备。由硬件和软件所组成，没有安装任何软件的计算机称为裸机。">
+<meta name="keywords" content="Java基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java开发前奏">
+<meta property="og:url" content="http://bangjinhu.github.io/undefined/Java 基础/index.html">
+<meta property="og:site_name" content="BangjinHu&#39;s Blog">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. Java开发前奏[TOC] 计算机基础电子计算机，俗称电脑，是一种能够按照程序运行，自动、高速处理海量数据的现代化智能电子设备。由硬件和软件所组成，没有安装任何软件的计算机称为裸机。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-03-30T00:11:24.086Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java开发前奏">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. Java开发前奏[TOC] 计算机基础电子计算机，俗称电脑，是一种能够按照程序运行，自动、高速处理海量数据的现代化智能电子设备。由硬件和软件所组成，没有安装任何软件的计算机称为裸机。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://bangjinhu.github.io/undefined/Java 基础/"/>
+
+
+
+
+
+  <title>Java开发前奏 | BangjinHu's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    
+    <a href="https://github.com/BangjinHu"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">BangjinHu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">让优秀成为习惯，让知识成为信仰</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            本站搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Java 基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Java开发前奏</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:11:24+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java基础/" itemprop="url" rel="index">
+                    <span itemprop="name">Java基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4,131
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  15
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="Java开发前奏"><a href="#Java开发前奏" class="headerlink" title="Java开发前奏"></a>Java开发前奏</h2><p>[TOC]</p>
+<h3 id="计算机基础"><a href="#计算机基础" class="headerlink" title="计算机基础"></a>计算机基础</h3><p>电子计算机，俗称电脑，是一种能够按照程序运行，自动、高速处理海量数据的现代化智能电子设备。由硬件和软件所组成，没有安装任何软件的计算机称为裸机。<br><a id="more"></a></p>
+<h3 id="硬件和软件"><a href="#硬件和软件" class="headerlink" title="硬件和软件"></a>硬件和软件</h3><h4 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h4><p>CPU是一台计算机的运算核心和控制核心。其功能主要是解释计算机指令以及处理计算机软件中的数据。</p>
+<p>CPU由运算器、控制器、寄存器、高速缓存及实现它们之间联系的数据、控制及状态的总线构成。作为整个系统的核心，CPU 也是整个系统最高的执行单元，因此CPU已成为决定电脑性能的核心部件，很多用户都以它为标准来判断电脑的档次。</p>
+<p>CPU的主频,即CPU内核工作的时钟频率（CPU Clock Speed）。该时钟速度越快，时间段内执行的指令就越多， 目前酷睿是2G-3G（1G是10000Mhz）例如，2MHz（200万次/秒），3GHz（三十亿次/秒）。</p>
+<p>内存是数据与CPU进行沟通的桥梁。计算机中所有程序的运行都是在内存中进行的，内存(Memory)也被称为内存储器，其作用是用于暂时存放CPU中的运算数据，以及与硬盘等外部存储器交换的数据。</p>
+<p>存储设备：内存不能长久保存数据（非ROM），断电时信息就丢失，程序和数据都会被保存在存储设备中（例如硬盘），当程序和数据需要使用时，再加载进内存，注意：内存读取和写入的速度要比存储设备快的多。</p>
+<blockquote>
+<p>提示：存储设备主要有：磁盘驱动器，光盘驱动器（cd dvd）USB闪存（U盘）。</p>
+</blockquote>
+<h4 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h4><p>软件的概述：按照一定顺序组织的计算机数据与指令的集合。</p>
+<pre><code>软件 = 数据+指令+文档
+
+1.系统软件
+    例如：Widows xp  Linux Unix 
+
+2.应用软件
+    例如：QQ、WPS、Photoshop、、微软的Office
+软件开发：制作软件。
+软件的本质 ：提高人与计算机交流效率，方便人与机器交互。
+</code></pre><h3 id="人机交互"><a href="#人机交互" class="headerlink" title="人机交互"></a>人机交互</h3><pre><code>1.图形化界面：简单直观，容易操作，用户的体验好。
+
+2.dos命令交互方式：需要有一个控制台，输入特定的指令，让计算机完成一些操作。较为麻烦，需要记录住一些命令,而且只能完成一些比较单一的功能。
+    控制台打开的步骤：开始--&gt;所有程序---&gt;附件--&gt;命令行提示符
+    或者开始-&gt;输入cmd即可。
+</code></pre><h3 id="常见的DOS命令"><a href="#常见的DOS命令" class="headerlink" title="常见的DOS命令"></a>常见的DOS命令</h3><pre><code>盘符：进入指定的盘符下。
+dir: 列出当前目录下的文件以及文件夹
+md : 创建目录 
+rd : 删除目录    注意：rd不能删除非空的文件夹，而且只能用于删除文件夹。
+cd : 进入指定目录
+cd.. : 退回到上一级目录
+cd \ : 退回到根目录
+echo &quot;hello java&quot;&gt;a.txt  写入文本到指定文件  
+type a.txt 显示文件内容命令
+del : 删除文件    注意：不能删除文件夹，只能删除文件。
+exit : 退出dos命令行
+cls  : 通知计算机将当前的命令清空
+* :  是通配符
+方向键上下是找回上次你写过的命令
+</code></pre><h3 id="Java虚拟机（JVM）"><a href="#Java虚拟机（JVM）" class="headerlink" title="Java虚拟机（JVM）"></a>Java虚拟机（JVM）</h3><p>Java Virtual Machine 一个软件模拟的计算机。Java源程序想象成我们的C源程序，Java源程序编译后生成的字节码（.class）就相当于C源程序编译后的二进制可执行文件。JVM虚拟机相当于计算机系统（操作系统+硬件环境），Java解释器相当于CPU。</p>
+<p>.exe文件直接在windows操作系统下运行，在CPU上运行的是机器码（.exe文件）</p>
+<p>.class字节码文件是运行在JVM虚拟机下的，在Java解释器上运行的是Java字节码。<br>Java解释器相当于运行Java字节码的“CPU”，但该“CPU”不是通过硬件实现的，而是用软件实现的。Java解释器实际上就是特定的平台下的一个应用程序。</p>
+<p>只要实现了特定平台下的解释器程序，Java字节码就能通过解释器程序在该平台下运行，这是Java跨平台的根本。当前，并不是在所有的平台 下都有相应Java解释器程序，这也是Java并不能在所有的平台下都能运行的原因，它只能在已实现了Java解释器程序的平台下运行。</p>
+<hr>
+<h3 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h3><h4 id="创建泛型数组"><a href="#创建泛型数组" class="headerlink" title="创建泛型数组"></a>创建泛型数组</h4><p>泛型创建数组推荐使用，Array.newInstance()方法。在方法中有两个参数，第一个参数表示新建数组类型，第二个参数表示数组的大小。</p>
+<pre><code>public class ArrayMaker&lt;T&gt; {
+    //声明kind为Class&lt;T&gt;类型
+    private Class&lt;T&gt; kind;
+    public ArrayMaker(Class&lt;T&gt; kind){
+        this.kind = kind;
+    }
+
+    T[] creat(int size){
+        return (T[]) Array.newInstance(kind,size);
+    }
+    public static void main(String[] args) {
+        ArrayMaker&lt;String&gt; stringMaker =
+                new ArrayMaker&lt;String&gt;(String.class);
+        String[] stringArray = stringMaker.create(9);
+        System.out.println(Arrays.toString(stringArray));
+    }
+} 
+</code></pre><h4 id="泛型数组"><a href="#泛型数组" class="headerlink" title="泛型数组"></a>泛型数组</h4><pre><code>public class GenericArray&lt;T&gt; {
+    private T[] array;
+    public GenericArray(int sz) {
+        array = (T[]) new Object[sz];
+    }
+
+    public void put(int index,T item) {
+        array[index] = item;
+    }
+
+    public T get(int index) {
+        return array[index];
+    }
+
+    public T[] rep() {
+        return array;
+    }
+
+    public static void main(String[] args) {
+        GenericArray&lt;Integer&gt; gai = new GnericArray&lt;Integer&gt;(10);
+
+        Object[] oa = gai.rep();
+    }
+}
+</code></pre><blockquote>
+<p>提示：Arrays.asList()方法返回指定数组支持的固定大小的列表。</p>
+</blockquote>
+<hr>
+<h3 id="IO"><a href="#IO" class="headerlink" title="IO"></a>IO</h3><p>在Java.io包中最重要的就是5个类和一个接口，5个类包括(File、OutputStream、InputStream、Writer、Reader)，接口(Serializable)。</p>
+<pre><code>File 类：用于文件或目录的描述信息，例如生成新目录，修改文件名，删除文件，判断文件所在路径等
+
+InputStream 类：抽象类，基于字节的输入操作，是所输入流的父类。定义了所有的输入流都具有共同的特征
+
+OutputStream 类：抽象类，基于字节的输出操作，是所有输出流的父类。定义了所有的输出流都具有共同的特征
+
+Reader 类：抽象类，基于字符的输入操作
+
+Writer 类：抽象类，基于字符的输出操作
+
+RandomAccessFile 类：随机文件操作类，独立的类，直接继承Object类，可以从文件的任意位置进行存取操作。
+</code></pre><blockquote>
+<p>流：表示任何有能力产出数据的数据源对象或者有能力接收数据的接收端对象。</p>
+</blockquote>
+<blockquote>
+<p>本质：数据的传输，根据数据传输特性将流抽象为各种类，方便直观的进行数据操作。那么其作用就是为数据源与目的地建立一个输送通道。</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>提示：Java的IO模型是使用Decorator(装饰者)模式，使用者可以动态装配这些Stream。</p>
+</blockquote>
+</blockquote>
+<pre><code>IO流分类：
+
+    File(文件)：FileInputStream, FileOutputStream, FileReader, FileWriter 
+
+    byte[]：ByteArrayInputStream, ByteArrayOutputStream 
+
+    Char[]: CharArrayReader,CharArrayWriter 
+
+    String:StringBufferInputStream, StringReader, StringWriter 
+
+    网络数据流：InputStream,OutputStream, Reader, Writer 
+</code></pre><blockquote>
+<p>提示：ByteArrayInputStream、StringBufferInputStream、FileInputStream是三种基本的介质流，它们分别从Byte数组、StringBuffer和本地文件中读取数据。</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>提示：PipedInputStream是从与其它线程共用的管道中读取数据。ObjectInputStream和所有FilterInputStream的子类都是装饰流（装饰器模式的主角）。</p>
+</blockquote>
+</blockquote>
+<p>InputStream 中有三个基本的读方法：</p>
+<pre><code>1.abstract int read() : 读取一个字节数据，返回读到的数据。
+
+2.int read(byte[] b) : 将数据读入到一个字节数组，同时返回实际读取的字节数。
+
+3.int read(byte[] b,int off,int len) : 将数据读入到一个字节数组，同时返回实际读取的字节数。
+</code></pre><p>OutputStream 中的三个基本的写方法：</p>
+<pre><code>1.abstract void write(int b) : 向输出流中写入一个字节。
+
+2.void write(byte[] b) : 向输出流中写入数组b[]中的所有字节。
+
+3.void write(byte[] b,int off,int len) : 向输出流中写入数组b[]中从偏移量off开始的len个字节的数据。
+</code></pre><p>Reader 中的三个基本读方法：</p>
+<pre><code>1.public int read() throws IOException;//读取一个字符，返回值为读取的字符。
+
+2.public int read(char buf[]) throws IOException;//读取系列字符到数组buf[]中，返回值是实际读取的字符的数量。
+
+3.public abstract int read(char buf[],int off,int len) throws IOException;//读取len个字符，从数组buf[]的下标off处开始存放，返回值为实际读取的字符数量，该方法必须由子类实现。
+</code></pre><p>Writer 和上面的outputstream的方法类似，不再赘述。</p>
+<hr>
+<h4 id="迭代器-Iterator"><a href="#迭代器-Iterator" class="headerlink" title="迭代器 - Iterator"></a>迭代器 - Iterator</h4><p>迭代器，不知道序列底层是如何实现的，但是可以利用迭代器来访问一个序列。迭代器也是一种设计模式，能够将遍历序列的操作与底层相分离。</p>
+<blockquote>
+<p>注意：迭代器是一个对象，它的工作是遍历并选择序列中的对象，我们不需要知道该序列底层究竟是如何实现的。此外，我们知道迭代器被称为轻量级对象，因为创建它的代价小。</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>一般地</p>
+</blockquote>
+</blockquote>
+<pre><code>1.使用方法iterator()要求容器返回一个Iterator。Iterator将准备好返回序列的第一个元素。
+2.使用next()获取序列中下一个元素。
+3.使用hasNext()检查序列中是否有元素。
+4.使用remove()将迭代器新返回的元素删除。
+</code></pre><p>所以能够将遍历序列的操作与序列底层相分离，所以我们会说迭代器统一了对容器的访问方式。</p>
+<pre><code>public class CrossContainerIteration {
+    //这段程序在不知道pet的类型，但是可以利用迭代器实现对pet序列的遍历
+    public static void display(Iterator&lt;Pet&gt; it) { 
+        while(it.hasNext()) { 
+            Pet p = it.next();
+            System.out.print(p.id() + &quot;:&quot; + P + &quot; &quot;);
+        }
+    System.out.println();
+    }
+}
+</code></pre><hr>
+<h3 id="Java-变量与关键字"><a href="#Java-变量与关键字" class="headerlink" title="Java 变量与关键字"></a>Java 变量与关键字</h3><pre><code>文档注释：
+    1.需要使用sum给我们提供的javadoc工具生成一个html的说明文档。
+    2.只能抽取public的属性或者方法内容。
+    格式：javadoc –d 指定存储文档的路径 -version –author（可选） 目标文件
+
+    @author 作者
+    @version 版本
+    @param 方法的参数
+    @return 返回值
+</code></pre><hr>
+<h3 id="流程控制语句"><a href="#流程控制语句" class="headerlink" title="流程控制语句"></a>流程控制语句</h3><hr>
+<h3 id="函数与数组"><a href="#函数与数组" class="headerlink" title="函数与数组"></a>函数与数组</h3><pre><code>1.数组
+
+注意：给数组分配空间时，必须指定数组能够存储的元素个数来确定数组大小。创建数组之后不能修改数组的大小，我们可以使用length属性获取数组的大小。
+
+数组常见的异常：1.数组角标越界异常。2.空指针异常。
+
+数组的内存分析：
+    栈内存特点：存储的局部变量。处理方式：变量使用完离开自己的空间就马上释放。
+    堆内存特点：存储的数组和对象，凡是new关键字创建的实体都是保存在堆内存里面的。1.每一个对象都有一个内存首地址。2.对象都有默认的初始值。
+
+2.二维数组
+
+    前提：
+        toString()方法：将数组的元素以字符串的形式返回
+        sort()方法：将数组按照升序排序
+        binarySearch()：在指定数组中查找指定元素，返回元素的索引。如果没有找到，返回(-插入点-1) 注意：使用查找功能的时候，数组一定要先排序。
+</code></pre><hr>
+<h3 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h3><p>1.匿名对象：表示没有名字的实体，即该实体没有对应的变量名进行引用。</p>
+<pre><code>用途：对象对方法进行一次调用的时候，可以使用匿名对象对代码进行简化。同时匿名对象可以对实际参数进行传递。
+
+使用：当只使用一次的时候可以使用匿名对象，执行完毕之后，对象就变成了垃圾。执行方法时，可以将匿名对象作为实际参数传递进去。
+</code></pre><blockquote>
+<p>总结：</p>
+</blockquote>
+<pre><code>1.匿名对象设置的属性永远无法获取，因为没有引用变量指向那个对象。
+2.任何两个匿名对象使用==比较，永远返回false。
+3.匿名对象主要用于实参。
+</code></pre><p>2.构造方法</p>
+<pre><code>作用：对对象进行初始化。
+</code></pre><p>3.this关键字</p>
+<pre><code>this关键字表示对对象的引用，表示this在指向一个对象时，所指向的对象就是调用该函数的对象引用。
+this关键字表示所在函数所属对象的引用。
+</code></pre><blockquote>
+<p>提示：实际工作中，存在着构造函数之间的相互调用，但是构造函数不是普通的成员函数，不能通过函数名自己接调用，所以sun公司提供this关键字。</p>
+</blockquote>
+<pre><code>this关键字的定义：
+    1.在构造函数中打印this
+    2.创建对象，打印对象名p
+    3.this和p是一样的都是内存地址值。
+    4.this代表所在函数所属对象的引用。
+</code></pre><blockquote>
+<p>this关键字的作用域，this关键字只能在非静态(没有static修饰)的函数中使用。</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>提示：1.构造函数间相互调用必须放在构造函数的第一个语句中，否则编译出错。2.this关键字可以解决构造函数中对象属性和函数形参的同名问题。</p>
+</blockquote>
+</blockquote>
+<hr>
+<p>static关键字<br>特点：</p>
+<pre><code>1.随着类的加载而加载，静态会随着类的加载而加载，随着类的消失而消失，说明其生命周期很长。
+2.优先于对象存在，即静态是先存在，对象是后存在的。
+3.被所有实例(对象)所共享。
+4.可以直接被类名调用。
+</code></pre><blockquote>
+<blockquote>
+<p>静态变量和实例变量的区别：</p>
+</blockquote>
+</blockquote>
+<pre><code>1.存放位置：类变量随着类的加载而加载，存在与方法区中。实例变量随着对象的建立而存在与堆内存中。
+2.生命周期：类变量生命周期最长，随着类的消失而消失。实例变量生命周期随着对象的消失而消失。
+</code></pre><blockquote>
+<blockquote>
+<p>静态优缺点：</p>
+</blockquote>
+</blockquote>
+<pre><code>1.优点：对对象的共享数据进行单独空间的存储，节省空间 缺点：生命周期过长，访问局限性(静态只能访问静态)
+
+2.缺点：
+</code></pre><blockquote>
+<blockquote>
+<p>定义静态变量时间：</p>
+</blockquote>
+</blockquote>
+<pre><code>1.静态变量(类变量)当对象中出现共享数据
+</code></pre><blockquote>
+<blockquote>
+<p>定义静态函数时间：</p>
+</blockquote>
+</blockquote>
+<pre><code>1.如果功能内部没有访问到非静态数据(对象的特有数据，那么该功能就可以定义为静态)
+</code></pre><hr>
+<h3 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h3><pre><code>注意：使用语法 new int[5][]创建数组时，必须指定第一个下标。语法：new int[][]是错误的。
+</code></pre><hr>
+<h3 id="Java8-增强的包装类"><a href="#Java8-增强的包装类" class="headerlink" title="Java8 增强的包装类"></a>Java8 增强的包装类</h3><pre><code>自动装箱：将一个基本类型变量直接赋给对应的包装类变量，或者赋给Object变量。
+自动拆箱：允许直接将包装类对象赋给一个与之对应的基本类型变量。
+</code></pre><h4 id="Java-8-Lambda表达式"><a href="#Java-8-Lambda表达式" class="headerlink" title="Java 8 Lambda表达式"></a>Java 8 Lambda表达式</h4><p>Lambda表达式相当于一个匿名方法，其主要作用是代替匿名内部类的繁琐语法。</p>
+<pre><code>1.形参列表：形参列表允许省略形参类型
+2.-&gt; 
+3.代码块：
+</code></pre><h3 id="枚举类"><a href="#枚举类" class="headerlink" title="枚举类"></a>枚举类</h3><h3 id="对象与垃圾回收机制"><a href="#对象与垃圾回收机制" class="headerlink" title="对象与垃圾回收机制"></a>对象与垃圾回收机制</h3><p>程序创建对象，数组等引用类型实体时，系统会在堆内存分配一块内存区，对象就保存在这块内存区中，当这块内存不再被任何引用变量引用时，这块内存就变成垃圾，等待垃圾回收机制的回收。</p>
+<h4 id="1-垃圾回收机制的特点"><a href="#1-垃圾回收机制的特点" class="headerlink" title="1.垃圾回收机制的特点"></a>1.垃圾回收机制的特点</h4><pre><code>1.垃圾回收机制只负责回收堆内存中的对象，不会回收任何物理资源。
+2.程序无法精确控制垃圾回收的运行，垃圾回收会在合适的时候进行。当对象永久性的失去引用后，系统就会在何时的时候回收它所占用的内存。
+3.在垃圾回收任何对象之前，总会先调用它的finalize()方法，该方法可能使对象重新复活(让一个引用变量重新引用该对象)，从而导致垃圾回收机制取消回收。
+</code></pre><h4 id="2-强制垃圾回收"><a href="#2-强制垃圾回收" class="headerlink" title="2.强制垃圾回收"></a>2.强制垃圾回收</h4><p>这种强制机制就是通知系统进行垃圾回收。强制系统垃圾回收有如下两种方式：</p>
+<pre><code>1.调用System类的gc()静态方法：System.gc()。
+2.调用Runtime对象的gc()实例方法：Runtime.getRuntime().gc()。
+</code></pre><h4 id="3-finalize-方法"><a href="#3-finalize-方法" class="headerlink" title="3.finalize()方法"></a>3.finalize()方法</h4><p>在没有明确的指定清理资源的情况下，Java提供默认的机制清理对象的资源，该机制是finalize()方法。当finalize()方法返回之后，对象消失，垃圾回收机制开始执行。</p>
+
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+
+  <p><span>本文标题:</span>Java开发前奏</a></p>
+  <p><span>文章作者:</span>Bangjin-Hu</a></p>
+  <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
+  <p><span>最后更新:</span>2020年03月30日 - 08:11:24</p>
+  <p><span>原始链接:</span><a href="/undefined/Java 基础/" title="Java开发前奏">http://bangjinhu.github.io/undefined/Java 基础/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/Java 基础/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.jpg" alt="Bangjin-Hu wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎扫码关注微信公众号，订阅我的微信公众号.</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持是我创作的动力.</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat-reward-img.jpg" alt="Bangjin-Hu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay-reward-img.jpg" alt="Bangjin-Hu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Bangjin-Hu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://bangjinhu.github.io/undefined/Java 基础/" title="Java开发前奏">http://bangjinhu.github.io/undefined/Java 基础/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java基础/" rel="tag"><i class="fa fa-tag"></i> Java基础</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/undefined/Java 字符串与文本IO/" rel="next" title="IO">
+                <i class="fa fa-chevron-left"></i> IO
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/undefined/Java 反射/" rel="prev" title="反射">
+                反射 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/site.jpg"
+                alt="Bangjin-Hu" />
+            
+              <p class="site-author-name" itemprop="name">Bangjin-Hu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">212</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/BangjinHu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:2315378346@qq.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/Aaron_P_L" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-heart-o"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://iProgramering.github.io" target="_blank" title="iProgramer_ing">
+                      
+                        <i class="fa fa-fw fa-user"></i>iProgramer_ing</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          <div id="music163player">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src="//music.163.com/outchain/player?type=2&id=38358214&auto=0&height=66
+
+">
+    </iframe>
+</div>
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java开发前奏"><span class="nav-text">Java开发前奏</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机基础"><span class="nav-text">计算机基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#硬件和软件"><span class="nav-text">硬件和软件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#硬件"><span class="nav-text">硬件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#软件"><span class="nav-text">软件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#人机交互"><span class="nav-text">人机交互</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见的DOS命令"><span class="nav-text">常见的DOS命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java虚拟机（JVM）"><span class="nav-text">Java虚拟机（JVM）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#泛型"><span class="nav-text">泛型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建泛型数组"><span class="nav-text">创建泛型数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#泛型数组"><span class="nav-text">泛型数组</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IO"><span class="nav-text">IO</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#迭代器-Iterator"><span class="nav-text">迭代器 - Iterator</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-变量与关键字"><span class="nav-text">Java 变量与关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#流程控制语句"><span class="nav-text">流程控制语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数与数组"><span class="nav-text">函数与数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面向对象"><span class="nav-text">面向对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多维数组"><span class="nav-text">多维数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java8-增强的包装类"><span class="nav-text">Java8 增强的包装类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Java-8-Lambda表达式"><span class="nav-text">Java 8 Lambda表达式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#枚举类"><span class="nav-text">枚举类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象与垃圾回收机制"><span class="nav-text">对象与垃圾回收机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-垃圾回收机制的特点"><span class="nav-text">1.垃圾回收机制的特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-强制垃圾回收"><span class="nav-text">2.强制垃圾回收</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-finalize-方法"><span class="nav-text">3.finalize()方法</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bangjin-Hu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">486.7k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/lib/clipboard/clipboard.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+</body>
+</html>

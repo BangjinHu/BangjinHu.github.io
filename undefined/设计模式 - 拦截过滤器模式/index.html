@@ -160,7 +160,7 @@
 <meta property="og:site_name" content="BangjinHu&#39;s Blog">
 <meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. 简介该模式用于对应用程序的请求或响应做一些预处理/后处理。定义过滤器，并再将请求传给实际目标应用程序之前应用在请求上。过滤器可以做认证/授权/记录日志，或者跟踪请求，然后把请求传给相应的处理程序。 1.过滤器：过滤器在请求处理程序执行请求之前或之后执行某些任务。 2.过滤器链：过滤器链带有多个过滤器，并在target上按照定义的顺序执行这些过滤器。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-29T02:25:23.310Z">
+<meta property="og:updated_time" content="2020-03-30T00:22:08.747Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式 - 过滤器">
 <meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 简介该模式用于对应用程序的请求或响应做一些预处理/后处理。定义过滤器，并再将请求传给实际目标应用程序之前应用在请求上。过滤器可以做认证/授权/记录日志，或者跟踪请求，然后把请求传给相应的处理程序。 1.过滤器：过滤器在请求处理程序执行请求之前或之后执行某些任务。 2.过滤器链：过滤器链带有多个过滤器，并在target上按照定义的顺序执行这些过滤器。">
@@ -419,8 +419,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:25:23+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:22:08+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -514,7 +514,8 @@
 3.target：target对象是请求处理程序。
 4.过滤管理器：过滤管理器管理过滤器和过滤器链。
 5.客户端：客户端是target对象发送请求的对象。
-</code></pre><h4 id="拦截过滤器模式"><a href="#拦截过滤器模式" class="headerlink" title="拦截过滤器模式"></a>拦截过滤器模式</h4><p><strong>1.创建过滤器接口</strong><br></p>
+</code></pre><a id="more"></a>        
+<h4 id="拦截过滤器模式"><a href="#拦截过滤器模式" class="headerlink" title="拦截过滤器模式"></a>拦截过滤器模式</h4><p><strong>1.创建过滤器接口</strong><br></p>
 <pre><code>public interface Filter {
    public void execute(String request);
 }
@@ -620,7 +621,7 @@ public class FilterChain {
   <p><span>本文标题:</span>设计模式 - 过滤器</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 10:25:23</p>
+  <p><span>最后更新:</span>2020年03月30日 - 08:22:08</p>
   <p><span>原始链接:</span><a href="/undefined/设计模式 - 拦截过滤器模式/" title="设计模式 - 过滤器">http://bangjinhu.github.io/undefined/设计模式 - 拦截过滤器模式/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/设计模式 - 拦截过滤器模式/"  aria-label="复制成功！"></i></span>
   </p>
@@ -721,8 +722,8 @@ public class FilterChain {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/undefined/设计模式 - 服务器定位模式/" rel="next" title="设计模式 - 服务器定位">
-                <i class="fa fa-chevron-left"></i> 设计模式 - 服务器定位
+              <a href="/undefined/设计模式 - 抽象工厂模式/" rel="next" title="设计模式 - 抽象工厂">
+                <i class="fa fa-chevron-left"></i> 设计模式 - 抽象工厂
               </a>
             
           </div>
@@ -731,8 +732,8 @@ public class FilterChain {
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/undefined/设计模式 - 抽象工厂模式/" rel="prev" title="设计模式 - 抽象工厂">
-                设计模式 - 抽象工厂 <i class="fa fa-chevron-right"></i>
+              <a href="/undefined/设计模式 - 建造者模式/" rel="prev" title="设计模式 - 建造">
+                设计模式 - 建造 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -842,7 +843,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -853,7 +854,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -864,7 +865,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -906,12 +907,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -989,7 +984,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

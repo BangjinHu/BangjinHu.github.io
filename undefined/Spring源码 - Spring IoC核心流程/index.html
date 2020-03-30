@@ -160,7 +160,7 @@
 <meta property="og:site_name" content="BangjinHu&#39;s Blog">
 <meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. Spring源码 - Spring IoC核心流程1.初始化Spring IoC的初始化过程很复杂，大致过程就是读取XML文件，然后解析XML文件，最终注册到BeanFactory中去。 xml -读取-&amp;gt; Resource -解析-&amp;gt; BeanDefinition -注册-&amp;gt; BeanFactory 初始化过程完成之后，Bean就">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-29T03:26:28.777Z">
+<meta property="og:updated_time" content="2020-03-30T00:01:42.725Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring源码 - IOC">
 <meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. Spring源码 - Spring IoC核心流程1.初始化Spring IoC的初始化过程很复杂，大致过程就是读取XML文件，然后解析XML文件，最终注册到BeanFactory中去。 xml -读取-&amp;gt; Resource -解析-&amp;gt; BeanDefinition -注册-&amp;gt; BeanFactory 初始化过程完成之后，Bean就">
@@ -419,8 +419,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:26:28+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:01:42+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -510,7 +510,7 @@
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
 <h2 id="Spring源码-Spring-IoC核心流程"><a href="#Spring源码-Spring-IoC核心流程" class="headerlink" title="Spring源码 - Spring IoC核心流程"></a>Spring源码 - Spring IoC核心流程</h2><h3 id="1-初始化"><a href="#1-初始化" class="headerlink" title="1.初始化"></a>1.初始化</h3><p>Spring IoC的初始化过程很复杂，大致过程就是读取XML文件，然后解析XML文件，最终注册到BeanFactory中去。</p>
 <pre><code>xml -读取-&gt; Resource -解析-&gt; BeanDefinition -注册-&gt; BeanFactory
-</code></pre><p>初始化过程完成之后，Bean就存在与BeanFactory中可以被调用。</p>
+</code></pre><p>初始化过程完成之后，Bean就存在与BeanFactory中可以被调用。<br><a id="more"></a></p>
 <h5 id="1-准备"><a href="#1-准备" class="headerlink" title="1 准备"></a>1 准备</h5><p><strong>1.1 详细的Spring IoC初始化过程</strong><br></p>
 <pre><code>&lt;bean id=&quot;Aaron&quot; class=&quot;com.springstudy.talentshow.SuperInstrumentalist&quot;&gt;
     &lt;property name=&quot;instruments&quot;&gt;
@@ -771,7 +771,7 @@ public void registerBeanDefinition(String beanName, BeanDefinition beanDefinitio
   <p><span>本文标题:</span>Spring源码 - IOC</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 11:26:28</p>
+  <p><span>最后更新:</span>2020年03月30日 - 08:01:42</p>
   <p><span>原始链接:</span><a href="/undefined/Spring源码 - Spring IoC核心流程/" title="Spring源码 - IOC">http://bangjinhu.github.io/undefined/Spring源码 - Spring IoC核心流程/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/Spring源码 - Spring IoC核心流程/"  aria-label="复制成功！"></i></span>
   </p>
@@ -993,7 +993,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1004,7 +1004,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1015,7 +1015,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1057,12 +1057,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -1140,7 +1134,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

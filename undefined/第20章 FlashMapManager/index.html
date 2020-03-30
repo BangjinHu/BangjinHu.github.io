@@ -139,7 +139,7 @@
 
 
 
-  <meta name="keywords" content="AOP," />
+  <meta name="keywords" content="SpringMVC源码分析," />
 
 
 
@@ -152,18 +152,18 @@
 
 
 
-<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. 第20章 FlashMapManagerFlashMapManager用来管理FlashMap，FlashMap用于在redirect时传递参数。FlashMapManager实现结构简单，只有一个抽象类和一个实现类。抽象类采用模板模式定义整体流程。具体实现类SessionFlashManager通过模板方法提供具体操作FlashMap的功能。  说">
-<meta name="keywords" content="AOP">
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. 第20章 FlashMapManagerFlashMapManager用来管理FlashMap，FlashMap用于在redirect时传递参数。FlashMapManager实现结构简单，只有一个抽象类和一个实现类。抽象类采用模板模式定义整体流程。具体实现类SessionFlashManager通过模板方法提供具体操作FlashMap的功能。">
+<meta name="keywords" content="SpringMVC源码分析">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AOP">
+<meta property="og:title" content="FlashMapManager">
 <meta property="og:url" content="http://bangjinhu.github.io/undefined/第20章 FlashMapManager/index.html">
 <meta property="og:site_name" content="BangjinHu&#39;s Blog">
-<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. 第20章 FlashMapManagerFlashMapManager用来管理FlashMap，FlashMap用于在redirect时传递参数。FlashMapManager实现结构简单，只有一个抽象类和一个实现类。抽象类采用模板模式定义整体流程。具体实现类SessionFlashManager通过模板方法提供具体操作FlashMap的功能。  说">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. 第20章 FlashMapManagerFlashMapManager用来管理FlashMap，FlashMap用于在redirect时传递参数。FlashMapManager实现结构简单，只有一个抽象类和一个实现类。抽象类采用模板模式定义整体流程。具体实现类SessionFlashManager通过模板方法提供具体操作FlashMap的功能。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-29T01:54:52.692Z">
+<meta property="og:updated_time" content="2020-03-30T00:17:51.395Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AOP">
-<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 第20章 FlashMapManagerFlashMapManager用来管理FlashMap，FlashMap用于在redirect时传递参数。FlashMapManager实现结构简单，只有一个抽象类和一个实现类。抽象类采用模板模式定义整体流程。具体实现类SessionFlashManager通过模板方法提供具体操作FlashMap的功能。  说">
+<meta name="twitter:title" content="FlashMapManager">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 第20章 FlashMapManagerFlashMapManager用来管理FlashMap，FlashMap用于在redirect时传递参数。FlashMapManager实现结构简单，只有一个抽象类和一个实现类。抽象类采用模板模式定义整体流程。具体实现类SessionFlashManager通过模板方法提供具体操作FlashMap的功能。">
 
 
 
@@ -199,7 +199,7 @@
 
 
 
-  <title>AOP | BangjinHu's Blog</title>
+  <title>FlashMapManager | BangjinHu's Blog</title>
   
 
 
@@ -391,7 +391,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">AOP</h2>
+          <h2 class="post-title" itemprop="name headline">FlashMapManager</h2>
         
 
         <div class="post-meta">
@@ -419,8 +419,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T09:54:52+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:17:51+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -438,8 +438,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/AOP/" itemprop="url" rel="index">
-                    <span itemprop="name">AOP</span>
+                  <a href="/categories/SpringMVC源码分析/" itemprop="url" rel="index">
+                    <span itemprop="name">SpringMVC源码分析</span>
                   </a>
                 </span>
 
@@ -508,7 +508,7 @@
       
         <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h1 id="第20章-FlashMapManager"><a href="#第20章-FlashMapManager" class="headerlink" title="第20章 FlashMapManager"></a>第20章 FlashMapManager</h1><p>FlashMapManager用来管理FlashMap，FlashMap用于在redirect时传递参数。FlashMapManager实现结构简单，只有一个抽象类和一个实现类。抽象类采用模板模式定义整体流程。具体实现类SessionFlashManager通过模板方法提供具体操作FlashMap的功能。</p>
+<h1 id="第20章-FlashMapManager"><a href="#第20章-FlashMapManager" class="headerlink" title="第20章 FlashMapManager"></a>第20章 FlashMapManager</h1><p>FlashMapManager用来管理FlashMap，FlashMap用于在redirect时传递参数。FlashMapManager实现结构简单，只有一个抽象类和一个实现类。抽象类采用模板模式定义整体流程。具体实现类SessionFlashManager通过模板方法提供具体操作FlashMap的功能。<br><a id="more"></a></p>
 <blockquote>
 <p>说明：1.实际的Session中保存的FlashMap类型是List<flashmap>类型，也就是说一个Session可以保存多个FlashMap，一个FlashMap保存着一套Redirect转发所传递的参数。2. FlashMap继承自HashMap，除了用于HashMap的功能和设置有效期，还可以保存Redirect后的目标路径和通过url传递的参数，这两项内容主要用来从Session保存的多个FlashMap中查找当前的FalshMap。</flashmap></p>
 </blockquote>
@@ -668,11 +668,11 @@
   <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
 
-  <p><span>本文标题:</span>AOP</a></p>
+  <p><span>本文标题:</span>FlashMapManager</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 09:54:52</p>
-  <p><span>原始链接:</span><a href="/undefined/第20章 FlashMapManager/" title="AOP">http://bangjinhu.github.io/undefined/第20章 FlashMapManager/</a>
+  <p><span>最后更新:</span>2020年03月30日 - 08:17:51</p>
+  <p><span>原始链接:</span><a href="/undefined/第20章 FlashMapManager/" title="FlashMapManager">http://bangjinhu.github.io/undefined/第20章 FlashMapManager/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/第20章 FlashMapManager/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
@@ -744,7 +744,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://bangjinhu.github.io/undefined/第20章 FlashMapManager/" title="AOP">http://bangjinhu.github.io/undefined/第20章 FlashMapManager/</a>
+    <a href="http://bangjinhu.github.io/undefined/第20章 FlashMapManager/" title="FlashMapManager">http://bangjinhu.github.io/undefined/第20章 FlashMapManager/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -759,7 +759,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/AOP/" rel="tag"><i class="fa fa-tag"></i> AOP</a>
+            <a href="/tags/SpringMVC源码分析/" rel="tag"><i class="fa fa-tag"></i> SpringMVC源码分析</a>
           
         </div>
       
@@ -772,8 +772,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/undefined/第22章 异步请求/" rel="next" title="Redis - Java集成">
-                <i class="fa fa-chevron-left"></i> Redis - Java集成
+              <a href="/undefined/第19章 ThemeResolver/" rel="next" title="ThemeResolver">
+                <i class="fa fa-chevron-left"></i> ThemeResolver
               </a>
             
           </div>
@@ -782,8 +782,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/undefined/第19章 ThemeResolver/" rel="prev" title="AOP">
-                AOP <i class="fa fa-chevron-right"></i>
+              <a href="/undefined/第18章 LocaleResolver/" rel="prev" title="LocaleResolver">
+                LocaleResolver <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -893,7 +893,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -904,7 +904,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -915,7 +915,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -957,12 +957,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -1040,7 +1034,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

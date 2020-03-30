@@ -152,13 +152,13 @@
 
 
 
-<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. [TOC] Java 内存区域与内存溢出异常1.运行时数据区域 线程共享：方法区，堆  线程私有：虚拟机栈，本地方法栈，程序计数器 1.程序计数器（线程私有）可以看做是当前线程所执行的字节码的==行号指示器==。  ==选取下一条需要执行的的字节码指令==，基础功能都需要依赖这个计数器来完成。 2.Java虚拟机栈（线程私有的）**虚拟机栈描述的是J">
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. [TOC] Java 内存区域与内存溢出异常1.运行时数据区域">
 <meta name="keywords" content="JVM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java 内存区域与内存溢出异常">
 <meta property="og:url" content="http://bangjinhu.github.io/undefined/JVM Java虚拟机/index.html">
 <meta property="og:site_name" content="BangjinHu&#39;s Blog">
-<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. [TOC] Java 内存区域与内存溢出异常1.运行时数据区域 线程共享：方法区，堆  线程私有：虚拟机栈，本地方法栈，程序计数器 1.程序计数器（线程私有）可以看做是当前线程所执行的字节码的==行号指示器==。  ==选取下一条需要执行的的字节码指令==，基础功能都需要依赖这个计数器来完成。 2.Java虚拟机栈（线程私有的）**虚拟机栈描述的是J">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. [TOC] Java 内存区域与内存溢出异常1.运行时数据区域">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://bangjinhu.github.io/undefined/JVM%20Java虚拟机/images/16.png">
 <meta property="og:image" content="http://bangjinhu.github.io/undefined/JVM%20Java虚拟机/images/17.png">
@@ -171,10 +171,10 @@
 <meta property="og:image" content="http://bangjinhu.github.io/undefined/JVM%20Java虚拟机/images/3.png">
 <meta property="og:image" content="http://bangjinhu.github.io/undefined/JVM%20Java虚拟机/images/4.png">
 <meta property="og:image" content="http://bangjinhu.github.io/undefined/JVM%20Java虚拟机/images/5.png">
-<meta property="og:updated_time" content="2020-03-29T02:43:54.054Z">
+<meta property="og:updated_time" content="2020-03-30T00:07:49.485Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 内存区域与内存溢出异常">
-<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. [TOC] Java 内存区域与内存溢出异常1.运行时数据区域 线程共享：方法区，堆  线程私有：虚拟机栈，本地方法栈，程序计数器 1.程序计数器（线程私有）可以看做是当前线程所执行的字节码的==行号指示器==。  ==选取下一条需要执行的的字节码指令==，基础功能都需要依赖这个计数器来完成。 2.Java虚拟机栈（线程私有的）**虚拟机栈描述的是J">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. [TOC] Java 内存区域与内存溢出异常1.运行时数据区域">
 <meta name="twitter:image" content="http://bangjinhu.github.io/undefined/JVM%20Java虚拟机/images/16.png">
 
 
@@ -431,8 +431,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:43:54+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:07:49+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -521,7 +521,8 @@
         <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
 <p>[TOC]</p>
-<h2 id="Java-内存区域与内存溢出异常"><a href="#Java-内存区域与内存溢出异常" class="headerlink" title="Java 内存区域与内存溢出异常"></a>Java 内存区域与内存溢出异常</h2><h3 id="1-运行时数据区域"><a href="#1-运行时数据区域" class="headerlink" title="1.运行时数据区域"></a>1.运行时数据区域</h3><p><img src="images/16.png" alt=""></p>
+<h2 id="Java-内存区域与内存溢出异常"><a href="#Java-内存区域与内存溢出异常" class="headerlink" title="Java 内存区域与内存溢出异常"></a>Java 内存区域与内存溢出异常</h2><h3 id="1-运行时数据区域"><a href="#1-运行时数据区域" class="headerlink" title="1.运行时数据区域"></a>1.运行时数据区域</h3><a id="more"></a>
+<p><img src="images/16.png" alt=""></p>
 <pre><code>线程共享：方法区，堆
 
 线程私有：虚拟机栈，本地方法栈，程序计数器
@@ -856,7 +857,7 @@ Java堆可以存储在物理上不连续的内存空间之中
   <p><span>本文标题:</span>Java 内存区域与内存溢出异常</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 10:43:54</p>
+  <p><span>最后更新:</span>2020年03月30日 - 08:07:49</p>
   <p><span>原始链接:</span><a href="/undefined/JVM Java虚拟机/" title="Java 内存区域与内存溢出异常">http://bangjinhu.github.io/undefined/JVM Java虚拟机/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/JVM Java虚拟机/"  aria-label="复制成功！"></i></span>
   </p>
@@ -957,8 +958,8 @@ Java堆可以存储在物理上不连续的内存空间之中
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/undefined/JVM性能调优/" rel="next" title="JVM性能调优">
-                <i class="fa fa-chevron-left"></i> JVM性能调优
+              <a href="/undefined/Java List集合遍历/" rel="next" title="Java 集合遍历">
+                <i class="fa fa-chevron-left"></i> Java 集合遍历
               </a>
             
           </div>
@@ -967,8 +968,8 @@ Java堆可以存储在物理上不连续的内存空间之中
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/undefined/JSP/" rel="prev" title="JSP">
-                JSP <i class="fa fa-chevron-right"></i>
+              <a href="/undefined/JVM性能调优/" rel="prev" title="JVM性能调优">
+                JVM性能调优 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1078,7 +1079,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1089,7 +1090,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1100,7 +1101,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1142,12 +1143,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -1225,7 +1220,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

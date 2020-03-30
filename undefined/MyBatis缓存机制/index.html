@@ -152,23 +152,23 @@
 
 
 
-<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. MyBatis缓存机制[TOC] MyBatis的缓存机制以及流程mybatis提供了缓存机制减轻数据库压力，提高数据库性能 mybatis的缓存分为两级：==一级缓存、二级缓存== 一级缓存一级缓存是SqlSession级别的缓存，缓存的数据只在SqlSession内有效 在操作数据库的时候需要先创建SqlSession会话对象，在对象中有一个Ha">
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. MyBatis缓存机制[TOC] MyBatis的缓存机制以及流程mybatis提供了缓存机制减轻数据库压力，提高数据库性能 mybatis的缓存分为两级：==一级缓存、二级缓存== 一级缓存">
 <meta name="keywords" content="Mybatis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MyBatis缓存机制">
 <meta property="og:url" content="http://bangjinhu.github.io/undefined/MyBatis缓存机制/index.html">
 <meta property="og:site_name" content="BangjinHu&#39;s Blog">
-<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. MyBatis缓存机制[TOC] MyBatis的缓存机制以及流程mybatis提供了缓存机制减轻数据库压力，提高数据库性能 mybatis的缓存分为两级：==一级缓存、二级缓存== 一级缓存一级缓存是SqlSession级别的缓存，缓存的数据只在SqlSession内有效 在操作数据库的时候需要先创建SqlSession会话对象，在对象中有一个Ha">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. MyBatis缓存机制[TOC] MyBatis的缓存机制以及流程mybatis提供了缓存机制减轻数据库压力，提高数据库性能 mybatis的缓存分为两级：==一级缓存、二级缓存== 一级缓存">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="e:/java/笔记/spring源码解析/images/16.png">
 <meta property="og:image" content="e:/java/笔记/spring源码解析/images/11.png">
 <meta property="og:image" content="e:/java/笔记/spring源码解析/images/12.png">
 <meta property="og:image" content="e:/java/笔记/spring源码解析/images/17.png">
 <meta property="og:image" content="https://images2017.cnblogs.com/blog/1120165/201708/1120165-20170814205927896-1579894274.png">
-<meta property="og:updated_time" content="2020-03-29T02:45:16.993Z">
+<meta property="og:updated_time" content="2020-03-30T00:07:02.381Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MyBatis缓存机制">
-<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. MyBatis缓存机制[TOC] MyBatis的缓存机制以及流程mybatis提供了缓存机制减轻数据库压力，提高数据库性能 mybatis的缓存分为两级：==一级缓存、二级缓存== 一级缓存一级缓存是SqlSession级别的缓存，缓存的数据只在SqlSession内有效 在操作数据库的时候需要先创建SqlSession会话对象，在对象中有一个Ha">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. MyBatis缓存机制[TOC] MyBatis的缓存机制以及流程mybatis提供了缓存机制减轻数据库压力，提高数据库性能 mybatis的缓存分为两级：==一级缓存、二级缓存== 一级缓存">
 <meta name="twitter:image" content="e:/java/笔记/spring源码解析/images/16.png">
 
 
@@ -425,8 +425,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:45:16+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:07:02+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -517,7 +517,8 @@
 <h2 id="MyBatis缓存机制"><a href="#MyBatis缓存机制" class="headerlink" title="MyBatis缓存机制"></a>MyBatis缓存机制</h2><p>[TOC]</p>
 <h3 id="MyBatis的缓存机制以及流程"><a href="#MyBatis的缓存机制以及流程" class="headerlink" title="MyBatis的缓存机制以及流程"></a>MyBatis的缓存机制以及流程</h3><p>mybatis提供了<strong>缓存机制减轻数据库压力，提高数据库性能</strong></p>
 <p>mybatis的缓存分为两级：==一级缓存、二级缓存==</p>
-<h3 id="一级缓存"><a href="#一级缓存" class="headerlink" title="一级缓存"></a>一级缓存</h3><p>一级缓存是<strong>SqlSession级别</strong>的缓存，缓存的数据只在SqlSession内有效</p>
+<h3 id="一级缓存"><a href="#一级缓存" class="headerlink" title="一级缓存"></a>一级缓存</h3><a id="more"></a>
+<p>一级缓存是<strong>SqlSession级别</strong>的缓存，缓存的数据只在SqlSession内有效</p>
 <p>在操作数据库的时候需要先创建SqlSession会话对象，在对象中有一个<strong>HashMap用于存储缓存数据</strong>，此HashMap是当前会话对象私有的，别的SqlSession会话对象无法访问,<strong>每一个 session 会话都会有各自的缓存，这缓存是局部的，也就是所谓的一级缓存</strong></p>
 <p>每个SqlSession中持有了<a href="https://www.baidu.com/s?wd=Executor&amp;tn=24004469_oem_dg&amp;rsv_dl=gh_pl_sl_csd" target="_blank" rel="noopener">Executor</a>，每个Executor中有一个LocalCache。当用户发起查询时，MyBatis根据当前执行的语句生成<strong>MappedStatement</strong>，在Local Cache进行查询，如果缓存命中的话，直接返回结果给用户，如果缓存没有命中的话，查询数据库，结果写入Local Cache</p>
 <p><strong>配置：</strong></p>
@@ -661,7 +662,7 @@
   <p><span>本文标题:</span>MyBatis缓存机制</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 10:45:16</p>
+  <p><span>最后更新:</span>2020年03月30日 - 08:07:02</p>
   <p><span>原始链接:</span><a href="/undefined/MyBatis缓存机制/" title="MyBatis缓存机制">http://bangjinhu.github.io/undefined/MyBatis缓存机制/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/MyBatis缓存机制/"  aria-label="复制成功！"></i></span>
   </p>
@@ -883,7 +884,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -894,7 +895,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -905,7 +906,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -947,12 +948,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -1030,7 +1025,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

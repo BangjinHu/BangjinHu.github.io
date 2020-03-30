@@ -160,7 +160,7 @@
 <meta property="og:site_name" content="BangjinHu&#39;s Blog">
 <meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. [TOC] 概述MySQL分区可以管理非常大的表，采用分而治之的逻辑，分区引入分区键概念，让数据根据规则分布在不同的分区中，让一个大对象变成一些小对象。 命令：show variables 查看当前MySQL是否支持分区 MySQL支持RANGE，LIST，HASH和KEY四种分区。其中，每个分区又都有一种特殊的类型。对于RANGE分区，有RANGE">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-29T00:25:33.990Z">
+<meta property="og:updated_time" content="2020-03-30T00:05:42.764Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQ-分区">
 <meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. [TOC] 概述MySQL分区可以管理非常大的表，采用分而治之的逻辑，分区引入分区键概念，让数据根据规则分布在不同的分区中，让一个大对象变成一些小对象。 命令：show variables 查看当前MySQL是否支持分区 MySQL支持RANGE，LIST，HASH和KEY四种分区。其中，每个分区又都有一种特殊的类型。对于RANGE分区，有RANGE">
@@ -419,8 +419,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T08:25:33+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:05:42+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -511,7 +511,7 @@
 <p>[TOC]</p>
 <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>MySQL分区可以管理非常大的表，采用分而治之的逻辑，分区引入分区键概念，让数据根据规则分布在不同的分区中，让一个大对象变成一些小对象。</p>
 <pre><code>命令：show variables 查看当前MySQL是否支持分区
-</code></pre><p>MySQL支持RANGE，LIST，HASH和KEY四种分区。其中，每个分区又都有一种特殊的类型。对于RANGE分区，有RANGE COLUMNS分区。对于LIST分区，有LIST COLUMNS分区。对于HASH分区，有LINEAR HASH分区。对于KEY分区，有LINEAR KEY分区。</p>
+</code></pre><p>MySQL支持RANGE，LIST，HASH和KEY四种分区。其中，每个分区又都有一种特殊的类型。对于RANGE分区，有RANGE COLUMNS分区。对于LIST分区，有LIST COLUMNS分区。对于HASH分区，有LINEAR HASH分区。对于KEY分区，有LINEAR KEY分区。<br><a id="more"></a></p>
 <h4 id="1-RANGE分区"><a href="#1-RANGE分区" class="headerlink" title="1.RANGE分区"></a>1.RANGE分区</h4><p>RANGE即范围分区，根据区间来判断位于哪个分区。如id值小于5在p0分区，如果id值大于5小于10在p1分区，类似地，依次类推得到各个分区。if…else if..。</p>
 <pre><code>CREATE TABLE employees (
     id INT NOT NULL,
@@ -680,7 +680,7 @@ PARTITIONS 3;
   <p><span>本文标题:</span>MySQ-分区</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 08:25:33</p>
+  <p><span>最后更新:</span>2020年03月30日 - 08:05:42</p>
   <p><span>原始链接:</span><a href="/undefined/MySQL分区/" title="MySQ-分区">http://bangjinhu.github.io/undefined/MySQL分区/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/MySQL分区/"  aria-label="复制成功！"></i></span>
   </p>
@@ -781,8 +781,8 @@ PARTITIONS 3;
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/undefined/MySQL的存储引擎/" rel="next" title="MySQ-存储引擎">
-                <i class="fa fa-chevron-left"></i> MySQ-存储引擎
+              <a href="/undefined/MySQL优化 - 索引优化及SQL优化/" rel="next" title="MySQL优化-索引优化">
+                <i class="fa fa-chevron-left"></i> MySQL优化-索引优化
               </a>
             
           </div>
@@ -791,8 +791,8 @@ PARTITIONS 3;
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/undefined/MySQL优化 - 表结构优化/" rel="prev" title="MySQL优化-数据表结构优化">
-                MySQL优化-数据表结构优化 <i class="fa fa-chevron-right"></i>
+              <a href="/undefined/MySQL优化 - trace分析/" rel="prev" title="MySQL优化-trace分析">
+                MySQL优化-trace分析 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -902,7 +902,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -913,7 +913,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -924,7 +924,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -966,12 +966,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -1049,7 +1043,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

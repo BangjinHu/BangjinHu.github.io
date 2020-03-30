@@ -162,7 +162,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://img-blog.csdn.net/20180413104433349?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Mzc1MjEx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 <meta property="og:image" content="https://img-blog.csdn.net/20180413104450619?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5Mzc1MjEx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
-<meta property="og:updated_time" content="2020-03-29T03:38:08.922Z">
+<meta property="og:updated_time" content="2020-03-30T00:15:00.615Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="字节码">
 <meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 字节码[toc] 反编译1. javap 路径（.class文件） 能够反编译出Java文件的字节码  2. javap -c 路径 打印出.class文件的详细信息  3. javap -verbose .class文件的路径 反编译的文件内容 javap -verbose 命令在使用 javap -verbose 命令分析一个字节码文件时，将会分">
@@ -422,8 +422,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:38:08+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:15:00+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -517,7 +517,7 @@
 2. javap -c 路径 打印出.class文件的详细信息
 
 3. javap -verbose .class文件的路径 反编译的文件内容
-</code></pre><h4 id="javap-verbose-命令"><a href="#javap-verbose-命令" class="headerlink" title="javap -verbose 命令"></a>javap -verbose 命令</h4><p>在使用 javap -verbose 命令分析一个字节码文件时，将会分析该字节码文件的魔数、版本号、常量池、类信息、类的构造方法、类中的方法信息、类变量与成员变量等信息。</p>
+</code></pre><h4 id="javap-verbose-命令"><a href="#javap-verbose-命令" class="headerlink" title="javap -verbose 命令"></a>javap -verbose 命令</h4><p>在使用 javap -verbose 命令分析一个字节码文件时，将会分析该字节码文件的魔数、版本号、常量池、类信息、类的构造方法、类中的方法信息、类变量与成员变量等信息。<br><a id="more"></a></p>
 <h5 id="Java字节码整体结构"><a href="#Java字节码整体结构" class="headerlink" title="Java字节码整体结构"></a>Java字节码整体结构</h5><pre><code>ClassFile {
     u4          magic;
     u2          minor_version;
@@ -540,7 +540,7 @@
 1. 魔数，所有的.class字节码文件的前4个字节都是魔数，魔数值为固定值：0xCAFEBABE。
 
 2. 版本号，在魔数之后的4个字节为版本信息，前两个字节表示minor version（次版本号），后两个字节表示major version（主版本号）。这里的版本号为 00 00 00 34，换算成十进制，表示次版本号为0，主版本号为52。所以该文件的版本号为：1.8.0。通过java -version命令验证。
-</code></pre><a id="more"></a>
+</code></pre><!--more-->
 <pre><code>3. 常量池（constant pool），紧接着在主版本号之后的就是常量池的入口。一个Java类中定义的很多信息都是由常量池来维护和描述的，可以将常量池看作是Class文件的资源仓库，比如说Java类中定义的方法与变量信息，都是存储在常量池中。常量池中主要存储两类常量：字面量与符号引用。字面量如文本字符串，Java中声明为final的常量值等。而符号引用如类和接口的全局限定名，字段的名称和描述符，方法的名称和描述符等。
 
 4. 常量池的总体结构，Java类所对应的常量池主要由 常量池数量 与 常量池数组 这两部分共同构成。常量池数量紧跟在主版本号后面，占据两个字节。常量池数组则紧跟在常量池数量之后。常量池数组与一般的数组不同的是，常量池数组中不同元素的类型、结构都是不同的，长度当然也就不同。但是每一种元素的第一个数据都是一个u1类型，该字节是个标志位，占据一个字节。JVM在解析常量池时，会根据这个u1类型来获取元素的具体类型。
@@ -769,7 +769,7 @@ Code:
   <p><span>本文标题:</span>字节码</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 11:38:08</p>
+  <p><span>最后更新:</span>2020年03月30日 - 08:15:00</p>
   <p><span>原始链接:</span><a href="/undefined/字节码/" title="字节码">http://bangjinhu.github.io/undefined/字节码/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/字节码/"  aria-label="复制成功！"></i></span>
   </p>
@@ -991,7 +991,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1002,7 +1002,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1013,7 +1013,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1055,12 +1055,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -1138,7 +1132,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

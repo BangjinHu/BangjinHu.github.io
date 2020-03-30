@@ -155,14 +155,14 @@
 <meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. 简介 提示：享元，表示共享元器件，即复用已经生成的对象。而复用最简单的方式是用一个HashMap来存放每次新生成的对象。每次需要一个对象时，就去HashMap里面找。如果没有再生成新的对象不迟。  该模式主要用于减少创建对象的数量，从而能够减少内存的占用和提高性能。其提供减少对象数量从而改善应用所需的对象结构的方式。该模式尝试重用现有的类对象，如果没">
 <meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="计算机网络 - 享元">
+<meta property="og:title" content="设计模式 - 享元">
 <meta property="og:url" content="http://bangjinhu.github.io/undefined/设计模式 - 享元模式/index.html">
 <meta property="og:site_name" content="BangjinHu&#39;s Blog">
 <meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. 简介 提示：享元，表示共享元器件，即复用已经生成的对象。而复用最简单的方式是用一个HashMap来存放每次新生成的对象。每次需要一个对象时，就去HashMap里面找。如果没有再生成新的对象不迟。  该模式主要用于减少创建对象的数量，从而能够减少内存的占用和提高性能。其提供减少对象数量从而改善应用所需的对象结构的方式。该模式尝试重用现有的类对象，如果没">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-29T02:22:48.464Z">
+<meta property="og:updated_time" content="2020-03-30T00:20:19.515Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="计算机网络 - 享元">
+<meta name="twitter:title" content="设计模式 - 享元">
 <meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 简介 提示：享元，表示共享元器件，即复用已经生成的对象。而复用最简单的方式是用一个HashMap来存放每次新生成的对象。每次需要一个对象时，就去HashMap里面找。如果没有再生成新的对象不迟。  该模式主要用于减少创建对象的数量，从而能够减少内存的占用和提高性能。其提供减少对象数量从而改善应用所需的对象结构的方式。该模式尝试重用现有的类对象，如果没">
 
 
@@ -199,7 +199,7 @@
 
 
 
-  <title>计算机网络 - 享元 | BangjinHu's Blog</title>
+  <title>设计模式 - 享元 | BangjinHu's Blog</title>
   
 
 
@@ -391,7 +391,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">计算机网络 - 享元</h2>
+          <h2 class="post-title" itemprop="name headline">设计模式 - 享元</h2>
         
 
         <div class="post-meta">
@@ -419,8 +419,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:22:48+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:20:19+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -515,8 +515,7 @@
 <blockquote>
 <p>提示：如果系统中存在大量的对象，且这些对象消耗大量的内存，这些对象的状态大部分可以外部化。</p>
 </blockquote>
-<p>概括：减少对象创建的数量，减少内存的占用，提高性能</p>
-<p>场景</p>
+<p>概括：减少对象创建的数量，减少内存的占用，提高性能<br><a id="more"></a><br>场景</p>
 <pre><code>1. 系统底层开发，以便解决系统的性能问题。如：java.lang.String、数据库连接池，如果有则返回，没有则创建一个字符串并保存在缓存池里面
 
 2. 系统中有大量相似的对象，需要缓冲池的场景
@@ -648,11 +647,11 @@ public class ShapeFactory {
   <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
 
-  <p><span>本文标题:</span>计算机网络 - 享元</a></p>
+  <p><span>本文标题:</span>设计模式 - 享元</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 10:22:48</p>
-  <p><span>原始链接:</span><a href="/undefined/设计模式 - 享元模式/" title="计算机网络 - 享元">http://bangjinhu.github.io/undefined/设计模式 - 享元模式/</a>
+  <p><span>最后更新:</span>2020年03月30日 - 08:20:19</p>
+  <p><span>原始链接:</span><a href="/undefined/设计模式 - 享元模式/" title="设计模式 - 享元">http://bangjinhu.github.io/undefined/设计模式 - 享元模式/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/设计模式 - 享元模式/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
@@ -724,7 +723,7 @@ public class ShapeFactory {
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://bangjinhu.github.io/undefined/设计模式 - 享元模式/" title="计算机网络 - 享元">http://bangjinhu.github.io/undefined/设计模式 - 享元模式/</a>
+    <a href="http://bangjinhu.github.io/undefined/设计模式 - 享元模式/" title="设计模式 - 享元">http://bangjinhu.github.io/undefined/设计模式 - 享元模式/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -873,7 +872,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -884,7 +883,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -895,7 +894,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -937,12 +936,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -1020,7 +1013,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

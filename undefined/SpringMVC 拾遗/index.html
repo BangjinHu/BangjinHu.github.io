@@ -160,7 +160,7 @@
 <meta property="og:site_name" content="BangjinHu&#39;s Blog">
 <meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. 前言@ResponseBody转换为JSON秘密1.在控制器中，其在进入控制器方法之前，遇到@ResponseBody之后，处理器就会记录这个方法的响应类型是JSON数据集。 2.在执行完控制器返回之后，处理器启用结果解析器(ResultResolver)解析此结果，轮询注册给SpringMVC的HttpMessageConverter接口的实现类。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-29T03:32:00.750Z">
+<meta property="og:updated_time" content="2020-03-29T23:59:30.970Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringMVC 查缺补漏">
 <meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 前言@ResponseBody转换为JSON秘密1.在控制器中，其在进入控制器方法之前，遇到@ResponseBody之后，处理器就会记录这个方法的响应类型是JSON数据集。 2.在执行完控制器返回之后，处理器启用结果解析器(ResultResolver)解析此结果，轮询注册给SpringMVC的HttpMessageConverter接口的实现类。">
@@ -419,8 +419,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:32:00+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T07:59:30+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -510,7 +510,8 @@
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><h4 id="ResponseBody转换为JSON秘密"><a href="#ResponseBody转换为JSON秘密" class="headerlink" title="@ResponseBody转换为JSON秘密"></a>@ResponseBody转换为JSON秘密</h4><pre><code>1.在控制器中，其在进入控制器方法之前，遇到@ResponseBody之后，处理器就会记录这个方法的响应类型是JSON数据集。
 2.在执行完控制器返回之后，处理器启用结果解析器(ResultResolver)解析此结果，轮询注册给SpringMVC的HttpMessageConverter接口的实现类。
-</code></pre><h4 id="操作会话对象"><a href="#操作会话对象" class="headerlink" title="操作会话对象"></a>操作会话对象</h4><pre><code>@SessionAttribute 该注解应用于参数，将HttpSession中的属性读出，赋予控制器的参数
+</code></pre><a id="more"></a>    
+<h4 id="操作会话对象"><a href="#操作会话对象" class="headerlink" title="操作会话对象"></a>操作会话对象</h4><pre><code>@SessionAttribute 该注解应用于参数，将HttpSession中的属性读出，赋予控制器的参数
 @SessionAttributes 用于类的注解，其会将相关数据模型的属性保存到Session中
 </code></pre><h4 id="给控制器增加通知"><a href="#给控制器增加通知" class="headerlink" title="给控制器增加通知"></a>给控制器增加通知</h4><pre><code>@ControllerAdvice 定义控制器通知类
 
@@ -652,7 +653,7 @@ public @ResponseBody ItemsCustom itemsView(@PathVariable(&quot;id&quot;) Integer
   <p><span>本文标题:</span>SpringMVC 查缺补漏</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 11:32:00</p>
+  <p><span>最后更新:</span>2020年03月30日 - 07:59:30</p>
   <p><span>原始链接:</span><a href="/undefined/SpringMVC 拾遗/" title="SpringMVC 查缺补漏">http://bangjinhu.github.io/undefined/SpringMVC 拾遗/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/SpringMVC 拾遗/"  aria-label="复制成功！"></i></span>
   </p>
@@ -763,8 +764,8 @@ public @ResponseBody ItemsCustom itemsView(@PathVariable(&quot;id&quot;) Integer
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/undefined/SpringMVC 中的拦截器/" rel="prev" title="SpringMVC 拦截器">
-                SpringMVC 拦截器 <i class="fa fa-chevron-right"></i>
+              <a href="/undefined/SpringMVC 与前台的JSON数据交互/" rel="prev" title="SpringMVC 前台JSON数据交互">
+                SpringMVC 前台JSON数据交互 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -874,7 +875,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -885,7 +886,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -896,7 +897,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -938,12 +939,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -1021,7 +1016,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

@@ -171,7 +171,7 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190409183455640.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190409183559189.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190409221903872.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=,size_16,color_FFFFFF,t_70">
-<meta property="og:updated_time" content="2020-03-29T02:38:11.884Z">
+<meta property="og:updated_time" content="2020-03-30T00:10:24.472Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java核心技术36讲">
 <meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 谈谈你对Java平台的理解?“Java是解释执行”,这句话正确吗? 一次编译、到处运行”说的是Java语言跨平台的特性,Java的跨平台特性与Java虚拟机的存在密不可分,可在不同的环境中运行。比如说Windows平台和Linux平台都有相应的JDK,安装 好JDK后也就有了Java语言的运行环境。其实Java语言本身与其他的编程语言没有特别大的差异">
@@ -431,8 +431,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:38:11+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:10:24+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -523,9 +523,8 @@
 <h4 id="谈谈你对Java平台的理解-“Java是解释执行”-这句话正确吗"><a href="#谈谈你对Java平台的理解-“Java是解释执行”-这句话正确吗" class="headerlink" title="谈谈你对Java平台的理解?“Java是解释执行”,这句话正确吗?"></a>谈谈你对Java平台的理解?“Java是解释执行”,这句话正确吗?</h4><ul>
 <li>一次编译、到处运行”说的是Java语言跨平台的特性,Java的跨平台特性与Java虚拟机的存在密不可分,可在不同的环境中运行。比如说Windows平台和Linux平台都有相应的JDK,安装 好JDK后也就有了Java语言的运行环境。其实Java语言本身与其他的编程语言没有特别大的差异,并不是说Java语言可以跨平台,而是在不同的平台都有可以让Java语言运行的环境而已,所以 才有了Java一次编译,到处运行这样的效果。</li>
 <li>程序从源代码到运行的三个阶段:编码——编译——运行——调试。Java在编译阶段则体现了跨平台的特点。编译过程大概是这样的:首先是将Java源代码转化成.CLASS文件字节码,这是第 一次编译。.class文件就是可以到处运行的文件。然后Java字节码会被转化为目标机器代码,这是是由JVM来执行的,即Java的第二次编译。</li>
-<li>Java是解析运行吗? 不正确! Java源代码经过Javac编译成.class文件 .class文件经JVM解析或编译运行。</li>
-</ul>
-<h4 id="Exception和Error有什么区别"><a href="#Exception和Error有什么区别" class="headerlink" title="Exception和Error有什么区别?"></a>Exception和Error有什么区别?</h4><ul>
+<li>Java是解析运行吗? 不正确! Java源代码经过Javac编译成.class文件 .class文件经JVM解析或编译运行。<a id="more"></a>
+<h4 id="Exception和Error有什么区别"><a href="#Exception和Error有什么区别" class="headerlink" title="Exception和Error有什么区别?"></a>Exception和Error有什么区别?</h4></li>
 <li><code>Exception</code>和<code>Error</code>都是继承了<code>Throwable</code>类,在Java中只有<code>Throwable</code>类型的实例才可以被抛出(throw)或者捕获(catch),它是异常处理机制的基本组成类型。</li>
 <li><code>Exception</code>是程序正常运行中,可以预料的意外情况,可能并且应该被捕获,进行相应处理。</li>
 <li><code>Error</code>是指在正常情况下,不大可能出现的情况,绝大部分的Error都会导致程序(比如JVM自身)处于非正常的、不可恢复状态。既然是非正常情况,所以不便于也不需要捕获,常 见的比如<code>OutOfMemoryError</code>之类,都是<code>Error</code>的子类。</li>
@@ -1170,7 +1169,7 @@ CMS收集器：并发运行；作用于老年代；标记-清除算法；响应�
   <p><span>本文标题:</span>Java核心技术36讲</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 10:38:11</p>
+  <p><span>最后更新:</span>2020年03月30日 - 08:10:24</p>
   <p><span>原始链接:</span><a href="/undefined/Java 核心技术36讲 重点/" title="Java核心技术36讲">http://bangjinhu.github.io/undefined/Java 核心技术36讲 重点/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/Java 核心技术36讲 重点/"  aria-label="复制成功！"></i></span>
   </p>
@@ -1271,8 +1270,8 @@ CMS收集器：并发运行；作用于老年代；标记-清除算法；响应�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/undefined/Spring MVC/" rel="next" title="SpringMVC">
-                <i class="fa fa-chevron-left"></i> SpringMVC
+              <a href="/undefined/Servlet/" rel="next" title="Servlet">
+                <i class="fa fa-chevron-left"></i> Servlet
               </a>
             
           </div>
@@ -1281,8 +1280,8 @@ CMS收集器：并发运行；作用于老年代；标记-清除算法；响应�
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/undefined/Servlet/" rel="prev" title="Servlet">
-                Servlet <i class="fa fa-chevron-right"></i>
+              <a href="/undefined/高效并发/" rel="prev" title="高效并发">
+                高效并发 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1392,7 +1391,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1403,7 +1402,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1414,7 +1413,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1456,12 +1455,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -1539,7 +1532,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

@@ -160,7 +160,7 @@
 <meta property="og:site_name" content="BangjinHu&#39;s Blog">
 <meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. Java NIO[TOC] 概念java.io中最为核心的一个概念是流（stream），面向流编程。Java中，一个流要么是输入流，要么是输出流，不可能同时既是输入流同时又是输出流。 java.nio中拥有3个核心概念：Selector、Channel和Buffer。在java.nio中，我们是面向块（block）或缓冲区（buffer）编程。Buf">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-29T00:29:55.602Z">
+<meta property="og:updated_time" content="2020-03-30T00:03:35.950Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java NIO">
 <meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. Java NIO[TOC] 概念java.io中最为核心的一个概念是流（stream），面向流编程。Java中，一个流要么是输入流，要么是输出流，不可能同时既是输入流同时又是输出流。 java.nio中拥有3个核心概念：Selector、Channel和Buffer。在java.nio中，我们是面向块（block）或缓冲区（buffer）编程。Buf">
@@ -419,8 +419,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T08:29:55+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:03:35+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -511,8 +511,7 @@
 <h2 id="Java-NIO"><a href="#Java-NIO" class="headerlink" title="Java NIO"></a>Java NIO</h2><p>[TOC]</p>
 <h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>java.io中最为核心的一个概念是流（stream），面向流编程。Java中，一个流要么是输入流，要么是输出流，不可能同时既是输入流同时又是输出流。</p>
 <p>java.nio中拥有3个核心概念：Selector、Channel和Buffer。在java.nio中，我们是面向块（block）或缓冲区（buffer）编程。Buffer本身就是一块内存，底层实现上实际是一个数组。数据的读写都是通过Buffer来实现。</p>
-<p>Java中提供7种原生数据类型都各自对应的Buffer类型。如IntBuffer、LongBuffer、ByteBuffer及CharBuffer等。但是没有BooleanBuffer类型。</p>
-<p>Channel指的是可以向其写入数据或从中读取数据的对象，它类似于java.io中的Stream。所有数据的读写都是通过Buffer来进行的，永远不会出现直接向Channel写入数据或直接从Channel中读取数据的情况。</p>
+<p>Java中提供7种原生数据类型都各自对应的Buffer类型。如IntBuffer、LongBuffer、ByteBuffer及CharBuffer等。但是没有BooleanBuffer类型。<br><a id="more"></a><br>Channel指的是可以向其写入数据或从中读取数据的对象，它类似于java.io中的Stream。所有数据的读写都是通过Buffer来进行的，永远不会出现直接向Channel写入数据或直接从Channel中读取数据的情况。</p>
 <p>和Stream不同的是，Channel是双向的，一个流只可能是InputStream或OutputStream，Channel打开后则可以进行读取、写入或读写。</p>
 <p>由于Channel是双向的，因此它能够更好的反映出底层操作系统的真实情况；在Linux系统中，底层操作系统的通道就是双向的。</p>
 <blockquote>
@@ -745,7 +744,7 @@ void send(){
   <p><span>本文标题:</span>Java NIO</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 08:29:55</p>
+  <p><span>最后更新:</span>2020年03月30日 - 08:03:35</p>
   <p><span>原始链接:</span><a href="/undefined/NIO/" title="Java NIO">http://bangjinhu.github.io/undefined/NIO/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/NIO/"  aria-label="复制成功！"></i></span>
   </p>
@@ -967,7 +966,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -978,7 +977,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -989,7 +988,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1031,12 +1030,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -1114,7 +1107,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

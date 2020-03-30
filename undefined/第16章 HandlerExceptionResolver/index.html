@@ -139,7 +139,7 @@
 
 
 
-  <meta name="keywords" content="AOP," />
+  <meta name="keywords" content="SpringMVC源码分析," />
 
 
 
@@ -152,18 +152,18 @@
 
 
 
-<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. 第16章 HandlerExceptionResolverHandlerExceptionResolver主要实现都继承与抽象类的AbstractHandlerExecutionResolver，它有五个子类，其中AnnotationMethodHandlerExceptionResolver已经被弃用。 1.AbstractHandlerMetho">
-<meta name="keywords" content="AOP">
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. 第16章 HandlerExceptionResolver">
+<meta name="keywords" content="SpringMVC源码分析">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AOP">
+<meta property="og:title" content="HandlerExceptionResolver">
 <meta property="og:url" content="http://bangjinhu.github.io/undefined/第16章 HandlerExceptionResolver/index.html">
 <meta property="og:site_name" content="BangjinHu&#39;s Blog">
-<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. 第16章 HandlerExceptionResolverHandlerExceptionResolver主要实现都继承与抽象类的AbstractHandlerExecutionResolver，它有五个子类，其中AnnotationMethodHandlerExceptionResolver已经被弃用。 1.AbstractHandlerMetho">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. 第16章 HandlerExceptionResolver">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-29T01:54:05.019Z">
+<meta property="og:updated_time" content="2020-03-30T00:17:09.562Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AOP">
-<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 第16章 HandlerExceptionResolverHandlerExceptionResolver主要实现都继承与抽象类的AbstractHandlerExecutionResolver，它有五个子类，其中AnnotationMethodHandlerExceptionResolver已经被弃用。 1.AbstractHandlerMetho">
+<meta name="twitter:title" content="HandlerExceptionResolver">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 第16章 HandlerExceptionResolver">
 
 
 
@@ -199,7 +199,7 @@
 
 
 
-  <title>AOP | BangjinHu's Blog</title>
+  <title>HandlerExceptionResolver | BangjinHu's Blog</title>
   
 
 
@@ -391,7 +391,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">AOP</h2>
+          <h2 class="post-title" itemprop="name headline">HandlerExceptionResolver</h2>
         
 
         <div class="post-meta">
@@ -419,8 +419,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T09:54:05+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:17:09+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -438,8 +438,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/AOP/" itemprop="url" rel="index">
-                    <span itemprop="name">AOP</span>
+                  <a href="/categories/SpringMVC源码分析/" itemprop="url" rel="index">
+                    <span itemprop="name">SpringMVC源码分析</span>
                   </a>
                 </span>
 
@@ -508,7 +508,8 @@
       
         <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h1 id="第16章-HandlerExceptionResolver"><a href="#第16章-HandlerExceptionResolver" class="headerlink" title="第16章 HandlerExceptionResolver"></a>第16章 HandlerExceptionResolver</h1><p>HandlerExceptionResolver主要实现都继承与抽象类的AbstractHandlerExecutionResolver，它有五个子类，其中AnnotationMethodHandlerExceptionResolver已经被弃用。</p>
+<h1 id="第16章-HandlerExceptionResolver"><a href="#第16章-HandlerExceptionResolver" class="headerlink" title="第16章 HandlerExceptionResolver"></a>第16章 HandlerExceptionResolver</h1><a id="more"></a>
+<p>HandlerExceptionResolver主要实现都继承与抽象类的AbstractHandlerExecutionResolver，它有五个子类，其中AnnotationMethodHandlerExceptionResolver已经被弃用。</p>
 <pre><code>1.AbstractHandlerMethodExceptionResolver和其子类ExceptionHandlerExcpetionResolver一起完成 @ExceptionHandler 注释的方法进行异常解析的功能。
 
 2.DefaultHandlerExceptionResolver按照不同类型分别对异常进行解析。
@@ -821,11 +822,11 @@ protected String determineViewName(Exception ex, HttpServletRequest request) {
   <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
 
-  <p><span>本文标题:</span>AOP</a></p>
+  <p><span>本文标题:</span>HandlerExceptionResolver</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 09:54:05</p>
-  <p><span>原始链接:</span><a href="/undefined/第16章 HandlerExceptionResolver/" title="AOP">http://bangjinhu.github.io/undefined/第16章 HandlerExceptionResolver/</a>
+  <p><span>最后更新:</span>2020年03月30日 - 08:17:09</p>
+  <p><span>原始链接:</span><a href="/undefined/第16章 HandlerExceptionResolver/" title="HandlerExceptionResolver">http://bangjinhu.github.io/undefined/第16章 HandlerExceptionResolver/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/第16章 HandlerExceptionResolver/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
@@ -897,7 +898,7 @@ protected String determineViewName(Exception ex, HttpServletRequest request) {
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://bangjinhu.github.io/undefined/第16章 HandlerExceptionResolver/" title="AOP">http://bangjinhu.github.io/undefined/第16章 HandlerExceptionResolver/</a>
+    <a href="http://bangjinhu.github.io/undefined/第16章 HandlerExceptionResolver/" title="HandlerExceptionResolver">http://bangjinhu.github.io/undefined/第16章 HandlerExceptionResolver/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -912,7 +913,7 @@ protected String determineViewName(Exception ex, HttpServletRequest request) {
       
         <div class="post-tags">
           
-            <a href="/tags/AOP/" rel="tag"><i class="fa fa-tag"></i> AOP</a>
+            <a href="/tags/SpringMVC源码分析/" rel="tag"><i class="fa fa-tag"></i> SpringMVC源码分析</a>
           
         </div>
       
@@ -925,8 +926,8 @@ protected String determineViewName(Exception ex, HttpServletRequest request) {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/undefined/第18章 LocaleResolver/" rel="next" title="AOP">
-                <i class="fa fa-chevron-left"></i> AOP
+              <a href="/undefined/第15章 RequestToViewNameTranslator/" rel="next" title="RequestToViewNameTranslator">
+                <i class="fa fa-chevron-left"></i> RequestToViewNameTranslator
               </a>
             
           </div>
@@ -935,8 +936,8 @@ protected String determineViewName(Exception ex, HttpServletRequest request) {
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/undefined/第17章 MultipartResolver/" rel="prev" title="AOP">
-                AOP <i class="fa fa-chevron-right"></i>
+              <a href="/undefined/第13章 Spring框架的设计理念与设计模式分析/" rel="prev" title="Spring设计框架与设计模式">
+                Spring设计框架与设计模式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1046,7 +1047,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1057,7 +1058,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1068,7 +1069,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1110,12 +1111,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -1193,7 +1188,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

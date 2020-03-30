@@ -152,18 +152,18 @@
 
 
 
-<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. Redis - 分布式[TOC] 分布式锁(多JVM)控制分布式系统有序的去对共享资源进行操作，通过互斥来保持一致性 实现原理 互斥性：保证同一时间只有一个客户端可以拿到锁，也就是可以对共享资源进行操作  安全性：只有加锁的服务才能有解锁权限，也就是不能让a加的锁，bcd都可以解锁，如果都能解锁那分布式锁就没啥意义了   可能出现的情况就是a去查询发">
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. Redis - 分布式[TOC] 分布式锁(多JVM)控制分布式系统有序的去对共享资源进行操作，通过互斥来保持一致性">
 <meta name="keywords" content="Redis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redis - 分布式锁">
 <meta property="og:url" content="http://bangjinhu.github.io/undefined/Redis - 分布式锁/index.html">
 <meta property="og:site_name" content="BangjinHu&#39;s Blog">
-<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. Redis - 分布式[TOC] 分布式锁(多JVM)控制分布式系统有序的去对共享资源进行操作，通过互斥来保持一致性 实现原理 互斥性：保证同一时间只有一个客户端可以拿到锁，也就是可以对共享资源进行操作  安全性：只有加锁的服务才能有解锁权限，也就是不能让a加的锁，bcd都可以解锁，如果都能解锁那分布式锁就没啥意义了   可能出现的情况就是a去查询发">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. Redis - 分布式[TOC] 分布式锁(多JVM)控制分布式系统有序的去对共享资源进行操作，通过互斥来保持一致性">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-29T02:47:11.339Z">
+<meta property="og:updated_time" content="2020-03-30T00:03:13.276Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis - 分布式锁">
-<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. Redis - 分布式[TOC] 分布式锁(多JVM)控制分布式系统有序的去对共享资源进行操作，通过互斥来保持一致性 实现原理 互斥性：保证同一时间只有一个客户端可以拿到锁，也就是可以对共享资源进行操作  安全性：只有加锁的服务才能有解锁权限，也就是不能让a加的锁，bcd都可以解锁，如果都能解锁那分布式锁就没啥意义了   可能出现的情况就是a去查询发">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. Redis - 分布式[TOC] 分布式锁(多JVM)控制分布式系统有序的去对共享资源进行操作，通过互斥来保持一致性">
 
 
 
@@ -419,8 +419,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:47:11+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:03:13+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -509,7 +509,7 @@
         <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
 <h2 id="Redis-分布式"><a href="#Redis-分布式" class="headerlink" title="Redis - 分布式"></a>Redis - 分布式</h2><p>[TOC]</p>
-<h3 id="分布式锁-多JVM"><a href="#分布式锁-多JVM" class="headerlink" title="分布式锁(多JVM)"></a>分布式锁(多JVM)</h3><p>控制分布式系统有序的去对共享资源进行操作，通过互斥来保持一致性</p>
+<h3 id="分布式锁-多JVM"><a href="#分布式锁-多JVM" class="headerlink" title="分布式锁(多JVM)"></a>分布式锁(多JVM)</h3><p>控制分布式系统有序的去对共享资源进行操作，通过互斥来保持一致性<br><a id="more"></a></p>
 <h4 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h4><ul>
 <li><p>互斥性：保证同一时间只有一个客户端可以拿到锁，也就是可以对共享资源进行操作</p>
 </li>
@@ -605,7 +605,7 @@
   <p><span>本文标题:</span>Redis - 分布式锁</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 10:47:11</p>
+  <p><span>最后更新:</span>2020年03月30日 - 08:03:13</p>
   <p><span>原始链接:</span><a href="/undefined/Redis - 分布式锁/" title="Redis - 分布式锁">http://bangjinhu.github.io/undefined/Redis - 分布式锁/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/Redis - 分布式锁/"  aria-label="复制成功！"></i></span>
   </p>
@@ -706,8 +706,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/undefined/Redis - 面试总结/" rel="next" title="Redis - Java集成">
-                <i class="fa fa-chevron-left"></i> Redis - Java集成
+              <a href="/undefined/Nginx/" rel="next" title="Nginx">
+                <i class="fa fa-chevron-left"></i> Nginx
               </a>
             
           </div>
@@ -716,8 +716,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/undefined/Redis - Java 集成/" rel="prev" title="Redis - Java集成">
-                Redis - Java集成 <i class="fa fa-chevron-right"></i>
+              <a href="/undefined/Mybatis-1/" rel="prev" title="MyBatis 学习">
+                MyBatis 学习 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -827,7 +827,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -838,7 +838,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -849,7 +849,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -891,12 +891,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -974,7 +968,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

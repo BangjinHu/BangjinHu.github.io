@@ -162,7 +162,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/hvUCbRic69sDvmSABenhfp0ZJVbCah4VEIJRkbBrMgia6cHYcxTAK7kHCd1pXH8iaVPucmAvd2LzsUibjQ5oM0Z4rQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
 <meta property="og:image" content="https://images.xiaozhuanlan.com/photo/2019/ce590587caccd26adf46e2060b2107aa.jpg">
-<meta property="og:updated_time" content="2020-03-29T03:36:14.746Z">
+<meta property="og:updated_time" content="2020-03-29T23:57:20.363Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ZooKeeper">
 <meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. ZooKeeper[TOC] 概念zookeeper是开源的分布式协调服务，其设计目标是将那些复杂且容易出错的分布式一致性服务封装起来，构成一个高效可靠的原语集，并以一系列简单的接口提供给用户使用。  原语，操作系统或计算机网络用语范畴。是由若干条指令组成的，用于完成一定功能的一个过程。具有不可分割性，即原语的执行必须是连续的，在执行过程中不允许被中">
@@ -422,8 +422,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:36:14+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T07:57:20+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -517,8 +517,7 @@
 <p>原语，操作系统或计算机网络用语范畴。是由若干条指令组成的，用于完成一定功能的一个过程。具有不可分割性，即原语的执行必须是连续的，在执行过程中不允许被中断。</p>
 </blockquote>
 <p>ZooKeeper 是一个典型的分布式数据一致性解决方案，分布式应用程序可以基于 ZooKeeper 实现诸如数据发布/订阅、负载均衡、命名服务、分布式协调/通知、集群管理、Master 选举、分布式锁和分布式队列等功能。</p>
-<p>Zookeeper 一个最常用的使用场景就是 ==用于担任服务生产者和服务消费者的注册中心(提供发布订阅服务)==。</p>
-<p>服务生产者将自己提供的服务注册到Zookeeper中心，服务的消费者在进行服务调用的时候先到Zookeeper中查找服务，获取到服务生产者的详细信息之后，再去调用服务生产者的内容与数据。如下图所示，在 Dubbo架构中 Zookeeper 就担任了注册中心这一角色。</p>
+<p>Zookeeper 一个最常用的使用场景就是 ==用于担任服务生产者和服务消费者的注册中心(提供发布订阅服务)==。<br><a id="more"></a><br>服务生产者将自己提供的服务注册到Zookeeper中心，服务的消费者在进行服务调用的时候先到Zookeeper中查找服务，获取到服务生产者的详细信息之后，再去调用服务生产者的内容与数据。如下图所示，在 Dubbo架构中 Zookeeper 就担任了注册中心这一角色。</p>
 <h3 id="ZooKeeper-功能"><a href="#ZooKeeper-功能" class="headerlink" title="ZooKeeper 功能"></a>ZooKeeper 功能</h3><p>在项目中，主要使用ZooKeeper作为Dubbo的注册中心（Dubbo官方推荐使用ZooKeeper注册中心）。</p>
 <h3 id="ZooKeeper-的典型应用场景-发布订阅功能的作用"><a href="#ZooKeeper-的典型应用场景-发布订阅功能的作用" class="headerlink" title="==ZooKeeper 的典型应用场景 发布订阅功能的作用=="></a>==ZooKeeper 的典型应用场景 发布订阅功能的作用==</h3><p>我们知道ZK的典型应用场景之一就是“发布订阅服务”。利用“发布订阅服务”实现两种常见的功能：</p>
 <pre><code>1. 作为配置中心
@@ -695,7 +694,7 @@
   <p><span>本文标题:</span>ZooKeeper</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 11:36:14</p>
+  <p><span>最后更新:</span>2020年03月30日 - 07:57:20</p>
   <p><span>原始链接:</span><a href="/undefined/ZooKeeper/" title="ZooKeeper">http://bangjinhu.github.io/undefined/ZooKeeper/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/ZooKeeper/"  aria-label="复制成功！"></i></span>
   </p>
@@ -796,8 +795,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/undefined/mybatis generator 详细配置教程/" rel="next" title="MyBatis generator 详细配置">
-                <i class="fa fa-chevron-left"></i> MyBatis generator 详细配置
+              <a href="/undefined/mybatis-注解方式实现/" rel="next" title="MyBatis 注解">
+                <i class="fa fa-chevron-left"></i> MyBatis 注解
               </a>
             
           </div>
@@ -806,8 +805,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/undefined/WordUtil/" rel="prev" title="word - util">
-                word - util <i class="fa fa-chevron-right"></i>
+              <a href="/undefined/UDP/" rel="prev" title="UDP">
+                UDP <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -917,7 +916,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -928,7 +927,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -939,7 +938,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -981,12 +980,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -1064,7 +1057,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

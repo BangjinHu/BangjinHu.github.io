@@ -139,7 +139,7 @@
 
 
 
-  <meta name="keywords" content="Redis," />
+  <meta name="keywords" content="并发编程," />
 
 
 
@@ -153,16 +153,16 @@
 
 
 <meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. 第四章 Java并发编程基础[TOC] 4.1 线程 提示：在一个Java程序中，Java程序运行不仅是main()方法运行，而是main线程和多个其它线程的同时运行。  4.1.3 线程优先级现代操作系统基本采用时分的形式调度运行的线程，操作系统会分出一个个时间片，线程会分配到若干时间片，当线程的时间片用完了就会发生线程调度，并等待下一次分配。">
-<meta name="keywords" content="Redis">
+<meta name="keywords" content="并发编程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Redis - Java集成">
+<meta property="og:title" content="并发编程 基础">
 <meta property="og:url" content="http://bangjinhu.github.io/undefined/第4章 Java并发编程基础/index.html">
 <meta property="og:site_name" content="BangjinHu&#39;s Blog">
 <meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. 第四章 Java并发编程基础[TOC] 4.1 线程 提示：在一个Java程序中，Java程序运行不仅是main()方法运行，而是main线程和多个其它线程的同时运行。  4.1.3 线程优先级现代操作系统基本采用时分的形式调度运行的线程，操作系统会分出一个个时间片，线程会分配到若干时间片，当线程的时间片用完了就会发生线程调度，并等待下一次分配。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-29T00:45:41.416Z">
+<meta property="og:updated_time" content="2020-03-30T00:18:13.375Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Redis - Java集成">
+<meta name="twitter:title" content="并发编程 基础">
 <meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 第四章 Java并发编程基础[TOC] 4.1 线程 提示：在一个Java程序中，Java程序运行不仅是main()方法运行，而是main线程和多个其它线程的同时运行。  4.1.3 线程优先级现代操作系统基本采用时分的形式调度运行的线程，操作系统会分出一个个时间片，线程会分配到若干时间片，当线程的时间片用完了就会发生线程调度，并等待下一次分配。">
 
 
@@ -199,7 +199,7 @@
 
 
 
-  <title>Redis - Java集成 | BangjinHu's Blog</title>
+  <title>并发编程 基础 | BangjinHu's Blog</title>
   
 
 
@@ -391,7 +391,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Redis - Java集成</h2>
+          <h2 class="post-title" itemprop="name headline">并发编程 基础</h2>
         
 
         <div class="post-meta">
@@ -419,8 +419,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T08:45:41+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:18:13+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -438,8 +438,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Redis/" itemprop="url" rel="index">
-                    <span itemprop="name">Redis</span>
+                  <a href="/categories/并发编程/" itemprop="url" rel="index">
+                    <span itemprop="name">并发编程</span>
                   </a>
                 </span>
 
@@ -512,7 +512,7 @@
 <h3 id="4-1-线程"><a href="#4-1-线程" class="headerlink" title="4.1 线程"></a>4.1 线程</h3><blockquote>
 <p>提示：在一个Java程序中，Java程序运行不仅是main()方法运行，而是main线程和多个其它线程的同时运行。</p>
 </blockquote>
-<h4 id="4-1-3-线程优先级"><a href="#4-1-3-线程优先级" class="headerlink" title="4.1.3 线程优先级"></a>4.1.3 线程优先级</h4><p>现代操作系统基本采用时分的形式调度运行的线程，操作系统会分出一个个时间片，线程会分配到若干时间片，当线程的时间片用完了就会发生线程调度，并等待下一次分配。</p>
+<h4 id="4-1-3-线程优先级"><a href="#4-1-3-线程优先级" class="headerlink" title="4.1.3 线程优先级"></a>4.1.3 线程优先级</h4><p>现代操作系统基本采用时分的形式调度运行的线程，操作系统会分出一个个时间片，线程会分配到若干时间片，当线程的时间片用完了就会发生线程调度，并等待下一次分配。<br><a id="more"></a></p>
 <blockquote>
 <p>提示：线程优先级不能作为程序正确性的依赖，因为操作系统可以完全不理会Java线程对于优先级的设定。</p>
 </blockquote>
@@ -613,11 +613,11 @@
   <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
 
-  <p><span>本文标题:</span>Redis - Java集成</a></p>
+  <p><span>本文标题:</span>并发编程 基础</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 08:45:41</p>
-  <p><span>原始链接:</span><a href="/undefined/第4章 Java并发编程基础/" title="Redis - Java集成">http://bangjinhu.github.io/undefined/第4章 Java并发编程基础/</a>
+  <p><span>最后更新:</span>2020年03月30日 - 08:18:13</p>
+  <p><span>原始链接:</span><a href="/undefined/第4章 Java并发编程基础/" title="并发编程 基础">http://bangjinhu.github.io/undefined/第4章 Java并发编程基础/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/第4章 Java并发编程基础/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
@@ -689,7 +689,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://bangjinhu.github.io/undefined/第4章 Java并发编程基础/" title="Redis - Java集成">http://bangjinhu.github.io/undefined/第4章 Java并发编程基础/</a>
+    <a href="http://bangjinhu.github.io/undefined/第4章 Java并发编程基础/" title="并发编程 基础">http://bangjinhu.github.io/undefined/第4章 Java并发编程基础/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -704,7 +704,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Redis/" rel="tag"><i class="fa fa-tag"></i> Redis</a>
+            <a href="/tags/并发编程/" rel="tag"><i class="fa fa-tag"></i> 并发编程</a>
           
         </div>
       
@@ -717,8 +717,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/undefined/第4章 Spring MVC/" rel="next" title="Redis - Java集成">
-                <i class="fa fa-chevron-left"></i> Redis - Java集成
+              <a href="/undefined/第3章 Spring AOP的实现/" rel="next" title="SPRING AOP">
+                <i class="fa fa-chevron-left"></i> SPRING AOP
               </a>
             
           </div>
@@ -727,8 +727,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/undefined/第2章 深入分析Java IO的工作机制/" rel="prev" title="第二章 深入分析Java IO的工作机制">
-                第二章 深入分析Java IO的工作机制 <i class="fa fa-chevron-right"></i>
+              <a href="/undefined/第3章 Spring - AOP 续二/" rel="prev" title="SPRING AOP 续二">
+                SPRING AOP 续二 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -838,7 +838,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -849,7 +849,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -860,7 +860,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -902,12 +902,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -985,7 +979,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

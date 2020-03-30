@@ -139,7 +139,7 @@
 
 
 
-  <meta name="keywords" content="AOP," />
+  <meta name="keywords" content="多线程与并发," />
 
 
 
@@ -153,16 +153,16 @@
 
 
 <meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. [TOC] 第十章 Executor框架Java的线程既是工作单元，也是执行机制。所以在JDK 1.5 之后将工作单元和执行机制分离开，工作单元包括 Runnable 和 Callable ，执行机制由 Executor 框架提供。 Executor 管理多个异步任务的执行，而无需程序员显式地管理线程的生命周期。这里的异步是指多个任务的执行互不干扰，">
-<meta name="keywords" content="AOP">
+<meta name="keywords" content="多线程与并发">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AOP">
+<meta property="og:title" content="Executor框架">
 <meta property="og:url" content="http://bangjinhu.github.io/undefined/第10章 Executor框架/index.html">
 <meta property="og:site_name" content="BangjinHu&#39;s Blog">
 <meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. [TOC] 第十章 Executor框架Java的线程既是工作单元，也是执行机制。所以在JDK 1.5 之后将工作单元和执行机制分离开，工作单元包括 Runnable 和 Callable ，执行机制由 Executor 框架提供。 Executor 管理多个异步任务的执行，而无需程序员显式地管理线程的生命周期。这里的异步是指多个任务的执行互不干扰，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-29T01:53:17.746Z">
+<meta property="og:updated_time" content="2020-03-30T00:16:04.655Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AOP">
+<meta name="twitter:title" content="Executor框架">
 <meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. [TOC] 第十章 Executor框架Java的线程既是工作单元，也是执行机制。所以在JDK 1.5 之后将工作单元和执行机制分离开，工作单元包括 Runnable 和 Callable ，执行机制由 Executor 框架提供。 Executor 管理多个异步任务的执行，而无需程序员显式地管理线程的生命周期。这里的异步是指多个任务的执行互不干扰，">
 
 
@@ -199,7 +199,7 @@
 
 
 
-  <title>AOP | BangjinHu's Blog</title>
+  <title>Executor框架 | BangjinHu's Blog</title>
   
 
 
@@ -391,7 +391,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">AOP</h2>
+          <h2 class="post-title" itemprop="name headline">Executor框架</h2>
         
 
         <div class="post-meta">
@@ -419,8 +419,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T09:53:17+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:16:04+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -438,8 +438,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/AOP/" itemprop="url" rel="index">
-                    <span itemprop="name">AOP</span>
+                  <a href="/categories/多线程与并发/" itemprop="url" rel="index">
+                    <span itemprop="name">多线程与并发</span>
                   </a>
                 </span>
 
@@ -511,8 +511,7 @@
 <p>[TOC]</p>
 <h2 id="第十章-Executor框架"><a href="#第十章-Executor框架" class="headerlink" title="第十章 Executor框架"></a>第十章 Executor框架</h2><p>Java的线程既是工作单元，也是执行机制。所以在JDK 1.5 之后将工作单元和执行机制分离开，工作单元包括 Runnable 和 Callable ，执行机制由 Executor 框架提供。</p>
 <p>Executor 管理多个异步任务的执行，而无需程序员显式地管理线程的生命周期。这里的异步是指多个任务的执行互不干扰，不需要进行同步操作。</p>
-<h3 id="10-1-Executor-框架简介"><a href="#10-1-Executor-框架简介" class="headerlink" title="10.1 Executor 框架简介"></a>10.1 Executor 框架简介</h3><h4 id="10-1-1-Executor-框架的两级调度模型"><a href="#10-1-1-Executor-框架的两级调度模型" class="headerlink" title="10.1.1 Executor 框架的两级调度模型"></a>10.1.1 Executor 框架的两级调度模型</h4><p>在上层，Java多线程程序通常将应用分解为若干个任务，然后使用用户级的调度器(Executor框架)将这些任务映射为固定数量的线程。</p>
-<p>在底层，操作系统内核将这些线程映射到硬件处理器上。</p>
+<h3 id="10-1-Executor-框架简介"><a href="#10-1-Executor-框架简介" class="headerlink" title="10.1 Executor 框架简介"></a>10.1 Executor 框架简介</h3><h4 id="10-1-1-Executor-框架的两级调度模型"><a href="#10-1-1-Executor-框架的两级调度模型" class="headerlink" title="10.1.1 Executor 框架的两级调度模型"></a>10.1.1 Executor 框架的两级调度模型</h4><p>在上层，Java多线程程序通常将应用分解为若干个任务，然后使用用户级的调度器(Executor框架)将这些任务映射为固定数量的线程。<br><a id="more"></a><br>在底层，操作系统内核将这些线程映射到硬件处理器上。</p>
 <h4 id="10-1-2-Executor-框架的结构和成员"><a href="#10-1-2-Executor-框架的结构和成员" class="headerlink" title="10.1.2 Executor 框架的结构和成员"></a>10.1.2 Executor 框架的结构和成员</h4><p><strong>1.Executor 框架的结构</strong><br></p>
 <blockquote>
 <p>注意：Executor框架由两个关键类实现了ExecutorService接口(ThreadPoolExecutor和ScheduledThreadPoolExecutor)。</p>
@@ -614,11 +613,11 @@
   <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
 
-  <p><span>本文标题:</span>AOP</a></p>
+  <p><span>本文标题:</span>Executor框架</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 09:53:17</p>
-  <p><span>原始链接:</span><a href="/undefined/第10章 Executor框架/" title="AOP">http://bangjinhu.github.io/undefined/第10章 Executor框架/</a>
+  <p><span>最后更新:</span>2020年03月30日 - 08:16:04</p>
+  <p><span>原始链接:</span><a href="/undefined/第10章 Executor框架/" title="Executor框架">http://bangjinhu.github.io/undefined/第10章 Executor框架/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/第10章 Executor框架/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
@@ -690,7 +689,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://bangjinhu.github.io/undefined/第10章 Executor框架/" title="AOP">http://bangjinhu.github.io/undefined/第10章 Executor框架/</a>
+    <a href="http://bangjinhu.github.io/undefined/第10章 Executor框架/" title="Executor框架">http://bangjinhu.github.io/undefined/第10章 Executor框架/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -705,7 +704,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/AOP/" rel="tag"><i class="fa fa-tag"></i> AOP</a>
+            <a href="/tags/多线程与并发/" rel="tag"><i class="fa fa-tag"></i> 多线程与并发</a>
           
         </div>
       
@@ -718,8 +717,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/undefined/第11章 Java并发编程实战/" rel="next" title="AOP">
-                <i class="fa fa-chevron-left"></i> AOP
+              <a href="/undefined/第11章 Java并发编程实战/" rel="next" title="Java并发编程实战">
+                <i class="fa fa-chevron-left"></i> Java并发编程实战
               </a>
             
           </div>
@@ -728,8 +727,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/undefined/第1-10章 SpringMVC 源码分析与实践/" rel="prev" title="AOP">
-                AOP <i class="fa fa-chevron-right"></i>
+              <a href="/undefined/第1-10章 SpringMVC 源码分析与实践/" rel="prev" title="SpringMVC 源码分析与实战">
+                SpringMVC 源码分析与实战 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -839,7 +838,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -850,7 +849,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -861,7 +860,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -903,12 +902,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -986,7 +979,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

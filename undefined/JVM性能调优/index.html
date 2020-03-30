@@ -152,18 +152,18 @@
 
 
 
-<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. JVM性能调优[TOC] JDK 8 新特性接口的默认方法和静态方法Java 8 使用两个新概念扩展了接口的含义，默认方法和静态方法。默认方法，让开发人员可以在不破坏二进制兼容的前提下，往现存接口中添加新的方法（不强制那些实现了该接口的类也同时实现该新方法）。 Nashorn JavaScript 引擎在JDK 8 中采用了Metaspace(JEP">
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. JVM性能调优[TOC] JDK 8 新特性接口的默认方法和静态方法">
 <meta name="keywords" content="JVM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JVM性能调优">
 <meta property="og:url" content="http://bangjinhu.github.io/undefined/JVM性能调优/index.html">
 <meta property="og:site_name" content="BangjinHu&#39;s Blog">
-<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. JVM性能调优[TOC] JDK 8 新特性接口的默认方法和静态方法Java 8 使用两个新概念扩展了接口的含义，默认方法和静态方法。默认方法，让开发人员可以在不破坏二进制兼容的前提下，往现存接口中添加新的方法（不强制那些实现了该接口的类也同时实现该新方法）。 Nashorn JavaScript 引擎在JDK 8 中采用了Metaspace(JEP">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. JVM性能调优[TOC] JDK 8 新特性接口的默认方法和静态方法">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-29T02:43:39.036Z">
+<meta property="og:updated_time" content="2020-03-30T00:07:55.696Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM性能调优">
-<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. JVM性能调优[TOC] JDK 8 新特性接口的默认方法和静态方法Java 8 使用两个新概念扩展了接口的含义，默认方法和静态方法。默认方法，让开发人员可以在不破坏二进制兼容的前提下，往现存接口中添加新的方法（不强制那些实现了该接口的类也同时实现该新方法）。 Nashorn JavaScript 引擎在JDK 8 中采用了Metaspace(JEP">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. JVM性能调优[TOC] JDK 8 新特性接口的默认方法和静态方法">
 
 
 
@@ -419,8 +419,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:43:39+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:07:55+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -509,7 +509,8 @@
         <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
 <h2 id="JVM性能调优"><a href="#JVM性能调优" class="headerlink" title="JVM性能调优"></a>JVM性能调优</h2><p>[TOC]</p>
-<h3 id="JDK-8-新特性"><a href="#JDK-8-新特性" class="headerlink" title="JDK 8 新特性"></a>JDK 8 新特性</h3><h4 id="接口的默认方法和静态方法"><a href="#接口的默认方法和静态方法" class="headerlink" title="接口的默认方法和静态方法"></a>接口的默认方法和静态方法</h4><p>Java 8 使用两个新概念扩展了接口的含义，默认方法和静态方法。默认方法，让开发人员可以在不破坏二进制兼容的前提下，往现存接口中添加新的方法（不强制那些实现了该接口的类也同时实现该新方法）。</p>
+<h3 id="JDK-8-新特性"><a href="#JDK-8-新特性" class="headerlink" title="JDK 8 新特性"></a>JDK 8 新特性</h3><h4 id="接口的默认方法和静态方法"><a href="#接口的默认方法和静态方法" class="headerlink" title="接口的默认方法和静态方法"></a>接口的默认方法和静态方法</h4><a id="more"></a>
+<p>Java 8 使用两个新概念扩展了接口的含义，默认方法和静态方法。默认方法，让开发人员可以在不破坏二进制兼容的前提下，往现存接口中添加新的方法（不强制那些实现了该接口的类也同时实现该新方法）。</p>
 <h4 id="Nashorn-JavaScript-引擎"><a href="#Nashorn-JavaScript-引擎" class="headerlink" title="Nashorn JavaScript 引擎"></a>Nashorn JavaScript 引擎</h4><p>在JDK 8 中采用了Metaspace(JEP 122)代替持久带(PermGen space)。在JVM参数方面，使用-XX:MetaSpaceSize和-XX:MaxMetaspaceSize代替原来的-XX:PermSize和-XX:MaxPermSize。</p>
 <h4 id="Visual-VM-插件"><a href="#Visual-VM-插件" class="headerlink" title="Visual VM 插件"></a>Visual VM 插件</h4><h4 id="top-命令"><a href="#top-命令" class="headerlink" title="top 命令"></a>top 命令</h4><h4 id="vmstat-命令"><a href="#vmstat-命令" class="headerlink" title="vmstat 命令"></a>vmstat 命令</h4>
       
@@ -532,7 +533,7 @@
   <p><span>本文标题:</span>JVM性能调优</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 10:43:39</p>
+  <p><span>最后更新:</span>2020年03月30日 - 08:07:55</p>
   <p><span>原始链接:</span><a href="/undefined/JVM性能调优/" title="JVM性能调优">http://bangjinhu.github.io/undefined/JVM性能调优/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/JVM性能调优/"  aria-label="复制成功！"></i></span>
   </p>
@@ -633,8 +634,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/undefined/Java List集合遍历/" rel="next" title="Java 集合遍历">
-                <i class="fa fa-chevron-left"></i> Java 集合遍历
+              <a href="/undefined/JVM Java虚拟机/" rel="next" title="Java 内存区域与内存溢出异常">
+                <i class="fa fa-chevron-left"></i> Java 内存区域与内存溢出异常
               </a>
             
           </div>
@@ -643,8 +644,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/undefined/JVM Java虚拟机/" rel="prev" title="Java 内存区域与内存溢出异常">
-                Java 内存区域与内存溢出异常 <i class="fa fa-chevron-right"></i>
+              <a href="/undefined/JVM性能调优 - 操作/" rel="prev" title="JVM性能调优">
+                JVM性能调优 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -754,7 +755,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -765,7 +766,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -776,7 +777,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -818,12 +819,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -901,7 +896,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

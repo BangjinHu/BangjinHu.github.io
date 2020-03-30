@@ -139,7 +139,7 @@
 
 
 
-  <meta name="keywords" content="AOP," />
+  <meta name="keywords" content="SpringMVC源码分析," />
 
 
 
@@ -152,18 +152,18 @@
 
 
 
-<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. 第19章 ThemeResolver·这里的SpringMVC框架提供的主题设置应用的整体样式和风格，提高用户体验。SpringMVC主题是一些静态资源的集合。ThemeResolver根据request解析Theme，ThemeResolver的实现和LocalResolver相似。AbstractThemeResolver设置默认的主题：defa">
-<meta name="keywords" content="AOP">
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. 第19章 ThemeResolver">
+<meta name="keywords" content="SpringMVC源码分析">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AOP">
+<meta property="og:title" content="ThemeResolver">
 <meta property="og:url" content="http://bangjinhu.github.io/undefined/第19章 ThemeResolver/index.html">
 <meta property="og:site_name" content="BangjinHu&#39;s Blog">
-<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. 第19章 ThemeResolver·这里的SpringMVC框架提供的主题设置应用的整体样式和风格，提高用户体验。SpringMVC主题是一些静态资源的集合。ThemeResolver根据request解析Theme，ThemeResolver的实现和LocalResolver相似。AbstractThemeResolver设置默认的主题：defa">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. 第19章 ThemeResolver">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-29T01:54:24.030Z">
+<meta property="og:updated_time" content="2020-03-30T00:17:26.437Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AOP">
-<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 第19章 ThemeResolver·这里的SpringMVC框架提供的主题设置应用的整体样式和风格，提高用户体验。SpringMVC主题是一些静态资源的集合。ThemeResolver根据request解析Theme，ThemeResolver的实现和LocalResolver相似。AbstractThemeResolver设置默认的主题：defa">
+<meta name="twitter:title" content="ThemeResolver">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 第19章 ThemeResolver">
 
 
 
@@ -199,7 +199,7 @@
 
 
 
-  <title>AOP | BangjinHu's Blog</title>
+  <title>ThemeResolver | BangjinHu's Blog</title>
   
 
 
@@ -391,7 +391,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">AOP</h2>
+          <h2 class="post-title" itemprop="name headline">ThemeResolver</h2>
         
 
         <div class="post-meta">
@@ -419,8 +419,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T09:54:24+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:17:26+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -438,8 +438,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/AOP/" itemprop="url" rel="index">
-                    <span itemprop="name">AOP</span>
+                  <a href="/categories/SpringMVC源码分析/" itemprop="url" rel="index">
+                    <span itemprop="name">SpringMVC源码分析</span>
                   </a>
                 </span>
 
@@ -508,7 +508,8 @@
       
         <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h1 id="第19章-ThemeResolver"><a href="#第19章-ThemeResolver" class="headerlink" title="第19章 ThemeResolver"></a>第19章 ThemeResolver</h1><p>·这里的SpringMVC框架提供的主题设置应用的整体样式和风格，提高用户体验。SpringMVC主题是一些静态资源的集合。ThemeResolver根据request解析Theme，ThemeResolver的实现和LocalResolver相似。AbstractThemeResolver设置默认的主题：defaultThemeName属性，提供get/set方法。在SpringMVC中包括两部分内容：Theme和ThemeResolver。</p>
+<h1 id="第19章-ThemeResolver"><a href="#第19章-ThemeResolver" class="headerlink" title="第19章 ThemeResolver"></a>第19章 ThemeResolver</h1><a id="more"></a>
+<p>·这里的SpringMVC框架提供的主题设置应用的整体样式和风格，提高用户体验。SpringMVC主题是一些静态资源的集合。ThemeResolver根据request解析Theme，ThemeResolver的实现和LocalResolver相似。AbstractThemeResolver设置默认的主题：defaultThemeName属性，提供get/set方法。在SpringMVC中包括两部分内容：Theme和ThemeResolver。</p>
 <h2 id="1-Theme"><a href="#1-Theme" class="headerlink" title="1.Theme"></a>1.Theme</h2><p>在应用Theme主题时需要实现org.springframework.ui.context.ThemeSource接口，WEB应用上下文WebApplication接口继承自ThemeSource，但实现功能委派给具体的类实现，默认：org.springframework.ui.context.support.ResouceBundleThemeSource类。此类默认从classpath加载主题文件。</p>
 <blockquote>
 <p>注意：无论是自定义ThemeSource接口的实现 或 通过配置属性文件路径的ResourceBundleThemeSource实现，都需要在Spring上下文中定义此bean，并且bean的id必须为themeSource，Spring会自动发现并使用。</p>
@@ -674,11 +675,11 @@ public String resolveThemeName(HttpServletRequest request) {
   <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
 
-  <p><span>本文标题:</span>AOP</a></p>
+  <p><span>本文标题:</span>ThemeResolver</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 09:54:24</p>
-  <p><span>原始链接:</span><a href="/undefined/第19章 ThemeResolver/" title="AOP">http://bangjinhu.github.io/undefined/第19章 ThemeResolver/</a>
+  <p><span>最后更新:</span>2020年03月30日 - 08:17:26</p>
+  <p><span>原始链接:</span><a href="/undefined/第19章 ThemeResolver/" title="ThemeResolver">http://bangjinhu.github.io/undefined/第19章 ThemeResolver/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/第19章 ThemeResolver/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
@@ -750,7 +751,7 @@ public String resolveThemeName(HttpServletRequest request) {
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://bangjinhu.github.io/undefined/第19章 ThemeResolver/" title="AOP">http://bangjinhu.github.io/undefined/第19章 ThemeResolver/</a>
+    <a href="http://bangjinhu.github.io/undefined/第19章 ThemeResolver/" title="ThemeResolver">http://bangjinhu.github.io/undefined/第19章 ThemeResolver/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -765,7 +766,7 @@ public String resolveThemeName(HttpServletRequest request) {
       
         <div class="post-tags">
           
-            <a href="/tags/AOP/" rel="tag"><i class="fa fa-tag"></i> AOP</a>
+            <a href="/tags/SpringMVC源码分析/" rel="tag"><i class="fa fa-tag"></i> SpringMVC源码分析</a>
           
         </div>
       
@@ -778,8 +779,8 @@ public String resolveThemeName(HttpServletRequest request) {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/undefined/第20章 FlashMapManager/" rel="next" title="AOP">
-                <i class="fa fa-chevron-left"></i> AOP
+              <a href="/undefined/第2章 Java并发机制的底层实现原理/" rel="next" title="Java并发机制的底层实现原理">
+                <i class="fa fa-chevron-left"></i> Java并发机制的底层实现原理
               </a>
             
           </div>
@@ -788,8 +789,8 @@ public String resolveThemeName(HttpServletRequest request) {
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/undefined/第18章 LocaleResolver/" rel="prev" title="AOP">
-                AOP <i class="fa fa-chevron-right"></i>
+              <a href="/undefined/第20章 FlashMapManager/" rel="prev" title="FlashMapManager">
+                FlashMapManager <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -899,7 +900,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -910,7 +911,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -921,7 +922,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -963,12 +964,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -1046,7 +1041,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

@@ -160,7 +160,7 @@
 <meta property="og:site_name" content="BangjinHu&#39;s Blog">
 <meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. thymeleaf 模板基础语法1.引入标签：首先要在html标签里引入 xmlns:th=&amp;quot;http://www.thymeleaf.org&amp;quot; 才能使用th:*这样的语法。  2.获取变量值：通过在标签内部，使用 ${} 来取值，对于javaBean的话，使用 变量名.属性名 来获取，跟EL表达式一样 　　注意：只有写在标签内部">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-29T03:33:38.008Z">
+<meta property="og:updated_time" content="2020-03-29T23:58:44.420Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="thymeleaf 模板">
 <meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. thymeleaf 模板基础语法1.引入标签：首先要在html标签里引入 xmlns:th=&amp;quot;http://www.thymeleaf.org&amp;quot; 才能使用th:*这样的语法。  2.获取变量值：通过在标签内部，使用 ${} 来取值，对于javaBean的话，使用 变量名.属性名 来获取，跟EL表达式一样 　　注意：只有写在标签内部">
@@ -419,8 +419,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:33:38+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T07:58:44+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -511,8 +511,7 @@
 <h2 id="thymeleaf-模板"><a href="#thymeleaf-模板" class="headerlink" title="thymeleaf 模板"></a>thymeleaf 模板</h2><h4 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h4><pre><code>1.引入标签：首先要在html标签里引入 xmlns:th=&quot;http://www.thymeleaf.org&quot; 才能使用th:*这样的语法。
 
 2.获取变量值：通过在标签内部，使用 ${} 来取值，对于javaBean的话，使用 变量名.属性名 来获取，跟EL表达式一样
-</code></pre><p>　　注意：只有写在标签内部才会生效，例如： th：text=“hello” 的意思是使用hello来代替p之前的内容，p里原来的值是为了给前端开发展示用的，这样做容易实现前后端分离。<br>　　<br>　　3.引入URL：thymeleaf对于引入URL是采用@{…}来获取的。例如：  <a th:href="@{http://www.baidu.com}">绝对路径</a> 是访问绝对路径下的URL， <a th:href="@{/}">相对路径</a>     是访问相对路径下的URL。<a th:href="@{css/bootstrap.min.css}">  是引入默认的static下的css文件夹下的bootstrap文件，类似的标签有: th:href 和 th:src 。<br>　　<br>　　4.字符串替换：<span th:text="'Welcome to our application, ' + ${user.name} + '!'"></span> 或者 <span th:text="|Welcome to our application, ${user.name}!|"></span>       都可以实现替换。注意：|…|中只能包含变量表达式${…}，不能包含其他常量、条件表达式等。<br>　　<br>　　5.循环：th：each是对于结果可以进行遍历的数据集。如：　<br>　　<br>　　    <tr th:each="prod : ${prods}"><br>　　        <td th:text="${prod.name}">Onions</td><br>　　        <td th:text="${prod.price}">2.41</td><br>　　    </tr>
-　　    </a></p>
+</code></pre><p>　　注意：只有写在标签内部才会生效，例如： th：text=“hello” 的意思是使用hello来代替p之前的内容，p里原来的值是为了给前端开发展示用的，这样做容易实现前后端分离。<br>　　<br>　　3.引入URL：thymeleaf对于引入URL是采用@{…}来获取的。例如：  <a th:href="@{http://www.baidu.com}">绝对路径</a> 是访问绝对路径下的URL， <a th:href="@{/}">相对路径</a>     是访问相对路径下的URL。<a th:href="@{css/bootstrap.min.css}">  是引入默认的static下的css文件夹下的bootstrap文件，类似的标签有: th:href 和 th:src 。<br>　　<br>　　4.字符串替换：<span th:text="'Welcome to our application, ' + ${user.name} + '!'"></span> 或者 <span th:text="|Welcome to our application, ${user.name}!|"></span>       都可以实现替换。注意：|…|中只能包含变量表达式${…}，不能包含其他常量、条件表达式等。<br>　　<br>　　5.循环：th：each是对于结果可以进行遍历的数据集。如：　<br>　　<br>　　    <tr th:each="prod : ${prods}"><br>　　        <td th:text="${prod.name}">Onions</td><br>　　        <td th:text="${prod.price}">2.41</td><br>　　    </tr><br><a id="more"></a>　　    </a></p>
 <h4 id="thymeleaf模版引擎"><a href="#thymeleaf模版引擎" class="headerlink" title="thymeleaf模版引擎"></a>thymeleaf模版引擎</h4><pre><code>表达式:
     ${java变量名称}  获取变量值
     @{路径}  :  自动添加context-path ,  自动加上工程名称
@@ -660,7 +659,7 @@ ${history.red.split(&apos;,&apos;)[0]}
   <p><span>本文标题:</span>thymeleaf 模板</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 11:33:38</p>
+  <p><span>最后更新:</span>2020年03月30日 - 07:58:44</p>
   <p><span>原始链接:</span><a href="/undefined/thymeleaf 模板引擎/" title="thymeleaf 模板">http://bangjinhu.github.io/undefined/thymeleaf 模板引擎/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/thymeleaf 模板引擎/"  aria-label="复制成功！"></i></span>
   </p>
@@ -771,8 +770,8 @@ ${history.red.split(&apos;,&apos;)[0]}
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/undefined/request response/" rel="prev" title="Response Request">
-                Response Request <i class="fa fa-chevron-right"></i>
+              <a href="/undefined/mybatis generator 详细配置教程/" rel="prev" title="MyBatis generator 详细配置">
+                MyBatis generator 详细配置 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -882,7 +881,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -893,7 +892,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -904,7 +903,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -946,12 +945,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -1029,7 +1022,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

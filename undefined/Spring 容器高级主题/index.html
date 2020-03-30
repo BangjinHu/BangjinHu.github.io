@@ -152,18 +152,18 @@
 
 
 
-<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. Spring 容器高级主题Spring容器技术内幕1 内部工作机制Spring 的 AbstractApplication 是 ApplicationContext 的抽象实现类，该抽象实现类的 refresh() 方法定义了Spring容器在加载配置文件后的各项处理过程，这些处理过程清晰刻画Spring容器启动时所执行的各项操作。 //refres">
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处.  ## Spring 容器高级主题 --- title: Spring 高级主题 tags:   - Spring  categories:    - Spring  copyright: true showdonate: true date: 2019-10-15 09:22:26 comments: true password:  ---  注意">
 <meta name="keywords" content="Spring源码">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring源码 - 主题">
 <meta property="og:url" content="http://bangjinhu.github.io/undefined/Spring 容器高级主题/index.html">
 <meta property="og:site_name" content="BangjinHu&#39;s Blog">
-<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. Spring 容器高级主题Spring容器技术内幕1 内部工作机制Spring 的 AbstractApplication 是 ApplicationContext 的抽象实现类，该抽象实现类的 refresh() 方法定义了Spring容器在加载配置文件后的各项处理过程，这些处理过程清晰刻画Spring容器启动时所执行的各项操作。 //refres">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处.  ## Spring 容器高级主题 --- title: Spring 高级主题 tags:   - Spring  categories:    - Spring  copyright: true showdonate: true date: 2019-10-15 09:22:26 comments: true password:  ---  注意">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-29T03:26:46.402Z">
+<meta property="og:updated_time" content="2020-03-30T00:51:42.918Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring源码 - 主题">
-<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. Spring 容器高级主题Spring容器技术内幕1 内部工作机制Spring 的 AbstractApplication 是 ApplicationContext 的抽象实现类，该抽象实现类的 refresh() 方法定义了Spring容器在加载配置文件后的各项处理过程，这些处理过程清晰刻画Spring容器启动时所执行的各项操作。 //refres">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处.  ## Spring 容器高级主题 --- title: Spring 高级主题 tags:   - Spring  categories:    - Spring  copyright: true showdonate: true date: 2019-10-15 09:22:26 comments: true password:  ---  注意">
 
 
 
@@ -419,8 +419,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:26:46+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:51:42+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -469,7 +469,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,229
+                  1,272
                 </span>
               
 
@@ -508,7 +508,23 @@
       
         <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="Spring-容器高级主题"><a href="#Spring-容器高级主题" class="headerlink" title="Spring 容器高级主题"></a>Spring 容器高级主题</h2><h3 id="Spring容器技术内幕"><a href="#Spring容器技术内幕" class="headerlink" title="Spring容器技术内幕"></a>Spring容器技术内幕</h3><h4 id="1-内部工作机制"><a href="#1-内部工作机制" class="headerlink" title="1 内部工作机制"></a>1 内部工作机制</h4><p>Spring 的 AbstractApplication 是 ApplicationContext 的抽象实现类，该抽象实现类的 refresh() 方法定义了Spring容器在加载配置文件后的各项处理过程，这些处理过程清晰刻画Spring容器启动时所执行的各项操作。</p>
+
+## Spring 容器高级主题
+---
+title: Spring 高级主题
+tags:
+  - Spring 
+categories: 
+  - Spring 
+copyright: true
+showdonate: true
+date: 2019-10-15 09:22:26
+comments: true
+password: 
+---
+<blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h3 id="Spring容器技术内幕"><a href="#Spring容器技术内幕" class="headerlink" title="Spring容器技术内幕"></a>Spring容器技术内幕</h3><h4 id="1-内部工作机制"><a href="#1-内部工作机制" class="headerlink" title="1 内部工作机制"></a>1 内部工作机制</h4><p>Spring 的 AbstractApplication 是 ApplicationContext 的抽象实现类，该抽象实现类的 refresh() 方法定义了Spring容器在加载配置文件后的各项处理过程，这些处理过程清晰刻画Spring容器启动时所执行的各项操作。</p>
 <pre><code>//refresh()方法内部定义的执行逻辑
 //1. 初始化BeanFactory Spring将配置文件信息装入容器的Bean定义注册表(BeanDefinitionRegistry)中，但是此时Bean还没有初始化。
 ConfigurableListableBeanFactory beanFactory = obtainFreshBeanFactory();
@@ -536,7 +552,8 @@ finishBeanFactoryInitialization(beanFactory);
 
 //9. 完成刷新并发布容器刷新事件 创建上下文刷新事件，事件广播器负责将这些事件广播到每个注册的事件监听器中。
 finishRefresh();
-</code></pre><p><strong>1.1 Spring容器从加载配置文件到创建出一个完成Bean的作业流程</strong><br></p>
+</code></pre><a id="more"></a>   
+<p><strong>1.1 Spring容器从加载配置文件到创建出一个完成Bean的作业流程</strong><br></p>
 <pre><code>    配置文件 -- ResourceLoader装载配置文件 --&gt; Resource -- BeanDefinitionReader解析配置文件信息 --&gt; BeanDefinitionRegistry(加工前的BeanDefinition)
                                                                                                         |                           |
                                                                                                         | BeanFactoryPostProcessor  |
@@ -593,7 +610,7 @@ finishRefresh();
   <p><span>本文标题:</span>Spring源码 - 主题</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 11:26:46</p>
+  <p><span>最后更新:</span>2020年03月30日 - 08:51:42</p>
   <p><span>原始链接:</span><a href="/undefined/Spring 容器高级主题/" title="Spring源码 - 主题">http://bangjinhu.github.io/undefined/Spring 容器高级主题/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/Spring 容器高级主题/"  aria-label="复制成功！"></i></span>
   </p>
@@ -694,8 +711,8 @@ finishRefresh();
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/undefined/SpringBoot - 错误总结/" rel="next" title="SpringBoot 错误总结">
-                <i class="fa fa-chevron-left"></i> SpringBoot 错误总结
+              <a href="/undefined/Spring SpringMVC 整合 MyBatis/" rel="next" title="SpringMVC 整合 Mybatis">
+                <i class="fa fa-chevron-left"></i> SpringMVC 整合 Mybatis
               </a>
             
           </div>
@@ -704,8 +721,8 @@ finishRefresh();
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/undefined/Spring SpringMVC 整合 MyBatis/" rel="prev" title="SpringMVC 整合 Mybatis">
-                SpringMVC 整合 Mybatis <i class="fa fa-chevron-right"></i>
+              <a href="/undefined/Spring Cache/" rel="prev" title="Spring Cache">
+                Spring Cache <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -815,7 +832,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -826,7 +843,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -837,7 +854,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -882,12 +899,6 @@ var jiathis_config={
                   </span>
                 
                   <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
                     <a href="http://iProgramering.github.io" target="_blank" title="iProgramer_ing">
                       
                         <i class="fa fa-fw fa-user"></i>iProgramer_ing</a>
@@ -921,7 +932,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-容器高级主题"><span class="nav-text">Spring 容器高级主题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring容器技术内幕"><span class="nav-text">Spring容器技术内幕</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-内部工作机制"><span class="nav-text">1 内部工作机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-BeanDefinition"><span class="nav-text">2 BeanDefinition</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-InstantiationStrategy"><span class="nav-text">3 InstantiationStrategy</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-BeanWrapper"><span class="nav-text">4 BeanWrapper</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#属性编辑器"><span class="nav-text">属性编辑器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用Bean属性值"><span class="nav-text">引用Bean属性值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#容器事件"><span class="nav-text">容器事件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Spring事件类结构"><span class="nav-text">1.Spring事件类结构</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring容器技术内幕"><span class="nav-text">Spring容器技术内幕</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-内部工作机制"><span class="nav-text">1 内部工作机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-BeanDefinition"><span class="nav-text">2 BeanDefinition</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-InstantiationStrategy"><span class="nav-text">3 InstantiationStrategy</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-BeanWrapper"><span class="nav-text">4 BeanWrapper</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#属性编辑器"><span class="nav-text">属性编辑器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用Bean属性值"><span class="nav-text">引用Bean属性值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#容器事件"><span class="nav-text">容器事件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Spring事件类结构"><span class="nav-text">1.Spring事件类结构</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -962,7 +973,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

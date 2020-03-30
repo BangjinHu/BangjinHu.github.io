@@ -139,7 +139,7 @@
 
 
 
-  <meta name="keywords" content="BangjinHu'Blog" />
+  <meta name="keywords" content="SpringMVC源码分析," />
 
 
 
@@ -152,17 +152,18 @@
 
 
 
-<meta name="description" content="第11章 SpringMVC组件分析11.1 HandlerMapping它的作用是根据request找到相应的处理器Handler和Interceptors。在HandlerMapping接口中只有一个方法：HandlerExceptionChain getHandler(HttpServletRequest request);  11.2 HandlerAdapterHandlerAdapte">
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. 第11章 SpringMVC组件分析11.1 HandlerMapping它的作用是根据request找到相应的处理器Handler和Interceptors。在HandlerMapping接口中只有一个方法：HandlerExceptionChain getHandler(HttpServletRequest request);  11.2 Han">
+<meta name="keywords" content="SpringMVC源码分析">
 <meta property="og:type" content="article">
-<meta property="og:title" content="BangjinHu&#39;s Blog">
+<meta property="og:title" content="SpringMVC组件分析">
 <meta property="og:url" content="http://bangjinhu.github.io/undefined/第11章 组件概览/index.html">
 <meta property="og:site_name" content="BangjinHu&#39;s Blog">
-<meta property="og:description" content="第11章 SpringMVC组件分析11.1 HandlerMapping它的作用是根据request找到相应的处理器Handler和Interceptors。在HandlerMapping接口中只有一个方法：HandlerExceptionChain getHandler(HttpServletRequest request);  11.2 HandlerAdapterHandlerAdapte">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. 第11章 SpringMVC组件分析11.1 HandlerMapping它的作用是根据request找到相应的处理器Handler和Interceptors。在HandlerMapping接口中只有一个方法：HandlerExceptionChain getHandler(HttpServletRequest request);  11.2 Han">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-07T00:38:44.404Z">
+<meta property="og:updated_time" content="2020-03-30T00:15:59.372Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="BangjinHu&#39;s Blog">
-<meta name="twitter:description" content="第11章 SpringMVC组件分析11.1 HandlerMapping它的作用是根据request找到相应的处理器Handler和Interceptors。在HandlerMapping接口中只有一个方法：HandlerExceptionChain getHandler(HttpServletRequest request);  11.2 HandlerAdapterHandlerAdapte">
+<meta name="twitter:title" content="SpringMVC组件分析">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 第11章 SpringMVC组件分析11.1 HandlerMapping它的作用是根据request找到相应的处理器Handler和Interceptors。在HandlerMapping接口中只有一个方法：HandlerExceptionChain getHandler(HttpServletRequest request);  11.2 Han">
 
 
 
@@ -198,7 +199,7 @@
 
 
 
-  <title> | BangjinHu's Blog</title>
+  <title>SpringMVC组件分析 | BangjinHu's Blog</title>
   
 
 
@@ -390,7 +391,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline"></h2>
+          <h2 class="post-title" itemprop="name headline">SpringMVC组件分析</h2>
         
 
         <div class="post-meta">
@@ -402,8 +403,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-29T07:31:12+08:00">
-                2020-03-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
               </time>
             
 
@@ -418,12 +419,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-08-07T08:38:44+08:00">
-                2019-08-07
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:15:59+08:00">
+                2020-03-30
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SpringMVC源码分析/" itemprop="url" rel="index">
+                    <span itemprop="name">SpringMVC源码分析</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -446,7 +469,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  448
+                  467
                 </span>
               
 
@@ -483,11 +506,12 @@
       
 
       
-        <h1 id="第11章-SpringMVC组件分析"><a href="#第11章-SpringMVC组件分析" class="headerlink" title="第11章 SpringMVC组件分析"></a>第11章 SpringMVC组件分析</h1><h2 id="11-1-HandlerMapping"><a href="#11-1-HandlerMapping" class="headerlink" title="11.1 HandlerMapping"></a>11.1 HandlerMapping</h2><p>它的作用是根据request找到相应的处理器Handler和Interceptors。在HandlerMapping接口中只有一个方法：HandlerExceptionChain getHandler(HttpServletRequest request); </p>
+        <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h1 id="第11章-SpringMVC组件分析"><a href="#第11章-SpringMVC组件分析" class="headerlink" title="第11章 SpringMVC组件分析"></a>第11章 SpringMVC组件分析</h1><h2 id="11-1-HandlerMapping"><a href="#11-1-HandlerMapping" class="headerlink" title="11.1 HandlerMapping"></a>11.1 HandlerMapping</h2><p>它的作用是根据request找到相应的处理器Handler和Interceptors。在HandlerMapping接口中只有一个方法：HandlerExceptionChain getHandler(HttpServletRequest request); </p>
 <h2 id="11-2-HandlerAdapter"><a href="#11-2-HandlerAdapter" class="headerlink" title="11.2 HandlerAdapter"></a>11.2 HandlerAdapter</h2><p>HandlerAdapter理解为干活的人。在它里面有三个方法：1.supports(Object handler)，判断是否可以使用某个Handler。2.handle()方法是用来具体使用Handler干活。3.getLastModified()方法是获取最后一个修改的时间。</p>
 <h2 id="11-3-HandlerExceptionResolver"><a href="#11-3-HandlerExceptionResolver" class="headerlink" title="11.3 HandlerExceptionResolver"></a>11.3 HandlerExceptionResolver</h2><p>在SpringMVC中专门处理异常情况的。此组件的作用是根据异常设置ModelAndView，然后交给render()方法进行渲染。render负责将ModelAndView渲染成页面。该组件HandlerExceptionResolver结构中只有一个方法，只需要从异常中解析出ModelAndView。</p>
-<h2 id="11-4-ViewResolver"><a href="#11-4-ViewResolver" class="headerlink" title="11.4 ViewResolver"></a>11.4 ViewResolver</h2><p>该组件是将String类型视图名和Locale解析成View类型的视图。ViewResolver接口只有一个方法：View resolveViewName(String viewName, Locale locale);</p>
-<p>最常使用的UrlBasedViewResolver系列解析器都是针对单一视图类型进行解析，比如：InternalResourceViewResolver只针对jsp类型视图。FreeMarkerViewResolver只针对FreeMarker视图。</p>
+<h2 id="11-4-ViewResolver"><a href="#11-4-ViewResolver" class="headerlink" title="11.4 ViewResolver"></a>11.4 ViewResolver</h2><p>该组件是将String类型视图名和Locale解析成View类型的视图。ViewResolver接口只有一个方法：View resolveViewName(String viewName, Locale locale);<br><a id="more"></a><br>最常使用的UrlBasedViewResolver系列解析器都是针对单一视图类型进行解析，比如：InternalResourceViewResolver只针对jsp类型视图。FreeMarkerViewResolver只针对FreeMarker视图。</p>
 <h2 id="11-5-RequestToViewNameTranslator"><a href="#11-5-RequestToViewNameTranslator" class="headerlink" title="11.5 RequestToViewNameTranslator"></a>11.5 RequestToViewNameTranslator</h2><h2 id="11-6-LocaleResolver"><a href="#11-6-LocaleResolver" class="headerlink" title="11.6 LocaleResolver"></a>11.6 LocaleResolver</h2><p>在解析视图的时候需要两个参数：视图名和Locale。视图名是处理器返回的。Locale是LocaleResolver从request中解析出来的locale。locale表示一个区域，有了这个就可以对不同区域的用户显示不同的结果。该接口中主要有两个方法：Locale resolveLocale(HttpServletRequest request); setLocale(HttpServletRequest request, HttpServletResponse response, Locale locale); </p>
 <h2 id="11-7-ThemeResolver"><a href="#11-7-ThemeResolver" class="headerlink" title="11.7 ThemeResolver"></a>11.7 ThemeResolver</h2><p>该组件是用来解析主题。</p>
 <h2 id="11-8-MultipartResolver"><a href="#11-8-MultipartResolver" class="headerlink" title="11.8 MultipartResolver"></a>11.8 MultipartResolver</h2><p>该组件用于处理上传请求，处理方法是将普通的request包装成MultipartHttpServletRequest。该组件中有三个方法：1.isMultipart(HttpServletRequest request)：判断是否是上传请求。2.MultipartHttpServletRequest resolveMultipart(HttpServletRequest request)：将request包装成MultipartHttpServletRequest。3.cleanupMultipart(MultipartHttpServletRequest request)：清理上传过程中产生的临时资源。</p>
@@ -501,6 +525,38 @@
     <div>
       
         
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+
+  <p><span>本文标题:</span>SpringMVC组件分析</a></p>
+  <p><span>文章作者:</span>Bangjin-Hu</a></p>
+  <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
+  <p><span>最后更新:</span>2020年03月30日 - 08:15:59</p>
+  <p><span>原始链接:</span><a href="/undefined/第11章 组件概览/" title="SpringMVC组件分析">http://bangjinhu.github.io/undefined/第11章 组件概览/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/第11章 组件概览/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
       
     </div>
     
@@ -553,7 +609,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://bangjinhu.github.io/undefined/第11章 组件概览/" title="">http://bangjinhu.github.io/undefined/第11章 组件概览/</a>
+    <a href="http://bangjinhu.github.io/undefined/第11章 组件概览/" title="SpringMVC组件分析">http://bangjinhu.github.io/undefined/第11章 组件概览/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -566,6 +622,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/SpringMVC源码分析/" rel="tag"><i class="fa fa-tag"></i> SpringMVC源码分析</a>
+          
+        </div>
+      
 
       
       
@@ -575,8 +637,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/undefined/第3章 Spring AOP的实现/" rel="next" title="">
-                <i class="fa fa-chevron-left"></i> 
+              <a href="/undefined/第12章 HandlerMapping/" rel="next" title="HandlerMapping">
+                <i class="fa fa-chevron-left"></i> HandlerMapping
               </a>
             
           </div>
@@ -585,8 +647,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/undefined/第21章 总结/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
+              <a href="/undefined/第11章 Java并发编程实战/" rel="prev" title="Java并发编程实战">
+                Java并发编程实战 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -696,7 +758,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -707,7 +769,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -718,7 +780,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -760,12 +822,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -843,7 +899,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

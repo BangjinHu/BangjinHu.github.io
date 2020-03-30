@@ -152,18 +152,18 @@
 
 
 
-<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. Java并发编程之美[TOC] 第1章 基础第2章 基础扩展第3章 Java并发包ThreadLocalRandom类原理剖析该类是JUC包下新增的随机数生成器，弥补Random类在多线程下的缺陷。 3.1 Random类的局限性每个Random实例里面都有一个原子性的种子变量用来记录当前的种子值，当要生成新的随机数时需要根据当前种子计算新的种子并更">
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. Java并发编程之美[TOC] 第1章 基础">
 <meta name="keywords" content="并发编程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java并发编程之美">
 <meta property="og:url" content="http://bangjinhu.github.io/undefined/Java 并发编程之美/index.html">
 <meta property="og:site_name" content="BangjinHu&#39;s Blog">
-<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. Java并发编程之美[TOC] 第1章 基础第2章 基础扩展第3章 Java并发包ThreadLocalRandom类原理剖析该类是JUC包下新增的随机数生成器，弥补Random类在多线程下的缺陷。 3.1 Random类的局限性每个Random实例里面都有一个原子性的种子变量用来记录当前的种子值，当要生成新的随机数时需要根据当前种子计算新的种子并更">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. Java并发编程之美[TOC] 第1章 基础">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-29T02:37:16.353Z">
+<meta property="og:updated_time" content="2020-03-30T00:10:49.983Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java并发编程之美">
-<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. Java并发编程之美[TOC] 第1章 基础第2章 基础扩展第3章 Java并发包ThreadLocalRandom类原理剖析该类是JUC包下新增的随机数生成器，弥补Random类在多线程下的缺陷。 3.1 Random类的局限性每个Random实例里面都有一个原子性的种子变量用来记录当前的种子值，当要生成新的随机数时需要根据当前种子计算新的种子并更">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. Java并发编程之美[TOC] 第1章 基础">
 
 
 
@@ -419,8 +419,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:37:16+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:10:49+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -509,7 +509,8 @@
         <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
 <h2 id="Java并发编程之美"><a href="#Java并发编程之美" class="headerlink" title="Java并发编程之美"></a>Java并发编程之美</h2><p>[TOC]</p>
-<h3 id="第1章-基础"><a href="#第1章-基础" class="headerlink" title="第1章 基础"></a>第1章 基础</h3><h3 id="第2章-基础扩展"><a href="#第2章-基础扩展" class="headerlink" title="第2章 基础扩展"></a>第2章 基础扩展</h3><h3 id="第3章-Java并发包ThreadLocalRandom类原理剖析"><a href="#第3章-Java并发包ThreadLocalRandom类原理剖析" class="headerlink" title="第3章 Java并发包ThreadLocalRandom类原理剖析"></a>第3章 Java并发包ThreadLocalRandom类原理剖析</h3><p>该类是JUC包下新增的随机数生成器，弥补Random类在多线程下的缺陷。</p>
+<h3 id="第1章-基础"><a href="#第1章-基础" class="headerlink" title="第1章 基础"></a>第1章 基础</h3><a id="more"></a>
+<h3 id="第2章-基础扩展"><a href="#第2章-基础扩展" class="headerlink" title="第2章 基础扩展"></a>第2章 基础扩展</h3><h3 id="第3章-Java并发包ThreadLocalRandom类原理剖析"><a href="#第3章-Java并发包ThreadLocalRandom类原理剖析" class="headerlink" title="第3章 Java并发包ThreadLocalRandom类原理剖析"></a>第3章 Java并发包ThreadLocalRandom类原理剖析</h3><p>该类是JUC包下新增的随机数生成器，弥补Random类在多线程下的缺陷。</p>
 <h4 id="3-1-Random类的局限性"><a href="#3-1-Random类的局限性" class="headerlink" title="3.1 Random类的局限性"></a>3.1 Random类的局限性</h4><p>每个Random实例里面都有一个原子性的种子变量用来记录当前的种子值，当要生成新的随机数时需要根据当前种子计算新的种子并更新回原子变量。</p>
 <p>在多线程环境下使用单个Random实例生成随机数时，当多个线程同时计算随机数来计算新的种子时，多个线程会竞争同一个原子变量的更新操作，由于原子变量的更新是CAS操作，同时只有一个线程会成功，所以会造成大量线程进行自旋重试，会降低并发性能。</p>
 <h4 id="3-2-ThreadLocalRandom"><a href="#3-2-ThreadLocalRandom" class="headerlink" title="3.2 ThreadLocalRandom"></a>3.2 ThreadLocalRandom</h4><pre><code>package com.ccpc.edu.xidian.cn.ccpc.example.random;
@@ -788,7 +789,7 @@ public CyclicBarrier(int parties, Runnable barrierAction) {
   <p><span>本文标题:</span>Java并发编程之美</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 10:37:16</p>
+  <p><span>最后更新:</span>2020年03月30日 - 08:10:49</p>
   <p><span>原始链接:</span><a href="/undefined/Java 并发编程之美/" title="Java并发编程之美">http://bangjinhu.github.io/undefined/Java 并发编程之美/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/Java 并发编程之美/"  aria-label="复制成功！"></i></span>
   </p>
@@ -889,8 +890,8 @@ public CyclicBarrier(int parties, Runnable barrierAction) {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/undefined/Java 序列化与反序列化/" rel="next" title="Redis - Java集成">
-                <i class="fa fa-chevron-left"></i> Redis - Java集成
+              <a href="/undefined/Java 序列化与反序列化/" rel="next" title="序列化/反序列化">
+                <i class="fa fa-chevron-left"></i> 序列化/反序列化
               </a>
             
           </div>
@@ -899,8 +900,8 @@ public CyclicBarrier(int parties, Runnable barrierAction) {
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/undefined/Java 字符串与文本IO/" rel="prev" title="IO">
-                IO <i class="fa fa-chevron-right"></i>
+              <a href="/undefined/Java 枚举/" rel="prev" title="枚举">
+                枚举 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1010,7 +1011,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1021,7 +1022,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1032,7 +1033,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1074,12 +1075,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -1157,7 +1152,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

@@ -152,18 +152,18 @@
 
 
 
-<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. Java 并发编程1 并发任务1.1 运行任务在Java中，Runnable接口描述一个想要运行的任务，通常与其它任务并行运行。 public interface Runnable {     //该方法在线程中执行     void run(); }  //两个并行任务同时进行 public static void main(String[] ar">
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. Java 并发编程1 并发任务1.1 运行任务在Java中，Runnable接口描述一个想要运行的任务，通常与其它任务并行运行。">
 <meta name="keywords" content="Java 并发编程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java 并发编程">
 <meta property="og:url" content="http://bangjinhu.github.io/undefined/Java 并发编程/index.html">
 <meta property="og:site_name" content="BangjinHu&#39;s Blog">
-<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. Java 并发编程1 并发任务1.1 运行任务在Java中，Runnable接口描述一个想要运行的任务，通常与其它任务并行运行。 public interface Runnable {     //该方法在线程中执行     void run(); }  //两个并行任务同时进行 public static void main(String[] ar">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. Java 并发编程1 并发任务1.1 运行任务在Java中，Runnable接口描述一个想要运行的任务，通常与其它任务并行运行。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-29T02:37:20.771Z">
+<meta property="og:updated_time" content="2020-03-30T00:10:42.526Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 并发编程">
-<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. Java 并发编程1 并发任务1.1 运行任务在Java中，Runnable接口描述一个想要运行的任务，通常与其它任务并行运行。 public interface Runnable {     //该方法在线程中执行     void run(); }  //两个并行任务同时进行 public static void main(String[] ar">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. Java 并发编程1 并发任务1.1 运行任务在Java中，Runnable接口描述一个想要运行的任务，通常与其它任务并行运行。">
 
 
 
@@ -419,8 +419,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:37:20+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:10:42+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -508,13 +508,8 @@
       
         <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h1 id="Java-并发编程"><a href="#Java-并发编程" class="headerlink" title="Java 并发编程"></a>Java 并发编程</h1><h2 id="1-并发任务"><a href="#1-并发任务" class="headerlink" title="1 并发任务"></a>1 并发任务</h2><h4 id="1-1-运行任务"><a href="#1-1-运行任务" class="headerlink" title="1.1 运行任务"></a>1.1 运行任务</h4><p>在Java中，Runnable接口描述一个想要运行的任务，通常与其它任务并行运行。</p>
-<pre><code>public interface Runnable {
-    //该方法在线程中执行
-    void run();
-}
-
-//两个并行任务同时进行
+<h1 id="Java-并发编程"><a href="#Java-并发编程" class="headerlink" title="Java 并发编程"></a>Java 并发编程</h1><h2 id="1-并发任务"><a href="#1-并发任务" class="headerlink" title="1 并发任务"></a>1 并发任务</h2><h4 id="1-1-运行任务"><a href="#1-1-运行任务" class="headerlink" title="1.1 运行任务"></a>1.1 运行任务</h4><p>在Java中，Runnable接口描述一个想要运行的任务，通常与其它任务并行运行。<br><a id="more"></a><br>    public interface Runnable {<br>        //该方法在线程中执行<br>        void run();<br>    }</p>
+<pre><code>//两个并行任务同时进行
 public static void main(String[] args){
     Runnable hellos = () -&gt; {
         for(int i = 0; i &lt;= 100; i++){
@@ -731,7 +726,7 @@ thread.join(millis);
   <p><span>本文标题:</span>Java 并发编程</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年06月13日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 10:37:20</p>
+  <p><span>最后更新:</span>2020年03月30日 - 08:10:42</p>
   <p><span>原始链接:</span><a href="/undefined/Java 并发编程/" title="Java 并发编程">http://bangjinhu.github.io/undefined/Java 并发编程/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/Java 并发编程/"  aria-label="复制成功！"></i></span>
   </p>
@@ -953,7 +948,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -964,7 +959,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -975,7 +970,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1017,12 +1012,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -1100,7 +1089,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

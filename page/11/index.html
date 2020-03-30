@@ -373,7 +373,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Spring SpringMVC 整合 MyBatis/">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/深入浅出Mybatis技术原理与实战/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bangjin-Hu">
@@ -392,7 +392,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/undefined/Spring SpringMVC 整合 MyBatis/" itemprop="url">SpringMVC 整合 Mybatis</a></h2>
+                <a class="post-title-link" href="/undefined/深入浅出Mybatis技术原理与实战/" itemprop="url">Mybatis</a></h2>
         
 
         <div class="post-meta">
@@ -420,7 +420,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:29:28+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:36:28+08:00">
                 2020-03-29
               </time>
             
@@ -439,8 +439,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/SpringMVC/" itemprop="url" rel="index">
-                    <span itemprop="name">SpringMVC</span>
+                  <a href="/categories/Mybatis/" itemprop="url" rel="index">
+                    <span itemprop="name">Mybatis</span>
                   </a>
                 </span>
 
@@ -470,7 +470,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,417
+                  170
                 </span>
               
 
@@ -486,7 +486,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  8
+                  1
                 </span>
               
             </div>
@@ -511,205 +511,14 @@
           
             <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="Spring-SpringMVC-整合-MyBatis"><a href="#Spring-SpringMVC-整合-MyBatis" class="headerlink" title="Spring SpringMVC 整合 MyBatis"></a>Spring SpringMVC 整合 MyBatis</h2><h4 id="整合DAO层"><a href="#整合DAO层" class="headerlink" title="整合DAO层"></a>整合DAO层</h4><p><strong>1.MyBatis全局配置文件</strong><br></p>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
-&lt;!DOCTYPE configuration
-PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;
-&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
-&lt;configuration&gt;
-    &lt;!-- setting配置根据需要再添加 --&gt;
-    &lt;!-- 配置别名 --&gt;
-    &lt;typeAliases&gt;
-        &lt;package name=&quot;ssm.po&quot;/&gt;
-    &lt;/typeAliases&gt;
+<h1 id="深入浅出Mybatis技术原理与实战"><a href="#深入浅出Mybatis技术原理与实战" class="headerlink" title="深入浅出Mybatis技术原理与实战"></a>深入浅出Mybatis技术原理与实战</h1><p>[TOC]</p>
+<h2 id="第2章-Mybatis入门"><a href="#第2章-Mybatis入门" class="headerlink" title="第2章 Mybatis入门"></a>第2章 Mybatis入门</h2><h3 id="2-2-Mybatis基本构成"><a href="#2-2-Mybatis基本构成" class="headerlink" title="2.2 Mybatis基本构成"></a>2.2 Mybatis基本构成</h3><pre><code>1. SqlSessionFactoryBuilder：构造器，它会根据配置信息或者代码来生成SqlSessionFactory（工厂接口）。
 
-    &lt;!-- mapper这里不需要配置了，因为跟spring整合后，在spring那边会进行mapper的扫描 
-        但必须遵循：mapper.xml和mapper.java必须同名且在一个目录
-    --&gt;
-&lt;/configuration&gt;
-</code></pre><blockquote>
-<p>提示：这里可以看出整合过程中已经没有什么内容了，因为数据源 mapper这些都交给Spring去管理。</p>
-</blockquote>
-<p><strong>2.配置spring配置文件</strong><br></p>
-<pre><code>//1.首先是对DAO的整合 applicationContext-dao.xml
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
-       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; 
-       xmlns:mvc=&quot;http://www.springframework.org/schema/mvc&quot;
-       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
-       xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot; 
-       xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;
-       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
-        http://www.springframework.org/schema/mvc 
-        http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd 
-        http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd
-        http://www.springframework.org/schema/aop
-        http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
-        http://www.springframework.org/schema/tx
-        http://www.springframework.org/schema/tx/spring-tx.xsd&quot;&gt;
+2. SqlSessionFactory：依靠工厂来生成SqlSession（会话）。两种方式创建：xml配置和Java实现。
 
-    &lt;!-- 加载db.properties文件中的内容 --&gt;   
-    &lt;context:property-placeholder location=&quot;classpath:db.properties&quot;/&gt;
+3. SqlSession：是一个既可以发送sql去执行并返回结果，也可以获取Mapper的接口。类似于一个JDBC的connection对象。
 
-    &lt;!-- 配置数据源dbcp --&gt;
-    &lt;bean id=&quot;dataSource&quot; class=&quot;org.apache.commons.dbcp.BasicDataSource&quot; destroy-method=&quot;close&quot;&gt;
-        &lt;property name=&quot;driverClassName&quot; value=&quot;${jdbc.driver}&quot; /&gt;
-        &lt;property name=&quot;url&quot; value=&quot;${jdbc.url}&quot; /&gt;
-        &lt;property name=&quot;username&quot; value=&quot;${jdbc.username}&quot; /&gt;
-        &lt;property name=&quot;password&quot; value=&quot;${jdbc.password}&quot; /&gt;
-        &lt;property name=&quot;maxActive&quot; value=&quot;10&quot; /&gt;
-        &lt;property name=&quot;maxIdle&quot; value=&quot;5&quot; /&gt;
-    &lt;/bean&gt;
-
-    &lt;!-- 配置sqlSessionFactory --&gt;
-    &lt;bean id=&quot;sqlSessionFactory&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;
-        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;
-        &lt;property name=&quot;configLocation&quot; value=&quot;classpath:mybatis/sqlMapConfig.xml&quot;/&gt;
-    &lt;/bean&gt;
-
-    &lt;!-- 配置mapper扫描器 --&gt; 
-    &lt;bean class=&quot;org.mybatis.spring.mapper.MapperScannerConfigurer&quot;&gt;
-        &lt;!-- 扫描包的路径，如果需要扫描多个包，中间使用半角 逗号隔开--&gt;
-        &lt;property name=&quot;basePackage&quot; value=&quot;ssm.mapper&quot;/&gt;
-        &lt;property name=&quot;sqlSessionFactoryBeanName&quot; value=&quot;sqlSessionFactory&quot;&gt;&lt;/property&gt;
-    &lt;/bean&gt;
-
-&lt;/beans&gt;
-</code></pre><blockquote>
-<p>提示：这里可以看出整合DAO层的过程主要是配置数据源 sqlSessionFactory mapper扫描器，这样的话数据源 sqlSessionFatory和mapper在服务器启动时就被Spring实例化到容器中。</p>
-</blockquote>
-<p><strong>3.逆向工程entity类和mapper</strong><br></p>
-<p>省略…</p>
-<p><strong>4.配置applicationContext-service.xml</strong><br><br>如果这里使用注解就不需要配置。</p>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
-       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; 
-       xmlns:mvc=&quot;http://www.springframework.org/schema/mvc&quot;
-       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
-       xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot; 
-       xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;
-       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
-        http://www.springframework.org/schema/mvc 
-        http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd 
-        http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd
-        http://www.springframework.org/schema/aop
-        http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
-        http://www.springframework.org/schema/tx
-        http://www.springframework.org/schema/tx/spring-tx.xsd&quot;&gt;
-
-   &lt;!-- 商品管理的service --&gt;
-   &lt;bean id=&quot;itemsService&quot; class=&quot;ssm.service.impl.ItemsServiceImpl&quot;/&gt;
-
-&lt;/beans&gt;
-</code></pre><p><strong>5.配置applicationContext-transaction.xml</strong><br><br>负责用来配置Spring的事务管理。</p>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
-       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; 
-       xmlns:mvc=&quot;http://www.springframework.org/schema/mvc&quot;
-       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
-       xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot; 
-       xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;
-       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
-        http://www.springframework.org/schema/mvc 
-        http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd 
-        http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd
-        http://www.springframework.org/schema/aop
-        http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
-        http://www.springframework.org/schema/tx
-        http://www.springframework.org/schema/tx/spring-tx.xsd&quot;&gt;
-
-   &lt;!-- 事务管理器 --&gt;
-   &lt;!-- 对mybatis操作数据事务控制，spring使用jdbc的事务控制类 --&gt;
-   &lt;bean id=&quot;transactionManager&quot; class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;
-        &lt;!-- 数据源dataSource在applicationContex-dao.xml中配置了 --&gt;
-        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;/&gt;
-   &lt;/bean&gt;
-
-   &lt;!-- 通知 --&gt;
-   &lt;tx:advice id=&quot;txAdvice&quot; transaction-manager=&quot;transactionManager&quot;&gt;
-        &lt;tx:attributes&gt;
-            &lt;tx:method name=&quot;save*&quot; propagation=&quot;REQUIRED&quot;/&gt;
-            &lt;tx:method name=&quot;delete*&quot; propagation=&quot;REQUIRED&quot;/&gt;
-            &lt;tx:method name=&quot;update*&quot; propagation=&quot;REQUIRED&quot;/&gt;
-            &lt;tx:method name=&quot;insert*&quot; propagation=&quot;REQUIRED&quot;/&gt;
-            &lt;tx:method name=&quot;find*&quot; propagation=&quot;SUPPORTS&quot; read-only=&quot;true&quot;/&gt;
-            &lt;tx:method name=&quot;get*&quot; propagation=&quot;SUPPORTS&quot; read-only=&quot;true&quot;/&gt;
-            &lt;tx:method name=&quot;select*&quot; propagation=&quot;SUPPORTS&quot; read-only=&quot;true&quot;/&gt;
-        &lt;/tx:attributes&gt;
-   &lt;/tx:advice&gt;
-
-   &lt;aop:config&gt;
-        &lt;aop:advisor advice-ref=&quot;txAdvice&quot; pointcut=&quot;execution(* ssm.service.impl.*.*(..))&quot;/&gt;
-   &lt;/aop:config&gt;
-
-&lt;/beans&gt;
-</code></pre><p><strong>6.前端控制器web.xml配置</strong><br></p>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;web-app xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns=&quot;http://java.sun.com/xml/ns/javaee&quot; xsi:schemaLocation=&quot;http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd&quot; id=&quot;WebApp_ID&quot; version=&quot;3.0&quot;&gt;
-  &lt;display-name&gt;SpringMVC_Study&lt;/display-name&gt;
-  &lt;welcome-file-list&gt; 
-    &lt;welcome-file&gt;index.jsp&lt;/welcome-file&gt;
-  &lt;/welcome-file-list&gt;
-  &lt;!-- 配置前端控制器DispatcherServlet --&gt;
-  &lt;servlet&gt;
-    &lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;
-    &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;
-    &lt;init-param&gt;
-        &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
-        &lt;param-value&gt;classpath:springmvc.xml&lt;/param-value&gt;
-    &lt;/init-param&gt;
-  &lt;/servlet&gt;
-
-  &lt;servlet-mapping&gt;
-    &lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;
-    &lt;url-pattern&gt;/&lt;/url-pattern&gt;
-  &lt;/servlet-mapping&gt;  
-
-  &lt;!-- 加载spring容器 --&gt;
- &lt;context-param&gt;
-    &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
-    &lt;param-value&gt;classpath:spring/applicationContext-*.xml&lt;/param-value&gt;
- &lt;/context-param&gt;
- &lt;listener&gt;
-    &lt;listener-class&gt;org.springframework.web.context.ContextLoaderListener&lt;/listener-class&gt;
- &lt;/listener&gt;
-&lt;/web-app&gt;
-</code></pre><p><strong>7.配置处理器映射器 | 处理器适配器 | 视图解析器</strong><br><br>这里因为使用注解的方式配置，所以配置在springmvc.xml中。</p>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
-       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; 
-       xmlns:mvc=&quot;http://www.springframework.org/schema/mvc&quot;
-       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
-       xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot; 
-       xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;
-       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
-        http://www.springframework.org/schema/mvc 
-        http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd 
-        http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd
-        http://www.springframework.org/schema/aop
-        http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
-        http://www.springframework.org/schema/tx
-        http://www.springframework.org/schema/tx/spring-tx.xsd&quot;&gt;
-
-    &lt;!-- 一个配置节解决映射器和适配器的配置注解配置 --&gt; 
-    &lt;mvc:annotation-driven&gt;&lt;/mvc:annotation-driven&gt;
-
-    &lt;!-- 扫描所有的Controller --&gt;
-    &lt;context:component-scan base-package=&quot;ssm.controller&quot;&gt;&lt;/context:component-scan&gt;
-
-    &lt;!-- 配置视图解析器 
-        进行jsp解析，默认使用jstl标签，classpath下得有jstl的包
-    --&gt;
-    &lt;bean class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot; /&gt;
-&lt;/beans&gt;
+4. SQL Mapper：它是Mybatis新设计的组件，它是由一个Java接口和XML文件构成的，需要给出对应的SQL和映射规则。
 </code></pre>
           
         
@@ -761,7 +570,7 @@ PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Spring 容器高级主题/">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第1-10章 SpringMVC 源码分析与实践/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bangjin-Hu">
@@ -780,7 +589,7 @@ PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/undefined/Spring 容器高级主题/" itemprop="url">Spring源码 - 主题</a></h2>
+                <a class="post-title-link" href="/undefined/第1-10章 SpringMVC 源码分析与实践/" itemprop="url">SpringMVC 源码分析与实战</a></h2>
         
 
         <div class="post-meta">
@@ -808,8 +617,8 @@ PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:26:46+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:16:10+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -827,8 +636,8 @@ PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Spring源码/" itemprop="url" rel="index">
-                    <span itemprop="name">Spring源码</span>
+                  <a href="/categories/SpringMVC-源码分析与实战/" itemprop="url" rel="index">
+                    <span itemprop="name">SpringMVC 源码分析与实战</span>
                   </a>
                 </span>
 
@@ -858,7 +667,7 @@ PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,229
+                  1,464
                 </span>
               
 
@@ -896,75 +705,18 @@ PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;
 
       
         
-          
-            <blockquote class="blockquote-center"></blockquote>
+          <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="Spring-容器高级主题"><a href="#Spring-容器高级主题" class="headerlink" title="Spring 容器高级主题"></a>Spring 容器高级主题</h2><h3 id="Spring容器技术内幕"><a href="#Spring容器技术内幕" class="headerlink" title="Spring容器技术内幕"></a>Spring容器技术内幕</h3><h4 id="1-内部工作机制"><a href="#1-内部工作机制" class="headerlink" title="1 内部工作机制"></a>1 内部工作机制</h4><p>Spring 的 AbstractApplication 是 ApplicationContext 的抽象实现类，该抽象实现类的 refresh() 方法定义了Spring容器在加载配置文件后的各项处理过程，这些处理过程清晰刻画Spring容器启动时所执行的各项操作。</p>
-<pre><code>//refresh()方法内部定义的执行逻辑
-//1. 初始化BeanFactory Spring将配置文件信息装入容器的Bean定义注册表(BeanDefinitionRegistry)中，但是此时Bean还没有初始化。
-ConfigurableListableBeanFactory beanFactory = obtainFreshBeanFactory();
-
-//2. 调用工厂后处理器 根据反射机制从 BeanDefinitionRegistry 中找出所有实现了 BeanFactoryPostProcessor 接口的Bean，并调用其 postProcessBeanFactory() 接口方法。
-invokeBeanFactoryPostProcessors();
-
-//3. 注册Bean后处理器 根据反射机制从 BeanDefinitionRegistry 找到所有实现了 BeanPostProcessor 接口的Bean，并将它们注册到容器Bean后处理器的注册表中。
-registerBeanPostProcessors();
-
-//4. 初始化消息源 初始化容器的国际化消息资源
-initMessageSource();
-
-//5. 初始化应用上下文事件广播器 初始化应用上下文事件广播器。
-initApplicationEventMulticaster();
-
-//6. 初始化其它特殊Bean：由具体子类实现
-onRefresh();
-
-//7. 注册事件监听器
-registerListeners();
-
-//8. 初始化所有单实例的Bean，使用懒加载模式的Bean例外 初始化所有Bean之后将它们放在Spring容器的缓存池中。
-finishBeanFactoryInitialization(beanFactory);
-
-//9. 完成刷新并发布容器刷新事件 创建上下文刷新事件，事件广播器负责将这些事件广播到每个注册的事件监听器中。
-finishRefresh();
-</code></pre><p><strong>1.1 Spring容器从加载配置文件到创建出一个完成Bean的作业流程</strong><br></p>
-<pre><code>    配置文件 -- ResourceLoader装载配置文件 --&gt; Resource -- BeanDefinitionReader解析配置文件信息 --&gt; BeanDefinitionRegistry(加工前的BeanDefinition)
-                                                                                                        |                           |
-                                                                                                        | BeanFactoryPostProcessor  |
-                                                                                                        |      对配置信息加工       |
-                                                                                                BeanDefinitionRegistry      PropertyEditorRegistry
-                                                                                                (加工后BeanDefinition)      (存放自定义PropertyEditor)
-                                                                                                        |                               |
-                                                                                                        |                               |
-                                                                                InsttantiationStrategy(实例化Bean对象)      BeanWrapper(设置Bean属性)              
-                                                                                                        |                       /      |
-                                                                                                        |                      /       |
-                                                                                                    Bean实例(没设置属性)   -&gt;   Bean实例(已设置属性)
-                                                                                                                                        |
-                                                                                                                                        |
-                                                                                                                         BeanPostProcessor(对Bean进行加工)
-                                                                                                                                        |
-                                                                                                                                    bean实例
-
-
-1.ResourceLoader：从存储介质中加载Spring配置信息，并使用Resource表示这个配置文件资源。
-
-2.BeanDefinitionReader：读取Resource所指向的配置文件资源，然后解析配置文件。配置文件中的每个&lt;bean&gt;解析成一个BeanDefinition对象，并保存到BeanDefinitionRegistry中。
-
-...
-</code></pre><blockquote>
-<p>提示：Spring组件按照所承担角色划分为：1.物料组件：Resource | BeanDefinition | PropertyEditor | Bean 等，它们是在加工流程中被加工 | 被消费的组件，就像流水线的被加工的物料一样。2.设备组件：ResourceLoader …，它们相当于在流水线上不同环节的加工设备，对物料组件进行加工处理。</p>
-</blockquote>
-<h4 id="2-BeanDefinition"><a href="#2-BeanDefinition" class="headerlink" title="2 BeanDefinition"></a>2 BeanDefinition</h4><p>….BeanDefinition 是配置文件 <bean> 元素标签在容器中的内部表示。Spring 通过BeanDefinition 将配置文件中的 <bean> 配置信息转换成容器的内部表示，并将这些 BeanDefinition 注册到 BeanDefinitionRegistry 中。Spring容器中的 BeanDefinitionRegistry 就像Spring配置信息的内存数据库。</bean></bean></p>
-<h4 id="3-InstantiationStrategy"><a href="#3-InstantiationStrategy" class="headerlink" title="3 InstantiationStrategy"></a>3 InstantiationStrategy</h4><p>…InstantiationStrategy 负责根据BeanDefinition 对象创建一个 Bean 实例。SimpleInstantiationStrategy 是最常用的实例化策略，该策略利用Bean实现类的默认构造函数 带参构造函数或者工厂方法创建Bean实例。该组件只负责实例化Bean操作，相当于new功能，不会参与 Bean属性配置工作。属性填充交给BeanWrapper完成。</p>
-<h4 id="4-BeanWrapper"><a href="#4-BeanWrapper" class="headerlink" title="4 BeanWrapper"></a>4 BeanWrapper</h4><p>…BeanWrapper是Spring框架重要组件类。BeanWrapper相当于一代理器，Spring委托BeanWrapper完成Bean属性的填充工作。</p>
-<h3 id="属性编辑器"><a href="#属性编辑器" class="headerlink" title="属性编辑器"></a>属性编辑器</h3><p>任何实现了java.beans.PropertyEditor接口的类都是属性编辑器。属性编辑器的主要功能就是将外部的设置值转换为JVM内部的对象类型，所以属性编辑器就是一个类型转换器。</p>
-<h3 id="引用Bean属性值"><a href="#引用Bean属性值" class="headerlink" title="引用Bean属性值"></a>引用Bean属性值</h3><h3 id="容器事件"><a href="#容器事件" class="headerlink" title="容器事件"></a>容器事件</h3><p>Spring的ApplicationContext能够发布事件并且允许注册相应的事件监听器，所以它拥有一套完善的事件发布和监听机制。</p>
-<h4 id="1-Spring事件类结构"><a href="#1-Spring事件类结构" class="headerlink" title="1.Spring事件类结构"></a>1.Spring事件类结构</h4><p><strong>1.1 事件类</strong><br><br>ApplicationEvent的唯一构造函数是 ApplicationEvent(Object source) ，通过source指定事件源。其有两个子类：1.ApplicationContextEvent：容器事件，其有四个子类，分别表示容器启动、属性、关闭和停止事件。2.RequestHandlerEvent：此是一个与Web应用相关的事件，当一个HTTP请求被处理后，产生该事件。</p>
-<p><strong>1.2 事件监听接口</strong><br><br>Spring的事件监听器继承自 ApplicationListener 。ApplicationListener接口只定义一个方法：onApplicationEvent(E event)，该方法接收 ApplicationEvent 事件对象，对应响应处理逻辑。</p>
-<p><strong>1.3 事件广播</strong><br><br>当发生容器事件时，容器主控程序将调用事件广播器将事件通知给事件监听器注册表中的事件监听器，事件监听器分别对事件作出响应。</p>
-
-          
+<h1 id="第2章-常用的协议与标准"><a href="#第2章-常用的协议与标准" class="headerlink" title="第2章 常用的协议与标准"></a>第2章 常用的协议与标准</h1><p>在JavaWeb中常用的协议包括DNS协议，TCP/IP协议，HTTP协议和JavaWeb开发中的Servlet。</p>
+<h2 id="2-1-DNS协议"><a href="#2-1-DNS协议" class="headerlink" title="2.1 DNS协议"></a>2.1 DNS协议</h2><p>该协议的作用是将域名解析为IP。我们将域名发过去，然后域名服务器就能够给我们返回相应的IP，在win中可以使用命令 nslookup 命令查看DNS解析的结果。</p>
+<h2 id="2-2-TCP-IP协议与Socket"><a href="#2-2-TCP-IP协议与Socket" class="headerlink" title="2.2 TCP/IP协议与Socket"></a>2.2 TCP/IP协议与Socket</h2><p>IP协议是用来查找地址的，对应着网际互联层，其只负责找到地址。TCP协议是用来规范传输规则的，对应着传输层，完成货物的传输工作。TCP在传输之前会进行三次沟通（三次握手），传完数据断开的时候要进行四次沟通（四次挥手）。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/第1-10章 SpringMVC 源码分析与实践/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1014,7 +766,7 @@ finishRefresh();
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/SpringBoot - 错误总结/">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第10章 Executor框架/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bangjin-Hu">
@@ -1033,7 +785,7 @@ finishRefresh();
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/undefined/SpringBoot - 错误总结/" itemprop="url">SpringBoot 错误总结</a></h2>
+                <a class="post-title-link" href="/undefined/第10章 Executor框架/" itemprop="url">Executor框架</a></h2>
         
 
         <div class="post-meta">
@@ -1061,8 +813,8 @@ finishRefresh();
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:30:40+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:16:04+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -1080,8 +832,8 @@ finishRefresh();
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/SpringBoot/" itemprop="url" rel="index">
-                    <span itemprop="name">SpringBoot</span>
+                  <a href="/categories/多线程与并发/" itemprop="url" rel="index">
+                    <span itemprop="name">多线程与并发</span>
                   </a>
                 </span>
 
@@ -1111,7 +863,7 @@ finishRefresh();
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  242
+                  1,526
                 </span>
               
 
@@ -1127,7 +879,7 @@ finishRefresh();
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  6
                 </span>
               
             </div>
@@ -1149,25 +901,19 @@ finishRefresh();
 
       
         
-          
-            <blockquote class="blockquote-center"></blockquote>
+          <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h5 id="1-错误：java-lang-UnsatisfiedLinkError-F-Software-Apache-Tomcat-apache-tomcat-7-0-90-bin-tcnative-1-dll-Can’t-load-AMD-64-bit-dll-on-a-IA-32-bit-platform"><a href="#1-错误：java-lang-UnsatisfiedLinkError-F-Software-Apache-Tomcat-apache-tomcat-7-0-90-bin-tcnative-1-dll-Can’t-load-AMD-64-bit-dll-on-a-IA-32-bit-platform" class="headerlink" title="1.错误：java.lang.UnsatisfiedLinkError: F:\Software\Apache-Tomcat\apache-tomcat-7.0.90\bin\tcnative-1.dll: Can’t load AMD 64-bit .dll on a IA 32-bit platform"></a>1.错误：java.lang.UnsatisfiedLinkError: F:\Software\Apache-Tomcat\apache-tomcat-7.0.90\bin\tcnative-1.dll: Can’t load AMD 64-bit .dll on a IA 32-bit platform</h5><p>解决：直接在网上下载一个 tcnative-1.dll 64位的复制到tomcat/bin目录下即可，这里是因为两者冲突造成。</p>
-<h5 id="2-错误：Failed-to-configure-a-DataSource-‘url’-attribute-is-not-specified-and-no-embedded-datasource-could-be-configured"><a href="#2-错误：Failed-to-configure-a-DataSource-‘url’-attribute-is-not-specified-and-no-embedded-datasource-could-be-configured" class="headerlink" title="2.错误：Failed to configure a DataSource: ‘url’ attribute is not specified and no embedded datasource could be configured."></a>2.错误：Failed to configure a DataSource: ‘url’ attribute is not specified and no embedded datasource could be configured.</h5><p>解决：排除此类的autoconfig。启动以后就可以正常运行。@SpringBootApplication(exclude= {DataSourceAutoConfiguration.class})</p>
-<p>…</p>
-<h5 id="3-错误：Field-userMapper-in-com-shop-service-impl-UserServiceImpl-required-a-bean-of-type-‘com-shop-mapper-UserMapper’-that-could-not-be-found"><a href="#3-错误：Field-userMapper-in-com-shop-service-impl-UserServiceImpl-required-a-bean-of-type-‘com-shop-mapper-UserMapper’-that-could-not-be-found" class="headerlink" title="3.错误：Field userMapper in com.shop.service.impl.UserServiceImpl required a bean of type ‘com.shop.mapper.UserMapper’ that could not be found."></a>3.错误：Field userMapper in com.shop.service.impl.UserServiceImpl required a bean of type ‘com.shop.mapper.UserMapper’ that could not be found.</h5><p>解决：这里是因为注解未找到对一个的mapper，所以报错，去inspections取消对应的提示。</p>
-<h5 id="4-新创建SQLSessionFactory"><a href="#4-新创建SQLSessionFactory" class="headerlink" title="4.新创建SQLSessionFactory"></a>4.新创建SQLSessionFactory</h5><pre><code>@Resource
-private DataSource dataSource;
-
-@Bean
-public SqlSessionFactory sqlSessionFactory() throws Exception {
-    SqlSessionFactoryBean sessionFactoryBean = new SqlSessionFactoryBean();
-    sessionFactoryBean.setDataSource(dataSource);
-    return sessionFactoryBean.getObject();
-}
-</code></pre><h4 id="SLF4J-Class-path-contains-multiple-SLF4J-bindings"><a href="#SLF4J-Class-path-contains-multiple-SLF4J-bindings" class="headerlink" title="SLF4J: Class path contains multiple SLF4J bindings."></a>SLF4J: Class path contains multiple SLF4J bindings.</h4><p>解决：表示maven棒我们引入了两个日志jar包，删掉其中一个便可。</p>
-
-          
+<p>[TOC]</p>
+<h2 id="第十章-Executor框架"><a href="#第十章-Executor框架" class="headerlink" title="第十章 Executor框架"></a>第十章 Executor框架</h2><p>Java的线程既是工作单元，也是执行机制。所以在JDK 1.5 之后将工作单元和执行机制分离开，工作单元包括 Runnable 和 Callable ，执行机制由 Executor 框架提供。</p>
+<p>Executor 管理多个异步任务的执行，而无需程序员显式地管理线程的生命周期。这里的异步是指多个任务的执行互不干扰，不需要进行同步操作。</p>
+<h3 id="10-1-Executor-框架简介"><a href="#10-1-Executor-框架简介" class="headerlink" title="10.1 Executor 框架简介"></a>10.1 Executor 框架简介</h3><h4 id="10-1-1-Executor-框架的两级调度模型"><a href="#10-1-1-Executor-框架的两级调度模型" class="headerlink" title="10.1.1 Executor 框架的两级调度模型"></a>10.1.1 Executor 框架的两级调度模型</h4><p>在上层，Java多线程程序通常将应用分解为若干个任务，然后使用用户级的调度器(Executor框架)将这些任务映射为固定数量的线程。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/第10章 Executor框架/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1217,7 +963,7 @@ public SqlSessionFactory sqlSessionFactory() throws Exception {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Spring/">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第11章 Java并发编程实战/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bangjin-Hu">
@@ -1236,7 +982,7 @@ public SqlSessionFactory sqlSessionFactory() throws Exception {
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/undefined/Spring/" itemprop="url">Spring</a></h2>
+                <a class="post-title-link" href="/undefined/第11章 Java并发编程实战/" itemprop="url">Java并发编程实战</a></h2>
         
 
         <div class="post-meta">
@@ -1264,8 +1010,993 @@ public SqlSessionFactory sqlSessionFactory() throws Exception {
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:29:45+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:16:22+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/多线程与并发/" itemprop="url" rel="index">
+                    <span itemprop="name">多线程与并发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,114
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<p>[TOC]</p>
+<h2 id="第十一章-Java并发编程实战"><a href="#第十一章-Java并发编程实战" class="headerlink" title="第十一章 Java并发编程实战"></a>第十一章 Java并发编程实战</h2><h3 id="11-1-生产者和消费者模式"><a href="#11-1-生产者和消费者模式" class="headerlink" title="11.1 生产者和消费者模式"></a>11.1 生产者和消费者模式</h3><blockquote>
+<p>提示：生产者和消费者模式是通过一个容器来解决生产者和消费者的强耦合问题。</p>
+</blockquote>
+<p>生产者和消费者彼此之间不直接通信，而是通过阻塞队列来进行通信，所以生产者生产完数据之后不用等待消费者处理，直接扔给阻塞队列，消费者不找生产者要数据，而是直接从阻塞队列中取。所以这里的阻塞队列相当于一个缓冲区，平衡生产者和消费者的处理能力。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/第11章 Java并发编程实战/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第11章 组件概览/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/第11章 组件概览/" itemprop="url">SpringMVC组件分析</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:15:59+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SpringMVC源码分析/" itemprop="url" rel="index">
+                    <span itemprop="name">SpringMVC源码分析</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  467
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h1 id="第11章-SpringMVC组件分析"><a href="#第11章-SpringMVC组件分析" class="headerlink" title="第11章 SpringMVC组件分析"></a>第11章 SpringMVC组件分析</h1><h2 id="11-1-HandlerMapping"><a href="#11-1-HandlerMapping" class="headerlink" title="11.1 HandlerMapping"></a>11.1 HandlerMapping</h2><p>它的作用是根据request找到相应的处理器Handler和Interceptors。在HandlerMapping接口中只有一个方法：HandlerExceptionChain getHandler(HttpServletRequest request); </p>
+<h2 id="11-2-HandlerAdapter"><a href="#11-2-HandlerAdapter" class="headerlink" title="11.2 HandlerAdapter"></a>11.2 HandlerAdapter</h2><p>HandlerAdapter理解为干活的人。在它里面有三个方法：1.supports(Object handler)，判断是否可以使用某个Handler。2.handle()方法是用来具体使用Handler干活。3.getLastModified()方法是获取最后一个修改的时间。</p>
+<h2 id="11-3-HandlerExceptionResolver"><a href="#11-3-HandlerExceptionResolver" class="headerlink" title="11.3 HandlerExceptionResolver"></a>11.3 HandlerExceptionResolver</h2><p>在SpringMVC中专门处理异常情况的。此组件的作用是根据异常设置ModelAndView，然后交给render()方法进行渲染。render负责将ModelAndView渲染成页面。该组件HandlerExceptionResolver结构中只有一个方法，只需要从异常中解析出ModelAndView。</p>
+<h2 id="11-4-ViewResolver"><a href="#11-4-ViewResolver" class="headerlink" title="11.4 ViewResolver"></a>11.4 ViewResolver</h2><p>该组件是将String类型视图名和Locale解析成View类型的视图。ViewResolver接口只有一个方法：View resolveViewName(String viewName, Locale locale);<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/第11章 组件概览/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第12章 HandlerMapping/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/第12章 HandlerMapping/" itemprop="url">HandlerMapping</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:16:18+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SpringMVC/" itemprop="url" rel="index">
+                    <span itemprop="name">SpringMVC</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,331
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  15
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h1 id="第12章-HandlerMapping"><a href="#第12章-HandlerMapping" class="headerlink" title="第12章 HandlerMapping"></a>第12章 HandlerMapping</h1><p>[TOC]</p>
+<p>HandlerMapping的作用是通过request查找Handler和Interceptors。HandlerMapping包括继承AbstractUrlHandlerMapping和继承AbstractHandlerMapping，这两支都继承抽象类AbstractHandlerMapping。</p>
+<h2 id="12-1-AbstractHandlerMapping"><a href="#12-1-AbstractHandlerMapping" class="headerlink" title="12.1 AbstractHandlerMapping"></a>12.1 AbstractHandlerMapping</h2><p>AbstractHandlerMapping是HandlerMapping抽象实现。其采用模板模式设计了HandlerMapping实现的整体结构。子类通过模板方法提供初始值或者具体算法即可。这种模式是：首先使用一个抽象实现采用模板模式进行整体设计，然后在子类通过实现模板方法具体实现业务。</p>
+<p>HandlerMapping的作用是是通过request查找Handler和Interceptors。获取Handler的过程通过模板方法getHandlerInternal()交给子类。AbstractHandlerMapping中保存了所有的配置Interceptor，在获取Handler后会自己根据从request中获取的lookupPath将相应的Interceptor装配。子类也可以如此。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/第12章 HandlerMapping/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第13章 HandlerAdapter/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/第13章 HandlerAdapter/" itemprop="url">HandlerAdapter</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:16:30+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SpringMVC/" itemprop="url" rel="index">
+                    <span itemprop="name">SpringMVC</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,171
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  13
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h1 id="第13章-HandlerAdapter"><a href="#第13章-HandlerAdapter" class="headerlink" title="第13章 HandlerAdapter"></a>第13章 HandlerAdapter</h1><p>[TOC]</p>
+<p>HandlerMapping通过request找到Handler，而HandlerAdapter是具体使用Handler来干活的。每个HandlerAdapter封装了一种Handler的具体使用方法。HandlerAdapter结构中有5个Adapter，其中只有RequestMappingHandlerAdapter有两层，而其它的只有一层，是直接实现HandlerAdapter接口。同时其中的有一个类已经弃用，所以只有4类Adapter，5个类。</p>
+<blockquote>
+<p>提示：在HandlerAdapter的接口中只有三个方法：1.判断是否支持传入Handler。2.使用Handler处理请求。3.获取资源的LastModified值。</p>
+</blockquote>
+<h2 id="13-1-RequestMappingHandlerAdapter"><a href="#13-1-RequestMappingHandlerAdapter" class="headerlink" title="13.1 RequestMappingHandlerAdapter"></a>13.1 RequestMappingHandlerAdapter</h2><p>RequestMappingHandlerAdapter适配器是与RequestMappingHandlerMapping配合使用的。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/第13章 HandlerAdapter/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第14章 ViewResolver/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/第14章 ViewResolver/" itemprop="url">ViewResolver</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:16:56+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SpringMVC源码分析/" itemprop="url" rel="index">
+                    <span itemprop="name">SpringMVC源码分析</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,482
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  15
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h1 id="第14章-ViewResolver"><a href="#第14章-ViewResolver" class="headerlink" title="第14章 ViewResolver"></a>第14章 ViewResolver</h1>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/第14章 ViewResolver/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第13章 Spring框架的设计理念与设计模式分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/第13章 Spring框架的设计理念与设计模式分析/" itemprop="url">Spring设计框架与设计模式</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T07:38:31+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -1314,2638 +2045,7 @@ public SqlSessionFactory sqlSessionFactory() throws Exception {
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  11,038
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  45
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h1 id="Spring-FD"><a href="#Spring-FD" class="headerlink" title="Spring - FD"></a>Spring - FD</h1><p>Spring提供一种方法管理你的业务对象，主要有两个功能为我们的业务对象管理提供便捷</p>
-<h4 id="Spring整合Web项目的底层原理"><a href="#Spring整合Web项目的底层原理" class="headerlink" title="Spring整合Web项目的底层原理"></a>Spring整合Web项目的底层原理</h4><p>这一过程表示在加载配置文件和创建对象过程，在服务器启动时完成。</p>
-<pre><code>1.在服务器启动的时候，为每个项目创建一个ServletContext对象。
-2.在ServletContext对象创建时，使用监听器可以具体到ServletContext对象在什么时候创建。
-3.在使用监听器监听ServletContext对象创建时。
-    4.加载spring配置文件，将配置文件对象创建。
-    5.将创建出来的对象放到ServletContext域对象里(setAttribute方法)。
-    6.获取对象的时候，到ServletContext域得到(getAttribute方法)。
-</code></pre><ul>
-<li>1.DI 依赖注入</li>
-<li>2.AOP 面向切面编程</li>
-</ul>
-<h4 id="1-Java-Bean"><a href="#1-Java-Bean" class="headerlink" title="1.Java Bean"></a>1.Java Bean</h4><p>每一个实现Bean的规范才可以由Spring来接管，而Bean的规范是：</p>
-<pre><code>1.必须是个公有类
-2.有无参构造函数 
-3.用公有方法暴露内部成员属性(setter/getter) 实现了这样的规范的类才叫做JavaBean(一种可重用组件)
-</code></pre><h4 id="2-DI-依赖注入"><a href="#2-DI-依赖注入" class="headerlink" title="2.DI-依赖注入"></a>2.DI-依赖注入</h4><p>简单来说，一个系统中可能会有成千上万个对象。如果要手工维护它们之间的关系，这是不可想象的。我们可以在Spring的XML文件描述它们之间的关系，由Spring自动来注入它们——比如A类的实例需要B类的实例作为参数set进去。</p>
-<h4 id="3-AOP-面向切面对象"><a href="#3-AOP-面向切面对象" class="headerlink" title="3.AOP-面向切面对象"></a>3.AOP-面向切面对象</h4><p>在执行某个操作前后需要输出日志，但是如果是手工加代码会非常吃力，维护也非常艰难，所以这就需要面向切面编程</p>
-<hr>
-<h2 id="Spring框架的主要内容"><a href="#Spring框架的主要内容" class="headerlink" title="Spring框架的主要内容"></a>Spring框架的主要内容</h2><h4 id="1-Spring框架运行环境"><a href="#1-Spring框架运行环境" class="headerlink" title="1.Spring框架运行环境"></a>1.Spring框架运行环境</h4><blockquote>
-<p>核心容器(IOC)：Bean(Bean工厂/创建对象)、Core(一切的基础)、Context(上下文)、SpEL(Spring的表达式语言)</p>
-</blockquote>
-<blockquote>
-<p>AOP：AOP、Aspects</p>
-</blockquote>
-<blockquote>
-<p>数据访问的支持:JDBC、ORM、Transaction、JMS(Java邮件服务)</p>
-</blockquote>
-<blockquote>
-<p>Web的支持：Spring MVC</p>
-</blockquote>
-<hr>
-<h4 id="2-Ioc-Inversion-of-control-控制反转"><a href="#2-Ioc-Inversion-of-control-控制反转" class="headerlink" title="2.Ioc(Inversion of control)控制反转"></a>2.Ioc(Inversion of control)控制反转</h4><p>这是一种设计思想，在Java开发中，Ioc意味着将你设计好的对象交给容器控制管理，不像传统的在对象内部直接控制。</p>
-<p>解释：在传统的Java程序设计中，在对象内部通过new进行创建对象，是程序主动去创建依赖对象，Ioc专门有一个容器来创建这些对象，即由Ioc容器来控制对象的创建。Ioc容器控制了对象，主要控制了外部资源的获取。</p>
-<hr>
-<h4 id="3-DI-Dependency-Injection-依赖注入"><a href="#3-DI-Dependency-Injection-依赖注入" class="headerlink" title="3.DI(Dependency Injection)依赖注入"></a>3.DI(Dependency Injection)依赖注入</h4><p>组件之间依赖关系由容器在运行期决定，形象的说，即由容器动态的将某个依赖关系注入到组件之中。依赖注入的目的并非为软件系统带来更多功能，而是为了提升组件重用的频率，并为系统搭建一个灵活、可扩展的平台。通过依赖注入机制，我们只需要通过简单的配置，而无需任何代码就可指定目标需要的资源，完成自身的业务逻辑，而不需要关心具体的资源来自何处，由谁实现。</p>
-<p>解释：应用程序依赖于Ioc容器。应用程序需要Ioc容器来提供对象需要的外部资源。Ioc容器注入应用程序某个对象，应用程序依赖的对象。注入某个对象所需要的外部资源(对象、资源、常量数据)。</p>
-<blockquote>
-<p>提示：一般项目开发的模块</p>
-</blockquote>
-<pre><code>注意：
-    DAO层、Service层、Controller层和View层详解
-    1.DAO层
-      主要做数据持久层的工作，负责与数据库进行联络的一些任务封装在此。
-        1)设计DAO层的接口
-        2)在Spring配置文件中定义此接口的实现类
-        3)在模块中调用此接口来进行数据业务的处理，不需要关心此接口的具体实现类是哪个类
-        注意：DAO层的数据源配置以及有关数据库连接的参数都在Spring的配置文件中进行配置
-
-    2.Service层
-      此层主要负责业务模块的逻辑应用设计
-        1)首先设计接口，再设计其实现类，最后再在配置文件中配置其实现的关联，从而在应用中调用service接口来进行业务处理。
-        2)service层的业务实现，具体要调用到已定义的DAO层的接口，封装Service层的业务逻辑有利于通用业务逻辑的独立性和重复利用性。
-
-    3.Controller层
-      此层负责具体的业务模块流程的控制，在此层要调用Service层的接口来控制业务流程，控制的配置也同样是在Spring的配置文件里面进行
-
-    4.View层
-      View层与控制层结合比较紧密，View层主要负责网页前台的JSP页面的表示
-</code></pre><blockquote>
-<p>1.首先给出Ioc(控制反转)思想程序：</p>
-</blockquote>
-<pre><code>1.定义DAO接口UserDao
-2.定义DAO接口实现类UserDaoMysqlImpl和UserDaoOracleImpl
-3.定义Service层接口UserService，实现具体的业务
-4.定义Service接口的实现类UserServiceImpl,Service层的业务实现，具体要调用到已定义的Dao层的接口
-</code></pre><blockquote>
-<blockquote>
-<p>注意：控制反转(Ioc)的设计思想，我们不需要应用程序本身来创建对象，而是将创建对象的任务交付给Ioc容器</p>
-</blockquote>
-</blockquote>
-<hr>
-<h1 id="Spring-SD"><a href="#Spring-SD" class="headerlink" title="Spring - SD"></a>Spring - SD</h1><h2 id="Spring的bean管理-xml方式"><a href="#Spring的bean管理-xml方式" class="headerlink" title="Spring的bean管理(xml方式)"></a>Spring的bean管理(xml方式)</h2><pre><code>对象创建的细节：
-  1.对象创建的时间
-   1)scope=&quot;prototype&quot;(默认值) 在用到对象时才创建 (多例 action对象)
-   2)scope=&quot;singleton&quot; 在启动(容器初始化之前)就已经创建了对象，整个web应用只有一个单例(dao/service/工具类)
-  2.是否延迟创建
-   1)lazy-init=&quot;false&quot;(默认值) 不延迟创建，即在启动时就创建
-   2)lazy-init=&quot;true&quot; 延迟初始化，在用到对象的时候才创建
-</code></pre><h2 id="Bean实例化的方式"><a href="#Bean实例化的方式" class="headerlink" title="Bean实例化的方式"></a>Bean实例化的方式</h2><pre><code>1.在Spring里面通过配置文件创建对象
-
-2.Bean实例化三种方式实现(创建对象的几种方式)
-
-  1)使用类的无参数构造创建(重点)
-    &lt;bean id=&quot;user&quot; class=&quot;cn.itcase.ioc.User&quot;&gt;&lt;/bean&gt;
-    注意：如果类里面没有无参数构造，会出现异常，所以一般要在类里面有有参构造的前提下重写无参构造方法
-
-  2)带参构造创建
-    &lt;bean id=&quot;user2&quot; class=&quot;cn.User&quot;&gt;
-        &lt;constructor-arg index=&quot;0&quot; type=&quot;int&quot; value=&quot;100&quot;&gt;&lt;/constructor-arg&gt;
-        &lt;constructor-arg index=&quot;1&quot; type=&quot;java.lang.String&quot; value=&quot;Jack&quot;&gt;&lt;/constructor-arg&gt;
-    &lt;/bean&gt;
-
-  3)使用静态工厂创建
-    创建静态方法，返回类对象
-    &lt;!-- # 3.2 工厂类： 静态方法 --&gt;
-    &lt;!-- 
-        class 指定的就是工厂类型
-        factory-method  一定是工厂里面的“静态方法”
-     --&gt;
-    &lt;bean id=&quot;user&quot; class=&quot;cn.ObjectFactory&quot; factory-method=&quot;getStaticInstance&quot;&gt;&lt;/bean&gt;
-
-  4)使用实例工厂创建
-    创建不是静态的方法，返回类对象
-        &lt;!-- 3. 工厂类创建对象 --&gt;
-    &lt;!-- # 3.1 工厂类，实例方法 --&gt;
-    &lt;!-- 先创建工厂 --&gt;
-    &lt;bean id=&quot;factory&quot; class=&quot;cn.ObjectFactory&quot;&gt;&lt;/bean&gt;
-    &lt;!-- 在创建user对象，用factory方的实例方法 --&gt;
-    &lt;bean id=&quot;user4&quot; factory-bean=&quot;factory&quot; factory-method=&quot;getInstance&quot;&gt;&lt;/bean&gt;
-</code></pre><blockquote>
-<p>注意：</p>
-</blockquote>
-<pre><code>Spring管理Bean
-
-Spring容器通常理解为BeanFactory或者ApplicationContext 
-
-在Spring的Ioc容器能够帮助我们创建对象，对象交给Spring管理之后我们不用手动去new对象
-</code></pre><hr>
-<h2 id="对象依赖关系"><a href="#对象依赖关系" class="headerlink" title="对象依赖关系"></a>对象依赖关系</h2><pre><code>Spring常用的几种注入方式：
-    1.通过构造器
-
-    2.通过set方法给属性注入值(最常用)
-</code></pre><hr>
-<h2 id="Servlet监听器"><a href="#Servlet监听器" class="headerlink" title="Servlet监听器"></a>Servlet监听器</h2><p>定义：监听器就是一个实现特定接口的普通java程序，这个程序专门用于监听另一个java对象的方法调用或属性改变，当被监听对象发生上述事件后，监听器某个方法将立即被执行。</p>
-<p>在Servlet规范中定义了多种类型的监听器，它们用于监听的事件源分别为 ServletContext, HttpSession 和 ServletRequest 这三个域对象。</p>
-<pre><code>1.监听ServletContext域对象的创建和销毁
-  ServletContextListener接口用于监听ServletContext对象的创建与销毁事件
-      创建：服务器启动针对每一个web应用创建servletcontext
-    销毁：服务器关闭前先关闭代表每一个web应用的servletContext
-
-2.编写Servlet监听器
-  1.实现一个特定的接口，并且针对相应的动作覆盖接口中相应的方法
-  2.servlet监听器注册是由web容器负责，我们只需要在web.xml文件中使用&lt;listener&gt;标签配置好监听器，web容器就会自动将监听器注册到事件源中
-  3.一个web.xml文件中可以配置多个servlet事件监听器，web服务器按照它们的web.xml文件中的注册顺序来加载和注册这些servlet监听器
-
-3.监听HttpSession域对象创建与销毁
-  HttpSessionListener接口用于监听HttpSession的创建和销毁
-    创建：调用sessionCreated(HttpSessionEvent se)方法
-    销毁：sessionDestroyed (HttpSessionEvent se)方法
-
-4.监听HttpRequest域对象创建与销毁
-
-    创建：用户的每一次访问都会创建一个request
-    销毁：当前访问结束，request对象就会销毁
-</code></pre><blockquote>
-<p>注意：session域对象在每一次访问时被创建，而如果用户的session在30分钟内没有使用，服务器就会销毁session，在web.xml中也可以配置session的失效时间</p>
-</blockquote>
-<hr>
-<h2 id="Spring注解注入详解"><a href="#Spring注解注入详解" class="headerlink" title="Spring注解注入详解"></a>Spring注解注入详解</h2><h4 id="1-Resource注解"><a href="#1-Resource注解" class="headerlink" title="1.@Resource注解"></a>1.@Resource注解</h4><p>这一注解是JSR-250标准注解，推荐使用其代替Spring专有的@Autowired注解，@Resource的作用相当于@Autowired，只不过@Autowired按 byType 自动注入，而@Resource默认按 byName 自动注入罢了。</p>
-<p>@Resource有两个比较重要的属性，分别是name与type，Spring注解的name属性解析为 bean 的名字，而 type 属性则解析为 bean 的类型。所以如果使用 name 属性，则使用 byName 的自动注入策略，而使用 type 属性时则使用 byType<br>自动注入策略。如果既不指定 name 也不指定 type 属性，这时将通过反射机制使用 byName 自动注入策略。</p>
-<h4 id="2-Component注解"><a href="#2-Component注解" class="headerlink" title="2.@Component注解"></a>2.@Component注解</h4><p>在对应的类上加上一个@Component注解就定义该类是Bean </p>
-<h4 id="3-Scope注解"><a href="#3-Scope注解" class="headerlink" title="3.@Scope注解"></a>3.@Scope注解</h4><p>在使用XML定义bean的时候，有些时候需要通过bean的scope属性来定义一个bean的作用范围</p>
-<hr>
-<h2 id="Spring-Ioc快速入门"><a href="#Spring-Ioc快速入门" class="headerlink" title="Spring Ioc快速入门"></a>Spring Ioc快速入门</h2><p>  1.下载Spring的开发包</p>
-<p>  2.了解Spring的目录结构 1)docs：Spring的开发文档 2)libs：Spring的开发包 3)schema：约束文档</p>
-<p>  3.创建一个项目引入jar包</p>
-<p>  4.引入Spring的配置文件</p>
-<p>  5.编写测试类</p>
-<blockquote>
-<p>IOC：控制反转，将Bean创建反转给Spring容器</p>
-</blockquote>
-<blockquote>
-<p>DI：依赖注入，在Spring创建这个类的过程中，将这个类的依赖的属性注入，设置属性值</p>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>提示：两者之间的关系：依赖注入不能单独存在，需要在Ioc的基础上完成操作</p>
-</blockquote>
-</blockquote>
-<h4 id="1-IOC底层原理"><a href="#1-IOC底层原理" class="headerlink" title="1.IOC底层原理"></a>1.IOC底层原理</h4><pre><code>1.创建xml配置文件，配置要创建的对象类
-
-    &lt;bean id = &quot;userService&quot; class = &quot;cn.xidian.edu.*&quot;/&gt;
-
-2.创建工厂类，使用dom4j解析配置文件和反射
-
-    //返回UserService对象的方法
-    public static UserService getService(){
-        // 1.使用dom4j解析xml文件
-        // 然后根据id值userService得到id值对应的class属性值
-        String classValue = &quot;class属性值&quot;;
-        // 2.使用反射创建类对象
-        Class clazz = Class.forName(classValue);
-        // 创建类对象
-        UserService userService = clazz.newInstance();
-        return service;
-    }
-</code></pre><h4 id="Spring的工厂类"><a href="#Spring的工厂类" class="headerlink" title="Spring的工厂类"></a>Spring的工厂类</h4><p><strong>1.ApplicationContext</strong></p>
-<ul>
-<li>ClassPathXmlApplicationContext：解析类路径下的XML</li>
-<li>FileSystemXmlApplicationContext：解析本地磁盘上的XML</li>
-</ul>
-<blockquote>
-<p>注意：BeanFactory和ApplicationContext都是Spring中的工厂，BeanFactory是Spring的老版的工厂类(第一次调用getBean方法的时候实例化类)。ApplicationContext是Spring的新版本的工厂类(在加载核心配置文件的时候，将所有的类实例化)</p>
-</blockquote>
-<h4 id="Spring的Bean管理-基于XML方式"><a href="#Spring的Bean管理-基于XML方式" class="headerlink" title="Spring的Bean管理(基于XML方式)"></a>Spring的Bean管理(基于XML方式)</h4><p><strong>1.Spring实例化Bean方式</strong></p>
-<p><strong>1.1 无参构造方式(最常用)</strong><br></p>
-<pre><code>&lt;!-- 无参数构造方法方式 --&gt;
-//引入Spring的配置文件(1.引入约束 2.编写标签)
-&lt;bean id=&quot;bean1&quot; class=&quot;cn.augmentum.spring.demo3.Bean1&quot;&gt;&lt;/bean&gt;
-//编写测试类
-public void demo1() {
-    // 加载核心配置文件:
-    ApplicationContext applicationContext = new ClassPathXmlApplicationContext(
-            &quot;applicationContext.xml&quot;);
-    Bean1 bean1 = (Bean1) applicationContext.getBean(&quot;bean1&quot;);//getBean()是用来获取applicationContext.xml文件里bean的
-    System.out.println(bean1);
-}
-</code></pre><p><strong>1.2 静态工厂实例化方式</strong><br></p>
-<p>   public class Bean2Factory {<br>      public static Bean2 getBean2(){<br>          return new Bean2();<br>     }<br>   }</p>
-<pre><code>配置文件:
-
-&lt;!-- 静态工厂实例化方式 --&gt;
-&lt;bean id=&quot;bean2&quot; class=&quot;cn.augmentum.spring.demo3.Bean2Factory&quot; factory-method=&quot;getBean2&quot;/&gt;
-
-  代码:
-
-    public void demo2() {
-        // 加载核心配置文件:
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext(
-                &quot;applicationContext.xml&quot;);
-        Bean2 bean2 = (Bean2) applicationContext.getBean(&quot;bean2&quot;);
-        System.out.println(bean2);
-    }
-
-
-  实例工厂:
-  public class Bean3Factory {
-
-     public Bean3 getBean3(){
-        System.out.println(&quot;实例工厂执行了...&quot;);
-        return new Bean3();
-     }
-  }
-
-  配置文件:
-    &lt;!-- 实例工厂实例化方式 --&gt;
-    &lt;bean id=&quot;bean3Factory&quot; class=&quot;cn.itcast.spring.demo3.Bean3Factory&quot;/&gt;
-    &lt;bean id=&quot;bean3&quot; factory-bean=&quot;bean3Factory&quot; factory-method=&quot;getBean3&quot;/&gt;
-
-  代码:
-
-    public void demo3() {
-        // 加载核心配置文件:
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext(
-                &quot;applicationContext.xml&quot;);
-        Bean3 bean3 = (Bean3) applicationContext.getBean(&quot;bean3&quot;);
-        System.out.println(bean3);
-    }
-</code></pre><hr>
-<h2 id="Spring的Bean的常用配置"><a href="#Spring的Bean的常用配置" class="headerlink" title="Spring的Bean的常用配置"></a>Spring的Bean的常用配置</h2><h4 id="1-标签的id和name属性"><a href="#1-标签的id和name属性" class="headerlink" title="1.标签的id和name属性"></a>1.<bean>标签的id和name属性</bean></h4><pre><code>id与name的区别：
-  id：使用xml约束中id约束，不可以出现特殊字符
-  name：出现特殊字符，如果使用name没有id，那么name可以作为id使用
-</code></pre><h4 id="2-上生命周期的配置"><a href="#2-上生命周期的配置" class="headerlink" title="2.上生命周期的配置"></a>2.<bean>上生命周期的配置</bean></h4><pre><code>@Test
-    /**
-     * Bean的生命周期的相关配置:
-     *     * init-method
-     *     * destory-method :只能针对单例对象有效.必须在工厂关闭之后才会销毁对象.
-     */
-    public void demo1(){
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext(&quot;applicationContext.xml&quot;);
-        EmployeeService employeeService = (EmployeeService) applicationContext
-                .getBean(&quot;employeeService&quot;);
-        employeeService.save();
-        applicationContext.close();
-    }
-</code></pre><h4 id="3-上的作用范围的配置"><a href="#3-上的作用范围的配置" class="headerlink" title="3.上的作用范围的配置:"></a>3.<bean>上的作用范围的配置:</bean></h4><pre><code>scope属性:
-
- - singleton :单例的(默认)
- - prototype :多例的
- - request :WEB项目中,创建一个对象,保存到request域中
- - session :WEB项目中,创建一个对象,保存到session域中
- - globalsession :WEB项目中,特殊环境.分布式开发环境.如果没有分布式环境,相当于session
-</code></pre><h4 id="4-Bean的生命周期"><a href="#4-Bean的生命周期" class="headerlink" title="4.Bean的生命周期"></a>4.Bean的生命周期</h4><hr>
-<h2 id="Spring属性注入"><a href="#Spring属性注入" class="headerlink" title="Spring属性注入"></a>Spring属性注入</h2><p>属性注入：创建对象的时候，向类里面属性设置值，这一过程就是属性注入</p>
-<pre><code> 1.有参构造方法的属性注入
-    &lt;bean id=&quot;car&quot; class=&quot;cn.augmentum.spring.demo6.Car&quot;&gt;//创建类，然后在类中添加属性值
-　　   &lt;constructor-arg name=&quot;name&quot; value=&quot;宝马&quot;/&gt;
-　     &lt;constructor-arg name=&quot;price&quot; value=&quot;1000000&quot;/&gt;
-    &lt;/bean&gt;
-
-    //第一种 有参构造注入属性值(一般情况下的属性赋值方式)
-    public class User{
-        private String name;
-        public User(String name){
-            this.name=name;
-        }
-    }
-    User user=new User(&quot;lucy&quot;);
-
- 2.set方法的属性注入
-
-   &lt;bean id=&quot;car2&quot; class=&quot;cn.augmentum.spring.demo6.Car2&quot;&gt;//1.创建car2对象
-　    &lt;property name=&quot;name&quot; value=&quot;奇瑞QQ&quot;/&gt;//2.属性注入(对象中属性的值的设定) name属性值：类里面定义的属性名称 value属性：设置具体的值
-　　  &lt;property name=&quot;price&quot; value=&quot;30000&quot;/&gt;
-   &lt;/bean&gt;  
-
-    //第二种 使用set方法注入属性值(在一般情况下使用的属性赋值方式)
-     public class User{
-        private String name;
-        public void setName(String name){
-            this.name=name;
-        }
-    }
-    User user=new User();
-    user.setName(&quot;张三&quot;);
-
- //第三种 使用接口方式注入
- public interface Dao{
-     public void delete(String name);
-    }
-
- public class DaoImpl implements Dao{
-    private String name;
-    public void delete(String name){
-        this.name=name;
-        }
-    }
-
-注意：在spring框架中只支持前面两种方式
-      1)set方法注入(重点)
-      2)有参数构造注入
-
- 3.Spring的2.5支持p名称空间注入
-
-   p名称空间语法
-
-    普通属性：p:name=&quot;&quot;
-    对象类型属性：p:name-ref=&quot;&quot;
-
- 4.p名称空间的使用
-
-   1.引入p名称空间
-
-&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
-    xmlns:p=&quot;http://www.springframework.org/schema/p&quot;
-        xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-        xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
-
-   2.p名称空间的注入
-
-&lt;bean id=&quot;car2&quot; class=&quot;cn.augmentum.spring.demo6.Car2&quot; p:name=&quot;长安奔奔&quot; p:price=&quot;25000&quot;/&gt;
-&lt;bean id=&quot;employee&quot; class=&quot;cn.augmentum.spring.demo6.Employee&quot; p:name=&quot;马凤&quot; p:car2-ref=&quot;car2&quot;/&gt;  ref：表示引用其他bean对象    
-
- 5.Spring3.0的SpEL的属性注入
-   SpEL语法：#{SpEL}
-
-1.属性配置
- &lt;bean id=&quot;carInfo&quot; class=&quot;cn.augmentum.spring.demo6.CarInfo&quot;&gt;
- &lt;/bean&gt;
-
-2.属性注入
- &lt;!-- SpEL的方式的属性注入 --&gt;
-&lt;bean id=&quot;car2&quot; class=&quot;cn.augmentum.spring.demo6.Car2&quot;&gt;
-　　&lt;property name=&quot;name&quot; value=&quot;#{carInfo.carName}&quot;/&gt;
-　　&lt;property name=&quot;price&quot; value=&quot;#{carInfo.calculatorPrice()}&quot;/&gt;
-&lt;/bean&gt;
-
-&lt;bean id=&quot;employee&quot; class=&quot;cn.augmentum.spring.demo6.Employee&quot;&gt;
-　 &lt;property name=&quot;name&quot; value=&quot;涛哥&quot;/&gt;
-　 &lt;property name=&quot;car2&quot; value=&quot;#{car2}&quot;/&gt;
-&lt;/bean&gt;
-
- 6.Spring中数组或集合的复杂类型属性注入(在创建好类之后便要创建类的对象，此时创建对象的操作交给Spring容器，然后注入对象的属性值)
-
-   1.注入复杂属性值，首先创建类型对象
-    &lt;bean id=&quot;person&quot; class=&quot;cn.itcast.property.Person&quot;&gt;
-        //2.然后在创建的对象中注入属性值
-        &lt;property name=&quot;arrs&quot;&gt;//加入的属性名称
-　　            &lt;list&gt;
-　　　　            &lt;value&gt;老马&lt;/value&gt;
-　　　　            &lt;value&gt;马凤&lt;/value&gt;
-　 　　             &lt;value&gt;马如花&lt;/value&gt;
-　　            &lt;/list&gt;
-        &lt;/property&gt;
-    &lt;/bean&gt;
-
-
-
-&lt;!--List集合的属性的注入:--&gt;
-&lt;property name=&quot;list&quot;&gt;
-　　&lt;list&gt;
-　　　　&lt;value&gt;马芙蓉&lt;/value&gt;
-　　　　&lt;value&gt;马大帅&lt;/value&gt;
-　　　　&lt;value&gt;马大彪&lt;/value&gt;
-　　&lt;/list&gt;
-&lt;/property&gt;
-
-&lt;!--Set集合的属性的注入:--&gt;
-&lt;property name=&quot;set&quot;&gt;
-　　&lt;set&gt;
-　　　　&lt;value&gt;马云&lt;/value&gt;
-　　　　&lt;value&gt;马化腾&lt;/value&gt;
-　　　　&lt;value&gt;马大哈&lt;/value&gt;
-　　&lt;/set&gt;
-&lt;/property&gt;
-
-&lt;!--Map集合的属性的注入:--&gt;
-&lt;property name=&quot;map&quot;&gt;
-　　&lt;map&gt;
-　　　　&lt;entry key=&quot;aaa&quot; value=&quot;刘能&quot;/&gt;
-　　　　&lt;entry key=&quot;bbb&quot; value=&quot;赵四&quot;/&gt;
-　　　  &lt;entry key=&quot;ccc&quot; value=&quot;王五&quot;/&gt;
-　 &lt;/map&gt;
-&lt;/property&gt;
-
-&lt;!--Properties的属性的注入:--&gt;
-&lt;property name=&quot;properties&quot;&gt;
-　　&lt;props&gt;
-　　　　&lt;prop key=&quot;username&quot;&gt;root&lt;/prop&gt;
-　　　　&lt;prop key=&quot;password&quot;&gt;123&lt;/prop&gt;
-　　&lt;/props&gt;
-&lt;/property&gt;
-
-
- 7.Spring中的分配置文件进行开发
-   1.加载配置文件时候加载多个配置文件
-
-   2.总配置文件中引入其他配置文件
-</code></pre><h4 id="2-注入对象类型属性-重点"><a href="#2-注入对象类型属性-重点" class="headerlink" title="2.注入对象类型属性(重点)"></a>2.注入对象类型属性(重点)</h4><pre><code>1.创建service类和dao类
-  1)在service得到dao对象
-
-2.具体实现过程
-    1)在service里面将dao作为类型属性
-    2)生成dao类型属性的set方法
-
-    public class UserService{
-        //1.定义dao类型属性
-        private UserDao userDao;
-        //2.生成set方法
-        public void setUserDao(UserDao userDao){
-            this.userDao=userDao;
-        }
-
-    }
-
- 3)配置文件中注入关系
-
-    1.配置service和dao对象
-    &lt;bean id=&quot;userDao&quot; class=&quot;cn.itcast.ioc.UserDao&quot;&gt;&lt;/bean&gt;
-    &lt;bean id=&quot;userService&quot; class=&quot;cn.itcast.ioc.UserService&quot;&gt;&lt;/bean&gt;
-
-    2.注入dao对象 name属性值，service类里面属性名称，现在不要写value属性，因为刚写的是字符串，现在是对象，写ref属性，dao配置bean标签中id值
-    &lt;property name=&quot;userDao&quot; ref=&quot;userDao&quot;&gt;&lt;/property&gt;
-</code></pre><h4 id="3-Bean标签常用属性"><a href="#3-Bean标签常用属性" class="headerlink" title="3.Bean标签常用属性"></a>3.Bean标签常用属性</h4><pre><code>1)id属性：为后面查找类起的名称，id属性值名称任意命名，id属性值不能包含特殊字符，根据id值得到配置对象
-2)class属性：创建对象所在的类的全路径
-3)name属性：功能和id属性一样的，id属性值不能包含特殊符号，但是在name属性值里面可以包含特殊字符
-4)scope属性：
-  - singleton :单例的(默认) 创建的实例是一个对象
-  - prototype :多例的 创建的实例是多个对象
-  - request :WEB项目中,创建一个对象,保存到request域中
-  - session :WEB项目中,创建一个对象,保存到session域中
-  - globalsession :WEB项目中,特殊环境.分布式开发环境.如果没有分布式环境,相当于session
-</code></pre><h2 id="Spring整合Web项目原理"><a href="#Spring整合Web项目原理" class="headerlink" title="Spring整合Web项目原理"></a>Spring整合Web项目原理</h2><pre><code>1.加载Spring核心配置文件，根据配置创建对象
-    ApplicationContext context=new ClassPathXmlApplicationContext(&quot;bean1.xml&quot;);
-    //1)new对象,虽然这一过程功能可以实现，但是实现效率很低
-
-2.提高这一过程实现效率的思想：将加载配置文件和创建对象的过程在服务器启动的过程完后
-
-3.上述思想实现原理
-
-    1)ServletContext对象
-    2)监听器
-
-    3)具体使用
-      - 在服务器启动的使用，会为每个项目创建一个ServletContext对象
-      - 在ServletContext对象创建的时候，使用监听器可以具体到ServletContext对象在什么时候被创建
-      - 使用监听器监听到ServletContext对象创建的时候
-        --加载Spring配置文件，将配置文件配置对象创建
-        --将创建出来的对象放到ServletContext域对象里面(setAttribute方法)
-      - 获取对象的时候，到ServletContext域之中得到(getAttribute方法)
-</code></pre><hr>
-<h1 id="Spring-TD"><a href="#Spring-TD" class="headerlink" title="Spring - TD"></a>Spring - TD</h1><h2 id="Spring的Bean管理-注解"><a href="#Spring的Bean管理-注解" class="headerlink" title="Spring的Bean管理(注解)"></a>Spring的Bean管理(注解)</h2><blockquote>
-<p>注解(程序里面的图书特殊标记，使用注解可以完成功能 写法：@注解名称(属性名称=属性值)) &gt;&gt;注解可以使用在类上面、方法上面以及属性上面</p>
-</blockquote>
-<h4 id="1-Spring注解开发准备"><a href="#1-Spring注解开发准备" class="headerlink" title="1.Spring注解开发准备"></a>1.Spring注解开发准备</h4><pre><code>1.导入jar包
- 1.导入基本的jar包
- 2.导入aop的jar包
-2.创建类、创建方法
-
-3.创建Spring配置文件，引入约束
- 1.在刚开始做Ioc基本功能的时候，引入的约束是beans
- 2.但是在做Spring的Ioc注解开发的时候需要引入新的约束(../spring-context.xsd)
-
-4.开启注解扫描(到包里面扫描类、方法、属性上面是否有注解)
- &lt;context:component-scan base-package=&quot;cn.itcast&quot;&gt;&lt;/context:component-scan&gt;
- //另外一个开启扫描注解配置程序
- &lt;context:annotation-config&gt;&lt;/context:annotation-config&gt;//这只会扫描属性上面的注解
-</code></pre><h4 id="2-注解创建对象"><a href="#2-注解创建对象" class="headerlink" title="2.注解创建对象"></a>2.注解创建对象</h4><pre><code>1.在创建对象的类上面使用注解实现
-    @ Component(value=&quot;user&quot;) // &lt;bean id=&quot;user&quot; class=&quot;&quot;/&gt;
-    public class User{
-        //...
-        }
-
-2.创建对象有四个注解
-
-    下面三个的让标注类的用途清晰，在后续Spring版本中对其增强
-    @ Controller ：web层
-    @ Service ：业务层
-    @ Repository ：持久层
-    @ Component 和上面的三个注解等效
-
-
-3.创建对象单实例还是多实例
-    @ Scope(value=&quot;prototype&quot;)
-</code></pre><h4 id="3-注解注入属性"><a href="#3-注解注入属性" class="headerlink" title="3.注解注入属性"></a>3.注解注入属性</h4><pre><code>注入属性注解：
-    1.@Autowired 
-    2.@Resource 
-
-1.@Autowired 
-  创建service类，创建dao类，在service类中得到dao对象
-  1)使用注解创建dao类与service类的对象
-    @Service(value=&quot;userService&quot;)
-    public class UserService{
-        //...
-        }
-
-    @Component(value=&quot;userService&quot;)
-    public class UserService{
-        //...
-        }
-
-  2)得到dao对象(在service类里面定义dao类型属性)
-    - 1.定义dao类型属性，在dao属性上面使用注解完成对象注入
-    @Autowired(自动装配)
-    private UserDao userDao;
-    //使用注解方式的时候不需要使用set方法注入属性值
-
-2.@Resource 
-  name属性值写注解创建dao对象value值
-  @Resource(name=&quot;userDao&quot;)
-  private UserDao userDao;
-
-
-
-配置文件和注解混合使用
-
-  1.创建对象操作使用配置文件方式实现
-    &lt;bean id=&quot;bookService&quot; class=&quot;cn.itcast&quot;&gt;&lt;/bean&gt;    
-  2.注入属性的操作使用注解方式实现
-    //得到类的对象，使用注解的方式
-    @Resource(name=&quot;bookDao&quot;)
-    private BookDao bookDao;
-
-    @Resource(name=&quot;ordersDao&quot;)
-    private OrdersDao ordersDao;
-
-
-3.多种装配Bean方式的比较
-
-  1.基于xml配置(适用于Bean来自第三方、使用其他命名空间)
-    bean定义：&lt;bean id=&quot;&quot; class=&quot;&quot;/&gt;
-    bean名称：通过id或name指定
-    bean属性注入：&lt;property&gt;或者p命名空间
-    生命过程/bean作用范围：init-method/destory-method 范围：scope属性
-
-  2.基于注解配置（Bean的实现类由用户自己开发）
-    bean定义：
-    @Component(@Repository)
-    @Service
-    @Controller
-
-    bean名称：@Component(&quot;person&quot;)
-
-    bean属性注入：@Autowired 按类型注入
-          @Qualifier 按名称注入
-
-    生命过程：
-
-  3.基于Java类配置
-    bean注入：在方法内部编写注入代码逻辑
-</code></pre><blockquote>
-<p>扩展</p>
-</blockquote>
-<h2 id="log4j介绍"><a href="#log4j介绍" class="headerlink" title="log4j介绍"></a>log4j介绍</h2><p>1.通过log4j可以看到程序运行过程中更详细的信息(加载的配置文件、日志文件)</p>
-<pre><code>log4j使用步骤：
-1.导入log4j的jar包
-2.复制log4j的配置文件，复制到src下面
-  log4j.propertises(配置文件)
-
-3.设置日志的级别
-  log4j.rootLogger=info,stdout
-    1)info：看到基本的信息
-    2)debug：看到更详细的信息
-</code></pre><hr>
-<h2 id="Spring整合Web项目演示"><a href="#Spring整合Web项目演示" class="headerlink" title="Spring整合Web项目演示"></a>Spring整合Web项目演示</h2><pre><code>1.演示问题
-1.action调用service，service里面调用dao方式，每次访问action的时候都会加载配置文件
-2.解决方案
-  1)在服务器启动的时候，创建对象加载配置文件
-  2)底层使用监听器、ServletContext对象
-
-3.在Spring里面不需要我们自己写代码实现，框架已经帮我们封装好了
-  1)封装了一个监听器，只需要配置好监听器就行了
-  2)配置监听器之前需要导入Spring整合web项目的jar包
-  3)指定加载配置文件的位置
-
-    指定Spring配置文件的位置
-    &lt;context-param&gt;
-        &lt;param-name&gt;..&lt;/param-name&gt;
-        &lt;param-value&gt;...&lt;/param-value&gt;
-    &lt;/context-param&gt;
-</code></pre><hr>
-<h2 id="基于aspectj的注解aop"><a href="#基于aspectj的注解aop" class="headerlink" title="基于aspectj的注解aop"></a>基于aspectj的注解aop</h2><h4 id="1-使用注解方式实现aop操作"><a href="#1-使用注解方式实现aop操作" class="headerlink" title="1.使用注解方式实现aop操作"></a>1.使用注解方式实现aop操作</h4><pre><code>1.首先引入aop编程的相关jar包
-2.然后在bean.xml文件中引入aop名称空间
-3.其次在bean.xml文件中开启aop扫描&lt;context:component-scan base-package=&quot;&quot;&gt;&lt;/context:component-scan&gt;
-4.然后开启aop注解方式，默认是false &lt;aop:aspectj-autoproxy&gt;&lt;/aop:aspectj-autoproxy&gt;
-5.开始写一个切面类
-  1.@Component：加入IOC容器 @Aspect：指定当前类为切面类 
-  2.在类里面指定切入点表达式，拦截那些方法，即为那些类生成代理对象(@Pointcut(&quot;execution(* com.bie.aop.UserDao.*(..))&quot;))
-    注意：在类里面可以开启前置增强(@Before(&quot;pointCut()&quot;)) 开启后置增强(@After(&quot;pointCut()&quot;))
-6.在写好切面类之后写执行目标对象方法(接口/接口实现类)以及最后的测试类
-</code></pre><blockquote>
-<p>注意：如果目标对象是有实现接口，spring会自动选择”jdk代理(动态代理)”动态代理标识：<code>class com.sun.proxy.$Proxy10</code> 如果对象没有实现接口，spring会自动调用”cglib代理”</p>
-</blockquote>
-<pre><code>1)创建对象
-  &lt;bean id=&quot;book&quot; class=&quot;cn.itcast.aop.Book&quot;&gt;&lt;/bean&gt;//创建Book对象，被增强类
-  &lt;bean id=&quot;MyBook&quot; class=&quot;cn.itcast.aop.MyBook&quot;&gt;&lt;/bean&gt;//创建增强类MyBook对象
-2)在Spring核心配置文件中开启aop操作
-  &lt;aop:aspectj-autoproxy&gt; &lt;/aop:aspectj-autoproxy&gt;
-3)在增强类上面使用注解方式来完成增强配置
-  @Aspect
-  public class MyBook{
-      //在方法上面使用注解完成增强配置
-      @Before(value=&quot;execution(* cn.itcast.aop.Book.*(..))&quot;)
-      public void before(){
-          System.out.println(&quot;before.......&quot;);
-      }
-  }
-</code></pre><hr>
-<h4 id="2-Spring的jdbcTemplate操作"><a href="#2-Spring的jdbcTemplate操作" class="headerlink" title="2.Spring的jdbcTemplate操作"></a>2.Spring的jdbcTemplate操作</h4><p>  1)Spring框架一站式框架(针对JavaEE的三层，每一层都有解决技术)<br>  2)在DAO层，使用jdbcTemplate</p>
-<h4 id="3-Spring对不同的持久化层技术都进行了封装"><a href="#3-Spring对不同的持久化层技术都进行了封装" class="headerlink" title="3.Spring对不同的持久化层技术都进行了封装"></a>3.Spring对不同的持久化层技术都进行了封装</h4><p>  1)jdbcTemplate对jdbc进行封装</p>
-<h4 id="4-jdbcTemplate的使用和dbutils使用和相似，对数据库进行crud操作"><a href="#4-jdbcTemplate的使用和dbutils使用和相似，对数据库进行crud操作" class="headerlink" title="4.jdbcTemplate的使用和dbutils使用和相似，对数据库进行crud操作"></a>4.jdbcTemplate的使用和dbutils使用和相似，对数据库进行crud操作</h4><pre><code>添加
-  1)导入jdbcTemplate使用的jar包(spring-jdbc-4.2.4.RELEASE.jar spring-tx-4.2.4.RELEASE.jar)
-  2)创建对象，设置数据库信息(注意配置数据库的驱动)
-  DriverManagerDataSource dataSource=new DriverManagerDataSource();
-  dataSource.setDriverClassName(&quot;com.mysql.jdbc.Driver&quot;);
-  dataSource.setUrl(&quot;jdbc:myql:///spring_day_03&quot;);
-  dataSource.setUsername(&quot;root&quot;);
-  dataSource.setPassword(&quot;root&quot;);
-
-  3)创建jdbcTemplate对象，设置数据源
-  JdbcTemplate jdbcTemplate=new JdbcTemplate(dataSource);
-
-  4)调用jdbcTemplate对象里面的方法实现操作
-    1.创建sql语句
-    String sql=&quot;insert into user values(?,?)&quot;;
-    jdbcTemplate.update(sql,&quot;lucy&quot;,&quot;123&quot;);//调用模板中的update方法
-
-修改
-  1)设置数据库的信息
-  DriverManagerDataSource dataSource=new DriverManagerDataSource();
-  dataSource.setDriverClassName(&quot;com.mysql.jdbc.Driver&quot;);
-  dataSource.setUrl(&quot;jdbc:myql:///spring_day_03&quot;);
-  dataSource.setUsername(&quot;root&quot;);
-  dataSource.setPassword(&quot;root&quot;);
-
-  2)创建jdbcTemplate对象
-  JdbcTemplate jdbcTemplate=new JdbcTemplate(dataSource);
-
-  3)调用jdbcTemplate对象里面的update()方法实现操作
-  String sql=&quot;update user set password=? where username=?&quot;;//根据用户名修改密码
-  int rows=jdbcTemplate.update(sql,&quot;1234&quot;,&quot;lucy&quot;);
-  System.out.println(rows);//输出结果为1，修改成功
-
-
-删除
-   1)设置数据库的信息
-  DriverManagerDataSource dataSource=new DriverManagerDataSource();
-  dataSource.setDriverClassName(&quot;com.mysql.jdbc.Driver&quot;);
-  dataSource.setUrl(&quot;jdbc:myql:///spring_day_03&quot;);
-  dataSource.setUsername(&quot;root&quot;);
-  dataSource.setPassword(&quot;root&quot;);
-
-  2)创建jdbcTemplate对象
-  JdbcTemplate jdbcTemplate=new JdbcTemplate(dataSource);
-
-  3)调用update()方法实现删除
-  String sql=&quot;delete from user where username=?&quot;;
-  int rows=jdbcTemplate.update(sql,&quot;lucy&quot;);
-  System.out.println(rows);
-
-
-查询
-   1.使用jdbcTemplate实现查询操作
-
-   2.查询的具体操作
-     1)查询返回某一个值(数据库中有多少条记录)
-       1.设置数据库信息
-
-       2.创建jdbcTemplate对象
-
-       3.调用方法得到记录数
-
-     String sql=&quot;select count(*) from user&quot;;
-       4.调用jdbcTemplate的方法
-     int count=jdbcTemplate.queryForObject(sql,Integer.class);
-
-     第一个参数，sql：返回sql语句
-     第二个参数，requiredType：返回类型的class
-
-
-     注意：jdbc底层实现程序
-    public class testJDBC(){
-    Connection conn=null;
-    PreparedStatement psmt=null;
-    ResultSet rs=null;
-        //1.加载驱动
-    try{
-        Class.forName(&quot;com.mysql.jdbc.Driver&quot;);
-        //2.创建连接
-        conn=DriverManager.getConnection(&quot;jdbc:mysql:///spring_day03&quot;,&quot;root&quot;,&quot;root&quot;);
-        //3.编写sql语句
-        String sql=&quot;select *from user where username=?&quot;;
-        //4.预编译sql
-        psmt=connt.prepareStatement(sql);
-        //5.设置参数值
-        psmt.setString(1,&quot;lucy&quot;);
-        //6.执行sql
-        rs=psmt.executeQuery();
-        //7.遍历结果集
-        while(rs.next()){
-            //得到返回结果集
-            String username=rs.getString(&quot;username&quot;);
-            String password=rs.getString(&quot;password&quot;);
-            //创建一个实体类，将username与password放到实体类中去
-            //创建实体类的对象
-            User user=new User();
-            user.setUsername(username);
-            user.setPassword(password);
-            //输出user
-            System.out.println(user);
-        }
-    }catch(ClassNotFoundException e){
-        e.printStackTrace();
-        }finally{
-        try{
-            rs.close();
-            psmt.close();
-            conn.close();
-        }catch(SQLException e){
-            e.printStackTrace();
-            }
-
-        }
-    }
-
-    2)查询返回对象
-
-    1)在方法里面操作，设置数据库信息
-    DriverManagerDataSource dataSource=new DriverManagerDataSource();
-      dataSource.setDriverClassName(&quot;com.mysql.jdbc.Driver&quot;);
-      dataSource.setUrl(&quot;jdbc:myql:///spring_day_03&quot;);
-      dataSource.setUsername(&quot;root&quot;);
-      dataSource.setPassword(&quot;root&quot;);
-
-      2)创建jdbcTemplate对象
-      JdbcTemplate jdbcTemplate=new JdbcTemplate(dataSource);
-
-    3)写sql语句，根据username查询
-    String sql=&quot;select *from user where username=?&quot;;
-
-    4)调用jdbcTemplate的方法实现
-    jdbcTemplate.queryForObject(String sql,RowMapper&lt;T&gt;rowMapper,Object...args)
-
-    User user=jdbcTemplate.queryForObject(sql,new MyRowMapper(),&quot;lucy&quot;)
-        第一个参数：sql语句
-        第二个参数：RowMapper，接口，类似于dbutils里面的接口，需要自己写类实现接口，自己实现数据封装
-        第三个参数：可变参数
-
-    注意：在Java里面可以有多个class，但是只能有一个public
-
-    写RowMapper类
-
-    class MyRowMapper implements RowMapper&lt;User&gt;{
-            @Override
-            public User mapRow(ResultSet rs,int num) throws SQLException{
-                //1.从结果集里面得到数据
-                String username=rs.getString(&quot;username&quot;);
-                String password=rs.getString(&quot;password&quot;);
-                //2.将得到的数据封装到对象里面
-                User user = new User();
-                user.setUsername(username);
-                user.setPassword(password);
-                return user;
-            }
-        }
-
-    5)输出user
-    System.out.println(user);
-
-
-     3)查询返回list集合
-
-    query(String sql,RowMapper&lt;T&gt; rowMapper,Object...args):List&lt;T&gt;
-       1)sql语句
-       2)RowMapper接口，自己写类实现数据封装
-       3)可变参数
-
-       1)设置数据库信息
-    DriverManagerDataSource dataSource=new DriverManagerDataSource();
-      dataSource.setDriverClassName(&quot;com.mysql.jdbc.Driver&quot;);
-      dataSource.setUrl(&quot;jdbc:myql:///spring_day_03&quot;);
-      dataSource.setUsername(&quot;root&quot;);
-      dataSource.setPassword(&quot;root&quot;);
-
-      2)创建jdbcTemplate对象
-      JdbcTemplate jdbcTemplate=new JdbcTemplate(dataSource);
-
-    3)写sql语句
-    String sql = &quot;select * from user&quot;;
-
-    4)调用jdbcTemplate的方法实现
-    List&lt;User&gt; list=jdbcTemplate.query(sql,new MyRowMapper());
-    System.out.println(list);
-
-    //MyRowMapper()实现与上面的一样
-</code></pre><blockquote>
-<p>注意：增、删、修都是使用update()方法，而查询使用的query()方法</p>
-</blockquote>
-<hr>
-<h2 id="Spring配置连接池和dao使用jdbcTemplate"><a href="#Spring配置连接池和dao使用jdbcTemplate" class="headerlink" title="Spring配置连接池和dao使用jdbcTemplate"></a>Spring配置连接池和dao使用jdbcTemplate</h2><pre><code>1.Spring配置连接池(c3p0)
-  1)导入jar包(c3p0连接池jar包c3p0-0.0.2.1.jar   mchange-commons-java-0.2.3.4.jar)
-
-  2)创建Spring配置文件，配置连接池
-1)将程序在配置文件中进行配置
-
-&lt;!--配置c3p0连接池--&gt;
-//创建连接池对象
-&lt;bean id=&quot;dataSource&quot; class=&quot;com.mchange.v2.c3po.ComboPooledDataSource&quot;&gt;
-     &lt;!--注入属性值--&gt;
-     &lt;property name=&quot;driverClass&quot; value=&quot;com.mysql.jdbc.Driver&quot;&gt;&lt;/property&gt;
-     &lt;property name=&quot;jdbcUrl&quot; value=&quot;jdbc:mysql:///spring_day03&quot;&gt;&lt;/property&gt;
-     &lt;property name=&quot;user&quot; value=&quot;root&quot;&gt;&lt;/property&gt;
-     &lt;property name=&quot;password&quot; value=&quot;root&quot;&gt;&lt;/property&gt;
-&lt;/bean&gt;
-
-
-  注意：设置c3p0连接池的信息(原始方式)
-    ComboPooledDataSource dataSource=new ComboPooledDataSource();
-    dataSource.setDriverClass(&quot;com.mysql.jdbc.Driver&quot;);
-    dataSource.setUrl(&quot;jdbc:mysql:///spring_day03&quot;);
-    dataSource.setUsername(&quot;root&quot;);
-    dataSource.setPassword(&quot;root&quot;);
-
-
-2.dao使用jdbcTemplate
-
-1)创建Service和dao对象，在service里面注入dao对象
-&lt;bean id=&quot;userService&quot; class=&quot;cn.itcast.c3p0.UserService&quot;&gt;&lt;/bean&gt;
-     &lt;!--注入dao对象--&gt;
-     &lt;property name=&quot;userDao&quot; ref=&quot;userDao&quot;&gt;&lt;/property&gt;
-
-2)创建jdbcTemplate对象，将模板对象注入到dao里面
-//得到JdbcTemplate对象
-private JdbcTemplate jdbcTemplate;
-public void setJdbcTemplate(JdbcTemplate jdbcTemplate){
-    this.jdbcTemplate=jdbcTemplate;
-}
-&lt;bean id=&quot;userDao&quot; class=&quot;cn.itcast.c3p0.UserDao&quot;&gt;
-     &lt;!--注入jdbcTemplate对象--&gt;
-     &lt;property name=&quot;jdbcTemplate&quot; ref=&quot;jdbcTemplate&quot;&gt;&lt;/property&gt;
-&lt;/bean&gt;
-
-3)在jdbcTemplate对象里面注入dataSource
-private DataSource dataSource;
-private SQLExceptionTranslator exceptionTranslator;
-private boolean lazyInit=true;
-
-public void setDataSource(DataSource dataSource){
-    this.dataSource=dataSource;
-}
-
-&lt;bean id=&quot;jdbcTemplate&quot; class=&quot;org.springframework.jdbc.core.JdbcTemplate&quot;&gt;
-    &lt;!--将dataSource传递到模板对象里面--&gt;
-    &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;&gt;&lt;/property&gt;
-&lt;/bean&gt;
-</code></pre><blockquote>
-<p>案例：Service调用DAO，然后DAO调用jdbcTemplate，最后jdbcTemplate调用dataSource</p>
-</blockquote>
-<pre><code>UserService.java
-
-public class UserServie{
-    private UserDao userDao;
-    public void setUserDao(UserDao userDao){
-        this.userDao=userDao;
-        }
-    public void add(){
-        userDao.add();
-        }
-    }
-
-UserDao.java
-
-public class UserDao{
-    //得到JdbcTemplate对象
-    private JdbcTemplate jdbcTemplate;
-    public void setJdbcTemplate(JdbcTemplate jdbcTemplate){
-        this.jdbcTemplate=jdbcTemplate;
-        }
-    //添加操作
-    public void add(){
-        //创建jdbcTemplate对象
-        //JdbcTemplate jdbcTemplate=new JdbcTemplate(dataSource);
-        String sql=&quot;insert into user values(?,?)&quot;;
-        jdbcTemplate.update(sql,&quot;李磊&quot;,&quot;123&quot;);
-        }
-    }
-</code></pre><p>测试类：</p>
-<blockquote>
-<p>扩展</p>
-<blockquote>
-<p>Spring JDBCTemplate 方法详解</p>
-</blockquote>
-</blockquote>
-<pre><code>1.JDBCTemplate 主要提供以下五类方法：
-    1.execute方法：可以用于执行任何SQL语句，一般用于执行DDL语句。
-
-    2.update方法及batchUpdate方法：update方法用于执行新增、修改、删除等语句。batchUpdate方法用于执行批处理相关语句。
-
-    3.query方法及queryForXXX方法：用于执行查询相关语句。
-
-    4.call方法：用于执行存储过程、函数相关语句。
-
-2.JDBCTemplate 类支持的回调类
-
-    1.预编译语句及存储过程创建回调：用于根据JdbcTemplate提供的连接创建相应的语句
-
-        1.PreparedStatementCreator：通过回调获取JdbcTemplate提供的Connection，由用户使用该Conncetion创建相关的PreparedStatement
-
-        2.CallableStatementCreator：通过回调获取JdbcTemplate提供的Connection，由用户使用该Conncetion创建相关的CallableStatement
-
-    2.预编译语句设置回调：用于给预编译语句相应参数设值
-
-        1.PreparedStatementSetter：通过回调获取JdbcTemplate提供的PreparedStatement，由用户来对相应的预编译语句相应参数设值
-
-        2.BatchPreparedStatementSetter：；类似于PreparedStatementSetter，但用于批处理，需要指定批处理大小
-
-    3.自定义功能回调：提供给用户一个扩展点，用户可以在指定类型的扩展点执行任何数量需要的操作
-
-        1.ConnectionCallback：通过回调获取JdbcTemplate提供的Connection，用户可在该Connection执行任何数量的操作
-
-        2.StatementCallback：通过回调获取JdbcTemplate提供的Statement，用户可以在该Statement执行任何数量的操作
-
-        3.PreparedStatementCallback：通过回调获取JdbcTemplate提供的PreparedStatement，用户可以在该PreparedStatement执行任何数量的操作
-
-        4.CallableStatementCallback：通过回调获取JdbcTemplate提供的CallableStatement，用户可以在该CallableStatement执行任何数量的操作
-
-    4.结果集处理回调：通过回调处理ResultSet或将ResultSet转换为需要的形式
-
-        1.RowMapper：用于将结果集每行数据转换为需要的类型，用户需实现方法mapRow(ResultSet rs, int rowNum)来完成将每行数据转换为相应的类型。
-
-        2.RowCallbackHandler：用于处理ResultSet的每一行结果，用户需实现方法processRow(ResultSetrs)来完成处理，在该回调方法中无需执行rs.next()，该操作由JdbcTemplate来执行，用户只需按行获取数据然后处理即可。
-
-        3.ResultSetExtractor：用于结果集数据提取，用户需实现方法extractData(ResultSet rs)来处理结果集，用户必须处理整个结果集。
-
-3.使用方法
-</code></pre><blockquote>
-<p>1.预编译语句以及存储过程创建回调、自定义功能回调使用</p>
-</blockquote>
-<p>首先使用<code>PreparedStatementCreator</code>创建一个预编译语句，其次由<code>JdbcTemplate</code>通过<code>PreparedStatementCallback</code>回调传回，由用户决定如何执行该<code>PreparedStatement</code>。此处我们使用的是<code>execute</code>方法。</p>
-<blockquote>
-<p>2.预编译语句设值回调使用</p>
-</blockquote>
-<p>通过<code>JdbcTemplate</code>的<code>int update(String sql, PreparedStatementSetterpss)</code> 执行预编译<code>sql</code>，其中<code>sql</code>参数为<code>insert into test(name) values (?)</code>，该<code>sql</code> 有一个占位符需要在执行前设值。<code>PreparedStatementSetter</code> 实现就是为了设值，使用 <code>setValues(PreparedStatementpstmt)</code>回调方法设值相应的占位符位置的值。 <code>JdbcTemplate</code>也提供一种更简单的方式<code>update(String sql, Object... args)</code>来实现设值，所以只要当使用该种方式不满足需求时才应使用<code>PreparedStatementSetter</code>。</p>
-<blockquote>
-<p>结果集处理回调</p>
-</blockquote>
-<p><code>RowMapper</code>接口提供<code>mapRow(ResultSet rs, int rowNum)</code>方法将结果集的每一行转换为一个<code>Map</code>，当然可以转换为其他类，如表的对象画形式。</p>
-<p><code>RowCallbackHandler</code>接口也提供方法<code>processRow(ResultSet rs)</code>，能将结果集的行转换为需要的形式。</p>
-<p><code>ResultSetExtractor</code>使用回调方法<code>extractData(ResultSet rs)</code>提供给用户整个结果集，让用户决定如何处理该结果集。</p>
-<blockquote>
-<p>注意：我们可以使用JdbcTemplate提供更简单的queryForXXX方法，来简化开发。</p>
-</blockquote>
-<pre><code>//1.查询一行数据并返回int型结果  
-jdbcTemplate.queryForInt(&quot;select count(*) from test&quot;);  
-
-//2. 查询一行数据并将该行数据转换为Map返回  
-jdbcTemplate.queryForMap(&quot;select * from test where name=&apos;name5&apos;&quot;);  
-
-//3.查询一行任何类型的数据，最后一个参数指定返回结果类型  
-jdbcTemplate.queryForObject(&quot;select count(*) from test&quot;, Integer.class);  
-
-//4.查询一批数据，默认将每行数据转换为Map       
-jdbcTemplate.queryForList(&quot;select * from test&quot;);  
-
-//5.只查询一列数据列表，列类型是String类型，列名字是name  
-jdbcTemplate.queryForList(&quot;select name from test where name=?&quot;, new Object[]{&quot;name5&quot;}, String.class);  
-
-//6.查询一批数据，返回为SqlRowSet，类似于ResultSet，但不再绑定到连接上  
-SqlRowSet rs = jdbcTemplate.queryForRowSet(&quot;select * from test&quot;);  
-</code></pre><blockquote>
-<p>总结：JDBCTemplate 提供很多方法，这其中的规律便是：第一种提供回调接口让用户决定做什么。第二种是比较简单方法(如：queryForXxx)，用于比较简单的操作。</p>
-</blockquote>
-<hr>
-<pre><code>4.JDBCTemplate 的基本使用步骤
-
-    1.JDBC模板依赖连接池来获取数据的连接，所以需要先构建连接池
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(&quot;com.mysql.jdbc.Driver&quot;);
-        dataSource.setUrl(&quot;jdbc:mysql://localhost:3306/spring&quot;);
-        dataSource.setUsername(&quot;root&quot;);
-        dataSource.setPassword(&quot;123456&quot;);
-
-    2.创建JDBC模板
-        JdbcTemplate jdbcTemplate = new JdbcTemplate();
-        //或者使用构造方法
-        jdbcTemplate.setDataSource(dataSource);
-</code></pre><blockquote>
-<p>注意：1.配置JDBCTemplate的三种方式：1.在自定义的DAO实现类注入一个DataSource引用来完成JdbcTemplate的实例化，即从外部注入DataSource到DAO中，然后实例化jdbctemplate，然后将DataSource设置到jdbcTemplate对象中。2…….</p>
-</blockquote>
-<pre><code>3.sql语句
-    //查询的sql语句
-    String sql = &quot;select count(*)  from user&quot;;
-    Long num = (long) jdbcTemplate.queryForObject(sql, Long.class);
-    System.out.println(num);
-</code></pre><blockquote>
-<p>注意：Spring学习中，在new对象的时候我们应该想到IOC，在使用set方法时应该想到DI，在要切面时应该想到AOP，所以有一引用链：</p>
-</blockquote>
-<pre><code>1. 我们需要有DataSource，DataSource的属性可以通过注入数据库的一些配置属性添加
-
-2. 我要有JdbcTemplate，而Template依赖与DataSource，我要以ref的方式为我的JdbcTemplate注入引用
-
-3. 有了JdbcTemplate之后，我要有Dao，此时我应该在Dao添加一个JdbcTemplate的成员，然后以ref的方式将JdbcTemplate引入到Dao中
-
-4. 我在Action或者是Servlet中都会调用的是Serivce，所以，我在Serivce中要添加一个Dao作为成员，然后由ref在注入Dao到Service中
-
-DataSource --&gt; JdbcTemplate --&gt; Dao --&gt; Service --&gt; Action/Servlet
-
-&quot;--&gt;&quot;表示将左边的对象注入到右边的对象当中
-
-5.JDBCTemplate 的CRUD方法
-
-    //插入程序用的是update方法，查询用的是query方法。
-    //首先定义一个sql语句
-    String  sql = &quot;insert into user (username,password) values(?,?)&quot;;
-    //然后使用jdbctemplate方法插入数据
-    jdbcTemplate.update(sql, user.getUsername(), user.getPassword());
-</code></pre><blockquote>
-<p>注意：<code>jdbcTemplate.update</code>适用于<code>insert/update/delete</code>操作。<br>其中：第一个参数为执行的sql。 第二个参数为参数数据 第三个参数为参数类型。</p>
-</blockquote>
-<pre><code>//删除
-String sql = &quot;delete from user where username= ?&quot;;
-jdbcTemplate.update(sql, &quot;小王&quot;);
-
-//修改
-String sql = &quot;update user set username=? where username= ?&quot;;
-jdbcTemplate.update(sql,  user.getUsername() + &quot;_new&quot;, user.getUsername());
-
-//查询
-//在最开始使用比较基础的持久化工具(DBUtils)时，会针对查询结果给我们提供一些封装的接口和类，但是JdbcTemplate只给我们提供接口，并没有可用的类，所以需要我们自己实现类来进行封装。
-
-//1.查询表的记录数
-ApplicationContext ctx = new ClassPathXmlApplicationContext(&quot;bean.xml&quot;);
-JdbcTemplate jdbcTemplate = (JdbcTemplate) ctx.getBean(&quot;jdbcTemplate&quot;);
-String sql = &quot;select count(*) from user&quot;;
-Long row = jdbcTemplate.queryForObject(sql, Long.class);
-System.out.println(&quot;查询出来的记录数为：&quot; + row);
-
-//2.查询返回对象
-//获得jdbcTemplate对象
-ApplicationContext ctx = new ClassPathXmlApplicationContext(&quot;bean.xml&quot;);
-JdbcTemplate jdbcTemplate = (JdbcTemplate) ctx.getBean(&quot;jdbcTemplate&quot;);
-String sql = &quot;select username, password from user where username = ?&quot;;
-// 设定参数
-Object[] object = {&quot;mary_new&quot;};
-// 进行查询
-User user = jdbcTemplate.queryForObject(sql, object,  new UserMapper());
-System.out.println(user);
-//注意：除此之外还需要实现结构RowMapper来新建一个映射类，且此java类应该与具体的sql语句对应。
-...
-    public class UserMapper implements RowMapper&lt;User&gt;{
-       @Override
-       public User mapRow(ResultSet resultSet, int rows) throws SQLException {
-           User user = new User();
-           user.setUsername(resultSet.getString(1));
-           user.setPassword(resultSet.getString(2));
-
-           return user;
-       }
-       ....
-
-//3.查询并返回list集合
-...
-    // 获得jdbcTemplate对象
-    ApplicationContext ctx = new ClassPathXmlApplicationContext(&quot;bean.xml&quot;);
-    JdbcTemplate jdbcTemplate = (JdbcTemplate) ctx.getBean(&quot;jdbcTemplate&quot;);
-
-    // sql语句
-    String sql = &quot;select * from user&quot;;
-    List&lt;User&gt; users = jdbcTemplate.query(sql, new UserMapper());
-
-    for(User u: users) {
-      System.out.println(u);
-    }
-    ...
-</code></pre><hr>
-<pre><code>6.JdbcTemplate.queryForList()方法中不同的参数：
-    1.String sql;//查询用的sql语句
-    2.Object[] args;//sql语句中的参数
-    3.int[] argTypes;//sql语句中参数的数据类型
-    4.Class elementType;//list装载结果的元数据类型
-</code></pre><hr>
-<blockquote>
-<blockquote>
-<p>扩展：</p>
-</blockquote>
-</blockquote>
-<pre><code>1.常用注解：
-1.@Transactional 事务注解，标注当前类时表示类中所有方法都进行事务处理。
-  @Transactional public class TestServiceBean implements TestService {}
-注意：1.@Transactional 只能被应用到public方法上,对于其它非public的方法,如果标记了@Transactional也不会报错,但方法没有事务功能.
-
-2.POJO类与VO类
-    vo：1.表示viewObject 只负责封装页面传递过来的数据 2.valueObject 页面与页面之间的传递时保存值的对象。
-
-    区别1：1.POJO是持久层所使用的，是用来封装原始数据的，而VO则主要用来在视图层活动，两个JavaBean所使用的范围不同。假如我们从数据库取出来的原始数据，我们可以通过业务层将数据进行封装，再通过VO发到页面上去。
-
-    过程：我们获得的时候，数据是原始数据，然后通过业务层进行判断，将其所对应的参数放到VO里。即POJO里的属性主要是用来给数据库用的，而VO里的属性是纯用户显示的。
-    区别2：1.POJO类，是不继承任何类(继承Object类)，不实现任何接口的，只有属性和set/get方法。
-
-    2.VO类，实际返回给用户的视图对象，将某个指定页面&lt;组件&gt;的所有数据封装起来。
-      如：用户发出请求(可能是填写表单)，表单的数据在展示层被匹配为VO。
-
-    3.PO类，每个数据基本上都对象数据库中的某个字段，一般需要实现序列化接口，也有些时候继承一些类
-</code></pre><hr>
-<h2 id="SSH框架整合-Struts2-hibernate-spring4-x"><a href="#SSH框架整合-Struts2-hibernate-spring4-x" class="headerlink" title="SSH框架整合(Struts2 hibernate spring4.x)"></a>SSH框架整合(Struts2 hibernate spring4.x)</h2><pre><code>回顾SSH框架知识点
-</code></pre><h4 id="Hibernate框架"><a href="#Hibernate框架" class="headerlink" title="Hibernate框架"></a>Hibernate框架</h4><pre><code>1.Hibernate核心配置文件
-  - 如果单纯使用Hibernate框架，核心配置文件名称hibernate.cfg.xml和位置在src下面这是固定的
-  - Hibernate和Spring进行整合的时候，hibernate核心配置文件的名称和位置是没有固定要求的
-
-
-  1)ORM思想(对象关系映射 实体类与数据表之间的映射关系)
-</code></pre><h4 id="Struts2框架"><a href="#Struts2框架" class="headerlink" title="Struts2框架"></a>Struts2框架</h4><pre><code>1.Action操作
-  1)action创建的三种方式
-    继承类 ActionSupport
-
-  2)配置action访问路径
-    - 创建struts2.xml配置文件，这个配置文件名和位置固定在src下面
-
-  3)配置访问action的多个方法
-    - 使用通配符方式配置
-
-  4)在action获取表单提交数据
-    - 获取request对象
-      --  使用ServletActionContext类获取
-    - 属性封装
-    - 模型驱动(重点)
-    - 表达式封装
-
-  5)在action操作域对象
-    - 使用ServletActionContext获取域对象
-
-  6)配置struts2的过滤器
-
-
-2.值栈
-  1)向值栈放数据
-- set方法
-- push方法
-- 定义变量，生成get方法
-
-  2)从值栈获取数据
-- 在JSP中使用struts2标签+ognl获取
-- &lt;s:property&gt;
-- &lt;s:iterator&gt;
-
-
-3.拦截器
-  1)aop和责任链模式
-  2)自定义拦截器
-    - 继承MethodFilterInterceptor
-    - 重写类里面的方法
-    - 配置拦截器和action关联
-</code></pre><h4 id="Spring框架"><a href="#Spring框架" class="headerlink" title="Spring框架"></a>Spring框架</h4><pre><code>1.spring核心配置文件
-  1)名称和位置没有固定要求
-  2)在spring核心配置文件中引入schema约束
-
-2.创建对象
-  1)xml配置方式 &lt;bean id=&quot;&quot; class=&quot;&quot; scope=&quot;&quot;/&gt;
-  2)注解方式，四个注解
-
-3.注入属性
-  1)xml配置方式
-  2)注解方式，两个注解
-
-4.使用ServletContext对象和监听器实现
-  1)在服务器启动时候，加载spring配置文件，创建连接
-  2)配置spring的监听器
-  3)指定spring配置文件位置
-</code></pre><h2 id="SSH整合的思想"><a href="#SSH整合的思想" class="headerlink" title="SSH整合的思想"></a>SSH整合的思想</h2><pre><code>Web层：struts2框架 调用service层
-
-Service层：Spring框架 调用DAO层
-
-Dao层：Hibernate框架 对数据库进行crud操作
-</code></pre><blockquote>
-<p>注意：框架的之间的整合往往是两个框架之间的整合</p>
-</blockquote>
-<pre><code>1.struts2框架与Spring框架的整合
-  - 将struts2的action对象创建交给Spring来进行管理
-    &lt;bean id=&quot;&quot; class=&quot;&quot; acope=&quot;protype&quot;&gt;
-
-2.Spring框架与Hibernate框架之间的整合
-  - 将hibernate核心配置文件里面的数据库配置，直接写在Spring配置文件中
-
-  - 在第一次访问的时候会很慢，是因为在第一次访问的时候要创建sessionFactory对象
-    -- 解决方案：将sessionFactory对象创建交给Spring来管理
-
-  - 在服务器启动的时候创建sessionFactory对象
-</code></pre><h2 id="整合Struts2与Spring框架"><a href="#整合Struts2与Spring框架" class="headerlink" title="整合Struts2与Spring框架"></a>整合Struts2与Spring框架</h2><pre><code>将Struts2的action交给Spring管理
-实现过程
-1.导入Struts2的jar包
-</code></pre><hr>
-<h4 id="SSH框架搭建和整合-struts2-spring4-hibernate5"><a href="#SSH框架搭建和整合-struts2-spring4-hibernate5" class="headerlink" title="SSH框架搭建和整合(struts2/spring4/hibernate5)"></a>SSH框架搭建和整合(struts2/spring4/hibernate5)</h4><pre><code>集成SSH框架的系统从职责上分为四层：表示层、业务逻辑层、数据持久层和域模块层（实体层），以帮助开发人员在短期内搭建结构清晰、可复用性好、维护方便的Web应用程序。
-</code></pre><blockquote>
-<p>总结：<br>    在SSH框架中使用Struts2框架作为系统的整体基础架构，负责MVC的分离。<br>    在Struts框架的模型(model)部分，控制业务跳转，利用Hibernate框架对持久层提供支持，Spring做支持，支持struts和hibernate。</p>
-</blockquote>
-<pre><code>具体做法是：用面向对象的分析方法根据需求提出一些模型，将这些模型实现为基本的Java对象，然后编写基本的DAO(Data Access Objects)接口，并给出Hibernate的DAO实现，采用Hibernate架构实现的DAO类来实现Java类与数据库之间的转换和访问，最后由Spring做支持，支持struts和hibernate。
-其实ssh框架最主要的本质是：“高内聚、低耦合”。
-</code></pre><hr>
-
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/SpringBoot 配置 Redis/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/SpringBoot 配置 Redis/" itemprop="url">SpringBoot 配置 Redis</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:30:19+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/SpringBoot/" itemprop="url" rel="index">
-                    <span itemprop="name">SpringBoot</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  401
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="SpringBoot集成Redis"><a href="#SpringBoot集成Redis" class="headerlink" title="SpringBoot集成Redis"></a>SpringBoot集成Redis</h2><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>在Java中与redis连接的驱动有很多，目前广泛使用的是Jedis，其它的还有Lettuce/Jredis和Srp。Spring提供一种RedisConnectionFactory接口，通过此接口可以生成一个RedisConnection接口对象，而该接口对象是对Redis底层接口的封装。</p>
-<h4 id="RedisTemplate"><a href="#RedisTemplate" class="headerlink" title="RedisTemplate"></a>RedisTemplate</h4><p>RedisTemplate是一个强大的类，首先会自动从RedisConnectionFactory工厂中获取连接，然后执行对应的Redis命令，在最后还会关闭Redis的连接。这些都被RedisTemplate封装，所以不需要关心Redis连接闭合问题。</p>
-<p><strong>1.创建RedisTemplate</strong><br><br>使用Java配置文件RedisConfig创建Spring IOC容器，然后从中获取RedisTemplate对象。</p>
-<pre><code>@Bean(name=&quot;redisTemplate&quot;)
-public RedisTemplate&lt;Object, Object&gt; initRedisTemplate(){
-
-    RedisTemplate&lt;Object, Object&gt; redisTemplate = new RedisTemplate&lt;&gt;();
-
-    redisTemplate.setConnectionFactory(initConnectionFactory());
-    return redisTemplate;
-}
-</code></pre><p><strong>2.测试</strong><br></p>
-<pre><code>public class RedisTest{
-    public static void main(String[] args){
-        ApplicationContext ctx = new AnnotationConfigApplicationContext(RedisConfig.class);
-
-        RedisTemplate redisTemplate = ctx.getBean(RedisTemplate.class);
-        redisTemplate.opsForValue().set(&quot;keyOne&quot;, &quot;valueOne&quot;);
-        redisTemplate.opsForHash().put(&quot;hash&quot;, &quot;field&quot;, &quot;hashvalue&quot;);
-    }
-}
-</code></pre><h4 id="在SpringBoot中配置和使用Redis"><a href="#在SpringBoot中配置和使用Redis" class="headerlink" title="在SpringBoot中配置和使用Redis"></a>在SpringBoot中配置和使用Redis</h4><p><strong>1.在SpringBoot中配置Redis</strong><br></p>
-<pre><code>#redis属性配置
-spring.redis.host=127.0.0.1
-## Redis服务器连接端口
-spring.redis.port=6379
-## 连接超时时间（毫秒）
-spring.redis.timeout=3
-## Redis服务器连接密码（默认为空）
-spring.redis.password=
-## 连接池中的最大连接数
-spring.redis.poolMaxTotal=10
-## 连接池中的最大空闲连接
-spring.redis.poolMaxIdle=10
-## 连接池最大阻塞等待时间（使用负值表示没有限制）
-spring.redis.poolMaxWait=3
-</code></pre><blockquote>
-<p>提示：在配置连接池和服务器属性之后，SpringBoot的自动装配机制会读取配置生成相关的Redis操作对象。</p>
-</blockquote>
-<p><strong>2.操作Redis数据类型</strong><br></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/SpringMVC - 数据校验/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/SpringMVC - 数据校验/" itemprop="url">SpringMVC 数据校验</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:32:35+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/SpringMVC/" itemprop="url" rel="index">
-                    <span itemprop="name">SpringMVC</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  268
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="SpringMVC-的数据校验"><a href="#SpringMVC-的数据校验" class="headerlink" title="SpringMVC 的数据校验"></a>SpringMVC 的数据校验</h2><p>在SpringMVC中使用Hibernate的校验框架Validation。</p>
-<p><strong>1.配置校验器</strong><br><br>这里直接在springmvc.xml配置文件中进行配置。</p>
-<pre><code>&lt;!-- 配置校验器 --&gt;
-&lt;bean id=&quot;validator&quot; class=&quot;org.springframework.validation.beanvalidation.LocalValidatorFactoryBean&quot;&gt;
-    &lt;!-- 校验器，使用hibernate校验器 --&gt;
-    &lt;property name=&quot;providerClass&quot; value=&quot;org.hibernate.validator.HibernateValidator&quot;/&gt;
-    &lt;!-- 指定校验使用的资源文件，在文件中配置校验错误信息，如果不指定则默认使用classpath下面的ValidationMessages.properties文件 --&gt;
-    &lt;property name=&quot;validationMessageSource&quot; ref=&quot;messageSource&quot;/&gt;
-&lt;/bean&gt;
-&lt;!-- 校验错误信息配置文件 --&gt;
-&lt;bean id=&quot;messageSource&quot; class=&quot;org.springframework.context.support.ReloadableResourceBundleMessageSource&quot;&gt;
-    &lt;!-- 资源文件名 --&gt;
-    &lt;property name=&quot;basenames&quot;&gt;
-        &lt;list&gt;
-            &lt;value&gt;classpath:CustomValidationMessage&lt;/value&gt;
-        &lt;/list&gt;
-    &lt;/property&gt;
-    &lt;!-- 资源文件编码格式 --&gt;
-    &lt;property name=&quot;fileEncodings&quot; value=&quot;utf-8&quot;/&gt;
-    &lt;!-- 对资源文件内容缓存时间，单位秒 --&gt;
-    &lt;property name=&quot;cacheSeconds&quot; value=&quot;120&quot;/&gt;
-&lt;/bean&gt;
-</code></pre><blockquote>
-<p>注意：配置好校验器之后，需要将校验器注入到处理器适配器中，还是在springmvc.xml文件中，将配置好的validator注入进去。如下配置所示。</p>
-</blockquote>
-<pre><code>&lt;mvn:annotation-driven conversion-service=&quot;conversionService&quot; validator=&quot;validator&quot;/&gt;
-</code></pre><p><strong>2.在entity中添加校验</strong><br></p>
-<pre><code>....
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/SpringBoot 配置 Shiro/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/SpringBoot 配置 Shiro/" itemprop="url">SpringBoot 配置 Shiro</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:30:31+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/SpringBoot/" itemprop="url" rel="index">
-                    <span itemprop="name">SpringBoot</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  588
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h4 id="1-添加Shiro依赖"><a href="#1-添加Shiro依赖" class="headerlink" title="1.添加Shiro依赖"></a>1.添加Shiro依赖</h4><pre><code>&lt;!-- shiro 配置 --&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;org.apache.shiro&lt;/groupId&gt;
-    &lt;artifactId&gt;shiro-spring&lt;/artifactId&gt;
-    &lt;version&gt;1.3.2&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre><h4 id="2-自定义Realm"><a href="#2-自定义Realm" class="headerlink" title="2.自定义Realm"></a>2.自定义Realm</h4><pre><code>package com.yyzheng.oa.shiro;
-
-public class MyShiroRealm extends AuthorizingRealm {
-    @Autowired
-    private RoleService roleService;
-    @Autowired
-    private PermissionService permissionService;
-    @Autowired
-    private UserService userService;
-
-    // 角色权限和对应权限添加
-    @Override
-    protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-        // 获取登录用户名
-        String userName = (String)principalCollection.getPrimaryPrincipal();
-        // 查询用户的角色信息
-        Set&lt;String&gt; roles = getRolesByUsername(userName);
-        // 查询角色的权限信息
-        Set&lt;String&gt; permissions = getPermissionsByUserName(userName);
-        // 设置用户的角色和权限
-        SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
-        simpleAuthorizationInfo.setRoles(roles);
-        simpleAuthorizationInfo.setStringPermissions(permissions);
-
-        return simpleAuthorizationInfo;
-    }
-
-    // 根据用户名字从数据库中获取当前用户的权限数据
-    private Set&lt;String&gt; getPermissionsByUserName(String userName) {
-        List&lt;String&gt; list = permissionService.queryPermissionNameByUserName(userName);
-        if( list != null ){
-            Set&lt;String&gt; sets = new HashSet&lt;&gt;(list);
-            return sets;
-        }else{
-            return null;
-        }
-    }
-
-    // 根据用户名字从数据库中获取当前用户的角色数据
-    private Set&lt;String&gt; getRolesByUsername(String userName) {
-        List&lt;String&gt; list = roleService.queryRoleNameByUsername(userName);
-        if( list != null ){
-            Set&lt;String&gt; sets = new HashSet&lt;&gt;(list);
-            return sets;
-        }else{
-            return null;
-        }
-    }
-
-    // 认证
-    @Override
-    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
-        // 1.从主体传过来的信息中获取用户名
-        String userName = (String)authenticationToken.getPrincipal();
-        // 2.通过用户名到数据库获取凭证
-        String password = getPasswordByUserName(userName);
-        if( password == null ){
-            return  null;
-        }
-        SimpleAuthenticationInfo simpleAuthenticationInfo = new SimpleAuthenticationInfo(userName,password,&quot;myShiroRealm&quot;);
-        return simpleAuthenticationInfo;
-    }
-
-    // 通过用户名从数据库中获取当前用户的密码
-    private String getPasswordByUserName(String userName) {
-        User user = userService.queryUserByUserName(userName);
-        if( user != null ){
-            return user.getPassword();
-        }else{
-            return null;
-        }
-    }
-}
-</code></pre><h4 id="3-Shiro配置"><a href="#3-Shiro配置" class="headerlink" title="3.Shiro配置"></a>3.Shiro配置</h4><pre><code>@Configuration
-public class ShiroConfiguration {
-
-    // 创建自定义 realm
-    @Bean
-    public MyShiroRealm myShiroRealm() {
-        MyShiroRealm myShiroRealm = new MyShiroRealm();
-        return myShiroRealm;
-    }
-
-    // 创建 SecurityManager 对象
-    @Bean
-    public DefaultWebSecurityManager securityManager() {
-        DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
-        securityManager.setRealm(myShiroRealm());
-        return securityManager;
-    }
-
-    // Filter工厂，设置对应的过滤条件和跳转条件
-    @Bean
-    public ShiroFilterFactoryBean shiroFilterFactoryBean(DefaultWebSecurityManager securityManager) {
-        ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
-        shiroFilterFactoryBean.setSecurityManager(securityManager);
-        Map&lt;String, String&gt; map = new HashMap&lt;&gt;();
-        // 登出
-        map.put(&quot;/logout&quot;, &quot;logout&quot;);
-        // 对所有用户认证
-        map.put(&quot;/**&quot;, &quot;authc&quot;);
-        // 对登录跳转接口进行释放
-        map.put(&quot;/subLogin&quot;, &quot;anon&quot;);
-        map.put(&quot;/err&quot;, &quot;anon&quot;);
-        // 登录
-        // 注意：这里配置的 /login 是指到 @RequestMapping(value=&quot;/login&quot;)中的 /login
-        shiroFilterFactoryBean.setLoginUrl(&quot;/login&quot;);
-        // 首页
-        shiroFilterFactoryBean.setSuccessUrl(&quot;/index&quot;);
-        // 错误页面，认证不通过跳转
-        shiroFilterFactoryBean.setUnauthorizedUrl(&quot;/err&quot;);
-        shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
-        return shiroFilterFactoryBean;
-    }
-
-    // 加入注解的使用，不加这个，注解不生效
-    @Bean
-    public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(DefaultWebSecurityManager securityManager) {
-        AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor = new AuthorizationAttributeSourceAdvisor();
-        authorizationAttributeSourceAdvisor.setSecurityManager(securityManager);
-        return authorizationAttributeSourceAdvisor;
-    }
-    // 跟上面的注解配置搭配使用，有时候加了上面的配置后注解不生效，需要加入下面的配置
-    @Bean
-    @ConditionalOnMissingBean
-    public DefaultAdvisorAutoProxyCreator defaultAdvisorAutoProxyCreator() {
-        DefaultAdvisorAutoProxyCreator app = new DefaultAdvisorAutoProxyCreator();
-        app.setProxyTargetClass(true);
-        return app;
-    }
-
-}
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/SpringMVC 与前台的JSON数据交互/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/SpringMVC 与前台的JSON数据交互/" itemprop="url">SpringMVC 前台JSON数据交互</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:31:23+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/SpringMVC/" itemprop="url" rel="index">
-                    <span itemprop="name">SpringMVC</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  201
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="SpringMVC-与前台的JSON数据交互"><a href="#SpringMVC-与前台的JSON数据交互" class="headerlink" title="SpringMVC 与前台的JSON数据交互"></a>SpringMVC 与前台的JSON数据交互</h2><p>我们知道，从前台传过来的方式有两种：1.传JSON格式的数据过来。2.在url的末尾传普通的key/value串过来。</p>
-<p><strong>1.配置JSON转换器</strong><br><br>返回json需要导入 jackson-annotations.jar, jackson-core.jar, jackson-databind.jar包。</p>
-<pre><code>&lt;!-- 用于将对象转换为 JSON  --&gt;  
-&lt;bean id=&quot;stringConverter&quot;  
-    class=&quot;org.springframework.http.converter.StringHttpMessageConverter&quot;&gt;  
-    &lt;property name=&quot;supportedMediaTypes&quot;&gt;  
-        &lt;list&gt;  
-            &lt;value&gt;text/plain;charset=UTF-8&lt;/value&gt;  
-        &lt;/list&gt;  
-    &lt;/property&gt;  
-&lt;/bean&gt;  
-&lt;bean id=&quot;jsonConverter&quot; class=&quot;org.springframework.http.converter.json.MappingJackson2HttpMessageConverter&quot;&gt;&lt;/bean&gt;  
-
-&lt;bean class=&quot;org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter&quot;&gt;  
-    &lt;property name=&quot;messageConverters&quot;&gt;  
-        &lt;list&gt;  
-            &lt;ref bean=&quot;stringConverter&quot; /&gt;  
-            &lt;ref bean=&quot;jsonConverter&quot; /&gt;  
-        &lt;/list&gt;  
-    &lt;/property&gt;  
-&lt;/bean&gt;  
-</code></pre><blockquote>
-<p>提示：但是如果使用&lt;mvc:annotation-driven /&gt;注解驱动的话就不用以上的配置了，默认已经配好了。建议使用这种，比较方便。</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/SpringMVC 中的拦截器/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/SpringMVC 中的拦截器/" itemprop="url">SpringMVC 拦截器</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:31:43+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/SpringMVC/" itemprop="url" rel="index">
-                    <span itemprop="name">SpringMVC</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  691
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="SpringMVC-中的拦截器"><a href="#SpringMVC-中的拦截器" class="headerlink" title="SpringMVC 中的拦截器"></a>SpringMVC 中的拦截器</h2><p>Spring提供了<code>HandlerInterceptor</code>接口和<code>HandlerInterceptorAdapter</code>适配器。实现这个接口或继承此类，就可以实现自己的拦截器。接口<code>HandlerInterceptor</code>包含三个方法，每个方法的参数<code>handler</code>，用来指向下一个拦截器。此类似于Servlet开发中的Filter，用于对请求进行拦截和处理。</p>
-<h4 id="1-Spring-MVC拦截器使用方法"><a href="#1-Spring-MVC拦截器使用方法" class="headerlink" title="1.Spring MVC拦截器使用方法"></a>1.Spring MVC拦截器使用方法</h4><p>1.配置文件<br><br>定义在springmvc.xml配置下的<code>&lt;mvc:interceptor&gt;</code>表示对特定的请求进行拦截。</p>
-<pre><code>&lt;mvc:interceptors&gt;
-&lt;!--对所有的请求进行拦截--&gt;
-&lt;!--&lt;beans:beanclass=&quot;com.sunp.common.interceptor.Myinterceptor&quot;/&gt;--&gt;
-    &lt;!--对特定的请求进行拦截--&gt;
-    &lt;mvc:interceptor&gt;
-        &lt;!--进行拦截的路径--&gt;
-        &lt;mvc:mapping path=&quot;/**&quot;/&gt; 
-        &lt;!--不进行拦截的路径--&gt;   
-        &lt;mvc:exclude-mapping path=&quot;/lib/**&quot; /&gt; 
-        &lt;beans:bean class=&quot;com.sunp.common.interceptor.Myinterceptor&quot;/&gt;
-    &lt;/mvc:interceptor&gt;
-&lt;/mvc:interceptors&gt;
-</code></pre><p>2.实现接口并且继承方法(同时包含多个实现类)</p>
-<pre><code>public class myInterceptor implements HandlerInterceptor{
-    @Override
-    public boolean preHandler(HttpServletRequest request, HttpServletResponse response, Object obj)throws Exception{
-    //该方法将在请求处理之前进行调用，只有该方法返回true，才会继续执行后续的Interceptor和Controller
-    //当返回值为true 时就会继续调用下一个Interceptor的preHandle方法
-    //如果已经是最后一个Interceptor的时候就会是调用当前请求的Controller方法
-    }
-
-    @Override
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response,Object obj,Exception e)throws Exception {
-    //在整个请求结束之后被调用，即就是在DispatcherServlet渲染了对应的视图之后执行(用于进行资源清理工作)
-    }
-
-    @Override
-    public void postHandle(HttpServletRequest arg0, HttpServletResponse arg1,Object arg2,ModelAndView arg3) throws Exception {
-    //该方法也是需要当前对应的Interceptor的preHandle方法的返回值为true时才会执行， 
-    //DispatcherServlet进行视图返回渲染之前进行调用，可以在这个方法中对Controller
-    //处理之后的ModelAndView 对象进行操作
-    } 
-}
-
-备注：
-    1.preHandle()，在Controller之前执行的预处理，可以进行编码、安全控制等处理
-    2.postHandle()，在生成View之前执行的后处理，调用了Service并返回ModelAndView，但未进行页面渲染，可以修改ModelAndView
-    3.afterCompletion()，最后执行的返回处理，这时已经进行了页面渲染，可以进行日志记录、释放资源等处理
-</code></pre><p>所以在实现了接口之后，就可以在配置文件中进行拦截器的配置。然后其执行顺序为：preHandler -&gt; Controller -&gt; postHandler -&gt; model渲染-&gt; afterCompletion</p>
-<blockquote>
-<p>注意：如果配置了<code>&lt;mvc:annotation-driven/&gt;</code>，会自动注册<code>DefaultAnnotationHandlerMapping</code>与<code>AnnotationMethodHandlerAdapter</code>这两个bean。这样就不能再注入<code>interceptors</code>属性，也就无法指定拦截器了。</p>
-</blockquote>
-<h4 id="2-应用场景"><a href="#2-应用场景" class="headerlink" title="2.应用场景"></a>2.应用场景</h4><ul>
-<li>如检测请求是否具有登录权限，如果没有直接返回到登陆页面。</li>
-<li>可以记录请求信息的日志，以便进行信息监控、信息统计等。</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/SpringMVC 拾遗/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/SpringMVC 拾遗/" itemprop="url">SpringMVC 查缺补漏</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:32:00+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/SpringMVC/" itemprop="url" rel="index">
-                    <span itemprop="name">SpringMVC</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1,331
+                  1,457
                 </span>
               
 
@@ -3986,131 +2086,266 @@ public class ShiroConfiguration {
           
             <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><h4 id="ResponseBody转换为JSON秘密"><a href="#ResponseBody转换为JSON秘密" class="headerlink" title="@ResponseBody转换为JSON秘密"></a>@ResponseBody转换为JSON秘密</h4><pre><code>1.在控制器中，其在进入控制器方法之前，遇到@ResponseBody之后，处理器就会记录这个方法的响应类型是JSON数据集。
-2.在执行完控制器返回之后，处理器启用结果解析器(ResultResolver)解析此结果，轮询注册给SpringMVC的HttpMessageConverter接口的实现类。
-</code></pre><h4 id="操作会话对象"><a href="#操作会话对象" class="headerlink" title="操作会话对象"></a>操作会话对象</h4><pre><code>@SessionAttribute 该注解应用于参数，将HttpSession中的属性读出，赋予控制器的参数
-@SessionAttributes 用于类的注解，其会将相关数据模型的属性保存到Session中
-</code></pre><h4 id="给控制器增加通知"><a href="#给控制器增加通知" class="headerlink" title="给控制器增加通知"></a>给控制器增加通知</h4><pre><code>@ControllerAdvice 定义控制器通知类
+<h2 id="第13章-Spring框架的设计理念与设计模式分析"><a href="#第13章-Spring框架的设计理念与设计模式分析" class="headerlink" title="第13章 Spring框架的设计理念与设计模式分析"></a>第13章 Spring框架的设计理念与设计模式分析</h2><p>[TOC]</p>
+<h3 id="13-1-Spring的骨骼架构"><a href="#13-1-Spring的骨骼架构" class="headerlink" title="13.1 Spring的骨骼架构"></a>13.1 Spring的骨骼架构</h3><p>Spring的核心组件只有三种：Core | Context | Bean。其构建起整个Spring骨骼架构，没有它们就不可能有AOP | Web等上层的特性功能。</p>
+<h4 id="13-1-1-Spring的设计理念"><a href="#13-1-1-Spring的设计理念" class="headerlink" title="13.1.1 Spring的设计理念"></a>13.1.1 Spring的设计理念</h4><p>Spring解决非常关键的问题，它可以让我们将对象之间的依赖关系转而用配置文件来管理，也就是依赖注入机制。而这个注入关系由Ioc容器中管理。</p>
+<p>我们知道Bean包装的是Object，而Object必然有数据，而Context要解决的是数据的生存问题，发现每个Bean之间的关系。所以Context是一个Bean关系的集合，这个关系集合又叫Ioc容器。Core就是发现、建立和维护每个Bean之间的关系所需要的一些列工具。</p>
+<h3 id="13-2-核心组件"><a href="#13-2-核心组件" class="headerlink" title="13.2 核心组件"></a>13.2 核心组件</h3><h4 id="13-2-1-Bean组件"><a href="#13-2-1-Bean组件" class="headerlink" title="13.2.1 Bean组件"></a>13.2.1 Bean组件</h4><p>Spring Bean的创建是典型的工厂模式，它的顶级接口是BeanFactory。BeanFactory有三个子类：1. ListableFactory 2. HierarchicalBeanFactory 3. AutowireCapacleBeanFactory。但最终的默认实现类都是 DefaultListableBeanFactory。</p>
+<p>定义这么多接口的原因是因为每个接口都有其使用的场合，其主要区分在Spring对象内部对象的转换和传递过程，将对象的数据访问做限制。</p>
+<pre><code>1. ListableBeanFactory 表示Bean是可列表的
 
-@InitBinder 定义控制器参数绑定规则
+2. HierarchicalBeanFactory 表示这些Bean是有继承关系的
 
-@ExceptionHandler 定义控制器发生异常后的操作
-
-@ModelAttribute 在控制器方法执行之前，对数据模型进行操作
-</code></pre><hr>
-<h1 id="数据回显"><a href="#数据回显" class="headerlink" title="数据回显"></a>数据回显</h1><p>数据回显，表示在提交之后如果出现错误，将刚才提交的数据回显到刚才提交的页面。</p>
-<h4 id="POJO数据回显方法"><a href="#POJO数据回显方法" class="headerlink" title="POJO数据回显方法"></a>POJO数据回显方法</h4><p><strong>1.SpringMVC默认对POJO数据作回显</strong><br><br>POJO数据传入controller方法后，springmvc自动将POJO数据放到request域，key等于POJO类型（首字母小写），使用@ModelAttribute指定pojo回显到页面在request中的key。</p>
-<p><strong>2.@ModelAttribute将方法的返回值传到页面</strong><br><br>在商品查询列表页面，通过商品类型查询商品信息。在controller中定义商品类型查询方法，最终将商品类型传到页面。</p>
-<pre><code>//商品分类
-//itemtypes表示最终将方法返回值放在request中的key
-@ModelAttribute(&quot;itemtypes&quot;)
-public Map&lt;String, String&gt; getItemTypes() {
-
-    Map&lt;String, String&gt; itemTypes = new HashMap&lt;String, String&gt;();
-    itemTypes.put(&quot;101&quot;, &quot;数码&quot;);
-    itemTypes.put(&quot;102&quot;, &quot;母婴&quot;);
-
-    return itemTypes;
-}
-</code></pre><p>然后在页面上可以得到itemTypes数据。</p>
-<pre><code>&lt;td&gt;
-    商品名称：&lt;input name=&quot;itemsCustom.name&quot; /&gt;
-    商品类型：
-    &lt;select name=&quot;itemtype&quot;&gt;
-        &lt;c:forEach items=&quot;${itemtypes}&quot; var=&quot;itemtype&quot;&gt;
-            &lt;option value=&quot;${itemtype.key }&quot;&gt;${itemtype.value }&lt;/option&gt;
-        &lt;/c:forEach&gt;
-    &lt;/select&gt;
-&lt;/td&gt;
-</code></pre><p><strong>3.使用最简单方法使用model，可以不用@ModelAttribute</strong><br></p>
-<pre><code>//可以直接使用model将提交pojo回显到页面
-//model.addAttribute(&quot;items&quot;, itemsCustom);
-//简单类型数据回显
-//使用最简单方法使用model
-model.addAttribute(&quot;id&quot;, id);
-</code></pre><hr>
-<h1 id="SpringMVC-JSON数据交互"><a href="#SpringMVC-JSON数据交互" class="headerlink" title="SpringMVC JSON数据交互"></a>SpringMVC JSON数据交互</h1><h4 id="1-环境"><a href="#1-环境" class="headerlink" title="1.环境"></a>1.环境</h4><p><strong>1.pom.xml添加依赖</strong><br></p>
-<pre><code>&lt;!-- json 转换--&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;
-    &lt;artifactId&gt;jackson-databind&lt;/artifactId&gt;
-    &lt;version&gt;2.7.2&lt;/version&gt;
-&lt;/dependency&gt;
-
-&lt;dependency&gt;
-    &lt;groupId&gt;org.codehaus.jackson&lt;/groupId&gt;
-    &lt;artifactId&gt;jackson-mapper-asl&lt;/artifactId&gt;
-    &lt;version&gt;1.9.13&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre><p><strong>2.配置JSON转换器</strong><br></p>
-<pre><code>&lt;!--注解适配器 --&gt;
-&lt;bean class=&quot;org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter&quot;&gt;
-    &lt;property name=&quot;messageConverters&quot;&gt;
-    &lt;list&gt;
-    &lt;bean class=&quot;org.springframework.http.converter.json.MappingJacksonHttpMessageConverter&quot;&gt;&lt;/bean&gt;
-    &lt;/list&gt;
-    &lt;/property&gt;
-&lt;/bean&gt;
-</code></pre><blockquote>
-<p>提示：这里可以直接使用<code>&lt;mvc:annotation-driven /&gt;</code>，然后就不用再定义上面的内容。</p>
-</blockquote>
+3. Autowire.. 表示Bean的自动装配规则
+</code></pre><p>Bean的定义主要有BeanDefinition描述。Bean的完整描述了在Spring配置文件中定义<bean>节点中所有的信息，包括各种子节点。</bean></p>
 <blockquote>
-<blockquote>
-<p>这里的前台和controller方法省略。</p>
+<p>提示：Bean的解析过程就是对Spring配置文件的解析。</p>
 </blockquote>
-</blockquote>
-<hr>
-<h1 id="RESTful支持"><a href="#RESTful支持" class="headerlink" title="RESTful支持"></a>RESTful支持</h1><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>RESTful架构，就是目前最流行的一种互联网软件架构。它结构清晰、符合标准、易于理解、扩展方便，所以正得到越来越多网站的采用。RESTful（即Representational State Transfer的缩写）其实是一个开发理念，是对http的很好的诠释。</p>
-<p><strong>1.对url进行规范，写RESTful格式的url</strong><br></p>
-<pre><code>1.非REST的url：http://...../queryItems.action?id=001&amp;type=T01
+<h4 id="13-2-2-Context组件"><a href="#13-2-2-Context组件" class="headerlink" title="13.2.2 Context组件"></a>13.2.2 Context组件</h4><p>Context在Spring的 org.springframework.context 包下面。ApplicationContext是Context的顶级父类，它除了标识一个应用环境的基本信息之外，还继承了5个接口。</p>
+<p>ApplicationContext继承了BeanFactory，说明了Spring容器中运行的主体对象是Bean。另外ApplicationContext继承了ResourceFactory接口，可以访问任何外部资源。</p>
+<p>ApplicationContext的子类包含两个方面：</p>
+<pre><code>1. ConfigurableApplicationContext 表示该Context可修改，在构建Context用户可以动态添加和修改已有的配置信息，其下面有多个子类，最常使用可更新的Context（AbstractRefreshableApplicationContext类）。
 
-2.REST的url风格：http://..../items/001
-</code></pre><blockquote>
-<p>特点：url简洁，将参数通过url传到服务端</p>
-</blockquote>
-<p><strong>2.http的方法规范</strong><br><br>不管是删除、添加、更新，等等。使用url是一致的，如果进行删除，需要设置http的方法为delete，其他同理。后台controller方法：判断http方法，如果是delete执行删除，如果是post执行添加。</p>
-<p><strong>3.对http的contentType规范</strong><br><br>请求时指定contentType，要json数据，设置成json格式的type。</p>
-<h4 id="案例-查询商品信息，返回JSON数据"><a href="#案例-查询商品信息，返回JSON数据" class="headerlink" title="案例 - 查询商品信息，返回JSON数据"></a>案例 - 查询商品信息，返回JSON数据</h4><p><strong>1.controller</strong><br><br>定义方法，进行url映射使用REST风格的url，将查询商品信息的id传入controller。输出json使用@ResponseBody将java对象输出json。</p>
-<pre><code>//查询商品信息，输出json
-//itemsView/{id}里边的{id}表示占位符，通过@PathVariable获取占位符中的参数，
-//@PathVariable中名称要和占位符一致，形参名无需和其一致
-//如果占位符中的名称和形参名一致，在@PathVariable可以不指定名称
-@RequestMapping(&quot;/itemsView/{id}&quot;)
-public @ResponseBody ItemsCustom itemsView(@PathVariable(&quot;id&quot;) Integer items_id)throws Exception{
+2. WebApplicationContext 表示为Web准备的Context，可以直接访问到ServletContext。
+</code></pre><p>总体来说Context必须完成以下几件事情：</p>
+<pre><code>1. 标识一个应用环境
 
-    //调用service查询商品信息
-    ItemsCustom itemsCustom = itemsService.findItemsById(items_id);
-    return itemsCustom;
-}
-</code></pre><blockquote>
-<p>@RequestMapping(value=”/ itemsView/{id}”)：{×××}占位符，请求的URL可以是/viewItems/1或/viewItems/2，通过在方法中使用@PathVariable获取{×××}中的×××变量。@PathVariable用于将请求URL中的模板变量映射到功能处理方法的参数上。如果@RequestMapping中表示为/itemsView/{id}，id和形参名称一致，@PathVariable不用指定名称。</p>
-</blockquote>
-<p><strong>2.REST方法的前端控制器配置</strong><br></p>
-<pre><code>&lt;!-- springmvc前端控制器，rest配置 --&gt;
-&lt;servlet&gt;
-    &lt;servlet-name&gt;springmvc_rest&lt;/servlet-name&gt;
-    &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;
-    &lt;!-- contextConfigLocation配置springmvc加载的配置文件（配置处理器映射器、适配器等等） 如果不配置contextConfigLocation，默认加载的是/WEB-INF/servlet名称-serlvet.xml（springmvc-servlet.xml） --&gt;
-    &lt;init-param&gt;
-        &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
-        &lt;param-value&gt;classpath:spring/springmvc.xml&lt;/param-value&gt;
-    &lt;/init-param&gt;
-&lt;/servlet&gt;
+2. 利用BeanFactory创建Bean对象
 
-&lt;servlet-mapping&gt;
-    &lt;servlet-name&gt;springmvc_rest&lt;/servlet-name&gt;
-    &lt;url-pattern&gt;/&lt;/url-pattern&gt;
-&lt;/servlet-mapping&gt;
-</code></pre><p><strong>3.对静态资源的解析</strong><br><br>配置前端控制器的url-parttern中指定/，对静态资源的解析会出现问题，报404错误。在springmvc.xml中添加静态资源解析方法。</p>
-<pre><code>&lt;!-- 静态资源解析
-    包括 ：js、css、img、..
-     --&gt;
-&lt;mvc:resources location=&quot;/js/&quot; mapping=&quot;/js/**&quot;/&gt;
-</code></pre><blockquote>
-<p>这时访问<a href="http://localhost:8080/ssm1/js/jquery-1.4.4.min.js，可以在浏览器中看到js的内容。" target="_blank" rel="noopener">http://localhost:8080/ssm1/js/jquery-1.4.4.min.js，可以在浏览器中看到js的内容。</a></p>
-</blockquote>
+3. 保存对象关系表
+
+4. 能够捕获各种事件
+</code></pre><h4 id="12-2-3-Core组件"><a href="#12-2-3-Core组件" class="headerlink" title="12.2.3 Core组件"></a>12.2.3 Core组件</h4><p>Core组件是Spring的核心组件，包含了很多关键类，一个重要的组成部分是定义了资源的访问方式。</p>
+<h4 id="12-2-4-Ioc容器工作过程"><a href="#12-2-4-Ioc容器工作过程" class="headerlink" title="12.2.4 Ioc容器工作过程"></a>12.2.4 Ioc容器工作过程</h4><pre><code>1. 创建BeanFacoty工厂
+
+    Ioc容器实际上是Context组件结合其它两个组件共同构建了一个Bean关系网。 
+
+
+4. Ioc容器
+
+    我们如果需要使用Spring必须要先构建Ioc容器，没有它Spring无法工作，ApplicationContext.xml就是Ioc容器默认配置文件，Spring的所有特性功能都是基于Ioc容器工作的。
+</code></pre><h3 id="13-3-Spring中AOP"><a href="#13-3-Spring中AOP" class="headerlink" title="13.3 Spring中AOP"></a>13.3 Spring中AOP</h3><h4 id="13-3-1-动态代理"><a href="#13-3-1-动态代理" class="headerlink" title="13.3.1 动态代理"></a>13.3.1 动态代理</h4><p>AOP是基于动态代理实现的。在JDK的java.lang.reflect包下有个Proxy类，是构造代理类的入口。最后一个方法newproxyInstance是创建代理对象的方法。</p>
+<pre><code>public static Object newProxyInstance(ClassLoader loader, Class&lt;?&gt;[] interfaces, InvocationHandler h);
+
+1. ClassLoader 用于加载代理类的Loader类，通常这个Loader类和被代理的类是同一个Loader类。
+
+2. interfaces 被代理的那些接口
+
+3. InvocationHandler 用于执行除了被代理类接口中方法之外的用户定义的操作，是用户需要代理的最终目的。用户调用目标方法都被代理到InvocationHandler类中定义的唯一方法invoke()中。
+</code></pre><h4 id="13-3-2-Spring-AOP的实现"><a href="#13-3-2-Spring-AOP的实现" class="headerlink" title="13.3.2 Spring AOP的实现"></a>13.3.2 Spring AOP的实现</h4><p>代理的目的是调用目标方法时可以转而执行InvocationHandler类的invoke()方法，所以如何在InvocationHandler类上做文章便是实现AOP的关键所在。</p>
+<p>Spring如何完成代理：</p>
+<pre><code>1. 代理类继承了FactoryBean的ProxyFactoryBean，FactoryBeab之所以特别就在于它可以让我们自定义对象的创建方法。
+
+2. Spring在创建代理对象之后，在我们调用目标对象上的方法时，都会被代理到InvocationHandler类的invok()方法中执行。
+</code></pre><h3 id="13-4-设计模式之代理模式"><a href="#13-4-设计模式之代理模式" class="headerlink" title="13.4 设计模式之代理模式"></a>13.4 设计模式之代理模式</h3><h4 id="13-4-1-代理模式原理"><a href="#13-4-1-代理模式原理" class="headerlink" title="13.4.1 代理模式原理"></a>13.4.1 代理模式原理</h4><p>代理模式就是给某一个对象创建一个代理对象，由这个代理对象控制对原对象的引用，而创建此代理对象后可以在调用原对象时增加一些额外的操作。</p>
+<pre><code>1. Subject 抽象主题，它是代理对象的真实对象要实现的接口
+
+2. ProxySubject 代理类，除了实现抽象主题定义的接口外，还必须持有所代理对象的引用
+
+3. RealSubject 被代理的类，是目标对象
+</code></pre><h3 id="13-5-设计模式之策略模式"><a href="#13-5-设计模式之策略模式" class="headerlink" title="13.5 设计模式之策略模式"></a>13.5 设计模式之策略模式</h3><h4 id="13-5-1-策略模式原理"><a href="#13-5-1-策略模式原理" class="headerlink" title="13.5.1 策略模式原理"></a>13.5.1 策略模式原理</h4><p>表示完成某个操作可能有多种方法，这些方法都可能被使用到，每个实现方法都当做一个实现策略，用户可以根据场景选择合适的策略。</p>
+<pre><code>1. Context 不同策略的环境，可根据自身条件选择不同的策略实现类完成所要的操作。
+
+2. Strategy 抽象策略，定义每个策略都要实现的策略方法
+
+3. ConcreteStrategy 具体策略实现类，实现抽象策略中定义的策略方法
+</code></pre><h4 id="13-5-2-Spring中策略模式的实现"><a href="#13-5-2-Spring中策略模式的实现" class="headerlink" title="13.5.2 Spring中策略模式的实现"></a>13.5.2 Spring中策略模式的实现</h4><p>Spring中有多个地方用到了策略模式。如：Bean定义对象的创建及代理对象的创建等。</p>
 
           
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第16章 HandlerExceptionResolver/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/第16章 HandlerExceptionResolver/" itemprop="url">HandlerExceptionResolver</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:17:09+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SpringMVC源码分析/" itemprop="url" rel="index">
+                    <span itemprop="name">SpringMVC源码分析</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,859
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h1 id="第16章-HandlerExceptionResolver"><a href="#第16章-HandlerExceptionResolver" class="headerlink" title="第16章 HandlerExceptionResolver"></a>第16章 HandlerExceptionResolver</h1>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/第16章 HandlerExceptionResolver/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -4151,7 +2386,7 @@ public @ResponseBody ItemsCustom itemsView(@PathVariable(&quot;id&quot;) Integer
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -4203,7 +2438,7 @@ public @ResponseBody ItemsCustom itemsView(@PathVariable(&quot;id&quot;) Integer
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -4214,7 +2449,7 @@ public @ResponseBody ItemsCustom itemsView(@PathVariable(&quot;id&quot;) Integer
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -4225,7 +2460,7 @@ public @ResponseBody ItemsCustom itemsView(@PathVariable(&quot;id&quot;) Integer
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -4267,12 +2502,6 @@ public @ResponseBody ItemsCustom itemsView(@PathVariable(&quot;id&quot;) Integer
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -4334,7 +2563,7 @@ public @ResponseBody ItemsCustom itemsView(@PathVariable(&quot;id&quot;) Integer
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

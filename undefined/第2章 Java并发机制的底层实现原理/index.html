@@ -139,7 +139,7 @@
 
 
 
-  <meta name="keywords" content="AOP," />
+  <meta name="keywords" content="多线程与并发," />
 
 
 
@@ -152,18 +152,18 @@
 
 
 
-<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. [TOC] 第二章 Java并发机制的底层实现原理2.1 volatile的应用在多线程并发编程中 synchronize 和 volatile 扮演重要角色。 volatile 是轻量级的 synchronize ，在多处理器中保证共享变量的可见性。 如果使用 volatile 变量修饰符使用恰当，比 synchronize 的使用和执行成本更低。">
-<meta name="keywords" content="AOP">
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. [TOC] 第二章 Java并发机制的底层实现原理2.1 volatile的应用">
+<meta name="keywords" content="多线程与并发">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AOP">
+<meta property="og:title" content="Java并发机制的底层实现原理">
 <meta property="og:url" content="http://bangjinhu.github.io/undefined/第2章 Java并发机制的底层实现原理/index.html">
 <meta property="og:site_name" content="BangjinHu&#39;s Blog">
-<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. [TOC] 第二章 Java并发机制的底层实现原理2.1 volatile的应用在多线程并发编程中 synchronize 和 volatile 扮演重要角色。 volatile 是轻量级的 synchronize ，在多处理器中保证共享变量的可见性。 如果使用 volatile 变量修饰符使用恰当，比 synchronize 的使用和执行成本更低。">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. [TOC] 第二章 Java并发机制的底层实现原理2.1 volatile的应用">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-29T01:54:41.052Z">
+<meta property="og:updated_time" content="2020-03-30T00:17:39.257Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AOP">
-<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. [TOC] 第二章 Java并发机制的底层实现原理2.1 volatile的应用在多线程并发编程中 synchronize 和 volatile 扮演重要角色。 volatile 是轻量级的 synchronize ，在多处理器中保证共享变量的可见性。 如果使用 volatile 变量修饰符使用恰当，比 synchronize 的使用和执行成本更低。">
+<meta name="twitter:title" content="Java并发机制的底层实现原理">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. [TOC] 第二章 Java并发机制的底层实现原理2.1 volatile的应用">
 
 
 
@@ -199,7 +199,7 @@
 
 
 
-  <title>AOP | BangjinHu's Blog</title>
+  <title>Java并发机制的底层实现原理 | BangjinHu's Blog</title>
   
 
 
@@ -391,7 +391,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">AOP</h2>
+          <h2 class="post-title" itemprop="name headline">Java并发机制的底层实现原理</h2>
         
 
         <div class="post-meta">
@@ -419,8 +419,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T09:54:41+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:17:39+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -438,8 +438,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/AOP/" itemprop="url" rel="index">
-                    <span itemprop="name">AOP</span>
+                  <a href="/categories/多线程与并发/" itemprop="url" rel="index">
+                    <span itemprop="name">多线程与并发</span>
                   </a>
                 </span>
 
@@ -509,7 +509,8 @@
         <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
 <p>[TOC]</p>
-<h2 id="第二章-Java并发机制的底层实现原理"><a href="#第二章-Java并发机制的底层实现原理" class="headerlink" title="第二章 Java并发机制的底层实现原理"></a>第二章 Java并发机制的底层实现原理</h2><h3 id="2-1-volatile的应用"><a href="#2-1-volatile的应用" class="headerlink" title="2.1 volatile的应用"></a>2.1 volatile的应用</h3><p>在多线程并发编程中 synchronize 和 volatile 扮演重要角色。 volatile 是轻量级的 synchronize ，在多处理器中保证共享变量的可见性。</p>
+<h2 id="第二章-Java并发机制的底层实现原理"><a href="#第二章-Java并发机制的底层实现原理" class="headerlink" title="第二章 Java并发机制的底层实现原理"></a>第二章 Java并发机制的底层实现原理</h2><h3 id="2-1-volatile的应用"><a href="#2-1-volatile的应用" class="headerlink" title="2.1 volatile的应用"></a>2.1 volatile的应用</h3><a id="more"></a>
+<p>在多线程并发编程中 synchronize 和 volatile 扮演重要角色。 volatile 是轻量级的 synchronize ，在多处理器中保证共享变量的可见性。</p>
 <p>如果使用 volatile 变量修饰符使用恰当，比 synchronize 的使用和执行成本更低。因为它不会引起线程上下文的切换和调度。</p>
 <h4 id="2-2-1-volatile定义与实现原理"><a href="#2-2-1-volatile定义与实现原理" class="headerlink" title="2.2.1 volatile定义与实现原理"></a>2.2.1 volatile定义与实现原理</h4><p>定义：Java编程语言允许线程访问共享变量，为了确保共享变量能够被准确和一致地更新，线程应该确保通过排它锁单独获取这个变量。</p>
 <pre><code>CPU操作术语：
@@ -600,11 +601,11 @@
   <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
 
-  <p><span>本文标题:</span>AOP</a></p>
+  <p><span>本文标题:</span>Java并发机制的底层实现原理</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 09:54:41</p>
-  <p><span>原始链接:</span><a href="/undefined/第2章 Java并发机制的底层实现原理/" title="AOP">http://bangjinhu.github.io/undefined/第2章 Java并发机制的底层实现原理/</a>
+  <p><span>最后更新:</span>2020年03月30日 - 08:17:39</p>
+  <p><span>原始链接:</span><a href="/undefined/第2章 Java并发机制的底层实现原理/" title="Java并发机制的底层实现原理">http://bangjinhu.github.io/undefined/第2章 Java并发机制的底层实现原理/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/第2章 Java并发机制的底层实现原理/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
@@ -676,7 +677,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://bangjinhu.github.io/undefined/第2章 Java并发机制的底层实现原理/" title="AOP">http://bangjinhu.github.io/undefined/第2章 Java并发机制的底层实现原理/</a>
+    <a href="http://bangjinhu.github.io/undefined/第2章 Java并发机制的底层实现原理/" title="Java并发机制的底层实现原理">http://bangjinhu.github.io/undefined/第2章 Java并发机制的底层实现原理/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -691,7 +692,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/AOP/" rel="tag"><i class="fa fa-tag"></i> AOP</a>
+            <a href="/tags/多线程与并发/" rel="tag"><i class="fa fa-tag"></i> 多线程与并发</a>
           
         </div>
       
@@ -704,8 +705,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/undefined/第2章 深入分析Java IO的工作机制/" rel="next" title="第二章 深入分析Java IO的工作机制">
-                <i class="fa fa-chevron-left"></i> 第二章 深入分析Java IO的工作机制
+              <a href="/undefined/第2章 Spring IoC容器的实现/" rel="next" title="Spring IOC">
+                <i class="fa fa-chevron-left"></i> Spring IOC
               </a>
             
           </div>
@@ -714,8 +715,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/undefined/第22章 异步请求/" rel="prev" title="Redis - Java集成">
-                Redis - Java集成 <i class="fa fa-chevron-right"></i>
+              <a href="/undefined/第19章 ThemeResolver/" rel="prev" title="ThemeResolver">
+                ThemeResolver <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -825,7 +826,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -836,7 +837,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -847,7 +848,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -889,12 +890,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -972,7 +967,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

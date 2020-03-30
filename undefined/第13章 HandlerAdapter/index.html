@@ -160,7 +160,7 @@
 <meta property="og:site_name" content="BangjinHu&#39;s Blog">
 <meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. 第13章 HandlerAdapter[TOC] HandlerMapping通过request找到Handler，而HandlerAdapter是具体使用Handler来干活的。每个HandlerAdapter封装了一种Handler的具体使用方法。HandlerAdapter结构中有5个Adapter，其中只有RequestMappingHand">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-29T02:18:12.293Z">
+<meta property="og:updated_time" content="2020-03-30T00:16:30.950Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HandlerAdapter">
 <meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 第13章 HandlerAdapter[TOC] HandlerMapping通过request找到Handler，而HandlerAdapter是具体使用Handler来干活的。每个HandlerAdapter封装了一种Handler的具体使用方法。HandlerAdapter结构中有5个Adapter，其中只有RequestMappingHand">
@@ -419,8 +419,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:18:12+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:16:30+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -513,7 +513,7 @@
 <blockquote>
 <p>提示：在HandlerAdapter的接口中只有三个方法：1.判断是否支持传入Handler。2.使用Handler处理请求。3.获取资源的LastModified值。</p>
 </blockquote>
-<h2 id="13-1-RequestMappingHandlerAdapter"><a href="#13-1-RequestMappingHandlerAdapter" class="headerlink" title="13.1 RequestMappingHandlerAdapter"></a>13.1 RequestMappingHandlerAdapter</h2><p>RequestMappingHandlerAdapter适配器是与RequestMappingHandlerMapping配合使用的。</p>
+<h2 id="13-1-RequestMappingHandlerAdapter"><a href="#13-1-RequestMappingHandlerAdapter" class="headerlink" title="13.1 RequestMappingHandlerAdapter"></a>13.1 RequestMappingHandlerAdapter</h2><p>RequestMappingHandlerAdapter适配器是与RequestMappingHandlerMapping配合使用的。<br><a id="more"></a></p>
 <h4 id="13-1-1-AbstractHandlerMethodAdapter"><a href="#13-1-1-AbstractHandlerMethodAdapter" class="headerlink" title="13.1.1 AbstractHandlerMethodAdapter"></a>13.1.1 AbstractHandlerMethodAdapter</h4><p><strong>1.supports()方法</strong><br><br>AbstractHandlerMethodAdapter类实现了supports()方法，可以知道支持的Handler是HandlerMethod，同时附加了一个判断方法supportsInternal，这个方法由RequestMappingHandlerAdapter实现，其就是简单地返回true。</p>
 <pre><code>@Override
 public final boolean supports(Object handler) {
@@ -824,7 +824,7 @@ protected ModelAndView invokeHandlerMethod(HttpServletRequest request,
   <p><span>本文标题:</span>HandlerAdapter</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 10:18:12</p>
+  <p><span>最后更新:</span>2020年03月30日 - 08:16:30</p>
   <p><span>原始链接:</span><a href="/undefined/第13章 HandlerAdapter/" title="HandlerAdapter">http://bangjinhu.github.io/undefined/第13章 HandlerAdapter/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/第13章 HandlerAdapter/"  aria-label="复制成功！"></i></span>
   </p>
@@ -925,8 +925,8 @@ protected ModelAndView invokeHandlerMethod(HttpServletRequest request,
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/undefined/第13章 Spring框架的设计理念与设计模式分析/" rel="next" title="AOP">
-                <i class="fa fa-chevron-left"></i> AOP
+              <a href="/undefined/第14章 ViewResolver/" rel="next" title="ViewResolver">
+                <i class="fa fa-chevron-left"></i> ViewResolver
               </a>
             
           </div>
@@ -1046,7 +1046,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1057,7 +1057,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1068,7 +1068,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1110,12 +1110,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -1193,7 +1187,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

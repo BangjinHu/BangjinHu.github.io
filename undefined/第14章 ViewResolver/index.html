@@ -139,7 +139,7 @@
 
 
 
-  <meta name="keywords" content="AOP," />
+  <meta name="keywords" content="SpringMVC源码分析," />
 
 
 
@@ -152,18 +152,18 @@
 
 
 
-<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. 第14章 ViewResolverViewResolver主要的作用是根据视图名和Locale解析出视图，解析过程主要做两件事：解析出使用的模板和视图的类型。SpringMVC中的ViewResolver主要分为四大类：1.AbstractCachingViewResolver | 2.BeanNameViewResolver | 3.Content">
-<meta name="keywords" content="AOP">
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. 第14章 ViewResolver">
+<meta name="keywords" content="SpringMVC源码分析">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AOP">
+<meta property="og:title" content="ViewResolver">
 <meta property="og:url" content="http://bangjinhu.github.io/undefined/第14章 ViewResolver/index.html">
 <meta property="og:site_name" content="BangjinHu&#39;s Blog">
-<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. 第14章 ViewResolverViewResolver主要的作用是根据视图名和Locale解析出视图，解析过程主要做两件事：解析出使用的模板和视图的类型。SpringMVC中的ViewResolver主要分为四大类：1.AbstractCachingViewResolver | 2.BeanNameViewResolver | 3.Content">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. 第14章 ViewResolver">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-29T01:53:52.614Z">
+<meta property="og:updated_time" content="2020-03-30T00:16:56.584Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AOP">
-<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 第14章 ViewResolverViewResolver主要的作用是根据视图名和Locale解析出视图，解析过程主要做两件事：解析出使用的模板和视图的类型。SpringMVC中的ViewResolver主要分为四大类：1.AbstractCachingViewResolver | 2.BeanNameViewResolver | 3.Content">
+<meta name="twitter:title" content="ViewResolver">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 第14章 ViewResolver">
 
 
 
@@ -199,7 +199,7 @@
 
 
 
-  <title>AOP | BangjinHu's Blog</title>
+  <title>ViewResolver | BangjinHu's Blog</title>
   
 
 
@@ -391,7 +391,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">AOP</h2>
+          <h2 class="post-title" itemprop="name headline">ViewResolver</h2>
         
 
         <div class="post-meta">
@@ -419,8 +419,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T09:53:52+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:16:56+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -438,8 +438,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/AOP/" itemprop="url" rel="index">
-                    <span itemprop="name">AOP</span>
+                  <a href="/categories/SpringMVC源码分析/" itemprop="url" rel="index">
+                    <span itemprop="name">SpringMVC源码分析</span>
                   </a>
                 </span>
 
@@ -508,7 +508,8 @@
       
         <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h1 id="第14章-ViewResolver"><a href="#第14章-ViewResolver" class="headerlink" title="第14章 ViewResolver"></a>第14章 ViewResolver</h1><p>ViewResolver主要的作用是根据视图名和Locale解析出视图，解析过程主要做两件事：解析出使用的模板和视图的类型。SpringMVC中的ViewResolver主要分为四大类：1.AbstractCachingViewResolver | 2.BeanNameViewResolver | 3.ContentNegotiatingViewResolver | 4.ViewResolverComposite 。其中在后面的三个只有一个实现类。</p>
+<h1 id="第14章-ViewResolver"><a href="#第14章-ViewResolver" class="headerlink" title="第14章 ViewResolver"></a>第14章 ViewResolver</h1><a id="more"></a>
+<p>ViewResolver主要的作用是根据视图名和Locale解析出视图，解析过程主要做两件事：解析出使用的模板和视图的类型。SpringMVC中的ViewResolver主要分为四大类：1.AbstractCachingViewResolver | 2.BeanNameViewResolver | 3.ContentNegotiatingViewResolver | 4.ViewResolverComposite 。其中在后面的三个只有一个实现类。</p>
 <pre><code>1.BeanNameViewResolver：通过beanName从SpringMVC容器中查找。
 2.ViewResolverComposite：该类封装着多个ViewResolver的容器，解析视图时遍历封装着的ViewResolver具体解析。在ViewResolverComposite遍历成员解析视图的同时还给成员初始化。其中包括对实现了ApplicationContextAware接口的ViewResolver设置ApplicationContext、是给实现了ServletContextAware接口的ViewResolver设置ServletContext以及对实现了InitializingBean接口的ViewResolver调用afterPropertiesSet方法。
 
@@ -1007,11 +1008,11 @@ public class FreeMarkerViewResolver extends AbstractTemplateViewResolver {
   <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
 
-  <p><span>本文标题:</span>AOP</a></p>
+  <p><span>本文标题:</span>ViewResolver</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 09:53:52</p>
-  <p><span>原始链接:</span><a href="/undefined/第14章 ViewResolver/" title="AOP">http://bangjinhu.github.io/undefined/第14章 ViewResolver/</a>
+  <p><span>最后更新:</span>2020年03月30日 - 08:16:56</p>
+  <p><span>原始链接:</span><a href="/undefined/第14章 ViewResolver/" title="ViewResolver">http://bangjinhu.github.io/undefined/第14章 ViewResolver/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/第14章 ViewResolver/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
@@ -1083,7 +1084,7 @@ public class FreeMarkerViewResolver extends AbstractTemplateViewResolver {
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://bangjinhu.github.io/undefined/第14章 ViewResolver/" title="AOP">http://bangjinhu.github.io/undefined/第14章 ViewResolver/</a>
+    <a href="http://bangjinhu.github.io/undefined/第14章 ViewResolver/" title="ViewResolver">http://bangjinhu.github.io/undefined/第14章 ViewResolver/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -1098,7 +1099,7 @@ public class FreeMarkerViewResolver extends AbstractTemplateViewResolver {
       
         <div class="post-tags">
           
-            <a href="/tags/AOP/" rel="tag"><i class="fa fa-tag"></i> AOP</a>
+            <a href="/tags/SpringMVC源码分析/" rel="tag"><i class="fa fa-tag"></i> SpringMVC源码分析</a>
           
         </div>
       
@@ -1111,8 +1112,8 @@ public class FreeMarkerViewResolver extends AbstractTemplateViewResolver {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/undefined/第17章 MultipartResolver/" rel="next" title="AOP">
-                <i class="fa fa-chevron-left"></i> AOP
+              <a href="/undefined/第13章 Spring框架的设计理念与设计模式分析/" rel="next" title="Spring设计框架与设计模式">
+                <i class="fa fa-chevron-left"></i> Spring设计框架与设计模式
               </a>
             
           </div>
@@ -1121,8 +1122,8 @@ public class FreeMarkerViewResolver extends AbstractTemplateViewResolver {
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/undefined/第15章 RequestToViewNameTranslator/" rel="prev" title="AOP">
-                AOP <i class="fa fa-chevron-right"></i>
+              <a href="/undefined/第13章 HandlerAdapter/" rel="prev" title="HandlerAdapter">
+                HandlerAdapter <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1232,7 +1233,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1243,7 +1244,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1254,7 +1255,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1296,12 +1297,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -1379,7 +1374,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

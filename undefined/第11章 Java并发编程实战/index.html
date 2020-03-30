@@ -139,7 +139,7 @@
 
 
 
-  <meta name="keywords" content="SpringMVC," />
+  <meta name="keywords" content="多线程与并发," />
 
 
 
@@ -153,16 +153,16 @@
 
 
 <meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. [TOC] 第十一章 Java并发编程实战11.1 生产者和消费者模式 提示：生产者和消费者模式是通过一个容器来解决生产者和消费者的强耦合问题。  生产者和消费者彼此之间不直接通信，而是通过阻塞队列来进行通信，所以生产者生产完数据之后不用等待消费者处理，直接扔给阻塞队列，消费者不找生产者要数据，而是直接从阻塞队列中取。所以这里的阻塞队列相当于一个缓冲">
-<meta name="keywords" content="SpringMVC">
+<meta name="keywords" content="多线程与并发">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AOP">
+<meta property="og:title" content="Java并发编程实战">
 <meta property="og:url" content="http://bangjinhu.github.io/undefined/第11章 Java并发编程实战/index.html">
 <meta property="og:site_name" content="BangjinHu&#39;s Blog">
 <meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. [TOC] 第十一章 Java并发编程实战11.1 生产者和消费者模式 提示：生产者和消费者模式是通过一个容器来解决生产者和消费者的强耦合问题。  生产者和消费者彼此之间不直接通信，而是通过阻塞队列来进行通信，所以生产者生产完数据之后不用等待消费者处理，直接扔给阻塞队列，消费者不找生产者要数据，而是直接从阻塞队列中取。所以这里的阻塞队列相当于一个缓冲">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-29T02:19:16.254Z">
+<meta property="og:updated_time" content="2020-03-30T00:16:22.501Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AOP">
+<meta name="twitter:title" content="Java并发编程实战">
 <meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. [TOC] 第十一章 Java并发编程实战11.1 生产者和消费者模式 提示：生产者和消费者模式是通过一个容器来解决生产者和消费者的强耦合问题。  生产者和消费者彼此之间不直接通信，而是通过阻塞队列来进行通信，所以生产者生产完数据之后不用等待消费者处理，直接扔给阻塞队列，消费者不找生产者要数据，而是直接从阻塞队列中取。所以这里的阻塞队列相当于一个缓冲">
 
 
@@ -199,7 +199,7 @@
 
 
 
-  <title>AOP | BangjinHu's Blog</title>
+  <title>Java并发编程实战 | BangjinHu's Blog</title>
   
 
 
@@ -391,7 +391,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">AOP</h2>
+          <h2 class="post-title" itemprop="name headline">Java并发编程实战</h2>
         
 
         <div class="post-meta">
@@ -419,8 +419,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:19:16+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:16:22+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -438,8 +438,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/SpringMVC/" itemprop="url" rel="index">
-                    <span itemprop="name">SpringMVC</span>
+                  <a href="/categories/多线程与并发/" itemprop="url" rel="index">
+                    <span itemprop="name">多线程与并发</span>
                   </a>
                 </span>
 
@@ -512,7 +512,7 @@
 <h2 id="第十一章-Java并发编程实战"><a href="#第十一章-Java并发编程实战" class="headerlink" title="第十一章 Java并发编程实战"></a>第十一章 Java并发编程实战</h2><h3 id="11-1-生产者和消费者模式"><a href="#11-1-生产者和消费者模式" class="headerlink" title="11.1 生产者和消费者模式"></a>11.1 生产者和消费者模式</h3><blockquote>
 <p>提示：生产者和消费者模式是通过一个容器来解决生产者和消费者的强耦合问题。</p>
 </blockquote>
-<p>生产者和消费者彼此之间不直接通信，而是通过阻塞队列来进行通信，所以生产者生产完数据之后不用等待消费者处理，直接扔给阻塞队列，消费者不找生产者要数据，而是直接从阻塞队列中取。所以这里的阻塞队列相当于一个缓冲区，平衡生产者和消费者的处理能力。</p>
+<p>生产者和消费者彼此之间不直接通信，而是通过阻塞队列来进行通信，所以生产者生产完数据之后不用等待消费者处理，直接扔给阻塞队列，消费者不找生产者要数据，而是直接从阻塞队列中取。所以这里的阻塞队列相当于一个缓冲区，平衡生产者和消费者的处理能力。<br><a id="more"></a></p>
 <h3 id="11-2-ArrayBlockingQueue"><a href="#11-2-ArrayBlockingQueue" class="headerlink" title="11.2 ArrayBlockingQueue"></a>11.2 ArrayBlockingQueue</h3><h3 id="11-3-并发组件ConcurrentHashMap使用注意事项"><a href="#11-3-并发组件ConcurrentHashMap使用注意事项" class="headerlink" title="11.3 并发组件ConcurrentHashMap使用注意事项"></a>11.3 并发组件ConcurrentHashMap使用注意事项</h3><p>在ConcurrentHashMap中的方法map.putIfAbsent()方法添加新设备列表时，如果在key在map中不存在，则将key与对应的值放入map中。注意的是这个操作是原子性操作，放入后会返回null。</p>
 <p>如果key在map中存在，则调用putIfAbsent()会返回key对应的value值。如果发现返回的value值不是null则将新的value值添加到返回的列表里面，从而问题得到解决。</p>
 <blockquote>
@@ -561,11 +561,11 @@
   <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
 
-  <p><span>本文标题:</span>AOP</a></p>
+  <p><span>本文标题:</span>Java并发编程实战</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 10:19:16</p>
-  <p><span>原始链接:</span><a href="/undefined/第11章 Java并发编程实战/" title="AOP">http://bangjinhu.github.io/undefined/第11章 Java并发编程实战/</a>
+  <p><span>最后更新:</span>2020年03月30日 - 08:16:22</p>
+  <p><span>原始链接:</span><a href="/undefined/第11章 Java并发编程实战/" title="Java并发编程实战">http://bangjinhu.github.io/undefined/第11章 Java并发编程实战/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/第11章 Java并发编程实战/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
@@ -637,7 +637,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://bangjinhu.github.io/undefined/第11章 Java并发编程实战/" title="AOP">http://bangjinhu.github.io/undefined/第11章 Java并发编程实战/</a>
+    <a href="http://bangjinhu.github.io/undefined/第11章 Java并发编程实战/" title="Java并发编程实战">http://bangjinhu.github.io/undefined/第11章 Java并发编程实战/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -652,7 +652,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/SpringMVC/" rel="tag"><i class="fa fa-tag"></i> SpringMVC</a>
+            <a href="/tags/多线程与并发/" rel="tag"><i class="fa fa-tag"></i> 多线程与并发</a>
           
         </div>
       
@@ -665,8 +665,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/undefined/第12章 HandlerMapping/" rel="next" title="HandlerMapping">
-                <i class="fa fa-chevron-left"></i> HandlerMapping
+              <a href="/undefined/第11章 组件概览/" rel="next" title="SpringMVC组件分析">
+                <i class="fa fa-chevron-left"></i> SpringMVC组件分析
               </a>
             
           </div>
@@ -675,8 +675,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/undefined/第10章 Executor框架/" rel="prev" title="AOP">
-                AOP <i class="fa fa-chevron-right"></i>
+              <a href="/undefined/第10章 Executor框架/" rel="prev" title="Executor框架">
+                Executor框架 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -786,7 +786,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -797,7 +797,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -808,7 +808,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -850,12 +850,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -933,7 +927,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

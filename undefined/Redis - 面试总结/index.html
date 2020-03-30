@@ -152,18 +152,18 @@
 
 
 
-<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. Redis - 面试总结[TOC] 为什么要用redis而不用map做缓存?Java实现的Map是本地缓存，如果有多台实例(机器)的话，每个实例都需要各自保存一份缓存，缓存不具有一致性 Redis实现的是分布式缓存，如果有多台实例(机器)的话，每个实例都共享一份缓存，缓存具有一致性。 Java实现的Map不是专业做缓存的，JVM内存太大容易挂掉。一般">
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. Redis - 面试总结[TOC] 为什么要用redis而不用map做缓存?">
 <meta name="keywords" content="Redis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Redis - Java集成">
+<meta property="og:title" content="Redis - 学习">
 <meta property="og:url" content="http://bangjinhu.github.io/undefined/Redis - 面试总结/index.html">
 <meta property="og:site_name" content="BangjinHu&#39;s Blog">
-<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. Redis - 面试总结[TOC] 为什么要用redis而不用map做缓存?Java实现的Map是本地缓存，如果有多台实例(机器)的话，每个实例都需要各自保存一份缓存，缓存不具有一致性 Redis实现的是分布式缓存，如果有多台实例(机器)的话，每个实例都共享一份缓存，缓存具有一致性。 Java实现的Map不是专业做缓存的，JVM内存太大容易挂掉。一般">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. Redis - 面试总结[TOC] 为什么要用redis而不用map做缓存?">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-29T02:05:50.422Z">
+<meta property="og:updated_time" content="2020-03-30T00:03:08.427Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Redis - Java集成">
-<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. Redis - 面试总结[TOC] 为什么要用redis而不用map做缓存?Java实现的Map是本地缓存，如果有多台实例(机器)的话，每个实例都需要各自保存一份缓存，缓存不具有一致性 Redis实现的是分布式缓存，如果有多台实例(机器)的话，每个实例都共享一份缓存，缓存具有一致性。 Java实现的Map不是专业做缓存的，JVM内存太大容易挂掉。一般">
+<meta name="twitter:title" content="Redis - 学习">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. Redis - 面试总结[TOC] 为什么要用redis而不用map做缓存?">
 
 
 
@@ -199,7 +199,7 @@
 
 
 
-  <title>Redis - Java集成 | BangjinHu's Blog</title>
+  <title>Redis - 学习 | BangjinHu's Blog</title>
   
 
 
@@ -391,7 +391,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Redis - Java集成</h2>
+          <h2 class="post-title" itemprop="name headline">Redis - 学习</h2>
         
 
         <div class="post-meta">
@@ -419,8 +419,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:05:50+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:03:08+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -509,7 +509,8 @@
         <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
 <h3 id="Redis-面试总结"><a href="#Redis-面试总结" class="headerlink" title="Redis - 面试总结"></a>Redis - 面试总结</h3><p>[TOC]</p>
-<h4 id="为什么要用redis而不用map做缓存"><a href="#为什么要用redis而不用map做缓存" class="headerlink" title="为什么要用redis而不用map做缓存?"></a>为什么要用redis而不用map做缓存?</h4><p>Java实现的Map是本地缓存，如果有多台实例(机器)的话，每个实例都需要各自保存一份缓存，缓存不具有一致性</p>
+<h4 id="为什么要用redis而不用map做缓存"><a href="#为什么要用redis而不用map做缓存" class="headerlink" title="为什么要用redis而不用map做缓存?"></a>为什么要用redis而不用map做缓存?</h4><a id="more"></a>
+<p>Java实现的Map是本地缓存，如果有多台实例(机器)的话，每个实例都需要各自保存一份缓存，缓存不具有一致性</p>
 <p>Redis实现的是分布式缓存，如果有多台实例(机器)的话，每个实例都共享一份缓存，缓存具有一致性。</p>
 <p>Java实现的Map不是专业做缓存的，JVM内存太大容易挂掉。一般用做于容器来存储临时数据，缓存的数据随着JVM销毁而结束。Map所存储的数据结构，缓存过期机制等等是需要程序员自己手写的。</p>
 <p>Redis是专业做缓存的，可以用几十个G内存来做缓存。Redis一般用作于缓存，可以将缓存数据保存在硬盘中，Redis重启了后可以将其恢复。原生提供丰富的数据结构、缓存过期机制等简单好用的功能。</p>
@@ -686,11 +687,11 @@ no-enviction（驱逐）：禁止驱逐数据
   <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
 
-  <p><span>本文标题:</span>Redis - Java集成</a></p>
+  <p><span>本文标题:</span>Redis - 学习</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 10:05:50</p>
-  <p><span>原始链接:</span><a href="/undefined/Redis - 面试总结/" title="Redis - Java集成">http://bangjinhu.github.io/undefined/Redis - 面试总结/</a>
+  <p><span>最后更新:</span>2020年03月30日 - 08:03:08</p>
+  <p><span>原始链接:</span><a href="/undefined/Redis - 面试总结/" title="Redis - 学习">http://bangjinhu.github.io/undefined/Redis - 面试总结/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/Redis - 面试总结/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
@@ -762,7 +763,7 @@ no-enviction（驱逐）：禁止驱逐数据
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://bangjinhu.github.io/undefined/Redis - 面试总结/" title="Redis - Java集成">http://bangjinhu.github.io/undefined/Redis - 面试总结/</a>
+    <a href="http://bangjinhu.github.io/undefined/Redis - 面试总结/" title="Redis - 学习">http://bangjinhu.github.io/undefined/Redis - 面试总结/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -790,8 +791,8 @@ no-enviction（驱逐）：禁止驱逐数据
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/undefined/Redis 指南 - Windows/" rel="next" title="Redis - Java集成">
-                <i class="fa fa-chevron-left"></i> Redis - Java集成
+              <a href="/undefined/Servlet - 续/" rel="next" title="Servlet 续">
+                <i class="fa fa-chevron-left"></i> Servlet 续
               </a>
             
           </div>
@@ -800,8 +801,8 @@ no-enviction（驱逐）：禁止驱逐数据
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/undefined/Redis - 分布式锁/" rel="prev" title="Redis - 分布式锁">
-                Redis - 分布式锁 <i class="fa fa-chevron-right"></i>
+              <a href="/undefined/Redis 指南 - Windows/" rel="prev" title="Redis - Java集成">
+                Redis - Java集成 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -911,7 +912,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -922,7 +923,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -933,7 +934,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -975,12 +976,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -1058,7 +1053,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

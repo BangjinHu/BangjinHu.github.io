@@ -152,18 +152,18 @@
 
 
 
-<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. 视图 view定义与概念通俗的讲，视图就是一条SELECT语句执行后返回的结果集。所以我们在创建视图的时候，主要的工作就落在创建这条SQL查询语句上。 特性视图是对于若干张基本表的引用，是一张虚表，查询语句执行的结果，不存储具体的数据，可以进行有限制的增删改查。 作用方便操作，最主要的是查询操作，减少复杂的sql语句，增强可读性。 优势1.分割数据，">
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. 视图 view定义与概念通俗的讲，视图就是一条SELECT语句执行后返回的结果集。所以我们在创建视图的时候，主要的工作就落在创建这条SQL查询语句上。 特性视图是对于若干张基本表的引用，是一张虚表，查询语句执行的结果，不存储具体的数据，可以进行有限制的增删改查。 作用方便操作，最主要的是查询操作，减少复杂的sql语句，增强可读性。">
 <meta name="keywords" content="MySQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQ-视图">
 <meta property="og:url" content="http://bangjinhu.github.io/undefined/MySQL 命令 视图/index.html">
 <meta property="og:site_name" content="BangjinHu&#39;s Blog">
-<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. 视图 view定义与概念通俗的讲，视图就是一条SELECT语句执行后返回的结果集。所以我们在创建视图的时候，主要的工作就落在创建这条SQL查询语句上。 特性视图是对于若干张基本表的引用，是一张虚表，查询语句执行的结果，不存储具体的数据，可以进行有限制的增删改查。 作用方便操作，最主要的是查询操作，减少复杂的sql语句，增强可读性。 优势1.分割数据，">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. 视图 view定义与概念通俗的讲，视图就是一条SELECT语句执行后返回的结果集。所以我们在创建视图的时候，主要的工作就落在创建这条SQL查询语句上。 特性视图是对于若干张基本表的引用，是一张虚表，查询语句执行的结果，不存储具体的数据，可以进行有限制的增删改查。 作用方便操作，最主要的是查询操作，减少复杂的sql语句，增强可读性。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-29T00:23:32.731Z">
+<meta property="og:updated_time" content="2020-03-30T00:05:22.614Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQ-视图">
-<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 视图 view定义与概念通俗的讲，视图就是一条SELECT语句执行后返回的结果集。所以我们在创建视图的时候，主要的工作就落在创建这条SQL查询语句上。 特性视图是对于若干张基本表的引用，是一张虚表，查询语句执行的结果，不存储具体的数据，可以进行有限制的增删改查。 作用方便操作，最主要的是查询操作，减少复杂的sql语句，增强可读性。 优势1.分割数据，">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 视图 view定义与概念通俗的讲，视图就是一条SELECT语句执行后返回的结果集。所以我们在创建视图的时候，主要的工作就落在创建这条SQL查询语句上。 特性视图是对于若干张基本表的引用，是一张虚表，查询语句执行的结果，不存储具体的数据，可以进行有限制的增删改查。 作用方便操作，最主要的是查询操作，减少复杂的sql语句，增强可读性。">
 
 
 
@@ -419,8 +419,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T08:23:32+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:05:22+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -510,7 +510,7 @@
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
 <h2 id="视图-view"><a href="#视图-view" class="headerlink" title="视图 view"></a>视图 view</h2><h4 id="定义与概念"><a href="#定义与概念" class="headerlink" title="定义与概念"></a>定义与概念</h4><p>通俗的讲，视图就是一条SELECT语句执行后返回的结果集。所以我们在创建视图的时候，主要的工作就落在创建这条SQL查询语句上。</p>
 <h4 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h4><p>视图是对于若干张基本表的引用，是一张虚表，查询语句执行的结果，不存储具体的数据，可以进行有限制的增删改查。</p>
-<h4 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h4><p>方便操作，最主要的是查询操作，减少复杂的sql语句，增强可读性。</p>
+<h4 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h4><p>方便操作，最主要的是查询操作，减少复杂的sql语句，增强可读性。<br><a id="more"></a></p>
 <h4 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h4><pre><code>1.分割数据，通过select与where来定义视图，从而可以分割数据基表中某些对于用户不关心的数据，使用户把注意力集中到所关心的数据列.进一步简化浏览数据工作。
 2.给数据提供一定的逻辑独立性，如果我们为某一个基表定义一个视图，即使以后基本表的内容的发生改变了也不会影响“视图定义”所得到的数据。
 3.视图能像基本表一样授予或撤消访问许可权，给用户是表的一部分访问权限而不是全部。
@@ -672,7 +672,7 @@
   <p><span>本文标题:</span>MySQ-视图</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 08:23:32</p>
+  <p><span>最后更新:</span>2020年03月30日 - 08:05:22</p>
   <p><span>原始链接:</span><a href="/undefined/MySQL 命令 视图/" title="MySQ-视图">http://bangjinhu.github.io/undefined/MySQL 命令 视图/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/MySQL 命令 视图/"  aria-label="复制成功！"></i></span>
   </p>
@@ -894,7 +894,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -905,7 +905,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -916,7 +916,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -958,12 +958,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -1041,7 +1035,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

@@ -373,7 +373,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/ZooKeeper/">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第4章 Java并发编程基础/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bangjin-Hu">
@@ -392,7 +392,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/undefined/ZooKeeper/" itemprop="url">ZooKeeper</a></h2>
+                <a class="post-title-link" href="/undefined/第4章 Java并发编程基础/" itemprop="url">并发编程 基础</a></h2>
         
 
         <div class="post-meta">
@@ -420,8 +420,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:36:14+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:18:13+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -439,8 +439,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ZooKeeper/" itemprop="url" rel="index">
-                    <span itemprop="name">ZooKeeper</span>
+                  <a href="/categories/并发编程/" itemprop="url" rel="index">
+                    <span itemprop="name">并发编程</span>
                   </a>
                 </span>
 
@@ -470,7 +470,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  5,252
+                  1,800
                 </span>
               
 
@@ -486,2187 +486,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  18
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="ZooKeeper"><a href="#ZooKeeper" class="headerlink" title="ZooKeeper"></a>ZooKeeper</h2><p>[TOC]</p>
-<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>zookeeper是开源的分布式协调服务，其设计目标是将那些复杂且容易出错的分布式一致性服务封装起来，构成一个高效可靠的原语集，并以一系列简单的接口提供给用户使用。</p>
-<blockquote>
-<p>原语，操作系统或计算机网络用语范畴。是由若干条指令组成的，用于完成一定功能的一个过程。具有不可分割性，即原语的执行必须是连续的，在执行过程中不允许被中断。</p>
-</blockquote>
-<p>ZooKeeper 是一个典型的分布式数据一致性解决方案，分布式应用程序可以基于 ZooKeeper 实现诸如数据发布/订阅、负载均衡、命名服务、分布式协调/通知、集群管理、Master 选举、分布式锁和分布式队列等功能。</p>
-<p>Zookeeper 一个最常用的使用场景就是 ==用于担任服务生产者和服务消费者的注册中心(提供发布订阅服务)==。</p>
-<p>服务生产者将自己提供的服务注册到Zookeeper中心，服务的消费者在进行服务调用的时候先到Zookeeper中查找服务，获取到服务生产者的详细信息之后，再去调用服务生产者的内容与数据。如下图所示，在 Dubbo架构中 Zookeeper 就担任了注册中心这一角色。</p>
-<h3 id="ZooKeeper-功能"><a href="#ZooKeeper-功能" class="headerlink" title="ZooKeeper 功能"></a>ZooKeeper 功能</h3><p>在项目中，主要使用ZooKeeper作为Dubbo的注册中心（Dubbo官方推荐使用ZooKeeper注册中心）。</p>
-<h3 id="ZooKeeper-的典型应用场景-发布订阅功能的作用"><a href="#ZooKeeper-的典型应用场景-发布订阅功能的作用" class="headerlink" title="==ZooKeeper 的典型应用场景 发布订阅功能的作用=="></a>==ZooKeeper 的典型应用场景 发布订阅功能的作用==</h3><p>我们知道ZK的典型应用场景之一就是“发布订阅服务”。利用“发布订阅服务”实现两种常见的功能：</p>
-<pre><code>1. 作为配置中心
-
-2. 作为Dubbo的注册中心，也就是发布订阅中心
-</code></pre><h4 id="1-作为配置中心"><a href="#1-作为配置中心" class="headerlink" title="1. 作为配置中心"></a>1. 作为配置中心</h4><p>很多时候我们相同的程序可能部署在多台机器上提升性能，不同的程序也可能有相同的配置文件。如果我们每次修改配置文件，都要一个一个机器修改的话，那么必定非常麻烦。</p>
-<p>我们可以考虑把应用配置放到 ZooKeeper 上去，也就是保存在 Zookeeper 的某个目录节点中，我们对指定的节点设置一个 Watcher 监听 。</p>
-<p>这样做的好处就是：一旦配置信息发生变化，每个应用程序就会收到 Zookeeper 的通知，然后可以从 Zookeeper 获取新的配置信息应用到系统中就好。</p>
-<p>ZooKeeper 中利用 Watcher 机制实现分布式通知功能，Zookeeper 允许 ==客户端向服务端注册一个Watcher监听，当服务端的一些指定事件触发了这个Watcher，那么就会向指定客户端发送一个事件通知==来实现分布式的通知功能。</p>
-<h4 id="2-作为-Dubbo-的注册中心"><a href="#2-作为-Dubbo-的注册中心" class="headerlink" title="2. 作为 Dubbo 的注册中心"></a>2. 作为 Dubbo 的注册中心</h4><p>Zookeeper 一个非常==常用的使用场景就是用于担任服务生产者和服务消费者的注册中心提供发布订阅服务==。</p>
-<p>服务生产者将自己提供的服务注册到 Zookeeper 的一个或一系列节点上去，服务的消费者在进行服务调用的时候先到 Zookeeper 中查找服务，获取到服务生产者的详细信息之后，再去调用服务生产者的内容与数据。</p>
-<h3 id="ZooKeeper-工作机制"><a href="#ZooKeeper-工作机制" class="headerlink" title="ZooKeeper 工作机制"></a>ZooKeeper 工作机制</h3><p>ZooKeeper从设计模式角度理解是一个基于观察者模式的分布式服务管理框架，它负责存储和管理大家都关心的数据，然后接受观察者的注册，一旦数据的状态发生变化，ZooKeeper将负责通知已经在ZooKeeper上注册的那些观察者做出相应的反应。</p>
-<pre><code>1. 服务端启动时去zookeeper集群注册信息（创建都是临时节点）
-
-2. 客户端获取当前在线服务器列表，并且注册监听
-
-3. 服务器节点下线
-
-4. 集群通知客户端服务器节点上下线事件通知
-
-5. 重新获取服务器列表，并注册监听
-</code></pre><blockquote>
-<p>提示：ZooKeeper等于文件系统和通知机制。</p>
-</blockquote>
-<h3 id="ZooKeeper-特点"><a href="#ZooKeeper-特点" class="headerlink" title="ZooKeeper 特点"></a>ZooKeeper 特点</h3><ul>
-<li>一个领导者，多个跟随者组成的集群</li>
-<li>集群中只要有半数以上的节点存活，ZooKeeper就能够正常服务</li>
-<li>全局数据一致，每个Server保存一份相同的数据副本，客户端无论连接到哪个Server，数据都是一致的</li>
-<li>更新请求顺序进行，来自同一个客户端的更新请求按其发送顺序依次执行</li>
-<li>数据更新原子性，一个数据更新要么成功，要么失败</li>
-<li>实时性，在一定时间范围之内，客户端能读到最新数据</li>
-<li></li>
-<li><p>顺序一致性：从同一客户端发起的事务请求，最终将会严格地按照顺序被应用到 ZooKeeper 中去。</p>
-</li>
-<li>原子性：所有事务请求的处理结果在整个集群中所有机器上的应用情况是一致的，也就是说要么整个集群中所有的机器都成功应用了某一个事务，要么都没有应用。</li>
-<li>单一系统映像：无论客户端连到哪一个 ZooKeeper 服务器上，其看到的服务端数据模型都是一致的。</li>
-<li>可靠性：一旦一次更改请求被应用，更改的结果就会被持久化，直到被下一次更改覆盖。</li>
-</ul>
-<h3 id="ZooKeeper-数据结构"><a href="#ZooKeeper-数据结构" class="headerlink" title="ZooKeeper 数据结构"></a>ZooKeeper 数据结构</h3><p>ZooKeeper数据模型的结构与Unix文件系统类似，整体可以看做是一棵树，每个节点称作ZNode。每个ZNode默认能够存储1MB的数据，每个ZNode都可以通过其路径唯一标识。</p>
-<h3 id="zookeeper-数据模型和常见命令"><a href="#zookeeper-数据模型和常见命令" class="headerlink" title="zookeeper 数据模型和常见命令"></a>zookeeper 数据模型和常见命令</h3><p>ZNode（数据节点）是 ZooKeeper 中数据的最小单元，每个ZNode上都可以保存数据，同时还是可以有子节点（这就像树结构一样）。</p>
-<p>节点路径标识方式和Unix文件系统路径非常相似，都是由一系列使用斜杠”/“进行分割的路径表示，开发人员可以向这个节点中写入数据，也可以在节点下面创建子节点。</p>
-<p>在ZooKeeper数据模型中，不得不提的概念就是 ==事务ID== 。事务的ACID四大特性等。</p>
-<p>在Zookeeper中，事务是指能够改变 ZooKeeper 服务器状态的操作，我们也称之为事务操作或更新操作，一般包括数据节点创建与删除、数据节点内容更新和客户端会话创建与失效等操作</p>
-<p>==对于每一个事务请求，ZooKeeper 都会为其分配一个全局唯一的事务ID，用 ZXID 来表示，通常是一个64位的数字。== 每一个ZXID对应一次更新操作，==从这些 ZXID 中可以间接地识别出Zookeeper处理这些更新操作请求的全局顺序==。</p>
-<h4 id="ZNode（数据节点）的结构"><a href="#ZNode（数据节点）的结构" class="headerlink" title="ZNode（数据节点）的结构"></a>ZNode（数据节点）的结构</h4><p>每个ZNode节点都由两部分组成：</p>
-<pre><code>1. stat：状态信息
-
-2. data：数据内容
-</code></pre><h5 id="1-stat类（状态信息的各个字段说明）"><a href="#1-stat类（状态信息的各个字段说明）" class="headerlink" title="1. stat类（状态信息的各个字段说明）"></a>1. stat类（状态信息的各个字段说明）</h5><p><img src="https://mmbiz.qpic.cn/mmbiz_png/hvUCbRic69sDvmSABenhfp0ZJVbCah4VEIJRkbBrMgia6cHYcxTAK7kHCd1pXH8iaVPucmAvd2LzsUibjQ5oM0Z4rQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="image"></p>
-<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p>提供的服务包括，统一命名服务、统一配置管理、统一集群管理、服务器节点动态上下线、软负载均衡等。</p>
-<h4 id="统一命名服务"><a href="#统一命名服务" class="headerlink" title="统一命名服务"></a>统一命名服务</h4><p>在分布式环境中，经常需要对应用/服务进行统一命名，便于识别。</p>
-<h4 id="软负载均衡"><a href="#软负载均衡" class="headerlink" title="软负载均衡"></a>软负载均衡</h4><p>在ZooKeeper中记录每台服务器的访问数，让访问数最少的服务器去处理最新的客户端请求。</p>
-<h3 id="ZooKeeper-概念总结"><a href="#ZooKeeper-概念总结" class="headerlink" title="ZooKeeper 概念总结"></a>ZooKeeper 概念总结</h3><p>==ZooKeeper 本身就是一个分布式程序（只要半数以上节点存活，ZooKeeper 就能正常服务）。==</p>
-<p>==为了保证高可用，最好是以集群形态来部署 ZooKeeper，这样只要集群中大部分机器是可用的（能够容忍一定的机器故障），那么 ZooKeeper 本身仍然是可用的。==</p>
-<p>==ZooKeeper 将数据保存在内存中，这也就保证了 高吞吐量和低延迟（但是内存限制了能够存储的容量不太大，此限制也是保持znode中存储的数据量较小的进一步原因）。==</p>
-<p>==ZooKeeper 是高性能的。 在“读”多于“写”的应用程序中尤其地高性能，因为“写”会导致所有的服务器间同步状态。（“读”多于“写”是协调服务的典型场景。）==</p>
-<p>==ZooKeeper有临时节点的概念。 当创建临时节点的客户端会话一直保持活动，瞬时节点就一直存在。而当会话终结时，瞬时节点被删除。持久节点是指一旦这个ZNode被创建了，除非主动进行ZNode的移除操作，否则这个ZNode将一直保存在Zookeeper上。==</p>
-<p>ZooKeeper 底层其实只提供了两个功能：①管理（存储、读取）用户程序提交的数据；②为用户程序提供数据节点监听服务。</p>
-<h4 id="2-会话（Session）"><a href="#2-会话（Session）" class="headerlink" title="2. 会话（Session）"></a>2. 会话（Session）</h4><p>Session 指的是 ZooKeeper 服务器与客户端会话，在 在 ZooKeeper 中，一个客户端连接是指客户端和服务器之间的一个 TCP 长连接。</p>
-<p>==通过这个连接，客户端能够通过心跳检测与服务器保持有效的会话，也能够向Zookeeper服务器发送请求并接受响应，同时还能够通过该连接接收来自服务器的Watch事件通知。 =</p>
-<p>==Session的 sessionTimeout值 用来设置一个客户端会话的超时时间。== 当由于服务器压力太大、网络故障或是客户端主动断开连接等各种原因导致客户端连接断开时，==只要在sessionTimeout规定的时间内能够重新连接上集群中任意一台服务器，那么之前创建的会话仍然有效。==</p>
-<p>==在为客户端创建会话之前，服务端首先会为每个客户端都分配一个sessionID。由于 sessionID 是 Zookeeper 会话的一个重要标识，许多与会话相关的运行机制都是基于这个 sessionID 的，因此，无论是哪台服务器为客户端分配的 sessionID，都务必保证全局唯一。==</p>
-<h4 id="3-ZNode"><a href="#3-ZNode" class="headerlink" title="3. ZNode"></a>3. ZNode</h4><p>==在说分布式时候，我们通常说的节点是指组成集群的每一台机器。== 然在ZooKeeper中，==节点分为两类，1. 同样是构成集群的机器，机器节点。2. 数据模型的数据单元，数据节点ZNode。==</p>
-<p>Zookeeper 将所有数据存储在内存中，数据模型是一棵树（Znode Tree)，由斜杠（/）的进行分割的路径，就是一个Znode，例如/foo/path1。每个上都会保存自己的数据内容，同时还会保存一系列属性信息。</p>
-<p>在Zookeeper中，==node可以分为 持久节点 和 临时节点 两类==。所谓==持久节点是指一旦这个ZNode被创建了，除非主动进行ZNode的移除操作，否则这个ZNode将一直保存在Zookeeper上==。而==临时节点就不一样了，它的生命周期和客户端会话绑定，一旦客户端会话失效，那么这个客户端创建的所有临时节点都会被移除==。</p>
-<p>另外，ZooKeeper还允许用户为每个节点添加一个特殊的属性：SEQUENTIAL。一旦节点被标记上这个属性，那么在这个节点被创建的时候，Zookeeper会自动在其节点名后面追加上一个整型数字，这个整型数字是一个由父节点维护的自增数字。</p>
-<h4 id="4-版本"><a href="#4-版本" class="headerlink" title="4. 版本"></a>4. 版本</h4><p>在之前我们知道，ZooKeeper的每个ZNode上都会存储数据，对应每个ZNode，ZooKeeper都会为其维护一个叫做Stat的数据结构，==Stat中记录了这个ZNode的三个数据版本，分别是 version（当前ZNode的版本）、cversion（当前ZNode子节点的版本）和aversion（当前ZNode的ACL版本）。==</p>
-<h4 id="5-Watcher"><a href="#5-Watcher" class="headerlink" title="5. Watcher"></a>5. Watcher</h4><p>==Watcher（事件监听器），是ZooKeeper的重要特性。Zookeeper允许用户在指定节点上注册一些Watcher，并且在一些特定事件触发的时候，ZooKeeper服务端会将事件通知到感兴趣的客户端上去，该机制是Zookeeper实现分布式协调服务的重要特性。==</p>
-<h4 id="6-ACL"><a href="#6-ACL" class="headerlink" title="6. ACL"></a>6. ACL</h4><p>Zookeeper采用ACL（AccessControlLists）策略来进行权限控制，类似于 UNIX 文件系统的权限控制。Zookeeper 定义了如下5种权限。</p>
-<pre><code>1. CREATE 创建子节点权限
-
-2. READ 获取节点数据和子节点列表的权限
-
-3. WRITE 更新节点数据的权限
-
-4. DELETE 删除子节点的权限
-
-5. ADMIN 设置节点ACL的权限
-</code></pre><blockquote>
-<p>注意：CREATE 和 DELETE 这两种权限都是针对子节点的权限控制。</p>
-</blockquote>
-<h3 id="ZooKeeper-设计目标"><a href="#ZooKeeper-设计目标" class="headerlink" title="ZooKeeper 设计目标"></a>ZooKeeper 设计目标</h3><h4 id="1-简单的数据模型"><a href="#1-简单的数据模型" class="headerlink" title="1. 简单的数据模型"></a>1. 简单的数据模型</h4><p>ZooKeeper 允许分布式进程通过共享的层次结构命名空间进行相互协调，这与标准文件系统类似。</p>
-<p>名称空间由 ZooKeeper 中的数据寄存器组成 - 称为znode，这些类似于文件和目录。</p>
-<p>与为存储设计的典型文件系统不同，ZooKeeper数据保存在内存中，这意味着ZooKeeper可以实现高吞吐量和低延迟。</p>
-<h4 id="2-可构建集群"><a href="#2-可构建集群" class="headerlink" title="2. 可构建集群"></a>2. 可构建集群</h4><p>为了保证高可用，最好是以集群形态来部署 ZooKeeper，这样只要集群中大部分机器是可用的（能够容忍一定的机器故障），那么zookeeper本身仍然是可用的。 </p>
-<p>客户端在使用 ZooKeeper 时，需要知道集群机器列表，通过与集群中的某一台机器建立 TCP 连接来使用服务，客户端使用这个TCP链接来发送请求、获取结果、获取监听事件以及发送心跳包。如果这个连接异常断开了，客户端可以连接到另外的机器上。</p>
-<blockquote>
-<p>提示：集群之间通过 ==Zab协议== 来保持数据的一致性。</p>
-</blockquote>
-<h4 id="3-顺序访问"><a href="#3-顺序访问" class="headerlink" title="3. 顺序访问"></a>3. 顺序访问</h4><p>==对于来自客户端的每个更新请求，ZooKeeper都会分配一个全局唯一的递增编号，这个编号反映了所有事务操作的先后顺序，应用程序可以使用ZooKeeper这个特性来实现更高层次的同步原语。这个编号也叫做时间戳（zxid）。==</p>
-<h4 id="4-高性能"><a href="#4-高性能" class="headerlink" title="4. 高性能"></a>4. 高性能</h4><p>ZooKeeper 是高性能的。 在“读”多于“写”的应用程序中尤其地高性能，因为“写”会导致所有的服务器间同步状态。（“读”多于“写”是协调服务的典型场景。）</p>
-<h3 id="ZooKeeper-集群角色"><a href="#ZooKeeper-集群角色" class="headerlink" title="ZooKeeper 集群角色"></a>ZooKeeper 集群角色</h3><p>==最典型的集群模式：Master/Slave（主备模式）==，在这种模式种，通常Master服务器作为主服务器提供写服务，其它的Slave服务器从主服务器中通过异步复制的方式获取Master服务器最新的数据提供读服务。</p>
-<p>==在 ZooKeeper 中没有选择传统的 Master/Slave 概念，而是引入了Leader、Follower 和 Observer 三种角色。==</p>
-<p>==ZooKeeper 集群中的所有机器通过一个 Leader 选举过程来选定一台称为 “Leader” 的机器，Leader 既可以为客户端提供写服务又能提供读服务==。</p>
-<p>==除了 Leader 外，Follower 和 Observer 都只能提供读服务。== Follower 和 Observer 唯一的区别在于 Observer 机器不参与 Leader 的选举过程，也不参与写操作的“过半写成功”策略，因此 Observer 机器可以在不影响写性能的情况下提升集群的读性能。</p>
-<p><img src="https://images.xiaozhuanlan.com/photo/2019/ce590587caccd26adf46e2060b2107aa.jpg" alt="image"></p>
-<p>==当 Leader 服务器出现网络中断、崩溃退出与重启等异常情况时，ZAB 协议就会进人恢复模式并选举产生新的Leader服务器。这个过程大致如下：==</p>
-<pre><code>1. Leader election（选举阶段）：节点在一开始都处于选举阶段，只要有一个节点得到超半数节点的票数，它就可以当选准 leader。
-
-2. Discovery（发现阶段）：在这个阶段，followers 跟准 leader 进行通信，同步 followers 最近接收的事务提议。
-
-3. Synchronization（同步阶段）:同步阶段主要是利用 leader 前一阶段获得的最新提议历史，同步集群中所有的副本。同步完成之后准 leader 才会成为真正的 leader。
-
-4. Broadcast（广播阶段）：到了这个阶段，Zookeeper 集群才能正式对外提供事务服务，并且 leader 可以进行消息广播。同时如果有新的节点加入，还需要对新节点进行同步。
-</code></pre><h2 id="ZooKeeper内部原理"><a href="#ZooKeeper内部原理" class="headerlink" title="ZooKeeper内部原理"></a>ZooKeeper内部原理</h2><h3 id="选举机制"><a href="#选举机制" class="headerlink" title="选举机制"></a>选举机制</h3><ul>
-<li>半数机制，集群中半数以上机器存活，集群可用。所以ZooKeeper适合安装奇数台服务器。</li>
-<li>ZooKeeper虽然在配置文件中并没有指定Master和Slave，但是ZooKeeper工作时，是由一个节点为Leader，其它为Follower，Leader是通过内部的选举机制临时产生的。</li>
-<li></li>
-</ul>
-<h3 id="节点类型"><a href="#节点类型" class="headerlink" title="节点类型"></a>节点类型</h3><ul>
-<li>持久型，客户端与服务器断开连接后，创建的节点不删除</li>
-<li>短暂，客户端与服务器断开连接后，创建的节点自己删除</li>
-<li></li>
-</ul>
-<ol>
-<li>持久化目录节点，在客户端与ZooKeeper断开连接之后，该节点依旧存在。</li>
-<li>持久化顺序编号目录节点，客户端与ZooKeeper断开连接后，该节点依旧存在，只是ZooKeeper给该节点名称进行顺序编号。</li>
-</ol>
-<blockquote>
-<p>说明：创建ZNode时设置顺序标识，ZNode名称后会附加一个值，顺序号是一个单调递增的计数器，由父节点维护。</p>
-</blockquote>
-<blockquote>
-<p>注意：在分布式系统中，顺序号可以被用于为所有的事件进行全局排序，这样客户端可以通过顺序号推断事件的顺序。</p>
-</blockquote>
-<ol start="3">
-<li>临时目录节点，客户端与ZooKeeper断开连接后，该节点被删除 </li>
-<li>临时顺序编号目录节点，客户端与ZooKeeper断开连接后，该节点被删除，只是ZooKeeper给该节点名称进行顺序编号。</li>
-</ol>
-<h3 id="Zab协议-Paxos算法"><a href="#Zab协议-Paxos算法" class="headerlink" title="Zab协议 | Paxos算法"></a>Zab协议 | Paxos算法</h3><p>Paxos 算法应该可以说是 ZooKeeper 的灵魂了。但 ZooKeeper 并没有完全采用 Paxos算法 ，而是使用 ZAB 协议作为其保证数据一致性的核心算法。另外，在ZooKeeper的官方文档中也指出，ZAB协议并不像 Paxos 算法那样，是一种通用的分布式一致性算法，它是一种特别为Zookeeper设计的崩溃可恢复的原子消息广播算法。</p>
-<h4 id="1-ZAB-协议"><a href="#1-ZAB-协议" class="headerlink" title="1. ZAB 协议"></a>1. ZAB 协议</h4><p>==ZAB（ZooKeeper Atomic Broadcast 原子广播） 协议是为分布式协调服务 ZooKeeper 专门设计的一种支持崩溃恢复的原子广播协议。 在 ZooKeeper 中，主要依赖 ZAB 协议来实现分布式数据一致性，基于该协议，ZooKeeper 实现了一种主备模式的系统架构来保持集群中各个副本之间的数据一致性。==</p>
-<h4 id="2-ZAB-协议两种基本的模式（崩溃恢复和消息广播）"><a href="#2-ZAB-协议两种基本的模式（崩溃恢复和消息广播）" class="headerlink" title="2. ZAB 协议两种基本的模式（崩溃恢复和消息广播）"></a>2. ZAB 协议两种基本的模式（崩溃恢复和消息广播）</h4><p>在整个服务框架启动过程中或是当 Leader 服务器出现故障情况时，ZAB协议就会进入恢复模式并选举产生新的Leader服务器。</p>
-<p>在选举产生新的 Leader 服务器，同时集群中已经有过半的机器与该Leader服务器完成 状态同步 之后，ZAB协议就会退出恢复模式。</p>
-<blockquote>
-<p>所谓的状态同步是指数据同步，用来保证集群中存在过半的机器能够和Leader服务器的数据状态保持一致。</p>
-</blockquote>
-<p>==当集群中已经有过半的Follower服务器完成了和Leader服务器的状态同步，那么整个服务框架就可以进人消息广播模式。==</p>
-<p>当一台服务器启动后加入集群，如果已经存在Leader服务器进行消息广播，那么新加入服务器会自觉进入数据恢复模式，找到Leader服务器，并与其进行数据同步，然后一起参与到消息广播流程中去。</p>
-<blockquote>
-<p>ZooKeeper设计成只允许唯一的一个Leader服务器来进行事务请求的处理。</p>
-</blockquote>
-<p>Leader服务器在接收到客户端的事务请求后，会生成对应的事务提案并发起一轮广播协议。而如果集群中的其他机器接收到客户端的事务请求，那么这些非Leader服务器会首先将这个事务请求转发给Leader服务器。</p>
-<hr>
-<h2 id="ZooKeeper安装"><a href="#ZooKeeper安装" class="headerlink" title="ZooKeeper安装"></a>ZooKeeper安装</h2><h3 id="本地模式安装部署"><a href="#本地模式安装部署" class="headerlink" title="本地模式安装部署"></a>本地模式安装部署</h3><h3 id="配置参数解读"><a href="#配置参数解读" class="headerlink" title="配置参数解读"></a>配置参数解读</h3><h2 id="ZooKeeper实战"><a href="#ZooKeeper实战" class="headerlink" title="ZooKeeper实战"></a>ZooKeeper实战</h2><h3 id="分布式安装部署"><a href="#分布式安装部署" class="headerlink" title="分布式安装部署"></a>分布式安装部署</h3><h3 id="测试-ZooKeeper-中的常见操作"><a href="#测试-ZooKeeper-中的常见操作" class="headerlink" title="测试 ZooKeeper 中的常见操作"></a>测试 ZooKeeper 中的常见操作</h3><h4 id="1-连接-ZooKeeper-服务"><a href="#1-连接-ZooKeeper-服务" class="headerlink" title="1. 连接 ZooKeeper 服务"></a>1. 连接 ZooKeeper 服务</h4><pre><code>./zkCli.sh -server 127.0.0.1:2181
-</code></pre><h4 id="2-常看常用命令（help命令）"><a href="#2-常看常用命令（help命令）" class="headerlink" title="2. 常看常用命令（help命令）"></a>2. 常看常用命令（help命令）</h4><pre><code>help
-</code></pre><h4 id="3-其它命令"><a href="#3-其它命令" class="headerlink" title="3. 其它命令"></a>3. 其它命令</h4><pre><code>1. ls 
-
-2. stat 查看节点状态
-
-3. ls2 查看节点信息与状态
-
-4. delete 删除节点，如果需要删除某一个节点，那么此节点必须没子节点才行
-
-5. set 更新节点数据内容
-
-6. get 获取指定节点的数据内容和节点的状态
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/mybatis generator 详细配置教程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/mybatis generator 详细配置教程/" itemprop="url">MyBatis generator 详细配置</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:46:08+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Mybatis/" itemprop="url" rel="index">
-                    <span itemprop="name">Mybatis</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  3,367
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  14
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;!DOCTYPE generatorConfiguration
-  PUBLIC &quot;-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN&quot;
-&quot;http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd&quot;&gt;
-&lt;!-- 配置生成器 --&gt;
-&lt;generatorConfiguration&gt;
-&lt;!-- 可以用于加载配置项或者配置文件，在整个配置文件中就可以使用${propertyKey}的方式来引用配置项
-    resource：配置资源加载地址，使用resource，MBG从classpath开始找，比如com/myproject/generatorConfig.properties        
-    url：配置资源加载地质，使用URL的方式，比如file:///C:/myfolder/generatorConfig.properties.
-    注意，两个属性只能选址一个;
-    另外，如果使用了mybatis-generator-maven-plugin，那么在pom.xml中定义的properties都可以直接在generatorConfig.xml中使用
-&lt;properties resource=&quot;&quot; url=&quot;&quot; /&gt;
- --&gt;
-
- &lt;!-- 在MBG工作的时候，需要额外加载的依赖包
-     location属性指明加载jar/zip包的全路径
-&lt;classPathEntry location=&quot;/Program Files/IBM/SQLLIB/java/db2java.zip&quot; /&gt;
-  --&gt;
-
-&lt;!-- 
-    context:生成一组对象的环境 
-    id:必选，上下文id，用于在生成错误时提示
-    defaultModelType:指定生成对象的样式
-        1，conditional：类似hierarchical；
-        2，flat：所有内容（主键，blob）等全部生成在一个对象中；
-        3，hierarchical：主键生成一个XXKey对象(key class)，Blob等单独生成一个对象，其他简单属性在一个对象中(record class)
-    targetRuntime:
-        1，MyBatis3：默认的值，生成基于MyBatis3.x以上版本的内容，包括XXXBySample；
-        2，MyBatis3Simple：类似MyBatis3，只是不生成XXXBySample；
-    introspectedColumnImpl：类全限定名，用于扩展MBG
---&gt;
-&lt;context id=&quot;mysql&quot; defaultModelType=&quot;hierarchical&quot; targetRuntime=&quot;MyBatis3Simple&quot; &gt;
-
-    &lt;!-- 自动识别数据库关键字，默认false，如果设置为true，根据SqlReservedWords中定义的关键字列表；
-        一般保留默认值，遇到数据库关键字（Java关键字），使用columnOverride覆盖
-     --&gt;
-    &lt;property name=&quot;autoDelimitKeywords&quot; value=&quot;false&quot;/&gt;
-    &lt;!-- 生成的Java文件的编码 --&gt;
-    &lt;property name=&quot;javaFileEncoding&quot; value=&quot;UTF-8&quot;/&gt;
-    &lt;!-- 格式化java代码 --&gt;
-    &lt;property name=&quot;javaFormatter&quot; value=&quot;org.mybatis.generator.api.dom.DefaultJavaFormatter&quot;/&gt;
-    &lt;!-- 格式化XML代码 --&gt;
-    &lt;property name=&quot;xmlFormatter&quot; value=&quot;org.mybatis.generator.api.dom.DefaultXmlFormatter&quot;/&gt;
-
-    &lt;!-- beginningDelimiter和endingDelimiter：指明数据库的用于标记数据库对象名的符号，比如ORACLE就是双引号，MYSQL默认是`反引号； --&gt;
-    &lt;property name=&quot;beginningDelimiter&quot; value=&quot;`&quot;/&gt;
-    &lt;property name=&quot;endingDelimiter&quot; value=&quot;`&quot;/&gt;
-
-    &lt;!-- 必须要有的，使用这个配置链接数据库
-        @TODO:是否可以扩展
-     --&gt;
-    &lt;jdbcConnection driverClass=&quot;com.mysql.jdbc.Driver&quot; connectionURL=&quot;jdbc:mysql:///pss&quot; userId=&quot;root&quot; password=&quot;admin&quot;&gt;
-        &lt;!-- 这里面可以设置property属性，每一个property属性都设置到配置的Driver上 --&gt;
-    &lt;/jdbcConnection&gt;
-
-    &lt;!-- java类型处理器 
-        用于处理DB中的类型到Java中的类型，默认使用JavaTypeResolverDefaultImpl；
-        注意一点，默认会先尝试使用Integer，Long，Short等来对应DECIMAL和 NUMERIC数据类型； 
-    --&gt;
-    &lt;javaTypeResolver type=&quot;org.mybatis.generator.internal.types.JavaTypeResolverDefaultImpl&quot;&gt;
-        &lt;!-- 
-            true：使用BigDecimal对应DECIMAL和 NUMERIC数据类型
-            false：默认,
-                scale&gt;0;length&gt;18：使用BigDecimal;
-                scale=0;length[10,18]：使用Long；
-                scale=0;length[5,9]：使用Integer；
-                scale=0;length&lt;5：使用Short；
-         --&gt;
-        &lt;property name=&quot;forceBigDecimals&quot; value=&quot;false&quot;/&gt;
-    &lt;/javaTypeResolver&gt;
-
-
-    &lt;!-- java模型创建器，是必须要的元素
-        负责：1，key类（见context的defaultModelType）；2，java类；3，查询类
-        targetPackage：生成的类要放的包，真实的包受enableSubPackages属性控制；
-        targetProject：目标项目，指定一个存在的目录下，生成的内容会放到指定目录中，如果目录不存在，MBG不会自动建目录
-     --&gt;
-    &lt;javaModelGenerator targetPackage=&quot;com._520it.mybatis.domain&quot; targetProject=&quot;src/main/java&quot;&gt;
-        &lt;!--  for MyBatis3/MyBatis3Simple
-            自动为每一个生成的类创建一个构造方法，构造方法包含了所有的field；而不是使用setter；
-         --&gt;
-        &lt;property name=&quot;constructorBased&quot; value=&quot;false&quot;/&gt;
-
-        &lt;!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false --&gt;
-        &lt;property name=&quot;enableSubPackages&quot; value=&quot;true&quot;/&gt;
-
-        &lt;!-- for MyBatis3 / MyBatis3Simple
-            是否创建一个不可变的类，如果为true，
-            那么MBG会创建一个没有setter方法的类，取而代之的是类似constructorBased的类
-         --&gt;
-        &lt;property name=&quot;immutable&quot; value=&quot;false&quot;/&gt;
-
-        &lt;!-- 设置一个根对象，
-            如果设置了这个根对象，那么生成的keyClass或者recordClass会继承这个类；在Table的rootClass属性中可以覆盖该选项
-            注意：如果在key class或者record class中有root class相同的属性，MBG就不会重新生成这些属性了，包括：
-                1，属性名相同，类型相同，有相同的getter/setter方法；
-         --&gt;
-        &lt;property name=&quot;rootClass&quot; value=&quot;com._520it.mybatis.domain.BaseDomain&quot;/&gt;
-
-        &lt;!-- 设置是否在getter方法中，对String类型字段调用trim()方法 --&gt;
-        &lt;property name=&quot;trimStrings&quot; value=&quot;true&quot;/&gt;
-    &lt;/javaModelGenerator&gt;
-
-
-    &lt;!-- 生成SQL map的XML文件生成器，
-        注意，在Mybatis3之后，我们可以使用mapper.xml文件+Mapper接口（或者不用mapper接口），
-            或者只使用Mapper接口+Annotation，所以，如果 javaClientGenerator配置中配置了需要生成XML的话，这个元素就必须配置
-        targetPackage/targetProject:同javaModelGenerator
-     --&gt;
-    &lt;sqlMapGenerator targetPackage=&quot;com._520it.mybatis.mapper&quot; targetProject=&quot;src/main/resources&quot;&gt;
-        &lt;!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false --&gt;
-        &lt;property name=&quot;enableSubPackages&quot; value=&quot;true&quot;/&gt;
-    &lt;/sqlMapGenerator&gt;
-
-
-    &lt;!-- 对于mybatis来说，即生成Mapper接口，注意，如果没有配置该元素，那么默认不会生成Mapper接口 
-        targetPackage/targetProject:同javaModelGenerator
-        type：选择怎么生成mapper接口（在MyBatis3/MyBatis3Simple下）：
-            1，ANNOTATEDMAPPER：会生成使用Mapper接口+Annotation的方式创建（SQL生成在annotation中），不会生成对应的XML；
-            2，MIXEDMAPPER：使用混合配置，会生成Mapper接口，并适当添加合适的Annotation，但是XML会生成在XML中；
-            3，XMLMAPPER：会生成Mapper接口，接口完全依赖XML；
-        注意，如果context是MyBatis3Simple：只支持ANNOTATEDMAPPER和XMLMAPPER
-    --&gt;
-    &lt;javaClientGenerator targetPackage=&quot;com._520it.mybatis.mapper&quot; type=&quot;ANNOTATEDMAPPER&quot; targetProject=&quot;src/main/java&quot;&gt;
-        &lt;!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false --&gt;
-        &lt;property name=&quot;enableSubPackages&quot; value=&quot;true&quot;/&gt;
-
-        &lt;!-- 可以为所有生成的接口添加一个父接口，但是MBG只负责生成，不负责检查
-        &lt;property name=&quot;rootInterface&quot; value=&quot;&quot;/&gt;
-         --&gt;
-    &lt;/javaClientGenerator&gt;
-
-    &lt;!-- 选择一个table来生成相关文件，可以有一个或多个table，必须要有table元素
-        选择的table会生成一下文件：
-        1，SQL map文件
-        2，生成一个主键类；
-        3，除了BLOB和主键的其他字段的类；
-        4，包含BLOB的类；
-        5，一个用户生成动态查询的条件类（selectByExample, deleteByExample），可选；
-        6，Mapper接口（可选）
-        tableName（必要）：要生成对象的表名；
-        注意：大小写敏感问题。正常情况下，MBG会自动的去识别数据库标识符的大小写敏感度，在一般情况下，MBG会
-            根据设置的schema，catalog或tablename去查询数据表，按照下面的流程：
-            1，如果schema，catalog或tablename中有空格，那么设置的是什么格式，就精确的使用指定的大小写格式去查询；
-            2，否则，如果数据库的标识符使用大写的，那么MBG自动把表名变成大写再查找；
-            3，否则，如果数据库的标识符使用小写的，那么MBG自动把表名变成小写再查找；
-            4，否则，使用指定的大小写格式查询；
-        另外的，如果在创建表的时候，使用的&quot;&quot;把数据库对象规定大小写，就算数据库标识符是使用的大写，在这种情况下也会使用给定的大小写来创建表名；
-        这个时候，请设置delimitIdentifiers=&quot;true&quot;即可保留大小写格式；
-        可选：
-        1，schema：数据库的schema；
-        2，catalog：数据库的catalog；
-        3，alias：为数据表设置的别名，如果设置了alias，那么生成的所有的SELECT SQL语句中，列名会变成：alias_actualColumnName
-        4，domainObjectName：生成的domain类的名字，如果不设置，直接使用表名作为domain类的名字；可以设置为somepck.domainName，那么会自动把domainName类再放到somepck包里面；
-        5，enableInsert（默认true）：指定是否生成insert语句；
-        6，enableSelectByPrimaryKey（默认true）：指定是否生成按照主键查询对象的语句（就是getById或get）；
-        7，enableSelectByExample（默认true）：MyBatis3Simple为false，指定是否生成动态查询语句；
-        8，enableUpdateByPrimaryKey（默认true）：指定是否生成按照主键修改对象的语句（即update)；
-        9，enableDeleteByPrimaryKey（默认true）：指定是否生成按照主键删除对象的语句（即delete）；
-        10，enableDeleteByExample（默认true）：MyBatis3Simple为false，指定是否生成动态删除语句；
-        11，enableCountByExample（默认true）：MyBatis3Simple为false，指定是否生成动态查询总条数语句（用于分页的总条数查询）；
-        12，enableUpdateByExample（默认true）：MyBatis3Simple为false，指定是否生成动态修改语句（只修改对象中不为空的属性）；
-        13，modelType：参考context元素的defaultModelType，相当于覆盖；
-        14，delimitIdentifiers：参考tableName的解释，注意，默认的delimitIdentifiers是双引号，如果类似MYSQL这样的数据库，使用的是`（反引号，那么还需要设置context的beginningDelimiter和endingDelimiter属性）
-        15，delimitAllColumns：设置是否所有生成的SQL中的列名都使用标识符引起来。默认为false，delimitIdentifiers参考context的属性
-        注意，table里面很多参数都是对javaModelGenerator，context等元素的默认属性的一个复写；
-     --&gt;
-    &lt;table tableName=&quot;userinfo&quot; &gt;
-
-        &lt;!-- 参考 javaModelGenerator 的 constructorBased属性--&gt;
-        &lt;property name=&quot;constructorBased&quot; value=&quot;false&quot;/&gt;
-
-        &lt;!-- 默认为false，如果设置为true，在生成的SQL中，table名字不会加上catalog或schema； --&gt;
-        &lt;property name=&quot;ignoreQualifiersAtRuntime&quot; value=&quot;false&quot;/&gt;
-
-        &lt;!-- 参考 javaModelGenerator 的 immutable 属性 --&gt;
-        &lt;property name=&quot;immutable&quot; value=&quot;false&quot;/&gt;
-
-        &lt;!-- 指定是否只生成domain类，如果设置为true，只生成domain类，如果还配置了sqlMapGenerator，那么在mapper XML文件中，只生成resultMap元素 --&gt;
-        &lt;property name=&quot;modelOnly&quot; value=&quot;false&quot;/&gt;
-
-        &lt;!-- 参考 javaModelGenerator 的 rootClass 属性 
-        &lt;property name=&quot;rootClass&quot; value=&quot;&quot;/&gt;
-         --&gt;
-
-        &lt;!-- 参考javaClientGenerator 的  rootInterface 属性
-        &lt;property name=&quot;rootInterface&quot; value=&quot;&quot;/&gt;
-        --&gt;
-
-        &lt;!-- 如果设置了runtimeCatalog，那么在生成的SQL中，使用该指定的catalog，而不是table元素上的catalog 
-        &lt;property name=&quot;runtimeCatalog&quot; value=&quot;&quot;/&gt;
-        --&gt;
-
-        &lt;!-- 如果设置了runtimeSchema，那么在生成的SQL中，使用该指定的schema，而不是table元素上的schema 
-        &lt;property name=&quot;runtimeSchema&quot; value=&quot;&quot;/&gt;
-        --&gt;
-
-        &lt;!-- 如果设置了runtimeTableName，那么在生成的SQL中，使用该指定的tablename，而不是table元素上的tablename 
-        &lt;property name=&quot;runtimeTableName&quot; value=&quot;&quot;/&gt;
-        --&gt;
-
-        &lt;!-- 注意，该属性只针对MyBatis3Simple有用；
-            如果选择的runtime是MyBatis3Simple，那么会生成一个SelectAll方法，如果指定了selectAllOrderByClause，那么会在该SQL中添加指定的这个order条件；
-         --&gt;
-        &lt;property name=&quot;selectAllOrderByClause&quot; value=&quot;age desc,username asc&quot;/&gt;
-
-        &lt;!-- 如果设置为true，生成的model类会直接使用column本身的名字，而不会再使用驼峰命名方法，比如BORN_DATE，生成的属性名字就是BORN_DATE,而不会是bornDate --&gt;
-        &lt;property name=&quot;useActualColumnNames&quot; value=&quot;false&quot;/&gt;
-
-
-        &lt;!-- generatedKey用于生成生成主键的方法，
-            如果设置了该元素，MBG会在生成的&lt;insert&gt;元素中生成一条正确的&lt;selectKey&gt;元素，该元素可选
-            column:主键的列名；
-            sqlStatement：要生成的selectKey语句，有以下可选项：
-                Cloudscape:相当于selectKey的SQL为： VALUES IDENTITY_VAL_LOCAL()
-                DB2       :相当于selectKey的SQL为： VALUES IDENTITY_VAL_LOCAL()
-                DB2_MF    :相当于selectKey的SQL为：SELECT IDENTITY_VAL_LOCAL() FROM SYSIBM.SYSDUMMY1
-                Derby      :相当于selectKey的SQL为：VALUES IDENTITY_VAL_LOCAL()
-                HSQLDB      :相当于selectKey的SQL为：CALL IDENTITY()
-                Informix  :相当于selectKey的SQL为：select dbinfo(&apos;sqlca.sqlerrd1&apos;) from systables where tabid=1
-                MySql      :相当于selectKey的SQL为：SELECT LAST_INSERT_ID()
-                SqlServer :相当于selectKey的SQL为：SELECT SCOPE_IDENTITY()
-                SYBASE      :相当于selectKey的SQL为：SELECT @@IDENTITY
-                JDBC      :相当于在生成的insert元素上添加useGeneratedKeys=&quot;true&quot;和keyProperty属性
-        &lt;generatedKey column=&quot;&quot; sqlStatement=&quot;&quot;/&gt;
-         --&gt;
-
-        &lt;!-- 
-            该元素会在根据表中列名计算对象属性名之前先重命名列名，非常适合用于表中的列都有公用的前缀字符串的时候，
-            比如列名为：CUST_ID,CUST_NAME,CUST_EMAIL,CUST_ADDRESS等；
-            那么就可以设置searchString为&quot;^CUST_&quot;，并使用空白替换，那么生成的Customer对象中的属性名称就不是
-            custId,custName等，而是先被替换为ID,NAME,EMAIL,然后变成属性：id，name，email；
-            注意，MBG是使用java.util.regex.Matcher.replaceAll来替换searchString和replaceString的，
-            如果使用了columnOverride元素，该属性无效；
-        &lt;columnRenamingRule searchString=&quot;&quot; replaceString=&quot;&quot;/&gt;
-         --&gt;
-
-
-         &lt;!-- 用来修改表中某个列的属性，MBG会使用修改后的列来生成domain的属性；
-             column:要重新设置的列名；
-             注意，一个table元素中可以有多个columnOverride元素哈~
-          --&gt;
-         &lt;columnOverride column=&quot;username&quot;&gt;
-             &lt;!-- 使用property属性来指定列要生成的属性名称 --&gt;
-             &lt;property name=&quot;property&quot; value=&quot;userName&quot;/&gt;
-
-             &lt;!-- javaType用于指定生成的domain的属性类型，使用类型的全限定名
-             &lt;property name=&quot;javaType&quot; value=&quot;&quot;/&gt;
-              --&gt;
-
-             &lt;!-- jdbcType用于指定该列的JDBC类型 
-             &lt;property name=&quot;jdbcType&quot; value=&quot;&quot;/&gt;
-              --&gt;
-
-             &lt;!-- typeHandler 用于指定该列使用到的TypeHandler，如果要指定，配置类型处理器的全限定名
-                 注意，mybatis中，不会生成到mybatis-config.xml中的typeHandler
-                 只会生成类似：where id = #{id,jdbcType=BIGINT,typeHandler=com._520it.mybatis.MyTypeHandler}的参数描述
-             &lt;property name=&quot;jdbcType&quot; value=&quot;&quot;/&gt;
-             --&gt;
-
-             &lt;!-- 参考table元素的delimitAllColumns配置，默认为false
-             &lt;property name=&quot;delimitedColumnName&quot; value=&quot;&quot;/&gt;
-              --&gt;
-         &lt;/columnOverride&gt;
-
-         &lt;!-- ignoreColumn设置一个MGB忽略的列，如果设置了改列，那么在生成的domain中，生成的SQL中，都不会有该列出现 
-             column:指定要忽略的列的名字；
-             delimitedColumnName：参考table元素的delimitAllColumns配置，默认为false
-             注意，一个table元素中可以有多个ignoreColumn元素
-         &lt;ignoreColumn column=&quot;deptId&quot; delimitedColumnName=&quot;&quot;/&gt;
-         --&gt;
-    &lt;/table&gt;
-
-&lt;/context&gt;
-
-&lt;/generatorConfiguration&gt;
-</code></pre><hr>
-<h4 id="generatorConfig-xml"><a href="#generatorConfig-xml" class="headerlink" title="generatorConfig.xml"></a>generatorConfig.xml</h4><pre><code>1.xml文件
-
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;!DOCTYPE generatorConfiguration
-        PUBLIC &quot;-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN&quot;
-        &quot;http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd&quot;&gt;
-
-&lt;generatorConfiguration&gt;
-    &lt;context id=&quot;mysqlgenerator&quot; targetRuntime=&quot;MyBatis3&quot;&gt;
-        &lt;jdbcConnection connectionURL=&quot;jdbc:mysql://127.0.0.1:3306/hisen&quot;
-                        driverClass=&quot;com.mysql.jdbc.Driver&quot;
-                        password=&quot;root&quot;
-                        userId=&quot;hisen&quot;/&gt;
-        &lt;!--生成Model(实体类，与数据库字段对应的bean)类存放位置--&gt;
-        &lt;javaModelGenerator targetPackage=&quot;com.hisen.entity&quot; targetProject=&quot;src/main/java&quot;&gt;
-            &lt;property name=&quot;enableSubPackages&quot; value=&quot;true&quot;/&gt;
-            &lt;property name=&quot;trimStrings&quot; value=&quot;true&quot;/&gt;
-        &lt;/javaModelGenerator&gt;
-        &lt;!--生成映射(xxxmapper.xml)文件存放位置--&gt;
-        &lt;sqlMapGenerator targetPackage=&quot;mapper&quot; targetProject=&quot;src/main/resources&quot;&gt;
-            &lt;property name=&quot;enableSubPackages&quot; value=&quot;true&quot;/&gt;
-        &lt;/sqlMapGenerator&gt;
-        &lt;!--生成Dao类存放位置--&gt;
-        &lt;javaClientGenerator type=&quot;XMLMAPPER&quot; targetPackage=&quot;com.hisen.mapper&quot;
-                             targetProject=&quot;src/main/java&quot;&gt;
-            &lt;property name=&quot;enableSubPackages&quot; value=&quot;true&quot;/&gt;
-        &lt;/javaClientGenerator&gt;
-
-        &lt;table tableName=&quot;appointment&quot;/&gt;
-        &lt;table tableName=&quot;user&quot;/&gt;
-        &lt;table tableName=&quot;user_info&quot;/&gt;
-
-    &lt;/context&gt;
-
-&lt;/generatorConfiguration&gt;
-</code></pre><blockquote>
-<p>提示：这里需要特别注意<table tablename="">，这个对应着数据库中的数据表的。想生成哪个就这个数据表名称填上去。</table></p>
-</blockquote>
-<pre><code>2.pom.xml
-
-&lt;plugin&gt;
-  &lt;groupId&gt;org.mybatis.generator&lt;/groupId&gt;
-  &lt;artifactId&gt;mybatis-generator-maven-plugin&lt;/artifactId&gt;
-  &lt;version&gt;1.3.2&lt;/version&gt;
-  &lt;dependencies&gt;
-    &lt;dependency&gt;
-      &lt;groupId&gt;mysql&lt;/groupId&gt;
-      &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
-      &lt;version&gt;5.1.5&lt;/version&gt;
-    &lt;/dependency&gt;
-  &lt;/dependencies&gt;
-  &lt;configuration&gt;
-    &lt;overwrite&gt;true&lt;/overwrite&gt;
-  &lt;/configuration&gt;
-&lt;/plugin&gt;
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/mybatis-注解方式实现/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/mybatis-注解方式实现/" itemprop="url">MyBatis 注解</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:46:21+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Mybatis/" itemprop="url" rel="index">
-                    <span itemprop="name">Mybatis</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  793
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="Mybatis框架基于注解"><a href="#Mybatis框架基于注解" class="headerlink" title="Mybatis框架基于注解"></a>Mybatis框架基于注解</h2><p>在mybatis框架下基于注解方式实现对现有数据的增删改查操作。</p>
-<p>[TOC]</p>
-<h4 id="1-建立配置文件-conf-xml"><a href="#1-建立配置文件-conf-xml" class="headerlink" title="1.建立配置文件(conf.xml)"></a>1.建立配置文件(conf.xml)</h4><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;!DOCTYPE configuration PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;
-&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
-&lt;configuration&gt;
-    &lt;!-- 
-    environments:开发模式
-    work:工作模式
-    default=&quot;development&quot;，id=&quot;development&quot;，两个的属性值必须一致
-     --&gt;    
-     &lt;environments default=&quot;development&quot;&gt;
-         &lt;environment id=&quot;development&quot;&gt;
-             &lt;transactionManager type=&quot;JDBC&quot;/&gt;
-             &lt;dataSource type=&quot;POOLED&quot;&gt;
-                 &lt;property name=&quot;driver&quot; value=&quot;com.mysql.jdbc.Driver&quot;/&gt;
-                 &lt;property name=&quot;url&quot; value=&quot;jdbc:mysql://localhost:3306/mybatis&quot;/&gt;
-                 &lt;property name=&quot;username&quot; value=&quot;root&quot;/&gt;
-                 &lt;property name=&quot;password&quot; value=&quot;lxn123&quot;/&gt;
-             &lt;/dataSource&gt;    
-         &lt;/environment&gt;
-     &lt;/environments&gt;
-
-     &lt;!-- 在配置文件中 关联包下的 接口类--&gt;
-     &lt;mappers&gt;
-         &lt;mapper class=&quot;com.atguigu.mybatis.test3.UserMapper&quot;/&gt;
-     &lt;/mappers&gt;
-&lt;/configuration&gt;
-</code></pre><h4 id="2-建立接口"><a href="#2-建立接口" class="headerlink" title="2.建立接口"></a>2.建立接口</h4><p>因为这是基于注解的方式实现，所以在定义方法上配置应用的注解，注解中含有sql语句，需要提示的是这个接口不需要类去实现它。</p>
-<pre><code>package com.atguigu.mybatis.test3;
-
-import java.util.List;
-
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
-
-import com.atguigu.mybatis.test.User;
-
-public interface UserMapper {
-
-    /*
-     * 这是基于注解的映射方式，实现对数据的增删改查，将sql语句直接写在注解的括号中
-     * 这是一个接口，其不需要类去实现它
-     * 下边分别是插入，删除，修改，查询一个记录，查询所有的记录
-     * */
-
-    @Insert(&quot;insert into users(name,age) values(#{name},#{age})&quot;)
-    public void insertT(User user);
-
-    @Delete(&quot;delete from users where id=#{id}&quot;)
-    public void deleteById(int id);
-
-    @Update(&quot;update users set name=#{name},age=#{age} where id=#{id}&quot;)
-    public void updateT(User user);
-
-    @Select(&quot;select * from users where id=#{id}&quot;)
-    public User getUser(int id);
-
-    @Select(&quot;select * from users&quot;)
-    public List&lt;User&gt; getAllUsers();
-}
-</code></pre><h4 id="3-主体-entity"><a href="#3-主体-entity" class="headerlink" title="3.主体(entity)"></a>3.主体(entity)</h4><p>这里的案例写的是一个用户User，包括了用户的id/name/age等几个属性，然后需要给出实现它的getter/setter方法以及toString()方法。</p>
-<h4 id="4-创建MybatisUtils类-加载和构建sqlSession"><a href="#4-创建MybatisUtils类-加载和构建sqlSession" class="headerlink" title="4.创建MybatisUtils类(加载和构建sqlSession)"></a>4.创建MybatisUtils类(加载和构建sqlSession)</h4><pre><code>package com.atguigu.mybatis.test;
-
-import java.io.InputStream;
-
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-
-public class MybatisUtils {
-    public static SqlSessionFactory getFactory(){
-        String resource=&quot;conf.xml&quot;;
-
-        //加载mybatis 的配置文件（它也加载关联的映射文件）
-        InputStream is=MybatisUtils.class.getClassLoader().getResourceAsStream(resource);
-
-        //构建sqlSession 的工厂
-        SqlSessionFactory factory=new SqlSessionFactoryBuilder().build(is);
-        return factory;
-    }
-}
-</code></pre><h4 id="5-测试类文件"><a href="#5-测试类文件" class="headerlink" title="5.测试类文件"></a>5.测试类文件</h4><p>这些测试类文件表示分别测试在实现过程中的数据的增删改查等操作。</p>
-<pre><code>package com.atguigu.mybatis.test3;
-
-import java.util.List;
-
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.junit.Test;
-
-import com.atguigu.mybatis.test.MybatisUtils;
-import com.atguigu.mybatis.test.User;
-
-public class UserMapperTest {
-
-    @Test
-    //插入数据
-    public void testInsert(){
-        SqlSessionFactory factory=MybatisUtils.getFactory();
-        SqlSession session=factory.openSession(true);
-        //使用反射的方法
-        UserMapper mapper=session.getMapper(UserMapper.class);
-        mapper.insertT(new User(-1, &quot;p&quot;, 4));
-
-        session.close();
-    }
-
-    @Test
-    //删除数据
-    public void testDelete(){
-        SqlSessionFactory factory=MybatisUtils.getFactory();
-        SqlSession session=factory.openSession(true);
-        UserMapper mapper=session.getMapper(UserMapper.class);
-        mapper.deleteById(1);
-        session.close();
-    }
-
-    @Test
-    //修改数据
-    public void testUpdate(){
-        SqlSessionFactory factory=MybatisUtils.getFactory();
-        SqlSession session=factory.openSession(true);
-        UserMapper mapper=session.getMapper(UserMapper.class);
-        mapper.updateT(new User(2, &quot;jjjjj&quot;, 232));
-        session.close();
-    }
-
-    @Test
-    //获取一条数据
-    public void testGetUser(){
-        SqlSessionFactory factory=MybatisUtils.getFactory();
-        SqlSession session=factory.openSession(true);
-        UserMapper mapper=session.getMapper(UserMapper.class);
-        User user=mapper.getUser(2);
-        session.close();
-        System.out.println(user);
-    }
-
-    @Test
-    //获取所有数据
-    public void testGetAllUsers(){
-        SqlSessionFactory factory=MybatisUtils.getFactory();
-        SqlSession session=factory.openSession(true);
-        UserMapper mapper=session.getMapper(UserMapper.class);
-        List&lt;User&gt; users=mapper.getAllUsers();
-
-        session.close();
-        System.out.println(users);
-    }
-}
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/request response/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/request response/" itemprop="url">Response Request</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:48:01+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Response-Request/" itemprop="url" rel="index">
-                    <span itemprop="name">Response Request</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1,141
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="1-response"><a href="#1-response" class="headerlink" title="1.response"></a>1.response</h2><h4 id="1-输出数据"><a href="#1-输出数据" class="headerlink" title="1.输出数据"></a>1.输出数据</h4><p>程序以什么码表输出，就需要控制浏览器以什么码表打开，所以有两种方式控制浏览器以什么码表打开页面：</p>
-<pre><code>1.response.setHeader(&quot;Content-type&quot;,&quot;text/html;charset=utf-8&quot;);//设置网页显示打开的的编码方式
-2.response.setContentType(&quot;text/html;charset=utf-8&quot;);//默认调用setHeader和setCharacterEncoding
-</code></pre><blockquote>
-<p>注意：使用HTML技术中的<meta>标签可以模拟一个http响应头 <code>&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html;charset=utf-8&quot;/&gt;</code></p>
-<blockquote>
-<p>注意：response可以使用setCharacterEncoding方法设置码表。字符流输出：PrintWritet-&gt;response-&gt;浏览器,response-&gt;浏览器默认使用iso-8859编码。</p>
-</blockquote>
-</blockquote>
-<h4 id="2-文件下载"><a href="#2-文件下载" class="headerlink" title="2.文件下载"></a>2.文件下载</h4><p>1.首先使用ServerContext的getRealPath()方法，然后再使用InputStream和OutputStream流类文件进行文件下载操作，同时需要注意，当下载文件是中文名，那么需要经过URL编码URLEncoding.encode进行编码。</p>
-<h4 id="3-随机图片"><a href="#3-随机图片" class="headerlink" title="3.随机图片"></a>3.随机图片</h4><p>1.使用BufferedImage在内存生成图片，再使用ImageIO输出。2.画图使用Graphics,旋转使用Graphics2D。3.汉字的区间：\u4e00-\u9fa5 。</p>
-<h4 id="4-刷新与缓存"><a href="#4-刷新与缓存" class="headerlink" title="4.刷新与缓存"></a>4.刷新与缓存</h4><pre><code>1.刷新：使用刷新操作，一般我们不在servlet里加refresh头，而是在jsp中加入&lt;meta&gt;头模拟。
-2.缓存：加入expires头，当前时间+要缓存的时长
-</code></pre><h4 id="5-请求重定向"><a href="#5-请求重定向" class="headerlink" title="5.请求重定向"></a>5.请求重定向</h4><pre><code>1.重定向：只需要设置状态码和 location 头，或者直接使用response的setRedirect方法，向服务器两次请求。浏览器会改变地址栏，一般使用于登录、购物等场景。
-
-2.转发:调用ServletContex对象的getRequestDispatcher方法，再调用forward方法。向服务器一次请求，浏览器地址栏不变。
-</code></pre><blockquote>
-<p>注意：1.getOutputStream和getWriter方法跟别用于输出二进制数据、输出文本数据的ServletOutputStream、Printwriter对象，这两个方法相互排斥，只能调用其中一个，否则抛IllegalStateException异常。2.response的输出流会自己关闭。Servlet的service方法结束后，Servlet引擎会检查并调用close方法关闭该输出流对象。</p>
-</blockquote>
-<h2 id="2-request"><a href="#2-request" class="headerlink" title="2.request"></a>2.request</h2><h4 id="1-两个名词解释："><a href="#1-两个名词解释：" class="headerlink" title="1.两个名词解释："></a>1.两个名词解释：</h4><pre><code>1.URI:标识某个资源
-2.URL:标识互联网上某个资源
-</code></pre><h4 id="2-方法："><a href="#2-方法：" class="headerlink" title="2.方法："></a>2.方法：</h4><pre><code>1.getRequestURI用于权限拦截，访问统计
-2.getRemoteAddr用于得到客户机IP地址
-3.getMethod得到客户机请求方式
-</code></pre><h4 id="3-request对象获取数据的四种方式："><a href="#3-request对象获取数据的四种方式：" class="headerlink" title="3.request对象获取数据的四种方式："></a>3.request对象获取数据的四种方式：</h4><pre><code>1.getParameter
-2.getParameterNames
-3.getParameterValues
-4.getParameterMap(可结合JavaBean使用) (getInputStream用于文件上传)
-</code></pre><h4 id="4-中文乱码："><a href="#4-中文乱码：" class="headerlink" title="4.中文乱码："></a>4.中文乱码：</h4><p>URL后面如果有中文数据，需要编码后再提交。表单提交的数据使用的码表和该页面的码表一致，而getParameter方法默认使用ISO-8859码表。</p>
-<p>解决方案：</p>
-<pre><code>1.对于post提交的数据，在获取数据前要使用request对象的setCharacterEncoding设置码表。
-2.对于get提交的数据，只能手工解决。先对数据调用getBytes(&quot;ISO-8859-1&quot;)获取二进制字节，再用特定码表构建字符串。
-3.超链提交的中文，解决办法同get提交的数据。
-</code></pre><p>或者可以通过改服务器配置来解决乱码问题，但一般不建议使用。</p>
-<pre><code>1.URIEncoding:改tomcat的配置文件conf/server.xml的连接器&lt;Connector&gt;中的URIEncoding属性
-
-2.useBodyEncodingForURI:将conf/server.xml的连接器&lt;Connector&gt;中的useBodyEncodingForURI置为true
-</code></pre><h4 id="5-请求转发-应用场景：mvc设计模式"><a href="#5-请求转发-应用场景：mvc设计模式" class="headerlink" title="5.请求转发(应用场景：mvc设计模式)"></a>5.请求转发(应用场景：mvc设计模式)</h4><pre><code>model : javabean;
-view : jsp;
-controller : servlet
-</code></pre><blockquote>
-<p>使用request域对象把数据带给转发资源。调用request对象的getRequestDispatcher方法，再调用forward方法。一次请求，浏览器地址栏不变。</p>
-</blockquote>
-<p><strong>forward 细节</strong></p>
-<pre><code>1.不能在关闭输出流后再调用转发，也不能调用两次，否则会抛出异常。
-2.跳转之前会清空response中的数据。即数据只是写入到缓冲区而没真正输出到客户端，则可调用forward方法，原来写入到缓冲区的内容被清空，但响应头字段信息保持。
-3.include方法可以用于包含一些公共页面(一般不在servlet中包含)
-</code></pre><h4 id="6-地址的写法"><a href="#6-地址的写法" class="headerlink" title="6.地址的写法"></a>6.地址的写法</h4><p>以斜杠/开头。如果是给服务器用，则/代表当前web应用；如果给浏览器用，则/代表网站。</p>
-<p>例子:目录结构如下</p>
-<pre><code>mail---------------------------Web应用所在目录
-           |----form1.html
-           |----WEB-INF目录
-                    |---------classes目录
-                    |---------lib目录
-                    |---------web.xml
-
-request.getRequestDispatcher(&quot;/form1.html&quot;)
-response.sendRedirect(&quot;mail/form1.html&quot;)
-this.getServletContext().getRealPath(&quot;/form1.html&quot;)
-this.getServletContext().getResourceAsStream(&quot;/form1.html&quot;)
-&lt;a href=&quot;/mail/form1.html&quot;&gt;
-&lt;form action=&quot;/mail/form1.html&quot;&gt;
-其中，1,3,4是给服务器用;2,5,6是浏览器用
-</code></pre><h4 id="7-防盗链"><a href="#7-防盗链" class="headerlink" title="7.防盗链"></a>7.防盗链</h4><p>读取referer请求头，不合要求则重定向。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/thymeleaf 模板引擎/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/thymeleaf 模板引擎/" itemprop="url">thymeleaf 模板</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:33:38+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/thymeleaf-模板/" itemprop="url" rel="index">
-                    <span itemprop="name">thymeleaf 模板</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  929
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="thymeleaf-模板"><a href="#thymeleaf-模板" class="headerlink" title="thymeleaf 模板"></a>thymeleaf 模板</h2><h4 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h4><pre><code>1.引入标签：首先要在html标签里引入 xmlns:th=&quot;http://www.thymeleaf.org&quot; 才能使用th:*这样的语法。
-
-2.获取变量值：通过在标签内部，使用 ${} 来取值，对于javaBean的话，使用 变量名.属性名 来获取，跟EL表达式一样
-</code></pre><p>　　注意：只有写在标签内部才会生效，例如： th：text=“hello” 的意思是使用hello来代替p之前的内容，p里原来的值是为了给前端开发展示用的，这样做容易实现前后端分离。<br>　　<br>　　3.引入URL：thymeleaf对于引入URL是采用@{…}来获取的。例如：  <a th:href="@{http://www.baidu.com}">绝对路径</a> 是访问绝对路径下的URL， <a th:href="@{/}">相对路径</a>     是访问相对路径下的URL。<a th:href="@{css/bootstrap.min.css}">  是引入默认的static下的css文件夹下的bootstrap文件，类似的标签有: th:href 和 th:src 。<br>　　<br>　　4.字符串替换：<span th:text="'Welcome to our application, ' + ${user.name} + '!'"></span> 或者 <span th:text="|Welcome to our application, ${user.name}!|"></span>       都可以实现替换。注意：|…|中只能包含变量表达式${…}，不能包含其他常量、条件表达式等。<br>　　<br>　　5.循环：th：each是对于结果可以进行遍历的数据集。如：　<br>　　<br>　　    <tr th:each="prod : ${prods}"><br>　　        <td th:text="${prod.name}">Onions</td><br>　　        <td th:text="${prod.price}">2.41</td><br>　　    </tr>
-　　    </a></p>
-<h4 id="thymeleaf模版引擎"><a href="#thymeleaf模版引擎" class="headerlink" title="thymeleaf模版引擎"></a>thymeleaf模版引擎</h4><pre><code>表达式:
-    ${java变量名称}  获取变量值
-    @{路径}  :  自动添加context-path ,  自动加上工程名称
-    ~{common/文件名 :: 要引入的内容ID}   ,代码片段表达式
-
-属性:
-    th:text : 输出文本到标签体内
-    th:class: 动态修改样式
-    th:href : 路径
-
-条件表达式:
-    th:if=&quot;${条件}&quot;  若条件成立,则显示当前元素,否则不显示
-
-    th:switch=&quot;${值}&quot;
-        th:case=&quot;xx&quot; 输出
-        th:case=&quot;yy&quot; 输出
-        th:case=&quot;*&quot;  默认处理方式
-
-    三元运算符:
-        ${条件} ? 条件成立 : 条件不成立
-
-循环表达式:
-    th:each=&quot;变量名 : ${集合}&quot;
-
-    遍历页码: #numbers.sequence(起始值,结束值)
-
-${history.red.split(&apos;,&apos;)[0]}
-</code></pre><hr>
-<h4 id="thymeleaf-案例"><a href="#thymeleaf-案例" class="headerlink" title="thymeleaf 案例"></a>thymeleaf 案例</h4><pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;zh-CN&quot;&gt;
-&lt;head&gt;
-    &lt;script type=&quot;text/javascript&quot; th:src=&quot;@{https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js}&quot;&gt;&lt;/script&gt;
-    &lt;link th:href=&quot;@{https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css}&quot; rel=&quot;stylesheet&quot;/&gt;
-    &lt;link th:href=&quot;@{/css/page.css}&quot; rel=&quot;stylesheet&quot;/&gt;
-    &lt;link rel=&quot;icon&quot; th:href=&quot;@{/images/favicon.ico}&quot; type=&quot;image/x-icon&quot;/&gt;
-    &lt;meta charset=&quot;UTF-8&quot;/&gt;
-    &lt;title&gt;用户管理&lt;/title&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-&lt;div class=&quot;contentDiv&quot;&gt;
-
-    &lt;h5&gt;用户管理&lt;/h5&gt;
-    &lt;legend&gt;
-        &lt;strong&gt;用户管理&lt;/strong&gt;
-    &lt;/legend&gt;
-
-    &lt;form th:action=&quot;&quot; method=&quot;post&quot; class=&quot;form-horizontal&quot;&gt;
-
-        &lt;input type=&quot;hidden&quot; name=&quot;id&quot; th:value=&quot;${user.id}&quot;/&gt;
-
-        &lt;div class=&quot;form-group&quot;&gt;
-            &lt;label for=&quot;username&quot; class=&quot;col-sm-2 control-label&quot;&gt;用户名:&lt;/label&gt;
-            &lt;div class=&quot;col-xs-4&quot;&gt;
-                &lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;username&quot; name=&quot;username&quot; th:value=&quot;${user.username}&quot;
-                       th:field=&quot;*{user.username}&quot;/&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-
-        &lt;div class=&quot;form-group&quot;&gt;
-            &lt;label for=&quot;book_writer&quot; class=&quot;col-sm-2 control-label&quot;&gt;作者:&lt;/label&gt;
-            &lt;div class=&quot;col-xs-4&quot;&gt;
-                &lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;book_writer&quot; name=&quot;writer&quot; th:value=&quot;${book.writer}&quot;
-                       th:field=&quot;*{book.writer}&quot;/&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-
-        &lt;div class=&quot;form-group&quot;&gt;
-            &lt;label for=&quot;book_introduction&quot; class=&quot;col-sm-2 control-label&quot;&gt;简介:&lt;/label&gt;
-            &lt;div class=&quot;col-xs-4&quot;&gt;
-                &lt;textarea class=&quot;form-control&quot; id=&quot;book_introduction&quot; rows=&quot;3&quot; name=&quot;introduction&quot;
-                          th:value=&quot;${book.introduction}&quot; th:field=&quot;*{book.introduction}&quot;&gt;&lt;/textarea&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-
-        &lt;div class=&quot;form-group&quot;&gt;
-            &lt;div class=&quot;col-sm-offset-2 col-sm-10&quot;&gt;
-                &lt;input class=&quot;btn btn-primary&quot; type=&quot;submit&quot; value=&quot;提交&quot;/&gt;&amp;nbsp;&amp;nbsp;
-                &lt;input class=&quot;btn&quot; type=&quot;button&quot; value=&quot;返回&quot; onclick=&quot;history.back()&quot;/&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/form&gt;
-&lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-
-&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;zh-CN&quot; xmls:th=&quot;http://www.thymeleaf.org&quot;&gt;
-&lt;head&gt;
-  &lt;script type=&quot;text/javascript&quot; th:src=&quot;@{https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js}&quot;&gt;&lt;/script&gt;
-  &lt;link href=&quot;@{https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css}&quot; rel=&quot;stylesheet&quot;&gt;
-  &lt;link th:href=&quot;@{/css/page.css}&quot; rel=&quot;stylesheet&quot;/&gt;
-  &lt;link rel=&quot;icon&quot; th:href=&quot;@{/images/favicon.ico}&quot; type=&quot;image/x-icon&quot;/&gt;
-  &lt;meta charset=&quot;UTF-8&quot;&gt;
-  &lt;title&gt;用户列表&lt;/title&gt;
-&lt;/head&gt;
-
-&lt;body class=&quot;contentDiv&quot;&gt;
-    &lt;h5&gt;用户列表&lt;/h5&gt;
-    &lt;table class=&quot;table table-hover table-condensed&quot;&gt;
-        &lt;legend&gt;
-            &lt;strong&gt;用户列表&lt;/strong&gt;
-        &lt;/legend&gt;
-        &lt;thead&gt;
-        &lt;tr&gt;
-            &lt;th&gt;编号&lt;/th&gt;
-            &lt;th&gt;账户&lt;/th&gt;
-            &lt;th&gt;地址&lt;/th&gt;
-            &lt;th&gt;电话&lt;/th&gt;
-            &lt;th&gt;姓名&lt;/th&gt;
-        &lt;/tr&gt;
-        &lt;/thead&gt;
-        &lt;tbody&gt;
-            &lt;tr th:each=&quot;user: ${userList}&quot;&gt;
-                &lt;th scope=&quot;row&quot; th:text=&quot;${user.id}&quot;/&gt;
-                &lt;td th:text=&quot;${user.account}&quot;&gt;&lt;/td&gt;
-                &lt;td th:text=&quot;${user.address}&quot;&gt;&lt;/td&gt;
-                &lt;td th:text=&quot;${user.phone}&quot;&gt;&lt;/td&gt;
-                &lt;td th:text=&quot;${user.userName}&quot;&gt;&lt;/td&gt;
-            &lt;/tr&gt;
-        &lt;/tbody&gt;
-    &lt;/table&gt;
-
-    &lt;div&gt;&lt;a href=&quot;#&quot; class=&quot;btn btn-primary&quot; role=&quot;button&quot;&gt;新增用户&lt;/a&gt;&lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/webservice/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/webservice/" itemprop="url">WebService</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:35:29+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/WebService/" itemprop="url" rel="index">
-                    <span itemprop="name">WebService</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  502
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><h4 id="1-WebService概念"><a href="#1-WebService概念" class="headerlink" title="1.WebService概念"></a>1.WebService概念</h4><p>WebService 是web服务，它是一种跨编程语言和跨操作系统平台的远程调用技术即跨平台远程调用技术。采用标准SOAP(Simple Object Access Protocol)协议传输，soap属于w3c标准。Soap协议是基于http的应用层协议，soap协议传输是xml数据。采用wsdl作为描述语言即webservice使用说明书，wsdl属w3c标准。xml是webservice的跨平台的基础，XML主要的优点在于它既与平台无关，又与厂商无关。XSD，W3C为webservice制定了一套传输数据类型，使用xml进行描述，即XSD(XML Schema Datatypes)，任何编程语言写的webservice接口在发送数据时都要转换成webservice标准的XSD发送。当前非SOAP协议的webService以轻量为首要目标，比如http rest方式也是webservice的一种方式，或者直接使用http自定义数据协议，比如http传输json数据，http传输xml数据等。</p>
-<h4 id="2-WebService-三要素"><a href="#2-WebService-三要素" class="headerlink" title="2.WebService 三要素"></a>2.WebService 三要素</h4><pre><code>1.soap
-SOAP指简单对象访问协议(Simple Object Access Protocal)是一种简单的基于 XML 的协议，它使应用程序通过 HTTP 来交换信息，简单理解为soap=http+xml。Soap协议版本主要使用soap1.1/soap1.2。SOAP不是webservice的专有协议，其他应用协议也使用soap传输数据，例如SMTP、tr069等。
-
-2.wsdl
-WSDL 是基于 XML 的用于描述Web Service及其函数、参数和返回值。通俗理解Wsdl是webservice的使用说明书。
-
-3.UDDI
-UDDI 是一种目录服务，通过它，企业可注册并搜索 Web services。企业将自己提供的Web Service注册在UDDI，也可以使用别的企业在UDDI注册的web service服务，从而达到资源共享。UDDI旨在将全球的webservcie资源进行共享，促进全球经济合作。
-</code></pre><h4 id="3-WebService开发规范"><a href="#3-WebService开发规范" class="headerlink" title="3.WebService开发规范"></a>3.WebService开发规范</h4><p>JAVA 中共有三种 WebService 开发规范，分别是JAX-WS（JAX-RPC）、JAXM&amp;SAAJ、JAX-RS。</p>
-<pre><code>1.JAX-WS
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/创新型模式 - 总结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/创新型模式 - 总结/" itemprop="url">创新型模式 - 总结</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:07:01+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/创新型模式/" itemprop="url" rel="index">
-                    <span itemprop="name">创新型模式</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  199
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<p>创新型模式的主要特点是将对象的创建和使用分离，根据对象的创建和组合方式的不同。创新型模式隐藏对象的创建细节，对象的创建由相关的工厂来完成，使用者不需要关心对象的创建细节。</p>
-<p>单例模式是为了保证全局使用的是同一对象，一方面考虑安全性，另一方面考虑节省资源。</p>
-<p>建造者模式专门对付属性很多的那种类，为了保证程序更优美。</p>
-<p>抽象工厂模式有产品族的概念，如果各个产品存在兼容性问题的话就使用抽象工厂模式。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/剑指Offer - 数据库/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/剑指Offer - 数据库/" itemprop="url">剑指Offer - 数据库</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T09:49:41+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MySQL/" itemprop="url" rel="index">
-                    <span itemprop="name">MySQL</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1,970
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  7
+                  6
                 </span>
               
             </div>
@@ -2690,17 +510,14 @@ UDDI 是一种目录服务，通过它，企业可注册并搜索 Web services�
         
           <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="剑指Offer-数据库"><a href="#剑指Offer-数据库" class="headerlink" title="剑指Offer - 数据库"></a>剑指Offer - 数据库</h2><p>[TOC]</p>
-<h3 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h3><blockquote>
-<p>问题：如何设计一个关系型数据库。这里将整个数据库划分成两个部分：</p>
+<h2 id="第四章-Java并发编程基础"><a href="#第四章-Java并发编程基础" class="headerlink" title="第四章 Java并发编程基础"></a>第四章 Java并发编程基础</h2><p>[TOC]</p>
+<h3 id="4-1-线程"><a href="#4-1-线程" class="headerlink" title="4.1 线程"></a>4.1 线程</h3><blockquote>
+<p>提示：在一个Java程序中，Java程序运行不仅是main()方法运行，而是main线程和多个其它线程的同时运行。</p>
 </blockquote>
-<pre><code>1.存储，相当于OS的文件系统，存储数据
-
-2.程序实例，包括存储管理/缓存机制/SQL解析模块/日志管理/权限划分/异常容灾机制/索引管理和锁管理，这些对程序进行管理。
-</code></pre>
+<h4 id="4-1-3-线程优先级"><a href="#4-1-3-线程优先级" class="headerlink" title="4.1.3 线程优先级"></a>4.1.3 线程优先级</h4><p>现代操作系统基本采用时分的形式调度运行的线程，操作系统会分出一个个时间片，线程会分配到若干时间片，当线程的时间片用完了就会发生线程调度，并等待下一次分配。<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/undefined/剑指Offer - 数据库/#more" rel="contents">
+            <a class="btn" href="/undefined/第4章 Java并发编程基础/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2754,7 +571,7 @@ UDDI 是一种目录服务，通过它，企业可注册并搜索 Web services�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/剑指Offer - Redis/">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第3章 Spring AOP的实现/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bangjin-Hu">
@@ -2773,7 +590,7 @@ UDDI 是一种目录服务，通过它，企业可注册并搜索 Web services�
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/undefined/剑指Offer - Redis/" itemprop="url">剑指Offer - Redis</a></h2>
+                <a class="post-title-link" href="/undefined/第3章 Spring AOP的实现/" itemprop="url">SPRING AOP</a></h2>
         
 
         <div class="post-meta">
@@ -2801,8 +618,8 @@ UDDI 是一种目录服务，通过它，企业可注册并搜索 Web services�
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:36:36+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:18:08+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -2820,8 +637,8 @@ UDDI 是一种目录服务，通过它，企业可注册并搜索 Web services�
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Redis/" itemprop="url" rel="index">
-                    <span itemprop="name">Redis</span>
+                  <a href="/categories/AOP/" itemprop="url" rel="index">
+                    <span itemprop="name">AOP</span>
                   </a>
                 </span>
 
@@ -2851,7 +668,7 @@ UDDI 是一种目录服务，通过它，企业可注册并搜索 Web services�
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  315
+                  5,152
                 </span>
               
 
@@ -2867,7 +684,7 @@ UDDI 是一种目录服务，通过它，企业可注册并搜索 Web services�
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  19
                 </span>
               
             </div>
@@ -2889,46 +706,20 @@ UDDI 是一种目录服务，通过它，企业可注册并搜索 Web services�
 
       
         
-          
-            <blockquote class="blockquote-center"></blockquote>
+          <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="剑指Offer-Redis"><a href="#剑指Offer-Redis" class="headerlink" title="剑指Offer - Redis"></a>剑指Offer - Redis</h2><p>[TOC]</p>
-<blockquote>
-<p>问题1：Redis查询速度快的原因（100000+QPS(每秒内查询次数)）</p>
-</blockquote>
-<pre><code>1.完全基于内存，绝大部分请求是纯粹的内存操作，执行效率高
-
-2.数据结构简单，对数据操作也简单
-
-3.采用单线程，单线程也能处理高并发请求，想多核也可以启动多实例
-
-4.使用多路IO复用模型，非阻塞IO
-
-    多路IO复用模型
-
-        Redis采用的IO多路复用函数：epoll | kqueue | evport | select
-
-            1.因地制宜
-
-            2.优先选择时间复杂度为O(1)的IO多路复用函数作为底层实现
-
-            3.以时间复杂度为O(N)的select作为保底
-
-            4.基于react设计模式监听IO事件
-</code></pre><blockquote>
-<p>问题2：Redis常用数据类型</p>
-</blockquote>
-<pre><code>1.String 最基本的数据类型，二进制安全
-
-2.HASH String元素组成的字典，适合用于存储对象
-
-3.LIST 列表，按照String元素插入顺序排序
-
-4.SET String元素组成的无序集合，通过hash表实现，不允许重复
-
-5.Sorted Set 通过分数来为集合中的成员进行从小到大的排序
-</code></pre>
-          
+<h2 id="第3章-Spring-AOP的实现"><a href="#第3章-Spring-AOP的实现" class="headerlink" title="第3章 Spring AOP的实现"></a>第3章 Spring AOP的实现</h2><p>[toc]</p>
+<h3 id="3-1-AOP概念"><a href="#3-1-AOP概念" class="headerlink" title="3.1 AOP概念"></a>3.1 AOP概念</h3><h4 id="3-1-2-Advice通知"><a href="#3-1-2-Advice通知" class="headerlink" title="3.1.2 Advice通知"></a>3.1.2 Advice通知</h4><p>Advice（通知）定义在连接点做什么，为切面增强提供织入接口。在Spring AOP中主要描述Spring AOP围绕方法调用而注入的切面行为。</p>
+<p>在BeforeAdvice的继承关系中，定义了为待增强的目标方法设置的前置增强接口MethodBeforeAdvice，使用这个前置接口需要实现一个回调函数：</p>
+<pre><code>void before(Method method, Object[] args, Object target) throws Throwable;
+</code></pre><p>在AfterReturning-Advice接口中定义了接口方法：<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/第3章 Spring AOP的实现/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2978,7 +769,7 @@ UDDI 是一种目录服务，通过它，企业可注册并搜索 Web services�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/单例模式 - 解析 - 面试重点/">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第5章 Java中的锁/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bangjin-Hu">
@@ -2997,7 +788,7 @@ UDDI 是一种目录服务，通过它，企业可注册并搜索 Web services�
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/undefined/单例模式 - 解析 - 面试重点/" itemprop="url">单例模式</a></h2>
+                <a class="post-title-link" href="/undefined/第5章 Java中的锁/" itemprop="url">锁</a></h2>
         
 
         <div class="post-meta">
@@ -3025,8 +816,8 @@ UDDI 是一种目录服务，通过它，企业可注册并搜索 Web services�
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:36:38+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:18:24+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -3044,8 +835,8 @@ UDDI 是一种目录服务，通过它，企业可注册并搜索 Web services�
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
+                  <a href="/categories/多线程与并发/" itemprop="url" rel="index">
+                    <span itemprop="name">多线程与并发</span>
                   </a>
                 </span>
 
@@ -3075,7 +866,7 @@ UDDI 是一种目录服务，通过它，企业可注册并搜索 Web services�
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  125
+                  3,105
                 </span>
               
 
@@ -3091,7 +882,7 @@ UDDI 是一种目录服务，通过它，企业可注册并搜索 Web services�
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  11
                 </span>
               
             </div>
@@ -3113,17 +904,1396 @@ UDDI 是一种目录服务，通过它，企业可注册并搜索 Web services�
 
       
         
-          
-            <blockquote class="blockquote-center"></blockquote>
+          <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="单例模式-解析"><a href="#单例模式-解析" class="headerlink" title="单例模式 - 解析"></a>单例模式 - 解析</h2><h4 id="多线程debug"><a href="#多线程debug" class="headerlink" title="多线程debug"></a>多线程debug</h4><h4 id="序列化和反序列化破坏单例模式"><a href="#序列化和反序列化破坏单例模式" class="headerlink" title="序列化和反序列化破坏单例模式"></a>序列化和反序列化破坏单例模式</h4><p>在通过序列化之后拿到的对象和反序列化之后拿到的对象不一致的问题。</p>
-<p>在类中加入resolveRead()方法，避免在反序列化和序列化过程中文件被破坏。</p>
-<h4 id="基于ThreadLocal的单例写法"><a href="#基于ThreadLocal的单例写法" class="headerlink" title="基于ThreadLocal的单例写法"></a>基于ThreadLocal的单例写法</h4><h4 id="JDK源码分析"><a href="#JDK源码分析" class="headerlink" title="JDK源码分析"></a>JDK源码分析</h4><ul>
-<li>Runtime 属于恶汉式单例模式</li>
-<li>Desktop </li>
-</ul>
+<h2 id="第五章-Java中的锁"><a href="#第五章-Java中的锁" class="headerlink" title="第五章 Java中的锁"></a>第五章 Java中的锁</h2><p>[TOC]</p>
+<h3 id="5-1-Lock接口"><a href="#5-1-Lock接口" class="headerlink" title="5.1 Lock接口"></a>5.1 Lock接口</h3><p>Java SE 1.5 之后，在并发包中新增 Lock 接口用来实现锁功能。它提供了与synchronize关键字类似的同步功能，只是在使用时需要显式地获取和释放锁。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/第5章 Java中的锁/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第4章 Spring MVC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/第4章 Spring MVC/" itemprop="url">SpringMVC</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:18:18+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SpringMVC/" itemprop="url" rel="index">
+                    <span itemprop="name">SpringMVC</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,770
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="第4章-Spring-MVC"><a href="#第4章-Spring-MVC" class="headerlink" title="第4章 Spring MVC"></a>第4章 Spring MVC</h2><p>[TOC]</p>
+<h3 id="4-1-Spring-MVC-概述"><a href="#4-1-Spring-MVC-概述" class="headerlink" title="4.1 Spring MVC 概述"></a>4.1 Spring MVC 概述</h3><p><img src="https://upload-images.jianshu.io/upload_images/5376408-5d50c3491fd9aae2.png?imageMogr2/auto-orient/strip|imageView2/2/format/webp" alt="MVC模式"></p>
+<p>在我们使用Spring MVC的时候，需要我们在web.xml文件中配置DispatcherServlet，该DispatcherServerlet可以看做是一个前端控制器的具体实现，还需要在Bean定义中配置Web请求和Controller的对应关系，以及各种视图的展现方式。在具体使用Controller的时候，会看到ModelAndView数据的生成，还会看到将ModelAndView数据交给相应的View来进行呈现。</p>
+<h3 id="4-2-Web环境中的Spring-MVC"><a href="#4-2-Web环境中的Spring-MVC" class="headerlink" title="4.2 Web环境中的Spring MVC"></a>4.2 Web环境中的Spring MVC</h3><p>Spring MVC 是建立在IoC容器基础上的，要了解SpringMVC，首先要了解 Spring IoC 是如何在Web环境中发挥作用的。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/第4章 Spring MVC/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第6章 Java并发容器和框架/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/第6章 Java并发容器和框架/" itemprop="url">并发容器与框架</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:18:32+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/多线程与并发/" itemprop="url" rel="index">
+                    <span itemprop="name">多线程与并发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,369
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="第六章-Java并发容器和框架"><a href="#第六章-Java并发容器和框架" class="headerlink" title="第六章 Java并发容器和框架"></a>第六章 Java并发容器和框架</h2><p>[TOC]</p>
+<h3 id="6-1-ConcurrentHashMap的实现原理和使用"><a href="#6-1-ConcurrentHashMap的实现原理和使用" class="headerlink" title="6.1 ConcurrentHashMap的实现原理和使用"></a>6.1 ConcurrentHashMap的实现原理和使用</h3><p>ConcurrentHashMap是线程安全且高效的HashMap。</p>
+<h4 id="6-1-1-为何使用ConcurrentHashMap"><a href="#6-1-1-为何使用ConcurrentHashMap" class="headerlink" title="6.1.1 为何使用ConcurrentHashMap"></a>6.1.1 为何使用ConcurrentHashMap</h4>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/第6章 Java并发容器和框架/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第6章 深入分析ClassLoader工作机制/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/第6章 深入分析ClassLoader工作机制/" itemprop="url">CLASSLAODER</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:18:27+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JVM/" itemprop="url" rel="index">
+                    <span itemprop="name">JVM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  914
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="第6章-深入分析ClassLoader工作机制"><a href="#第6章-深入分析ClassLoader工作机制" class="headerlink" title="第6章 深入分析ClassLoader工作机制"></a>第6章 深入分析ClassLoader工作机制</h2><p>[toc]</p>
+<p>ClassLoader是类加载器，负责将Class加载到JVM中。ClassLoader在能够将Class加载到JVM中之外，还有一个重要作用就是审查每个类应该由谁加载，它是一种父优先的等级加载机制。</p>
+<h3 id="6-1-ClassLoader类结构分析"><a href="#6-1-ClassLoader类结构分析" class="headerlink" title="6.1 ClassLoader类结构分析"></a>6.1 ClassLoader类结构分析</h3>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/第6章 深入分析ClassLoader工作机制/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第7章 Java中的13个原子操作类/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/第7章 Java中的13个原子操作类/" itemprop="url">原子类</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:18:37+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/多线程与并发/" itemprop="url" rel="index">
+                    <span itemprop="name">多线程与并发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  762
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<p>[TOC]</p>
+<h2 id="第七章-Java中的13个原子操作类"><a href="#第七章-Java中的13个原子操作类" class="headerlink" title="第七章 Java中的13个原子操作类"></a>第七章 Java中的13个原子操作类</h2><p>Java从JDK 1.5开始提供了 java.util.concurrent.atomic 包（Atomic包），这个包里面的原子操作类提供了一种用法简单、性能高效、线程安全地更新一个变量的方式。</p>
+<h3 id="7-1-原子更新基本类型类"><a href="#7-1-原子更新基本类型类" class="headerlink" title="7.1 原子更新基本类型类"></a>7.1 原子更新基本类型类</h3>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/第7章 Java中的13个原子操作类/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第8章 Java中的并发工具类/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/第8章 Java中的并发工具类/" itemprop="url">并发工具类</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:18:41+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/多线程与并发/" itemprop="url" rel="index">
+                    <span itemprop="name">多线程与并发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,206
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="第八章-Java中的并发工具类"><a href="#第八章-Java中的并发工具类" class="headerlink" title="第八章 Java中的并发工具类"></a>第八章 Java中的并发工具类</h2><p>[TOC]</p>
+<p><code>CountDownLatch、CyclicBarrier和Semaphore</code>工具类提供一种并发流程控制手段，<code>Exchanger</code>工具类提供了在线程间交换数据的一种手段。</p>
+<h3 id="8-1-等待多线程完成的CountDownLatch"><a href="#8-1-等待多线程完成的CountDownLatch" class="headerlink" title="8.1 等待多线程完成的CountDownLatch"></a>8.1 等待多线程完成的CountDownLatch</h3><p>CountDownLatch 允许一个或多个线程等待其它线程完成操作。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/第8章 Java中的并发工具类/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第9章 Java中的线程池/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/第9章 Java中的线程池/" itemprop="url">线程池</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:18:45+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/多线程与并发/" itemprop="url" rel="index">
+                    <span itemprop="name">多线程与并发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  966
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="第九章-Java中的线程池"><a href="#第九章-Java中的线程池" class="headerlink" title="第九章 Java中的线程池"></a>第九章 Java中的线程池</h2><p>[TOC]</p>
+<p>Java中线程池的运行场景最多的是并发框架，几乎所有需要异步或并发执行任务的程序都可以使用线程池。合理使用线程池的3个好处：</p>
+<pre><code>1.降低资源消耗
+
+2.提高响应速度
+
+3.提高线程的可管理性
+</code></pre><h3 id="9-1-线程池的实现原理"><a href="#9-1-线程池的实现原理" class="headerlink" title="9.1 线程池的实现原理"></a>9.1 线程池的实现原理</h3>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/第9章 Java中的线程池/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第一章 Java多线程技能/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/第一章 Java多线程技能/" itemprop="url">多线程基础</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:39:01+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/并发编程/" itemprop="url" rel="index">
+                    <span itemprop="name">并发编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  907
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<p>[TOC]</p>
+<h2 id="第一章-Java多线程技能"><a href="#第一章-Java多线程技能" class="headerlink" title="第一章 Java多线程技能"></a>第一章 Java多线程技能</h2><h3 id="1-1-继承Thread类"><a href="#1-1-继承Thread类" class="headerlink" title="1.1 继承Thread类"></a>1.1 继承Thread类</h3><blockquote>
+<p>提示：使用多线程技术时，代码运行结果与代码执行顺序或调用顺序无关。线程调用的随机性。</p>
+</blockquote>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/第一章 Java多线程技能/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -3164,7 +2334,7 @@ UDDI 是一种目录服务，通过它，企业可注册并搜索 Web services�
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/12/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/14/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/12/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/14/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -3216,7 +2386,7 @@ UDDI 是一种目录服务，通过它，企业可注册并搜索 Web services�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -3227,7 +2397,7 @@ UDDI 是一种目录服务，通过它，企业可注册并搜索 Web services�
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -3238,7 +2408,7 @@ UDDI 是一种目录服务，通过它，企业可注册并搜索 Web services�
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -3280,12 +2450,6 @@ UDDI 是一种目录服务，通过它，企业可注册并搜索 Web services�
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -3347,7 +2511,7 @@ UDDI 是一种目录服务，通过它，企业可注册并搜索 Web services�
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

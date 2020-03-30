@@ -1,0 +1,2121 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/site.jpg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="AOP," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="BangjinHu's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. 1 概述1.2 AOP术语...  引介：是一种特殊的增强，它为类添加一些属性和方法，由此即使一个业务类原本没有实现接口，通过AOP的引介功能可以动态的为业务类添加接口的实现逻辑。  织入：将增添添加到目标类的具体连接点上的过程。  代理：类被AOP织入增强之后，就产生了一个结果类，它是融合了原类和增强逻辑的代理类。根据不同的代理方式，代理类可能是和">
+<meta name="keywords" content="AOP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SPRING AOP 续二">
+<meta property="og:url" content="http://bangjinhu.github.io/undefined/第3章 Spring - AOP 续二/index.html">
+<meta property="og:site_name" content="BangjinHu&#39;s Blog">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. 1 概述1.2 AOP术语...  引介：是一种特殊的增强，它为类添加一些属性和方法，由此即使一个业务类原本没有实现接口，通过AOP的引介功能可以动态的为业务类添加接口的实现逻辑。  织入：将增添添加到目标类的具体连接点上的过程。  代理：类被AOP织入增强之后，就产生了一个结果类，它是融合了原类和增强逻辑的代理类。根据不同的代理方式，代理类可能是和">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-03-30T00:18:02.866Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SPRING AOP 续二">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 1 概述1.2 AOP术语...  引介：是一种特殊的增强，它为类添加一些属性和方法，由此即使一个业务类原本没有实现接口，通过AOP的引介功能可以动态的为业务类添加接口的实现逻辑。  织入：将增添添加到目标类的具体连接点上的过程。  代理：类被AOP织入增强之后，就产生了一个结果类，它是融合了原类和增强逻辑的代理类。根据不同的代理方式，代理类可能是和">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://bangjinhu.github.io/undefined/第3章 Spring - AOP 续二/"/>
+
+
+
+
+
+  <title>SPRING AOP 续二 | BangjinHu's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    
+    <a href="https://github.com/BangjinHu"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">BangjinHu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">让优秀成为习惯，让知识成为信仰</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            本站搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第3章 Spring - AOP 续二/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">SPRING AOP 续二</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:18:02+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AOP/" itemprop="url" rel="index">
+                    <span itemprop="name">AOP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5,945
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  26
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1 概述"></a>1 概述</h2><h4 id="1-2-AOP术语"><a href="#1-2-AOP术语" class="headerlink" title="1.2 AOP术语"></a>1.2 AOP术语</h4><pre><code>...
+
+引介：是一种特殊的增强，它为类添加一些属性和方法，由此即使一个业务类原本没有实现接口，通过AOP的引介功能可以动态的为业务类添加接口的实现逻辑。
+
+织入：将增添添加到目标类的具体连接点上的过程。
+
+代理：类被AOP织入增强之后，就产生了一个结果类，它是融合了原类和增强逻辑的代理类。根据不同的代理方式，代理类可能是和原类具有相同接口的类，或者是是原类的子类。
+</code></pre><blockquote>
+<p>重点：AOP的重点在于如何将增强应用于目标对象的连接点上。1.如何通过切点和增强定位到连接点上。2.如何在增强中编写切面的程序。</p>
+</blockquote>
+<a id="more"></a>
+<h4 id="1-3-AOP实现者"><a href="#1-3-AOP实现者" class="headerlink" title="1.3 AOP实现者"></a>1.3 AOP实现者</h4><pre><code>1.AspectJ 扩展Java语言，定义AOP语法，能够在编译取期提供横切程序织入，它有一个专门的编译器用来生成遵守Java字节编码规范的Class文件。
+
+2.Spring AOP 使用纯Java实现，不需要专门的编译过程。其侧重于提供一种和Spring IoC容器整合的AOP实现。
+</code></pre><h2 id="2-基础知识"><a href="#2-基础知识" class="headerlink" title="2 基础知识"></a>2 基础知识</h2><p>Spring AOP使用动态代理技术在运行期织入增强的程序。Spring有两种代理机制：1.基于JDK动态代理技术。2.基于CGLib动态代理技术。</p>
+<h4 id="2-2-JDK动态代理技术"><a href="#2-2-JDK动态代理技术" class="headerlink" title="2.2 JDK动态代理技术"></a>2.2 JDK动态代理技术</h4><p>JDK动态代理主要涉及：java.lang.reflect包中的两个类：Proxy | InvocationHandler。其中InvocationHandler是一个接口，通过实现该接口定义横切逻辑，同时通过反射机制调用目标类的程序，动态地将横切逻辑和业务逻辑编织在一起。Proxy是利用InvocationHandler动态创建一个符合某一接口的实例，生成目标类的代理对象。</p>
+<pre><code>//这里还有一个目标实现类，将其中的横切代码抽取出来
+//..这里不写
+public class ForumServiceImpl implements ForumService{
+    ...
+}
+
+//...import
+public class PerformanceHandler implements InvocationHandler {
+
+    //1.target是目标业务类
+    private Object target;
+    public PerformanceHandler(Object target){
+        this.target = target;
+    }
+
+    //该方法将横切逻辑程序和业务类方法程序编织到一起
+    //proxy：表示最终生成的代理实例，一般不会用到
+    //method：表示被代理目标实例的某个具体方法，通过发起目标实例方法的反射调用
+    //args：被代理实例某个方法的入参
+    public Object invoke(Object proxy, Method method, Object[] args) throws  Throwable {
+        //1.1 横切逻辑实现
+        PerformanceMonitor.begin(target.getClass().getName() +&quot;.&quot; + method.getName());
+
+        //2.通过反射方法调用目标业务类的反射方法
+        Object obj = method.invoke(target, args);
+
+        PerformanceMonitor.end();
+
+        return obj;
+    }
+}
+
+//@Test
+public class ForumServiceTest {
+    @Test
+    public void proxy() {
+        //1.希望被代理的目标业务类
+        ForumService target = new ForumServiceImpl();
+
+        //2.将目标业务类和横切程序编织在一起
+        PerformanceHandler handler = new PerformanceHandler(target);
+
+        //3.创建代理实例
+        ForumService proxy = (ForumService) Proxy.newProxyInstance(
+            target.getClass().getClassLoader(),
+            target.getClass().getInterfaces(),
+            handler);
+
+        //4.执行调用代理实例
+        proxy.removeForum(10);
+        proxy.removeTopic(1012);
+    }
+}
+</code></pre><h4 id="2-3-CGLib动态代理"><a href="#2-3-CGLib动态代理" class="headerlink" title="2.3 CGLib动态代理"></a>2.3 CGLib动态代理</h4><p>使用JDK动态代理有限制，其只能为接口创建代理实例。而对于没有通过接口定义业务方法的类可以为其创建子类，在子类中采用方法拦截，拦截所有父类方法的调用并顺势织入横切逻辑。</p>
+<pre><code>//这里还有一个目标实现类，将其中的横切代码抽取出来
+//..这里不写
+public class ForumServiceImpl implements ForumService{
+    ...
+}
+
+//..import
+public class CglibProxy implements MethodInterceptor {
+    private Enhancer enhancer = new Enhancer();
+    public Object getProxy(Class clazz) {
+
+        //1.设置创建子类的类
+        enhancer.setSuperclass(clazz);
+        enhancer.setCallback(this);
+
+        //2.通过字节码技术动态创建子类实例
+        return enhancer.create();
+    }
+
+    //3.拦截父类所有方法调用
+    public Object intercept (Object obj, Method method, Object[] args, MethodProxy proxy) throws Throwable {
+
+        //织入横切逻辑程序
+        PerformanceMonitor.begin(obj.getClass().getName() + &quot;.&quot; + method.getName());
+
+        //3.通过代理类调用父类中的方法
+        Object result = proxy.invokeSuper(obj, args);
+        PerformanceMonitor.end();
+        return result;
+    }
+}
+
+
+//@Test
+//...import
+public class ForumServiceTest {
+    @Test
+    public void proxy() {
+        CglibProxy proxy = new CglibProxy();
+
+        //动态生成子类创建代理类
+        ForumServiceImpl forumServiceImpl = (ForumServiceImpl) proxy.getProxy(ForumServiceImpl.class);
+
+        forumServiceImpl.removeForum(10);
+        forumServiceImpl.removeTopic(1023);
+    }
+}
+</code></pre><h2 id="3-创建增强类"><a href="#3-创建增强类" class="headerlink" title="3 创建增强类"></a>3 创建增强类</h2><h4 id="3-1-前置增强"><a href="#3-1-前置增强" class="headerlink" title="3.1 前置增强"></a>3.1 前置增强</h4><p>BeforeAdvice是前置增强的接口，MethodBeforeAdvice接口是其子类，该接口只定义唯一一个方法：before(Method method, Object[] args, Object obj) throws Throwable{}。</p>
+<pre><code>//省略before的实现过程..
+
+//@Test
+...
+//1.Spring提供代理工厂
+ProxyFactory pf = new ProxyFactory();
+
+//2.设置目标类
+pf.setTarget(target);
+
+//3.为代理目标增强
+pf.addAdvice(advice);
+
+//4.生成代理实例
+Waiter proxy = (Waiter)pf.getProxy();
+proxy.greetTo(&quot;John&quot;);
+proxy.serveTo(&quot;Tom&quot;);
+</code></pre><p><strong>3.1.1 ProxyFactory解析</strong><br></p>
+<p><strong>3.1.2 在Spring中配置</strong><br></p>
+<pre><code>&lt;bean id=&quot;greetingAdvice&quot; class=&quot;com.smart.advice.GreetingBeforeAdvice&quot;/&gt;
+&lt;bean id=&quot;target&quot; class=&quot;com.smart.advice.NaiveWaiter&quot;/&gt;
+&lt;bean id=&quot;waiter&quot; class=&quot;org.springframework.aop.frmework.ProxyFactoryBean&quot;
+    //1.指定代理的接口，如果是多个使用&lt;list&gt;元素
+    p:proxyInterfaces=&quot;com.smart.advice.Waiter&quot;
+
+    //2.指定使用的增强
+    p:interceptorNames=&quot;greetingAdvice&quot;
+
+    //3.指定对哪个bean进行代理
+    p:target-ref=&quot;target&quot;
+/&gt;
+</code></pre><h4 id="3-2-前置增强"><a href="#3-2-前置增强" class="headerlink" title="3.2 前置增强"></a>3.2 前置增强</h4><h4 id="3-3-前置增强"><a href="#3-3-前置增强" class="headerlink" title="3.3 前置增强"></a>3.3 前置增强</h4><h4 id="3-4-前置增强"><a href="#3-4-前置增强" class="headerlink" title="3.4 前置增强"></a>3.4 前置增强</h4><hr>
+<h2 id="4-创建切面"><a href="#4-创建切面" class="headerlink" title="4 创建切面"></a>4 创建切面</h2><p>增强提供了连接点方位信息，如织入到方法前面、后面等，而切点进一步描述了织入哪些类的哪些方法上。Spring通过org.springframework.aop.Pointcut接口描述切点，Pointcut由ClassFilter和MethodMatcher构成，其通过ClassFilter定位到某些特定类，然后通过MethodMatcher定位到某些特定方法。这样Pointcut就拥有了描述某些类的某些特定方法能力。</p>
+<pre><code>1.ClassFilter方法 matches(Class clazz)：clazz表示一个被检测类，该方法判断被检测类是否匹配过滤条件。这里匹配器包括两种：静态方法匹配器和动态方法匹配器。
+</code></pre><h4 id="7-4-1-切点类型"><a href="#7-4-1-切点类型" class="headerlink" title="7.4.1 切点类型"></a>7.4.1 切点类型</h4><p><strong>1.静态方法切点</strong><br></p>
+<p><strong>2.动态方法切点</strong><br></p>
+<p><strong>3.注解切点</strong><br></p>
+<p><strong>4.表达式切点</strong><br><br>该切点主要是为了支持AspectJ切点表达式语法定义的接口。</p>
+<p><strong>5.流程切点</strong><br></p>
+<p><strong>6.复合切点</strong><br></p>
+<h4 id="7-4-2-切面类型"><a href="#7-4-2-切面类型" class="headerlink" title="7.4.2 切面类型"></a>7.4.2 切面类型</h4><p><strong>1.Advisor 一般切面</strong><br><br>一般切面仅包含一个Advice，该切面包含了横切程序和连接点信息。</p>
+<p><strong>2.PointcutAdvisor</strong><br><br>表示具有切点的切面，包含Advice和Pointcut两个类。从而可以通过类、方法名以及方法方位等信息灵活定义切面的连接点。</p>
+<p><strong>3.IntroductionAdvisor</strong><br><br>表示引介切面。</p>
+<p>PointcutAdvisor主要有六个具体的实现类：</p>
+<pre><code>1.DefaultPointAdvisor：最常用的切面类型
+
+2.NameMatchMethodPointcutAdvisor：通过该类可以定义按方法名定义切点的切面
+
+3.RegexpMethodPointcutAdvisor：通过按正则表达式匹配方法名进行切点定义的切面
+
+4.StaticMethodMatcherPointcutAdvisor：静态方法匹配器切点定义的切面。
+
+5.AspectJExceptionPointcutAdvisor：用于AspectJ切点表达式定义切点的切面。
+
+6.AspectJPointcutAdvisor：用于AspectJ语法定义切点的切面。
+</code></pre><h2 id="7-5-自动创建代理"><a href="#7-5-自动创建代理" class="headerlink" title="7.5 自动创建代理"></a>7.5 自动创建代理</h2><p>Spring提供自动代理机制，让容器自动生成代理。</p>
+<h4 id="7-5-1-BeanNameAutoProxyCreator"><a href="#7-5-1-BeanNameAutoProxyCreator" class="headerlink" title="7.5.1 BeanNameAutoProxyCreator"></a>7.5.1 BeanNameAutoProxyCreator</h4><p>该代理器有一个beanNames属性，允许用户指定一组需要自动代理的Bean名称。</p>
+<h4 id="7-5-2-DefaultAdvisorAutoProxyCreator"><a href="#7-5-2-DefaultAdvisorAutoProxyCreator" class="headerlink" title="7.5.2 DefaultAdvisorAutoProxyCreator"></a>7.5.2 DefaultAdvisorAutoProxyCreator</h4><p>能够扫描容器中的Advisor，并将Advisor自动织入匹配的目标Bean中。</p>
+<hr>
+<h1 id="第8章-基于-AspectJ和Scheme的AOP"><a href="#第8章-基于-AspectJ和Scheme的AOP" class="headerlink" title="第8章 基于@AspectJ和Scheme的AOP"></a>第8章 基于@AspectJ和Scheme的AOP</h1><h2 id="8-2-Java-5-0-注解知识进阶"><a href="#8-2-Java-5-0-注解知识进阶" class="headerlink" title="8.2 Java 5.0 注解知识进阶"></a>8.2 Java 5.0 注解知识进阶</h2><h4 id="8-2-2-简单的注解类"><a href="#8-2-2-简单的注解类" class="headerlink" title="8.2.2 简单的注解类"></a>8.2.2 简单的注解类</h4><pre><code>//...import
+//1.声明注解的保留期限 这里表示可以被JVM读取
+@Retention(RetentionPolicy.RUNTIME)
+//2.声明可以使用该注解的目标类型
+@Target(ElementType.METHOD)
+//3.定义注解
+public @interface NeedTest{
+    //4.声明注解成员
+    boolean value() default true;
+}
+</code></pre><blockquote>
+<p>提示：成员变量的声明有一些限制：1.成员以无入参、无抛出异常的方式声明。2.可以通过default为成员指定一个默认值。3.成员类型是受限的，合法的类型包括原始类型和封装类型。</p>
+</blockquote>
+<blockquote>
+<p>提示：注解的保留期限：1.SOURCE：注解信息仅保留在目标类代码的源码文件中，对应的字节码文件将不再保留。2.CLASS：注解信息将进入目标类代码的字节码文件中，但类加载器加载字节码文件时将注解加载到JVM中。3.RUNTIME：注解信息在目标类加载到JVM后依然保留，在运行期间通过反射机制读取类中的注解信息。</p>
+</blockquote>
+<h4 id="8-2-3-使用注解"><a href="#8-2-3-使用注解" class="headerlink" title="8.2.3 使用注解"></a>8.2.3 使用注解</h4><pre><code>public class ForumService {
+    @NeedTest(value = true)
+    public void deleteForum(int forumId){
+        System.out.println(&quot;删除论坛模块：&quot; + forumId);
+    }
+
+    @NeedTest(value = false)
+    public void deleteTopic(int postId){
+        System.out.println(&quot;删除论坛主题：&quot; + postId);
+    }
+</code></pre><h4 id="8-2-4-访问注解"><a href="#8-2-4-访问注解" class="headerlink" title="8.2.4 访问注解"></a>8.2.4 访问注解</h4><p>对于RetentionPolicy.RUNTIME保留期限的注解，可以通过反射机制访问类中的注解。</p>
+<pre><code>public class ToolTest {
+    @Test
+    public void tool(){
+        //1.得到ForumService对应的Class对象
+        Class clazz = ForumService.class;
+
+        //2.得到ForumService对应的Method数组
+        Method[] methods = clazz.getDeclaredMethod();
+
+        System.out.println(methods.length);
+        for(Method method : methods){
+            //3.获取方法上所标注的注解对象
+            NeedTest nt = method.getAnnotation(NeedTest.class);
+            if(nt != null){
+                if(nt.value()){
+                    System.out.println(method.getName()+&quot;()需要测试&quot;);
+                }else{
+                    System.out.println(method.getName() + &quot;()不需要测试&quot;);
+                }
+            }
+        }
+    }
+}
+</code></pre><h2 id="8-3-使用-AspectJ"><a href="#8-3-使用-AspectJ" class="headerlink" title="8.3 使用@AspectJ"></a>8.3 使用@AspectJ</h2><h4 id="8-3-1-准备-案例"><a href="#8-3-1-准备-案例" class="headerlink" title="8.3.1 准备 - 案例"></a>8.3.1 准备 - 案例</h4><p>在pom.xml中添加aspectj.weaver和aspectj.tools类包的依赖。</p>
+<pre><code>public class NaiveWaiter implements Waiter {
+    public void greetTo(String clientName){
+        System.out.println(&quot;greet to&quot; + clientName + &quot;...&quot;);
+    }
+
+    public void serveTo(String clientName){
+        System.out.println(&quot;serving&quot; + clientName + &quot;...&quot;);
+    }
+}
+
+//使用@AspectJ注解定义切面
+@AspectJ
+public class PreGreetingAspect {
+    //1.定义切点和增强类型
+    @Before(&quot;execution(* greetTo(...))&quot;)
+    public void beforeGreeting(){
+        //2.增强的横切逻辑
+        System.out.println(&quot;how are you&quot;);
+    }
+}
+</code></pre><hr>
+<pre><code>//通过AspectJProxyFactory为NavieWaiter生成织入PreGreetingAspect切面的代理
+public class AspectJProxyTest{
+    @Test
+    public void proxy(){
+        Waiter target = new NavieWaiter();
+        AspectJProxyFactory factory = new AspectJProxyFactory();
+
+        //1.设置目标对象
+        factory.setTarget(target);
+
+        //2.添加切面类，该类必须带有@AspectJ的注解
+        factory.addAspect(PreGreetingAspect.class);
+
+        //3.生成织入切面的代理对象
+        Waiter proxy = factory.getProxy();
+
+        proxy.greetTo(&quot;John&quot;);
+        proxy.serveTo(&quot;John&quot;);
+    }
+}
+</code></pre><h4 id="8-3-3-通过配置使用-AspectJ切面"><a href="#8-3-3-通过配置使用-AspectJ切面" class="headerlink" title="8.3.3 通过配置使用@AspectJ切面"></a>8.3.3 通过配置使用@AspectJ切面</h4><p>虽然可以通过编程的方式织入切面，但是一般通过Spring的配置完成切面的织入。</p>
+<pre><code>&lt;!--1.目标bean--&gt;
+&lt;bean id=&quot;waiter&quot; class=&quot;com.smart.NaiveWaiter&quot;/&gt;
+
+&lt;!--2.使用@AspectJ注解的切面类--&gt;
+&lt;bean class=&quot;com.smart.aspectj.example.PreGreetingAspect&quot;/&gt;
+
+&lt;!--3.自动代理创建器，自动将@AspectJ注解切面类织入目标bean中--&gt;
+&lt;bean class=&quot;org.springframework.aop.aspectj.annotation.AnnotationAwareAspectJAutoProxyGreator&quot;/&gt;
+</code></pre><blockquote>
+<p>提示：自动代理创建器：AnnotationAwareAspectJAutoProxyCreator能够将@AspectJ注解切面类自动织入目标bean中。</p>
+</blockquote>
+<p><strong>1.使用Schema的aop命名空间进行配置</strong><br></p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;beans xmlns=&quot;&quot;
+....
+&gt;
+
+    //3.基于@AspectJ切面的驱动器
+    &lt;aop:aspectj-autoproxy/&gt;
+    &lt;bean id=&quot;waiter&quot; class=&quot;com.smart.NaiveWaiter&quot;/&gt;
+    &lt;bean class=&quot;com.smart.aspectj.example.PreGreetingAspect&quot;/&gt;
+&lt;/beans&gt;
+</code></pre><p>这里首先在配置文件中引入aop命名空间，然后通过aop命名空间的 <a href="aop:apectj-autoproxy/" target="_blank" rel="noopener">aop:apectj-autoproxy/</a> 自动给Spring容器中那些匹配@AspectJ 切面的Bean创建代理，完成切面织入。</p>
+<blockquote>
+<p>提示：1.配置文件引入aop命名空间。2.然后通过aop命名空间的<a href="aop:aspectj-autoproxy/" target="_blank" rel="noopener">aop:aspectj-autoproxy/</a>自动给Spring容器中匹配@AspectJ切面的Bean创建代理，完成切面织入。</p>
+</blockquote>
+<blockquote>
+<p>注意：<a href="aop:aspectj-autoproxy/" target="_blank" rel="noopener">aop:aspectj-autoproxy/</a>有一个proxy-target-class属性，默认是false，表示使用JDK动态代理技术织入增强。当配置proxy-target-class为true时，表示使用CGLIB动态代理技术织入增强。</p>
+</blockquote>
+<h2 id="8-4-AspectJ-语法"><a href="#8-4-AspectJ-语法" class="headerlink" title="8.4 @AspectJ 语法"></a>8.4 @AspectJ 语法</h2><h4 id="8-4-1-切点表达式函数"><a href="#8-4-1-切点表达式函数" class="headerlink" title="8.4.1 切点表达式函数"></a>8.4.1 切点表达式函数</h4><pre><code>1.execution() 表示目标类执行某一方法
+2.匹配串 表示函数的入参
+</code></pre><p>根据描述对象的不同可以将切点表达式分为4中类型：</p>
+<pre><code>1.方法切点函数：通过描述目标类方法的信息定义连接点
+
+    1.execution() 方法入参匹配串
+    2.@annotation() 方法注解类名
+
+2.方法入参切点函数：通过描述目标类方法入参的信息定义连接点
+
+    1.args() 类名
+    2.@args() 类型注解类名
+
+3.目标类切点函数：通过描述目标类类型的信息定义连接点
+
+    1.within() 类型匹配串
+    2.target() 类名
+    3.@within() 类型注解类名
+    4.@target() 类型注解类名
+
+4.代理类切点函数：通过描述目标类的代理类的信息定义连接点
+
+    this() 类名
+</code></pre><h4 id="8-4-2-在函数入参中使用通配符"><a href="#8-4-2-在函数入参中使用通配符" class="headerlink" title="8.4.2 在函数入参中使用通配符"></a>8.4.2 在函数入参中使用通配符</h4><p>@AspectJ支持3中通配符：</p>
+<pre><code>1.* 匹配任意字符
+2... 匹配任意字符
+3.+ 表示按类型匹配指定类的所有类
+</code></pre><blockquote>
+<p>提示：如果not位于切点表达式的开头，则需要在开头添加一个空格，否则将产生解析错误。</p>
+</blockquote>
+<h4 id="8-4-4-不同增强类型"><a href="#8-4-4-不同增强类型" class="headerlink" title="8.4.4 不同增强类型"></a>8.4.4 不同增强类型</h4><pre><code>1.@Before 前置增强
+
+2.@AfterReturning 后置增强
+
+3.@Around 环绕增强
+
+4.@AfterThrowing 抛出增强
+
+5.@After Final增强
+
+6.DeclareParents 引介增强
+</code></pre><h4 id="8-4-5-引介增强使用"><a href="#8-4-5-引介增强使用" class="headerlink" title="8.4.5 引介增强使用"></a>8.4.5 引介增强使用</h4><pre><code>@Aspect
+public class EnableSellerAspect {
+    //1.defaultImpl = SmartSeller.class 表示为NavieWaiter添加接口实现
+    @DeclareParents(value = &quot;com.smart.NavieWaiter&quot;, defaultImpl = SmartSeller.class)
+
+    //2.要实现的目标接口
+    public Seller seller;
+}
+
+//然后在Spring配置文件配置好切面和NavieWaiter Bean
+&lt;aop:aspectj-autoproxy/&gt;
+&lt;bean id=&quot;waiter&quot; class=&quot;com.smart.NavieWaiter&quot;/&gt;
+&lt;bean class=&quot;com.smart.aspectj.basic.EnableSellerAspect&quot;/&gt;
+
+//测试
+public class DeclaredParentsTest {
+    public static void main(String[] args){
+        String configPath = &quot;com/smart/aspectj/basic/beans.xml&quot;;
+        ApplicationContext ctx = new ClassPathXmlApplicationContext(configPath);
+
+        Waiter waiter = (Waiter)ctx.getBean( &quot;waiter&quot;);
+        waiter.greetTo(&quot;John&quot;);
+        Seller seller = (Seller)waiter;
+        seller.sell(&quot;beer&quot;, &quot;john&quot;);
+    }
+}
+</code></pre><h2 id="8-5-切点函数详解"><a href="#8-5-切点函数详解" class="headerlink" title="8.5 切点函数详解"></a>8.5 切点函数详解</h2><h4 id="8-5-1-annotation"><a href="#8-5-1-annotation" class="headerlink" title="8.5.1 @annotation()"></a>8.5.1 @annotation()</h4><p>@annotation 注解表示标准某个注解的所有方法。</p>
+<pre><code>@Aspect
+public class TestAspect {
+    //后置增强
+    @AfterReturning(&quot;@annotation(com.smart.anno.NeedTest)&quot;)
+    public void needTestFun(){
+        System.out.println(&quot;needTestFun() ex...&quot;);
+    }
+}
+</code></pre><h4 id="8-5-2-execution"><a href="#8-5-2-execution" class="headerlink" title="8.5.2 execution()"></a>8.5.2 execution()</h4><p>该函数是常用的切点函数。</p>
+<pre><code>execution(&lt;修饰符模式&gt; ? &lt;返回类型模式&gt; &lt;方法名模式&gt; (&lt;参数模式&gt;) &lt;异常模式&gt;?)
+</code></pre><p><strong>1.通过方法签名定义切点</strong><br></p>
+<pre><code>execution(public * *(..)); 匹配目标类中所有public方法
+
+execution(* *(..)); 匹配目标类所有方法
+</code></pre><p><strong>2.通过类定义切点</strong><br></p>
+<pre><code>execution(* com.smart.Waiter.*(..)) 匹配Waiter接口所有方法
+
+execution(* com.smart.Waiter+.*(..)) 匹配Waiter接口及其所有实现类的方法
+</code></pre><p><strong>3.通过类包定义切点</strong><br></p>
+<pre><code>execution(* com.smart.*(..)) 匹配com.smart包下所有类的所有方法
+
+execution(* com.smart..*(..)) 
+</code></pre><p><strong>4.通过方法入参定义切点</strong><br></p>
+<pre><code>execution(* joke(String, int)) 匹配joke(String, int)方法
+</code></pre><h4 id="8-5-3-args-args"><a href="#8-5-3-args-args" class="headerlink" title="8.5.3 args() | @args()"></a>8.5.3 args() | @args()</h4><p><strong>1.args()</strong><br><br>args()函数接收一个类名，表示目标类方法入参对象是指定类时，切点匹配。</p>
+<pre><code>args(com.smart.Waiter) 表示入参是Waiter类型的方法。与excution(* *(com.smart.Waiter))区别在于后者是针对类方法的签名而言，前者是针对运行时的入参类型而言。
+</code></pre><p><strong>2.@args()</strong><br><br>该函数只接收一个注解类的类名，当方法得到运行时入参对象标注了指定的注解时，匹配其诶单。</p>
+<h4 id="8-5-4-within"><a href="#8-5-4-within" class="headerlink" title="8.5.4 within()"></a>8.5.4 within()</h4><p>通过匹配模式串声明切点，within()函数定义的连接点是针对目标类而言，不是针对运行期对象的类型而言。</p>
+<pre><code>within(&lt;类匹配模式&gt;)
+
+//案例
+within(com.smart.*) 匹配com.smart包下面的所有类，但不包括子孙包
+</code></pre><h4 id="8-5-5-within-target"><a href="#8-5-5-within-target" class="headerlink" title="8.5.5 @within() | @target()"></a>8.5.5 @within() | @target()</h4><p>这两个用于注解的切点函数只接受注解类名作为入参。</p>
+<pre><code>@target(M) 匹配任意标注了@M的目标类
+@within(M) 匹配标注了@M的类及子孙类
+</code></pre><h4 id="8-5-6-target-this"><a href="#8-5-6-target-this" class="headerlink" title="8.5.6 target() | this()"></a>8.5.6 target() | this()</h4><pre><code>target(M) 表示如果目标类按类型匹配与M，则目标类的所有方法都匹配切点。
+
+this()
+</code></pre><h2 id="8-6-AspectJ-进阶"><a href="#8-6-AspectJ-进阶" class="headerlink" title="8.6 @AspectJ 进阶"></a>8.6 @AspectJ 进阶</h2><h4 id="8-6-1-切点复合运算"><a href="#8-6-1-切点复合运算" class="headerlink" title="8.6.1 切点复合运算"></a>8.6.1 切点复合运算</h4><pre><code>@Aspect
+public class TestAspect{
+    //与运算
+    @After(&quot;within(com.smart.*)&quot; + &quot;&amp;&amp; execution(* greetTo(..))&quot;)
+    public void greeToFun(){
+        System.out.println(&quot;&quot;&quot;...&quot;);
+    }
+
+    //非与运算
+    @Before(&quot;!target(com.smart.NavieWaiter)&quot; + &quot;&amp;&amp; execution(* serveTo(..))&quot;)
+    public void notServeInWaiter(){
+        System.out.println(&quot;&quot;&quot;...&quot;);
+    }
+
+    //或运算
+    @AfterReturning(&quot;target(com.smart.Waiter) ||&quot; + &quot; target(com.smart.Seller)&quot;)
+    public void waiterOrSeller(){
+        System.out.println(&quot;&quot;&quot;...&quot;);
+    }
+}
+</code></pre><h4 id="8-6-2-命名切点"><a href="#8-6-2-命名切点" class="headerlink" title="8.6.2 命名切点"></a>8.6.2 命名切点</h4><p>如果希望在其它地方重用一个切点，可以通过@Pointcut注解及切面类方法对切点进行命名。</p>
+<pre><code>@Pointcut(&quot;execution(* greetTo(..))&quot;)
+protected void greetTo(){}
+
+//1.@Pointcut 命名切点注解
+//2.@Pointcut后面部分是切点表达式
+//3.protected 表示切点引用修饰符
+//4.greetTo() 表示切点名称
+</code></pre><p>命名切点 使用 类方法作为切点的名称，此外方法的访问修饰符还控制切点的可引用性，这种可引用性和类方法的可访问性相同。命名切点仅利用方法名和访问修饰符的信息，所以习惯方法上返回类型是void类型，方法体为空。</p>
+<hr>
+<pre><code>//案例
+@Aspect
+public class TestAspect {
+    //1.引用切点
+    @Before(&quot;TestNamePointcut.inPkgGreetTo()&quot;)
+    public void pkgGreetTo(){
+        System.out.println(&quot;....&quot;);
+    }
+
+    @Before(&quot;!target(com.smart.NavieWaiter) &amp;&amp; TestNamePointcut.inPkgGreetTo()&quot;)
+    public void pkgGreetToNotNavieWaiter(){
+        System.out.println(&quot;..&quot;);
+    }
+}
+</code></pre><h4 id="8-6-3-增强织入顺序"><a href="#8-6-3-增强织入顺序" class="headerlink" title="8.6.3 增强织入顺序"></a>8.6.3 增强织入顺序</h4><h4 id="8-6-4-访问连接点信息"><a href="#8-6-4-访问连接点信息" class="headerlink" title="8.6.4 访问连接点信息"></a>8.6.4 访问连接点信息</h4><p>AspectJ使用org.aspectj.lang.JoinPoint 接口表示目标类连接点对象。如果是环绕增强的话则使用 org.aspectj.lang.ProceedingJoinPoint 表示连接点对象，该类是JoinPoint的子接口。</p>
+<blockquote>
+<p>提示：任何增强方法都可以通过将第一个入参声明为 JoinPoint 访问连接点上下文信息。</p>
+</blockquote>
+<p><strong>1.JoinPoint()方法</strong><br></p>
+<p><strong>2.ProceedingJoinPoint()方法</strong><br></p>
+<pre><code>//案例
+@Aspect
+public class TestAspect {
+    //1.环绕增强
+    @Around(&quot;execution(* greetTo(..)) &amp;&amp; target(com.smart.NavieWaiter)&quot;)
+    //2.声明连接点入参，要在第一位置声明如入参
+    public void joinPointAccess(ProceedingJoinPoint pjp) throws Throwable {
+        System.out.println(&quot;...&quot;);
+    }
+
+    //3.访问连接点信息
+    System.out.println(&quot;args[0]:&quot; + pjp.getArgs()[0]);
+    System.out.println(&quot;signature:&quot; + pjp.getTarget().getClass());
+
+    //4.通过连接点执行目标对象方法
+    pjp.proceed();
+    System.out.println(&quot;...&quot;);
+} 
+</code></pre><hr>
+<h2 id="8-7-基于Schema配置切面"><a href="#8-7-基于Schema配置切面" class="headerlink" title="8.7 基于Schema配置切面"></a>8.7 基于Schema配置切面</h2><p><a href="aop:aspect" target="_blank" rel="noopener">aop:aspect</a> 元素标签定义切面，在其内部可以定义多个增强。在 <a href="aop:config" target="_blank" rel="noopener">aop:config</a> 元素标签中可以定义多个切面。使用 <a href="aop:pointcut" target="_blank" rel="noopener">aop:pointcut</a> 定义一个切点，并且通过 id属性进行命名。 通过 pointcut-ref 引用这个命名切点。 如果 <a href="aop:pointcut" target="_blank" rel="noopener">aop:pointcut</a> 位于 <a href="aop:aspect" target="_blank" rel="noopener">aop:aspect</a> 元素中，则命名切点只能被当前 <a href="aop:aspect" target="_blank" rel="noopener">aop:aspect</a> 内定义的元素访问到。 所以为了能被整个 <a href="aop:config" target="_blank" rel="noopener">aop:config</a> 元素中定义的所有增强访问，必须在 <a href="aop:config" target="_blank" rel="noopener">aop:config</a> 元素下定义切点。</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop-3.0.xsd&quot;&gt;
+
+    &lt;!--1.在&lt;aop:config&gt;元素中可以定义多个切面 proxy-target-class=&quot;true&quot; ：该属性的作用是声明的切面均使用CGLib动态代理技术(true)--&gt;
+    &lt;aop:config proxy-target-class=&quot;true&quot;&gt;
+
+        &lt;!--2.通过&lt;aop:aspect&gt;&gt;元素定义切面 其内部可以定义多个增强--&gt;
+        &lt;aop:aspect ref=&quot;adviceMethods&quot;&gt;
+            &lt;aop:before pointcut=&quot;target(com.yyq.schema.NaiveWaiter) and execution(* greetTo(..))&quot;
+                        method=&quot;preGreeting&quot;/&gt;
+        &lt;/aop:aspect&gt;
+    &lt;/aop:config&gt;
+    &lt;bean id=&quot;adviceMethods&quot; class=&quot;com.yyq.schema.AdviceMethods&quot;/&gt;
+    &lt;bean id=&quot;naiveWaiter&quot; class=&quot;com.yyq.schema.NaiveWaiter&quot;/&gt;
+    &lt;bean id=&quot;naughtyWaiter&quot; class=&quot;com.yyq.schema.NaughtyWaiter&quot;/&gt;
+&lt;/beans&gt;
+</code></pre><p>增强方法所在类</p>
+<pre><code>package com.baobaotao.schema;
+import org.aspectj.lang.ProceedingJoinPoint;
+
+public class AdviceMethods {
+    public void preGreeting(String name) {
+        System.out.println(&quot;--how are you!--&quot;);
+        System.out.println(name);
+    }
+    //后置增强对应方法
+    public void afterReturning(int retVal){
+       System.out.println(&quot;----afterReturning()----&quot;);
+       System.out.println(&quot;returnValue:&quot;+retVal);
+       System.out.println(&quot;----afterReturning()----&quot;);
+    }
+    //环绕增强对应方法
+    public void aroundMethod(ProceedingJoinPoint pjp){
+       System.out.println(&quot;----aroundMethod()----&quot;);
+       System.out.println(&quot;args[0]:&quot;+pjp.getArgs()[0]);
+       System.out.println(&quot;----aroundMethod()----&quot;);
+    }
+    //抛出异常增强
+    public void afterThrowingMethod(IllegalArgumentException iae){
+       System.out.println(&quot;----afterThrowingMethod()----&quot;);
+       System.out.println(&quot;exception msg:&quot;+iae.getMessage());
+       System.out.println(&quot;----afterThrowingMethod()----&quot;);
+    }
+    //final增强
+    public void afterMethod(){
+       System.out.println(&quot;----afterMethod()----&quot;);
+    }
+
+      //------------绑定连接点参数----------//
+    public void bindParams(int num,String name){
+       System.out.println(&quot;----bindParams()----&quot;);
+       System.out.println(&quot;name:&quot;+name);
+       System.out.println(&quot;num:&quot;+num);
+       System.out.println(&quot;----bindParams()----&quot;);
+    }
+}
+</code></pre><p>NaiveWaiter类</p>
+<pre><code>package com.yyq.schema;
+public class NaiveWaiter implements Waiter {
+    @Override
+    public void greetTo(String name) {
+        System.out.println(&quot;NaiveWaiter：greet to &quot; + name + &quot;...&quot;);
+    }
+    @Override
+    public void serveTo(String name) {
+        System.out.println(&quot;NaiveWaiter：serving to &quot; + name + &quot;...&quot;);
+    }
+    public void smile(String clientName,int times){
+        System.out.println(&quot;NaiveWaiter:smile to  &quot;+clientName+ times+&quot;times...&quot;);
+    }
+}
+</code></pre><p>NaughtyWaiter类</p>
+<pre><code>package com.yyq.schema;
+public class NaughtyWaiter implements Waiter {
+    public void greetTo(String clientName) {
+        System.out.println(&quot;NaughtyWaiter:greet to &quot; + clientName + &quot;...&quot;);
+    }
+    public void serveTo(String clientName) {
+        System.out.println(&quot;NaughtyWaiter:serving &quot; + clientName + &quot;...&quot;);
+    }
+    public void joke(String clientName, int times) {
+        System.out.println(&quot;NaughtyWaiter:play &quot; + times + &quot; jokes to &quot; + clientName + &quot;...&quot;);
+    }
+}
+</code></pre><p>测试方法</p>
+<pre><code>package com.yyq;
+import com.yyq.schema.Waiter;
+import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+public class SchemaTest {
+    @Test
+    public void schemaTest(){
+        String configPath = &quot;com\\yyq\\schema\\beans.xml&quot;;
+        ApplicationContext ctx = new ClassPathXmlApplicationContext(configPath);
+        Waiter naiveWaiter = (Waiter)ctx.getBean(&quot;naiveWaiter&quot;);
+        Waiter naughtyWaiter = (Waiter)ctx.getBean(&quot;naughtyWaiter&quot;);
+        naiveWaiter.greetTo(&quot;John&quot;);
+        naughtyWaiter.greetTo(&quot;Tom&quot;);
+    }
+}
+</code></pre><h4 id="8-7-2-配置命名切点"><a href="#8-7-2-配置命名切点" class="headerlink" title="8.7.2 配置命名切点"></a>8.7.2 配置命名切点</h4><pre><code>&lt;aop:config proxy-target-class=&quot;true&quot;&gt;
+    &lt;aop:aspect ref=&quot;adviceMethods&quot;&gt;
+
+        &lt;!--定义切点，该切点的命名为greetToPointcut--&gt;
+        &lt;aop:pointcut id=&quot;greetToPointcut&quot; expression=&quot;target(com.yyq.schema.NaiveWaiter) and execution(* greetTo(..))&quot;/&gt;
+
+        &lt;!--引用切点--&gt;
+        &lt;aop:before method=&quot;preGreeting&quot; pointcut-ref=&quot;greetToPointcut&quot;/&gt;
+    &lt;/aop:aspect&gt;
+&lt;/aop:config&gt;
+
+&lt;!--//以下定义表示让一个切点能被所有增强访问--&gt;
+&lt;aop:config proxy-target-class=&quot;true&quot;&gt;
+
+    &lt;aop:pointcut id=&quot;greetToPointcut2&quot; expression=&quot;target(com.yyq.schema.NaiveWaiter) and execution(* greetTo(..))&quot;/&gt;
+
+    &lt;aop:aspect ref=&quot;adviceMethods&quot;&gt;
+        &lt;aop:before method=&quot;preGreeting&quot; pointcut-ref=&quot;greetToPointcut2&quot;/&gt;
+    &lt;/aop:aspect&gt;
+
+    &lt;aop:aspect ref=&quot;adviceMethods&quot;&gt;
+        &lt;aop:after method=&quot;postGreeting&quot; pointcut-ref=&quot;greetToPointcut2&quot;/&gt;
+    &lt;/aop:aspect&gt;
+
+&lt;/aop:config&gt;
+</code></pre><blockquote>
+<p>注意：如果在 <a href="aop:config" target="_blank" rel="noopener">aop:config</a> 元素下直接定义 <a href="aop:pointcut" target="_blank" rel="noopener">aop:pointcut</a> ，则必须保证 <a href="aop:pointcut" target="_blank" rel="noopener">aop:pointcut</a> 在 <a href="aop:aspect" target="_blank" rel="noopener">aop:aspect</a> 之前定义。<a href="aop:config" target="_blank" rel="noopener">aop:config</a> 元素下还能定义 <a href="aop:advisor" target="_blank" rel="noopener">aop:advisor</a> 。三者的配置顺序是：1.首先是<a href="aop:pointcut" target="_blank" rel="noopener">aop:pointcut</a>。2.然后是<a href="aop:advisor" target="_blank" rel="noopener">aop:advisor</a>。3.最后是<a href="aop:aspect" target="_blank" rel="noopener">aop:aspect</a>。 </p>
+</blockquote>
+<h4 id="8-7-3-各种增强类型配置"><a href="#8-7-3-各种增强类型配置" class="headerlink" title="8.7.3 各种增强类型配置"></a>8.7.3 各种增强类型配置</h4><p><strong>1.后置增强</strong><br></p>
+<pre><code>&lt;aop:config proxy-target-class=&quot;true&quot;&gt;
+    &lt;aop:aspect ref=&quot;adviceMethods&quot;&gt;
+        &lt;aop:after-returning method=&quot;afterReturning&quot;
+                             pointcut=&quot;target(com.baobaotao.SmartSeller)&quot; returning=&quot;retVal&quot; /&gt;
+    &lt;/aop:aspect&gt;
+&lt;/aop:config&gt;
+</code></pre><p><strong>2.环绕增强</strong><br></p>
+<pre><code>&lt;aop:config proxy-target-class=&quot;true&quot;&gt;
+    &lt;aop:aspect ref=&quot;adviceMethods&quot;&gt;
+        &lt;aop:around method=&quot;aroundMethod&quot;
+                    pointcut=&quot;execution(* serveTo(..)) and within(com.baobaotao.Waiter)&quot; /&gt;
+    &lt;/aop:aspect&gt;
+&lt;/aop:config&gt;
+</code></pre><p><strong>3.抛出异常增强</strong><br></p>
+<pre><code>&lt;aop:config proxy-target-class=&quot;true&quot;&gt;
+    &lt;aop:aspect ref=&quot;adviceMethods&quot;&gt;
+        &lt;aop:after-throwing method=&quot;afterThrowingMethod&quot;
+                            pointcut=&quot;target(com.baobaotao.SmartSeller) and execution(* checkBill(..))&quot;
+                            throwing=&quot;iae&quot; /&gt;
+    &lt;/aop:aspect&gt;
+&lt;/aop:config&gt;
+</code></pre><p><strong>4.Final增强</strong><br></p>
+<pre><code>&lt;aop:config proxy-target-class=&quot;true&quot;&gt;
+    &lt;aop:aspect ref=&quot;adviceMethods&quot;&gt;
+        &lt;aop:after method=&quot;afterMethod&quot;
+                   pointcut=&quot;execution(* com..*.Waiter.greetTo(..))&quot; /&gt;
+    &lt;/aop:aspect&gt;
+&lt;/aop:config&gt;
+</code></pre><p><strong>5.引介增强</strong><br></p>
+<pre><code>&lt;aop:config proxy-target-class=&quot;true&quot;&gt;
+    &lt;aop:aspect ref=&quot;adviceMethods&quot;&gt;
+        &lt;aop:declare-parents
+                implement-interface=&quot;com.baobaotao.Seller&quot;
+                default-impl=&quot;com.baobaotao.SmartSeller&quot;
+                types-matching=&quot;com.baobaotao.Waiter+&quot; /&gt;
+    &lt;/aop:aspect&gt;
+&lt;/aop:config&gt;
+</code></pre><h4 id="8-7-4-绑定连接点信息"><a href="#8-7-4-绑定连接点信息" class="headerlink" title="8.7.4 绑定连接点信息"></a>8.7.4 绑定连接点信息</h4><p>基于Schema配置的增强方法绑定连接点信息和基于@AspectJ绑定连接点信息所使用的方法没区别。</p>
+<pre><code>1.所有增强类型对应的方法第一个入参都可以声明为 JoinPoint(环绕增强声明为：ProceedingJoinPoint)访问连接点信息。
+
+2.&lt;aop:after-returning&gt; （后置增强）可以通过returning属性绑定连接点方法返回值，&lt;aop:after-throwing&gt;（抛出异常增强）可以通过throwing属性绑定连接点方法所抛出的异常。
+
+3.所有增强类型都可以通过可绑定参数的切点函数绑定连接点方法的入参。
+</code></pre><p><strong>1.绑定连接点参数到增强方法</strong><br></p>
+<pre><code>&lt;aop:config proxy-target-class=&quot;true&quot;&gt;
+    &lt;aop:aspect ref=&quot;adviceMethods&quot;&gt;
+        &lt;aop:before method=&quot;bindParams&quot;
+                    pointcut=&quot;target(com.yyq.schema.NaiveWaiter) and args(name,num,..)&quot;/&gt;
+    &lt;/aop:aspect&gt;
+&lt;/aop:config&gt;
+</code></pre><h4 id="8-7-5-Advisor配置"><a href="#8-7-5-Advisor配置" class="headerlink" title="8.7.5 Advisor配置"></a>8.7.5 Advisor配置</h4><p>Advisor是增强和增强的复合体，是切面。在Schema配置中可以通过<a href="aop:advisor" target="_blank" rel="noopener">aop:advisor</a>配置一个Advisor。通过 advice-ref 属性引用基于接口定义的增强，通过 pointcut 定义切点表达式，或者通过 pointcut-ref 引用一个命名的切点。</p>
+<pre><code>&lt;aop:config proxy-target-class=&quot;true&quot;&gt;
+    &lt;aop:advisor advice-ref=&quot;testAdvice&quot;  pointcut=&quot;execution(* com..*.Waiter.greetTo(..))&quot;/&gt;
+&lt;/aop:config&gt;
+&lt;bean id=&quot;testAdvice&quot; class=&quot;com.yyq.schema.TestBeforeAdvice&quot;/&gt;
+</code></pre><p>增强类</p>
+<pre><code>package com.yyq.schema;
+import java.lang.reflect.Method;
+import org.springframework.aop.MethodBeforeAdvice;
+public class TestBeforeAdvice implements MethodBeforeAdvice {
+    public void before(Method method, Object[] args, Object target)
+            throws Throwable {
+        System.out.println(&quot;------TestBeforeAdvice------&quot;);
+        System.out.println(&quot;clientName:&quot;+args[0]);
+        System.out.println(&quot;------TestBeforeAdvice------&quot;);
+    }
+}
+</code></pre><h2 id="8-8-混合切面类型"><a href="#8-8-混合切面类型" class="headerlink" title="8.8 混合切面类型"></a>8.8 混合切面类型</h2><p>Spring虽然使用四种定义切面的方式，但其底层的实现技术都一样。</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+    xmlns:p=&quot;http://www.springframework.org/schema/p&quot; xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;
+    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+    xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;
+
+    &lt;!-- 方式一 ：使用Advisor API方式实现的流程控制切面 --&gt;
+
+    &lt;!--Advisor API 流程切点 指定流程切点的类 和 流程切点的方法 --&gt;
+    &lt;bean id=&quot;controlFlowPointcut&quot; class=&quot;org.springframework.aop.support.ControlFlowPointcut&quot;&gt;
+        &lt;constructor-arg type=&quot;java.lang.Class&quot;
+            value=&quot;com.xgj.aop.spring.advisor.ControlFlowAdvisor.WaiterDelegate&quot; /&gt;
+        &lt;constructor-arg type=&quot;java.lang.String&quot; value=&quot;service&quot; /&gt;
+    &lt;/bean&gt;
+
+    &lt;!--Advisor API 切面 --&gt;
+    &lt;bean id=&quot;controlFlowAdvisor&quot; class=&quot;org.springframework.aop.support.DefaultPointcutAdvisor&quot;
+        p:pointcut-ref=&quot;controlFlowPointcut&quot; p:advice-ref=&quot;greetingBeforeAdvice&quot; /&gt;
+
+
+    &lt;!-- 方式二： 使用@AspectJ注解方式定义切面 扫描 --&gt;
+    &lt;aop:aspectj-autoproxy proxy-target-class=&quot;true&quot; /&gt;
+
+
+    &lt;aop:config proxy-target-class=&quot;true&quot;&gt;
+        &lt;!-- 命名切点 --&gt;
+        &lt;aop:pointcut expression=&quot;execution(* com..*.Waiter.greetTo(..))&quot;
+            id=&quot;beforeAdvice&quot; /&gt;
+        &lt;!-- 方式三： 基于&lt;aop:advisor&gt;的方式 --&gt;
+        &lt;aop:advisor advice-ref=&quot;greetingBeforeAdvice&quot;
+            pointcut-ref=&quot;beforeAdvice&quot; /&gt;
+    &lt;/aop:config&gt;
+    &lt;bean id=&quot;greetingBeforeAdvice&quot; class=&quot;com.xgj.aop.spring.advisor.schema.advisor.GreetingBeforeAdvice&quot; /&gt;
+
+
+    &lt;aop:config proxy-target-class=&quot;true&quot;&gt;
+        &lt;aop:pointcut id=&quot;bussinessBindParamProgram&quot;
+            expression=&quot;target(com.xgj.aop.spring.advisor.schema.bindParameter.BussinessBindParam) and args(name,num,..)&quot; /&gt;
+        &lt;!-- 方式四：基于&lt;aop:aspect&gt;的方式 --&gt;
+        &lt;aop:aspect ref=&quot;adviceMethodsBindParam&quot;&gt;
+            &lt;aop:before pointcut-ref=&quot;bussinessBindParamProgram&quot;
+                method=&quot;crossCutting&quot; /&gt;
+        &lt;/aop:aspect&gt;
+    &lt;/aop:config&gt;
+
+&lt;/beans&gt;
+</code></pre>
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+
+  <p><span>本文标题:</span>SPRING AOP 续二</a></p>
+  <p><span>文章作者:</span>Bangjin-Hu</a></p>
+  <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
+  <p><span>最后更新:</span>2020年03月30日 - 08:18:02</p>
+  <p><span>原始链接:</span><a href="/undefined/第3章 Spring - AOP 续二/" title="SPRING AOP 续二">http://bangjinhu.github.io/undefined/第3章 Spring - AOP 续二/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/第3章 Spring - AOP 续二/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.jpg" alt="Bangjin-Hu wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎扫码关注微信公众号，订阅我的微信公众号.</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持是我创作的动力.</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat-reward-img.jpg" alt="Bangjin-Hu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay-reward-img.jpg" alt="Bangjin-Hu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Bangjin-Hu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://bangjinhu.github.io/undefined/第3章 Spring - AOP 续二/" title="SPRING AOP 续二">http://bangjinhu.github.io/undefined/第3章 Spring - AOP 续二/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/AOP/" rel="tag"><i class="fa fa-tag"></i> AOP</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/undefined/第4章 Java并发编程基础/" rel="next" title="并发编程 基础">
+                <i class="fa fa-chevron-left"></i> 并发编程 基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/undefined/第2章 深入分析Java IO的工作机制/" rel="prev" title="第二章 深入分析Java IO的工作机制">
+                第二章 深入分析Java IO的工作机制 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/site.jpg"
+                alt="Bangjin-Hu" />
+            
+              <p class="site-author-name" itemprop="name">Bangjin-Hu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">212</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/BangjinHu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:2315378346@qq.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/Aaron_P_L" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-heart-o"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://iProgramering.github.io" target="_blank" title="iProgramer_ing">
+                      
+                        <i class="fa fa-fw fa-user"></i>iProgramer_ing</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          <div id="music163player">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src="//music.163.com/outchain/player?type=2&id=38358214&auto=0&height=66
+
+">
+    </iframe>
+</div>
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-概述"><span class="nav-text">1 概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-AOP术语"><span class="nav-text">1.2 AOP术语</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-AOP实现者"><span class="nav-text">1.3 AOP实现者</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-基础知识"><span class="nav-text">2 基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-JDK动态代理技术"><span class="nav-text">2.2 JDK动态代理技术</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-CGLib动态代理"><span class="nav-text">2.3 CGLib动态代理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-创建增强类"><span class="nav-text">3 创建增强类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-前置增强"><span class="nav-text">3.1 前置增强</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-前置增强"><span class="nav-text">3.2 前置增强</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-前置增强"><span class="nav-text">3.3 前置增强</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-前置增强"><span class="nav-text">3.4 前置增强</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-创建切面"><span class="nav-text">4 创建切面</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#7-4-1-切点类型"><span class="nav-text">7.4.1 切点类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-4-2-切面类型"><span class="nav-text">7.4.2 切面类型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-5-自动创建代理"><span class="nav-text">7.5 自动创建代理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#7-5-1-BeanNameAutoProxyCreator"><span class="nav-text">7.5.1 BeanNameAutoProxyCreator</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-5-2-DefaultAdvisorAutoProxyCreator"><span class="nav-text">7.5.2 DefaultAdvisorAutoProxyCreator</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第8章-基于-AspectJ和Scheme的AOP"><span class="nav-text">第8章 基于@AspectJ和Scheme的AOP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#8-2-Java-5-0-注解知识进阶"><span class="nav-text">8.2 Java 5.0 注解知识进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#8-2-2-简单的注解类"><span class="nav-text">8.2.2 简单的注解类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-2-3-使用注解"><span class="nav-text">8.2.3 使用注解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-2-4-访问注解"><span class="nav-text">8.2.4 访问注解</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-3-使用-AspectJ"><span class="nav-text">8.3 使用@AspectJ</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#8-3-1-准备-案例"><span class="nav-text">8.3.1 准备 - 案例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-3-3-通过配置使用-AspectJ切面"><span class="nav-text">8.3.3 通过配置使用@AspectJ切面</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-4-AspectJ-语法"><span class="nav-text">8.4 @AspectJ 语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#8-4-1-切点表达式函数"><span class="nav-text">8.4.1 切点表达式函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-4-2-在函数入参中使用通配符"><span class="nav-text">8.4.2 在函数入参中使用通配符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-4-4-不同增强类型"><span class="nav-text">8.4.4 不同增强类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-4-5-引介增强使用"><span class="nav-text">8.4.5 引介增强使用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-5-切点函数详解"><span class="nav-text">8.5 切点函数详解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#8-5-1-annotation"><span class="nav-text">8.5.1 @annotation()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-5-2-execution"><span class="nav-text">8.5.2 execution()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-5-3-args-args"><span class="nav-text">8.5.3 args() | @args()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-5-4-within"><span class="nav-text">8.5.4 within()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-5-5-within-target"><span class="nav-text">8.5.5 @within() | @target()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-5-6-target-this"><span class="nav-text">8.5.6 target() | this()</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-6-AspectJ-进阶"><span class="nav-text">8.6 @AspectJ 进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#8-6-1-切点复合运算"><span class="nav-text">8.6.1 切点复合运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-6-2-命名切点"><span class="nav-text">8.6.2 命名切点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-6-3-增强织入顺序"><span class="nav-text">8.6.3 增强织入顺序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-6-4-访问连接点信息"><span class="nav-text">8.6.4 访问连接点信息</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-7-基于Schema配置切面"><span class="nav-text">8.7 基于Schema配置切面</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#8-7-2-配置命名切点"><span class="nav-text">8.7.2 配置命名切点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-7-3-各种增强类型配置"><span class="nav-text">8.7.3 各种增强类型配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-7-4-绑定连接点信息"><span class="nav-text">8.7.4 绑定连接点信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-7-5-Advisor配置"><span class="nav-text">8.7.5 Advisor配置</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-8-混合切面类型"><span class="nav-text">8.8 混合切面类型</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bangjin-Hu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">486.7k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/lib/clipboard/clipboard.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+</body>
+</html>

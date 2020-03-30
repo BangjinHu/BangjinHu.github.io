@@ -152,18 +152,18 @@
 
 
 
-<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. Spring - FDSpring提供一种方法管理你的业务对象，主要有两个功能为我们的业务对象管理提供便捷 Spring整合Web项目的底层原理这一过程表示在加载配置文件和创建对象过程，在服务器启动时完成。 1.在服务器启动的时候，为每个项目创建一个ServletContext对象。 2.在ServletContext对象创建时，使用监听器可以具体到">
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. Spring - FDSpring提供一种方法管理你的业务对象，主要有两个功能为我们的业务对象管理提供便捷 Spring整合Web项目的底层原理这一过程表示在加载配置文件和创建对象过程，在服务器启动时完成。">
 <meta name="keywords" content="Spring">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring">
 <meta property="og:url" content="http://bangjinhu.github.io/undefined/Spring/index.html">
 <meta property="og:site_name" content="BangjinHu&#39;s Blog">
-<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. Spring - FDSpring提供一种方法管理你的业务对象，主要有两个功能为我们的业务对象管理提供便捷 Spring整合Web项目的底层原理这一过程表示在加载配置文件和创建对象过程，在服务器启动时完成。 1.在服务器启动的时候，为每个项目创建一个ServletContext对象。 2.在ServletContext对象创建时，使用监听器可以具体到">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. Spring - FDSpring提供一种方法管理你的业务对象，主要有两个功能为我们的业务对象管理提供便捷 Spring整合Web项目的底层原理这一过程表示在加载配置文件和创建对象过程，在服务器启动时完成。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-29T03:29:45.115Z">
+<meta property="og:updated_time" content="2020-03-30T00:00:08.182Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring">
-<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. Spring - FDSpring提供一种方法管理你的业务对象，主要有两个功能为我们的业务对象管理提供便捷 Spring整合Web项目的底层原理这一过程表示在加载配置文件和创建对象过程，在服务器启动时完成。 1.在服务器启动的时候，为每个项目创建一个ServletContext对象。 2.在ServletContext对象创建时，使用监听器可以具体到">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. Spring - FDSpring提供一种方法管理你的业务对象，主要有两个功能为我们的业务对象管理提供便捷 Spring整合Web项目的底层原理这一过程表示在加载配置文件和创建对象过程，在服务器启动时完成。">
 
 
 
@@ -419,8 +419,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:29:45+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:00:08+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -509,14 +509,8 @@
         <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
 <h1 id="Spring-FD"><a href="#Spring-FD" class="headerlink" title="Spring - FD"></a>Spring - FD</h1><p>Spring提供一种方法管理你的业务对象，主要有两个功能为我们的业务对象管理提供便捷</p>
-<h4 id="Spring整合Web项目的底层原理"><a href="#Spring整合Web项目的底层原理" class="headerlink" title="Spring整合Web项目的底层原理"></a>Spring整合Web项目的底层原理</h4><p>这一过程表示在加载配置文件和创建对象过程，在服务器启动时完成。</p>
-<pre><code>1.在服务器启动的时候，为每个项目创建一个ServletContext对象。
-2.在ServletContext对象创建时，使用监听器可以具体到ServletContext对象在什么时候创建。
-3.在使用监听器监听ServletContext对象创建时。
-    4.加载spring配置文件，将配置文件对象创建。
-    5.将创建出来的对象放到ServletContext域对象里(setAttribute方法)。
-    6.获取对象的时候，到ServletContext域得到(getAttribute方法)。
-</code></pre><ul>
+<h4 id="Spring整合Web项目的底层原理"><a href="#Spring整合Web项目的底层原理" class="headerlink" title="Spring整合Web项目的底层原理"></a>Spring整合Web项目的底层原理</h4><p>这一过程表示在加载配置文件和创建对象过程，在服务器启动时完成。<br><a id="more"></a><br>    1.在服务器启动的时候，为每个项目创建一个ServletContext对象。<br>    2.在ServletContext对象创建时，使用监听器可以具体到ServletContext对象在什么时候创建。<br>    3.在使用监听器监听ServletContext对象创建时。<br>        4.加载spring配置文件，将配置文件对象创建。<br>        5.将创建出来的对象放到ServletContext域对象里(setAttribute方法)。<br>        6.获取对象的时候，到ServletContext域得到(getAttribute方法)。</p>
+<ul>
 <li>1.DI 依赖注入</li>
 <li>2.AOP 面向切面编程</li>
 </ul>
@@ -1748,7 +1742,7 @@ Dao层：Hibernate框架 对数据库进行crud操作
   <p><span>本文标题:</span>Spring</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 11:29:45</p>
+  <p><span>最后更新:</span>2020年03月30日 - 08:00:08</p>
   <p><span>原始链接:</span><a href="/undefined/Spring/" title="Spring">http://bangjinhu.github.io/undefined/Spring/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/Spring/"  aria-label="复制成功！"></i></span>
   </p>
@@ -1849,8 +1843,8 @@ Dao层：Hibernate框架 对数据库进行crud操作
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/undefined/SpringBoot 配置 Redis/" rel="next" title="SpringBoot 配置 Redis">
-                <i class="fa fa-chevron-left"></i> SpringBoot 配置 Redis
+              <a href="/undefined/SpringMVC - 数据校验/" rel="next" title="SpringMVC 数据校验">
+                <i class="fa fa-chevron-left"></i> SpringMVC 数据校验
               </a>
             
           </div>
@@ -1859,8 +1853,8 @@ Dao层：Hibernate框架 对数据库进行crud操作
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/undefined/SpringBoot - 错误总结/" rel="prev" title="SpringBoot 错误总结">
-                SpringBoot 错误总结 <i class="fa fa-chevron-right"></i>
+              <a href="/undefined/SpringBoot 配置 Shiro/" rel="prev" title="SpringBoot 配置 Shiro">
+                SpringBoot 配置 Shiro <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1970,7 +1964,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1981,7 +1975,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1992,7 +1986,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2034,12 +2028,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -2117,7 +2105,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

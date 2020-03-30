@@ -139,7 +139,7 @@
 
 
 
-  <meta name="keywords" content="Redis," />
+  <meta name="keywords" content="项目经验," />
 
 
 
@@ -153,16 +153,16 @@
 
 
 <meta name="description" content="注意：所有文章除特别说明外，转载请注明出处.  --- title: Java程序开发项目经验 tags:   - 项目开发 categories:    - 学习笔记 copyright: true showdonate: true date: 2018-06-05 09:22:26 comments: true password:  ---  注意：所有文章除特别说明外，转载请注明出处. 1">
-<meta name="keywords" content="Redis">
+<meta name="keywords" content="项目经验">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Redis - Java集成">
+<meta property="og:title" content="项目经验">
 <meta property="og:url" content="http://bangjinhu.github.io/undefined/项目开发经验/index.html">
 <meta property="og:site_name" content="BangjinHu&#39;s Blog">
 <meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处.  --- title: Java程序开发项目经验 tags:   - 项目开发 categories:    - 学习笔记 copyright: true showdonate: true date: 2018-06-05 09:22:26 comments: true password:  ---  注意：所有文章除特别说明外，转载请注明出处. 1">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-29T00:42:50.443Z">
+<meta property="og:updated_time" content="2020-03-30T00:24:41.975Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Redis - Java集成">
+<meta name="twitter:title" content="项目经验">
 <meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处.  --- title: Java程序开发项目经验 tags:   - 项目开发 categories:    - 学习笔记 copyright: true showdonate: true date: 2018-06-05 09:22:26 comments: true password:  ---  注意：所有文章除特别说明外，转载请注明出处. 1">
 
 
@@ -199,7 +199,7 @@
 
 
 
-  <title>Redis - Java集成 | BangjinHu's Blog</title>
+  <title>项目经验 | BangjinHu's Blog</title>
   
 
 
@@ -391,7 +391,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Redis - Java集成</h2>
+          <h2 class="post-title" itemprop="name headline">项目经验</h2>
         
 
         <div class="post-meta">
@@ -419,8 +419,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T08:42:50+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:24:41+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -438,8 +438,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Redis/" itemprop="url" rel="index">
-                    <span itemprop="name">Redis</span>
+                  <a href="/categories/项目经验/" itemprop="url" rel="index">
+                    <span itemprop="name">项目经验</span>
                   </a>
                 </span>
 
@@ -523,15 +523,13 @@ password:
 ---
 <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h3 id="1-Tomcat与jetty"><a href="#1-Tomcat与jetty" class="headerlink" title="1.Tomcat与jetty"></a>1.Tomcat与jetty</h3><p>jetty和Tomcat是两款著名的开源webserver/servlet容器。</p>
-<pre><code>两者之间的比较：
-
-    1.jetty更加的轻量级
-    2.jetty更加灵活，表现在可扩展性
+<h3 id="1-Tomcat与jetty"><a href="#1-Tomcat与jetty" class="headerlink" title="1.Tomcat与jetty"></a>1.Tomcat与jetty</h3><p>jetty和Tomcat是两款著名的开源webserver/servlet容器。<br><a id="more"></a><br>    两者之间的比较：</p>
+<pre><code>1.jetty更加的轻量级
+2.jetty更加灵活，表现在可扩展性
 </code></pre><hr>
 <h3 id="2-web-xml文件配置"><a href="#2-web-xml文件配置" class="headerlink" title="2.web.xml文件配置"></a>2.web.xml文件配置</h3><p>修改在<code>webapp</code>路径下的<code>web.xml</code>文件需要根据规定的顺序添加操作权限，否则会报错。或者将<code>&lt;!DOCTYPE web-app PUBLIC &quot;-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN&quot; &quot;http://java.sun.com/dtd/web-app_2_3.dtd&quot;&gt;</code>这一段校验代码删掉，问题就解决了。这时因为我们添加的部分的代码符合<code>xml</code>文档规范，但是不符合<code>web-app_2_3.dtd</code>所定义的规范。</p>
 <hr>
-<a id="more"></a>
+<!-- more -->
 <h3 id="3-测试"><a href="#3-测试" class="headerlink" title="3.测试"></a>3.测试</h3><blockquote>
 <p>注意：在使用IDEA开发的时候，mapper类只能建立在resource目录下，不能建立在Java的包下面，不然会映射不了。</p>
 </blockquote>
@@ -581,11 +579,11 @@ password:
   <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
 
-  <p><span>本文标题:</span>Redis - Java集成</a></p>
+  <p><span>本文标题:</span>项目经验</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 08:42:50</p>
-  <p><span>原始链接:</span><a href="/undefined/项目开发经验/" title="Redis - Java集成">http://bangjinhu.github.io/undefined/项目开发经验/</a>
+  <p><span>最后更新:</span>2020年03月30日 - 08:24:41</p>
+  <p><span>原始链接:</span><a href="/undefined/项目开发经验/" title="项目经验">http://bangjinhu.github.io/undefined/项目开发经验/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/项目开发经验/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
@@ -657,7 +655,7 @@ password:
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://bangjinhu.github.io/undefined/项目开发经验/" title="Redis - Java集成">http://bangjinhu.github.io/undefined/项目开发经验/</a>
+    <a href="http://bangjinhu.github.io/undefined/项目开发经验/" title="项目经验">http://bangjinhu.github.io/undefined/项目开发经验/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -672,7 +670,7 @@ password:
       
         <div class="post-tags">
           
-            <a href="/tags/Redis/" rel="tag"><i class="fa fa-tag"></i> Redis</a>
+            <a href="/tags/项目经验/" rel="tag"><i class="fa fa-tag"></i> 项目经验</a>
           
         </div>
       
@@ -685,8 +683,8 @@ password:
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/undefined/项目开发过程记录/" rel="next" title="Redis - Java集成">
-                <i class="fa fa-chevron-left"></i> Redis - Java集成
+              <a href="/undefined/项目开发过程记录/" rel="next" title="项目开发过程">
+                <i class="fa fa-chevron-left"></i> 项目开发过程
               </a>
             
           </div>
@@ -695,8 +693,8 @@ password:
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/undefined/错误日志/" rel="prev" title="Redis - Java集成">
-                Redis - Java集成 <i class="fa fa-chevron-right"></i>
+              <a href="/undefined/错误日志/" rel="prev" title="错误日志">
+                错误日志 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -806,7 +804,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -817,7 +815,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -828,7 +826,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -870,12 +868,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -953,7 +945,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

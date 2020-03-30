@@ -373,7 +373,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/设计模式 - 命令模式 重点/">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Servlet/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bangjin-Hu">
@@ -392,7 +392,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/undefined/设计模式 - 命令模式 重点/" itemprop="url">设计模式 - 命令</a></h2>
+                <a class="post-title-link" href="/undefined/Servlet/" itemprop="url">Servlet</a></h2>
         
 
         <div class="post-meta">
@@ -420,8 +420,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:24:19+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:51:54+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -439,8 +439,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
+                  <a href="/categories/Servlet/" itemprop="url" rel="index">
+                    <span itemprop="name">Servlet</span>
                   </a>
                 </span>
 
@@ -470,7 +470,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  415
+                  13,714
                 </span>
               
 
@@ -486,7 +486,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  56
                 </span>
               
             </div>
@@ -508,91 +508,21 @@
 
       
         
-          
-            <blockquote class="blockquote-center"></blockquote>
+          <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>该模式是一种数据驱动的设计模式，请求以命令的形式包裹在对象中，并且传给调用对象。调用对象寻找可以处理该命令的合适对象，并将该命令传给相应的对象，该对象执行命令。</p>
-<blockquote>
-<p>注意：系统需要支持命令的撤销和恢复操作，可以使用命令模式。</p>
+<h2 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h2><blockquote>
+<p>开发步骤：</p>
 </blockquote>
-<h4 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h4><p><strong>1.创建命令接口</strong><br></p>
-<pre><code>public interface Order {
-   void execute();
-}
-</code></pre><p><strong>2.创建请求类</strong><br></p>
-<pre><code>public class Stock {
-   private String name = &quot;ABC&quot;;
-   private int quantity = 10;
-
-   public void buy(){
-      System.out.println(&quot;Stock [ Name: &quot;+name+&quot;, 
-         Quantity: &quot; + quantity +&quot; ] bought&quot;);
-   }
-   public void sell(){
-      System.out.println(&quot;Stock [ Name: &quot;+name+&quot;, 
-         Quantity: &quot; + quantity +&quot; ] sold&quot;);
-   }
-}
-</code></pre><p><strong>3.创建实现 Order 接口的实体类</strong><br></p>
-<pre><code>public class BuyStock implements Order {
-   private Stock abcStock;
-
-   public BuyStock(Stock abcStock){
-      this.abcStock = abcStock;
-   }
-
-   public void execute() {
-      abcStock.buy();
-   }
-}
-
-public class SellStock implements Order {
-   private Stock abcStock;
-
-   public SellStock(Stock abcStock){
-      this.abcStock = abcStock;
-   }
-
-   public void execute() {
-      abcStock.sell();
-   }
-}
-</code></pre><p><strong>4.创建命令调用类</strong><br></p>
-<pre><code>import java.util.ArrayList;
-import java.util.List;
-
-   public class Broker {
-   private List&lt;Order&gt; orderList = new ArrayList&lt;Order&gt;(); 
-
-   public void takeOrder(Order order){
-      orderList.add(order);      
-   }
-
-   public void placeOrders(){
-      for (Order order : orderList) {
-         order.execute();
-      }
-      orderList.clear();
-   }
-}
-</code></pre><p><strong>5.使用 Broker 类来接受并执行命令</strong><br></p>
-<pre><code>public class CommandPatternDemo {
-   public static void main(String[] args) {
-      Stock abcStock = new Stock();
-
-      BuyStock buyStockOrder = new BuyStock(abcStock);
-      SellStock sellStockOrder = new SellStock(abcStock);
-
-      Broker broker = new Broker();
-      broker.takeOrder(buyStockOrder);
-      broker.takeOrder(sellStockOrder);
-
-      broker.placeOrders();
-   }
-}
-</code></pre><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>命令模式将请求发送者和请求接收者解耦，请求发送者通过命令对象间引用接收者。将一个请求封装为一个对象，从而让我们可用不同的请求对客户进行参数化，对请求排队或者记录请求日志，以及支持可撤销的操作。</p>
-
-          
+<ul>
+<li>编写一个java类，实现servlet接口</li>
+<li>把开发好的java类部署到web服务器
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/Servlet/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -642,7 +572,7 @@ import java.util.List;
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/设计模式 - 外观模式 - 重点/">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Redis/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bangjin-Hu">
@@ -661,7 +591,7 @@ import java.util.List;
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/undefined/设计模式 - 外观模式 - 重点/" itemprop="url">设计模式 - 外观</a></h2>
+                <a class="post-title-link" href="/undefined/Redis/" itemprop="url">Redis</a></h2>
         
 
         <div class="post-meta">
@@ -689,8 +619,8 @@ import java.util.List;
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:24:38+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:02:53+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -708,8 +638,8 @@ import java.util.List;
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
+                  <a href="/categories/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
                   </a>
                 </span>
 
@@ -739,7 +669,7 @@ import java.util.List;
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  491
+                  14,152
                 </span>
               
 
@@ -755,7 +685,7 @@ import java.util.List;
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  56
                 </span>
               
             </div>
@@ -777,92 +707,27 @@ import java.util.List;
 
       
         
-          
-            <blockquote class="blockquote-center"></blockquote>
+          <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>该模式隐藏系统的复杂性，并向客户端提供了一个客户端可以访问系统的接口。它向现有的系统添加一个接口，来隐藏系统的复杂性。</p>
+<h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><p>[TOC]</p>
+<h3 id="Redis-概述"><a href="#Redis-概述" class="headerlink" title="Redis 概述"></a>Redis 概述</h3><ul>
+<li>IDEA集成Redis可视化插件，直接在IDEA的setting的plugin中下载Iedis安装就行(付费)。</li>
+<li>Redis可视化工具 RedisDestopManager</li>
+</ul>
+<p>Redis 是一个基于内存的高性能key-value数据库，通过提供多种键值数据类型来适应不同场景下的存储需求。<br></p>
 <blockquote>
-<p>注意：在层次化结构中，可以使用外观模式定义系统中每一层的入口。</p>
+<p>应用场景：1.会话缓存(session cache)(数据查询、短链接、新闻内容、商品内容等) 2.全页缓存(FPC) 3.任务队列(秒杀、抢购、12306) 4.排行榜/计数器 5.发布/订阅 6.分布式集群架构中的session分离 7.数据过期处理</p>
 </blockquote>
-<p>子系统越来越复杂，增加外观模式提供简单调用接口。构建多层系统结构，利用外观对象作为每层的入口，简化层间调用。</p>
-<p>优点</p>
-<pre><code>1. 简化调用过程，无需了解深入子系统，防止带来风险
-
-2. 减少系统依赖、松散耦合
-
-3. 更好的划分访问层次
-
-4. 符合迪米特法则，最少知道原则
-</code></pre><p>缺点</p>
-<pre><code>1. 增加子系统、扩展子系统行为容易带来风险
-
-2. 不符合开闭原则
-</code></pre><p>相关设计模式</p>
-<pre><code>1. 中介者模式
-
-2. 单例模式
-
-3. 抽象工厂模式
-</code></pre><h4 id="外观模式具体实现"><a href="#外观模式具体实现" class="headerlink" title="外观模式具体实现"></a>外观模式具体实现</h4><p><strong>1.创建接口</strong><br></p>
-<pre><code>public interface Shape {
-   void draw();
-}
-</code></pre><p><strong>2.创建实现接口的实体类</strong><br></p>
-<pre><code>public class Rectangle implements Shape {
-   @Override
-   public void draw() {
-      System.out.println(&quot;Rectangle::draw()&quot;);
-   }
-}
-
-public class Square implements Shape {
-   @Override
-   public void draw() {
-      System.out.println(&quot;Square::draw()&quot;);
-   }
-}
-
-public class Circle implements Shape {
-   @Override
-   public void draw() {
-      System.out.println(&quot;Circle::draw()&quot;);
-   }
-}
-</code></pre><p><strong>3.创建一个外观类</strong><br></p>
-<pre><code>public class ShapeMaker {
-   private Shape circle;
-   private Shape rectangle;
-   private Shape square;
-
-   public ShapeMaker() {
-      circle = new Circle();
-      rectangle = new Rectangle();
-      square = new Square();
-   }
-
-   public void drawCircle(){
-      circle.draw();
-   }
-   public void drawRectangle(){
-      rectangle.draw();
-   }
-   public void drawSquare(){
-      square.draw();
-   }
-}
-</code></pre><p><strong>4.使用该外观类画出各种类型的形状</strong><br></p>
-<pre><code>public class FacadePatternDemo {
-   public static void main(String[] args) {
-      ShapeMaker shapeMaker = new ShapeMaker();
-
-      shapeMaker.drawCircle();
-      shapeMaker.drawRectangle();
-      shapeMaker.drawSquare();      
-   }
-}
-</code></pre><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>这里的外观模式可以形象的表示为将所有的功能都集成在一个类里面，然后该类提供一个接口给用户，用户通过此接口使用该类里面定义的功能。</p>
-<h4 id="外观模式在源码中的应用"><a href="#外观模式在源码中的应用" class="headerlink" title="外观模式在源码中的应用"></a>外观模式在源码中的应用</h4>
-          
+<blockquote>
+<p>扩展：为了解决高并发、高可扩展、高可用、大数据存储问题而产生的数据库解决方案，就是NoSql数据库。NoSQL：not-Only SQL表示非关系型数据库，作为关系型数据库的良好补充。</p>
+</blockquote>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/Redis/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -912,7 +777,7 @@ public class Circle implements Shape {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/设计模式 - 工厂模式/">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Spring MVC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bangjin-Hu">
@@ -931,7 +796,7 @@ public class Circle implements Shape {
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/undefined/设计模式 - 工厂模式/" itemprop="url">设计模式 - 工厂</a></h2>
+                <a class="post-title-link" href="/undefined/Spring MVC/" itemprop="url">SpringMVC</a></h2>
         
 
         <div class="post-meta">
@@ -959,8 +824,8 @@ public class Circle implements Shape {
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:24:50+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:00:28+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -978,8 +843,8 @@ public class Circle implements Shape {
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
+                  <a href="/categories/SpringMVC/" itemprop="url" rel="index">
+                    <span itemprop="name">SpringMVC</span>
                   </a>
                 </span>
 
@@ -1009,7 +874,1180 @@ public class Circle implements Shape {
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  680
+                  13,265
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  56
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h1 id="Spring-MVC-FD"><a href="#Spring-MVC-FD" class="headerlink" title="Spring MVC - FD"></a>Spring MVC - FD</h1><h2 id="1-Spring-MVC-中Controller层"><a href="#1-Spring-MVC-中Controller层" class="headerlink" title="1.Spring MVC 中Controller层"></a>1.Spring MVC 中Controller层</h2><p>SpringMVC中的Controller方法的参数可以是Integer，Double，自定义对象，ServletRequest，ServletResponse，ModelAndView等。</p>
+<h3 id="MVC控制层作用："><a href="#MVC控制层作用：" class="headerlink" title="MVC控制层作用："></a>MVC控制层作用：</h3><p>接收客户端的请求，然后调用Service层业务逻辑，获取到数据，传递给视图（客户端）用于视觉呈现<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/Spring MVC/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Spring Boot/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/Spring Boot/" itemprop="url">SpringBoot</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:00:58+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SpringBoot/" itemprop="url" rel="index">
+                    <span itemprop="name">SpringBoot</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  20,899
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  100
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<p>[TOC]</p>
+<h1 id="Spring-Boot-入门"><a href="#Spring-Boot-入门" class="headerlink" title="Spring Boot 入门"></a>Spring Boot 入门</h1><h2 id="1、Spring-Boot-简介"><a href="#1、Spring-Boot-简介" class="headerlink" title="1、Spring Boot 简介"></a>1、Spring Boot 简介</h2><blockquote>
+<p>简化Spring应用开发的一个框架；</p>
+<p>整个Spring技术栈的一个大整合；</p>
+<p>J2EE开发的一站式解决方案；</p>
+</blockquote>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/Spring Boot/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Java 并发与高并发解决方案/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/Java 并发与高并发解决方案/" itemprop="url">Java 并发与高并发解决方案</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-21T09:22:26+08:00">
+                2019-06-21
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:10:55+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java-多线程/" itemprop="url" rel="index">
+                    <span itemprop="name">Java 多线程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4,256
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  16
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="Java-并发与高并发解决方案"><a href="#Java-并发与高并发解决方案" class="headerlink" title="Java 并发与高并发解决方案"></a>Java 并发与高并发解决方案</h2><p>[TOC]</p>
+<h3 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h3>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/Java 并发与高并发解决方案/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Java 并发编程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/Java 并发编程/" itemprop="url">Java 并发编程</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-13T09:22:26+08:00">
+                2019-06-13
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:10:42+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java-多线程/" itemprop="url" rel="index">
+                    <span itemprop="name">Java 多线程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,039
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h1 id="Java-并发编程"><a href="#Java-并发编程" class="headerlink" title="Java 并发编程"></a>Java 并发编程</h1><h2 id="1-并发任务"><a href="#1-并发任务" class="headerlink" title="1 并发任务"></a>1 并发任务</h2><h4 id="1-1-运行任务"><a href="#1-1-运行任务" class="headerlink" title="1.1 运行任务"></a>1.1 运行任务</h4><p>在Java中，Runnable接口描述一个想要运行的任务，通常与其它任务并行运行。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/Java 并发编程/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Java 多线程 - 续/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/Java 多线程 - 续/" itemprop="url">Java 多线程 - 续</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-06T09:22:26+08:00">
+                2019-06-06
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:36:21+08:00">
+                2020-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java-并发编程/" itemprop="url" rel="index">
+                    <span itemprop="name">Java 并发编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,607
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="多线程之共享数据"><a href="#多线程之共享数据" class="headerlink" title="多线程之共享数据"></a>多线程之共享数据</h2><p>在这里主要总结线程共享数据的相关知识，主要包括两方面:一是某个线程内如何共享数据，保证各个线程的数据不交叉。二是多个线程间如何共享数据，保证数据的一致性。</p>
+<h4 id="1-线程范围内共享数据"><a href="#1-线程范围内共享数据" class="headerlink" title="1.线程范围内共享数据"></a>1.线程范围内共享数据</h4><p>当我们自己实现的话，是定义一个Map，线程为键，数据为值。表中的每一项即是为每个线程准备的数据，这样在一个线程中数据是一致的。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/Java 多线程 - 续/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Java 多线程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/Java 多线程/" itemprop="url">Java 多线程</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-06T09:22:26+08:00">
+                2019-06-06
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:11:08+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java-多线程/" itemprop="url" rel="index">
+                    <span itemprop="name">Java 多线程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  9,622
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  41
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="多线程之传统多线程"><a href="#多线程之传统多线程" class="headerlink" title="多线程之传统多线程"></a>多线程之传统多线程</h2><p>[TOC]</p>
+<h4 id="1-传统线程技术"><a href="#1-传统线程技术" class="headerlink" title="1.传统线程技术"></a>1.传统线程技术</h4>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/Java 多线程/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/HTTP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/HTTP/" itemprop="url">HTTP入门</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-05T09:22:26+08:00">
+                2019-03-05
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:12:25+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTTP/" itemprop="url" rel="index">
+                    <span itemprop="name">HTTP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  740
                 </span>
               
 
@@ -1047,95 +2085,17 @@ public class Circle implements Shape {
 
       
         
-          
-            <blockquote class="blockquote-center"></blockquote>
+          <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>工厂模式是Java中最常用的设计模式之一。它提供一种创建对象的最佳方式。在这一模式中在创建对象的时候不会对客户端暴露创建逻辑，同时使用一个共同的接口来指向新创建的对象。</p>
-<blockquote>
-<p>注意：该模式是一种创建类模式，在任何需要生成复杂对象的地方，都能够使用工厂方法模式。同时还需注意，复杂对象适合使用工厂模式，而简单对象，特别是只需要同时new就可以完成创建的对象，无需使用工厂模式。<code>如果需要使用工厂模式，就需要引入一个类，会增加系统的复杂度</code>。</p>
-</blockquote>
-<pre><code>1.该模式是一种创建对象的模式。
-2.该模式将创建对象的责任转移到工厂类。
-</code></pre><blockquote>
-<blockquote>
-<p>提示：简单工厂一般是用一个工厂创建多个类的实例。工厂模式一般是指一个工厂服务一个接口，为这个接口的实现类进行实例化。</p>
-</blockquote>
-</blockquote>
-<h4 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h4><p><strong>1.创建接口 Shape.java</strong><br></p>
-<pre><code>public interface Shape {
-    void draw();
-}
-</code></pre><p><strong>2.创建实现接口的实现类</strong><br></p>
-<pre><code>public class Rectangle implements Shape {
-   @Override
-   public void draw() {
-      System.out.println(&quot;Inside Rectangle::draw() method.&quot;);
-   }
-}
-
-public class Square implements Shape {
-   @Override
-   public void draw() {
-      System.out.println(&quot;Inside Square::draw() method.&quot;);
-   }
-}
-
-public class Circle implements Shape {
-   @Override
-   public void draw() {
-      System.out.println(&quot;Inside Circle::draw() method.&quot;);
-   }
-}
-</code></pre><p><strong>3.创建一个工厂 生成基于给定信息的实体类对象</strong><br></p>
-<pre><code>public class ShapeFactory {
-   //使用 getShape 方法获取形状类型的对象
-   public Shape getShape(String shapeType){
-      if(shapeType == null){
-         return null;
-      }        
-      if(shapeType.equalsIgnoreCase(&quot;CIRCLE&quot;)){
-         return new Circle();
-      } else if(shapeType.equalsIgnoreCase(&quot;RECTANGLE&quot;)){
-         return new Rectangle();
-      } else if(shapeType.equalsIgnoreCase(&quot;SQUARE&quot;)){
-         return new Square();
-      }
-      return null;
-   }
-}
-</code></pre><p><strong>4.使用该工厂 通过传递类型信息来获取实体类的对象</strong><br></p>
-<pre><code>public class FactoryPatternDemo {
-   public static void main(String[] args) {
-      ShapeFactory shapeFactory = new ShapeFactory();
-
-      //获取 Circle 的对象，并调用它的 draw 方法
-      Shape shape1 = shapeFactory.getShape(&quot;CIRCLE&quot;);
-
-      //调用 Circle 的 draw 方法
-      shape1.draw();
-
-      //获取 Rectangle 的对象，并调用它的 draw 方法
-      Shape shape2 = shapeFactory.getShape(&quot;RECTANGLE&quot;);
-
-      //调用 Rectangle 的 draw 方法
-      shape2.draw();
-
-      //获取 Square 的对象，并调用它的 draw 方法
-      Shape shape3 = shapeFactory.getShape(&quot;SQUARE&quot;);
-
-      //调用 Square 的 draw 方法
-      shape3.draw();
-   }
-}
-</code></pre><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>上面提供的只是一个简单的普通工厂模式，除此之外还有多个工厂模式和静态工厂模式。</p>
-<blockquote>
-<p>多个工厂模式：该模式是对普通工厂模式的改进，其提供多个工厂方法，分别创建对象。</p>
-</blockquote>
-<blockquote>
-<p>静态工厂模式：将上面多个工厂模式里面的方法设置为静态的，不需要创建实例，直接调用便可。</p>
-</blockquote>
-
-          
+<h1 id="HTTP入门"><a href="#HTTP入门" class="headerlink" title="HTTP入门"></a>HTTP入门</h1><p>对HTTP协议早有了解，最近在看javaweb，视频中讲到了这部分，就把视频的内容整理归纳下。</p>
+<h2 id="请求-Request"><a href="#请求-Request" class="headerlink" title="请求(Request)"></a>请求(Request)</h2><p>一个完整的HTTP请求包括：一个请求行、若干请求头、以及实体内容<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/HTTP/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1185,7 +2145,7 @@ public class Circle implements Shape {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/设计模式 - 建造者模式/">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/ExcelUtil/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bangjin-Hu">
@@ -1204,7 +2164,7 @@ public class Circle implements Shape {
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/undefined/设计模式 - 建造者模式/" itemprop="url">设计模式 - 建造</a></h2>
+                <a class="post-title-link" href="/undefined/ExcelUtil/" itemprop="url">EXCEL UTIL</a></h2>
         
 
         <div class="post-meta">
@@ -1216,8 +2176,8 @@ public class Circle implements Shape {
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-05T09:22:26+08:00">
+                2018-12-05
               </time>
             
 
@@ -1232,8 +2192,8 @@ public class Circle implements Shape {
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:24:58+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:12:44+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -1251,8 +2211,8 @@ public class Circle implements Shape {
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
+                  <a href="/categories/util/" itemprop="url" rel="index">
+                    <span itemprop="name">util</span>
                   </a>
                 </span>
 
@@ -1282,7 +2242,7 @@ public class Circle implements Shape {
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  697
+                  4,387
                 </span>
               
 
@@ -1298,7 +2258,7 @@ public class Circle implements Shape {
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  19
                 </span>
               
             </div>
@@ -1320,2089 +2280,18 @@ public class Circle implements Shape {
 
       
         
-          
-            <blockquote class="blockquote-center"></blockquote>
+          <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>该模式是使用多个简单的对象一步一步构建成一个复杂的对象。一个Builder类会一步一步构造最终的对象。该Builder类是独立于其它对象的。</p>
-<blockquote>
-<p>提示：经常碰到的XxxBuilder类就是建造者的产物。套路：1.首先new一个Builer。2.然后可以链式的调用一堆方法。3.最后调用build()方法。</p>
-</blockquote>
-<blockquote>
-<p>提示：建造者模式有个概念叫做链式调用。</p>
-</blockquote>
-<h4 id="建造者模式的具体实现"><a href="#建造者模式的具体实现" class="headerlink" title="建造者模式的具体实现"></a>建造者模式的具体实现</h4><p><strong>1.创建表示食物条目和食物包装的接口</strong><br></p>
-<pre><code>public interface Item {
-   public String name();
-   public Packing packing();
-   public float price();    
-}
-
-public interface Packing {
-   public String pack();
-}
-</code></pre><p><strong>2.创建实现Packing接口的实体类</strong><br></p>
-<pre><code>public class Wrapper implements Packing {
-   @Override
-   public String pack() {
-      return &quot;Wrapper&quot;;
-   }
-}
-
-public class Bottle implements Packing {
-   @Override
-   public String pack() {
-      return &quot;Bottle&quot;;
-   }
-}
-</code></pre><p><strong>3.创建实现 Item 接口的抽象类 该类提供了默认的功能</strong><br></p>
-<pre><code>public abstract class Burger implements Item {
-   @Override
-   public Packing packing() {
-      return new Wrapper();
-   }
-
-   @Override
-   public abstract float price();
-}
-
-public abstract class ColdDrink implements Item {
-    @Override
-    public Packing packing() {
-       return new Bottle();
-    }
-
-    @Override
-    public abstract float price();
-}
-</code></pre><p><strong>4.创建扩展 Burger 和 ColdDrink 的实体类</strong><br></p>
-<pre><code>public class VegBurger extends Burger {
-
-   @Override
-   public float price() {
-      return 25.0f;
-   }
-
-   @Override
-   public String name() {
-      return &quot;Veg Burger&quot;;
-   }
-}
-
-public class ChickenBurger extends Burger {
-
-   @Override
-   public float price() {
-      return 50.5f;
-   }
-
-   @Override
-   public String name() {
-      return &quot;Chicken Burger&quot;;
-   }
-}
-
-public class Coke extends ColdDrink {
-   @Override
-   public float price() {
-      return 30.0f;
-   }
-
-   @Override
-   public String name() {
-      return &quot;Coke&quot;;
-   }
-}
-
-public class Pepsi extends ColdDrink {
-   @Override
-   public float price() {
-      return 35.0f;
-   }
-
-   @Override
-   public String name() {
-      return &quot;Pepsi&quot;;
-   }
-}
-</code></pre><p><strong>5.创建一个Meal类 带有上面定义的Item对象</strong><br></p>
-<pre><code>import java.util.ArrayList;
-import java.util.List;
-
-public class Meal {
-   private List&lt;Item&gt; items = new ArrayList&lt;Item&gt;();    
-
-   public void addItem(Item item){
-      items.add(item);
-   }
-
-   public float getCost(){
-      float cost = 0.0f;
-      for (Item item : items) {
-         cost += item.price();
-      }        
-      return cost;
-   }
-
-   public void showItems(){
-      for (Item item : items) {
-         System.out.print(&quot;Item : &quot;+item.name());
-         System.out.print(&quot;, Packing : &quot;+item.packing().pack());
-         System.out.println(&quot;, Price : &quot;+item.price());
-      }        
-   }    
-}
-</code></pre><p><strong>6.创建一个 MealBuilder 类 实际的 builder 类负责创建 Meal 对象</strong><br></p>
-<pre><code>public class MealBuilder {
-   public Meal prepareVegMeal (){
-      Meal meal = new Meal();
-      meal.addItem(new VegBurger());
-      meal.addItem(new Coke());
-      return meal;
-   }   
-
-   public Meal prepareNonVegMeal (){
-      Meal meal = new Meal();
-      meal.addItem(new ChickenBurger());
-      meal.addItem(new Pepsi());
-      return meal;
-   }
-}
-</code></pre><p><strong>7.BuiderPatternDemo 使用 MealBuider 来演示建造者模式（Builder Pattern）</strong><br></p>
-<pre><code>public class BuilderPatternDemo {
-   public static void main(String[] args) {
-      MealBuilder mealBuilder = new MealBuilder();
-
-      Meal vegMeal = mealBuilder.prepareVegMeal();
-      System.out.println(&quot;Veg Meal&quot;);
-      vegMeal.showItems();
-      System.out.println(&quot;Total Cost: &quot; +vegMeal.getCost());
-
-      Meal nonVegMeal = mealBuilder.prepareNonVegMeal();
-      System.out.println(&quot;\n\nNon-Veg Meal&quot;);
-      nonVegMeal.showItems();
-      System.out.println(&quot;Total Cost: &quot; +nonVegMeal.getCost());
-   }
-}
-</code></pre><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>建造者模式主要包含四个角色：产品角色(具体产品对象) | 抽象建造者 | 具体建造者 | 指挥者。</p>
-<pre><code>1.首先定义产品的变量(主体)，是一个具体的产品对象。
-2.抽象建造者定义产品的创建方法和返回方法。
-3.具体建造者：实现抽象接口，构建和装配各个部件。
-4.构建一个使用Builder接口的对象。主要用于创建一个复杂的对象。
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/设计模式 - 抽象工厂模式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/设计模式 - 抽象工厂模式/" itemprop="url">设计模式 - 抽象工厂</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:25:12+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  958
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>该模式是围绕一个超级工厂创建其它工厂，该超级工厂又称为其他工厂的工厂。它提供了一种创建对象的最佳方式。在该模式中，接口是负责创建一个相关对象的工厂，不需要显式指定它们的类。每个生成的工厂都能按照工厂模式提供对象。</p>
-<blockquote>
-<p>提示：抽象工厂模式是指一个工厂服务于一个产品族，一个产品族可能会包含多个接口，接口又会包含多个实现类，通过一个工厂就可以将这些绑定在一起。涉及到产品族的问题一般需要抽象模式来支持。</p>
-</blockquote>
-<pre><code>//这里以造电脑为例
-//1.首先直接定义电脑工厂，每个电脑工厂负责生产所有设备
-//2.在电脑工厂中定义做Cpu的和做主板的
-//3.然后其它的所有工厂都来继承实现该超级工厂
-</code></pre><blockquote>
-<p>注意：在需要新加方法的时候，需要修改所有的工厂，给所有的工厂都加上新的方法。</p>
-</blockquote>
-<h4 id="抽象工厂模式的实现"><a href="#抽象工厂模式的实现" class="headerlink" title="抽象工厂模式的实现"></a>抽象工厂模式的实现</h4><p><strong>1.创建接口 形状</strong><br></p>
-<pre><code>public interface Shape {
-    void draw();
-}
-</code></pre><p><strong>2.创建实现接口 形状的实体类</strong><br></p>
-<pre><code>public class Rectangle implements Shape {
-   @Override
-   public void draw() {
-      System.out.println(&quot;Inside Rectangle::draw() method.&quot;);
-   }
-}
-
-public class Square implements Shape {
-   @Override
-   public void draw() {
-      System.out.println(&quot;Inside Square::draw() method.&quot;);
-   }
-}
-
-public class Circle implements Shape {
-   @Override
-   public void draw() {
-      System.out.println(&quot;Inside Circle::draw() method.&quot;);
-   }
-}
-</code></pre><p><strong>3.创建接口 颜色</strong><br></p>
-<pre><code>public interface Color {
-   void fill();
-}
-</code></pre><p><strong>4.创建实现接口 颜色的实体类</strong><br></p>
-<pre><code>public class Red implements Color {
-   @Override
-   public void fill() {
-      System.out.println(&quot;Inside Red::fill() method.&quot;);
-   }
-}
-
-public class Green implements Color {
-    @Override
-    public void fill() {
-       System.out.println(&quot;Inside Green::fill() method.&quot;);
-   }
-}
-
-public class Blue implements Color {
-   @Override
-   public void fill() {
-      System.out.println(&quot;Inside Blue::fill() method.&quot;);
-   }
-}
-</code></pre><p><strong>5.为 Color 和 Shape 对象创建抽象类来获取工厂</strong><br></p>
-<pre><code>public abstract class AbstractFactory {
-   public abstract Color getColor(String color);
-   public abstract Shape getShape(String shape) ;
-}
-</code></pre><p><strong>6.创建扩展了 AbstractFactory 的工厂类 基于给定的信息生成实体类的对象</strong><br></p>
-<pre><code>public class ShapeFactory extends AbstractFactory {
-   @Override
-   public Shape getShape(String shapeType){
-      if(shapeType == null){
-         return null;
-      }        
-      if(shapeType.equalsIgnoreCase(&quot;CIRCLE&quot;)){
-         return new Circle();
-      } else if(shapeType.equalsIgnoreCase(&quot;RECTANGLE&quot;)){
-         return new Rectangle();
-      } else if(shapeType.equalsIgnoreCase(&quot;SQUARE&quot;)){
-         return new Square();
-      }
-      return null;
-   }
-
-   @Override
-   public Color getColor(String color) {
-      return null;
-   }
-}
-
-
-public class ColorFactory extends AbstractFactory {
-   @Override
-   public Shape getShape(String shapeType){
-      return null;
-   }
-
-   @Override
-   public Color getColor(String color) {
-      if(color == null){
-         return null;
-      }        
-      if(color.equalsIgnoreCase(&quot;RED&quot;)){
-         return new Red();
-      } else if(color.equalsIgnoreCase(&quot;GREEN&quot;)){
-         return new Green();
-      } else if(color.equalsIgnoreCase(&quot;BLUE&quot;)){
-         return new Blue();
-      }
-      return null;
-   }
-}
-</code></pre><p><strong>7.创建一个工厂创造器/生成器类 通过传递形状或颜色信息来获取工厂</strong><br></p>
-<pre><code>public class FactoryProducer {
-   public static AbstractFactory getFactory(String choice){
-      if(choice.equalsIgnoreCase(&quot;SHAPE&quot;)){
-         return new ShapeFactory();
-      } else if(choice.equalsIgnoreCase(&quot;COLOR&quot;)){
-         return new ColorFactory();
-      }
-      return null;
-   }
-}
-</code></pre><p><strong>8.使用 FactoryProducer 来获取 AbstractFactory 通过传递类型信息来获取实体类的对象</strong><br></p>
-<pre><code>public class AbstractFactoryPatternDemo {
-   public static void main(String[] args) {
-
-      //获取形状工厂
-      AbstractFactory shapeFactory = FactoryProducer.getFactory(&quot;SHAPE&quot;);
-
-      //获取形状为 Circle 的对象
-      Shape shape1 = shapeFactory.getShape(&quot;CIRCLE&quot;);
-
-      //调用 Circle 的 draw 方法
-      shape1.draw();
-
-      //获取形状为 Rectangle 的对象
-      Shape shape2 = shapeFactory.getShape(&quot;RECTANGLE&quot;);
-
-      //调用 Rectangle 的 draw 方法
-      shape2.draw();
-
-      //获取形状为 Square 的对象
-      Shape shape3 = shapeFactory.getShape(&quot;SQUARE&quot;);
-
-      //调用 Square 的 draw 方法
-      shape3.draw();
-
-      //获取颜色工厂
-      AbstractFactory colorFactory = FactoryProducer.getFactory(&quot;COLOR&quot;);
-
-      //获取颜色为 Red 的对象
-      Color color1 = colorFactory.getColor(&quot;RED&quot;);
-
-      //调用 Red 的 fill 方法
-      color1.fill();
-
-      //获取颜色为 Green 的对象
-      Color color2 = colorFactory.getColor(&quot;Green&quot;);
-
-      //调用 Green 的 fill 方法
-      color2.fill();
-
-      //获取颜色为 Blue 的对象
-      Color color3 = colorFactory.getColor(&quot;BLUE&quot;);
-
-      //调用 Blue 的 fill 方法
-      color3.fill();
-   }
-}
-</code></pre><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>在工厂模式中，类的创建依赖工厂类，如果想要扩展程序，需要对工厂类进行修改，违反闭包原则。而抽象工厂模式中，创建多个工厂类，如果需要增加新的功能，直接增加新的工厂类便可，不需要修改之前的程序。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/设计模式 - 拦截过滤器模式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/设计模式 - 拦截过滤器模式/" itemprop="url">设计模式 - 过滤器</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:25:23+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  477
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>该模式用于对应用程序的请求或响应做一些预处理/后处理。定义过滤器，并再将请求传给实际目标应用程序之前应用在请求上。过滤器可以做认证/授权/记录日志，或者跟踪请求，然后把请求传给相应的处理程序。</p>
-<pre><code>1.过滤器：过滤器在请求处理程序执行请求之前或之后执行某些任务。
-2.过滤器链：过滤器链带有多个过滤器，并在target上按照定义的顺序执行这些过滤器。
-3.target：target对象是请求处理程序。
-4.过滤管理器：过滤管理器管理过滤器和过滤器链。
-5.客户端：客户端是target对象发送请求的对象。
-</code></pre><h4 id="拦截过滤器模式"><a href="#拦截过滤器模式" class="headerlink" title="拦截过滤器模式"></a>拦截过滤器模式</h4><p><strong>1.创建过滤器接口</strong><br></p>
-<pre><code>public interface Filter {
-   public void execute(String request);
-}
-</code></pre><p><strong>2.创建实体过滤器</strong><br></p>
-<pre><code>public class AuthenticationFilter implements Filter {
-   public void execute(String request){
-      System.out.println(&quot;Authenticating request: &quot; + request);
-   }
-}
-
-public class DebugFilter implements Filter {
-   public void execute(String request){
-      System.out.println(&quot;request log: &quot; + request);
-   }
-}
-</code></pre><p><strong>3.创建target</strong><br></p>
-<pre><code>public class Target {
-   public void execute(String request){
-      System.out.println(&quot;Executing request: &quot; + request);
-   }
-}
-</code></pre><p><strong>4.创建过滤器链</strong><br></p>
-<pre><code>import java.util.ArrayList;
-import java.util.List;
-
-public class FilterChain {
-   private List&lt;Filter&gt; filters = new ArrayList&lt;Filter&gt;();
-   private Target target;
-
-   public void addFilter(Filter filter){
-      filters.add(filter);
-   }
-
-   public void execute(String request){
-      for (Filter filter : filters) {
-         filter.execute(request);
-      }
-      target.execute(request);
-   }
-
-   public void setTarget(Target target){
-      this.target = target;
-   }
-}
-</code></pre><p><strong>5.创建过滤管理器</strong><br></p>
-<pre><code>public class FilterManager {
-   FilterChain filterChain;
-
-   public FilterManager(Target target){
-      filterChain = new FilterChain();
-      filterChain.setTarget(target);
-   }
-   public void setFilter(Filter filter){
-      filterChain.addFilter(filter);
-   }
-
-   public void filterRequest(String request){
-      filterChain.execute(request);
-   }
-}
-</code></pre><p><strong>6.创建客户端</strong><br></p>
-<pre><code>public class Client {
-   FilterManager filterManager;
-
-   public void setFilterManager(FilterManager filterManager){
-      this.filterManager = filterManager;
-   }
-
-   public void sendRequest(String request){
-      filterManager.filterRequest(request);
-   }
-}
-</code></pre><p><strong>7.使用 Client 来演示拦截过滤器设计模式</strong><br></p>
-<pre><code>public class InterceptingFilterDemo {
-   public static void main(String[] args) {
-      FilterManager filterManager = new FilterManager(new Target());
-      filterManager.setFilter(new AuthenticationFilter());
-      filterManager.setFilter(new DebugFilter());
-
-      Client client = new Client();
-      client.setFilterManager(filterManager);
-      client.sendRequest(&quot;HOME&quot;);
-   }
-}
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/设计模式 - 服务器定位模式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/设计模式 - 服务器定位模式/" itemprop="url">设计模式 - 服务器定位</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:25:35+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  542
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>该模式用在我们想使用JNDI查询定位各种服务的时候。考虑到为某个服务查找JNDI的代价很高，服务定位器模式充分利用缓存技术。所以在首次请求某个服务的时候，服务定位器在JNDI中查找服务，并缓存该服务对象。所以当再次请求相同的服务时，服务定位器会在它的缓存中查找，这样可以很大程度上提高应用程序的性能。</p>
-<pre><code>1.服务：实际处理请求的服务。
-2.context/初始的context：JNDI context带有对要查找的服务的引用。
-3.服务定位器：服务定位器是通过JNDI查找和缓存服务来获取服务的单点接触。
-4.缓存：缓存服务的引用。
-5.客户端：通过ServiceLocator调用服务的对象。
-</code></pre><h4 id="服务定位器模式"><a href="#服务定位器模式" class="headerlink" title="服务定位器模式"></a>服务定位器模式</h4><p><strong>1.创建服务接口Service</strong><br></p>
-<pre><code>public interface Service {
-   public String getName();
-   public void execute();
-}
-</code></pre><p><strong>2.创建实体服务</strong><br></p>
-<pre><code>public class Service1 implements Service {
-   public void execute(){
-      System.out.println(&quot;Executing Service1&quot;);
-   }
-
-   @Override
-   public String getName() {
-      return &quot;Service1&quot;;
-   }
-}
-
-public class Service2 implements Service {
-   public void execute(){
-      System.out.println(&quot;Executing Service2&quot;);
-   }
-
-   @Override
-   public String getName() {
-      return &quot;Service2&quot;;
-   }
-}
-</code></pre><p><strong>3.为 JNDI 查询创建 InitialContext</strong><br></p>
-<pre><code>public class InitialContext {
-   public Object lookup(String jndiName){
-      if(jndiName.equalsIgnoreCase(&quot;SERVICE1&quot;)){
-         System.out.println(&quot;Looking up and creating a new Service1 object&quot;);
-         return new Service1();
-      }else if (jndiName.equalsIgnoreCase(&quot;SERVICE2&quot;)){
-         System.out.println(&quot;Looking up and creating a new Service2 object&quot;);
-         return new Service2();
-      }
-      return null;      
-   }
-}
-</code></pre><p><strong>4.创建缓存 Cache</strong><br></p>
-<pre><code>import java.util.ArrayList;
-import java.util.List;
-
-public class Cache {
-
-   private List&lt;Service&gt; services;
-
-   public Cache(){
-      services = new ArrayList&lt;Service&gt;();
-   }
-
-   public Service getService(String serviceName){
-      for (Service service : services) {
-         if(service.getName().equalsIgnoreCase(serviceName)){
-            System.out.println(&quot;Returning cached  &quot;+serviceName+&quot; object&quot;);
-            return service;
-         }
-      }
-      return null;
-   }
-
-   public void addService(Service newService){
-      boolean exists = false;
-      for (Service service : services) {
-         if(service.getName().equalsIgnoreCase(newService.getName())){
-            exists = true;
-         }
-      }
-      if(!exists){
-         services.add(newService);
-      }
-   }
-}
-</code></pre><p><strong>5.创建服务定位器</strong><br></p>
-<pre><code>public class ServiceLocator {
-   private static Cache cache;
-
-   static {
-      cache = new Cache();    
-   }
-
-   public static Service getService(String jndiName){
-
-      Service service = cache.getService(jndiName);
-
-      if(service != null){
-         return service;
-      }
-
-      InitialContext context = new InitialContext();
-      Service service1 = (Service)context.lookup(jndiName);
-      cache.addService(service1);
-      return service1;
-   }
-}
-</code></pre><p><strong>6.使用 ServiceLocator 来演示服务定位器设计模式</strong><br></p>
-<pre><code>public class ServiceLocatorPatternDemo {
-   public static void main(String[] args) {
-      Service service = ServiceLocator.getService(&quot;Service1&quot;);
-      service.execute();
-      service = ServiceLocator.getService(&quot;Service2&quot;);
-      service.execute();
-      service = ServiceLocator.getService(&quot;Service1&quot;);
-      service.execute();
-      service = ServiceLocator.getService(&quot;Service2&quot;);
-      service.execute();      
-   }
-}
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/设计模式 - 桥接模式 - 重点/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/设计模式 - 桥接模式 - 重点/" itemprop="url">设计模式 - 桥接</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:25:46+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  901
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>该模式是用于将抽象化与实现化解耦，使得二者独立变化。它通过提供抽象化与实现化之间的桥接功能，来实现两者之间的解耦。</p>
-<blockquote>
-<p>注意：该设计模式实现抽象和实现的分离。而两个独立变化的维度使用桥接模式是最好的选择。</p>
-</blockquote>
-<p>场景</p>
-<pre><code>1. 抽象和具体实现之间增加更多的灵活性
-
-2. 一个类存在两个（或多个）独立变化的维度，且这两个（或多个）维度都需要独立进行扩展
-
-3. 不希望使用继承，或因为过多继承导致系统类的个数增多
-</code></pre><p>优点 </p>
-<pre><code>1. 分离抽象部分及其具体实现部分
-
-2. 提高系统可扩展性
-
-3. 符合开闭原则
-
-4. 符合合成复用原则
-</code></pre><p>缺点</p>
-<pre><code>1. 增加了系统的理解与设计难度
-
-2. 需要正确识别系统中两个独立变化的维度
-</code></pre><p>相关设计模式</p>
-<pre><code>1. 桥接模式与组合模式
-
-2. 桥接模式与适配器模式
-</code></pre><h4 id="桥接模式的具体实现"><a href="#桥接模式的具体实现" class="headerlink" title="桥接模式的具体实现"></a>桥接模式的具体实现</h4><p><strong>1.创建桥接实现的接口</strong><br></p>
-<pre><code>public interface DrawAPI {
-   public void drawCircle(int radius, int x, int y);
-}
-</code></pre><p><strong>2.创建实现 DrawAPI 接口的实体桥接实现类</strong><br></p>
-<pre><code>public class RedCircle implements DrawAPI {
-   @Override
-   public void drawCircle(int radius, int x, int y) {
-      System.out.println(&quot;Drawing Circle[ color: red, radius: &quot;
-         + radius +&quot;, x: &quot; +x+&quot;, &quot;+ y +&quot;]&quot;);
-   }
-}
-
-public class GreenCircle implements DrawAPI {
-   @Override
-   public void drawCircle(int radius, int x, int y) {
-      System.out.println(&quot;Drawing Circle[ color: green, radius: &quot;
-         + radius +&quot;, x: &quot; +x+&quot;, &quot;+ y +&quot;]&quot;);
-   }
-}
-</code></pre><p><strong>3.使用 DrawAPI 接口创建抽象类 Shape</strong><br></p>
-<pre><code>public abstract class Shape {
-   protected DrawAPI drawAPI;
-   protected Shape(DrawAPI drawAPI){
-      this.drawAPI = drawAPI;
-   }
-   public abstract void draw();  
-}
-</code></pre><p><strong>4.创建实现 Shape 接口的实体类</strong><br></p>
-<pre><code>public class Circle extends Shape {
-   private int x, y, radius;
-
-   public Circle(int x, int y, int radius, DrawAPI drawAPI) {
-      super(drawAPI);
-      this.x = x;  
-      this.y = y;  
-      this.radius = radius;
-   }
-
-   public void draw() {
-      drawAPI.drawCircle(radius,x,y);
-   }
-}
-</code></pre><p><strong>5.使用 Shape 和 DrawAPI 类画出不同颜色的圆</strong><br></p>
-<pre><code>public class BridgePatternDemo {
-   public static void main(String[] args) {
-      Shape redCircle = new Circle(100,100, 10, new RedCircle());
-      Shape greenCircle = new Circle(100,100, 10, new GreenCircle());
-
-      redCircle.draw();
-      greenCircle.draw();
-   }
-}
-</code></pre><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>桥接模式案例中可以得到，提供两个父类：颜色和形状。颜色父类和形状父类都包含相应的子类，然后根据需要对颜色和形状进行组合。</p>
-<p>桥接模式是将抽象部分和它的实现部分抽离开来，使得它们可以独立变化。</p>
-<pre><code>1.抽象化：将复杂的物体的一个或者几个特性抽离出去而只注意其它特性的行动和过程。在面向对象中就是将对象的共同性质抽取出去形成类的过程。
-
-2.实现化：针对类给出的具体实现。
-
-3.脱耦：将抽象化和实现化之间的耦合解脱开，或者是将它们之间的强关联改成弱关联，将两个角色之间的关系从继承改成关联关系。
-</code></pre><p><strong>桥接模式的应用场景</strong><br></p>
-<pre><code>1.如果一个系统需要在构件的抽象化角色和具体化角色之间增加更多的灵活性，避免在两个层次之间建立静态的继承联系，通过桥接模式可以使它们在抽象层建立一个关联关系。
-
-2.对于那些不希望使用继承或因为多层次继承导致系统类的个数急剧增加的系统，桥接模式尤为适用。
-
-3.一个类存在两个独立变化的维度，且这两个维度都需要进行扩展。
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/设计模式 - 模板模式 重点/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/设计模式 - 模板模式 重点/" itemprop="url">设计模式 - 模板</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:25:55+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  568
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>在该模式中，一个抽象类公开定义了执行它的方法的方式/模板。它的子类可以按照需要重写方法实现，但是调用将以抽象类中定义的方式进行。</p>
-<h4 id="模板模式"><a href="#模板模式" class="headerlink" title="模板模式"></a>模板模式</h4><p><strong>1.创建一个抽象类 它的模板方法被设置为final</strong><br></p>
-<pre><code>public abstract class Game {
-   abstract void initialize();
-   abstract void startPlay();
-   abstract void endPlay();
-
-   //模板
-   public final void play(){
-
-      //初始化游戏
-      initialize();
-
-      //开始游戏
-      startPlay();
-
-      //结束游戏
-      endPlay();
-   }
-}
-</code></pre><p><strong>2.创建扩展上述类的实体类</strong><br></p>
-<pre><code>public class Cricket extends Game {
-
-   @Override
-   void endPlay() {
-      System.out.println(&quot;Cricket Game Finished!&quot;);
-   }
-
-   @Override
-   void initialize() {
-      System.out.println(&quot;Cricket Game Initialized! Start playing.&quot;);
-   }
-
-   @Override
-   void startPlay() {
-      System.out.println(&quot;Cricket Game Started. Enjoy the game!&quot;);
-   }
-}
-
-public class Football extends Game {
-
-   @Override
-   void endPlay() {
-      System.out.println(&quot;Football Game Finished!&quot;);
-   }
-
-   @Override
-   void initialize() {
-      System.out.println(&quot;Football Game Initialized! Start playing.&quot;);
-   }
-
-   @Override
-   void startPlay() {
-      System.out.println(&quot;Football Game Started. Enjoy the game!&quot;);
-   }
-}
-</code></pre><p><strong>3.使用 Game 的模板方法 play() 来演示游戏的定义方式</strong><br></p>
-<pre><code>public class TemplatePatternDemo {
-   public static void main(String[] args) {
-
-      Game game = new Cricket();
-      game.play();
-      System.out.println();
-      game = new Football();
-      game.play();      
-   }
-}
-</code></pre><h4 id="模板模式-番外"><a href="#模板模式-番外" class="headerlink" title="模板模式 番外"></a>模板模式 番外</h4><p><strong>1.创建抽象类</strong><br></p>
-<pre><code>package Pattern_Design_Behavior.template_pattern;
-
-public abstract class Hamburger {
-    //默认是有生菜的
-    private boolean lettuceHook = true;
-    public void setLettuceHook(boolean lettuceHook){
-        this.lettuceHook = lettuceHook;
-    }
-
-    public final void getHumburger(){
-        topBread();
-        if (lettuceHook){
-            lettuce();
-        }
-        meat();
-        bottomBread();
-    }
-
-    protected void topBread(){
-        System.out.println(&quot;上面的面包&quot;);
-    }
-
-    protected void lettuce(){
-        System.out.println(&quot;中间的生菜&quot;);
-    }
-
-    protected abstract void meat();
-
-    private void bottomBread(){
-        System.out.println(&quot;底部的面包&quot;);
-    }
-}
-</code></pre><p><strong>2.创建抽象类的实现类</strong><br></p>
-<pre><code>package Pattern_Design_Behavior.template_pattern.impl;
-
-import Pattern_Design_Behavior.template_pattern.Hamburger;
-
-public class CodFishBurger extends Hamburger {
-    @Override
-    protected void meat() {
-        System.out.println(&quot;深海鲟鱼&quot;);
-    }
-}
-</code></pre><p><strong>3.测试</strong><br></p>
-<pre><code>package Pattern_Design_Behavior.template_pattern.impl;
-
-import Pattern_Design_Behavior.template_pattern.Hamburger;
-
-public class TemplatePattern {
-    public static void main(String[] args) {
-        System.out.println(&quot;第一个汉堡包&quot;);
-        Hamburger codFishBurger = new CodFishBurger();
-        codFishBurger.getHumburger();
-
-        System.out.println();
-
-        System.out.println(&quot;第二个汉堡包&quot;);
-        Hamburger codFishBurgerTow = new CodFishBurger();
-        codFishBurgerTow.setLettuceHook(false);
-        codFishBurgerTow.getHumburger();
-    }
-}
-</code></pre><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>模板方法是一种非常基础的设计模式，在面向对象中有着大量的应用(如Java的HttpServlet)。它用简洁的机制（抽象函数的多态性）实现为很多应用框架提供灵活的扩展点，是程序复用方面的基本实现结构。</p>
-<p>除了提供灵活的应用子步骤变化之外，”不要调用我，让我来调用你”的反向控制结构是模板方法的典型应用。（钩子）</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/设计模式 - 状态模式 - 重要/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/设计模式 - 状态模式 - 重要/" itemprop="url">设计模式 - 状态</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:26:09+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  753
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>在该模式中，类的行为基于它的状态改变的。在该模式中创建表示各种状态的对象和一个行为随着状态对象改变而改变的context对象。允许对象在内部状态发生改变时改变它的行为，对象看起来好像修改了它的类。</p>
-<p>场景</p>
-<pre><code>1. 一个对象存在多个状态（不同状态下行为不同），且状态可以相互转换。
-</code></pre><p>优点</p>
-<pre><code>1. 将不同的状态隔离
-
-2. 将各种状态的转换逻辑分布到state的子类中，减少相互间的依赖
-</code></pre><p>缺点</p>
-<pre><code>1. 状态多的业务场景导致类数目增加系统变复杂
-</code></pre><p>相关设计模式</p>
-<pre><code>1. 状态模式与享元模式
-</code></pre><h4 id="状态模式"><a href="#状态模式" class="headerlink" title="状态模式"></a>状态模式</h4><p><strong>1.创建状态一个接口</strong><br></p>
-<pre><code>public abstract class CourseVideoState {
-
-    protected CourseVideoContext courseVideoContext;
-
-    public void setCourseVideoContext(CourseVideoContext courseVideoContext) {
-        this.courseVideoContext = courseVideoContext;
-    }
-
-    public abstract void play();
-    public abstract void pause();
-    public abstract void speed();
-    public abstract void stop();
-}
-</code></pre><p><strong>3.创建 Context 类 上下文类</strong><br></p>
-<pre><code>public class CourseVideoContext {
-
-    private CourseVideoState courseVideoState;
-
-    public final static PlayState PLAY_STATE = new PlayState();
-    public final static StopState STOP_STATE = new StopState();
-    public final static PauseState PAUSE_STATE = new PauseState();
-    public final static SpeedState SPEED_STATE = new SpeedState();
-
-    public CourseVideoState getCourseVideoState() {
-        return courseVideoState;
-    }
-
-    public void setCourseVideoState(CourseVideoState courseVideoState) {
-        this.courseVideoState = courseVideoState;
-        this.courseVideoState.setCourseVideoContext(this);
-    }
-
-    public void play(){
-        this.courseVideoState.play();
-    }
-
-    public void speed(){
-        this.courseVideoState.speed();
-    }
-
-    public void stop(){
-        this.courseVideoState.stop();
-    }
-
-    public void pause(){
-        this.courseVideoState.pause();
-    }
-}
-</code></pre><p><strong>2.创建实现接口的实体类</strong><br></p>
-<pre><code>public class PauseState extends CourseVideoState {
-    @Override
-    public void play() {
-        super.courseVideoContext.setCourseVideoState(CourseVideoContext.PLAY_STATE);
-    }
-
-    @Override
-    public void pause() {
-        System.out.println(&quot;暂停播放视频状态&quot;);
-    }
-
-    @Override
-    public void speed() {
-        super.courseVideoContext.setCourseVideoState(CourseVideoContext.SPEED_STATE);
-    }
-
-    @Override
-    public void stop() {
-        super.courseVideoContext.setCourseVideoState(CourseVideoContext.STOP_STATE);
-    }
-}
-
-
-public class PlayState extends CourseVideoState {
-    @Override
-    public void play() {
-        System.out.println(&quot;正常播放视频状态&quot;);
-    }
-
-    @Override
-    public void pause() {
-        super.courseVideoContext.setCourseVideoState(CourseVideoContext.PAUSE_STATE);
-    }
-
-    @Override
-    public void speed() {
-        super.courseVideoContext.setCourseVideoState(CourseVideoContext.SPEED_STATE);
-    }
-
-    @Override
-    public void stop() {
-        super.courseVideoContext.setCourseVideoState(CourseVideoContext.STOP_STATE);
-    }
-}
-
-package Pattern_Design_Behavior.state;
-
-public class SpeedState extends CourseVideoState {
-    @Override
-    public void play() {
-        super.courseVideoContext.setCourseVideoState(CourseVideoContext.PLAY_STATE);
-    }
-
-    @Override
-    public void pause() {
-        super.courseVideoContext.setCourseVideoState(CourseVideoContext.PAUSE_STATE);
-    }
-
-    @Override
-    public void speed() {
-        System.out.println(&quot;快进状态下播放视频&quot;);
-    }
-
-    @Override
-    public void stop() {
-        super.courseVideoContext.setCourseVideoState(CourseVideoContext.STOP_STATE);
-    }
-}
-
-package Pattern_Design_Behavior.state;
-
-public class StopState extends CourseVideoState {
-
-    @Override
-    public void play() {
-        super.courseVideoContext.setCourseVideoState(CourseVideoContext.PLAY_STATE);
-    }
-
-    @Override
-    public void pause() {
-        System.out.println(&quot;停止状态下不能暂停 ERROR!!&quot;);
-    }
-
-    @Override
-    public void speed() {
-        System.out.println(&quot;停止状态下不能快进 ERROR!!&quot;);
-    }
-
-    @Override
-    public void stop() {
-        System.out.println(&quot;视频停止状态&quot;);
-    }
-}
-</code></pre><p><strong>4.使用 Context 来查看当状态 State 改变时的行为变化</strong><br></p>
-<pre><code>package Pattern_Design_Behavior.state;
-
-public class Test {
-
-    public static void main(String[] args) {
-        CourseVideoContext courseVideoContext = new CourseVideoContext();
-
-        courseVideoContext.setCourseVideoState(new PlayState());
-        System.out.println(&quot;当前状态是：&quot; + courseVideoContext.getCourseVideoState().getClass().getSimpleName());
-
-        courseVideoContext.pause();
-        System.out.println(&quot;当前状态是：&quot; + courseVideoContext.getCourseVideoState().getClass().getSimpleName());
-
-        courseVideoContext.speed();
-        System.out.println(&quot;当前状态是：&quot; + courseVideoContext.getCourseVideoState().getClass().getSimpleName());
-
-        courseVideoContext.stop();
-        System.out.println(&quot;当前状态是：&quot; + courseVideoContext.getCourseVideoState().getClass().getSimpleName());
-
-        courseVideoContext.speed();
-    }
-}
-</code></pre><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>我们不关心当前context处于什么状态，context不用维护state属性。</p>
-<p>状态模式适用于某一个对象的行为取决于该对象的状态，并且该对象的状态会在运行时转换。又或者有很多的if else判断，而这些判断只是因为状态不同而不断的切换行为。</p>
-
-          
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Java用来处理Excel的第三方开源项目主要是POI与JXL，POI功能强大，但是比较消耗资源，所以对于大数据量的导入导出性能不是很友好。JXL功能简单，但是性能优秀。</p>
+<h4 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h4><p>Java项目中，导出数据到Excel表示将list转换为Excel(List2Excel)。导入表示将Excel转换为List(Excel2List)。但是在导出和导入的过程中可能会发生一些异常(如：数据源为空、有重复行等)。</p>
+<hr>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/ExcelUtil/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -3443,7 +2332,7 @@ public class Test {
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/19/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><span class="page-number current">20</span><a class="page-number" href="/page/21/">21</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/21/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/19/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><span class="page-number current">20</span><a class="page-number" href="/page/21/">21</a><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/21/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -3495,7 +2384,7 @@ public class Test {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -3506,7 +2395,7 @@ public class Test {
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -3517,7 +2406,7 @@ public class Test {
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -3559,12 +2448,6 @@ public class Test {
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -3626,7 +2509,7 @@ public class Test {
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

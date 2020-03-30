@@ -152,18 +152,18 @@
 
 
 
-<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. 简介该模式为请求创建了一个接受者对象的链。此模式给予请求的类型，对请求的发送者和接收者进行解耦。在这种模式之中，通常每个接收者都包含对另一个接受者的引用，如果一个对象不能处理该请求，那么它会将相同的请求传给下一个接收者，依次类推。  提示：责任链通常建立一个单向链表，然后调用方只需要调用头部结点即可，后面会自动流转下去。比如：流程审批。  场景 1.">
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. 简介该模式为请求创建了一个接受者对象的链。此模式给予请求的类型，对请求的发送者和接收者进行解耦。在这种模式之中，通常每个接收者都包含对另一个接受者的引用，如果一个对象不能处理该请求，那么它会将相同的请求传给下一个接收者，依次类推。">
 <meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="设计模式 - 责任链">
 <meta property="og:url" content="http://bangjinhu.github.io/undefined/设计模式 - 责任链模式 - 重点/index.html">
 <meta property="og:site_name" content="BangjinHu&#39;s Blog">
-<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. 简介该模式为请求创建了一个接受者对象的链。此模式给予请求的类型，对请求的发送者和接收者进行解耦。在这种模式之中，通常每个接收者都包含对另一个接受者的引用，如果一个对象不能处理该请求，那么它会将相同的请求传给下一个接收者，依次类推。  提示：责任链通常建立一个单向链表，然后调用方只需要调用头部结点即可，后面会自动流转下去。比如：流程审批。  场景 1.">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. 简介该模式为请求创建了一个接受者对象的链。此模式给予请求的类型，对请求的发送者和接收者进行解耦。在这种模式之中，通常每个接收者都包含对另一个接受者的引用，如果一个对象不能处理该请求，那么它会将相同的请求传给下一个接收者，依次类推。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-29T02:28:00.765Z">
+<meta property="og:updated_time" content="2020-03-30T00:23:36.917Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式 - 责任链">
-<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 简介该模式为请求创建了一个接受者对象的链。此模式给予请求的类型，对请求的发送者和接收者进行解耦。在这种模式之中，通常每个接收者都包含对另一个接受者的引用，如果一个对象不能处理该请求，那么它会将相同的请求传给下一个接收者，依次类推。  提示：责任链通常建立一个单向链表，然后调用方只需要调用头部结点即可，后面会自动流转下去。比如：流程审批。  场景 1.">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 简介该模式为请求创建了一个接受者对象的链。此模式给予请求的类型，对请求的发送者和接收者进行解耦。在这种模式之中，通常每个接收者都包含对另一个接受者的引用，如果一个对象不能处理该请求，那么它会将相同的请求传给下一个接收者，依次类推。">
 
 
 
@@ -419,8 +419,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:28:00+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:23:36+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -508,7 +508,7 @@
       
         <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>该模式为请求创建了一个接受者对象的链。此模式给予请求的类型，对请求的发送者和接收者进行解耦。在这种模式之中，通常每个接收者都包含对另一个接受者的引用，如果一个对象不能处理该请求，那么它会将相同的请求传给下一个接收者，依次类推。</p>
+<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>该模式为请求创建了一个接受者对象的链。此模式给予请求的类型，对请求的发送者和接收者进行解耦。在这种模式之中，通常每个接收者都包含对另一个接受者的引用，如果一个对象不能处理该请求，那么它会将相同的请求传给下一个接收者，依次类推。<br><a id="more"></a>    </p>
 <blockquote>
 <p>提示：责任链通常建立一个单向链表，然后调用方只需要调用头部结点即可，后面会自动流转下去。比如：流程审批。</p>
 </blockquote>
@@ -633,7 +633,7 @@ public class FileLogger extends AbstractLogger {
   <p><span>本文标题:</span>设计模式 - 责任链</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 10:28:00</p>
+  <p><span>最后更新:</span>2020年03月30日 - 08:23:36</p>
   <p><span>原始链接:</span><a href="/undefined/设计模式 - 责任链模式 - 重点/" title="设计模式 - 责任链">http://bangjinhu.github.io/undefined/设计模式 - 责任链模式 - 重点/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/设计模式 - 责任链模式 - 重点/"  aria-label="复制成功！"></i></span>
   </p>
@@ -734,8 +734,8 @@ public class FileLogger extends AbstractLogger {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/undefined/设计模式 - 过滤器模式/" rel="next" title="设计模式 - 过滤器">
-                <i class="fa fa-chevron-left"></i> 设计模式 - 过滤器
+              <a href="/undefined/设计模式 - 迭代器模式/" rel="next" title="设计模式 - 迭代器">
+                <i class="fa fa-chevron-left"></i> 设计模式 - 迭代器
               </a>
             
           </div>
@@ -744,8 +744,8 @@ public class FileLogger extends AbstractLogger {
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/undefined/设计模式 - 访问者模式/" rel="prev" title="设计模式 - 访问者">
-                设计模式 - 访问者 <i class="fa fa-chevron-right"></i>
+              <a href="/undefined/设计模式 - 过滤器模式/" rel="prev" title="设计模式 - 过滤器">
+                设计模式 - 过滤器 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -855,7 +855,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -866,7 +866,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -877,7 +877,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -919,12 +919,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -1002,7 +996,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

@@ -139,7 +139,7 @@
 
 
 
-  <meta name="keywords" content="Redis," />
+  <meta name="keywords" content="SpringMVC," />
 
 
 
@@ -153,18 +153,18 @@
 
 
 <meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. 第4章 Spring MVC[TOC] 4.1 Spring MVC 概述 在我们使用Spring MVC的时候，需要我们在web.xml文件中配置DispatcherServlet，该DispatcherServerlet可以看做是一个前端控制器的具体实现，还需要在Bean定义中配置Web请求和Controller的对应关系，以及各种视图的展现方式">
-<meta name="keywords" content="Redis">
+<meta name="keywords" content="SpringMVC">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Redis - Java集成">
+<meta property="og:title" content="SpringMVC">
 <meta property="og:url" content="http://bangjinhu.github.io/undefined/第4章 Spring MVC/index.html">
 <meta property="og:site_name" content="BangjinHu&#39;s Blog">
 <meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. 第4章 Spring MVC[TOC] 4.1 Spring MVC 概述 在我们使用Spring MVC的时候，需要我们在web.xml文件中配置DispatcherServlet，该DispatcherServerlet可以看做是一个前端控制器的具体实现，还需要在Bean定义中配置Web请求和Controller的对应关系，以及各种视图的展现方式">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5376408-5d50c3491fd9aae2.png?imageMogr2/auto-orient/strip|imageView2/2/format/webp">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5376408-ea1f3f0ee11892ce.png?imageMogr2/auto-orient/strip|imageView2/2/w/585/format/webp">
-<meta property="og:updated_time" content="2020-03-29T00:45:33.917Z">
+<meta property="og:updated_time" content="2020-03-30T00:18:18.435Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Redis - Java集成">
+<meta name="twitter:title" content="SpringMVC">
 <meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 第4章 Spring MVC[TOC] 4.1 Spring MVC 概述 在我们使用Spring MVC的时候，需要我们在web.xml文件中配置DispatcherServlet，该DispatcherServerlet可以看做是一个前端控制器的具体实现，还需要在Bean定义中配置Web请求和Controller的对应关系，以及各种视图的展现方式">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5376408-5d50c3491fd9aae2.png?imageMogr2/auto-orient/strip|imageView2/2/format/webp">
 
@@ -202,7 +202,7 @@
 
 
 
-  <title>Redis - Java集成 | BangjinHu's Blog</title>
+  <title>SpringMVC | BangjinHu's Blog</title>
   
 
 
@@ -394,7 +394,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Redis - Java集成</h2>
+          <h2 class="post-title" itemprop="name headline">SpringMVC</h2>
         
 
         <div class="post-meta">
@@ -422,8 +422,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T08:45:33+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:18:18+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -441,8 +441,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Redis/" itemprop="url" rel="index">
-                    <span itemprop="name">Redis</span>
+                  <a href="/categories/SpringMVC/" itemprop="url" rel="index">
+                    <span itemprop="name">SpringMVC</span>
                   </a>
                 </span>
 
@@ -514,8 +514,7 @@
 <h2 id="第4章-Spring-MVC"><a href="#第4章-Spring-MVC" class="headerlink" title="第4章 Spring MVC"></a>第4章 Spring MVC</h2><p>[TOC]</p>
 <h3 id="4-1-Spring-MVC-概述"><a href="#4-1-Spring-MVC-概述" class="headerlink" title="4.1 Spring MVC 概述"></a>4.1 Spring MVC 概述</h3><p><img src="https://upload-images.jianshu.io/upload_images/5376408-5d50c3491fd9aae2.png?imageMogr2/auto-orient/strip|imageView2/2/format/webp" alt="MVC模式"></p>
 <p>在我们使用Spring MVC的时候，需要我们在web.xml文件中配置DispatcherServlet，该DispatcherServerlet可以看做是一个前端控制器的具体实现，还需要在Bean定义中配置Web请求和Controller的对应关系，以及各种视图的展现方式。在具体使用Controller的时候，会看到ModelAndView数据的生成，还会看到将ModelAndView数据交给相应的View来进行呈现。</p>
-<h3 id="4-2-Web环境中的Spring-MVC"><a href="#4-2-Web环境中的Spring-MVC" class="headerlink" title="4.2 Web环境中的Spring MVC"></a>4.2 Web环境中的Spring MVC</h3><p>Spring MVC 是建立在IoC容器基础上的，要了解SpringMVC，首先要了解 Spring IoC 是如何在Web环境中发挥作用的。</p>
-<p>Spring IoC是个独立的模块，并不是直接在Web环境中发挥作用。如果我们需要在Web环境中使用IOC容器，需要为IOC设计一个启动过程，将ioc容器导入。在web容器启动过程中，将IoC导入，并在web容器中建立起来并初始化，这样才能建立起 Spring MVC 运行机制，从而响应web容器传递的HTTP请求。</p>
+<h3 id="4-2-Web环境中的Spring-MVC"><a href="#4-2-Web环境中的Spring-MVC" class="headerlink" title="4.2 Web环境中的Spring MVC"></a>4.2 Web环境中的Spring MVC</h3><p>Spring MVC 是建立在IoC容器基础上的，要了解SpringMVC，首先要了解 Spring IoC 是如何在Web环境中发挥作用的。<br><a id="more"></a><br>Spring IoC是个独立的模块，并不是直接在Web环境中发挥作用。如果我们需要在Web环境中使用IOC容器，需要为IOC设计一个启动过程，将ioc容器导入。在web容器启动过程中，将IoC导入，并在web容器中建立起来并初始化，这样才能建立起 Spring MVC 运行机制，从而响应web容器传递的HTTP请求。</p>
 <p>我们通常在web.xml文件中可以得到通常的配置。</p>
 <ol>
 <li><p>首选是定义一个Servlet对象，它是Spring MVC的DispatcherServlet。该DispatcherServlet是MVC中最重要的一个类，起着分发请求的作用。</p>
@@ -569,11 +568,11 @@
   <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
 
-  <p><span>本文标题:</span>Redis - Java集成</a></p>
+  <p><span>本文标题:</span>SpringMVC</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 08:45:33</p>
-  <p><span>原始链接:</span><a href="/undefined/第4章 Spring MVC/" title="Redis - Java集成">http://bangjinhu.github.io/undefined/第4章 Spring MVC/</a>
+  <p><span>最后更新:</span>2020年03月30日 - 08:18:18</p>
+  <p><span>原始链接:</span><a href="/undefined/第4章 Spring MVC/" title="SpringMVC">http://bangjinhu.github.io/undefined/第4章 Spring MVC/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/第4章 Spring MVC/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
@@ -645,7 +644,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://bangjinhu.github.io/undefined/第4章 Spring MVC/" title="Redis - Java集成">http://bangjinhu.github.io/undefined/第4章 Spring MVC/</a>
+    <a href="http://bangjinhu.github.io/undefined/第4章 Spring MVC/" title="SpringMVC">http://bangjinhu.github.io/undefined/第4章 Spring MVC/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -660,7 +659,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Redis/" rel="tag"><i class="fa fa-tag"></i> Redis</a>
+            <a href="/tags/SpringMVC/" rel="tag"><i class="fa fa-tag"></i> SpringMVC</a>
           
         </div>
       
@@ -673,8 +672,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/undefined/第5章 Java中的锁/" rel="next" title="Redis - Java集成">
-                <i class="fa fa-chevron-left"></i> Redis - Java集成
+              <a href="/undefined/第6章 Java并发容器和框架/" rel="next" title="并发容器与框架">
+                <i class="fa fa-chevron-left"></i> 并发容器与框架
               </a>
             
           </div>
@@ -683,8 +682,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/undefined/第4章 Java并发编程基础/" rel="prev" title="Redis - Java集成">
-                Redis - Java集成 <i class="fa fa-chevron-right"></i>
+              <a href="/undefined/第5章 Java中的锁/" rel="prev" title="锁">
+                锁 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -794,7 +793,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -805,7 +804,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -816,7 +815,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -858,12 +857,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -941,7 +934,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

@@ -1,0 +1,1686 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/site.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/site.jpg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="AOP," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="BangjinHu's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. AOP(面向切面(方面)编程)1.使用AOP原因 1.在开发完核心业务程序之后，可能还会遇到非核心业务程序(如：权限校验，记录日志等)。 2.如果在原有程序基础上添加新功能程序就会出现代码混乱等情况。 动态代理实现的过程，这里可理解AOP是，将核心业务代码过程比作一个柱体，其他的日志记录，权限校验等就像是横切核心业务的面，这些面需要完成一些非核心的业">
+<meta name="keywords" content="AOP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SPRING AOP 续">
+<meta property="og:url" content="http://bangjinhu.github.io/undefined/第3章 Spring - AOP 续一/index.html">
+<meta property="og:site_name" content="BangjinHu&#39;s Blog">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. AOP(面向切面(方面)编程)1.使用AOP原因 1.在开发完核心业务程序之后，可能还会遇到非核心业务程序(如：权限校验，记录日志等)。 2.如果在原有程序基础上添加新功能程序就会出现代码混乱等情况。 动态代理实现的过程，这里可理解AOP是，将核心业务代码过程比作一个柱体，其他的日志记录，权限校验等就像是横切核心业务的面，这些面需要完成一些非核心的业">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-03-30T00:17:55.698Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SPRING AOP 续">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. AOP(面向切面(方面)编程)1.使用AOP原因 1.在开发完核心业务程序之后，可能还会遇到非核心业务程序(如：权限校验，记录日志等)。 2.如果在原有程序基础上添加新功能程序就会出现代码混乱等情况。 动态代理实现的过程，这里可理解AOP是，将核心业务代码过程比作一个柱体，其他的日志记录，权限校验等就像是横切核心业务的面，这些面需要完成一些非核心的业">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://bangjinhu.github.io/undefined/第3章 Spring - AOP 续一/"/>
+
+
+
+
+
+  <title>SPRING AOP 续 | BangjinHu's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    
+    <a href="https://github.com/BangjinHu"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">BangjinHu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">让优秀成为习惯，让知识成为信仰</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            本站搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第3章 Spring - AOP 续一/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">SPRING AOP 续</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:17:55+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AOP/" itemprop="url" rel="index">
+                    <span itemprop="name">AOP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,046
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="AOP-面向切面-方面-编程"><a href="#AOP-面向切面-方面-编程" class="headerlink" title="AOP(面向切面(方面)编程)"></a>AOP(面向切面(方面)编程)</h2><p><strong>1.使用AOP原因</strong><br></p>
+<pre><code>1.在开发完核心业务程序之后，可能还会遇到非核心业务程序(如：权限校验，记录日志等)。
+2.如果在原有程序基础上添加新功能程序就会出现代码混乱等情况。
+</code></pre><p>动态代理实现的过程，这里可理解AOP是，将核心业务代码过程比作一个柱体，其他的日志记录，权限校验等就像是横切核心业务的面，这些面需要完成一些非核心的业务。然后定义的这些切面各自完成多个非核心的业务。</p>
+<blockquote>
+<p>所以这是一种通过预编译方式和运行期动态代理实现在不修改源码的情况下给程序动态统一添加功能的技术。</p>
+</blockquote>
+<p><strong>2.AOP与OOP关系</strong><br><br><a id="more"></a><br>AOP与Java无缝对接的是一种称为AspectJ的技术，Spring AOP与AspectJ实现原理上并不完全一致，但功能上是相似的。AOP的出现确实解决外围业务代码与核心业务代码分离的问题，但它并不会替代OOP，如果说OOP的出现是把编码问题进行模块化，那么AOP就是把涉及到众多模块的某一类问题进行统一管理。</p>
+<p><strong>2.1 AOP与OOP的关系</strong><br><br>OOP是针对<code>业务处理过程</code>的实体及其属性进行抽象封装，从而获得更加清晰的逻辑单元划分。AOP针对<code>业务处理中的方法</code>的切面(增加更细方法)进行抽取。</p>
+<h4 id="1-AOP概念"><a href="#1-AOP概念" class="headerlink" title="1.AOP概念"></a>1.AOP概念</h4><ul>
+<li>1)面向切面编程，扩展功能不修改源程序实现  </li>
+<li>2)AOP采取横向抽取机制，取代了传统纵向继承体系(纵向抽取机制：一个类文件继承另一个类文件的机制)重复性代码</li>
+<li>通知(advice) 定义要织入目标对象的逻辑。这些通知包括前置通知，后置通知，返回通知以及异常和环绕通知等。</li>
+<li>切点(pointcut) 如果我们将通知定义是在何时执行通知，那么切点就是定义在何处执行通知。所以切点的作用是通过匹配规则查找合适的连接点(joinpoint)，然后aop会在这些连接点上织入通知。</li>
+<li>切面(aspect) 切面包含了通知和切点，通知和切点共同定义了切面是什么，在何时，何处执行切面逻辑。</li>
+</ul>
+<h4 id="2-AOP原理"><a href="#2-AOP原理" class="headerlink" title="2.AOP原理"></a>2.AOP原理</h4><p>AOP(横向抽取机制) 底层使用动态代理方式实现(实现过程)。</p>
+<p><strong>1.代理模式</strong><br><br>我们可以清楚的知道代理类实现了被代理类的接口，同时与被代理类是组合关系。</p>
+<p><strong>2.静态代理</strong><br></p>
+<blockquote>
+<p>1.接口类</p>
+</blockquote>
+<pre><code>interface Person{
+    void speak();
+}   
+</code></pre><blockquote>
+<p>2.实体类</p>
+</blockquote>
+<pre><code>class Actor implements Person {
+    private String content;
+    public Actor(String content){
+        this.content = content;
+    }
+
+    @Override
+    public void speak(){
+        System.out.println(this.content);
+    }
+}
+</code></pre><blockquote>
+<p>3.代理类</p>
+</blockquote>
+<pre><code>class Agent implements Person {
+    private Actor actor;
+    private String before;
+    private String after;
+
+    public Agent(Actor actor, String before, String after) {
+        this.actor = actor;
+        this.before = before;
+        this.after = after;
+    }
+
+    @Override 
+    public void speak(){
+        //在speak()之前执行
+        System.out.println(&quot;Before actor speak, Agent say: &quot; + before);
+        //执行speak()
+        this.actor.speak();
+        //执行speak()之后执行
+        System.out.println(&quot;After actor speak, Agent say: &quot; + after);
+    }
+}
+</code></pre><blockquote>
+<p>4.测试类</p>
+</blockquote>
+<pre><code>public class StaticProxy {
+    public static void main(String[] args){
+        Actor actor = new Actor(&quot;actor&quot;);
+        Agent agent = new Agent(actor, &quot;agent&quot;, &quot;good&quot;);
+        agent.speak();
+    }
+}
+</code></pre><p><strong>2.动态代理实现</strong><br><br>这里动态代理技术的实现表示将在相关方法之后或者之前加上另外一些对应的方法，使得在不改变原程序的条件下能够动态的实现另外的一些操作。</p>
+<p><strong>2.1 动态代理InvocationHandler与Proxy</strong><br><br>在Java动态代理机制中有两个重要的类和接口，InvocationHandler(接口)和Proxy(类)，这类和接口是动态代理实现的核心。</p>
+<blockquote>
+<p>1.InvocationHandler接口是proxy代理实例的调用处理程序实现的一个接口，每一个proxy代理实例都有一个关联的调用处理程序；在代理实例调用方法时，方法调用被编码分派到调用处理程序的invoke方法。</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>注意：每个动态代理类的调用程序都必须实现InvocationHandler接口，并且每个代理类的实例都关联到了实现该接口的动态代理类调用处理程序中，当我们通过动态代理对象调用一个方法时候，这个方法的调用就会被转发到实现InvocationHandler接口类的invoke方法来调用。</p>
+</blockquote>
+</blockquote>
+<pre><code>//proxy:被代理类的实例
+//method:所要调用某个对象真实的方法的Method对象
+//args:指代代理对象方法传递的参数
+
+public Object invoke(Object proxy, Method method, Object[] args) throws Throwable;
+</code></pre><blockquote>
+<p>2.Proxy类就是用来创建一个代理对象的类，它提供了很多方法，但是我们最常用的是newProxyInstance方法。</p>
+</blockquote>
+<pre><code>//1.loader：一个classloader对象，定义了由哪个classloader对象对生成的代理类进行加载
+//2.interfaces：一个interface对象数组，表示我们将要给我们的代理对象提供一组什么样的接口，如果我们提供了这样一个接口对象数组，那么也就是声明了代理类实现了这些接口，代理类就可以调用接口中声明的所有方法。
+//3.h：一个InvocationHandler对象，表示的是当动态代理对象调用方法的时候会关联到哪一个InvocationHandler对象上，并最终由其调用
+
+public static Object newProxyInstance(ClassLoader loader, Class&lt;?&gt;[] interfaces, InvocationHandler h)
+</code></pre><hr>
+<pre><code>1.动态代理实现
+
+package cn.edu.xidian.see.*;
+
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+
+//1.实现InvocationHandler接口，并且可以初始化被代理类的对象
+public class MyProxy implements InvocationHandler {
+
+    //1.1 目标类对象
+    private Object targetObject;
+
+    public Object createProxyInstance(Object targetObject){
+        this.targetObject = targetObject;
+        //2.返回一个被修改过的实例
+        return Proxy.newProxyInstance(targetObject.getClass().getClassLoader(),targetObject.getClass().getInterfaces(),this);
+    }
+
+    @Override
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        command();
+        Object ret = method.invoke(targetObject,args);
+        award();
+
+        return ret;
+    }
+
+    private void command(){
+        System.out.println(&quot;驯兽师发命令&quot;);
+    }
+
+    private void award(){
+        System.out.println(&quot;驯兽师给奖励&quot;);
+    }
+}
+</code></pre><p><strong>3.原先方法以及动态代理实现之后方法的调用</strong><br></p>
+<pre><code>package cn.edu.xidian.see.*;
+
+import cn.edu.xidian.see.*.impl.Dog;
+
+public class Client {
+    public static void main(String[] args) {
+        MyProxy hander = new MyProxy();
+        Animal dog = (Animal) hander.createProxyInstance(new Dog());
+        dog.run();
+        dog.jump();
+    }
+}
+</code></pre><hr>
+<pre><code>1.JDK动态代理
+
+2.使用cglib生成代理
+  对于不使用接口的业务类，无法使用jdk动态代理，而cglib采用非常底层字节码技术，可以为一个类创建子类，解决无接口代理问题
+
+    2.1.关于intercept拦截方法
+         /**
+         * @param obj CGlib根据指定父类生成的代理对象
+         * @param method 拦截的方法
+         * @param args 拦截方法的参数数组
+         * @param proxy 方法的代理对象，用于执行父类的方法
+         * @return
+        */
+        public Object intercept(Object obj, Method method, Object[] args,
+               MethodProxy proxy) throws Throwable {
+            ... ...
+        }
+</code></pre><blockquote>
+<p>注意：最新版本Spring已经将CGLib开发类引入spring-core-3.2.0.RELEASE.jar</p>
+</blockquote>
+<blockquote>
+<p>总结：Spring AOP底层就是通过JDK动态代理或CGLIB动态代理技术为目标Bean执行横向织入</p>
+</blockquote>
+<pre><code>1.若目标对象实现了若干接口，spring使用JDK的java.lang.reflect.Proxy类代理。
+2.若目标对象没有实现任何接口，spring使用CGLIB库生成目标对象的子类。
+
+  程序中应该优先对接口创建代理，便于程序解耦维护
+
+  标记为final的方法，不能被代理，因为无法进行覆盖
+
+JDK动态代理，是针对接口生成子类，接口中方法不能使用final修饰
+CGLib 是针对目标类生产子类，因此类或方法不能是final的
+
+  Spring只支持方法连接点，不提供属性连接
+</code></pre><h4 id="3-AOP底层使用动态代理实现"><a href="#3-AOP底层使用动态代理实现" class="headerlink" title="3.AOP底层使用动态代理实现"></a>3.AOP底层使用动态代理实现</h4><ul>
+<li>第一种情况，有接口的情况，使用动态代理创建接口实现类代理对象。</li>
+<li>第二种情况，没有接口的情况，使用动态代理创建类的子类代理对象。</li>
+</ul>
+<blockquote>
+<p>第一种情况：使用JDK动态代理，针对有接口的情况</p>
+<blockquote>
+<p>步骤：1.定义一个包含切面逻辑的对象。2.定义一个advice对象，实现InvocationHandler接口，并且将过程1的切面逻辑对象和目标对象传入。3.将上面的advice对象和目标对象传给JDK动态代理方法，为目标对象生成代理。</p>
+</blockquote>
+</blockquote>
+<pre><code>public interface Dao{
+    public void add();
+}
+
+public class DaoImpl implements Dao{
+    public void add(){
+        //添加实现逻辑
+    }
+}
+</code></pre><blockquote>
+<p>注意：使用动态代理方式，创建接口实现类代理对象 (创建和DaoImpl类平级的对象，这个对象不是真正的对象，是一个代理对象，实现和DaoImpl相同的功能)。</p>
+</blockquote>
+<blockquote>
+<p>第二种情况：使用cglib动态代理，针对没有接口的情况</p>
+</blockquote>
+<pre><code>public class User{
+    public void add(){
+
+    }
+}
+</code></pre><blockquote>
+<blockquote>
+<p>动态代理实现(使用cglib动态代理，针对没有接口的情况)</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>创建User类的子类的代理对象</li>
+<li>在子类里面调用父类的方法完成增强</li>
+</ul>
+<h4 id="4-AOP操作术语"><a href="#4-AOP操作术语" class="headerlink" title="4.AOP操作术语"></a>4.AOP操作术语</h4><ul>
+<li><p>横切关注点：对哪些方法进行拦截，拦截后怎么处理，这些关注点称之为横切关注点</p>
+</li>
+<li><p>切面(Aspect)：一个类，在里面定义了通知和切点。</p>
+</li>
+<li><p>PointCut(切入点)：表达式，告诉程序要在执行哪些核心业务的时候，执行非核心的业务。</p>
+</li>
+<li><p>JoinPoint(连接点)：类里面的哪些方法可以被增强，这些方法就成为连接点，所以这些连接点指的是方法</p>
+</li>
+<li><p>Advice(通知/增强)：增强的逻辑，称为增强，比如扩展日志功能，这个日志功能就称为增强</p>
+<p>前置通知：在方法之前执行<br>后置通知：在方法之后执行<br>异常通知：方法出现异常执行<br>最终通知：在后置之后执行<br>环绕通知：在方法之前和之后执行</p>
+</li>
+</ul>
+<p><strong>1.对应的注解</strong><br></p>
+<pre><code>@After 通知方法会在目标方法返回或抛出异常后调用
+</code></pre><ul>
+<li>Aspect(切面)：将增强应用到具体方法上面，这一过程称为切面(将增强应用到切入点的过程就称为切面) 对横切关注点的抽象</li>
+</ul>
+<blockquote>
+<p>切面：简单说就是那些与业务无关，却为业务模块所共同调用的逻辑或责任封装起来，便于减少系统的重复代码，降低模块之间的耦合度，并有利于未来的可操作性和可维护性。</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>使用横切系统，AOP把软件系统分为两个部分：核心关注点(业务处理的主要流程)和横切关注点。</p>
+</blockquote>
+</blockquote>
+<p><strong>2.切点表达式</strong><br></p>
+<h2 id="Spring的AOP操作"><a href="#Spring的AOP操作" class="headerlink" title="Spring的AOP操作"></a>Spring的AOP操作</h2><p>  1.在Spring里面进行AOP操作，使用aspectj实现<br>    AspectJ：面向切面的框架，不是Spring的一部分，与Spring一起做AOP开发</p>
+<p>  2.使用aspectj实现AOP有两种方式<br>    1)基于aspectj的xml配置<br>    2)基于aspectj的注解方式</p>
+<h4 id="AOP操作准备"><a href="#AOP操作准备" class="headerlink" title="AOP操作准备"></a>AOP操作准备</h4><p>   1.除了导入基本的jar包之外，还需要导入aop相关的jar包<br>   2.创建一个Spring的核心配置文件，导入aop约束</p>
+<h4 id="使用表达式配置切入点"><a href="#使用表达式配置切入点" class="headerlink" title="使用表达式配置切入点"></a>使用表达式配置切入点</h4><p>  1.切入点，实际增强的方法<br>  2.常用表达式<br>    execution</p>
+<pre><code>1)execution(*cn.itcast.aop.Book.add(..))
+2)execution(*cn.itcast.aop.Book.*(..))
+3)execution(**.*(..))
+4)匹配所有save开头的方法execution(*save*(..))
+</code></pre><h4 id="使用AOP方式操作步骤"><a href="#使用AOP方式操作步骤" class="headerlink" title="使用AOP方式操作步骤"></a>使用AOP方式操作步骤</h4><pre><code>1.配置两个类的对象
+&lt;bean id=&quot;book&quot; class=&quot;cn.itcast.aop.Book&quot;&gt;&lt;/bean&gt;
+&lt;bean id=&quot;myBook&quot; class=&quot;cn.itcast.aop.MyBook&quot;&gt;&lt;/bean&gt;
+
+2.配置aop操作(1.配置切入点(使用表达式的方式) 2.配置切面(将增强用到方法上面去)  expression：上面所诉表达式 id：名字)
+&lt;aop:config&gt;
+    &lt;aop:pointcut expression=&quot;&quot; id=&quot;&quot;/&gt;
+    &lt;aop:aspect ref=&quot;增强的对象&quot;&gt;
+    //配置增强类型
+    &lt;aop:before method=&quot;增强类里面所使用的方法&quot; pointcut-ref=&quot;切入点的引用&quot;/&gt;    
+    &lt;/aop:aspect&gt;
+&lt;/aop:config&gt;
+</code></pre><h4 id="AOP案例"><a href="#AOP案例" class="headerlink" title="AOP案例"></a>AOP案例</h4><p><strong>1.Dog.java类(接口与接口实现)</strong><br></p>
+<pre><code>1.接口
+
+package cn.edu.xidian.see.*;
+public interface Animal {
+    public void run();
+    public void jump();
+}
+
+2.接口实现
+
+package cn.edu.xidian.see.*.impl;
+
+import cn.edu.xidian.see.*.Animal;
+
+public class Dog implements Animal {
+    @Override
+    public void run(){
+        System.out.println(&quot;狗跑&quot;);
+    }
+
+    @Override
+    public void jump(){
+        System.out.println(&quot;狗跳&quot;);
+    }
+}
+</code></pre><p><strong>2.</strong></p>
+
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+
+  <p><span>本文标题:</span>SPRING AOP 续</a></p>
+  <p><span>文章作者:</span>Bangjin-Hu</a></p>
+  <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
+  <p><span>最后更新:</span>2020年03月30日 - 08:17:55</p>
+  <p><span>原始链接:</span><a href="/undefined/第3章 Spring - AOP 续一/" title="SPRING AOP 续">http://bangjinhu.github.io/undefined/第3章 Spring - AOP 续一/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/第3章 Spring - AOP 续一/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.jpg" alt="Bangjin-Hu wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎扫码关注微信公众号，订阅我的微信公众号.</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持是我创作的动力.</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat-reward-img.jpg" alt="Bangjin-Hu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay-reward-img.jpg" alt="Bangjin-Hu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Bangjin-Hu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://bangjinhu.github.io/undefined/第3章 Spring - AOP 续一/" title="SPRING AOP 续">http://bangjinhu.github.io/undefined/第3章 Spring - AOP 续一/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/AOP/" rel="tag"><i class="fa fa-tag"></i> AOP</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/undefined/第2章 深入分析Java IO的工作机制/" rel="next" title="第二章 深入分析Java IO的工作机制">
+                <i class="fa fa-chevron-left"></i> 第二章 深入分析Java IO的工作机制
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/undefined/第2章 Spring IoC容器的实现/" rel="prev" title="Spring IOC">
+                Spring IOC <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/site.jpg"
+                alt="Bangjin-Hu" />
+            
+              <p class="site-author-name" itemprop="name">Bangjin-Hu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">212</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/BangjinHu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:2315378346@qq.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/Aaron_P_L" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-heart-o"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://iProgramering.github.io" target="_blank" title="iProgramer_ing">
+                      
+                        <i class="fa fa-fw fa-user"></i>iProgramer_ing</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          <div id="music163player">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src="//music.163.com/outchain/player?type=2&id=38358214&auto=0&height=66
+
+">
+    </iframe>
+</div>
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#AOP-面向切面-方面-编程"><span class="nav-text">AOP(面向切面(方面)编程)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-AOP概念"><span class="nav-text">1.AOP概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-AOP原理"><span class="nav-text">2.AOP原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-AOP底层使用动态代理实现"><span class="nav-text">3.AOP底层使用动态代理实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-AOP操作术语"><span class="nav-text">4.AOP操作术语</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring的AOP操作"><span class="nav-text">Spring的AOP操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#AOP操作准备"><span class="nav-text">AOP操作准备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用表达式配置切入点"><span class="nav-text">使用表达式配置切入点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用AOP方式操作步骤"><span class="nav-text">使用AOP方式操作步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AOP案例"><span class="nav-text">AOP案例</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bangjin-Hu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">486.7k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/lib/clipboard/clipboard.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+</body>
+</html>

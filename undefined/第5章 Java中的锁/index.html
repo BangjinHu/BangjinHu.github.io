@@ -139,7 +139,7 @@
 
 
 
-  <meta name="keywords" content="Redis," />
+  <meta name="keywords" content="多线程与并发," />
 
 
 
@@ -152,18 +152,18 @@
 
 
 
-<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. 第五章 Java中的锁[TOC] 5.1 Lock接口Java SE 1.5 之后，在并发包中新增 Lock 接口用来实现锁功能。它提供了与synchronize关键字类似的同步功能，只是在使用时需要显式地获取和释放锁。  提示：使用synchronize关键字将会隐式地获取锁，但是它将锁的获取和释放固化了，也就是先获取后释放。这种方式简化了同步的管">
-<meta name="keywords" content="Redis">
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. 第五章 Java中的锁[TOC] 5.1 Lock接口Java SE 1.5 之后，在并发包中新增 Lock 接口用来实现锁功能。它提供了与synchronize关键字类似的同步功能，只是在使用时需要显式地获取和释放锁。">
+<meta name="keywords" content="多线程与并发">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Redis - Java集成">
+<meta property="og:title" content="锁">
 <meta property="og:url" content="http://bangjinhu.github.io/undefined/第5章 Java中的锁/index.html">
 <meta property="og:site_name" content="BangjinHu&#39;s Blog">
-<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. 第五章 Java中的锁[TOC] 5.1 Lock接口Java SE 1.5 之后，在并发包中新增 Lock 接口用来实现锁功能。它提供了与synchronize关键字类似的同步功能，只是在使用时需要显式地获取和释放锁。  提示：使用synchronize关键字将会隐式地获取锁，但是它将锁的获取和释放固化了，也就是先获取后释放。这种方式简化了同步的管">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. 第五章 Java中的锁[TOC] 5.1 Lock接口Java SE 1.5 之后，在并发包中新增 Lock 接口用来实现锁功能。它提供了与synchronize关键字类似的同步功能，只是在使用时需要显式地获取和释放锁。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-29T02:05:45.573Z">
+<meta property="og:updated_time" content="2020-03-30T00:18:24.074Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Redis - Java集成">
-<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 第五章 Java中的锁[TOC] 5.1 Lock接口Java SE 1.5 之后，在并发包中新增 Lock 接口用来实现锁功能。它提供了与synchronize关键字类似的同步功能，只是在使用时需要显式地获取和释放锁。  提示：使用synchronize关键字将会隐式地获取锁，但是它将锁的获取和释放固化了，也就是先获取后释放。这种方式简化了同步的管">
+<meta name="twitter:title" content="锁">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 第五章 Java中的锁[TOC] 5.1 Lock接口Java SE 1.5 之后，在并发包中新增 Lock 接口用来实现锁功能。它提供了与synchronize关键字类似的同步功能，只是在使用时需要显式地获取和释放锁。">
 
 
 
@@ -199,7 +199,7 @@
 
 
 
-  <title>Redis - Java集成 | BangjinHu's Blog</title>
+  <title>锁 | BangjinHu's Blog</title>
   
 
 
@@ -391,7 +391,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Redis - Java集成</h2>
+          <h2 class="post-title" itemprop="name headline">锁</h2>
         
 
         <div class="post-meta">
@@ -419,8 +419,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:05:45+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:18:24+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -438,8 +438,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Redis/" itemprop="url" rel="index">
-                    <span itemprop="name">Redis</span>
+                  <a href="/categories/多线程与并发/" itemprop="url" rel="index">
+                    <span itemprop="name">多线程与并发</span>
                   </a>
                 </span>
 
@@ -509,7 +509,7 @@
         <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
 <h2 id="第五章-Java中的锁"><a href="#第五章-Java中的锁" class="headerlink" title="第五章 Java中的锁"></a>第五章 Java中的锁</h2><p>[TOC]</p>
-<h3 id="5-1-Lock接口"><a href="#5-1-Lock接口" class="headerlink" title="5.1 Lock接口"></a>5.1 Lock接口</h3><p>Java SE 1.5 之后，在并发包中新增 Lock 接口用来实现锁功能。它提供了与synchronize关键字类似的同步功能，只是在使用时需要显式地获取和释放锁。</p>
+<h3 id="5-1-Lock接口"><a href="#5-1-Lock接口" class="headerlink" title="5.1 Lock接口"></a>5.1 Lock接口</h3><p>Java SE 1.5 之后，在并发包中新增 Lock 接口用来实现锁功能。它提供了与synchronize关键字类似的同步功能，只是在使用时需要显式地获取和释放锁。<br><a id="more"></a></p>
 <blockquote>
 <p>提示：使用synchronize关键字将会隐式地获取锁，但是它将锁的获取和释放固化了，也就是先获取后释放。这种方式简化了同步的管理，但是扩展性没有显式的锁获取和释放好。</p>
 </blockquote>
@@ -743,11 +743,11 @@ public void conditionSignal(){
   <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
 
-  <p><span>本文标题:</span>Redis - Java集成</a></p>
+  <p><span>本文标题:</span>锁</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 10:05:45</p>
-  <p><span>原始链接:</span><a href="/undefined/第5章 Java中的锁/" title="Redis - Java集成">http://bangjinhu.github.io/undefined/第5章 Java中的锁/</a>
+  <p><span>最后更新:</span>2020年03月30日 - 08:18:24</p>
+  <p><span>原始链接:</span><a href="/undefined/第5章 Java中的锁/" title="锁">http://bangjinhu.github.io/undefined/第5章 Java中的锁/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/第5章 Java中的锁/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
@@ -819,7 +819,7 @@ public void conditionSignal(){
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://bangjinhu.github.io/undefined/第5章 Java中的锁/" title="Redis - Java集成">http://bangjinhu.github.io/undefined/第5章 Java中的锁/</a>
+    <a href="http://bangjinhu.github.io/undefined/第5章 Java中的锁/" title="锁">http://bangjinhu.github.io/undefined/第5章 Java中的锁/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -834,7 +834,7 @@ public void conditionSignal(){
       
         <div class="post-tags">
           
-            <a href="/tags/Redis/" rel="tag"><i class="fa fa-tag"></i> Redis</a>
+            <a href="/tags/多线程与并发/" rel="tag"><i class="fa fa-tag"></i> 多线程与并发</a>
           
         </div>
       
@@ -847,8 +847,8 @@ public void conditionSignal(){
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/undefined/第5章 深入class文件结构/" rel="next" title="Redis - Java集成">
-                <i class="fa fa-chevron-left"></i> Redis - Java集成
+              <a href="/undefined/第4章 Spring MVC/" rel="next" title="SpringMVC">
+                <i class="fa fa-chevron-left"></i> SpringMVC
               </a>
             
           </div>
@@ -857,8 +857,8 @@ public void conditionSignal(){
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/undefined/第4章 Spring MVC/" rel="prev" title="Redis - Java集成">
-                Redis - Java集成 <i class="fa fa-chevron-right"></i>
+              <a href="/undefined/第3章 Spring AOP的实现/" rel="prev" title="SPRING AOP">
+                SPRING AOP <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -968,7 +968,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -979,7 +979,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -990,7 +990,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1032,12 +1032,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -1115,7 +1109,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

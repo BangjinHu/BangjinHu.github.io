@@ -139,7 +139,7 @@
 
 
 
-  <meta name="keywords" content="AOP," />
+  <meta name="keywords" content="SpringMVC源码分析," />
 
 
 
@@ -152,18 +152,18 @@
 
 
 
-<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. 第18章 LocaleResolverLocaleResolver的主要作用在于根据不同的用户区域展示不同的视图，通过设置系统的环境，根据运行环境使用不同的语言显示。用户的区域称为 Locale ，这一信息可以由前端直接获取。通过这一方式可以实现国际化的目的。如：针对美国用户提供一个视图，针对中国用户提供一个视图。而LocaleResolver的使用">
-<meta name="keywords" content="AOP">
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. 第18章 LocaleResolver">
+<meta name="keywords" content="SpringMVC源码分析">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AOP">
+<meta property="og:title" content="LocaleResolver">
 <meta property="og:url" content="http://bangjinhu.github.io/undefined/第18章 LocaleResolver/index.html">
 <meta property="og:site_name" content="BangjinHu&#39;s Blog">
-<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. 第18章 LocaleResolverLocaleResolver的主要作用在于根据不同的用户区域展示不同的视图，通过设置系统的环境，根据运行环境使用不同的语言显示。用户的区域称为 Locale ，这一信息可以由前端直接获取。通过这一方式可以实现国际化的目的。如：针对美国用户提供一个视图，针对中国用户提供一个视图。而LocaleResolver的使用">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. 第18章 LocaleResolver">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-29T01:54:18.857Z">
+<meta property="og:updated_time" content="2020-03-30T00:17:21.226Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AOP">
-<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 第18章 LocaleResolverLocaleResolver的主要作用在于根据不同的用户区域展示不同的视图，通过设置系统的环境，根据运行环境使用不同的语言显示。用户的区域称为 Locale ，这一信息可以由前端直接获取。通过这一方式可以实现国际化的目的。如：针对美国用户提供一个视图，针对中国用户提供一个视图。而LocaleResolver的使用">
+<meta name="twitter:title" content="LocaleResolver">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 第18章 LocaleResolver">
 
 
 
@@ -199,7 +199,7 @@
 
 
 
-  <title>AOP | BangjinHu's Blog</title>
+  <title>LocaleResolver | BangjinHu's Blog</title>
   
 
 
@@ -391,7 +391,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">AOP</h2>
+          <h2 class="post-title" itemprop="name headline">LocaleResolver</h2>
         
 
         <div class="post-meta">
@@ -419,8 +419,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T09:54:18+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:17:21+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -438,8 +438,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/AOP/" itemprop="url" rel="index">
-                    <span itemprop="name">AOP</span>
+                  <a href="/categories/SpringMVC源码分析/" itemprop="url" rel="index">
+                    <span itemprop="name">SpringMVC源码分析</span>
                   </a>
                 </span>
 
@@ -508,7 +508,8 @@
       
         <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h1 id="第18章-LocaleResolver"><a href="#第18章-LocaleResolver" class="headerlink" title="第18章 LocaleResolver"></a>第18章 LocaleResolver</h1><p>LocaleResolver的主要作用在于根据不同的用户区域展示不同的视图，通过设置系统的环境，根据运行环境使用不同的语言显示。用户的区域称为 Locale ，这一信息可以由前端直接获取。通过这一方式可以实现国际化的目的。如：针对美国用户提供一个视图，针对中国用户提供一个视图。而LocaleResolver的使用是实现对用户不同视图的切换。LocaleResolver的作用是使用request解析出Locale。在LocaleResolver的实现类中，AcceptHeaderLocaleResolver直接使用了Header里的acceptlanguage值，不能在程序里面修改。</p>
+<h1 id="第18章-LocaleResolver"><a href="#第18章-LocaleResolver" class="headerlink" title="第18章 LocaleResolver"></a>第18章 LocaleResolver</h1><a id="more"></a>
+<p>LocaleResolver的主要作用在于根据不同的用户区域展示不同的视图，通过设置系统的环境，根据运行环境使用不同的语言显示。用户的区域称为 Locale ，这一信息可以由前端直接获取。通过这一方式可以实现国际化的目的。如：针对美国用户提供一个视图，针对中国用户提供一个视图。而LocaleResolver的使用是实现对用户不同视图的切换。LocaleResolver的作用是使用request解析出Locale。在LocaleResolver的实现类中，AcceptHeaderLocaleResolver直接使用了Header里的acceptlanguage值，不能在程序里面修改。</p>
 <h4 id="1-Spring针对LocaleResoler提供几种实现方式"><a href="#1-Spring针对LocaleResoler提供几种实现方式" class="headerlink" title="1.Spring针对LocaleResoler提供几种实现方式"></a>1.Spring针对LocaleResoler提供几种实现方式</h4><pre><code>1.FixedLocaleResolver 在声明该resolver时，需要指定一个默认的Locale，在进行Locale获取时，始终返回该Locale，并且调用其setLocale()方法也无法改变其Locale。
 
 2.SessionLocaleResolver 其会将Locale信息存储在session中，如果用户想要修改Locale信息，可以通过修改session中对应属性的值即可。
@@ -762,11 +763,11 @@ public class UserController {
   <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
 
-  <p><span>本文标题:</span>AOP</a></p>
+  <p><span>本文标题:</span>LocaleResolver</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 09:54:18</p>
-  <p><span>原始链接:</span><a href="/undefined/第18章 LocaleResolver/" title="AOP">http://bangjinhu.github.io/undefined/第18章 LocaleResolver/</a>
+  <p><span>最后更新:</span>2020年03月30日 - 08:17:21</p>
+  <p><span>原始链接:</span><a href="/undefined/第18章 LocaleResolver/" title="LocaleResolver">http://bangjinhu.github.io/undefined/第18章 LocaleResolver/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/第18章 LocaleResolver/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
@@ -838,7 +839,7 @@ public class UserController {
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://bangjinhu.github.io/undefined/第18章 LocaleResolver/" title="AOP">http://bangjinhu.github.io/undefined/第18章 LocaleResolver/</a>
+    <a href="http://bangjinhu.github.io/undefined/第18章 LocaleResolver/" title="LocaleResolver">http://bangjinhu.github.io/undefined/第18章 LocaleResolver/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -853,7 +854,7 @@ public class UserController {
       
         <div class="post-tags">
           
-            <a href="/tags/AOP/" rel="tag"><i class="fa fa-tag"></i> AOP</a>
+            <a href="/tags/SpringMVC源码分析/" rel="tag"><i class="fa fa-tag"></i> SpringMVC源码分析</a>
           
         </div>
       
@@ -866,8 +867,8 @@ public class UserController {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/undefined/第19章 ThemeResolver/" rel="next" title="AOP">
-                <i class="fa fa-chevron-left"></i> AOP
+              <a href="/undefined/第20章 FlashMapManager/" rel="next" title="FlashMapManager">
+                <i class="fa fa-chevron-left"></i> FlashMapManager
               </a>
             
           </div>
@@ -876,8 +877,8 @@ public class UserController {
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/undefined/第16章 HandlerExceptionResolver/" rel="prev" title="AOP">
-                AOP <i class="fa fa-chevron-right"></i>
+              <a href="/undefined/第17章 MultipartResolver/" rel="prev" title="StandardServletMultipartResolver">
+                StandardServletMultipartResolver <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -987,7 +988,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -998,7 +999,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1009,7 +1010,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1051,12 +1052,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -1134,7 +1129,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

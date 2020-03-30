@@ -373,7 +373,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Cookie 和 Session/">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/MySQL优化 - trace分析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bangjin-Hu">
@@ -392,7 +392,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/undefined/Cookie 和 Session/" itemprop="url">Cookie 和 Session</a></h2>
+                <a class="post-title-link" href="/undefined/MySQL优化 - trace分析/" itemprop="url">MySQL优化-trace分析</a></h2>
         
 
         <div class="post-meta">
@@ -420,7 +420,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:30:23+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T08:19:51+08:00">
                 2020-03-29
               </time>
             
@@ -439,8 +439,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Cookie-和-Session/" itemprop="url" rel="index">
-                    <span itemprop="name">Cookie 和 Session</span>
+                  <a href="/categories/MySQL优化/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL优化</span>
                   </a>
                 </span>
 
@@ -470,253 +470,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  840
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="Cookie-和-Session"><a href="#Cookie-和-Session" class="headerlink" title="Cookie 和 Session"></a>Cookie 和 Session</h2><p>[TOC]</p>
-<p>Cookie是客户端技术 Session是服务器端技术。</p>
-<p>API:</p>
-<blockquote>
-<ul>
-<li><a href="https://tomcat.apache.org/tomcat-8.0-doc/servletapi/index.html?javax/servlet/http/Cookie.html" target="_blank" rel="noopener">javax.servlet.http:Class Cookie</a></li>
-<li><a href="https://tomcat.apache.org/tomcat-8.0-doc/servletapi/index.html?javax/servlet/http/HttpSession.html" target="_blank" rel="noopener">javax.servlet.http:Interface HttpSession</a></li>
-</ul>
-</blockquote>
-<h4 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h4><blockquote>
-<p>注意：这里是一些细节</p>
-</blockquote>
-<ul>
-<li>一个cookie只能标识一种信息，至少含有标识该信息的名称和值</li>
-<li>浏览器一般只允许存放300个cookie，每个站点最多存放20个，每个cookie大小限制为4KB</li>
-<li>默认是会话级别cookie(存储于浏览器内存)，浏览器进程关闭则删除。有效期通过<code>maxAge</code>设置，存于硬盘，0表示删除</li>
-<li>删除cookie时，path必须一致，否则不会删除</li>
-</ul>
-<hr>
-<h4 id="session"><a href="#session" class="headerlink" title="session"></a>session</h4><p>session对象由服务器创建,一个浏览器(会话)独占一个session对象</p>
-<p>session对象由服务器创建生命周期</p>
-<ul>
-<li>创建：调用<code>request</code>对象的<code>getSession</code>方法后才会创建session对象;<code>getSession(false)</code>只获取，不创建</li>
-<li>销毁：默认30分钟没人使用则自动销毁。失效时间可在<code>web.xml</code>的<code>&lt;session-config&gt;</code>标签中使用<code>&lt;session-timeout&gt;</code>，单位分钟；也可调用<code>session</code>对象的<code>invalidate</code>方法销毁</li>
-</ul>
-<hr>
-<h3 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h3><p>session基于cookie实现，将<code>JSESSIONID</code>写回浏览器，这个cookie(<code>JSESSIONID</code>)默认没设置有效期,关浏览器即销毁。可以自行回写<code>JSESSIONID</code>覆盖原cookie值</p>
-<p>示例代码片段：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">    HttpSession session = req.getSession();</span><br><span class="line">    String sessionid = session.getId();</span><br><span class="line">    Cookie cookie = <span class="keyword">new</span> Cookie(<span class="string">"JSESSIONID"</span>,sessionid);</span><br><span class="line">    cookie.setPath(<span class="string">"/s1"</span>);</span><br><span class="line">    cookie.setMaxAge(<span class="number">30</span>*<span class="number">60</span>);</span><br><span class="line">    resp.addCookie(cookie);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="应用案例"><a href="#应用案例" class="headerlink" title="应用案例"></a>应用案例</h3><ul>
-<li>用户登录</li>
-<li>防止表单重复提交</li>
-<li>一次性验证码的校验</li>
-</ul>
-<p><strong>小Tips</strong></p>
-<ul>
-<li>一般大型网站不用session,使用cookie,减小服务器压力</li>
-<li>若浏览器禁用cookie,需使用url自带sessionid，相关方法:<code>encodeURL</code>和<code>encodeRedirectURL</code></li>
-<li>禁止表单重复提交：在javascript或者服务器实现。javascript防不死，用户可通过修改js、自建表单提交，刷新页面，后退等方法重复提交；服务器实现是给每个表单一个随机表单号</li>
-<li>生成表单号使用“令牌发生器”，为保证唯一性(减小重复概率)，使用单例。</li>
-<li>base64编码，三字节变四字节，每6位变8位(一字节)，高位补零，每字节最大值为63，故得名。</li>
-<li>md5，常用于保存密码(可能为防止破解会加随机数)，校验数据完整性</li>
-</ul>
-<p>防止表单重复提交之令牌例子：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.iot.data;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sun.misc.BASE64Encoder;</span><br><span class="line"><span class="keyword">import</span> java.security.MessageDigest;</span><br><span class="line"><span class="keyword">import</span> java.security.NoSuchAlgorithmException;</span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by brian on 2016/1/27.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TokenProcessor</span> </span>&#123;<span class="comment">//令牌</span></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 1.构造方法私有</span></span><br><span class="line"><span class="comment">     * 2.自己创建一个</span></span><br><span class="line"><span class="comment">     * 3.对外暴露一个方法，允许获取上面创建的对象</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">TokenProcessor</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span>  <span class="keyword">static</span> <span class="keyword">final</span> TokenProcessor instance = <span class="keyword">new</span> TokenProcessor();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> TokenProcessor <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">genetateToken</span><span class="params">()</span></span>&#123;</span><br><span class="line">        String token = System.currentTimeMillis()+<span class="keyword">new</span> Random().nextInt()+<span class="string">""</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            MessageDigest md =  MessageDigest.getInstance(<span class="string">"md5"</span>);</span><br><span class="line">            <span class="keyword">byte</span> [] md5 =  md.digest(token.getBytes());</span><br><span class="line">            <span class="comment">//base64编码</span></span><br><span class="line">            BASE64Encoder encoder = <span class="keyword">new</span> BASE64Encoder();</span><br><span class="line">            <span class="keyword">return</span> encoder.encode(md5);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (NoSuchAlgorithmException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="三个域对象"><a href="#三个域对象" class="headerlink" title="三个域对象"></a>三个域对象</h2><ul>
-<li>Session</li>
-<li>Request</li>
-<li>ServletContext</li>
-</ul>
-<p>容器选用经验：</p>
-<ul>
-<li>数据显示完了就没用了，则选用Request</li>
-<li>数据除了显示外，稍后还会用，则选用Session</li>
-<li>数据除了显示外，不仅稍后会用，还会给别人用，则选用<code>ServletContext</code></li>
-</ul>
-<hr>
-
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/ClassPathXmlApplicationContext/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/ClassPathXmlApplicationContext/" itemprop="url">ClassPathXmlApplicationContext</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:29:53+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/SpringMVC/" itemprop="url" rel="index">
-                    <span itemprop="name">SpringMVC</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  129
+                  79
                 </span>
               
 
@@ -757,509 +511,7 @@
           
             <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="ClassPathXmlApplicationContext"><a href="#ClassPathXmlApplicationContext" class="headerlink" title="ClassPathXmlApplicationContext"></a>ClassPathXmlApplicationContext</h2><blockquote>
-<p>提示：ResourceLoader表示一种加载资源的方式，是策略模式的实现。</p>
-</blockquote>
-<pre><code>//构造器(部分)
-public ClassPathXmlApplicationContext(String[] configLocations, boolean refresh, ApplicationContext parent) throws BeansException {
-    super(parent);
-    this.setConfigLocations(configLocations);
-    if (refresh) {
-        this.refresh();
-    }
-}
-</code></pre><p>父类构造器(AbstractApplicationContext)</p>
-<pre><code>public AbstractApplicationContext() {
-    this.logger = LogFactory.getLog(this.getClass());
-    this.id = ObjectUtils.identityToString(this);
-    this.displayName = ObjectUtils.identityToString(this);
-    this.beanFactoryPostProcessors = new ArrayList();
-    this.active = new AtomicBoolean();
-    this.closed = new AtomicBoolean();
-    this.startupShutdownMonitor = new Object();
-    this.applicationListeners = new LinkedHashSet();
-    this.resourcePatternResolver = this.getResourcePatternResolver();
-}
-
-public AbstractApplicationContext(ApplicationContext parent) {
-    this();
-    this.setParent(parent);
-}
-
-protected ResourcePatternResolver getResourcePatternResolver() {
-    return new PathMatchingResourcePatternResolver(this);
-}
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Git/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/Git/" itemprop="url">Git</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:31:23+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Git/" itemprop="url" rel="index">
-                    <span itemprop="name">Git</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  913
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="1-git-rebase"><a href="#1-git-rebase" class="headerlink" title="1.git rebase"></a>1.git rebase</h2><p>git合并代码主要有两种方式：</p>
-<pre><code>1.merge处理，这是我们比较能理解的方式。
-2.rebase处理，中文此处翻译为衍合过程。
-</code></pre><h2 id="2-git-update-index-–assume-unchanged-PATH"><a href="#2-git-update-index-–assume-unchanged-PATH" class="headerlink" title="2.git update-index –assume-unchanged PATH"></a>2.git update-index –assume-unchanged PATH</h2><p>表示手动设置不要检查特定文件的更改情况。</p>
-<blockquote>
-<p>注意：另外git提供了另外一种exclude的方式来完成同样的事情，不同的是.gitignore这个文件本身会提交到版本库中去。用来保存公共的需要排除的文件。.git/info/exclude设置的是我们自己本地需要排除的文件。这不会影响到别人，也不会提交到版本库中去。</p>
-</blockquote>
-<pre><code>$ git update-index --assume-unchanged /path/to/file   #忽略跟踪
-
-$ git update-index --no-assume-unchanged /path/to/file  #恢复跟踪
-</code></pre><h2 id="3-Git工作流程"><a href="#3-Git工作流程" class="headerlink" title="3.Git工作流程"></a>3.Git工作流程</h2><pre><code>git -
-    commit -a 将workspace程序提交到local repository
-    add (-u) 将workspace程序提交到index(暂存区)
-    commit 将index程序提交到local repository
-    push 将local repository程序推到remote repository
-
-    pull/rebase 将remote repository程序拉到workspace
-    fetch 将remote repository程序拉到local repository
-
-    checkout head 将local repository到workspace
-    checkout 将index到workspace
-    diff head 将local到workspace
-    diff 将index到workspace
-</code></pre><blockquote>
-<p>注：</p>
-</blockquote>
-<h2 id="4-git命令"><a href="#4-git命令" class="headerlink" title="4.git命令"></a>4.git命令</h2><h4 id="4-1-创建与合并分支"><a href="#4-1-创建与合并分支" class="headerlink" title="4.1 创建与合并分支"></a>4.1 创建与合并分支</h4><pre><code>1.git branch 查看当前分支
-2.git checkout -b &lt;name&gt; 创建并切换到dev分支
-3.git checkout &lt;name&gt; 切换分支
-3.git merge dev 将dev分支合并到master，当然首先需要切换回到master分支
-
-4.git merge 该命令表示合并指定分支到当前分支
-
-5.git branch -d &lt;name&gt; 删除分支
-</code></pre><h4 id="4-2-解决冲突"><a href="#4-2-解决冲突" class="headerlink" title="4.2 解决冲突"></a>4.2 解决冲突</h4><p>如果两个分支上的程序出现冲突，即就是两个分支上的程序都被改动之后，那么在两者合并的过程中就会产生冲突。</p>
-<pre><code>1.git status 了解冲突的文件
-</code></pre><blockquote>
-<p>注意：在git无法自动合并分支的时候，首先应该解决冲突，然后再提交合并。</p>
-</blockquote>
-<pre><code>2.git log --graph 该命令可以看到分支合并图
-</code></pre><h4 id="4-3-分支管理策略"><a href="#4-3-分支管理策略" class="headerlink" title="4.3 分支管理策略"></a>4.3 分支管理策略</h4><pre><code>1.git merge --no-ff &lt;name&gt; 该命令表示禁用fast forward 快速合并 分支
-</code></pre><blockquote>
-<p>提示：分支策略，在实际开发过程中，按照几个基本原则进行管理，平时不在master分支上干活，这分支是用来发布新版本。</p>
-</blockquote>
-<h4 id="4-4-多人协作"><a href="#4-4-多人协作" class="headerlink" title="4.4 多人协作"></a>4.4 多人协作</h4><pre><code>1.git remote -v 查看远程库信息
-2.git push origin &lt;name&gt; 从本地推送分支，推送失败 git pull 抓取远程的新提交
-
-3.git branch --set-upstream branch-name origin/branch-name 建立本地分支和远程分支的关联
-</code></pre><h4 id="4-5-标签管理"><a href="#4-5-标签管理" class="headerlink" title="4.5 标签管理"></a>4.5 标签管理</h4><pre><code>1.命令git tag &lt;tagname&gt;用于新建一个标签，默认为HEAD，也可以指定一个commit id
-2.命令git tag -a &lt;tagname&gt; -m &quot;blablabla...&quot;可以指定标签信息
-3.命令git tag可以查看所有标签
-
-4.命令git push origin &lt;tagname&gt;可以推送一个本地标签
-5.命令git push origin --tags可以推送全部未推送过的本地标签
-6.命令git tag -d &lt;tagname&gt;可以删除一个本地标签
-7.命令git push origin :refs/tags/&lt;tagname&gt;可以删除一个远程标签
-</code></pre><h4 id="4-6-自定义git"><a href="#4-6-自定义git" class="headerlink" title="4.6 自定义git"></a>4.6 自定义git</h4><pre><code>如果想要忽略到一些文件的时候，可以在.gitignore文件中填写，同时该文件可以被版本管理。
-</code></pre><hr>
-<h2 id="不上传LocalController-java和local文件夹文件"><a href="#不上传LocalController-java和local文件夹文件" class="headerlink" title="不上传LocalController.java和local文件夹文件"></a>不上传LocalController.java和local文件夹文件</h2><pre><code>1.找到 E:\projects\WebOA\.git\info 路径
-2.修改该路径下的语句：
-
-    # git ls-files --others --exclude-from=.git/info/exclude
-    # Lines that start with &apos;#&apos; are comments.
-    # For a project mostly in C, the following would be a good set of
-    # exclude patterns (uncomment them if you want to use them):
-    # *.[oa]
-    # *~
-    src/main/java/cn/edu/xidian/see/controller/LocalController.java
-    src/main/webapp/WEB-INF/views/local/*
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/JSON 和 ProtoBuf序列化/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/JSON 和 ProtoBuf序列化/" itemprop="url">JSON 和 ProtoBuf序列化</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:42:47+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JSON-和-ProtoBuf序列化/" itemprop="url" rel="index">
-                    <span itemprop="name">JSON 和 ProtoBuf序列化</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  553
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="JSON-和-ProtoBuf序列化"><a href="#JSON-和-ProtoBuf序列化" class="headerlink" title="JSON 和 ProtoBuf序列化"></a>JSON 和 ProtoBuf序列化</h2><p>[TOC]</p>
-<h3 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h3><p>在开发远程过程调用（RPC）程序时候，会涉及到对象的序列化与反序列化问题。如：Person对象从客户端通过TCP方式发送到服务器端。（因为TCP协议只能发送字节流，所以需要应用层将Person对象序列化成字节流）。</p>
-<blockquote>
-<p>注意：在使用JSON或者ProtoBuf时，需要保证ByteBuf二进制包是完整的二进制包。不能是半包或粘包。</p>
-</blockquote>
-<h4 id="粘包"><a href="#粘包" class="headerlink" title="粘包"></a>粘包</h4><p>多个发送端的输入ByteBuf粘在一起的时候称之为粘包。</p>
-<h4 id="半包"><a href="#半包" class="headerlink" title="半包"></a>半包</h4><p>一个输入的ByteBuf被拆开读取，读取到一个破碎的包，这种情况下被称之为半包。</p>
-<h4 id="拆包"><a href="#拆包" class="headerlink" title="拆包"></a>拆包</h4><p>基于上面的粘包和半包的情况，可以在Netty中根据自定义协议，将读取到的进程缓冲区ByteBuf在应用层进行二次拼装，重新组装应用层数据包。这一过程被称之为拆包。</p>
-<p>这里主要有两种方式实现这一过程：</p>
-<pre><code>1. 自定义解码器分包器：基于ByteToMessgeDecoder或者ReplayingDecoder，定义自己的进程缓冲区分包器。
-
-2. 使用Netty内置的解码器。（如：LengthFieldBasedFrameDecoder自定义分隔符数据包解码器，对缓冲区ByteBuf进行正确的分包）。
-</code></pre><h3 id="JSON-协议通信"><a href="#JSON-协议通信" class="headerlink" title="JSON 协议通信"></a>JSON 协议通信</h3><h4 id="JSON-序列化通用类"><a href="#JSON-序列化通用类" class="headerlink" title="JSON 序列化通用类"></a>JSON 序列化通用类</h4><pre><code>1. 阿里的FastJson
-
-2. 谷歌的Gson
-
-3. 开源社区的 Jackson
-</code></pre><p>一般是Gson库与阿里的FastJson两者的结合使用。JSON序列化时，使用Gson库。反序列化时，阿里的FastJson库。</p>
-<h3 id="ProtoBuf-协议通信"><a href="#ProtoBuf-协议通信" class="headerlink" title="ProtoBuf 协议通信"></a>ProtoBuf 协议通信</h3><p>ProtoBuf是谷歌的一种数据交换的格式，是一套类似于JSON或者XML的数据传输格式和规范。用于不同应用或进程之间的通信。</p>
-<p>ProtoBuf的编码过程：</p>
-<pre><code>1. 使用预先定义的Message数据结构将实际的传输数据进行打包
-
-2. 编码成二进制流进行传输或存储
-</code></pre><p>更加的适用于高性能、快速响应的场景。因为其是二进制数据格式，数据序列化之后，更加的适合在网络中进行传输。</p>
+<h2 id="mysql优化-trace分析"><a href="#mysql优化-trace分析" class="headerlink" title="mysql优化 - trace分析"></a>mysql优化 - trace分析</h2><p>通过trace文件能够进一步了解为什么优化器选择A执行计划而不选择B执行计划，帮助我们更好的理解优化器是如何选择执行计划的。</p>
 
           
         
@@ -1311,7 +563,7 @@ $ git update-index --no-assume-unchanged /path/to/file  #恢复跟踪
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/JDK 8 底层源码/">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/MySQL分区/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bangjin-Hu">
@@ -1330,7 +582,7 @@ $ git update-index --no-assume-unchanged /path/to/file  #恢复跟踪
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/undefined/JDK 8 底层源码/" itemprop="url">Redis - Java集成</a></h2>
+                <a class="post-title-link" href="/undefined/MySQL分区/" itemprop="url">MySQ-分区</a></h2>
         
 
         <div class="post-meta">
@@ -1358,8 +610,8 @@ $ git update-index --no-assume-unchanged /path/to/file  #恢复跟踪
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:05:51+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:05:42+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -1377,8 +629,8 @@ $ git update-index --no-assume-unchanged /path/to/file  #恢复跟踪
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Redis/" itemprop="url" rel="index">
-                    <span itemprop="name">Redis</span>
+                  <a href="/categories/MySQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL</span>
                   </a>
                 </span>
 
@@ -1408,7 +660,7 @@ $ git update-index --no-assume-unchanged /path/to/file  #恢复跟踪
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  408
+                  1,462
                 </span>
               
 
@@ -1424,504 +676,7 @@ $ git update-index --no-assume-unchanged /path/to/file  #恢复跟踪
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<p>[TOC]</p>
-<h2 id="函数式接口"><a href="#函数式接口" class="headerlink" title="函数式接口"></a>函数式接口</h2><h2 id="Collectors-源码"><a href="#Collectors-源码" class="headerlink" title="Collectors 源码"></a>Collectors 源码</h2><h3 id="groupingBy"><a href="#groupingBy" class="headerlink" title="groupingBy()"></a>groupingBy()</h3><h3 id="groupingByConcurrent"><a href="#groupingByConcurrent" class="headerlink" title="groupingByConcurrent()"></a>groupingByConcurrent()</h3><h3 id="partitioningBy"><a href="#partitioningBy" class="headerlink" title="partitioningBy()"></a>partitioningBy()</h3><h2 id="Stream-源码"><a href="#Stream-源码" class="headerlink" title="Stream 源码"></a>Stream 源码</h2><p>在Stream中提供了三个原生的流（IntStream | LongStream | DoubleStream）是为了避免不必要的装箱和拆箱操作。</p>
-<p>集合主要关注的是对于数据的管理和存储，而流主要关注的是对元素之间的计算。</p>
-<p>stream pipeline（流管道）可以看做是对于流源的一种查询，除非该流被显示的设计成可以并发修改的。</p>
-<p>流只能被操作一次。否则会抛出异常。然有些流操作会返回接收者，不是新的流对象。</p>
-<p>流对于是并行或串行可以通过方法（sequential() - 串行 | parallel() - 并行）来进行修改。还可以通过isParallel()方法查询该流是否是并行的。</p>
-<h3 id="AutoCloseable"><a href="#AutoCloseable" class="headerlink" title="AutoCloseable"></a>AutoCloseable</h3><p>在该接口中只提供一个close()方法，在实现该接口之后的应用会自动关闭。</p>
-<h3 id="BaseStream"><a href="#BaseStream" class="headerlink" title="BaseStream"></a>BaseStream</h3><h4 id="Spliterator-spliterator"><a href="#Spliterator-spliterator" class="headerlink" title="Spliterator spliterator()"></a>Spliterator<t> spliterator()</t></h4><p>该方法被称为分割迭代器（类似于Iterator），是流的一个终止操作。迭代流中的元素。</p>
-<h4 id="iterator"><a href="#iterator" class="headerlink" title="iterator()"></a>iterator()</h4><p>返回迭代器，对流中的数据进行迭代。</p>
-<h4 id="S-sequential"><a href="#S-sequential" class="headerlink" title="S sequential()"></a>S sequential()</h4><h4 id="S-parallel"><a href="#S-parallel" class="headerlink" title="S parallel()"></a>S parallel()</h4><h4 id="S-onClose-Runnable-closeHandler"><a href="#S-onClose-Runnable-closeHandler" class="headerlink" title="S onClose(Runnable closeHandler)"></a>S onClose(Runnable closeHandler)</h4><p>关闭处理器方法，流中的close()方法被调用的时候，该处理器才会被调用，调用的顺序是按照添加的顺序从先到后调用。</p>
-<h4 id="close"><a href="#close" class="headerlink" title="close()"></a>close()</h4><p>该方法是重写AutoCloseable接口中的方法。</p>
-<blockquote>
-<p>提示：CopyAndReadArrayList 是将底层的数据重新复制一份，在新的复制的一份数据上进行操作。其适用的场景是读多写少的场景。</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/JVM性能调优 - 操作/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/JVM性能调优 - 操作/" itemprop="url">JVM性能调优</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:43:20+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JVM/" itemprop="url" rel="index">
-                    <span itemprop="name">JVM</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1,540
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  6
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="JVM性能调优"><a href="#JVM性能调优" class="headerlink" title="JVM性能调优"></a>JVM性能调优</h2><p>[TOC]</p>
-<h3 id="系统常用诊断工具"><a href="#系统常用诊断工具" class="headerlink" title="系统常用诊断工具"></a>系统常用诊断工具</h3><h4 id="uptime"><a href="#uptime" class="headerlink" title="uptime"></a>uptime</h4><p>可以快速查看服务器的负载情况，该命令返回的是系统的平均负载，包括各个分钟之内的任务平均数量，包括正在运行的任务以及可以运行但正在等待某个处理器空闲的任务。</p>
-<h4 id="dmesag-tail"><a href="#dmesag-tail" class="headerlink" title="dmesag | tail"></a>dmesag | tail</h4><p>该命令输出系统日志的最后10行。</p>
-<h4 id="vmstat-l"><a href="#vmstat-l" class="headerlink" title="vmstat l"></a>vmstat l</h4><p>vmstat是实时性能检测工具，可以展现给定时间间隔服务器的状态值，包括服务器的CPU使用率、内存使用、虚拟内存交换情况、IO读写情况等。</p>
-<h4 id="mpstat-P-ALL-l"><a href="#mpstat-P-ALL-l" class="headerlink" title="mpstat -P ALL l"></a>mpstat -P ALL l</h4><p>该命令显示每个cpu的使用情况。</p>
-<h4 id="free-m"><a href="#free-m" class="headerlink" title="free -m"></a>free -m</h4><p>查看内存的使用情况，-m表示按照兆字节显示</p>
-<h4 id="sar-n-DEV-l"><a href="#sar-n-DEV-l" class="headerlink" title="sar -n DEV l"></a>sar -n DEV l</h4><p>sar命令主要用来查看网络设备的吞吐率。可以以此判断网络设备是否饱和。</p>
-<h4 id="top"><a href="#top" class="headerlink" title="top"></a>top</h4><p>该命令包含了系统全局的很多指标信息，包括系统负载情况、系统内存使用情况、系统CPU使用情况。</p>
-<h3 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h3><h4 id="CPU分析"><a href="#CPU分析" class="headerlink" title="CPU分析"></a>CPU分析</h4><p>在CPU繁忙的时候造成的性能问题主要原因有以下几个。</p>
-<pre><code>1. 线程中有无限空循环、无阻塞、正则匹配或者单纯的计算
-
-2. 发生了频繁的GC
-
-3. 多线程的上下文切换
-</code></pre><h4 id="内存分析"><a href="#内存分析" class="headerlink" title="内存分析"></a>内存分析</h4><pre><code>1. 堆外内存
-
-
-2. 堆内内存，通常这部分内存性能相关的有如下几个方面
-
-    1. 创建的对象，一般存储在堆中，需要控制好对象的数量和大小，尤其大对象容易进入老年代。
-
-    2. 全局集合，通常全局集合的生命周期比较长，因此需要注意。
-
-    3. 缓存，缓存选用的数据结构不同会在很大程度上影响内存的大小和GC。
-
-    4. ClassLoader，主要动态加载类容易造成永久代内存不足。
-
-    5. 多线程，线程分配会占用本地内存，过多线程会造成内存的不足。
-
-    上面的各个情况的使用不当会造成：
-
-        1. 频繁的GC（stop the world）使得应用响应变慢
-
-        2. OOM，直接造成内存溢出错误使得程序退出。OOM的情况分为：
-
-            1. heap space：堆内存不足
-
-            2. PermGen space：永久代内存不足
-
-            3. Native thread：本地线程没有足够内存分配
-
-    排查堆内存常见工具是jmap
-
-        1. 查看JVM内存使用状况：jmap -heap &lt;pid&gt;
-
-        2. 查看JVM内存存活的对象：jmap -histo:live &lt;pid&gt;
-
-        3. 将heap里所有对象都dump下来，无论对象是死还是活：jmap -dump:format=b,file=xxx.hprof &lt;pid&gt;
-
-        4. 先做一次FULL GC，然后再dump，只包括仍然存活的对象信息：jump -dump:format=b,live,file=xxx.hprof &lt;pid&gt;
-</code></pre><h3 id="IO分析"><a href="#IO分析" class="headerlink" title="IO分析"></a>IO分析</h3><h4 id="文件IO"><a href="#文件IO" class="headerlink" title="文件IO"></a>文件IO</h4><p>可以使用系统工具pidstat、iostat、vmstat来查看IO状况。</p>
-<p>导致IO性能差的原因有如下几个：</p>
-<pre><code>1. 大量的随机读写操作
-
-2. 设备慢
-
-3. 文件太大
-</code></pre><h4 id="网络IO"><a href="#网络IO" class="headerlink" title="网络IO"></a>网络IO</h4><p>查看网络IO状况一般使用netstat工具。</p>
-<h3 id="性能调优"><a href="#性能调优" class="headerlink" title="性能调优"></a>性能调优</h3><h4 id="CPU调优"><a href="#CPU调优" class="headerlink" title="CPU调优"></a>CPU调优</h4><pre><code>1. 不要存在一直运行的线程，可以使用sleep休眠一段时间
-
-2. 轮询的时候可以使用wait/notify机制
-
-3. 避免循环、正则表达式匹配、计算过多，序列化/反序列化等
-
-4. 避免频繁GC，尤其是FULL GC
-
-在多线程情况下：
-
-    1. 多线程使用的时候，减少线程数量和线程的切换，使用线程池
-
-    2. 多线程对于锁的竞争可以考虑减少锁的粒度（ReentrantLock）等。
-</code></pre><h4 id="内存调优"><a href="#内存调优" class="headerlink" title="内存调优"></a>内存调优</h4><p>内存调优主要是对JVM调优的调优。</p>
-<pre><code>1. 合理设置各个代的大小，避免新生代设置过小（不够用，经常Minor GC并进入老年代）以及过大（会产生碎片），同样避免Survivor设置过大和过小。
-
-    1. 新生代大小选择，响应时间优先的应用，尽可能设大，直到接近系统的最低响应时间限制。在这种情况下，新生代回收发生GC的频率是最低的。同时，也能够减少到达老年代的对象。吞吐量优先的应用，也应尽可能的设置大些，因为对响应时间没有要求，垃圾回收可以并行进行。
-
-    2. 老年代大小选择，响应时间优先的应用，老年代一般都是使用并发回收器。所以大小设置需要小心。
-
-2. 选择合适的GC策略
-
-3. 老年代优先使用Parallel GC（-XX:+UseParallel[Old]GC），可以保证最大的吞吐量。由于CMS会产生碎片，确实有必要才改成CMS或G1。
-
-4. 
-</code></pre><h4 id="JVM参数设置"><a href="#JVM参数设置" class="headerlink" title="JVM参数设置"></a>JVM参数设置</h4><p>JVM的参数配置在很大程度上影响Java应用的性能。</p>
-<h5 id="启动参数配置"><a href="#启动参数配置" class="headerlink" title="启动参数配置"></a>启动参数配置</h5><pre><code>1. java -XX:+PrintCommandLineFlags 通过该参数来查看所有可以设置的参数及其默认值，或者在程序启动的时候加：-XX:+PrintCommandLineFlags 查看与默认值不同的启动参数。或查看所有启动参数：-XX:PrintFlagsFinal。
-</code></pre><blockquote>
-<p>提示：jinfo -flags [pid] 查看目前启动使用的有效参数。 jinfo -flag [fileName] [pid] 查看对应参数的值</p>
-</blockquote>
-<h5 id="动态设置参数"><a href="#动态设置参数" class="headerlink" title="动态设置参数"></a>动态设置参数</h5><p>在Java应用启动之后发现是GC造成的性能问题，但启动的时候没有加入打印GC的参数，动态参数可以解决这个问题。</p>
-<pre><code>jinfo -flag [-/+][flagName] [pid] 启动或禁用某个参数
-
-jinfo -flag [flagName=value] [pid] 设置某个参数的值
-</code></pre><p>对于上面的GC问题，可以使用命令打开HeapDump并设置dump路径。</p>
-<pre><code>jinfo -flag +HeapDumpBeforeFullGC [pid]
-
-jinfo -flag +HeapDumpAfterFullGC [pid]
-
-jinfo -flag +HeapDumpPath=/... [pid]
-</code></pre><p>同样地，可以动态关闭</p>
-<pre><code>jinfo -flag -HeapDumpBeforeFullGC [pid]
-
-jinfo -flag -HeapDumpAfterFullGC [pid]
-</code></pre><h5 id="verbose-gc-XX-PrintGCDetails"><a href="#verbose-gc-XX-PrintGCDetails" class="headerlink" title="-verbose:gc | -XX:+PrintGCDetails"></a>-verbose:gc | -XX:+PrintGCDetails</h5><p>很多GC推荐设置都同时设置这两个参数，其实只要打开了 -XX:+PrintGCDetails，前面选项也会被同时打开，无需重复设置。</p>
-<h5 id="XX-DisableExplicitGC"><a href="#XX-DisableExplicitGC" class="headerlink" title="-XX:+DisableExplicitGC"></a>-XX:+DisableExplicitGC</h5><p>该参数的作用使得 system.gc变为空调用，很多推荐设置里面都建议开启该参数。</p>
-<p>….</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/JSP/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/JSP/" itemprop="url">JSP</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:39:44+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JSP/" itemprop="url" rel="index">
-                    <span itemprop="name">JSP</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  2,104
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  8
+                  7
                 </span>
               
             </div>
@@ -1945,24 +700,13 @@ jinfo -flag -HeapDumpAfterFullGC [pid]
         
           <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="JSP"><a href="#JSP" class="headerlink" title="JSP"></a>JSP</h2><p>JSP：Java Server Pages，一种动态web资源的开发技术</p>
-<p>API文档</p>
-<blockquote>
-<p><a href="https://tomcat.apache.org/tomcat-8.0-doc/jspapi/index.html" target="_blank" rel="noopener">JSP 2.3 API - Apache Tomcat 8.0.30</a></p>
-</blockquote>
-<h2 id="调用和运行原理"><a href="#调用和运行原理" class="headerlink" title="调用和运行原理"></a>调用和运行原理</h2><p>JSP本质是一个servlet.</p>
-<p>每个JSP页面在第一次被访问时，WEB容器会把请求交给JSP引擎(即一个JAVA程序)处理。JSP引擎先将JSP翻译成一个<code>_jspServlet</code>(实质也是一个servlet)，然后按照servlet的调用方式进行调用。</p>
-<ul>
-<li>服务器会将jsp先翻译成servlet，这个servlet位于tomcat服务器<code>work</code>目录，这jsp类的父类是<code>org.apache.jasper.runtime.HttpJspBase</code>,这个<code>HttpJspBase</code>类继承自<code>HttpServlet</code></li>
-<li>向服务器发请求会调用servlet的service方法;同样地，访问jsp会调用这个JSP类的<code>_jspService</code>方法。</li>
-<li>JSP中的标签语言会在<code>_jspService</code>方法中通过<code>out.write()</code>写出来；JSP中的Java代码会原封不动的搬到<code>_jspService</code>方法中。</li>
-<li>在<code>_jspService</code>方法中提前准备好了一些对象供JSP调用，如：<code>out,page,application,request,response</code>等等。</li>
-<li>由于第一次访问时会翻译成servlet，所以第一次访问较慢。</li>
-</ul>
-<p>下面以<code>demo1.jsp</code>为例，展示对应的类<code>%CATALINA_HOME%\work\Catalina\localhost\hello\org\apache\jsp\demo1_jsp.java</code>中的部分代码<br>
+<p>[TOC]</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>MySQL分区可以管理非常大的表，采用分而治之的逻辑，分区引入分区键概念，让数据根据规则分布在不同的分区中，让一个大对象变成一些小对象。</p>
+<pre><code>命令：show variables 查看当前MySQL是否支持分区
+</code></pre><p>MySQL支持RANGE，LIST，HASH和KEY四种分区。其中，每个分区又都有一种特殊的类型。对于RANGE分区，有RANGE COLUMNS分区。对于LIST分区，有LIST COLUMNS分区。对于HASH分区，有LINEAR HASH分区。对于KEY分区，有LINEAR KEY分区。<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/undefined/JSP/#more" rel="contents">
+            <a class="btn" href="/undefined/MySQL分区/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2016,7 +760,7 @@ jinfo -flag -HeapDumpAfterFullGC [pid]
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/JVM Java虚拟机/">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/MySQL优化 - 索引优化及SQL优化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bangjin-Hu">
@@ -2035,7 +779,7 @@ jinfo -flag -HeapDumpAfterFullGC [pid]
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/undefined/JVM Java虚拟机/" itemprop="url">Java 内存区域与内存溢出异常</a></h2>
+                <a class="post-title-link" href="/undefined/MySQL优化 - 索引优化及SQL优化/" itemprop="url">MySQL优化-索引优化</a></h2>
         
 
         <div class="post-meta">
@@ -2063,7 +807,7 @@ jinfo -flag -HeapDumpAfterFullGC [pid]
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:43:54+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T08:21:51+08:00">
                 2020-03-29
               </time>
             
@@ -2082,8 +826,8 @@ jinfo -flag -HeapDumpAfterFullGC [pid]
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JVM/" itemprop="url" rel="index">
-                    <span itemprop="name">JVM</span>
+                  <a href="/categories/MySQL优化/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL优化</span>
                   </a>
                 </span>
 
@@ -2113,7 +857,7 @@ jinfo -flag -HeapDumpAfterFullGC [pid]
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  8,732
+                  3,766
                 </span>
               
 
@@ -2129,7 +873,7 @@ jinfo -flag -HeapDumpAfterFullGC [pid]
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  34
+                  14
                 </span>
               
             </div>
@@ -2151,326 +895,18 @@ jinfo -flag -HeapDumpAfterFullGC [pid]
 
       
         
-          
-            <blockquote class="blockquote-center"></blockquote>
+          <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<p>[TOC]</p>
-<h2 id="Java-内存区域与内存溢出异常"><a href="#Java-内存区域与内存溢出异常" class="headerlink" title="Java 内存区域与内存溢出异常"></a>Java 内存区域与内存溢出异常</h2><h3 id="1-运行时数据区域"><a href="#1-运行时数据区域" class="headerlink" title="1.运行时数据区域"></a>1.运行时数据区域</h3><p><img src="images/16.png" alt=""></p>
-<pre><code>线程共享：方法区，堆
-
-线程私有：虚拟机栈，本地方法栈，程序计数器
-</code></pre><h4 id="1-程序计数器（线程私有）"><a href="#1-程序计数器（线程私有）" class="headerlink" title="1.程序计数器（线程私有）"></a>1.程序计数器（线程私有）</h4><pre><code>可以看做是当前线程所执行的字节码的==行号指示器==。
-
-==选取下一条需要执行的的字节码指令==，基础功能都需要依赖这个计数器来完成。
-</code></pre><h4 id="2-Java虚拟机栈（线程私有的）"><a href="#2-Java虚拟机栈（线程私有的）" class="headerlink" title="2.Java虚拟机栈（线程私有的）"></a>2.Java虚拟机栈（线程私有的）</h4><pre><code>**虚拟机栈描述的是Java方法执行的内存模型**
-
-每一个方法在执行的时候都会创建一个栈帧，每一个方法从调用直至执行完成的过程，就对应着==一个栈帧在虚拟机栈中的出栈入栈的过程==。
-
-局部变量表：
-
-    其中存放了编译期可知的各种**基本数据类型**（八大基本数据类型），**对象引用**（它不同于对象本身，可能是一个指向对象**起始地址**的引用指针，也可能是指向一个**代表对象的句柄**或者其他与此对象**相关的位置信息**）和 **returnAddress类型**（指向了一条字节码指令的地址）
-
-==其中64位长度的long 和 double类型会占用两个局部变量空间==其余只占一个
-</code></pre><h4 id="3-本地方法栈（线程私有）"><a href="#3-本地方法栈（线程私有）" class="headerlink" title="3.本地方法栈（线程私有）"></a>3.本地方法栈（线程私有）</h4><pre><code>本地方法栈是为虚拟机使用到的是Native方法服务。
-</code></pre><h4 id="4-Java堆（线程共享）"><a href="#4-Java堆（线程共享）" class="headerlink" title="4.Java堆（线程共享）"></a>4.Java堆（线程共享）</h4><pre><code>Java堆是Java虚拟机所管理的内存中最大的一块，Java堆是被所有线程共享的一块区域，==在虚拟机启动时创建==
-
-其唯一目的就是：==存放对象实例，几乎所有的对象实例都在这里分配内存==，所有的对象实例以及数组都要在堆上分配内存。
-
-Java堆是垃圾收集器管理的主要区域，因此也被称为“GC堆”。Java堆还可以细分为==新生代和老年代==
-
-Java堆中还可以划分指出**多个线程私有的分配缓冲区**（TLAB）
-
-Java堆可以存储在物理上不连续的内存空间之中
-</code></pre><h4 id="5-方法区（线程共享）"><a href="#5-方法区（线程共享）" class="headerlink" title="5.方法区（线程共享）"></a>5.方法区（线程共享）</h4><pre><code>用于存放Class的相关信息，如类名，访问修饰符，常量池，字段描述，方法描述等。
-
- 用于存储已被虚拟机加载的类信息，常量，静态变量，
-
-方法区可以选择不实现垃圾收集，他的**内存回收目标主要是针对常量池的回收和对类型的卸载！**
-</code></pre><h4 id="6-运行时常量（方法区的一部分）"><a href="#6-运行时常量（方法区的一部分）" class="headerlink" title="6.运行时常量（方法区的一部分）"></a>6.运行时常量（方法区的一部分）</h4><pre><code>用于**存放编译期生成的字面量和符号引用**，这部分内容在**类加载**后进入方法区的运行时常量池中存放。
-
-**运行期间也可能将新的常量放入池中**， 例如：String 类中的intern（）方法。
-</code></pre><h4 id="7-直接内存"><a href="#7-直接内存" class="headerlink" title="7.直接内存"></a>7.直接内存</h4><pre><code> 他可以使用Native函数库直接分配堆外内存。然后通过一个存储在Java堆中的DirectByteBuffer对象**作为这块内存的引用**来进行操作
-
-这样做避免了在Java堆中和Native堆中**来回复制数据**
-</code></pre><h3 id="2-HotSpot虚拟机对象探秘："><a href="#2-HotSpot虚拟机对象探秘：" class="headerlink" title="2.HotSpot虚拟机对象探秘："></a>2.HotSpot虚拟机对象探秘：</h3><h4 id="对象的创建"><a href="#对象的创建" class="headerlink" title="==对象的创建=="></a>==对象的创建==</h4><pre><code>1. 虚拟机再碰到一条 new 指令的时候，先去检查这个指令的参数在常量池中**能否定位到一个类的引用**，并检查这个类**是否被加载**，解析和初始化。如果**没有**那么先**执行相应的类加载**过程
-
-2. 在类加载检查通过之后，那么虚拟机将为对象分配空间。
-
-3. ==指针碰撞==：假设堆是绝对规整的，所有用过的内存放在一边，空闲的内存放在一边，**中间放着一个指针作为分界点的指示器**，那么分配对象仅仅就是将这个指针往空闲的那边挪动一段大小和对象相等的距离。这种分配方式称为指针碰撞。**往空闲的空间挪动称为指针碰撞**
-
-4. ==空闲列表==：假设内存不是规整的，空闲区域和内存区间相互交错。此时虚拟机必须维护一个表，**记录那些内存块是可以使用的**，再分配的时候从列表中找出一段足够大的空间划分给对象实例，并更新列表上的记录。这种分配方式称为空闲列表。**在空闲的区间挑选一块**
-
-5.  使用哪种分配方式**取决于垃圾收集器是否带有压缩整理**的功能。
-</code></pre><h4 id="如何解决创建对象是的线程安全问题"><a href="#如何解决创建对象是的线程安全问题" class="headerlink" title="如何解决创建对象是的线程安全问题"></a>如何解决创建对象是的线程安全问题</h4><pre><code>**方案一：**
-
-    对分配内存空间的动作进行同步处理——实际上采用**CAS加上失败重试**的方式。
-
-**方案二：**
-
-    把内存分配的动作按照不同的线程划分在不同的空间上进行，即每个线程在Java堆中预先分配一小块内存，称为**本地线程分配缓冲（TLAB）**，那个线程需要分配内存，就在那个线程的TLAB上分配。**只有在TLAB用完并重新分配新的TLAB是才需要同步锁定。**
-
- 6. 在内存分配完成之后，虚拟机要将分配到的内存空间都**初始化**为==零值==（保证了不赋初值可以直接使用）
- 7. 给对象头赋值：虚拟机对对象进行必要的设置，那个类的，如何找到类的元数据信息，Hash码，对象的GC分代年龄等信息。==存储在对象头之中！！==
- 8. 最后执行 init 方法，把对象按照程序员的意愿进行初始化，这样一个真正可用的对象才算产生出来。
-</code></pre><h4 id="对象的内存布局"><a href="#对象的内存布局" class="headerlink" title="对象的内存布局"></a>对象的内存布局</h4><pre><code>对象在内存中存储的布局可以分为三块区域：**对象头，实例数据，和对齐填充。**
-
-**对象头信息**：
-
-    1）、用于存储对象自身的运行时数据。哈希吗，GC分代信息等。
-
-    2）、类型指针，（==系统通过这个指针来确定是哪个类的实例==），如果是一个数组，那么在对象头中还会存储这个对象的数组长度。
-
-**实例数据部分**：
-
-    1）、是对象真正存储的有效信息。
-
-    2）、无论是父类继承下来的还是子类中自己定义的都需要记录起来。
-
-**对齐填充**：
-
-    1）、对齐填充并不是必须存在的。也没有什么特别的含义
-
-    2）、仅仅起着对齐的作用。（要求必须是8的倍数，如果实例数据不够8位，则会使用对齐填充来进行对齐补充）
-</code></pre><h4 id="对象的访问定位"><a href="#对象的访问定位" class="headerlink" title="对象的访问定位"></a>对象的访问定位</h4><pre><code>前提：Java程序需要通过==栈上面的reference数据来操作堆==上面的具体对象
-
-句柄访问：Java堆中将会划分出一块内存作为句柄池，句柄中包含了对象的实例数据与类型数据各自的具体位置信息。
-
-直接指针：reference中存储的直接就是对象的地址。
-
-好处：
-
-**句柄访问**：使用句柄最大的好处就是reference中存储的是稳定的句柄地址，在对象被移动时只会改变句柄之中的实例数据指针，而reference不需要改变。
-
-**直接地址**：速度更快，节省了一次指针定位的时间开销（本书是使用直接地址的）
-</code></pre><h4 id="内存溢出异常（OutOfMeMoryError）"><a href="#内存溢出异常（OutOfMeMoryError）" class="headerlink" title="内存溢出异常（OutOfMeMoryError）"></a>内存溢出异常（OutOfMeMoryError）</h4><pre><code>==除了程序计数器之外==别的其他几个运行时内存区域都有发生内存溢出的情况。
-</code></pre><h5 id="Java堆溢出"><a href="#Java堆溢出" class="headerlink" title="Java堆溢出"></a>Java堆溢出</h5><pre><code>Java堆用于存储对象，只要**不断地创建对象，并且避免垃圾回收清除这些对象**，那么在对象数量达到**最大堆的容量限制**之后就会发生内存溢出异常。
-</code></pre><h5 id="虚拟机栈和本地方法栈溢出"><a href="#虚拟机栈和本地方法栈溢出" class="headerlink" title="虚拟机栈和本地方法栈溢出"></a>虚拟机栈和本地方法栈溢出</h5><ul>
-<li><p>如果线程请求的栈深度大于虚拟机所允许的最大深度，则会抛出StackOverflowError异常</p>
-</li>
-<li><p>如果虚拟机在扩展栈的时候无法申请到足够的内存空间，则会抛出OutOfMomeryError异常</p>
-<p>实验表明在单个线程之下，无论是由于栈帧太大还是虚拟机容量太小，当内存无法分配的时候，都会抛出StackOverflowError异常</p>
-<p>如果不断建立线程，倒是可以发生内存溢出异常，在这种情况下每个线程的栈分配的内存越大，反而更加容易产生内存溢出异常。</p>
-<p>如果是建立过多线程，从而出现的内存溢出异常，可以通过减少最大堆和栈的容量来换取更多的线程。</p>
-</li>
-</ul>
-<h5 id="方法区和运行时常量池溢出"><a href="#方法区和运行时常量池溢出" class="headerlink" title="方法区和运行时常量池溢出"></a>方法区和运行时常量池溢出</h5><pre><code>使用**intern**方法 无限放入常量。
-
-产生大量的类去填满方法区
-</code></pre><h5 id="本机直接内存溢出"><a href="#本机直接内存溢出" class="headerlink" title="本机直接内存溢出"></a>本机直接内存溢出</h5><h2 id="垃圾收集器和内存分配策略"><a href="#垃圾收集器和内存分配策略" class="headerlink" title="垃圾收集器和内存分配策略"></a>垃圾收集器和内存分配策略</h2><p>前言：Java和C++之间存在一堵由==内存动态分配和垃圾收集技术==围成的高墙，墙外面的人想进来，墙里面的人却想出去。</p>
-<h4 id="3-1-概述"><a href="#3-1-概述" class="headerlink" title="3.1 概述"></a>3.1 概述</h4><ul>
-<li>那些内存需要回收？</li>
-<li>什么时候回收？</li>
-<li>如何回收？</li>
-</ul>
-<h4 id="3-2对象已死吗？"><a href="#3-2对象已死吗？" class="headerlink" title="3.2对象已死吗？"></a>3.2对象已死吗？</h4><h5 id="3-2-1引用计数算法"><a href="#3-2-1引用计数算法" class="headerlink" title="3.2.1引用计数算法"></a>3.2.1引用计数算法</h5><p>​    概念：给对象添加一个引用计数器，每当有一个地方引用他的时候，计数器的值就加一，当引用失效的时候，计数器就减一，<strong>任何时候计数器为零的对象就是不可能再被使用的</strong>。</p>
-<h5 id="3-2-2可达性分析法"><a href="#3-2-2可达性分析法" class="headerlink" title="3.2.2可达性分析法"></a>3.2.2可达性分析法</h5><p>​    一句话，就是把对象挂在了GC Roots之上，如果没有挂上就回收。即使他们之间或许有关联，只要没有挂在GC Roots之上，就需要回收。</p>
-<p>​    <img src="images/17.png" alt=""></p>
-<p>如图：对象 5和6 即使他们彼此有关联，但是没有挂在GC Roots之上，所以被判断为是可以回收的对象。</p>
-<h5 id="3-2-3再谈引用"><a href="#3-2-3再谈引用" class="headerlink" title="3.2.3再谈引用"></a>3.2.3再谈引用</h5><h5 id="3-2-4生存还是死亡"><a href="#3-2-4生存还是死亡" class="headerlink" title="3.2.4生存还是死亡"></a>3.2.4生存还是死亡</h5><p>​    可达性分析算法判断为可以回收的对象只是判了缓刑。</p>
-<p>​    两次标记过程：</p>
-<p>​        第一次：可达性分析法判断之后没有与GC Roots 相连接的引用链，那么将会进行第一次标记，并且进行一次筛选。如果这个对象被判定为需要执行finalize()方法，那么这个对象将会被放在 <strong>F - Queue</strong>的队列之中。</p>
-<p>​        第二次：GC 将会对F-Queue之中的对象进行第二次小规模的标记，还没有逃脱那么将会回收。</p>
-<h5 id="3-2-5回收方法区"><a href="#3-2-5回收方法区" class="headerlink" title="3.2.5回收方法区"></a>3.2.5回收方法区</h5><p>​    1）、回收废弃的常量</p>
-<p>​        例如:String</p>
-<p>​    2)、回收无用的类：</p>
-<p>​        满足如下三个条件：</p>
-<ul>
-<li>该类的所有实例都已经被回收了。    </li>
-<li>加载该类的ClassLoader已经被回收</li>
-<li>改类的java.lang.class 对象没有在任何地方被引用，<strong>无法通过反射访问该类的方法</strong>。 </li>
-</ul>
-<h4 id="3-3垃圾收集算法："><a href="#3-3垃圾收集算法：" class="headerlink" title="==3.3垃圾收集算法：=="></a>==3.3垃圾收集算法：==</h4><h5 id="3-3-1标记—清除算法"><a href="#3-3-1标记—清除算法" class="headerlink" title="3.3.1标记—清除算法"></a>3.3.1标记—清除算法</h5><p>​    首先标记出所有需要回收的对象，在标记完成之后统一回收所有被标记的对象。（<strong>先标记后清除</strong>）</p>
-<p>​    两个不足：</p>
-<p>​        1）、效率不高，标记和清除两个过程的效率都不高。</p>
-<p>​        2）、空间问题，会产生大量的不连续的空间碎片。（再分配大对象时没有地方分配，提前触发GC）</p>
-<p>​    <img src="images/18.jpg" alt=""></p>
-<h5 id="3-3-2复制算法"><a href="#3-3-2复制算法" class="headerlink" title="3.3.2复制算法"></a>3.3.2复制算法</h5><p>​    很简单：将内存分为大小相等的<strong>两块</strong>，每次<strong>只用一块</strong>，当这<strong>一块的内存用完了</strong>，直接把这一块上面存活的对象，<strong>复制到第二块</strong>之上。再把<strong>第一块直接清除掉</strong>。（可以避免内存碎片）</p>
-<p>​    代价：每次只是用一半，太高了。</p>
-<p>​    改良：因为新生代中的对象98%都是”<strong>朝生夕死</strong>“，所以可以将内存分为一块<strong>较大的Eden</strong>，和<strong>两块较小的Survivor</strong>空间。</p>
-<p>​    Eden ： Survivor = 8 ： 1</p>
-<p>​    每次回收的时候，将Eden 和 一块Survivor 中还存活的对象，一次性的复制到另一块Survivor之中。这样只会浪费10%，但是无法保证每一次只有不多于10%的对象存活，因此还需要<strong>内存担保</strong>。</p>
-<p><img src="images/19.png" alt=""></p>
-<p><img src="images/20.png" alt=""></p>
-<h5 id="3-3-3-标记—整理算法"><a href="#3-3-3-标记—整理算法" class="headerlink" title="3.3.3 标记—整理算法"></a>3.3.3 标记—整理算法</h5><p>​    复制算法在对象存活率过高的时候，需要进行较多的复制操作，效率将会变得更低。</p>
-<p>​    更关键的是，万一100%的对象都存活了，怎么办？</p>
-<p>​    标记整理算法：    </p>
-<p>​        先标记，<strong>在移动整理一下</strong>。就没有内存碎片了。</p>
-<p>​    <img src="images/21.png" alt=""></p>
-<p>​    <img src="images/22.png" alt=""></p>
-<h5 id="3-3-4分代收集算法"><a href="#3-3-4分代收集算法" class="headerlink" title="3.3.4分代收集算法"></a>3.3.4分代收集算法</h5><p>​    新生代：每次都有大量的对象死去，只有<strong>少量存活</strong>，所以采用<strong>复制算法</strong>，只需要付出少量存活对象的复制成本就可以完成收集。</p>
-<p>​    老年代：<strong>对象存活率高，</strong>没有额外的空间进行空间担保，采用标记—清除，或者采用标记—整理算法。</p>
-<h4 id="3-4HotSpot的算法实现"><a href="#3-4HotSpot的算法实现" class="headerlink" title="3.4HotSpot的算法实现"></a>3.4HotSpot的算法实现</h4><ol>
-<li><p>通过可达性分析算法——是否有到达GC Roots的引用链来判断，对象是否可以被回收。</p>
-</li>
-<li><p>对象之间的引用在类的成员变量初始化以及类的方法中都会出现，如果<strong>逐个遍历，会消耗很多时间</strong>。</p>
-</li>
-<li><p>使用一组<strong>OopMap来记录对象在栈中的引用地址</strong>，这样，HotSpot就可以<strong>快速</strong>找到GC Roots的对象集合。</p>
-</li>
-<li><p>另外，如果在进行判断分析的时候，有<strong>新的引用产生怎么办</strong>呢？</p>
-<p>​    这就要求在虚拟机执行垃圾收集的时候，需要将<strong>所有虚拟机暂停</strong>（“Stop the world”），以保持快照的<strong>一致性</strong>。</p>
-<p>但是如果积攒了比较多的对象集中进行分析，那么这个暂停的时间就会比较长，一次收集的时间就会比较多。</p>
-<p>如果通过<strong>增加垃圾收集频次，减少每次垃圾收集分析工作量，那么垃圾收集占用总的时间也不少</strong>。</p>
-</li>
-<li><p>安全点：由于为每一条指令都生成OopMap需要大量的空间，所以只再特定的位置记录这些信息，这些位置成为安全点。</p>
-</li>
-<li><p>长时间执行的的最明显特征是指令序列复用，方法调用啊，循环跳转，异常跳转等。</p>
-</li>
-<li><p>另外，虚拟机有两种中断方式。</p>
-<ol>
-<li><p>抢先式中断：由虚拟机发起，所有线程全部中断，不在安全点上的线程，恢复运行至安全点上。</p>
-</li>
-<li><p>主动式中断：由线程去轮询是否中断的标志位，发现标识为真时，就自己将线程暂停挂起。</p>
-</li>
-</ol>
-</li>
-<li><p>安全区域：专门用来处理当进行垃圾收集的时候，没有分配CPU时间的程序，比如线程处于<strong>Sleep状态</strong>，<strong>Blocked状态</strong>，这些线程没办法响应JVM的暂停要求，对于这种状况，单独设置了一个安全区域</p>
-</li>
-<li><p>基本思路：</p>
-<ol>
-<li><p>当线程执行到安全区域中的代码时，标识自己进入了安全区域。</p>
-</li>
-<li><p>当线程准备离开安全区域的时候，检查垃圾收集是否完成，如果结束了，线程继续执行；如果没结束，就等到结束之后再离开安全区域。</p>
-</li>
-</ol>
-</li>
-</ol>
-<h4 id="3-5垃圾收集器："><a href="#3-5垃圾收集器：" class="headerlink" title="3.5垃圾收集器："></a>3.5垃圾收集器：</h4><h5 id="CMS-Concurrent-Mark-Sweep"><a href="#CMS-Concurrent-Mark-Sweep" class="headerlink" title="CMS(Concurrent Mark Sweep)"></a>CMS(Concurrent Mark Sweep)</h5><p>​    并发标记清除收集器：以获取最短回收停顿时间为目标的收集器。</p>
-<p><strong>应用场景</strong>：希望系统停顿时间最短，已给用户较好的的体验。</p>
-<p>运作过程：</p>
-<ul>
-<li>初始标记：仅仅是标记一下GC Roots 能直接关联的对象，速度很快</li>
-<li>并发标记：就是进行GC Roots Tracing（示踪）的过程</li>
-<li>重新标记：重新标记阶段就是为了修正并发标记期间因为<strong>用户程序继续运行</strong>而<strong>导致标记产生变动</strong>的那一部分对象的标记记录，这个阶段的停顿时间一般会比<strong>初始标记阶段的时间稍长，远远比并发标记阶段时间短</strong></li>
-<li>并发清除：</li>
-</ul>
-<p>优点：==并发收集，低停顿==         </p>
-<p>原因：由于在整个过程中最耗时的<strong>并发标记和并发清除</strong>过程收集器程序都可以和<strong>用户线程一起工作</strong>，所以总体来说，CMS收集器的内存回收过程是与用户线程<strong>一起并发执行</strong>的</p>
-<p>三大缺点：</p>
-<pre><code>1. CMS收集器对CPU资源非常敏感    在**并发阶段他会占用一部分线程**，从而**导致应用程序变慢**，**总的吞吐量会降低。**
-2. CMS处理器无法处理浮动垃圾 伴随着程序运行，自然会产生一些**新的垃圾（在标记过后）**，CMS无法再本次收集中清除，这个称为浮动垃圾。
-3. 标记清除算法的缺点。（内存碎片的浪费）
-</code></pre><h5 id="G1（G-First）"><a href="#G1（G-First）" class="headerlink" title="G1（G First）"></a>G1（G First）</h5><p>​    G1 收集器是面向服务端应用的垃圾收集器。G1具备如下的特点：</p>
-<ol>
-<li>并发和并行：G1能充分利用CPU、<strong>多核环境下的硬件优势</strong>，<strong>使用多个CPU（CPU或者CPU核心）来缩短stop-The-World停顿时间</strong>。部分其他收集器原本需要停顿<a href="http://lib.csdn.net/base/java" target="_blank" rel="noopener">Java</a>线程执行的GC动作，G1收集器仍然可以通过并发的方式让java程序继续执行。</li>
-<li>分代收集：虽然G1可以不需要其他收集器配合就能独立管理整个GC堆，但是还是保留了分代的概念。它能够采用不同的方式去处理新创建的对象和已经存活了一段时间，熬过多次GC的旧对象以获取更好的收集效果。</li>
-<li>空间整合：与CMS的“标记–清理”算法不同，G1从整体来看是基于“标记整理”算法实现的收集器；从局部上来看是基于“复制”算法实现的。</li>
-<li>可预测的停顿：这是G1相对于CMS的另一个大优势，降低停顿时间是G1和ＣＭＳ共同的关注点，但Ｇ１除了追求低停顿外，还能建立可预测的停顿时间模型，能让使用者明确指定在一个长度为M毫秒的时间片段内</li>
-</ol>
-<p>运作过程：</p>
-<p>​1、初始标记；2、并发标记；3、最终标记；4、筛选回收</p>
-<p>​    上面几个步骤的运作过程和CMS有很多相似之处。</p>
-<p>​    初始标记阶段仅仅只是标记一下GC Roots能直接关联到的对象，并且修改TAMS的值，让下一个阶段用户程序并发运行时，能在正确可用的Region中创建新对象，这一阶段需要停顿线程，但是耗时很短，</p>
-<p>​    并发标记阶段是从GC Root开始对堆中对象进行可达性分析，找出存活的对象，这阶段时耗时较长，但可与用户程序并发执行。</p>
-<p>​    最终标记阶段则是为了修正在并发标记期间因用户程序继续运作而导致标记<strong>产生变动的那一部分标记</strong>记录，虚拟机将这段时间对象变化记录在线程Remenbered Set Logs里面，最终标记阶段需要把Remembered Set Logs的数据合并到Remembered Set Logs里面，最终标记阶段需要把Remembered Set Logs的数据合并到Remembered Set中，这一阶段需要停顿线程，但是可并行执行。</p>
-<p>​    最后在筛选回收阶段首先对各个Region的<strong>回收价值和成本进行排序</strong>，根据用户所<strong>期望的GC停顿时间</strong>来制定回收计划</p>
-<h2 id="第七章：类加载机制"><a href="#第七章：类加载机制" class="headerlink" title="第七章：类加载机制"></a>第七章：类加载机制</h2><h3 id="类加载的过程"><a href="#类加载的过程" class="headerlink" title="类加载的过程"></a>类加载的过程</h3><h4 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h4><ol>
-<li>通过一个类的全限定名来获取此类的二进制字节流</li>
-<li>将静态存储结构转换为方法区的运行时数据结构</li>
-<li>生成一个java.lang.class 对象，作为这个类的访问入口</li>
-</ol>
-<h4 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h4><p>其实就是检查加载的 class 的正确性和安全性 </p>
-<h4 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h4><p>为类变量分配存储空间以及设置类变量初始值（附默认值）</p>
-<h4 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h4><p>JVM 将常量池内的符号引用转换为直接引用</p>
-<h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h4><p>执行类变量的赋值  以及静态代码块</p>
-<h3 id="双亲委派模型"><a href="#双亲委派模型" class="headerlink" title="双亲委派模型"></a>双亲委派模型</h3><p><img src="images/23.png" alt=""></p>
-<h4 id="启动类加载器"><a href="#启动类加载器" class="headerlink" title="启动类加载器"></a>启动类加载器</h4><p>​    由<code>C++</code>语言实现（针对<code>HotSpot</code>）,负责将存放在<code>&lt;JAVA_HOME&gt;\lib</code>目录或<code>-Xbootclasspath</code>参数指定的路径中的类库加载到内存中</p>
-<h4 id="扩展类加载器"><a href="#扩展类加载器" class="headerlink" title="扩展类加载器"></a>扩展类加载器</h4><p>​    负责加载<code>&lt;JAVA_HOME&gt;\lib\ext</code>目录或<code>java.ext.dirs</code>系统变量指定的路径中的所有类库。</p>
-<h4 id="应用程序类加载器"><a href="#应用程序类加载器" class="headerlink" title="应用程序类加载器"></a>应用程序类加载器</h4><p>​    负责加载用户类路径（<code>classpath</code>）上的指定类库</p>
-<h4 id="自定义类加载器"><a href="#自定义类加载器" class="headerlink" title="自定义类加载器"></a>自定义类加载器</h4><h5 id="实现自己的类加载器"><a href="#实现自己的类加载器" class="headerlink" title="实现自己的类加载器"></a>实现自己的类加载器</h5><pre><code>1. 继承ClassLOader这个类
-2. 实现 findClass 这个方法
-3. 在findClass 这个方法中调用 defineClass 这个方法即可
-</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyClassLoader</span> <span class="keyword">extends</span> <span class="title">ClassLoader</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String path;</span><br><span class="line">	<span class="keyword">private</span> String classLoaderName;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">MyClassLoader</span><span class="params">(String path, String classLoaderName)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.path = path;</span><br><span class="line">		<span class="keyword">this</span>.classLoaderName = classLoaderName;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//用于寻找类文件</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> Class <span class="title">findClass</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">		<span class="keyword">byte</span>[] b = loadClassData(name);</span><br><span class="line">		<span class="keyword">return</span> defineClass(name, b, <span class="number">0</span>, b.length);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//用于加载类文件</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">byte</span>[] loadClassData(String name) &#123;</span><br><span class="line">		name = path + name + <span class="string">".class"</span>;</span><br><span class="line">		InputStream in = <span class="keyword">null</span>;</span><br><span class="line">		ByteArrayOutputStream out = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			in = <span class="keyword">new</span> FileInputStream(<span class="keyword">new</span> File(name));</span><br><span class="line">			out = <span class="keyword">new</span> ByteArrayOutputStream();</span><br><span class="line">			<span class="keyword">int</span> i  = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">while</span> ((i = in.read()) != -<span class="number">1</span>) &#123;</span><br><span class="line">				out.write(i);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				out.close();</span><br><span class="line">				in.close();</span><br><span class="line">			&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">				<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> out.toByteArray();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="双亲委派模型的工作机制"><a href="#双亲委派模型的工作机制" class="headerlink" title="双亲委派模型的工作机制"></a>双亲委派模型的工作机制</h4><p>​    <strong>如果一个类加载器收到类加载的请求，它首先不会自己去尝试加载这个类，而是把这个请求委派给父类加载器完成。每个类加载器都是如此，只有当父加载器在自己的搜索范围内找不到指定的类时（即<code>ClassNotFoundException</code>），子加载器才会尝试自己去加载。</strong></p>
-<h3 id="为什么需要双亲委派模型？"><a href="#为什么需要双亲委派模型？" class="headerlink" title="为什么需要双亲委派模型？"></a>为什么需要双亲委派模型？</h3><pre><code>1. 保证了安全性。黑客自定义一个java.lang.String类，该String类具有系统的String类一样的功能，只是在某个函数稍作修改。比如equals函数，这个函数经常使用，如果在这这个函数中，黑客加入一些“病毒代码”。并且通过自定义类加载器加入到JVM中。此时，如果没有双亲委派模型，那么JVM就可能误以为黑客自定义的java.lang.String类是系统的String类，导致“病毒代码”被执行。！
-2. **防止两份相同的字节码文件加入到内存中占用内存资源**
-</code></pre><h3 id="ClassLoader-和-Class-forName-的区别"><a href="#ClassLoader-和-Class-forName-的区别" class="headerlink" title="ClassLoader 和 Class.forName 的区别"></a>ClassLoader 和 Class.forName 的区别</h3><h4 id="Class-forName"><a href="#Class-forName" class="headerlink" title="Class.forName"></a>Class.forName</h4><p>Class.forName 会去加载并初始化这个类</p>
-<p>其实他是调用了 forName 这个方法  里面的是否要初始化 为true 所以说他是<strong>完成了整个类加载过程</strong></p>
-<p>==<strong>所以静态代码块会被执行</strong>==</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@CallerSensitive</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> Class&lt;?&gt; forName(String className)</span><br><span class="line">            <span class="keyword">throws</span> ClassNotFoundException &#123;</span><br><span class="line">    Class&lt;?&gt; caller = Reflection.getCallerClass();</span><br><span class="line">    <span class="keyword">return</span> forName0(className, <span class="keyword">true</span>, ClassLoader.getClassLoader(caller), caller);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>当我们在连接MySQL 数据库时 必须使用 Class.forName 才能完成对驱动的注册</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Driver</span> <span class="keyword">extends</span> <span class="title">NonRegisteringDriver</span> <span class="keyword">implements</span> <span class="title">java</span>.<span class="title">sql</span>.<span class="title">Driver</span> </span>&#123;  </span><br><span class="line">   </span><br><span class="line">    <span class="keyword">static</span> &#123;  </span><br><span class="line">        <span class="keyword">try</span> &#123;  </span><br><span class="line">            java.sql.DriverManager.registerDriver(<span class="keyword">new</span> Driver());  </span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException E) &#123;  </span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Can't register driver!"</span>);  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Driver</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;  </span><br><span class="line">        <span class="comment">// Required for Class.forName().newInstance()  </span></span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="ClassLoader"><a href="#ClassLoader" class="headerlink" title="ClassLoader"></a>ClassLoader</h4><p>ClassLoader 只是完成了对这个类的加载过程，并没有进行初始化操作</p>
-<p><strong>在Spring IOC 中多见。用于懒加载，加快了初始化部署速度。留到实际使用是才去加载。</strong></p>
-<h2 id="JVM-其他问题"><a href="#JVM-其他问题" class="headerlink" title="JVM 其他问题"></a>JVM 其他问题</h2><h3 id="可以作为GCroot的对象："><a href="#可以作为GCroot的对象：" class="headerlink" title="可以作为GCroot的对象："></a>可以作为GCroot的对象：</h3><ol>
-<li>虚拟机栈中引用的对象</li>
-<li>方法区中的类静态属性引用的对象</li>
-<li>方法区中常量引用的对象</li>
-<li>本地方法栈中的Native方法引用的对象</li>
-</ol>
-<h3 id="JVM参数："><a href="#JVM参数：" class="headerlink" title="JVM参数："></a>JVM参数：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-Xms</span><br><span class="line">-Xmx</span><br><span class="line">-Xss</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<h4 id="JVM参数类型"><a href="#JVM参数类型" class="headerlink" title="JVM参数类型"></a>JVM参数类型</h4><p>​    <strong>标配参数：</strong></p>
-<p>​            java -version</p>
-<p>​            java -help</p>
-<p>​    <strong>X参数（了解）：</strong></p>
-<p>​            java -Xint  解释执行</p>
-<p>​            java -Xcomp    第一次使用就编译成本地代码</p>
-<p>​            java -Xmixed 混合模式</p>
-<p>​    <strong>XX参数：</strong></p>
-<p>​            <strong>Boolean 类型：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">公式：</span><br><span class="line">	-XX: + 或者 - 某个属性值</span><br><span class="line">	+ ： 表示开启</span><br><span class="line">	- ： 表示关闭</span><br><span class="line"><span class="keyword">case</span>： 是否打印GC收集细节：</span><br><span class="line"><span class="number">1</span>. 运行程序</span><br><span class="line"><span class="number">2</span>. 添加JVM参数  -XX：+PrintGCDetails</span><br><span class="line"><span class="number">3</span>. jps -l 获取进程编号</span><br><span class="line"><span class="number">4</span>. jinfo -flag PrintGCDetails 进程编号 </span><br><span class="line">	查看是否开启</span><br></pre></td></tr></table></figure>
-<p>​            <strong>KV设值类型：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">公式：</span><br><span class="line">	-XX:属性key=属性值value</span><br><span class="line"><span class="keyword">case</span>：</span><br><span class="line">	-XX：MetaspaceSize=<span class="number">128</span>m （元空间大小）</span><br><span class="line">	-XX：MaxTenuringThreshold=<span class="number">15</span> （晋升老年代GC次数）</span><br></pre></td></tr></table></figure>
-<h4 id="查看参数"><a href="#查看参数" class="headerlink" title="查看参数"></a><strong>查看参数</strong></h4><p><strong>一。正在运行的程序的参数</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>. jps -l 获取进程id</span><br><span class="line"><span class="number">2</span>. jinfo -flags id</span><br></pre></td></tr></table></figure>
-<p><strong>注意</strong></p>
-<p>​    -Xms：</p>
-<p>​        等价于 ： -XX：InitialHeapSize</p>
-<p>​    -Xmx：</p>
-<p>​        等价于： -XX：MaxHeapSize</p>
-<p><strong>二。初始参数：</strong></p>
-<p> java -XX:+PrintFlagsInitial</p>
-<p>:=      人为修改了参数</p>
-<p>=         初始参数</p>
-<p><strong>三：最终参数</strong></p>
-<p> java -XX:+PrintFlagsFinal</p>
-<p>​    运行java命令的同时打印出参数</p>
-<p><strong>四：查看究竟用那个GC收集器</strong></p>
-<p>​    java -XX:+PrintCommandLineFlags -version</p>
-<p><img src="images/3.png" alt=""></p>
-<h4 id="JVM常用基本配置参数"><a href="#JVM常用基本配置参数" class="headerlink" title="JVM常用基本配置参数"></a>JVM常用基本配置参数</h4><p>-Xms 初始堆内存</p>
-<p>-Xmx 最大堆内存</p>
-<h4 id="常用参数："><a href="#常用参数：" class="headerlink" title="常用参数："></a>常用参数：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-Xms 初始堆大小内存</span><br><span class="line">-Xmx 最大堆分配内存</span><br><span class="line">-Xss 设置单个线程的大小 一般为 <span class="number">521</span>K—<span class="number">1024</span>K （<span class="number">0</span> 代表 使用默认值）</span><br><span class="line">	等价于：-XX：ThreadStackSize</span><br><span class="line">-Xmn 设置年轻代大小</span><br><span class="line">-XX:MetaspaceSize 设置元空间大小</span><br><span class="line">-XX:SurvivorRatio 设置新生代老年代的比例 </span><br><span class="line">	例<span class="number">1</span>：-XX:SurvivorRatio=<span class="number">4</span>   <span class="number">4</span>:<span class="number">1</span>：<span class="number">1</span> （默认 <span class="number">8</span>:<span class="number">1</span>:<span class="number">1</span>）</span><br><span class="line">-XX:MaxTenuringThreshold 设置垃圾最大年龄 （必须 <span class="number">0</span>-<span class="number">15</span>之间 不然会报错）</span><br></pre></td></tr></table></figure>
-<h4 id="GC日志信息："><a href="#GC日志信息：" class="headerlink" title="GC日志信息："></a>GC日志信息：</h4><p><img src="images/4.png" alt=""></p>
-<h2 id="四大引用："><a href="#四大引用：" class="headerlink" title="四大引用："></a>四大引用：</h2><h3 id="强引用："><a href="#强引用：" class="headerlink" title="强引用："></a>强引用：</h3><p>​    当内存不足时，JVM开始垃圾回收，对于强引用的对象，就算是==出现了OOM也不会对该对象进行回收==，死都不回收！</p>
-<p>​    强引用是我们最常见的普通对象引用。只要强引用指向一个对象，就能表明对象还“活着”，垃圾收集器不会碰这种对象。在Java中最常见的就是强引用，把一个对象赋给一个引用变量，这个引用变量就是一个强引用。当一个对象被强引用变量引用时，它处于可达状态。是不可能被垃圾回收机制回收的，==即使该对象也后都不会被用到，JVM也不会回收==，<strong>==因此强引用是造成Java内存泄露的主要原因之一==</strong></p>
-<p>​    对于一个普通的对象，如果没有其他的引用关系，只要超过了引用的作用域或者是显式的将相应的强引用赋值为null，一般就可以被垃圾收集了。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 强<span class="title">Demo</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Object o1 = <span class="keyword">new</span> Object(); <span class="comment">//这样的定义默认是强引用</span></span><br><span class="line">		Object o2 = o1; <span class="comment">//o2 引用赋值</span></span><br><span class="line">		o1 = <span class="keyword">null</span>; <span class="comment">//o1 置空</span></span><br><span class="line">		System.gc();</span><br><span class="line">		System.out.println(o2);  <span class="comment">//照样可以打印出结果</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="软引用（SoftReference）"><a href="#软引用（SoftReference）" class="headerlink" title="软引用（SoftReference）"></a>软引用（SoftReference）</h3><p>​    ==内存足够的前提下不收，内存不够了就收了你！== <strong>java.lang.SoftReference</strong> 类来实现，可以让对象豁免一些垃圾收集！！</p>
-<p>​    <strong>软引用通常在对内存敏感的程序之中，比如高速缓存就有用到软引用</strong>，内存够用的时候就保留，不够用就回收！！</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.ref.SoftReference;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 软<span class="title">Demo</span> </span>&#123;</span><br><span class="line">	<span class="comment">//内存够用的情况下</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">softRef_Memory_enough</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Object o1 = <span class="keyword">new</span> Object();</span><br><span class="line">		SoftReference&lt;Object&gt; softReference = <span class="keyword">new</span> SoftReference&lt;Object&gt;(o1);</span><br><span class="line">		System.out.println(o1);</span><br><span class="line">		System.out.println(softReference.get());</span><br><span class="line">		</span><br><span class="line">		o1 = <span class="keyword">null</span>;</span><br><span class="line">		System.gc();</span><br><span class="line">		</span><br><span class="line">		System.out.println(o1);</span><br><span class="line">		System.out.println(softReference.get());</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//内存不够用</span></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 故意产生大对象并配置小的内存，让他内存不够用了导致OOM，看软引用的回收情况</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">softRef_Memory_NotEnough</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Object o1 = <span class="keyword">new</span> Object();</span><br><span class="line">		SoftReference&lt;Object&gt; softReference = <span class="keyword">new</span> SoftReference&lt;Object&gt;(o1);</span><br><span class="line">		System.out.println(o1);</span><br><span class="line">		System.out.println(softReference.get());</span><br><span class="line">		</span><br><span class="line">		o1 = <span class="keyword">null</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="keyword">byte</span>[] bytes = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">2000</span> * <span class="number">1024</span> * <span class="number">1024</span>];</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			<span class="comment">// <span class="doctag">TODO:</span> handle exception</span></span><br><span class="line">		&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">			System.out.println(o1);</span><br><span class="line">			<span class="comment">//这个 打印不出来了</span></span><br><span class="line">			System.out.println(softReference.get());</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//softRef_Memory_enough();</span></span><br><span class="line">		softRef_Memory_NotEnough();</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="弱引用（WeakReference）"><a href="#弱引用（WeakReference）" class="headerlink" title="弱引用（WeakReference）"></a>弱引用（WeakReference）</h3><p>​    ==只要发生GC一定回收，不管JVM内存是否充足==</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.ref.WeakReference;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 弱<span class="title">Demo</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Object o1 = <span class="keyword">new</span> Object();</span><br><span class="line">		WeakReference&lt;Object&gt; weakReference = <span class="keyword">new</span> WeakReference&lt;Object&gt;(o1);</span><br><span class="line">		</span><br><span class="line">		System.out.println(o1);</span><br><span class="line">		System.out.println(weakReference.get());</span><br><span class="line">		</span><br><span class="line">		System.out.println(<span class="string">"============="</span>);</span><br><span class="line">		</span><br><span class="line">		o1 = <span class="keyword">null</span>;</span><br><span class="line">		System.gc();</span><br><span class="line">		System.out.println(o1);</span><br><span class="line">		System.out.println(weakReference.get());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">输出： 内存足够</span><br><span class="line">java.lang.Object@<span class="number">15</span>db9742</span><br><span class="line">java.lang.Object@<span class="number">15</span>db9742</span><br><span class="line">=============</span><br><span class="line"><span class="keyword">null</span></span><br><span class="line"><span class="keyword">null</span></span><br></pre></td></tr></table></figure>
-<h3 id="软引用和弱引用的使用场景"><a href="#软引用和弱引用的使用场景" class="headerlink" title="软引用和弱引用的使用场景"></a>软引用和弱引用的使用场景</h3><p>​    假设有一个应用需求读取大量的本地图片</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* 如果每次读取图片都从硬盘读取则会严重影响性能</span><br><span class="line">* 如果一次性加载到内存中又可能造成内存溢出</span><br></pre></td></tr></table></figure>
-<p>设计思路是：用一个HashMap 来保存图片的路径和相应图片对象的关联之间的映射关系，在内存不足的情况下，JVM会自动回收这些缓存图片的对象所占用的空间，从而有效的避免了OOM的问题！</p>
-<p>==Map&lt;String, SoftRefence<bitmap>&gt; images = new HashMap&lt;&gt;();==</bitmap></p>
-<h4 id="WeakHashMap"><a href="#WeakHashMap" class="headerlink" title="WeakHashMap"></a>WeakHashMap</h4><p>==只要发生GC就回收==</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.WeakHashMap;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WeakHashMapDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        myHashMap();</span><br><span class="line">        System.out.println(<span class="string">"==================="</span>);</span><br><span class="line">        myWeakHashMap();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">myHashMap</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        HashMap&lt;Integer, String&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        Integer key1 = <span class="keyword">new</span> Integer(<span class="number">1</span>);</span><br><span class="line">        String value1 = <span class="string">"HashMap"</span>;</span><br><span class="line">        map.put(key1, value1);</span><br><span class="line">        System.out.println(map);</span><br><span class="line"></span><br><span class="line">        key1 = <span class="keyword">null</span>;</span><br><span class="line">        System.out.println(map);</span><br><span class="line"></span><br><span class="line">        System.gc();</span><br><span class="line">        System.out.println(map);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">myWeakHashMap</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        WeakHashMap&lt;Integer, String&gt; weakHashMap = <span class="keyword">new</span> WeakHashMap&lt;&gt;();</span><br><span class="line">        Integer key2 = <span class="keyword">new</span> Integer(<span class="number">2</span>);</span><br><span class="line">        String value2 = <span class="string">"HashMap-WeakHashMap"</span>;</span><br><span class="line">        weakHashMap.put(key2, value2);</span><br><span class="line">        System.out.println(weakHashMap);</span><br><span class="line"></span><br><span class="line">        key2 = <span class="keyword">null</span>;</span><br><span class="line">        System.out.println(weakHashMap);</span><br><span class="line"></span><br><span class="line">        System.gc();</span><br><span class="line">        System.out.println(weakHashMap);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">输出：</span><br><span class="line"></span><br><span class="line">&#123;<span class="number">1</span>=HashMap&#125;</span><br><span class="line">&#123;<span class="number">1</span>=HashMap&#125;</span><br><span class="line">&#123;<span class="number">1</span>=HashMap&#125;</span><br><span class="line">===================</span><br><span class="line">&#123;<span class="number">2</span>=HashMap-WeakHashMap&#125;</span><br><span class="line">&#123;<span class="number">2</span>=HashMap-WeakHashMap&#125;</span><br><span class="line">&#123;&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="虚引用（PhantomReference）"><a href="#虚引用（PhantomReference）" class="headerlink" title="虚引用（PhantomReference）"></a>虚引用（PhantomReference）</h3><p>​    虚引用需要<strong>java.lang.ref.PhantomReference</strong>类来实现。</p>
-<pre><code>顾名思义，就是==形同虚设==，与其他几种引用都不同，虚引用并不会决定对象的生命周期。
-
-==如果一个对象仅持有虚引用，那么它就和没有任何引用一样，在任何时候都可能被垃圾回收器回收==，==**它不能单独使用,也不能通过它访问对象，虚引用必须和引用队列(ReferenceQueue)联合使用**==
-
-虚引用的主要作用是**跟踪对象被垃圾回收的状态**。**仅仅是提供了一种确保对象被finalize以后，做某些事情的机制。**
-
-**PhantomReference的get方法总是返回null,**   **因此无法访问对应的引用对象**。其意义在于说明一个对象已经进入finalization阶段，可以被gc回收，用来实现比finalization机制更灵活的回收操作。
-
-==换句话说，设置虛引用关联的唯一目的，就是在这个对象被收集器回收的时候收到一个系统通知或者后续添加进一步的处理==。Java技术允许使用finalize()方法在垃圾收集器==将对象从内存中清除出去之前做必要的清理工作==。 ==类似于Spring中的后置通知==。
-</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.ref.PhantomReference;</span><br><span class="line"><span class="keyword">import</span> java.lang.ref.ReferenceQueue;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 虚<span class="title">Demo</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Object o1 = <span class="keyword">new</span> Object();</span><br><span class="line">		ReferenceQueue&lt;Object&gt; referentQueue = <span class="keyword">new</span> ReferenceQueue&lt;Object&gt;();</span><br><span class="line">		PhantomReference&lt;Object&gt; phantomReference = <span class="keyword">new</span> PhantomReference&lt;Object&gt;(o1, referentQueue);</span><br><span class="line">		</span><br><span class="line">		System.out.println(o1);</span><br><span class="line">		System.out.println(phantomReference.get());</span><br><span class="line">		System.out.println(referentQueue.poll());</span><br><span class="line">		</span><br><span class="line">		System.out.println(<span class="string">"===============GC之前====================="</span>);</span><br><span class="line">		o1 = <span class="keyword">null</span>;</span><br><span class="line">		System.gc();</span><br><span class="line">		</span><br><span class="line">		System.out.println(o1);</span><br><span class="line">		System.out.println(phantomReference.get());</span><br><span class="line">		System.out.println(referentQueue.poll());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">java.lang.Object@<span class="number">7852e922</span></span><br><span class="line"><span class="keyword">null</span></span><br><span class="line"><span class="keyword">null</span></span><br><span class="line">=====================================</span><br><span class="line"><span class="keyword">null</span></span><br><span class="line"><span class="keyword">null</span></span><br><span class="line">java.lang.ref.PhantomReference@<span class="number">4e25154f</span></span><br></pre></td></tr></table></figure>
-<h3 id="强软弱虚总结："><a href="#强软弱虚总结：" class="headerlink" title="强软弱虚总结："></a>强软弱虚总结：</h3><p>​    <img src="images/5.png" alt=""></p>
-<p>==软引用和虚引用再被回收后，会放入引用队列中，便于后续处理==</p>
-<h2 id="对OOM的认识："><a href="#对OOM的认识：" class="headerlink" title="==对OOM的认识：=="></a>==对OOM的认识：==</h2><h3 id="StackOverflow："><a href="#StackOverflow：" class="headerlink" title="StackOverflow："></a>StackOverflow：</h3><p>栈内存不够</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoStackOverflow</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        myStackOverflow();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">myStackOverflow</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        myStackOverflow();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="HeapSpace"><a href="#HeapSpace" class="headerlink" title="HeapSpace"></a>HeapSpace</h3><p>堆内存不够</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HeapSpace</span> </span>&#123;</span><br><span class="line">    <span class="comment">//配置参数 -Xms10m -Xmx10m</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="keyword">byte</span>[] bytes = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">80</span> * <span class="number">1024</span> * <span class="number">1024</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="GC-Overhead"><a href="#GC-Overhead" class="headerlink" title="GC Overhead"></a>GC Overhead</h3><p>​    GC回收时间过长时会抛OutOfMemroyError.过长的定义是，==超过98%的时间用来做GC并且回收了不到2%的堆内存====连续多次GC都只回收了不到2%的极端情况下才会抛出==。</p>
-<p>​    <strong>假如不抛出GC overhead limit 错误会发生什么情况呢?<em>那就是GC清理的这么点内存很快会再次填满，迫使GC再次执行，这样就形成恶性循环，</em> CPU使用率一 直是100%， 而GC却没有任何成果</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GCOverHead</span> </span>&#123;</span><br><span class="line">    <span class="comment">//配置参数 -Xms10m -Xmx10m -XX:+PrintGCDetails -XX:MaxDirectMemorySize=5m（最大直接内存大小）</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        ArrayList&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">while</span> (<span class="keyword">true</span>)&#123;</span><br><span class="line">                list.add(String.valueOf(++i).intern());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span>(Throwable e) &#123;</span><br><span class="line">            System.out.println(<span class="string">"=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"</span>);</span><br><span class="line">            System.out.println(<span class="string">"I = "</span> + i);</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">throw</span> e;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Direct-Buffer（直接内存溢出）"><a href="#Direct-Buffer（直接内存溢出）" class="headerlink" title="Direct  Buffer（直接内存溢出）"></a>Direct  Buffer（直接内存溢出）</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 描述:</span></span><br><span class="line"><span class="comment">    NIO 里面的</span></span><br><span class="line"><span class="comment"> *  ByteBuffer.allocate(); 第一种方式是分配 JVM 堆内存，属于 GC 管辖，需要拷贝到直接内存速度慢</span></span><br><span class="line"><span class="comment"> *  ByteBuffer.allocateDirect(); 第二种方式分配本地 OS 内存，不属于GC管辖，不需要拷贝速度快。									性能更好，但是不断地分配本地内存，而堆内存很少使用，</span></span><br><span class="line"><span class="comment"> 								  JVM 不会进行 GC，就会爆出 OOM， 程序直接崩溃</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 小纸人</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@create</span> 2019-08-02 1:10</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JVMDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="comment">//查看直接内存大小</span></span><br><span class="line">        System.out.println((VM.maxDirectMemory() / (<span class="keyword">double</span>)<span class="number">1024</span> / <span class="number">1024</span> ) + <span class="string">"MB"</span>);</span><br><span class="line">        ByteBuffer.allocateDirect(<span class="number">6</span> * <span class="number">1024</span> * <span class="number">1024</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="unable-to-create-new-native-thread-无法创建更多线程"><a href="#unable-to-create-new-native-thread-无法创建更多线程" class="headerlink" title="unable to create new native thread(无法创建更多线程)"></a>unable to create new native thread(无法创建更多线程)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 描述:</span></span><br><span class="line"><span class="comment"> *  你的应用创建了太多的线程， linux 默认一个 应用程序 最多创建 1024个线程</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 小纸人</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@create</span> 2019-08-02 1:10</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JVMDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; ; i++) &#123;</span><br><span class="line">            System.out.println(<span class="string">"i = "</span> + i);</span><br><span class="line">            <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">                <span class="comment">//暂停一会线程</span></span><br><span class="line">                <span class="keyword">try</span> &#123; TimeUnit.SECONDS.sleep(Integer.MAX_VALUE); &#125; <span class="keyword">catch</span> (Exception e) &#123; e.printStackTrace(); &#125;</span><br><span class="line">            &#125;,String.valueOf(i)).start();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Metaspace"><a href="#Metaspace" class="headerlink" title="Metaspace"></a>Metaspace</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * JVM 参数 ：</span></span><br><span class="line"><span class="comment"> *  -XX:MetaspaceSize=8m -XX:MaxMetaspaceSize=8m</span></span><br><span class="line"><span class="comment"> * 描述:</span></span><br><span class="line"><span class="comment"> *  Java 8 之后使用了 元空间Metaspace 代替了 永久代</span></span><br><span class="line"><span class="comment"> *  主要存放 ：</span></span><br><span class="line"><span class="comment"> *      虚拟机加载的类信息</span></span><br><span class="line"><span class="comment"> *      常量池</span></span><br><span class="line"><span class="comment"> *      静态变量</span></span><br><span class="line"><span class="comment"> *  模拟 Metaspace 空间溢出，不停的生成类往 Metaspace 里面灌</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 小纸人</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@create</span> 2019-08-02 1:10</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JVMDemo</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">OOMTest</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">                i++;</span><br><span class="line">                Enhancer enhancer = <span class="keyword">new</span> Enhancer();</span><br><span class="line">                enhancer.setSuperclass(OOMTest.class);</span><br><span class="line">                enhancer.setUseCache(<span class="keyword">false</span>);</span><br><span class="line">                enhancer.setCallback(<span class="keyword">new</span> MethodInterceptor() &#123;</span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> Object <span class="title">intercept</span><span class="params">(Object o, Method method, Object[] objects, MethodProxy methodProxy)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">                        <span class="keyword">return</span> methodProxy.invoke(o,args);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">                enhancer.create();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Throwable e) &#123;</span><br><span class="line">            System.out.println(<span class="string">"多少次后发生了异常："</span> + i);</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
+<h2 id="MySQL-索引优化"><a href="#MySQL-索引优化" class="headerlink" title="MySQL - 索引优化"></a>MySQL - 索引优化</h2><p>[TOC]<br>通过索引可以帮助我们解决大多数的SQL性能问题。</p>
+<p>MySQL索引类比是一本书前面的目录，能加快数据库的查询速度。</p>
+<p>在没有索引的情况下，数据库会遍历全部数据后选择符合条件的。而有了相应的索引之后，数据库会直接在索引中查找符合条件的选项。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/MySQL优化 - 索引优化及SQL优化/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2520,7 +956,7 @@ Java堆可以存储在物理上不连续的内存空间之中
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/JVM性能调优/">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/MySQL的存储引擎/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bangjin-Hu">
@@ -2539,7 +975,7 @@ Java堆可以存储在物理上不连续的内存空间之中
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/undefined/JVM性能调优/" itemprop="url">JVM性能调优</a></h2>
+                <a class="post-title-link" href="/undefined/MySQL的存储引擎/" itemprop="url">MySQ-存储引擎</a></h2>
         
 
         <div class="post-meta">
@@ -2567,8 +1003,8 @@ Java堆可以存储在物理上不连续的内存空间之中
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:43:39+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:05:36+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -2586,8 +1022,8 @@ Java堆可以存储在物理上不连续的内存空间之中
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JVM/" itemprop="url" rel="index">
-                    <span itemprop="name">JVM</span>
+                  <a href="/categories/MySQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL</span>
                   </a>
                 </span>
 
@@ -2617,7 +1053,7 @@ Java堆可以存储在物理上不连续的内存空间之中
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  180
+                  2,825
                 </span>
               
 
@@ -2633,7 +1069,7 @@ Java堆可以存储在物理上不连续的内存空间之中
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  10
                 </span>
               
             </div>
@@ -2655,14 +1091,19 @@ Java堆可以存储在物理上不连续的内存空间之中
 
       
         
-          
-            <blockquote class="blockquote-center"></blockquote>
+          <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="JVM性能调优"><a href="#JVM性能调优" class="headerlink" title="JVM性能调优"></a>JVM性能调优</h2><p>[TOC]</p>
-<h3 id="JDK-8-新特性"><a href="#JDK-8-新特性" class="headerlink" title="JDK 8 新特性"></a>JDK 8 新特性</h3><h4 id="接口的默认方法和静态方法"><a href="#接口的默认方法和静态方法" class="headerlink" title="接口的默认方法和静态方法"></a>接口的默认方法和静态方法</h4><p>Java 8 使用两个新概念扩展了接口的含义，默认方法和静态方法。默认方法，让开发人员可以在不破坏二进制兼容的前提下，往现存接口中添加新的方法（不强制那些实现了该接口的类也同时实现该新方法）。</p>
-<h4 id="Nashorn-JavaScript-引擎"><a href="#Nashorn-JavaScript-引擎" class="headerlink" title="Nashorn JavaScript 引擎"></a>Nashorn JavaScript 引擎</h4><p>在JDK 8 中采用了Metaspace(JEP 122)代替持久带(PermGen space)。在JVM参数方面，使用-XX:MetaSpaceSize和-XX:MaxMetaspaceSize代替原来的-XX:PermSize和-XX:MaxPermSize。</p>
-<h4 id="Visual-VM-插件"><a href="#Visual-VM-插件" class="headerlink" title="Visual VM 插件"></a>Visual VM 插件</h4><h4 id="top-命令"><a href="#top-命令" class="headerlink" title="top 命令"></a>top 命令</h4><h4 id="vmstat-命令"><a href="#vmstat-命令" class="headerlink" title="vmstat 命令"></a>vmstat 命令</h4>
-          
+<h3 id="数据库与实例"><a href="#数据库与实例" class="headerlink" title="数据库与实例"></a>数据库与实例</h3><h5 id="数据库的概述："><a href="#数据库的概述：" class="headerlink" title="数据库的概述："></a>数据库的概述：</h5><p>​        简单说就是存放数据的仓库，这个仓库按一定的数据结构（数据的组织形式、或数据之间的联系）来组织和存储的，数据库分为关系型数据库（Oracle，MySQL，SQLServer）和非关系型数据库（NOSQL，Memcaced，redis等）</p>
+<h5 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h5><p>​        MySQL实例是由线程和内存组成，它是真正用于操作数据库文件的，一般情况下一个实例操作一个或多个数据库，在实例启动的时候MySQL会读取配置文件，MySQL如果找不到配置文件则会按照默认参数设置启动实例</p>
+<h5 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h5><p>​        只要由多个查询需要在同一时刻修改数据，都会产生并发控制问题，解决方法：并发控制</p>
+<h6 id="读写锁"><a href="#读写锁" class="headerlink" title="读写锁"></a>读写锁</h6>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/MySQL的存储引擎/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2712,7 +1153,7 @@ Java堆可以存储在物理上不连续的内存空间之中
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Java List集合遍历/">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/MySQL高级/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bangjin-Hu">
@@ -2731,7 +1172,7 @@ Java堆可以存储在物理上不连续的内存空间之中
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/undefined/Java List集合遍历/" itemprop="url">Java 集合遍历</a></h2>
+                <a class="post-title-link" href="/undefined/MySQL高级/" itemprop="url">MySQ</a></h2>
         
 
         <div class="post-meta">
@@ -2759,8 +1200,8 @@ Java堆可以存储在物理上不连续的内存空间之中
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:40:52+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:05:31+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -2778,8 +1219,8 @@ Java堆可以存储在物理上不连续的内存空间之中
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java基础/" itemprop="url" rel="index">
-                    <span itemprop="name">Java基础</span>
+                  <a href="/categories/MySQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL</span>
                   </a>
                 </span>
 
@@ -2809,7 +1250,413 @@ Java堆可以存储在物理上不连续的内存空间之中
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  238
+                  11,560
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  43
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h1 id="MySQL高级"><a href="#MySQL高级" class="headerlink" title="MySQL高级"></a>MySQL高级</h1><h2 id="数据文件："><a href="#数据文件：" class="headerlink" title="数据文件："></a>数据文件：</h2><p>MyISAM：</p>
+<ol>
+<li><p>frm 文件：存放表结构</p>
+<ol start="2">
+<li><p>myd 文件：存放表数据</p>
+<ol start="3">
+<li>myi 文件：存放表索引</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>INNODB：</p>
+<ol>
+<li>frm 存放表结构</li>
+<li>ibd：
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/MySQL高级/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/NIO/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/NIO/" itemprop="url">Java NIO</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:03:35+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java-NIO/" itemprop="url" rel="index">
+                    <span itemprop="name">Java NIO</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,271
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="Java-NIO"><a href="#Java-NIO" class="headerlink" title="Java NIO"></a>Java NIO</h2><p>[TOC]</p>
+<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>java.io中最为核心的一个概念是流（stream），面向流编程。Java中，一个流要么是输入流，要么是输出流，不可能同时既是输入流同时又是输出流。</p>
+<p>java.nio中拥有3个核心概念：Selector、Channel和Buffer。在java.nio中，我们是面向块（block）或缓冲区（buffer）编程。Buffer本身就是一块内存，底层实现上实际是一个数组。数据的读写都是通过Buffer来实现。</p>
+<p>Java中提供7种原生数据类型都各自对应的Buffer类型。如IntBuffer、LongBuffer、ByteBuffer及CharBuffer等。但是没有BooleanBuffer类型。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/NIO/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Nginx-Apache/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/Nginx-Apache/" itemprop="url">Nginx-Apache</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:03:48+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Nginx-Apache/" itemprop="url" rel="index">
+                    <span itemprop="name">Nginx-Apache</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  218
                 </span>
               
 
@@ -2847,44 +1694,667 @@ Java堆可以存储在物理上不连续的内存空间之中
 
       
         
-          
-            <blockquote class="blockquote-center"></blockquote>
+          <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="Java-List集合遍历的几种方式"><a href="#Java-List集合遍历的几种方式" class="headerlink" title="Java List集合遍历的几种方式"></a>Java List集合遍历的几种方式</h2><h4 id="1-for循环遍历"><a href="#1-for循环遍历" class="headerlink" title="1.for循环遍历"></a>1.for循环遍历</h4><pre><code>//在这里新建一个List集合
-List&lt;Teacher&gt; teacherLists = new ArrayList&lt;Teacher&gt;();
-//然后遍历集合
-for (int i = 0; i &lt; teacherList.size(); i++){
-    Teacher teacher = teacherList.get(i);
-    if (teacher != null){
-        teacherLists.add(teacher);
+<h2 id="Nginx-Apache"><a href="#Nginx-Apache" class="headerlink" title="Nginx-Apache"></a>Nginx-Apache</h2><p>[TOC]</p>
+<h3 id="Apache较Nginx的优点"><a href="#Apache较Nginx的优点" class="headerlink" title="Apache较Nginx的优点"></a>Apache较Nginx的优点</h3><pre><code>1. rewrite功能比Nginx强大
+
+2. 动态页面，Nginx处理动态请求是鸡肋，移动动态请求要Apache去做，Nginx只适合于静态和反向
+
+3. 模块较于Nginx多
+</code></pre>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/Nginx-Apache/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Netty/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/Netty/" itemprop="url">Netty</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:04:51+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Netty/" itemprop="url" rel="index">
+                    <span itemprop="name">Netty</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5,570
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  21
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="Netty"><a href="#Netty" class="headerlink" title="Netty"></a>Netty</h2><p>[TOC]</p>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>官方定义，它是一个异步的，基于时间Client/Server的网络框架，目标是提供一种简单、快速构建网络应用的方式，同时保证高吞吐量、低延时、高可靠性。</p>
+<blockquote>
+<p>提示：Netty其实就是一个NIO框架，它适用于服务器通讯相关的多种应用场景，主要还是针对于TCP协议下，面向Clients端的高并发应用，或者Peer-to-Peer场景下的大量数据持续传输的应用。</p>
+</blockquote>
+<h3 id="NIO"><a href="#NIO" class="headerlink" title="NIO"></a>NIO</h3><p>NIO，非阻塞IO，在JAVA中NIO的核心就是Selector机制。简单而言，创建一个Socket Channel，并将其注册到一个Selector上（多路复用器），这个Selector将会“关注”Channel上发生的IO读写事件，并在事件发生（数据就绪）后执行相关的处理逻辑。对于阻塞IO，它需要在read()、write()操作上阻塞而直到数据操作完毕，但是NIO则不需要，只有当Selector检测到此Channel上有事件时才会触发调用read、write操作。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/Netty/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Python/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/Python/" itemprop="url">Python</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:03:27+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  230
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><p>[TOC]</p>
+<h3 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h3><h4 id="Python-标识符"><a href="#Python-标识符" class="headerlink" title="Python 标识符"></a>Python 标识符</h4><p>Python 中的标识符是区分大小写的。以下划线开头的标识符是有特殊意义的。以单下划线开头 _foo 的代表不能直接访问的类属性，需通过类提供的接口进行访问，不能用 from xxx import * 而导入。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/Python/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Mybatis-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/Mybatis-1/" itemprop="url">MyBatis 学习</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:06:20+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mybatis/" itemprop="url" rel="index">
+                    <span itemprop="name">Mybatis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  11,699
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  47
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h1 id="Mybatis-FD"><a href="#Mybatis-FD" class="headerlink" title="Mybatis - FD"></a>Mybatis - FD</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h4 id="1-原生态JDBC程序存在问题"><a href="#1-原生态JDBC程序存在问题" class="headerlink" title="1.原生态JDBC程序存在问题"></a>1.原生态JDBC程序存在问题</h4><pre><code>public static void main(String[] args) {
+    //设置连接为null
+    Connection connection = null;
+    //设置预处理状态为null
+    PreparedStatement preparedStatement = null;
+    //设置结果集为null
+    ResultSet resultSet = null;
+    //检查异常并抛出异常
+        try {
+            //1、加载数据库驱动
+            Class.forName(&quot;com.mysql.jdbc.Driver&quot;);
+            //2、通过驱动管理类获取数据库链接
+            connection =  DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/mybatis?characterEncoding=utf-8&quot;, &quot;root&quot;, &quot;root&quot;);
+            //3、定义sql语句 ?表示占位符
+            String sql = &quot;select * from user where username = ?&quot;;
+            //4、获取预处理statement
+            preparedStatement = connection.prepareStatement(sql);
+            //5、设置参数，第一个参数为sql语句中参数的序号（从1开始），第二个参数为设置的参数值
+            preparedStatement.setString(1, &quot;Aaron&quot;);
+            //6、向数据库发出sql执行查询，查询出结果集
+            resultSet =  preparedStatement.executeQuery();
+            //7、遍历查询结果集
+            while(resultSet.next()){
+                System.out.println(resultSet.getString(&quot;id&quot;)+&quot;  &quot;+resultSet.getString(&quot;username&quot;));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            //8、释放资源
+            if(resultSet!=null){
+                try {
+                    resultSet.close();
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+            if(preparedStatement!=null){
+                try {
+                    preparedStatement.close();
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+            if(connection!=null){
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
         }
-    model.addAttribute(&quot;teacherList&quot;,teacherLists);
-}
-</code></pre><h4 id="2-for循环-迭代器"><a href="#2-for循环-迭代器" class="headerlink" title="2.for循环(迭代器)"></a>2.for循环(迭代器)</h4><pre><code>for (Iterator iterators = teacherList.iterator();iterators.hasNext();){
-    Teacher teacher = (Teacher) iterators.next();
-    String tname = teacher.getName();
-    model.addAttribute(&quot;teacherList&quot;,tname);
-}
-</code></pre><h4 id="3-for循环-数组"><a href="#3-for循环-数组" class="headerlink" title="3.for循环(数组)"></a>3.for循环(数组)</h4><pre><code>for (int i=0; i &lt; teacherList.size(); i++){
-    String[] arr = new String[teacherList.size()];
-    for (int j = 0; j &lt; teacherList.size(); j++){
-        arr[i] = teacherList.get(j).getName();
-        model.addAttribute(&quot;teacherList&quot;,arr[i]);
     }
-    //model.addAttribute(&quot;teacherList&quot;,teacherList.get(i));
-}
-//model.addAttribute(&quot;teacherList&quot;,teacherList);
-</code></pre><h4 id="4-F-E"><a href="#4-F-E" class="headerlink" title="4.F-E"></a>4.F-E</h4><p>在前端输出的时候，如果输出的是List集合，那么输出之后，还需要转换成具体的输出，比如：teacherList.getName()，teacherList.getOffice等。然后在之前加上&lt;#list&gt;标签能遍历所有的元素。</p>
-<pre><code>&lt;#list teacherList as teacher&gt;
-    &lt;tr&gt;
-        &lt;td&gt;${teacher.getStaffno()}&lt;/td&gt;
-        &lt;td&gt;${teacher.getName()}&lt;/td&gt;
-        &lt;td&gt;${teacher.getOffice()}&lt;/td&gt;
-    &lt;/tr&gt;
-&lt;/#list&gt;
-</code></pre><hr>
-
-          
+</code></pre><blockquote>
+<p>总结：1.JDBC在使用过程中数据库连接会频繁开启和关闭，会严重影响到数据库的性能。2.在程序中存在硬编码，数据库部分以及SQL执行部分。</p>
+</blockquote>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/Mybatis-1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2925,7 +2395,7 @@ for (int i = 0; i &lt; teacherList.size(); i++){
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2977,7 +2447,7 @@ for (int i = 0; i &lt; teacherList.size(); i++){
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2988,7 +2458,7 @@ for (int i = 0; i &lt; teacherList.size(); i++){
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2999,7 +2469,7 @@ for (int i = 0; i &lt; teacherList.size(); i++){
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -3041,12 +2511,6 @@ for (int i = 0; i &lt; teacherList.size(); i++){
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -3108,7 +2572,7 @@ for (int i = 0; i &lt; teacherList.size(); i++){
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

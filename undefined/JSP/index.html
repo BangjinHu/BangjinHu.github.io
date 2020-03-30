@@ -152,18 +152,18 @@
 
 
 
-<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. JSPJSP：Java Server Pages，一种动态web资源的开发技术 API文档  JSP 2.3 API - Apache Tomcat 8.0.30  调用和运行原理JSP本质是一个servlet. 每个JSP页面在第一次被访问时，WEB容器会把请求交给JSP引擎(即一个JAVA程序)处理。JSP引擎先将JSP翻译成一个_jspServ">
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. JSPJSP：Java Server Pages，一种动态web资源的开发技术 API文档  JSP 2.3 API - Apache Tomcat 8.0.30  调用和运行原理">
 <meta name="keywords" content="JSP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JSP">
 <meta property="og:url" content="http://bangjinhu.github.io/undefined/JSP/index.html">
 <meta property="og:site_name" content="BangjinHu&#39;s Blog">
-<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. JSPJSP：Java Server Pages，一种动态web资源的开发技术 API文档  JSP 2.3 API - Apache Tomcat 8.0.30  调用和运行原理JSP本质是一个servlet. 每个JSP页面在第一次被访问时，WEB容器会把请求交给JSP引擎(即一个JAVA程序)处理。JSP引擎先将JSP翻译成一个_jspServ">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. JSPJSP：Java Server Pages，一种动态web资源的开发技术 API文档  JSP 2.3 API - Apache Tomcat 8.0.30  调用和运行原理">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-29T03:39:44.524Z">
+<meta property="og:updated_time" content="2020-03-30T00:08:06.175Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JSP">
-<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. JSPJSP：Java Server Pages，一种动态web资源的开发技术 API文档  JSP 2.3 API - Apache Tomcat 8.0.30  调用和运行原理JSP本质是一个servlet. 每个JSP页面在第一次被访问时，WEB容器会把请求交给JSP引擎(即一个JAVA程序)处理。JSP引擎先将JSP翻译成一个_jspServ">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. JSPJSP：Java Server Pages，一种动态web资源的开发技术 API文档  JSP 2.3 API - Apache Tomcat 8.0.30  调用和运行原理">
 
 
 
@@ -419,8 +419,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:39:44+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:08:06+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -513,7 +513,8 @@
 <blockquote>
 <p><a href="https://tomcat.apache.org/tomcat-8.0-doc/jspapi/index.html" target="_blank" rel="noopener">JSP 2.3 API - Apache Tomcat 8.0.30</a></p>
 </blockquote>
-<h2 id="调用和运行原理"><a href="#调用和运行原理" class="headerlink" title="调用和运行原理"></a>调用和运行原理</h2><p>JSP本质是一个servlet.</p>
+<h2 id="调用和运行原理"><a href="#调用和运行原理" class="headerlink" title="调用和运行原理"></a>调用和运行原理</h2><a id="more"></a>
+<p>JSP本质是一个servlet.</p>
 <p>每个JSP页面在第一次被访问时，WEB容器会把请求交给JSP引擎(即一个JAVA程序)处理。JSP引擎先将JSP翻译成一个<code>_jspServlet</code>(实质也是一个servlet)，然后按照servlet的调用方式进行调用。</p>
 <ul>
 <li>服务器会将jsp先翻译成servlet，这个servlet位于tomcat服务器<code>work</code>目录，这jsp类的父类是<code>org.apache.jasper.runtime.HttpJspBase</code>,这个<code>HttpJspBase</code>类继承自<code>HttpServlet</code></li>
@@ -522,7 +523,7 @@
 <li>在<code>_jspService</code>方法中提前准备好了一些对象供JSP调用，如：<code>out,page,application,request,response</code>等等。</li>
 <li>由于第一次访问时会翻译成servlet，所以第一次访问较慢。</li>
 </ul>
-<p>下面以<code>demo1.jsp</code>为例，展示对应的类<code>%CATALINA_HOME%\work\Catalina\localhost\hello\org\apache\jsp\demo1_jsp.java</code>中的部分代码<br><a id="more"></a><br>示例1:<code>demo1.jsp</code></p>
+<p>下面以<code>demo1.jsp</code>为例，展示对应的类<code>%CATALINA_HOME%\work\Catalina\localhost\hello\org\apache\jsp\demo1_jsp.java</code>中的部分代码<br><!--more--><br>示例1:<code>demo1.jsp</code></p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=<span class="string">"text/html;charset=UTF-8"</span> language=<span class="string">"java"</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;demo1&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">当前时间时：</span><br><span class="line">&lt;%</span><br><span class="line">    Date date = <span class="keyword">new</span> Date();</span><br><span class="line">    out.write(date.toGMTString());</span><br><span class="line">%&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 <p>示例2：<code>_jspService</code>方法中代码片段</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">out.write(<span class="string">"\r\n"</span>);</span><br><span class="line">out.write(<span class="string">"\r\n"</span>);</span><br><span class="line">out.write(<span class="string">"&lt;html&gt;\r\n"</span>);</span><br><span class="line">out.write(<span class="string">"&lt;head&gt;\r\n"</span>);</span><br><span class="line">out.write(<span class="string">"    &lt;title&gt;demo1&lt;/title&gt;\r\n"</span>);</span><br><span class="line">out.write(<span class="string">"&lt;/head&gt;\r\n"</span>);</span><br><span class="line">out.write(<span class="string">"&lt;body&gt;\r\n"</span>);</span><br><span class="line">out.write(<span class="string">"当前时间时：\r\n"</span>);</span><br><span class="line"></span><br><span class="line">Date date = <span class="keyword">new</span> Date();</span><br><span class="line">out.write(date.toGMTString());</span><br><span class="line"></span><br><span class="line">out.write(<span class="string">"\r\n"</span>);</span><br><span class="line">out.write(<span class="string">"&lt;/body&gt;\r\n"</span>);</span><br><span class="line">out.write(<span class="string">"&lt;/html&gt;\r\n"</span>);</span><br></pre></td></tr></table></figure>
@@ -651,7 +652,7 @@
   <p><span>本文标题:</span>JSP</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 11:39:44</p>
+  <p><span>最后更新:</span>2020年03月30日 - 08:08:06</p>
   <p><span>原始链接:</span><a href="/undefined/JSP/" title="JSP">http://bangjinhu.github.io/undefined/JSP/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/JSP/"  aria-label="复制成功！"></i></span>
   </p>
@@ -752,8 +753,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/undefined/JVM Java虚拟机/" rel="next" title="Java 内存区域与内存溢出异常">
-                <i class="fa fa-chevron-left"></i> Java 内存区域与内存溢出异常
+              <a href="/undefined/JVM性能调优 - 操作/" rel="next" title="JVM性能调优">
+                <i class="fa fa-chevron-left"></i> JVM性能调优
               </a>
             
           </div>
@@ -762,8 +763,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/undefined/JVM性能调优 - 操作/" rel="prev" title="JVM性能调优">
-                JVM性能调优 <i class="fa fa-chevron-right"></i>
+              <a href="/undefined/JSON 和 ProtoBuf序列化/" rel="prev" title="JSON 和 ProtoBuf序列化">
+                JSON 和 ProtoBuf序列化 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -873,7 +874,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -884,7 +885,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -895,7 +896,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -937,12 +938,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -1020,7 +1015,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

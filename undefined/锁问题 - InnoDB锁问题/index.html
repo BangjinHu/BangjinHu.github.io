@@ -152,18 +152,18 @@
 
 
 
-<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. 锁问题 - InnoDB锁问题[TOC] 锁锁是计算机协调多个进程或线程并发访问某一资源的机制。 表级锁：开销小，加锁快，不会出现死锁，锁定粒度大，发生锁冲突的概率最高，并发度最低。  表级锁更适合于以查询为主，只有少量按索引条件更新数据的应用。  行级锁：开销大，加锁慢，会出现死锁，锁定粒度最小，发生锁冲突的概率最低，并发度高。  行级锁更适用于有">
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. 锁问题 - InnoDB锁问题[TOC] 锁锁是计算机协调多个进程或线程并发访问某一资源的机制。">
 <meta name="keywords" content="MySQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="InnoDB锁问题">
 <meta property="og:url" content="http://bangjinhu.github.io/undefined/锁问题 - InnoDB锁问题/index.html">
 <meta property="og:site_name" content="BangjinHu&#39;s Blog">
-<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. 锁问题 - InnoDB锁问题[TOC] 锁锁是计算机协调多个进程或线程并发访问某一资源的机制。 表级锁：开销小，加锁快，不会出现死锁，锁定粒度大，发生锁冲突的概率最高，并发度最低。  表级锁更适合于以查询为主，只有少量按索引条件更新数据的应用。  行级锁：开销大，加锁慢，会出现死锁，锁定粒度最小，发生锁冲突的概率最低，并发度高。  行级锁更适用于有">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. 锁问题 - InnoDB锁问题[TOC] 锁锁是计算机协调多个进程或线程并发访问某一资源的机制。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-29T02:29:04.025Z">
+<meta property="og:updated_time" content="2020-03-30T00:23:56.434Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="InnoDB锁问题">
-<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 锁问题 - InnoDB锁问题[TOC] 锁锁是计算机协调多个进程或线程并发访问某一资源的机制。 表级锁：开销小，加锁快，不会出现死锁，锁定粒度大，发生锁冲突的概率最高，并发度最低。  表级锁更适合于以查询为主，只有少量按索引条件更新数据的应用。  行级锁：开销大，加锁慢，会出现死锁，锁定粒度最小，发生锁冲突的概率最低，并发度高。  行级锁更适用于有">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 锁问题 - InnoDB锁问题[TOC] 锁锁是计算机协调多个进程或线程并发访问某一资源的机制。">
 
 
 
@@ -419,8 +419,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:29:04+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:23:56+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -509,12 +509,11 @@
         <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
 <h2 id="锁问题-InnoDB锁问题"><a href="#锁问题-InnoDB锁问题" class="headerlink" title="锁问题 - InnoDB锁问题"></a>锁问题 - InnoDB锁问题</h2><p>[TOC]</p>
-<h3 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h3><p>锁是计算机协调多个进程或线程并发访问某一资源的机制。</p>
-<p>表级锁：开销小，加锁快，不会出现死锁，锁定粒度大，发生锁冲突的概率最高，并发度最低。</p>
+<h3 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h3><p>锁是计算机协调多个进程或线程并发访问某一资源的机制。<br><a id="more"></a><br>表级锁：开销小，加锁快，不会出现死锁，锁定粒度大，发生锁冲突的概率最高，并发度最低。</p>
 <blockquote>
 <p>表级锁更适合于以查询为主，只有少量按索引条件更新数据的应用。</p>
 </blockquote>
-<p>行级锁：开销大，加锁慢，会出现死锁，锁定粒度最小，发生锁冲突的概率最低，并发度高。</p>
+<p>行级锁：开销大，加锁慢，会出现死锁，锁定粒度最小，发生锁冲突的概率最低，并发度高。<br><!--more--></p>
 <blockquote>
 <p>行级锁更适用于有大量按索引条件并发更新少量不同数据，同时又有并发查询的应用。</p>
 </blockquote>
@@ -680,7 +679,7 @@
   <p><span>本文标题:</span>InnoDB锁问题</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 10:29:04</p>
+  <p><span>最后更新:</span>2020年03月30日 - 08:23:56</p>
   <p><span>原始链接:</span><a href="/undefined/锁问题 - InnoDB锁问题/" title="InnoDB锁问题">http://bangjinhu.github.io/undefined/锁问题 - InnoDB锁问题/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/锁问题 - InnoDB锁问题/"  aria-label="复制成功！"></i></span>
   </p>
@@ -781,8 +780,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/undefined/错误日志/" rel="next" title="Redis - Java集成">
-                <i class="fa fa-chevron-left"></i> Redis - Java集成
+              <a href="/undefined/错误日志/" rel="next" title="错误日志">
+                <i class="fa fa-chevron-left"></i> 错误日志
               </a>
             
           </div>
@@ -902,7 +901,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -913,7 +912,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -924,7 +923,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -966,12 +965,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -1049,7 +1042,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

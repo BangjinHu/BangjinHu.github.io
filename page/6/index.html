@@ -373,7 +373,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Java NIO/">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Redis - 分布式锁/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bangjin-Hu">
@@ -392,7 +392,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/undefined/Java NIO/" itemprop="url">Java NIO</a></h2>
+                <a class="post-title-link" href="/undefined/Redis - 分布式锁/" itemprop="url">Redis - 分布式锁</a></h2>
         
 
         <div class="post-meta">
@@ -420,8 +420,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:41:17+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:03:13+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -439,8 +439,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java-NIO/" itemprop="url" rel="index">
-                    <span itemprop="name">Java NIO</span>
+                  <a href="/categories/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
                   </a>
                 </span>
 
@@ -470,678 +470,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  862
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="Java-NIO"><a href="#Java-NIO" class="headerlink" title="Java NIO"></a>Java NIO</h2><p>[TOC]</p>
-<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>在实现NIO的客户端时，首先调用静态工厂方法 SocketChannel.open() 创建新的 java.nio.channels.SocketChannel对象。方法参数是 java.net.SocketAddress 对象，指示要连接的主机和端口。</p>
-<h3 id="缓冲区"><a href="#缓冲区" class="headerlink" title="缓冲区"></a>缓冲区</h3><pre><code>1. 位置（postion）
-
-2. 容量（capacity）
-
-3. 限量（limit）
-
-4. 标记（mark）
-</code></pre><h4 id="创建缓冲区"><a href="#创建缓冲区" class="headerlink" title="创建缓冲区"></a>创建缓冲区</h4><h5 id="1-分配"><a href="#1-分配" class="headerlink" title="1. 分配"></a>1. 分配</h5><p>allocate()方法只返回一个有指定固定容量的新缓冲区，是一个kg能偶缓冲区。</p>
-<h5 id="2-直接分配"><a href="#2-直接分配" class="headerlink" title="2. 直接分配"></a>2. 直接分配</h5><p>ByteBuffer类有另外一个allocateDirect()方法，该方法不为缓冲区创建后备数组。VM会对以太网卡、核心内存或其它位置的缓冲区使用直接内存访问，以此实现直接分配的ByteBuffer。</p>
-<h5 id="3-包装"><a href="#3-包装" class="headerlink" title="3. 包装"></a>3. 包装</h5><p>如果已经有要输出的数据数组，一般要用缓冲区进行包装，而不是分配一个新的缓冲区，然后一次一部分的复制到这个缓冲区。</p>
-<pre><code>byte[] data = &quot;hello world&quot;.getBytes(&quot;utf-8&quot;);
-ByteBuffer buffer1 = ByteBuffer.wrap(data);
-
-char[] text = &quot;some text&quot;.toCharArray();
-CharBuffer buffer2 = ByteBuffer.wrap(text);
-</code></pre><h3 id="SocketChannel"><a href="#SocketChannel" class="headerlink" title="SocketChannel"></a>SocketChannel</h3><p>SocketChannel类可以读写TCP Socket。数据必须编码到ByteBuffer对象中完成读/写。每个SocketChannel都与一个Socket对象相关联，该Socket对象可用于高级配置，不过一般默认选项便可正常运行。</p>
-<pre><code>//该方法创立连接将阻塞，即在连接建立或抛出异常之间，该方法不会返回
-1. public static SocketChannel open(SocketAddress address) throws IOException;
-
-//该方法创建初始未连接方法，以后需要connect()方法进行连接
-2. public static SocketChannel open() throws IOException;
-</code></pre><h4 id="1-读取"><a href="#1-读取" class="headerlink" title="1. 读取"></a>1. 读取</h4><p>在读取SokcetChannel内容时需要创建一个ByteBuffer，通道可以在ByteBuffer中存储数据，然后将该buffer传给read()方法。</p>
-<blockquote>
-<p>提示：1. 散布（scatter），表示能从一个源填充多个缓冲区。</p>
-</blockquote>
-<h4 id="2-写入"><a href="#2-写入" class="headerlink" title="2. 写入"></a>2. 写入</h4><p>Socket通道提供读写方法，一般情况下它们是全双工的。在想写入数据时，只需要填充一个ByteBuffer，然后将其回绕传给某个写入方法，该方法将数据复制到，输出时将缓冲区排空。</p>
-<blockquote>
-<p>提示：2. 聚集（gather），表示将多个缓冲区的数据写入到一个Socket中。</p>
-</blockquote>
-<h4 id="3-关闭"><a href="#3-关闭" class="headerlink" title="3. 关闭"></a>3. 关闭</h4><p>在用完通道之后需要关闭，释放它可能使用的端口和其它资源。close()方法。</p>
-<h3 id="ServerSocketChannel"><a href="#ServerSocketChannel" class="headerlink" title="ServerSocketChannel"></a>ServerSocketChannel</h3><p>该类只有一个目的就是接受入站连接，我们无法读取、写入或连接ServerSocketChannel。其支持的唯一操作便是接受一个新的入站连接。accept() | close() 方法。</p>
-<pre><code>//该方法只是创建这个对象
-1. ServerSocketChannel server = ServerSocketChannel.open();
-
-//该方法创建ServerSocket
-2. ServerSocket socket = server.socket();
-
-//Java 7中ServerSocketChannel有自己的bind()方法
-</code></pre><h4 id="1-接受连接"><a href="#1-接受连接" class="headerlink" title="1. 接受连接"></a>1. 接受连接</h4><p>accept()方法监听入站连接请求。该方法可以在阻塞和非阻塞模式下操作。</p>
-<h3 id="Selector类"><a href="#Selector类" class="headerlink" title="Selector类"></a>Selector类</h3><pre><code>1. 调用静态工厂方法 Selector.open() 来创建新的选择器。
-
-2. 向选择器增加通道，Selector类没有增加通道的方法。register()方法在SelectableChannel类中声明。
-
-    //参数1表示通道要向哪个选择器注册
-    //参数2是SelectionKey类中的命名常量，标识通道所注册的操作
-    public final SelectionKey register(Selector sel, int ops);
-
-3. 当知道有通道已经准备好处理时，可以使用selectedkey()方法获取就绪通道。
-
-    public abstract Set&lt;SelectionKey&gt; selectedKeys();
-</code></pre><h3 id="SelectionKey-类"><a href="#SelectionKey-类" class="headerlink" title="SelectionKey 类"></a>SelectionKey 类</h3><p>SelectionKey类相当于通道的指针，一般会存储该通道的连接状态。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Java 代理/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/Java 代理/" itemprop="url">Java代理</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:34:50+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java代理/" itemprop="url" rel="index">
-                    <span itemprop="name">Java代理</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1,497
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  7
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h2><p>代理是实现AOP编程的核心与关键技术。代理是一种设计模式，其目的是为其他对象提供一个代理以控制对某个对象的访问，代理类负责为委托类预处理消息，过滤消息并转发消息以及进行消息被委托类执行后的后续处理。为了保持行为的一致性，代理类与委托类通常情况下实现相同的接口。</p>
-<pre><code>1.静态代理：由程序员创建代理类或特定工具自动生成源代码再对其编译，也就是说在程序运行前代理类的.class文件就已经存在。
-2.动态代理：在程序运行时运用反射机制动态创建生成。
-</code></pre><h4 id="1-动态代理"><a href="#1-动态代理" class="headerlink" title="1.动态代理"></a>1.动态代理</h4><ul>
-<li>JVM可以在运行期动态生成类的字节码，该类往往被用作动态代理类。</li>
-<li>JVM生成的动态类必须实现一个或多个接口，所以这种只能用作具有相同接口的目标类的代理。</li>
-<li>CGLIB库可以动态生成一个类的子类，一个类的子类也可作为该类的代理，这个可用来为没有实现接口的类生成动态代理类。</li>
-<li>代理类可在调用目标方法之前、之后、前后、以及处理目标方法异常的catch块中添加系统功能代码。</li>
-</ul>
-<p>1.创建动态类API：</p>
-<pre><code>java.lang.reflect:Class Proxy java.lang.reflect:Interface InvocationHandler
-</code></pre><p>2.查看代理类方法列表信息：</p>
-<pre><code>package com.iot.proxy;
-
-import java.lang.reflect.*;
-import java.util.ArrayList;
-import java.util.Collection;
-
-/**
- * Created by brian on 2015/12/27.
- */
-public class ProxyTest {
-    public static void main(String[] args) throws Exception {
-        Class clazzProxy1 = Proxy.getProxyClass(Collection.class.getClassLoader(), Collection.class);
-        System.out.println(clazzProxy1);
-        printConstructors(clazzProxy1);
-        printMethods(clazzProxy1);
-
-    }
-
-    /**
-     * 打印构造方法列表
-     * @param clazz
-     */
-    public static void printConstructors(Class clazz){
-        System.out.println(&quot;-------------constructors list-------------&quot;);
-        Constructor[] constructors = clazz.getConstructors();
-        System.out.print(getExecutableList(constructors));
-    }
-
-    /**
-     * 打印成员方法列表
-     * @param clazz
-     */
-    public static void printMethods(Class clazz) {
-        System.out.println(&quot;-------------methods list-------------&quot;);
-        Method[] methods = clazz.getMethods();
-        System.out.print(getExecutableList(methods));
-    }
-
-    /**
-     * 获取要打印的列表数据
-     * 每行一个方法,按照func(arg1,arg2)的格式
-     * @param executables
-     * @return
-     */
-    public static String getExecutableList(Executable[] executables){
-        StringBuilder stringBuilder = new StringBuilder();
-        for (Executable executable : executables) {
-            String name = executable.getName();
-            stringBuilder.append(name);
-            stringBuilder.append(&quot;(&quot;);
-            Class[] clazzParams = executable.getParameterTypes();
-            for (Class clazzParam : clazzParams) {
-                stringBuilder.append(clazzParam.getName()).append(&quot;,&quot;);
-            }
-            if (clazzParams != null &amp;&amp; clazzParams.length != 0) {
-                stringBuilder.deleteCharAt(stringBuilder.length() - 1);
-            }
-            stringBuilder.append(&quot;)\n&quot;);
-        }
-        return stringBuilder.toString();
-    }
-
-
-}
-</code></pre><p>output：</p>
-<pre><code>class com.sun.proxy.$Proxy0
--------------constructors list-------------
-com.sun.proxy.$Proxy0(java.lang.reflect.InvocationHandler)
--------------methods list-------------
-add(java.lang.Object)
-remove(java.lang.Object)
-equals(java.lang.Object)
-toString()
-hashCode()
-clear()
-contains(java.lang.Object)
-isEmpty()
-iterator()
-size()
-toArray([Ljava.lang.Object;)
-toArray()
-spliterator()
-addAll(java.util.Collection)
-stream()
-forEach(java.util.function.Consumer)
-containsAll(java.util.Collection)
-removeAll(java.util.Collection)
-removeIf(java.util.function.Predicate)
-retainAll(java.util.Collection)
-parallelStream()
-isProxyClass(java.lang.Class)
-getInvocationHandler(java.lang.Object)
-getProxyClass(java.lang.ClassLoader,[Ljava.lang.Class;)
-newProxyInstance(java.lang.ClassLoader,[Ljava.lang.Class;,java.lang.reflect.InvocationHandler)
-wait()
-wait(long,int)
-wait(long)
-getClass()
-notify()
-notifyAll()
-</code></pre><p>3.创建实例对象</p>
-<pre><code>/**
- * 测试创建实例对象
- * @throws NoSuchMethodException
- * @throws IllegalAccessException
- * @throws InvocationTargetException
- * @throws InstantiationException
- */
-private static void createProxyInstance( ) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
-    /**
-     * 方法1：先创建代理类，再使用反射创建实例对象
-     */
-    Class clazzProxy1 = Proxy.getProxyClass(Collection.class.getClassLoader(), Collection.class);
-    Constructor constructor = clazzProxy1.getConstructor(InvocationHandler.class);
-    Collection proxy1 = (Collection) constructor.newInstance(new InvocationHandler() {
-        @Override
-        public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-            return null;
-        }
-    });
-
-    /**
-     * 方法2：直接使用newProxyInstance方法创建实例对象
-     */
-    Collection proxy2 = (Collection)Proxy.newProxyInstance(
-            Collection.class.getClassLoader(),
-            new Class[]{Collection.class},
-            new InvocationHandler() {
-                ArrayList target = new ArrayList();
-        @Override
-        public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-            //ArrayList targetTmp = new ArrayList();
-            System.out.println(&quot;before invoke method: &quot;+method.getName());
-            return method.invoke(target,args);
-
-        }
-    });
-
-    proxy2.add(&quot;aaa&quot;);
-    proxy2.add(&quot;bbb&quot;);
-    System.out.println(proxy2.size());
-    System.out.println(proxy2);
-    System.out.println(proxy2.getClass().getName());
-
-}
-</code></pre><p>output：</p>
-<pre><code>before invoke method: add
-before invoke method: add
-before invoke method: size
-2
-before invoke method: toString
-[aaa, bbb]
-com.sun.proxy.$Proxy0
-</code></pre><p>上述代码相关说明:</p>
-<pre><code>1.若将method.invoke(target,args);改为method.invoke(proxy,args);会出现死循环
-
-2.从输出结果可知，每次调用代理类的方法，实际都是调用invoke方法
-
-3.若将method.invoke(target,args);改为method.invoke(targetTmp,args);，则proxy2.size()为0。因为每次调用invoke方法时，targetTmp为新的局部变量
-
-4.Object类只有的hashCode, equals, or toString方法会被交到InvocationHandler，其他方法自己有实现，不交给handler,所以最后打印结果为com.sun.proxy.$Proxy0而不是Collection
-</code></pre><h4 id="3-InvocationHandler对象的运行原理"><a href="#3-InvocationHandler对象的运行原理" class="headerlink" title="3.InvocationHandler对象的运行原理"></a>3.InvocationHandler对象的运行原理</h4><p>InvocationHandler接口只有一个invoke方法，每次调用代理类的方法，即调用了InvocationHandler对象的invoke方法</p>
-<p>invoke方法涉及三个要素：</p>
-<pre><code>代理对象
-代理对象调用的方法
-方法接受的参数
-</code></pre><blockquote>
-<p>注：Object类的hashCode,equals,toString方法交给invoke,其他的Object类的方法，Proxy有自己的实现。</p>
-</blockquote>
-<h4 id="4-动态代理的工作原理"><a href="#4-动态代理的工作原理" class="headerlink" title="4.动态代理的工作原理"></a>4.动态代理的工作原理</h4><p>代理类创建时需要传入一个InvocationHandler对象，client调用代理类，代理类的相应方法调用InvocationHandler的的invoke方法，InvocationHandler的的invoke方法(可在其中加入日志记录、时间统计等附加功能)再找目标类的相应方法。</p>
-<h4 id="5-面向切面编程"><a href="#5-面向切面编程" class="headerlink" title="5.面向切面编程"></a>5.面向切面编程</h4><p>把切面的代码以对象的形式传递给InvocationHandler的的invoke方法，invoke方法中执行该对象的方法就执行了切面的代码。</p>
-<blockquote>
-<p>所以需要传递两个参数：</p>
-</blockquote>
-<pre><code>1.目标(Object target) 
-2.通知(自定义的adviser类)
-</code></pre><p>1.定义Advice接口</p>
-<pre><code>public interface Advice {
-    void beforeMethod(Method method);
-    void aftereMethod(Method method);
-}
-</code></pre><p>2.一个实现Advice接口的类MyAdvice,用于打印执行方法前和执行后的时间</p>
-<pre><code>import java.lang.reflect.Method;
-
-public class MyAdvice implements Advice{
-    long beginTime = 0 ;
-    @Override
-    public void beforeMethod(Method method) {
-        System.out.println(method.getName()+&quot; before at &quot;+beginTime);
-        beginTime = System.currentTimeMillis();
-    }
-
-    @Override
-    public void aftereMethod(Method method) {
-        long endTime = System.currentTimeMillis();
-        System.out.println(method.getName()+&quot; cost total &quot;+ (endTime-beginTime));
-    }
-}
-</code></pre><p>3.定义一个getProxy方法创建实例对象,接收两个参数:目标和通知</p>
-<pre><code>private static Object getProxy(final Object target,final Advice advice){
-    Object proxy = Proxy.newProxyInstance(
-            target.getClass().getClassLoader(),
-            target.getClass().getInterfaces(),
-            new InvocationHandler() {
-                @Override
-                public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                    advice.beforeMethod(method);
-                    Object retVal = method.invoke(target,args);
-                    advice.aftereMethod(method);
-                    return retVal;
-                }
-            }
-    );
-    return proxy;
-}
-</code></pre><p>4.调用：</p>
-<pre><code>Collection proxy3 = (Collection) getProxy(new ArrayList(),new MyAdvice());
-proxy3.add(&quot;111&quot;);
-proxy3.add(&quot;222&quot;);
-System.out.println(proxy3.size());
-</code></pre><p>output:</p>
-<pre><code>add before at 0
-add cost total 0
-add before at 1454433980839
-add cost total 0
-size before at 1454433980839
-size cost total 0
-2
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Java 反射/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/Java 反射/" itemprop="url">反射</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:35:14+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/反射/" itemprop="url" rel="index">
-                    <span itemprop="name">反射</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1,985
+                  2,037
                 </span>
               
 
@@ -1179,168 +508,17 @@ size cost total 0
 
       
         
-          
-            <blockquote class="blockquote-center"></blockquote>
+          <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h2><p>反射表示将类的属性和方法映射成相应的类。Java反射机制表示在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法。对于任意一个对象都能够调用它的任意一个方法，这种动态获取的信息以及动态调用对象的方法功能是反射。</p>
-<p>在java.lang.reflect包下有三个类：Field类 | Method类 | Constructor类，三者分别描述了一个类的域 | 方法 | 构造函数。三个类都有一个getName()方法。Field类有一个getType()方法，返回一个Class类型对象。三个类都有一个getModifiers()方法，返回一个整数，(0|1)描述方法所使用的修饰符。</p>
-<blockquote>
-<p>Java反射框架提供的功能</p>
-</blockquote>
-<pre><code>1.在运行时判断任意一个对象所属的类
-2.在运行时构造任意一个类的对象
-3.在运行时判断任意一个类所具有的成员变量和方法(通过反射甚至可以调用private方法)
-4.在运行时调用任意一个对象的方法
-5.注意上面的所有情况都是在运行时，而不是在编译时
-</code></pre><h3 id="Class类和Object类"><a href="#Class类和Object类" class="headerlink" title="Class类和Object类"></a>Class类和Object类</h3><pre><code>1.Class是一个类，一个描述类的类，封装描述方法的Method，描述字段的Filed，描述构造器的Constructor等属性。
-2.对象经过反射后可以得到的属性：某类的数据成员变量名、方法、构造器，某个类实现的接口。
-3.一个Class对象包含了特定某个类的有关信息。
-4.Class对象只能由系统建立对象
-5.一个类在JVM中只有一个Class实例。
-</code></pre><h4 id="1-反射的基本使用"><a href="#1-反射的基本使用" class="headerlink" title="1.反射的基本使用"></a>1.反射的基本使用</h4><p>1.获取Class类的三种方法：</p>
-<ul>
-<li>类名.class</li>
-<li>对象名.getClass()</li>
-<li>Class.forName(“加载的类名”)</li>
-</ul>
-<p>2.判断是否是某个类的实例：</p>
-<pre><code>通过 instanceof 关键字判断是否是某个类的实例
-</code></pre><p>2.实现流程：</p>
-<pre><code>1.使用上面的Class类获取方法获取特定的Class类，即该类对应的字节码。
-2.调用Class对象的getConstructor(Class&lt;?&gt;... parameterTypes)获取构造方法对象
-3.调用是构造方法类Constructor的newInstance(Object... initargs)方法新建对象
-4.调用Class对象的getMethod(String name, Class&lt;?&gt;... parameterTypes)获取方法对象
-5.调用方法对象类Method的invoke(Object obj, Object... args)方法，调用对象上相应方法
-</code></pre><blockquote>
-<p>注意：使用方法的参数唯一标识一个方法。依据：方法的重载。</p>
-</blockquote>
-<h4 id="2-枚举类成员"><a href="#2-枚举类成员" class="headerlink" title="2.枚举类成员"></a>2.枚举类成员</h4><pre><code>//案例：打印一个类的所有方法
-
-...
-Class&lt;?&gt; c1 = Class.forName(className);
-while(c1 != null){
-    for(Method m : c1.getDeclaredMethods()){
-        System.out.println(
-            Modifier.toString(m.getModifiers())+&quot;&quot;+ 
-            m.getReturnType().getCanonicalName()+&quot;&quot;+
-            m.getName()+
-            Arrays.toString(m.getParameters())
-        );
-
-    }
-    c1 = c1.getSuperclass();
-}
-</code></pre><h4 id="3-对象的检查"><a href="#3-对象的检查" class="headerlink" title="3.对象的检查"></a>3.对象的检查</h4><blockquote>
-<p>注意：在使用私有的Field和Method对象之前，我们必须让它们是可以访问的。调用 setAccessible(true) 方法可以为反射 解锁 方法或域访问限制。但模块系统或者安全管理器会阻止请求，并以这种方式保护对象不被访问。所以在这种情况下可以调用  trySetAccessible() 方法，如果域或者方法是不可以被访问的，则该方法返回false。</p>
-</blockquote>
-<h4 id="4-方法的调用"><a href="#4-方法的调用" class="headerlink" title="4.方法的调用"></a>4.方法的调用</h4><blockquote>
-<p>注意：即使 clone() 方法是所有数组类型的公有方法，当有描述数组类的Class对象上调用getMethod()方法时，返回的方法数字也不包含 clone() 方法。</p>
-</blockquote>
-<h4 id="5-对象的构造"><a href="#5-对象的构造" class="headerlink" title="5.对象的构造"></a>5.对象的构造</h4><p>如果我们需要构造对象，需要先找到 Constructor 对象，然后调用它的 newInstance() 方法。</p>
-<pre><code>Constructor const = c1.getConstructor(int.class);
-Object obj = const.newInstance(42);
-</code></pre><h4 id="2-数组的反射"><a href="#2-数组的反射" class="headerlink" title="2.数组的反射"></a>2.数组的反射</h4><pre><code>public class ReflectTest {
-    public static void main(String[] args) {
-        int [] a1 = new int[]{1,2,3};
-        int [] a2 = new int[5];
-        int [][] a3 = new int[2][3];
-        System.out.println(a1.getClass() == a2.getClass());//true
-        System.out.println(a1.getClass());//class [I
-        System.out.println(a3.getClass());//class [[I
-        System.out.println(a1.getClass().getSuperclass() == a3.getClass().getSuperclass());//true
-        System.out.println(a2.getClass().getSuperclass());//class java.lang.Object
-
-        //下句编译不通过：Error:(15, 42) java: 不可比较的类型: java.lang.Class&lt;capture#1, 共 ? extends int[]&gt;和java.lang.Class&lt;capture#2, 共 ? extends int[][]&gt;
-        //System.out.println(a1.getClass() == a3.getClass());
-
-        Object []b3 = a3;//通过
-        //下句编译不通过   Error:(17, 24) java: 不兼容的类型: int[]无法转换为java.lang.Object[]
-        //Object [] b1 = a1;
-
-        String s1 = &quot;abc&quot;;
-        System.out.println(Arrays.asList(a1));//[[I@1540e19d]
-        System.out.println(Arrays.asList(s1));//[abc]
-    }
-}
-
-output：
-    true
-    class [I
-    class [[I
-    true
-    class java.lang.Object
-    [[I@1540e19d]
-    [abc]
-</code></pre><blockquote>
-<p>注意：上面的例子说明，1.对于元素同类型的数组，同维数组，它们的class一样。2.当数组不同维时，它们的class不一样。3.当不同维时，父类都是Object，所以得到的结果都一样。4.基本类型一维数组不能直接转换为Object[]。</p>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>注意：HashCode与内存泄漏问题：1.hashcode一旦确定就不要变，否则容易出错。2.如果对象equals之后返回true，则它们的hashcode值相同。3.但是如果equals方法返回false，不一定表示两者的hashcode值不同。</p>
-</blockquote>
-</blockquote>
-<h4 id="3-配置文件的加载"><a href="#3-配置文件的加载" class="headerlink" title="3.配置文件的加载"></a>3.配置文件的加载</h4><ul>
-<li><p>类加载器加载只读配置文件<br>类名.class.getClassLoader().getResourceAsStream(str);</p>
-</li>
-<li><p>类名.class.getResourceAsStream(str);是指还是调用类加载器。</p>
-</li>
-</ul>
-<pre><code>//源码
-public InputStream getResourceAsStream(String name) {
-    name = resolveName(name);
-    ClassLoader cl = getClassLoader0();
-    if (cl==null) {
-        // A system class.
-        return ClassLoader.getSystemResourceAsStream(name);
-    }
-    return cl.getResourceAsStream(name);
-}
-</code></pre><blockquote>
-<p>注意：参数str的写法：1.不加斜杠，相对路径：str=”config.properties”; 2.加斜杠，从classpath的根路径找：str=”cn/edu/pku/config.properties”;</p>
-</blockquote>
-<h4 id="4-内省-Instropector-和JavaBean"><a href="#4-内省-Instropector-和JavaBean" class="headerlink" title="4.内省(Instropector)和JavaBean"></a>4.内省(Instropector)和JavaBean</h4><p>我们使用JavaBean获取属性值的流程大致是：变大写-&gt;补前缀-&gt;获取方法。</p>
-<ul>
-<li>1.使用内省操作<br></li>
-</ul>
-<p>简单实现： 使用java.beans.PropertyDescriptor类</p>
-<p>麻烦实现: 使用java.beans.Introspector类,遍历getBeanInfo方法的返回值</p>
-<p><strong>JavaBean必须有一个不带参数的构造函数</strong></p>
-<ul>
-<li>使用BeanUtils工具包</li>
-</ul>
-<pre><code>1.字符串和整数转换(对比(PropertyUtils)
-2.属性级联操作
-3.操作map
-</code></pre><hr>
-<h2 id="Method类-java-lang-reflect-Method"><a href="#Method类-java-lang-reflect-Method" class="headerlink" title="Method类 java.lang.reflect.Method"></a>Method类 java.lang.reflect.Method</h2><p>Method类位于java.lang.reflect.Method包下，在Java反射中Method类描述的是类的方法信息。在Method类的实例描述了方法的全部信息(如：方法修饰符、方法名称、参数列表等)。</p>
-<h4 id="1-获取Method类对象"><a href="#1-获取Method类对象" class="headerlink" title="1.获取Method类对象"></a>1.获取Method类对象</h4><pre><code>1.getMethods() 获取类的public方法
-
-2.getMethod(String name, Class[] params) 获取类的特定方法，name参数指定方法的名称，params参数指定方法的参数类型
-
-3.getDeclaredMethods() 获取类中所有的方法(public protected default private)
-
-4.getDeclaredMethod(String name, Class[] params) 获得类的特定方法,name参数指定方法的名字,params参数指定方法的参数类型
-</code></pre><h4 id="2-Method类常用方法"><a href="#2-Method类常用方法" class="headerlink" title="2.Method类常用方法"></a>2.Method类常用方法</h4><pre><code>public class MethodTest{
-    public static void main(String[] args){
-        //1.获取操作类的所对应的Class对象
-        Class&lt;?&gt; class = Class.forName(&quot;com.xidian.edu.cn.entity.User&quot;);
-        //2.使用该类的class对象生成实例
-        Object obj = class.newInstance();
-
-        //3.使用方法
-        Method addMethod = class.getMethod(&quot;addResult&quot;, new Class[]{int.class});
-        ...
-
-    }
-}
-</code></pre><blockquote>
-<p>注意：Method类的invoke(Object object, Object args[]) 方法作用是：<code>调用该对象描述的方法，传递给定的参数，返回被调用方法的返回值。如果是静态方法，则将null传递给object。</code>接收的参数必须是对象，如果参数为基本类型数据，必须转换为包装类型的对象。invoke()方法的返回值总是对象。如果实际被调用的方法的返回类型是基本类型数据，那么invoke()方法会把它转换为相应的包装类型的对象，再将其返回。</p>
-</blockquote>
-<h2 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h2><p>Proxy 类可以在运行时创建实现了给定接口或者接口集的新类。代理类包括了特定接口所要求的所有方法，并且这些方法在Object类中定义的。调用处理器：是一个实现了InvocationHandler 接口的类对象。InvocationHandler 接口只有一个方法：</p>
-<pre><code>Object invoke(Object proxy, Method method, Object[] args)
-</code></pre><p>创建一个代理对象使用 Proxy 类的 newProxyInstance() 方法。该方法有三个参数：1.类加载器。2.Class对象数组。3.调用处理器。</p>
-
-          
+<h2 id="Redis-分布式"><a href="#Redis-分布式" class="headerlink" title="Redis - 分布式"></a>Redis - 分布式</h2><p>[TOC]</p>
+<h3 id="分布式锁-多JVM"><a href="#分布式锁-多JVM" class="headerlink" title="分布式锁(多JVM)"></a>分布式锁(多JVM)</h3><p>控制分布式系统有序的去对共享资源进行操作，通过互斥来保持一致性<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/Redis - 分布式锁/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1390,7 +568,7 @@ public InputStream getResourceAsStream(String name) {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Java 多线程问题总结/">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Nginx/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bangjin-Hu">
@@ -1409,7 +587,7 @@ public InputStream getResourceAsStream(String name) {
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/undefined/Java 多线程问题总结/" itemprop="url">Runnable接口和Callable接口的区别</a></h2>
+                <a class="post-title-link" href="/undefined/Nginx/" itemprop="url">Nginx</a></h2>
         
 
         <div class="post-meta">
@@ -1437,8 +615,8 @@ public InputStream getResourceAsStream(String name) {
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:36:12+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:03:42+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -1456,8 +634,8 @@ public InputStream getResourceAsStream(String name) {
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java多线程/" itemprop="url" rel="index">
-                    <span itemprop="name">Java多线程</span>
+                  <a href="/categories/Nginx/" itemprop="url" rel="index">
+                    <span itemprop="name">Nginx</span>
                   </a>
                 </span>
 
@@ -1487,7 +665,7 @@ public InputStream getResourceAsStream(String name) {
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  755
+                  7,505
                 </span>
               
 
@@ -1503,7 +681,7 @@ public InputStream getResourceAsStream(String name) {
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  29
                 </span>
               
             </div>
@@ -1525,29 +703,18 @@ public InputStream getResourceAsStream(String name) {
 
       
         
-          
-            <blockquote class="blockquote-center"></blockquote>
+          <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="Runnable接口和Callable接口的区别"><a href="#Runnable接口和Callable接口的区别" class="headerlink" title="Runnable接口和Callable接口的区别"></a>Runnable接口和Callable接口的区别</h2><p>Runnable接口中的run()方法的返回值是void，它做的事情只是纯粹地去执行run()方法中的代码而已。Callable接口中的call()方法是有返回值的，是一个泛型，和Future、FutureTask配合可以用来获取异步执行的结果。</p>
-<blockquote>
-<p>提示：这里Callable+Future/FutureTask可以获取多线程运行的结果，可以在等待时间太长没获取到需要的数据的情况下取消该线程的任务，真的是非常有用。</p>
-</blockquote>
-<h2 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h2><p>线程安全表示程序在多线程下执行和在单线程下执行永远都能获得一样的结果，那么程序就是线程安全的。</p>
-<h4 id="线程安全级别"><a href="#线程安全级别" class="headerlink" title="线程安全级别"></a>线程安全级别</h4><pre><code>1.不可变 final类型的类，任何线程都不能改变它们的值，除非新建一个。
-
-2.绝对线程安全 
-
-...
-</code></pre><h2 id="在两线程之间共享数据"><a href="#在两线程之间共享数据" class="headerlink" title="在两线程之间共享数据"></a>在两线程之间共享数据</h2><p>通过在线程之间共享对象就可以了，然后通过wait/notify/notifyAll、await/signal/signalAll进行唤起和等待，比方说阻塞队列BlockingQueue就是为线程之间共享数据而设计的。</p>
-<h2 id="sleep-方法与wait-方法"><a href="#sleep-方法与wait-方法" class="headerlink" title="sleep()方法与wait()方法"></a>sleep()方法与wait()方法</h2><p>sleep方法和wait方法都可以用来放弃CPU一定的时间，不同点在于如果线程持有某个对象的监视器，sleep方法不会放弃这个对象的监视器，wait方法会放弃这个对象的监视器。</p>
-<h2 id="生产者消费者模型"><a href="#生产者消费者模型" class="headerlink" title="生产者消费者模型"></a>生产者消费者模型</h2><pre><code>1.通过平衡生产者的生产能力和消费者的消费能力来提升整个系统的运行效率，这是生产者消费者模型最重要的作用。
-
-2.解耦，这是生产者消费者模型附带的作用，解耦意味着生产者和消费者之间的联系少，联系越少越可以独自发展而不需要收到相互的制约。
-</code></pre><h2 id="ThreadLocal作用"><a href="#ThreadLocal作用" class="headerlink" title="ThreadLocal作用"></a>ThreadLocal作用</h2><p>简单说ThreadLocal就是一种以空间换时间的做法，在每个Thread里面维护了一个以开地址法实现的ThreadLocal.ThreadLocalMap，把数据进行隔离，数据不共享，自然就没有线程安全方面的问题了。</p>
-<h2 id="乐观锁和悲观锁"><a href="#乐观锁和悲观锁" class="headerlink" title="乐观锁和悲观锁"></a>乐观锁和悲观锁</h2><h4 id="1-乐观锁"><a href="#1-乐观锁" class="headerlink" title="1.乐观锁"></a>1.乐观锁</h4><p>乐观锁表示对于并发间操作产生的线程安全问题持乐观状态，乐观锁认为竞争不总是会发生，因此它不需要持有锁，将比较-设置这两个动作作为一个原子操作尝试去修改内存中的变量，如果失败则表示发生冲突，那么就应该有相应的重试逻辑。</p>
-<h4 id="2-悲观锁"><a href="#2-悲观锁" class="headerlink" title="2.悲观锁"></a>2.悲观锁</h4><p>悲观锁表示对于并发间操作产生的线程安全问题持悲观状态，悲观锁认为竞争总是会发生，因为每次对资源的操作都会持有一个独占的锁，就像synchronized。不管其它，直接上锁操作资源。</p>
-
-          
+<p>[TOC]</p>
+<h2 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>1.正向代理</p>
+<p>如果将局域网外的Internet想象成一个巨大的资源库，则局域网内的客户端要访问Internet需要通过代理服务器来访问，这种代理服务就称为正向代理。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/Nginx/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1597,7 +764,7 @@ public InputStream getResourceAsStream(String name) {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Java 字符串与文本IO/">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Redis 指南 - Windows/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bangjin-Hu">
@@ -1616,7 +783,7 @@ public InputStream getResourceAsStream(String name) {
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/undefined/Java 字符串与文本IO/" itemprop="url">IO</a></h2>
+                <a class="post-title-link" href="/undefined/Redis 指南 - Windows/" itemprop="url">Redis - Java集成</a></h2>
         
 
         <div class="post-meta">
@@ -1644,8 +811,8 @@ public InputStream getResourceAsStream(String name) {
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:36:41+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:03:17+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -1663,8 +830,8 @@ public InputStream getResourceAsStream(String name) {
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/IO/" itemprop="url" rel="index">
-                    <span itemprop="name">IO</span>
+                  <a href="/categories/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
                   </a>
                 </span>
 
@@ -1694,7 +861,1375 @@ public InputStream getResourceAsStream(String name) {
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,413
+                  354
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h4 id="Redis在Windows环境"><a href="#Redis在Windows环境" class="headerlink" title="Redis在Windows环境"></a>Redis在Windows环境</h4>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/Redis 指南 - Windows/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Redis - 面试总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/Redis - 面试总结/" itemprop="url">Redis - 学习</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:03:08+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4,146
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  15
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h3 id="Redis-面试总结"><a href="#Redis-面试总结" class="headerlink" title="Redis - 面试总结"></a>Redis - 面试总结</h3><p>[TOC]</p>
+<h4 id="为什么要用redis而不用map做缓存"><a href="#为什么要用redis而不用map做缓存" class="headerlink" title="为什么要用redis而不用map做缓存?"></a>为什么要用redis而不用map做缓存?</h4>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/Redis - 面试总结/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Servlet - 续/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/Servlet - 续/" itemprop="url">Servlet 续</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:02:32+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Servlet/" itemprop="url" rel="index">
+                    <span itemprop="name">Servlet</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  989
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h2><p>开发步骤：</p>
+<ul>
+<li>编写一个java类，实现servlet接口</li>
+<li>把开发好的java类部署到web服务器</li>
+</ul>
+<p>API文档</p>
+<blockquote>
+<p><a href="https://tomcat.apache.org/tomcat-8.0-doc/servletapi/index.html" target="_blank" rel="noopener">Servlet API Documentation</a></p>
+</blockquote>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/Servlet - 续/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Single Sign On/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/Single Sign On/" itemprop="url">SSO</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:02:14+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SSO/" itemprop="url" rel="index">
+                    <span itemprop="name">SSO</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  619
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>单点登录(SSO)是目前比较流行的企业业务整合的解决方案之一。SSO的定义是在多个应用系统中，用户只需要登录一次就可以访问所有相互信任的应用系统。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/Single Sign On/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Shiro/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/Shiro/" itemprop="url">Shiro</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:02:19+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Shiro/" itemprop="url" rel="index">
+                    <span itemprop="name">Shiro</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5,421
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  25
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>Shiro是简洁易用的安全框架包括(Subject,securityManager,Realms)。权限管理包括：用户认证、用户授权。</p>
+<h3 id="1-Subject"><a href="#1-Subject" class="headerlink" title="1.Subject"></a>1.Subject</h3><p>这里表示用户，表示Shiro可以表示一个实际的用户，也可以是第三方的服务，系统，或者Job等。在用户认证过程中，可以将subject主体理解为用户或者程序，要去访问系统的资源，系统需要对subject进行身份认证。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/Shiro/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/SprinMVC的由来：/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/SprinMVC的由来：/" itemprop="url">SpringMVC 由来</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T07:58:58+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SpringMVC/" itemprop="url" rel="index">
+                    <span itemprop="name">SpringMVC</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  537
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<p>jsp发展经历了两个模型时代，jsp模型一时代是把代码都写在jsp页面上，用户访问jsp页面时，jsp页面来对数据库进行操作并返回值到jsp页面，这样第一不好维护，第二安全性不高，第三代码结构不清晰，第四重用性不高。于是就有了jsp模型二时代，人们将所有的页面请求交给一个servlet控制器来接受，然后进行分发，由该servlet来决定调用其他servlet访问数据库还是进行页面跳转，这个servelt就是MVC中的C，web.xml中配置的就是总servlet控制器，为了更好的分层，重用，降低依赖性，就有了MVC，由M层接受和绑定用户的数据，V层进行展现，C层进行控制。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/SprinMVC的由来：/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Spring - IOC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/Spring - IOC/" itemprop="url">Spring IOC</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:01:03+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Spring/" itemprop="url" rel="index">
+                    <span itemprop="name">Spring</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,079
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h2 id="IoC容器"><a href="#IoC容器" class="headerlink" title="IoC容器"></a>IoC容器</h2><p><strong>1.IoC类型</strong><br><br>从注入方式可以将IoC划分成三种：1.构造函数注入。2.属性注入。3.接口注入。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/Spring - IOC/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Spring - 事务配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/Spring - 事务配置/" itemprop="url">Spring 事务配置</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:01:13+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Spring/" itemprop="url" rel="index">
+                    <span itemprop="name">Spring</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,356
                 </span>
               
 
@@ -1732,1840 +2267,19 @@ public InputStream getResourceAsStream(String name) {
 
       
         
-          
-            <blockquote class="blockquote-center"></blockquote>
+          <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="字符串和文本I-O"><a href="#字符串和文本I-O" class="headerlink" title="字符串和文本I/O"></a>字符串和文本I/O</h2><pre><code>1.字符串的比较
-    警告：如果使用像&gt; &gt;= &lt; &lt;=这样的比较运算符比较两个字符串，就会发生语法错误。替代的方法是：s1.compareTo(s2)来进行比较。
-
-    注意：如果两个字符串相等，equals方法返回true；如果它们不等，方法返回false。compareTo()方法会根据一个字符串是否等于、大于或小于另一个字符串而返回0、正整数或负整数。
-
-    警告：length()方法是String的一个方法，但它是数组对象的一个属性，所以要获取字符串s中的字符个数，必须使用 s.length() 而要获取数组a中的元素个数，必须使用s.length。
-</code></pre><blockquote>
-<p>提示：数组提供length属性来获取数组的长度，String提供了length()方法来计算字符串的长度。此外，Java中还有一个计算对象大小的方法size()方法，该方法是针对泛型集合而言，用于查看泛型中有多少个元素。</p>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>Spring MVC与Mybatis整合框架的事务管理方式有两种：1.声明式事务管理 2.编程式事务管理。</p>
+<h4 id="1-编程式事务管理和声明式事务管理"><a href="#1-编程式事务管理和声明式事务管理" class="headerlink" title="1.编程式事务管理和声明式事务管理"></a>1.编程式事务管理和声明式事务管理</h4><blockquote>
+<p>编程式事务管理使用TransactionTemplate或者直接使用底层的PlatformTransactionManager，对于编程式事务管理，spring推荐使用TransactionTemplate。</p>
 </blockquote>
-<pre><code>2.文件类File
-    File类特意提供了一种抽象，这种抽象表示以不依赖机器的方式处理很多文件和路径名依赖机器的复杂问题。
-
-    注意：在windows中目录的分隔符是(\)，但是在Java中，反斜杠是一个特殊的字符，需要转义写成(\\)。
-
-    注意：构建一个File实例并不会在机器上创建一个文件。不管文件是否存在，都可以创建任意文件名的File实例。我们可以调用File实例上的exists()方法判断文件是否存在。
-
-3.文件的输入输出
-
-    File对象封装了文件或路径的属性，但是这一File对象不包括创建文件以及向/从文件读/写数据的方法。为了完成I/O操作，我们需要使用恰当的Java I/O类创建对象。
-
-        1.PrintWriter 写数据
-            该类可以用来创建一个文件，并向文本文件中写入数据。
-            注意：如果文件不存在，那么会调用PrintWriter的构造方法创建一个新的文件。如果文件已经存在，那么文件当前内容会被抛弃。
-
-        2.使用Scanner读取数据
-            java.util.Scanner类用来从控制台读取字符串和基本类型数值。为了能够从键盘读取，需要为System.in创建一个Scanner。
-            注意：new Scanner(String) 为给定的字符串创建一个Scanner。为创建Scanner从文件中读取数据，需要使用构造方法 new File(filename) 利用 java.io.File 类创建File类的一个实例。
-</code></pre><blockquote>
-<p>总结：</p>
-</blockquote>
-<pre><code>1.字符串是封装在String类中的对象，要创建一个字符串，可以使用11种构造方法之一，也可以使用字符串直接量进行简洁初始化。
-2.String 对象是不可变的，它的内容不能改变。
-3.可以调用字符串的length()方法获取它的长度，使用charAt(index)方法从字符串中提取特定下标位置的字符，使用indexOf()方法和lastIndexOf()方法找出一个字符串中的某个字符或者某个子串。
-4.substring()方法从字符串中提取子串
-5.
-</code></pre><hr>
-<h4 id="1-序列流SequenceInputStream"><a href="#1-序列流SequenceInputStream" class="headerlink" title="1.序列流SequenceInputStream"></a>1.序列流SequenceInputStream</h4><p>序列流表示对多个流进行合并，表示其它输入流的逻辑串联。</p>
-<p>案例1：合并两个流</p>
-<pre><code>private static void testSequenceInputStream() throws IOException {
-    FileInputStream fis1 = new FileInputStream(&quot;c:\\a.txt&quot;);
-    FileInputStream fis2 = new FileInputStream(&quot;c:\\b.txt&quot;);
-
-    SequenceInputStream s1 = new SequenceInputStream(fis1,fis2);
-    int len = 0;
-    byte[] byt = new byte[1024];
-
-    FileOutputStream fos = new FileOutputStream(&quot;c:\\c.txt&quot;);
-    while((len = s1.read(byt)) != -1) {
-        fos.write(byt,0,len);
-    }
-    s1.close();
-}
-</code></pre><p>案例2：将mp3歌曲文件进行切割合并</p>
-<pre><code>public class Demo{
-    public static void main(String[] args) throws IOException {
-        split(new File(&quot;c:\\a.mp3&quot;),10,new File(&quot;c:\\&quot;));
-        System.out.println(&quot;切割完&quot;);
-
-        LinkedHashSet&lt;InputStream&gt; hs = new LinkedHashSet&lt;InputStream&gt;();
-        hs.add(new FileInputStream(new File(&quot;c:\\part.1.mp3&quot;)));
-        hs.add(new FileInputStream(new File(&quot;c:\\part.2.mp3&quot;)));
-        hs.add(new FileInputStream(new File(&quot;c:\\part.3.mp3&quot;)));
-        hs.add(new FileInputStream(new File(&quot;c:\\part.4.mp3&quot;)));
-        merage(hs, new File(&quot;c:\\merage.mp3&quot;));
-        System.out.println(&quot;合并完毕&quot;);
-    }
-
-    //合并文件函数
-    private static void merage(LinkedHashSet&lt;InputStream&gt; hs, File dest) throws IOException {
-        final Iterator&lt;InputStream&gt; it = hs.iterator();
-        FileOutputStream fos = new FileOutputStream(dest);
-        SequenceInputStream seq = new SequenceInputStream(
-                new Enumeration&lt;InputStream&gt;() {
-                    @Override
-                    public boolean hasMoreElements() {
-                        return it.hasNext();
-                    }
-                    @Override
-                    public InputStream nextElement() {
-                        return it.next();
-                    }
-                });
-        byte[] byt = new byte[1024 * 1024];
-        int len = 0;
-        while ((len = seq.read(byt)) != -1) {
-            fos.write(byt, 0, len);
-        }
-        seq.close();
-        fos.close();
-}
-
-//切割文件，切割之后保存路径
-private static void split(File src, int count, File dir) throws IOException {
-    FileInputStream fis = new FileInputStream(src);
-    FileOutputStream fos = null;
-    byte[] byt = new byte[1024 * 1024];
-    int len = 0;
-
-    for (int i = 1; i &lt;= count; i++) {
-        len = fis.read(byt);
-        if (len != -1) {
-            fos = new FileOutputStream(dir + &quot;part.&quot; + i + &quot;.mp3&quot;);
-            fos.write(byt, 0, len);
-        }
-        // fos.close();
-    }
-    fis.close();
-    }
-}
-</code></pre><h4 id="2-打印流"><a href="#2-打印流" class="headerlink" title="2.打印流"></a>2.打印流</h4><pre><code>1.PrintStream 是一个字节打印流，System.out对应的类型就是PrintStream。
-
-public static void main(String[] args){
-    PrintStream ps = System.out;
-    //普通write()方法只有调用flush()方法或者close()方法才会在控制台显示。
-    ...
-}
-</code></pre><blockquote>
-<p>注意：打印流的三种方法。1.void print(数据类型 变量) 2.println(数据类型 变量) 3.printf(String format,Object… args)</p>
-</blockquote>
-<pre><code>2.PrintWriter 是一个字符打印流，构造函数可以接收四种类型的值。
-
-1.字符串路径
-2.File对象
-3.OutputStream
-4.Writer
-</code></pre><h4 id="3-操作数组的流对象-ByteArrayInputStream-ByteArrayOutputStream"><a href="#3-操作数组的流对象-ByteArrayInputStream-ByteArrayOutputStream" class="headerlink" title="3.操作数组的流对象(ByteArrayInputStream/ByteArrayOutputStream)"></a>3.操作数组的流对象(ByteArrayInputStream/ByteArrayOutputStream)</h4><p><strong>1.操作字节数组</strong><br></p>
-<pre><code>public static void testByteArrayInputStream() throws Exception {
-    InputStream in = new ByteArrayInputStream(new bytep[] {65,66,67});
-    ByteArrayOutputStream out = new ByteArrayOutputStream();
-    for(int b = -1; (b = in.read()) != -1;){
-        out.write(b);
-    }
-    in.close();
-    out.close();
-    System.out.println(Arrays.toString(out.toByteArray()));
-    System.out.println(out);
-}
-</code></pre><p><strong>2.操作字符数组</strong><br></p>
-<pre><code>public static void testCharArrayReader() throws Exception {
-    CharArrayReader reader = new CharArrayReader(new char[] {&apos;A&apos;,&apos;b&apos;,&apos;c&apos;});
-    CharArrayWriter writer = new CharArrayWriter();
-    for(int b = -1; (b = reader.reade() != -1);){
-        writer.write(b);
-    }
-    reader.close();
-    writer.close();
-    System.out.println(writer.toCharArray());
-}
-</code></pre><hr>
-
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Java 并发编程之美/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/Java 并发编程之美/" itemprop="url">Java并发编程之美</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:37:16+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/并发编程/" itemprop="url" rel="index">
-                    <span itemprop="name">并发编程</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  4,823
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  19
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="Java并发编程之美"><a href="#Java并发编程之美" class="headerlink" title="Java并发编程之美"></a>Java并发编程之美</h2><p>[TOC]</p>
-<h3 id="第1章-基础"><a href="#第1章-基础" class="headerlink" title="第1章 基础"></a>第1章 基础</h3><h3 id="第2章-基础扩展"><a href="#第2章-基础扩展" class="headerlink" title="第2章 基础扩展"></a>第2章 基础扩展</h3><h3 id="第3章-Java并发包ThreadLocalRandom类原理剖析"><a href="#第3章-Java并发包ThreadLocalRandom类原理剖析" class="headerlink" title="第3章 Java并发包ThreadLocalRandom类原理剖析"></a>第3章 Java并发包ThreadLocalRandom类原理剖析</h3><p>该类是JUC包下新增的随机数生成器，弥补Random类在多线程下的缺陷。</p>
-<h4 id="3-1-Random类的局限性"><a href="#3-1-Random类的局限性" class="headerlink" title="3.1 Random类的局限性"></a>3.1 Random类的局限性</h4><p>每个Random实例里面都有一个原子性的种子变量用来记录当前的种子值，当要生成新的随机数时需要根据当前种子计算新的种子并更新回原子变量。</p>
-<p>在多线程环境下使用单个Random实例生成随机数时，当多个线程同时计算随机数来计算新的种子时，多个线程会竞争同一个原子变量的更新操作，由于原子变量的更新是CAS操作，同时只有一个线程会成功，所以会造成大量线程进行自旋重试，会降低并发性能。</p>
-<h4 id="3-2-ThreadLocalRandom"><a href="#3-2-ThreadLocalRandom" class="headerlink" title="3.2 ThreadLocalRandom"></a>3.2 ThreadLocalRandom</h4><pre><code>package com.ccpc.edu.xidian.cn.ccpc.example.random;
-
-import java.util.concurrent.ThreadLocalRandom;
-
-public class example1 {
-
-    public static void main(String[] args) {
-        ThreadLocalRandom random = ThreadLocalRandom.current();
-        for (int i = 0; i &lt; 10; i++){
-            System.out.println(random.nextInt(5));
-        }
-    }
-}
-</code></pre><p>ThreadLocalRandom random = ThreadLocalRandom.current();来获取当前线程的随机数生成器。</p>
-<p>==ThreadLocalRandom 可以被联想到ThreadLocal（通过让每一个线程复制一份变量，使得每一个线程对变量进行操作时实际是操作自己本地内存的副本，从而避免对共享变量进行同步）。ThreadLocalRandom 的实现也是如此。==</p>
-<blockquote>
-<p>提示：Random类的缺点是多个线程会使用同一个原子性种子变量，从而导致对原子变量更新的竞争。</p>
-</blockquote>
-<h4 id="3-3-源码分析"><a href="#3-3-源码分析" class="headerlink" title="3.3 源码分析"></a>3.3 源码分析</h4><p>ThreadLocalRandom 类似于一个ThreadLocal类，就是个工具类。当线程调用ThreadLocalRandom负责初始化调用线程的threadLocalRandomSeed变量，也就是初始化种子。</p>
-<p>当多线程通过ThreadLocalRandom random = ThreadLocalRandom.current();获取ThreadLocalRandom 实例时，其实获取的是同一个实例。但是由于具体的种子是存放在线程里面的，所以在ThreadLocalRandom 实例里面只包含与线程无关的通用算法，是线程安全的。</p>
-<h4 id="3-4-总结"><a href="#3-4-总结" class="headerlink" title="3.4 总结"></a>3.4 总结</h4><p>ThreadLocalRandom 使用ThreadLocal的原理，让每个线程都持有一本地种子变量，该种子变量只有在使用随机数时才会被初始化。在多线程下==计算新种子时时根据自己线程内维护的种子变量进行更新，从而避免竞争。==</p>
-<hr>
-<h3 id="第4章-Java-并发包中原子操作类原理剖析"><a href="#第4章-Java-并发包中原子操作类原理剖析" class="headerlink" title="第4章 Java 并发包中原子操作类原理剖析"></a>第4章 Java 并发包中原子操作类原理剖析</h3><p>JUC包提供一系列原子性操作类，这些类都使用非阻塞算法CAS实现的，相比锁实现原子性操作在性能上有很大的提升。</p>
-<h4 id="4-1-原子变量操作类"><a href="#4-1-原子变量操作类" class="headerlink" title="4.1 原子变量操作类"></a>4.1 原子变量操作类</h4><p>JUC并发包包含有 AtomicInteger、AtomicLong等。它们原理相似。</p>
-<p>AtomicLong是原子性递增或递减类，其内部使用Unsafe来实现。</p>
-<p>因为AtomincLong类也是在rt.jar包下面，AtomicLong就是通过BootStrap类加载器进行加载的。所以能够通过Unsafe.getUnsafe()方法获取Unsafe的实例。</p>
-<h4 id="4-2-LongAdder"><a href="#4-2-LongAdder" class="headerlink" title="4.2 LongAdder"></a>4.2 LongAdder</h4><p>AtomicLong通过CAS提供了非阻塞的原子性操作，相比于使用阻塞算法的同步器来说它好。</p>
-<p>在高并发下大量线程会同时去竞争更新同一个原子变量，但是由于同时只有一个线程的CAS操作会成功，这就造成了大量线程竞争失败后，会通过无限循环不断进行自旋尝试CAS操作，这就会白白浪费CPU资源。</p>
-<p>在JDK8中使用LongAdder用来克服在高并发下使用AtomicLong的缺点。</p>
-<p>在LongAdder内部维护多个Cell变量，每个Cell变量里面有一个初始值为0的long型变量。在这种情况下，相对AtomicLong来说争夺单个变量更新操作的线程量会减少，所以变相的减少了争夺共享资源的并发量。</p>
-<p>另外，多个线程在争夺同一个Cell原子变量时如果失败，并不是在当前Cell变量上一直自旋CAS重试，而是尝试在其它Cell的变量上进行CAS尝试，这改变增加了当前线程CAS成功的可能性。</p>
-<p>最后在获取LongAdder当前值时，是将所有Cell变量的value值累加后再加上base返回的。</p>
-<blockquote>
-<p>提示：LongAdder维护了一个延迟初始化的原子性更新数组（默认情况下Cell数组是null）和一个基值变量base。</p>
-</blockquote>
-<h4 id="4-3-LongAccumulator类"><a href="#4-3-LongAccumulator类" class="headerlink" title="4.3 LongAccumulator类"></a>4.3 LongAccumulator类</h4><p>LongAdder是LongAccumulator的特例。</p>
-<p>LongAccumulator相比于LongAdder可以为累加器提供非0的初始值，后者只能提供默认的0值。同时前者能够指定累加规则</p>
-<hr>
-<h3 id="第5章-Java并发包中并发List源码剖析"><a href="#第5章-Java并发包中并发List源码剖析" class="headerlink" title="第5章 Java并发包中并发List源码剖析"></a>第5章 Java并发包中并发List源码剖析</h3><p>在并发包中只有CopyOnWriteArrayList，是一个线程安全的ArrayList，对其进行的修改操作都是在底层的一个复制的数组（快照）上进行的，也是使用了写时复制策略。</p>
-<blockquote>
-<p>提示：在CopyOnWriteArrayList中迭代器的弱一致性是指返回迭代器之后，其它线程对list的增删改对迭代器是不可见的。</p>
-</blockquote>
-<h4 id="5-3-总结"><a href="#5-3-总结" class="headerlink" title="5.3 总结"></a>5.3 总结</h4><p>CopyOnWriteArrayList 使用写时复制的策略来保证list的一致性，而获取-修改-写入三步操作并不是原子性的，所以在增删改的过程中都使用独占锁，来保证某个时间只有一个线程能对list数组进行修改。</p>
-<p>另外，CopyOnWriteArrayList提供了弱一致性的迭代器，从而保证在获取迭代器后，其它线程对list的修改是不可见的，迭代器遍历的数组是一个快照。</p>
-<hr>
-<h3 id="第6章-Java并发包中锁原理剖析"><a href="#第6章-Java并发包中锁原理剖析" class="headerlink" title="第6章 Java并发包中锁原理剖析"></a>第6章 Java并发包中锁原理剖析</h3><h4 id="6-1-LockSupport工具类"><a href="#6-1-LockSupport工具类" class="headerlink" title="6.1 LockSupport工具类"></a>6.1 LockSupport工具类</h4><p>JDK中的rt.jar包里面的LockSupport是个工具类，它的主要作用是唤醒和挂起线程，该工具类是创建锁和其它同步类的基础。</p>
-<p>LockSupport 与每个使用它的线程都关联一个许可证，在默认情况下调用LockSupport类的方法的线程是不持有许可证的。</p>
-<p>LockSupport 是使用Unsafe类实现的。</p>
-<h5 id="1-void-park-方法"><a href="#1-void-park-方法" class="headerlink" title="1. void park()方法"></a>1. void park()方法</h5><p>如果调用park()方法的线程已经拿到了与LockSupport关联的许可证，则调用LockSupport.park()时会马上返回，否则调用线程会被禁止参与线程的调度（被挂起）。</p>
-<blockquote>
-<p>提示：因调用park()方法而被阻塞的线程被其它线程中断而返回时并不会抛出InterruptedException异常。</p>
-</blockquote>
-<h5 id="2-void-unpark-Thread-thread-方法"><a href="#2-void-unpark-Thread-thread-方法" class="headerlink" title="2. void unpark(Thread thread)方法"></a>2. void unpark(Thread thread)方法</h5><p>当一个线程调用unpark()时，如果参数thread线程没有持有与LockSupport类关联的许可证，则让thread线程持有。</p>
-<p>如果thread之前因为调用park()而被挂起，在调用unpark()之后，该线程会被唤醒。</p>
-<h5 id="3-void-parkNanos-long-nanos-方法"><a href="#3-void-parkNanos-long-nanos-方法" class="headerlink" title="3. void parkNanos(long nanos)方法"></a>3. void parkNanos(long nanos)方法</h5><p>该方法与park()方法类似，不同在于如果没有拿到许可证，则调用线程会被挂起nanos时间后修改为自动返回。</p>
-<p>…</p>
-<h4 id="6-2-抽象同步队列AQS"><a href="#6-2-抽象同步队列AQS" class="headerlink" title="6.2 抽象同步队列AQS"></a>6.2 抽象同步队列AQS</h4><h5 id="1-AQS概述"><a href="#1-AQS概述" class="headerlink" title="1. AQS概述"></a>1. AQS概述</h5><p>它是实现同步器的基础组件，并发包中锁的底层就是使用AQS实现的。</p>
-<h4 id="6-3-独占锁-ReentrantLock-原理"><a href="#6-3-独占锁-ReentrantLock-原理" class="headerlink" title="6.3 独占锁 ReentrantLock 原理"></a>6.3 独占锁 ReentrantLock 原理</h4><h5 id="1-类图结构"><a href="#1-类图结构" class="headerlink" title="1. 类图结构"></a>1. 类图结构</h5><p>ReentrantLock 是可重入独占锁，同时只能有一个线程可以获取该锁，其它获取该锁的线程会被阻塞而被放入该锁的AQS阻塞队列里面。</p>
-<p>ReentrantLock 最终还是使用AQS实现，并且根据参数来决定内部是公平还是非公平锁，默认非公平锁。</p>
-<h4 id="6-4-读写锁-ReentrantReadWriteLock-的原理"><a href="#6-4-读写锁-ReentrantReadWriteLock-的原理" class="headerlink" title="6.4 读写锁 ReentrantReadWriteLock 的原理"></a>6.4 读写锁 ReentrantReadWriteLock 的原理</h4><p>解决线程安全使用ReentrantLock就可以，但是ReentrantLock是独占锁，某时只有一个线程可以获取该锁，而在实际中会有写少读多的场景。</p>
-<p>ReentrantReadWriteLock 采用读写分离的策略，允许多个线程可以同时获取读锁。</p>
-<p>ReentrantReadWriteLock 巧妙使用state的高16位表示读状态，也就是获取到读锁的次数。使用低16位表示获取到写锁的线程的可重入次数。</p>
-<h4 id="6-5-StampedLock"><a href="#6-5-StampedLock" class="headerlink" title="6.5 StampedLock"></a>6.5 StampedLock</h4><hr>
-<h3 id="第7章-并发队列原理剖析"><a href="#第7章-并发队列原理剖析" class="headerlink" title="第7章 并发队列原理剖析"></a>第7章 并发队列原理剖析</h3><h4 id="7-1-ConcurrentLinkedQueue-原理探究"><a href="#7-1-ConcurrentLinkedQueue-原理探究" class="headerlink" title="7.1 ConcurrentLinkedQueue 原理探究"></a>7.1 ConcurrentLinkedQueue 原理探究</h4><p>ConcurrentLinkedQueue 是线程安全的无界非阻塞队列，底层使用单向链表实现，对入队和出队操作使用CAS来实现线程安全。</p>
-<h4 id="7-2-LinkedBlockingQueue-原理探究"><a href="#7-2-LinkedBlockingQueue-原理探究" class="headerlink" title="7.2 LinkedBlockingQueue 原理探究"></a>7.2 LinkedBlockingQueue 原理探究</h4><p>该队列是使用独占锁实现的阻塞队列。</p>
-<h5 id="1-offer"><a href="#1-offer" class="headerlink" title="1. offer()"></a>1. offer()</h5><p>向队列尾部插入一个元素。</p>
-<h5 id="2-put"><a href="#2-put" class="headerlink" title="2. put()"></a>2. put()</h5><p>向队列尾部插入一个元素，如果队列中有空闲则插入后直接返回，否则队列已满则阻塞当前线程，直到队列有空闲插入成功后返回。</p>
-<h5 id="3-poll"><a href="#3-poll" class="headerlink" title="3. poll()"></a>3. poll()</h5><p>从队列头部获取并移除一个元素，如果队列为空则返回null。该方法不是阻塞的。</p>
-<h5 id="4-peek"><a href="#4-peek" class="headerlink" title="4. peek()"></a>4. peek()</h5><p>….</p>
-<hr>
-<h3 id="第8章-Java并发包线程池ThreadPoolExecutor原理探究"><a href="#第8章-Java并发包线程池ThreadPoolExecutor原理探究" class="headerlink" title="第8章 Java并发包线程池ThreadPoolExecutor原理探究"></a>第8章 Java并发包线程池ThreadPoolExecutor原理探究</h3><p>线程池解决：1. 在执行大量异步任务时线程池能够提供较好的性能。2. 线程池提供了一种资源限制和管理的手段，可限制线程的个数，动态新增线程等。</p>
-<h4 id="8-3-源码分析"><a href="#8-3-源码分析" class="headerlink" title="8.3 源码分析"></a>8.3 源码分析</h4><h5 id="1-public-void-execute-Runnable-command"><a href="#1-public-void-execute-Runnable-command" class="headerlink" title="1. public void execute(Runnable command)"></a>1. public void execute(Runnable command)</h5><p>该方法作用是提交任务command到线程池进行执行。</p>
-<hr>
-<h3 id="第9章-Java并发包-ScheduledThreadPoolExecutor-原理"><a href="#第9章-Java并发包-ScheduledThreadPoolExecutor-原理" class="headerlink" title="第9章 Java并发包 ScheduledThreadPoolExecutor 原理"></a>第9章 Java并发包 ScheduledThreadPoolExecutor 原理</h3><p>ThreadPoolExecutor只是Executors工具的部分功能。ScheduledThreadPoolExecutor 是一个可以在指定一定延迟时间后或者定时进行任务调度执行的线程池。</p>
-<h4 id="9-2-类图介绍"><a href="#9-2-类图介绍" class="headerlink" title="9.2 类图介绍"></a>9.2 类图介绍</h4><pre><code>/**
- * Period in nanoseconds for repeating tasks.  A positive
- * value indicates fixed-rate execution.  A negative value
- * indicates fixed-delay execution.  A value of 0 indicates a
- * non-repeating task.
- */
-private final long period;
-</code></pre><p>在ScheduledFutureTask内部有一个变量period用来表示任务类型。</p>
-<pre><code>period = 0 表示一次性任务，执行完便退出。
-
-period &lt; 0 表示fixed-delay以固定延迟的定时可可重复执行任务
-
-period &gt; 0 表示fixed-rate以固定频率的定时可重复执行任务
-</code></pre><h4 id="9-3-原理剖析"><a href="#9-3-原理剖析" class="headerlink" title="9.3 原理剖析"></a>9.3 原理剖析</h4><h5 id="1-schedule"><a href="#1-schedule" class="headerlink" title="1. schedule"></a>1. schedule</h5><pre><code>/**
- * @throws RejectedExecutionException {@inheritDoc}
- * @throws NullPointerException       {@inheritDoc}
- */
-public ScheduledFuture&lt;?&gt; schedule(Runnable command,
-                                   long delay,
-                                   TimeUnit unit) {
-    if (command == null || unit == null)
-        throw new NullPointerException();
-
-    //任务转换
-    RunnableScheduledFuture&lt;?&gt; t = decorateTask(command,
-        new ScheduledFutureTask&lt;Void&gt;(command, null,
-                                      triggerTime(delay, unit)));
-
-    //添加任务到延迟队列
-    delayedExecute(t);
-    return t;
-}
-</code></pre><p>该方法的作用是提交一个延迟执行的任务，任务从提交时间算起，延迟单位为unit的delay时间后开始执行，提交的任务不是周期性任务，任务只会执行一次。</p>
-<h5 id="2-scheduleWithFixedDelay"><a href="#2-scheduleWithFixedDelay" class="headerlink" title="2. scheduleWithFixedDelay"></a>2. scheduleWithFixedDelay</h5><pre><code>/**
- * @throws RejectedExecutionException {@inheritDoc}
- * @throws NullPointerException       {@inheritDoc}
- * @throws IllegalArgumentException   {@inheritDoc}
- */
-public ScheduledFuture&lt;?&gt; scheduleWithFixedDelay(Runnable command,
-                                                 long initialDelay,
-                                                 long delay,
-                                                 TimeUnit unit) {
-    if (command == null || unit == null)
-        throw new NullPointerException();
-    if (delay &lt;= 0)
-        throw new IllegalArgumentException();
-
-    //任务转换，注意这里是period=-delay&lt;0
-    ScheduledFutureTask&lt;Void&gt; sft =
-        new ScheduledFutureTask&lt;Void&gt;(command,
-                                      null,
-                                      triggerTime(initialDelay, unit),
-                                      unit.toNanos(-delay));
-    RunnableScheduledFuture&lt;Void&gt; t = decorateTask(command, sft);
-    sft.outerTask = t;
-    delayedExecute(t);
-    return t;
-}
-</code></pre><p>当任务执行完毕之后，让其延迟固定时间后再次运行。initialDelay表示提交任务后延迟多少时间来开始执行command，delay表示任务执行完后延长多少时间再次运行command任务，unit时间单位。</p>
-<p>任务会一直运行直到任务运行中抛出异常被取消或者关闭线程池。</p>
-<h5 id="3-总结"><a href="#3-总结" class="headerlink" title="3. 总结"></a>3. 总结</h5><p>fixed-delay类型的任务执行原理是，==当添加一个任务到延迟队列后，等待initialDelay时间后，任务就会过期，过期的任务就会被从队列移除，并执行。== 执行完毕后，会重新设置任务的延迟时间，然后再将任务放入延迟队列，循环往复。</p>
-<blockquote>
-<p>注意：如果一个任务在执行过程中抛出异常，那么这个任务就结束了，但是不影响其它任务的执行。</p>
-</blockquote>
-<h5 id="4-scheduleAtFixedRate"><a href="#4-scheduleAtFixedRate" class="headerlink" title="4. scheduleAtFixedRate"></a>4. scheduleAtFixedRate</h5><pre><code>/**
- * @throws RejectedExecutionException {@inheritDoc}
- * @throws NullPointerException       {@inheritDoc}
- * @throws IllegalArgumentException   {@inheritDoc}
- */
-public ScheduledFuture&lt;?&gt; scheduleAtFixedRate(Runnable command,
-                                              long initialDelay,
-                                              long period,
-                                              TimeUnit unit) {
-    if (command == null || unit == null)
-        throw new NullPointerException();
-    if (period &lt;= 0)
-        throw new IllegalArgumentException();
-    ScheduledFutureTask&lt;Void&gt; sft =
-        new ScheduledFutureTask&lt;Void&gt;(command,
-                                      null,
-                                      triggerTime(initialDelay, unit),
-                                      unit.toNanos(period));
-    RunnableScheduledFuture&lt;Void&gt; t = decorateTask(command, sft);
-    sft.outerTask = t;
-    delayedExecute(t);
-    return t;
-}
-</code></pre><p>该方法是相对起始时间点以固定频率调用指定任务（fixed-rate任务）。当将任务提交到线程池并延迟initialDelay时间（时间单位为unit）后开始执行任务command。然后从initialDelay+period时间点再次执行，然后在initialDelay+2*period时间点再次执行，循环往复，直到抛出异常或调用了任务的cancel()方法取消任务或者关闭线程池。</p>
-<p>scheduleAtFixedRate 原理与 scheduleWithFixedDelay 类似。</p>
-<h5 id="5-总结"><a href="#5-总结" class="headerlink" title="5. 总结"></a>5. 总结</h5><p>相对于fixed-delay任务来说，fixed-rate方式执行规则是，时间为 initialDelay+n*period 时间启动任务，但是如果当前任务还没执行完，下一次要执行任务的时间到了，并不会并发执行，下次要执行的任务会被延迟执行。</p>
-<h4 id="9-4-总结"><a href="#9-4-总结" class="headerlink" title="9.4 总结"></a>9.4 总结</h4><p>ScheduledThreadPoolExecutor 的实现原理是，内部使用 DelayQueue 来存放具体任务。任务分为3种：1. 一次性执行任务，执行完毕之后就结束，fixed-delay任务保证同一个任务在多次执行之间间隔固定时间。2. fixed-rate任务保证按照固定的频率执行，任务类型施一公period的值来区分。</p>
-<hr>
-<h3 id="第10章-Java并发包中线程同步器原理剖析"><a href="#第10章-Java并发包中线程同步器原理剖析" class="headerlink" title="第10章 Java并发包中线程同步器原理剖析"></a>第10章 Java并发包中线程同步器原理剖析</h3><h4 id="10-1-CountDownLatch原理"><a href="#10-1-CountDownLatch原理" class="headerlink" title="10.1 CountDownLatch原理"></a>10.1 CountDownLatch原理</h4><p>在CountDownLatch出现之前一般都是使用join()方法来实现这一点，但是join()方法不够灵活，不能够满足不同场景的需求。</p>
-<blockquote>
-<p>总结：CountDownLatch与join()方法区别：1. 调用一个子线程join()方法之后，会一直阻塞直到子线程运行完毕。2. countDownLatch使用计数器来允许子线程运行完毕或者在运行中递减计数，可以在子线程运行的任何时候让await()方法返回而不一定必须等到线程结束。 ==另外，使用线程池来管理线程时，一般都是直接添加Runnable到线程池，这时候就没法再次调用线程的join()方法。</p>
-</blockquote>
-<h5 id="1-void-await"><a href="#1-void-await" class="headerlink" title="1. void await()"></a>1. void await()</h5><p>在线程调用CountDownLatch对象的await()方法之后，当前线程会被阻塞，直到：1. 当所有线程都调用了CountDownLatch对象的countDown()方法后，计数器值为0。2. 其它线程调用了当前线程的interrupt()方法中断了当前线程，当前线程会抛出IE异常，然后返回。</p>
-<h5 id="2-boolean-await-long-timeout-TimeUnit-unit"><a href="#2-boolean-await-long-timeout-TimeUnit-unit" class="headerlink" title="2. boolean await(long timeout, TimeUnit unit)"></a>2. boolean await(long timeout, TimeUnit unit)</h5><p>在线程调用CountDownLatch对象的await()方法之后，当前线程会被阻塞，直到：1. 所有线程都调用了CountDownLatch对象的countDown方法后，计数器值为0时，返回true。2. 设置的timeout时间到了，因为超时返回false。3. 其它线程调用了当前线程的interrupt()方法中断了当前线程，当前线程抛出IE异常，然后返回。</p>
-<h5 id="3-void-countDown"><a href="#3-void-countDown" class="headerlink" title="3. void countDown()"></a>3. void countDown()</h5><p>线程调用该方法之后，计数器的值递减，递减后如果计数器值为0则唤醒所有因调用await()方法而被阻塞的线程，否则什么都不用做。</p>
-<h5 id="4-long-getCount"><a href="#4-long-getCount" class="headerlink" title="4. long getCount()"></a>4. long getCount()</h5><p>获取当前计数器的值，也就是AQS的state值，一般在测试时使用该方法。</p>
-<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>CountDownLatch是使用AQS的状态变量来存放计数器的值。在计数器值变为0时，当前线程还要调用AQS的doReleaseShared()方法来激活由于调用await()方法而被阻塞的线程。</p>
-<h4 id="10-2-回环屏障-CyclicBarrier-原理"><a href="#10-2-回环屏障-CyclicBarrier-原理" class="headerlink" title="10.2 回环屏障 CyclicBarrier 原理"></a>10.2 回环屏障 CyclicBarrier 原理</h4><p>因为CountDownLatch的计数器是一次性的，在等到计数器值变为0后，再调用CountDownLatch的await()和countDown()方法都会立刻返回，这就起不到线程同步的效果。</p>
-<p>CyclicBarrier 的功能并不限于CountDownLatch的功能。它可以让一组线程全部达到一个状态后再全部同时执行。</p>
-<p>线程在调用 await() 方法之后就会被阻塞，等到所有线程都调用了 await() 方法之后，线程们就会冲破屏障，继续向下运行。</p>
-<pre><code>/**
- * Creates a new {@code CyclicBarrier} that will trip when the
- * given number of parties (threads) are waiting upon it, and which
- * will execute the given barrier action when the barrier is tripped,
- * performed by the last thread entering the barrier.
- *
- * @param parties the number of threads that must invoke {@link #await}
- *        before the barrier is tripped
- * @param barrierAction the command to execute when the barrier is
- *        tripped, or {@code null} if there is no action
- * @throws IllegalArgumentException if {@code parties} is less than 1
- */
-public CyclicBarrier(int parties, Runnable barrierAction) {
-    if (parties &lt;= 0) throw new IllegalArgumentException();
-    this.parties = parties;
-    this.count = parties;
-    this.barrierCommand = barrierAction;
-}
-</code></pre><h5 id="1-int-await"><a href="#1-int-await" class="headerlink" title="1. int await()"></a>1. int await()</h5><p>当前线程调用该方法时会被阻塞，直到满足条件：1. parties个线程都调用了await()方法，也就是线程到达屏障点。2. 其它线程调用了当前线程的interrupt()方法中断了当前线程，则当前线程抛出IE异常返回。返回。</p>
-<h5 id="2-boolean-await-long-timeout-TimeUnit-unit-1"><a href="#2-boolean-await-long-timeout-TimeUnit-unit-1" class="headerlink" title="2. boolean await(long timeout, TimeUnit unit)"></a>2. boolean await(long timeout, TimeUnit unit)</h5><p>当前线程调用该方法阻塞，直到满足条件返回：1. parties个线程都调用了await()方法返回true。2. 设置的超时时间到了后返回false。3. 其它线程调用当前线程的interrupt()方法中断当前线程，则抛出IE异常并返回。</p>
-<h5 id="3-int-dowait-boolean-timed-long-nanos"><a href="#3-int-dowait-boolean-timed-long-nanos" class="headerlink" title="3. int dowait(boolean timed, long nanos)"></a>3. int dowait(boolean timed, long nanos)</h5><pre><code>private int dowait(boolean timed, long nanos)
-    throws InterruptedException, BrokenBarrierException,
-           TimeoutException {
-    final ReentrantLock lock = this.lock;
-    lock.lock();
-    try {
-        ...
-        int index = --count;
-        if (index == 0) {  // tripped
-            boolean ranAction = false;
-            try {
-                final Runnable command = barrierCommand;
-                if (command != null)
-                    command.run();
-                ranAction = true;
-                nextGeneration();
-                return 0;
-            } finally {
-                if (!ranAction)
-                    breakBarrier();
-            }
-        }
-
-        // loop until tripped, broken, interrupted, or timed out
-        for (;;) {
-            try {
-                if (!timed)
-                    trip.await();
-                else if (nanos &gt; 0L)
-                    nanos = trip.awaitNanos(nanos);
-            } catch (InterruptedException ie) {
-                if (g == generation &amp;&amp; ! g.broken) {
-                    breakBarrier();
-                    throw ie;
-                } else {
-                    Thread.currentThread().interrupt();
-                }
-            }
-            ...
-        }
-    } finally {
-        lock.unlock();
-    }
-}
-</code></pre><p>当线程调用 dowait() 方法之后，首先会获取独占锁lock，如果在创建 CyclicBarrier 时传递的参数是10，那么后面9个调用线程会被阻塞。然后获取到锁的线程会对计数器count进行递减操作。</p>
-<h4 id="10-3-信号量-Semaphore-原理"><a href="#10-3-信号量-Semaphore-原理" class="headerlink" title="10.3 信号量 Semaphore 原理"></a>10.3 信号量 Semaphore 原理</h4><p>它内部的计数器是递增的，并且在一开始初始化 Semaphore 时可以指定一个初始值，但不需要知道需要同步的线程个数，而是在需要同步的地方调用 acquire() 方法时指定需要同步的线程个数。</p>
-<blockquote>
-<p>提示：如果在构建Semaphore时传递的参数N，并在M个线程中调用了该信号量的release()方法，那么在调用acquire()使M个线程同步时传递的参数应该是M+N。</p>
-</blockquote>
-<h5 id="1-void-acquire"><a href="#1-void-acquire" class="headerlink" title="1. void acquire()"></a>1. void acquire()</h5><p>当前线程调用该方法的目的是希望获取一个信号量资源。</p>
-<p>如果当前信号量个数大于0，则当前信号量的计数会减1，然后该方法直接返回。否则如果当前信号量个数等于0，则当前线程会被放入AQS的阻塞队列。</p>
-<p>当其它线程调用了当前线程的interrupt()方法中断了当前线程时，则当前线程抛出IE异常返回。</p>
-<h5 id="2-void-acquire-int-permits"><a href="#2-void-acquire-int-permits" class="headerlink" title="2. void acquire(int permits)"></a>2. void acquire(int permits)</h5><p>该方法只需要获取permits个信号量值。</p>
-<h5 id="3-void-acquireUniterruptibly"><a href="#3-void-acquireUniterruptibly" class="headerlink" title="3. void acquireUniterruptibly()"></a>3. void acquireUniterruptibly()</h5><p>该方法与acquire()方法类似，不同在于该方法对中断不响应。</p>
-<h5 id="4-void-acquireUniterruptibly-int-permits"><a href="#4-void-acquireUniterruptibly-int-permits" class="headerlink" title="4. void acquireUniterruptibly(int permits)"></a>4. void acquireUniterruptibly(int permits)</h5><p>与acquire(int permits)方法不一样在于该方法对中断不响应。</p>
-<h5 id="5-void-release"><a href="#5-void-release" class="headerlink" title="5. void release()"></a>5. void release()</h5><p>该方法作用在于将当前的Semaphore对象的信号量值增加1，如果当前线程因为调用acquire()方法被阻塞而被放入AQS的阻塞队列，则会根据公平策略选择一个信号量个数能被满足的线程进行激活，激活的线程会尝试获取刚增加的信号量。</p>
-<h5 id="6-void-release-int-permits"><a href="#6-void-release-int-permits" class="headerlink" title="6. void release(int permits)"></a>6. void release(int permits)</h5><p>与方法release()不同的在于，前者每次调用会在信号量值原来的基础上增加permits，而后者每次增加1。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Java 序列化与反序列化/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/Java 序列化与反序列化/" itemprop="url">Redis - Java集成</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T08:41:36+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Redis/" itemprop="url" rel="index">
-                    <span itemprop="name">Redis</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  673
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<p>[TOC]</p>
-<h2 id="序列化-反序列化"><a href="#序列化-反序列化" class="headerlink" title="序列化/反序列化"></a>序列化/反序列化</h2><p>所有要实现序列化的类都必须要实现Serializable接口(位于java.lang包中)。如果一个类能够被序列化，那么它的子类也能够被序列化。由于static代表类的成员，transient(Java语言关键字 当其声明一个实例变量时，当对象存储时，它的值不需要维持)代表对象的临时数据。</p>
-<h3 id="1-使用序列化的场合"><a href="#1-使用序列化的场合" class="headerlink" title="1.使用序列化的场合"></a>1.使用序列化的场合</h3><pre><code>1.需要通过网络来发送对象，或对象的状态需要被持久化到数据库或文件中。
-2.序列化能实现深复制，即可以复制引用对象。
-</code></pre><h3 id="2-反序列化"><a href="#2-反序列化" class="headerlink" title="2.反序列化"></a>2.反序列化</h3><p>将流转换为对象，在序列化与反序列化的过程中，serialVersionID起着非常重要的作用，所以在编程的时候最好显示的声明 static final serialVersionID 。</p>
-<pre><code>自定义serialVersionID优点：
-    1.提高程序的运行效率
-    2.提高程序不同平台上的兼容性
-    3.增强程序各个版本之间的可兼容性
-</code></pre><h3 id="3-对象序列化-存储-的方法步骤"><a href="#3-对象序列化-存储-的方法步骤" class="headerlink" title="3.对象序列化(存储)的方法步骤"></a>3.对象序列化(存储)的方法步骤</h3><pre><code>1.创建FileOutputStream，如果文件不存在会自动被创建
-FileOutputStream fileStream = new FileOutputStream(&quot;file.ser&quot;);//创建存储文件的对象
-2.创建ObjectOutputStream
-ObjectOutputStream os = new ObjectOutputStream(fileStream);
-3.写入对象
-os.writeObject(characterOne);
-4.关闭ObjectOutputStream
-os.close();//关闭所关联的输出串流
-</code></pre><blockquote>
-<p>提示：如果需要类被序列化，就实现Serializable接口，此接口没有任何方法需要实现。其唯一的目的就是声明有实现它的类是可以被序列化的。即此类型对象可以通过序列化机制来进行存储。</p>
-</blockquote>
-<h3 id="4-对象反序列化的步骤"><a href="#4-对象反序列化的步骤" class="headerlink" title="4.对象反序列化的步骤"></a>4.对象反序列化的步骤</h3><pre><code>1.创建FileInputStream类
-FileInputStream fileStream = new FileInputStream(&quot;myfile.ser&quot;);
-2.创建ObjectInputStream
-ObjectInputStream os = new ObjectInputStream(fileStream);
-3.读取文件
-Object one = os.readObject();//每次调用readObject()都会从stream中读取下一个对象
-4.转换对象类型
-类型 name = (类型) one;//返回值是Object类型，因此需要转换类型
-5.关闭ObjectInputStream
-os.close();//FileInputStream会自动跟着关掉
-</code></pre><blockquote>
-<p>反序列化是，Java虚拟机会通过尝试在堆上创建一个新的对象，让它维持与被序列化时有相同状态来恢复对象的原状。</p>
-</blockquote>
-<pre><code>package cn.edu.xidian.B.redis;
-
-import java.io.*;
-
-public class SerializeUtil {
-
-    /**
-     * 序列化
-     * @param object
-     * @return
-     */
-    public static byte[] serialize(Object object){
-        ObjectOutputStream oos = null;
-        ByteArrayOutputStream baos = null;
-        try {
-            baos = new ByteArrayOutputStream();
-            oos = new ObjectOutputStream(baos);
-
-            oos.writeObject(object);
-            byte[] bytes = baos.toByteArray();
-            return bytes;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    /**
-     * 反序列化
-     * @param bytes
-     * @return
-     */
-    public static Object unSerialize(byte[] bytes){
-        ByteArrayInputStream bais = null;
-        try {
-            bais = new ByteArrayInputStream(bytes);
-            ObjectInputStream ois = new ObjectInputStream(bais);
-            return ois.readObject();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-}
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Java 枚举/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/Java 枚举/" itemprop="url">Redis - Java集成</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T08:41:30+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Redis/" itemprop="url" rel="index">
-                    <span itemprop="name">Redis</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  569
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>在JDK1.5之前，在定义常量的时候都是:<code>public static final</code>，然后现在可以将相关的常量分组到一个枚举类中，同时枚举量比常量方便多了，提供更多的方法。</p>
-<h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h4><p><strong>1.常量</strong><br></p>
-<pre><code>public enum Color{
-    RED,GREEN,BLANK,YELLOW
-}
-</code></pre><p><strong>2.switch</strong><br></p>
-<pre><code>enum Signal{
-    GREEN,YELLOW,RED
-}
-public class TLight{
-    Signal color = Signal.RED;
-    public void change(){
-        switch(color){
-            case RED:
-                color = Signal.GREEN;
-                break;
-            case YELLOW:
-                color = Signal.RED;
-                break;
-            case GREEN:
-                color = Signal.YELLOW;
-                break;
-        }
-    }
-}
-</code></pre><p><strong>3.向枚举中添加新方法</strong><br><br>这里如果需要定义新的方法，那么需要在enum实例序列的最后添加一个分号，同时需要先定义enum实例。</p>
-<pre><code>public enum Color{
-    RED(&quot;红色&quot;,1),GREEN(&quot;绿色&quot;,2),BLANK(&quot;白色&quot;,3),YELLOW(&quot;黄色&quot;,4);
-
-    //定义成员变量
-    private String cname;
-    private int index;
-    //构造方法
-    private Color(String cname, int index){
-        this.cname = cname;
-        this.index = index;
-    }
-
-    //普通方法
-    public static String getCname(int index){
-        for(Color c:color.values()){
-            if(c.getIndex() == index){
-                return c.cname;
-            }
-        }
-        return null;
-    }
-
-    //get/set
-    public String ...
-}
-</code></pre><p><strong>4.覆盖枚举的方法</strong><br></p>
-<pre><code>public class Test {
-    public enum Color {
-        RED(&quot;红色&quot;, 1), GREEN(&quot;绿色&quot;, 2), BLANK(&quot;白色&quot;, 3), YELLO(&quot;黄色&quot;, 4);
-        // 成员变量
-        private String name;
-        private int index;
-
-        // 构造方法
-        private Color(String name, int index) {
-            this.name = name;
-            this.index = index;
-        }
-
-        // 覆盖方法
-        @Override
-        public String toString() {
-            return this.index + &quot;_&quot; + this.name;
-        }
-    }
-
-    public static void main(String[] args) {
-        System.out.println(Color.RED.toString());
-    }
-}
-</code></pre><p><strong>5.实现接口</strong><br><br>枚举都是继承java.lang.Enum类，同时因为Java不支持多继承，所以枚举对象不能再继承其它类。</p>
-<pre><code>public interface Behaviour {
-    void print();
-
-    String getInfo();
-    }
-
-    public enum Color implements Behaviour {
-        RED(&quot;红色&quot;, 1), GREEN(&quot;绿色&quot;, 2), BLANK(&quot;白色&quot;, 3), YELLO(&quot;黄色&quot;,4);
-        // 成员变量
-        private String name;
-        private int index;
-
-        // 构造方法
-        private Color(String name, int index) {
-            this.name = name;
-            this.index = index;
-        }
-
-        // 接口方法
-
-        @Override
-        public String getInfo() {
-            return this.name;
-        }
-
-        // 接口方法
-        @Override
-        public void print() {
-            System.out.println(this.index + &quot;:&quot; + this.name);
-        }
-}
-</code></pre><p><strong>6.使用接口组织枚举</strong><br></p>
-<pre><code>public interface Food {
-    enum Coffee implements Food {
-        BLACK_COFFEE, DECAF_COFFEE, LATTE, CAPPUCCINO
-    }
-
-    enum Dessert implements Food {
-        FRUIT, CAKE, GELATO
-    }
-}
-</code></pre><p><strong>7.枚举集合</strong><br><br><code>java.util.EnumSet</code>和<code>java.util.EnumMap</code>是两个枚举集合。<code>EnumSet</code>保证集合中的元素不重复;<code>EnumMap</code>中的<code>key</code>是<code>enum</code>类型，而<code>value</code>则可以是任意类型。</p>
-<blockquote>
-<p>注意：枚举类型都是Enum类的子类，其继承了Enum类的方法，如<code>toString()</code>方法，这方法能够返回枚举常量名。</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Java 注解/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/Java 注解/" itemprop="url">注解</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:38:51+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java基础/" itemprop="url" rel="index">
-                    <span itemprop="name">Java基础</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1,595
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  7
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><p>注解（Annotation），也叫元数据。一种代码级别的说明。它是JDK1.5及以后版本引入的一个特性，与类、接口、枚举是在同一个层次。它可以声明在包、类、字段、方法、局部变量、方法参数等的前面，用来对这些元素进行说明，注释。</p>
-<blockquote>
-<p>注意：Annotation是一个接口，程序可以通过反射来获取指定程序元素的Annotation对象，然后通过Annotation对象来取得注解里的元数据。此外Annotation不影响程序代码的执行，无论增加、删除Annotation，代码都始终如一的执行。访问和处理Annotation的工具统称API。</p>
-</blockquote>
-<blockquote>
-<p>注解的API：</p>
-</blockquote>
-<pre><code>Package java.lang.annotation
-</code></pre><h4 id="1-注解的应用结构图"><a href="#1-注解的应用结构图" class="headerlink" title="1.注解的应用结构图"></a>1.注解的应用结构图</h4><p>调用/结构关系：A&lt;–B&lt;–C</p>
-<p>现在对A,B,C解释如下：</p>
-<p>A:注解类</p>
-<pre><code>@interface A{
-}
-</code></pre><p>B:应用了“注解类”的类</p>
-<pre><code>@A
-Class B{
-}
-</code></pre><p>C:对“应用了注解类的类”进行反射操作的类</p>
-<pre><code>Class C{
-   public void f(){
-     B.class.isAnnotationPresent(A.class);
-     A a = B.class.getAnnotion(A.class);
-   }
-}
-</code></pre><h4 id="2-元注解"><a href="#2-元注解" class="headerlink" title="2.元注解"></a>2.元注解</h4><p>元注解的作用就是负责注解其他注解。四个元注解分别是：@Target,@Retention,@Documented,@Inherited</p>
-<ul>
-<li>@Retention</li>
-</ul>
-<p>表示在什么级别保存该注解信息。可选的参数值在枚举类型 RetentionPolicy中，包括RetentionPolicy.SOURCE,RetentionPolicy.CLASS(默认),RetentionPolicy.RUNTIME分别对应：java源文件–&gt;class文件–&gt;内存中的字节码</p>
-<pre><code>RetentionPolicy.SOURCE 注解将被编译器丢弃 
-RetentionPolicy.CLASS 注解在class文件中可用，但会被VM丢弃
-RetentionPolicy.RUNTIME VM将在运行期也保留注释，因此可以通过反射机制读取注解的信息。 
-</code></pre><ul>
-<li>@Target 表示该注解用于什么地方，可能的值在枚举类ElemenetType中,包括</li>
-</ul>
-<pre><code>ElemenetType.CONSTRUCTOR 构造器声明 
-ElemenetType.FIELD 域声明（包括 enum 实例） 
-ElemenetType.LOCAL_VARIABLE 局部变量声明 
-ElemenetType.METHOD 方法声明 
-ElemenetType.PACKAGE 包声明 
-ElemenetType.PARAMETER 参数声明 
-ElemenetType.TYPE 类，接口（包括注解类型）或enum声明 
-</code></pre><ul>
-<li><p>@Documented 将此注解包含在javadoc中，它代表着此注解会被javadoc工具提取成文档。在doc文档中的内容会因为此注解的信息内容不同而不同。相当于@see,@param等</p>
-</li>
-<li><p>@Inherited 允许子类继承父类中的注解</p>
-</li>
-<li><p>@Override 限定重写父类方法 用来指定覆盖的，它可以强制一个子类必须覆盖父类的方法。@Override 主要帮助程序员避免一些低级错误。@Override只修饰方法，不能修饰其他元素。</p>
-</li>
-<li><p>@Deprecated 用于表示某个程序元素(类、方法等)已经过时，当其他程序使用已过时的类、方法时，编译器将发出警告</p>
-</li>
-<li><p>@SupperessWarnings 抑制编译器警告 指示被该Annotation修饰的程序元素(以及该程序元素中的所有子元素)取消显示指定编译器警告。@SupperessWarnings会一直作用于该程序的所有子元素。</p>
-</li>
-<li><p>@SafeVarargs Java把引发这种错误的原因称为”堆污染”，当把一个不带泛型的对象赋给一个带泛型的变量时，往往会发生这种”堆污染”。</p>
-</li>
-</ul>
-<h4 id="3-自定义注解"><a href="#3-自定义注解" class="headerlink" title="3.自定义注解"></a>3.自定义注解</h4><p>使用@interface自定义注解时，自动继承了java.lang.annotation.Annotation接口，由编译程序自动完成其他细节。在定义注解时，不能继承其他的注解或接口。@interface用来声明一个注解，其中的每一个方法实际上是声明了一个配置参数。方法的名称就是参数的名称，返回值类型就是参数的类型（返回值类型只能是基本类型、Class、String、enum）。可以通过default来声明参数的默认值。</p>
-<p>1.定义注解格式：</p>
-<pre><code>public @interface 注解名 {定义体}
-</code></pre><p>2.注解参数的可支持数据类型：</p>
-<pre><code>1.所有基本数据类型(int,float,boolean,byte,double,char,long,short) 
-2.String类型 
-3.Class类型 
-4.enum类型 
-5.Annotation类型 
-6.以上所有类型的数组
-</code></pre><p>3.示例代码</p>
-<p>参考【参考资料】中 <a href="https://blog.csdn.net/tigerdsh/article/details/8848890&quot;" target="_blank" rel="noopener">java 注解的几大作用及使用方法详解（完）</a></p>
-<p>下面的示例，是上文提到的A&lt;–B&lt;–C的扩充版本。自定义了一个注解@A，然后在B类中使用了注解@A,最后在类C中利用反射读取@A中的信息</p>
-<p>A.java</p>
-<pre><code>package com.iot.annotation;
-
-import java.lang.annotation.*;
-
-/**
- * Created by brian on 2016/2/20.
- */
-@Target({ElementType.TYPE,ElementType.METHOD,ElementType.FIELD,ElementType.CONSTRUCTOR})
-@Retention(RetentionPolicy.RUNTIME)
-public @interface A {
-    String name();
-    int id() default 0;
-    Class&lt;Long&gt; gid();
-}
-</code></pre><p>B.java</p>
-<pre><code>package com.iot.annotation;
-
-import java.util.HashMap;
-import java.util.Map;
-
-/**
- * Created by brian on 2016/2/20.
- */
-@A(name=&quot;type&quot;,gid=Long.class)//类注解
-public class B {
-    @A(name=&quot;param&quot;,id=1,gid=Long.class) //类成员注解
-    private Integer age;
-
-    @A(name=&quot;construct&quot;,id=2,gid=Long.class) //构造方法注解
-    public B(){}
-
-    @A(name=&quot;public method&quot;,id=3,gid=Long.class) //类方法注解
-    public void a(){
-
-    }
-
-    @A(name=&quot;protected method&quot;,id=4,gid=Long.class) //类方法注解
-    protected void b(){
-        Map&lt;String,String&gt; m = new HashMap&lt;String,String&gt;(0);
-    }
-
-
-    @A(name=&quot;private method&quot;,id=5,gid=Long.class) //类方法注解
-    private void c(){
-        Map&lt;String,String&gt; m = new HashMap&lt;String,String&gt;(0);
-    }
-
-    public void b(Integer a){
-
-    }
-}
-</code></pre><p>C.java</p>
-<pre><code>package com.iot.annotation;
-
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
-
-/**
- * Created by brian on 2016/2/20.
- */
-public class C {
-
-    /**
-     * 简单打印出B类中所使用到的类注解
-     * 该方法只打印了 Type 类型的注解
-     * @throws ClassNotFoundException
-     */
-    public static void parseTypeAnnotation() throws ClassNotFoundException{
-        Class clazz = Class.forName(&quot;com.iot.annotation.B&quot;);
-
-        Annotation[] annotations = clazz.getAnnotations();
-        for(Annotation annotation :annotations){
-            A a = (A)annotation;
-            System.out.println(&quot;id = &quot;+a.id()+&quot; ;name = &quot;+a.name()+&quot; ;gid = &quot;+a.gid());
-        }
-
-    }
-
-    /**
-     * 简单打印出B类中所使用到的方法注解
-     * 该方法只打印了 Method 类型的注解
-     */
-    public static void parseMethodAnnotation() {
-        Method[] methods = B.class.getDeclaredMethods();
-        for (Method method : methods) {
-            /*
-             * 判断方法中是否有指定注解类型的注解
-             */
-            boolean hasAnnotation = method.isAnnotationPresent(A.class);
-            if (hasAnnotation) {
-                /*
-                 * 根据注解类型返回方法的指定类型注解
-                 */
-                A annotation = method.getAnnotation(A.class);
-                System.out.println(&quot;method = &quot; + method.getName()
-                        + &quot; ; id = &quot; + annotation.id() + &quot; ; description = &quot;
-                        + annotation.name() + &quot;; gid= &quot; + annotation.gid());
-            }
-        }
-    }
-
-    /**
-     * 简单打印出B类中所使用到的方法注解
-     * 该方法只打印了 Method 类型的注解
-     */
-    public static void parseConstructAnnotation(){
-        Constructor[] constructors = B.class.getConstructors();
-        for (Constructor constructor : constructors) {
-            /*
-             * 判断构造方法中是否有指定注解类型的注解
-             */
-            boolean hasAnnotation = constructor.isAnnotationPresent(A.class);
-            if (hasAnnotation) {
-                /*
-                 * 根据注解类型返回方法的指定类型注解
-                 */
-                A annotation =(A) constructor.getAnnotation(A.class);
-                System.out.println(&quot;constructor = &quot; + constructor.getName()
-                        + &quot; ; id = &quot; + annotation.id() + &quot; ; description = &quot;
-                        + annotation.name() + &quot;; gid= &quot;+annotation.gid());
-            }
-        }
-    }
-
-    public static void main(String[] args) throws ClassNotFoundException {
-        parseTypeAnnotation();
-        parseMethodAnnotation();
-        parseConstructAnnotation();
-    }
-
-}
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/Java 类加载器/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/Java 类加载器/" itemprop="url">JAVA 类加载器</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:39:13+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JVM/" itemprop="url" rel="index">
-                    <span itemprop="name">JVM</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  629
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h2><p>Java的类加载器就是在运行时在JVM中动态地加载所需的类，Java类加载器基于三个机制：委托、可见、单一。将classpath下的那些.class文件加载进内存，处理后成为字节码，这些工作是类加载器做的。</p>
-<ul>
-<li>委托机制： 指的是将加载类的请求传递给父加载器，如果父加载器找不到或者不能加载这个类，那么再加载它。<br></li>
-<li>可见性机制：指的是父加载器加载的类都能被子加载器看见，但是子加载器加载的类父加载器是看不见的。<br></li>
-<li>单一性机制：指的是一个类只能被同一种加载器加载一次。</li>
-</ul>
-<h4 id="1-默认类加载器"><a href="#1-默认类加载器" class="headerlink" title="1.默认类加载器"></a>1.默认类加载器</h4><p>在系统中默认的类加载器有三个：BootStrap | ExtClassLoader | AppClassLoader 。</p>
-<p>虽然说类加载器也是java类，但是BootStrap不是。验证程序：</p>
-<pre><code>public class ClassLoaderTest {
-    public static void main(String[] args) {
-        System.out.println(System.class.getClassLoader());
-    }
-}
-</code></pre><p>output：</p>
-<pre><code>null
-</code></pre><p>如果使用System.out.println(System.class.getClassLoader().toString);则报空指针异常(NullPointerException)。所以得到System类是由BootStrap类加载器加载的。</p>
-<h4 id="2-类加载器的委托机制"><a href="#2-类加载器的委托机制" class="headerlink" title="2.类加载器的委托机制"></a>2.类加载器的委托机制</h4><p>一般加载类的顺序：1.首先当前线程的类加载器去加载线程中的第一个类。2.然后如果类A应用了类B，java的虚拟机将使用加载类A的类加载器来加载类B。3.同时还可以直接调用ClassLoader.loadClass()方法来制定某个加载器去加载某个类。</p>
-<h4 id="3-自定义类加载器编写原理"><a href="#3-自定义类加载器编写原理" class="headerlink" title="3.自定义类加载器编写原理"></a>3.自定义类加载器编写原理</h4><p>父类:</p>
-<pre><code>loadClass(类加载的流程，模板)
-findClass供子类覆盖的、被loadClass方法调用的类加载逻辑
-defineClass得到class文件转换成字节码
-</code></pre><p>子类:</p>
-<pre><code>覆盖findClass方法
-
-如：
-    protected Class&lt;?&gt; loadClass(String name, boolean resolve) throws ClassNotFoundException {
-        synchronized (getClassLoadingLock(name)) {
-        // First, check if the class has already been loaded
-        Class&lt;?&gt; c = findLoadedClass(name);
-        if (c == null) {
-            long t0 = System.nanoTime();
-            try {
-                if (parent != null) {
-                    c = parent.loadClass(name, false);
-                } else {
-                    c = findBootstrapClassOrNull(name);
-                }
-            } catch (ClassNotFoundException e) {
-                // ClassNotFoundException thrown if class not found
-                // from the non-null parent class loader
-            }
-
-            if (c == null) {
-                // If still not found, then invoke findClass in order
-                // to find the class.
-                long t1 = System.nanoTime();
-                c = findClass(name);
-
-                // this is the defining class loader; record the stats
-                sun.misc.PerfCounter.getParentDelegationTime().addTime(t1 - t0);
-                sun.misc.PerfCounter.getFindClassTime().addElapsedTimeFrom(t1);
-                sun.misc.PerfCounter.getFindClasses().increment();
-            }
-        }
-        if (resolve) {
-            resolveClass(c);
-        }
-        return c;
-    }
-}
-</code></pre><p>然后在API文档中的例子为：</p>
-<pre><code>class NetworkClassLoader extends ClassLoader {
-     String host;
-     int port;
-
-     public Class findClass(String name) {
-         byte[] b = loadClassData(name);
-         return defineClass(name, b, 0, b.length);
-     }
-
-     private byte[] loadClassData(String name) {
-         // load the class data from the connection
-          . . .
-     }
-}
-</code></pre>
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/Spring - 事务配置/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -3606,7 +2320,7 @@ defineClass得到class文件转换成字节码
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -3658,7 +2372,7 @@ defineClass得到class文件转换成字节码
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -3669,7 +2383,7 @@ defineClass得到class文件转换成字节码
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -3680,7 +2394,7 @@ defineClass得到class文件转换成字节码
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -3722,12 +2436,6 @@ defineClass得到class文件转换成字节码
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -3789,7 +2497,7 @@ defineClass得到class文件转换成字节码
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

@@ -152,19 +152,19 @@
 
 
 
-<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. HashMap源码解析[TOC] 1. 默认属性1234567891011　　static final int DEFAULT_INITIAL_CAPACITY = 1 &amp;lt;&amp;lt; 4;  //默认初始容量 16static final int MAXIMUM_CAPACITY = 1 &amp;lt;&amp;lt; 30; //最大值 2^30static">
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. HashMap源码解析[TOC] 1. 默认属性">
 <meta name="keywords" content="Java集合">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HashMap源码解析">
 <meta property="og:url" content="http://bangjinhu.github.io/undefined/Java集合框架 HashMap源码解析/index.html">
 <meta property="og:site_name" content="BangjinHu&#39;s Blog">
-<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. HashMap源码解析[TOC] 1. 默认属性1234567891011　　static final int DEFAULT_INITIAL_CAPACITY = 1 &amp;lt;&amp;lt; 4;  //默认初始容量 16static final int MAXIMUM_CAPACITY = 1 &amp;lt;&amp;lt; 30; //最大值 2^30static">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. HashMap源码解析[TOC] 1. 默认属性">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://bangjinhu.github.io/undefined/Java集合框架%20HashMap源码解析/images/1.png">
-<meta property="og:updated_time" content="2020-03-29T02:34:25.887Z">
+<meta property="og:updated_time" content="2020-03-30T00:12:02.802Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HashMap源码解析">
-<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. HashMap源码解析[TOC] 1. 默认属性1234567891011　　static final int DEFAULT_INITIAL_CAPACITY = 1 &amp;lt;&amp;lt; 4;  //默认初始容量 16static final int MAXIMUM_CAPACITY = 1 &amp;lt;&amp;lt; 30; //最大值 2^30static">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. HashMap源码解析[TOC] 1. 默认属性">
 <meta name="twitter:image" content="http://bangjinhu.github.io/undefined/Java集合框架%20HashMap源码解析/images/1.png">
 
 
@@ -421,8 +421,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T10:34:25+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:12:02+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -511,7 +511,8 @@
         <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
 <h2 id="HashMap源码解析"><a href="#HashMap源码解析" class="headerlink" title="HashMap源码解析"></a>HashMap源码解析</h2><p>[TOC]</p>
-<h3 id="1-默认属性"><a href="#1-默认属性" class="headerlink" title="1. 默认属性"></a>1. 默认属性</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">　　<span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_INITIAL_CAPACITY = <span class="number">1</span> &lt;&lt; <span class="number">4</span>;  <span class="comment">//默认初始容量 16</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAXIMUM_CAPACITY = <span class="number">1</span> &lt;&lt; <span class="number">30</span>; <span class="comment">//最大值 2^30</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> DEFAULT_LOAD_FACTOR = <span class="number">0.75f</span>; <span class="comment">//默认扩容因子</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> TREEIFY_THRESHOLD = <span class="number">8</span>; <span class="comment">//转为红黑树的值</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> UNTREEIFY_THRESHOLD = <span class="number">6</span>;<span class="comment">//由树转换为链表的值</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MIN_TREEIFY_CAPACITY = <span class="number">64</span>;<span class="comment">//默认的树存在的最小数组长度 此长度最少是TREEIFY_THRESHOLD的四倍（注释之中说的很清楚）</span></span><br></pre></td></tr></table></figure>
+<h3 id="1-默认属性"><a href="#1-默认属性" class="headerlink" title="1. 默认属性"></a>1. 默认属性</h3><a id="more"></a>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">　　<span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_INITIAL_CAPACITY = <span class="number">1</span> &lt;&lt; <span class="number">4</span>;  <span class="comment">//默认初始容量 16</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAXIMUM_CAPACITY = <span class="number">1</span> &lt;&lt; <span class="number">30</span>; <span class="comment">//最大值 2^30</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> DEFAULT_LOAD_FACTOR = <span class="number">0.75f</span>; <span class="comment">//默认扩容因子</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> TREEIFY_THRESHOLD = <span class="number">8</span>; <span class="comment">//转为红黑树的值</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> UNTREEIFY_THRESHOLD = <span class="number">6</span>;<span class="comment">//由树转换为链表的值</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MIN_TREEIFY_CAPACITY = <span class="number">64</span>;<span class="comment">//默认的树存在的最小数组长度 此长度最少是TREEIFY_THRESHOLD的四倍（注释之中说的很清楚）</span></span><br></pre></td></tr></table></figure>
 <h3 id="2-put方法"><a href="#2-put方法" class="headerlink" title="2. put方法"></a>2. put方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">put</span><span class="params">(K key, V value)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> putVal(hash(key), key, value, <span class="keyword">false</span>, <span class="keyword">true</span>);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 <h4 id="hash方法"><a href="#hash方法" class="headerlink" title="hash方法"></a>hash方法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">hash</span><span class="params">(Object key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> h;</span><br><span class="line">        <span class="keyword">return</span> (key == <span class="keyword">null</span>) ? <span class="number">0</span> : (h = key.hashCode()) ^ (h &gt;&gt;&gt; <span class="number">16</span>);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//hashcode是32位的，无符号右移16位，那生成的就是16位0加原高位的16位值， 就是对半了，异或计算也就变成</span></span><br><span class="line"><span class="comment">//了高16位和低16位进行异或，原高16位不变。这么干主要用于当hashmap 数组比较小的时候所有二进制都参与运</span></span><br><span class="line"><span class="comment">//算了，防止hash冲突太大，</span></span><br></pre></td></tr></table></figure>
 <h4 id="putval-添加-方法"><a href="#putval-添加-方法" class="headerlink" title="==putval(添加)方法=="></a>==putval(添加)方法==</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">final</span> V <span class="title">putVal</span><span class="params">(<span class="keyword">int</span> hash, K key, V value, <span class="keyword">boolean</span> onlyIfAbsent,</span></span></span><br><span class="line"><span class="function"><span class="params">                   <span class="keyword">boolean</span> evict)</span> </span>&#123;</span><br><span class="line">        Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; p; <span class="keyword">int</span> n, i;</span><br><span class="line">        <span class="comment">// 如果存储元素的table为空，则进行初始化</span></span><br><span class="line">        <span class="keyword">if</span> ((tab = table) == <span class="keyword">null</span> || (n = tab.length) == <span class="number">0</span>)</span><br><span class="line">            <span class="comment">///这里的resize  是初始化的时候调用 后面会讲</span></span><br><span class="line">            n = (tab = resize()).length;    <span class="comment">// 获取默认长度（16）</span></span><br><span class="line">    	<span class="comment">//p = tab[i = (n - 1) &amp; hash] 获取要插入的元素在hash桶中的位置</span></span><br><span class="line">        <span class="comment">// 如果根据hash值获取的结点为空（这个位置没有节点）</span></span><br><span class="line">        <span class="keyword">if</span> ((p = tab[i = (n - <span class="number">1</span>) &amp; hash]) == <span class="keyword">null</span>)      <span class="comment">// 此处 &amp; 代替了 %（效率更高）</span></span><br><span class="line">            tab[i] = newNode(hash, key, value, <span class="keyword">null</span>);<span class="comment">//则直接新建一个结点</span></span><br><span class="line">        <span class="comment">// 这里的p结点是根据hash值算出来对应在数组中的元素</span></span><br><span class="line">        <span class="keyword">else</span> &#123;<span class="comment">//如果有节点</span></span><br><span class="line">            Node&lt;K,V&gt; e; K k;</span><br><span class="line">            <span class="comment">// 如果新插入的结点和table中p结点的hash值，key值相同的话</span></span><br><span class="line">            <span class="keyword">if</span> (p.hash == hash &amp;&amp;</span><br><span class="line">                ((k = p.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">                e = p;<span class="comment">//则进行覆盖</span></span><br><span class="line">            <span class="comment">// 如果是红黑树结点的话，进行红黑树插入（上次分享了红黑树）</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (p <span class="keyword">instanceof</span> TreeNode)</span><br><span class="line">                e = ((TreeNode&lt;K,V&gt;)p).putTreeVal(<span class="keyword">this</span>, tab, hash, key, value);</span><br><span class="line">            <span class="keyword">else</span> &#123;<span class="comment">//定位到这个hash桶了 但是这里面是链表（没有进行过树化）</span></span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> binCount = <span class="number">0</span>; ; ++binCount) &#123;</span><br><span class="line">                    <span class="comment">// 如果p节点的next为空 直接在后面插入(代表这个单链表只有一个头部结点)</span></span><br><span class="line">                    <span class="keyword">if</span> ((e = p.next) == <span class="keyword">null</span>) &#123;</span><br><span class="line">                        p.next = newNode(hash, key, value, <span class="keyword">null</span>);<span class="comment">//插入完成之后再次判断是否要转换为红黑树</span></span><br><span class="line">                        <span class="keyword">if</span> (binCount &gt;= TREEIFY_THRESHOLD - <span class="number">1</span>) <span class="comment">// -1 for 1st</span></span><br><span class="line">                            treeifyBin(tab, hash);<span class="comment">//转换为红黑树</span></span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="comment">////如果下一个节点e 不为null 并且这个链表中的节点就是你要找的节点 终止循环</span></span><br><span class="line">                    <span class="keyword">if</span> (e.hash == hash &amp;&amp;</span><br><span class="line">                        ((k = e.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    <span class="comment">// 及时更新p 保证p是最后一个</span></span><br><span class="line">                    p = e;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 如果存在这个映射就覆盖</span></span><br><span class="line">            <span class="keyword">if</span> (e != <span class="keyword">null</span>) &#123; </span><br><span class="line">                V oldValue = e.value;</span><br><span class="line">                <span class="comment">// 判断是否允许覆盖，并且value是否为空、</span></span><br><span class="line">                <span class="comment">//onlyIfAbsent 如果为true，不更改现有值</span></span><br><span class="line">                <span class="keyword">if</span> (!onlyIfAbsent || oldValue == <span class="keyword">null</span>)</span><br><span class="line">                    e.value = value;</span><br><span class="line">                afterNodeAccess(e);     <span class="comment">// 回调以允许LinkedHashMap后置操作</span></span><br><span class="line">                <span class="keyword">return</span> oldValue;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="comment">// 执行到这里，说明是增加了新的元素，而不是替换了老的元素，所以相关计数需要累加</span></span><br><span class="line">        ++modCount;     <span class="comment">// 更改操作次数</span></span><br><span class="line">        <span class="keyword">if</span> (++size &gt; threshold)     <span class="comment">// 大于临界值</span></span><br><span class="line">            <span class="comment">// 将数组大小设置为原来的2倍，并将原先的数组中的元素放到新数组中</span></span><br><span class="line">            <span class="comment">// 因为有链表，红黑树之类，因此还要调整他们</span></span><br><span class="line">            resize();  </span><br><span class="line">        <span class="comment">// 回调以允许LinkedHashMap后置操作</span></span><br><span class="line">        afterNodeInsertion(evict);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;<span class="comment">// 返回空</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
@@ -600,7 +601,7 @@
   <p><span>本文标题:</span>HashMap源码解析</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 10:34:25</p>
+  <p><span>最后更新:</span>2020年03月30日 - 08:12:02</p>
   <p><span>原始链接:</span><a href="/undefined/Java集合框架 HashMap源码解析/" title="HashMap源码解析">http://bangjinhu.github.io/undefined/Java集合框架 HashMap源码解析/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/Java集合框架 HashMap源码解析/"  aria-label="复制成功！"></i></span>
   </p>
@@ -701,8 +702,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/undefined/Log4j/" rel="next" title="Log4j">
-                <i class="fa fa-chevron-left"></i> Log4j
+              <a href="/undefined/Logback/" rel="next" title="Logback">
+                <i class="fa fa-chevron-left"></i> Logback
               </a>
             
           </div>
@@ -711,8 +712,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/undefined/Java集合框架 - Collection架构与源码分析/" rel="prev" title="Java集合框架 - Collection架构与源码分析">
-                Java集合框架 - Collection架构与源码分析 <i class="fa fa-chevron-right"></i>
+              <a href="/undefined/Log4j/" rel="prev" title="Log4j">
+                Log4j <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -822,7 +823,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -833,7 +834,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -844,7 +845,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -886,12 +887,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -969,7 +964,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

@@ -373,7 +373,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第6章 深入分析ClassLoader工作机制/">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/设计模式 - 命令模式 重点/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bangjin-Hu">
@@ -392,7 +392,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/undefined/第6章 深入分析ClassLoader工作机制/" itemprop="url">Redis - Java集成</a></h2>
+                <a class="post-title-link" href="/undefined/设计模式 - 命令模式 重点/" itemprop="url">设计模式 - 命令</a></h2>
         
 
         <div class="post-meta">
@@ -420,8 +420,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T08:45:09+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:21:26+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -439,8 +439,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Redis/" itemprop="url" rel="index">
-                    <span itemprop="name">Redis</span>
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
                   </a>
                 </span>
 
@@ -470,1560 +470,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  914
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="第6章-深入分析ClassLoader工作机制"><a href="#第6章-深入分析ClassLoader工作机制" class="headerlink" title="第6章 深入分析ClassLoader工作机制"></a>第6章 深入分析ClassLoader工作机制</h2><p>[toc]</p>
-<p>ClassLoader是类加载器，负责将Class加载到JVM中。ClassLoader在能够将Class加载到JVM中之外，还有一个重要作用就是审查每个类应该由谁加载，它是一种父优先的等级加载机制。</p>
-<h3 id="6-1-ClassLoader类结构分析"><a href="#6-1-ClassLoader类结构分析" class="headerlink" title="6.1 ClassLoader类结构分析"></a>6.1 ClassLoader类结构分析</h3><p>ClassLoader中经常用到的方法</p>
-<pre><code>1. defineClass(byte[], int, int) 将byte字节流解析成JVM能够识别的Class对象
-
-2. findClass(String)
-
-3. loadClass(String)
-
-4. resolveClass(Class&lt;?&gt;)
-</code></pre><p>defineClass()与findClass()方法一起使用的时候，我们通过直接覆盖ClassLoader父类的findClass()方法来实现类的加载规则，从而取得要加载类的字节码。然后调用defineClass()方法生成类的class对象。</p>
-<p>如果不需要重新定义加载规则则可以用 this.getClass().getClassLoader().loadClass(“class”);调用ClassLoader的loadClass()方法获取该类的对象。</p>
-<p>ClassLoader还提供另外一些辅助类，如获取class文件的方法：getResource() | getResourceAsStream()方法等。</p>
-<h3 id="6-2-ClassLoader等级加载机制"><a href="#6-2-ClassLoader等级加载机制" class="headerlink" title="6.2 ClassLoader等级加载机制"></a>6.2 ClassLoader等级加载机制</h3><pre><code>1. Bootstrap ClassLoader 主要加载JVM自身工作需要的类，这个ClassLoader是完全由JVM自己控制。它仅仅是一个类的加载工具，既没有更高一级的父加载器，也没有子加载器。
-
-2. ExtClassLoader 它是JVM中自身的一部分，该类可以理解为加载第三方的类文件。
-
-3. AppClassLoader 它的父类是ExtClassLoader，所有在System.getProperty(&quot;java.class.path&quot;)目录下的类都可以被这个类加载器加载。该目录就是我们经常用到的classpath。
-</code></pre><h3 id="6-3-加载class文件"><a href="#6-3-加载class文件" class="headerlink" title="6.3 加载class文件"></a>6.3 加载class文件</h3><pre><code>1. 找到.class文件并将这个文件包含的字节码加载到内存
-
-2.1 字节码验证
-
-2.2 Class类数据结构分析及相应的内存分配
-
-2.3 符号表的链接
-
-3. 类中静态属性和初始化赋值以及静态块的执行
-</code></pre><h4 id="6-3-1-加载字节码到内存"><a href="#6-3-1-加载字节码到内存" class="headerlink" title="6.3.1 加载字节码到内存"></a>6.3.1 加载字节码到内存</h4><p>找到指定类并且将它的字节码加载到内存需要子类中实现（实现findClass()方法）。</p>
-<h4 id="6-3-2-验证与解析"><a href="#6-3-2-验证与解析" class="headerlink" title="6.3.2 验证与解析"></a>6.3.2 验证与解析</h4><pre><code>1. 字节码验证，这一过程保证格式正确、行为正确。
-
-2. 类准备，准备代表每个类中定义的字段、方法和实现接口所必须的数据结构。
-
-3. 解析，该阶段类装入器装入类所引用的其它所有类。如：超类、接口、字段、方法签名。
-</code></pre><h4 id="6-3-3-初始化Class对象"><a href="#6-3-3-初始化Class对象" class="headerlink" title="6.3.3 初始化Class对象"></a>6.3.3 初始化Class对象</h4><h3 id="6-4-类加载错误分析"><a href="#6-4-类加载错误分析" class="headerlink" title="6.4 类加载错误分析"></a>6.4 类加载错误分析</h3><h4 id="6-4-1-ClassNotFoundException"><a href="#6-4-1-ClassNotFoundException" class="headerlink" title="6.4.1 ClassNotFoundException"></a>6.4.1 ClassNotFoundException</h4><p>该异常发生于在显示加载类的时候。在加载指定字节码到内存时没有找到该文件对应的字节码，也就是该文件不存在。可以通过命令来获取当前的classpath路径。</p>
-<pre><code>this.getClass().getClassLoader().getResource(&quot;&quot;).toString();
-</code></pre><h4 id="6-4-2-NoClassDefFoundError"><a href="#6-4-2-NoClassDefFoundError" class="headerlink" title="6.4.2 NoClassDefFoundError"></a>6.4.2 NoClassDefFoundError</h4><p>该异常是可能使用new关键字、属性引用某个类、继承了某个接口或类，以及方法的某个参数中引用某个类，会触发JVM隐式加载这些类时发现类不存在异常。</p>
-<p>解决的方案是确保每个类引用的类都在当前的classpath下面。</p>
-<h4 id="6-4-3-UnsatisfiedLinkError"><a href="#6-4-3-UnsatisfiedLinkError" class="headerlink" title="6.4.3 UnsatisfiedLinkError"></a>6.4.3 UnsatisfiedLinkError</h4><h3 id="6-6-自定义-ClassLoader"><a href="#6-6-自定义-ClassLoader" class="headerlink" title="6.6 自定义 ClassLoader"></a>6.6 自定义 ClassLoader</h3><p>ClassLoader完成的事情：</p>
-<pre><code>1. 在自定义路径下查找自定义的class类文件，我们需要的class文件并不在classpath下面，所以需要实现ClassLoader。
-
-2. 对要加载的自定义类做特殊处理
-
-3. 可以定义类的时效机制，在检测到类修改，可以重新加载，从而实现热部署
-</code></pre><h4 id="6-6-1-加载自定义路径下的class文件"><a href="#6-6-1-加载自定义路径下的class文件" class="headerlink" title="6.6.1 加载自定义路径下的class文件"></a>6.6.1 加载自定义路径下的class文件</h4>
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第7章 Java中的13个原子操作类/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/第7章 Java中的13个原子操作类/" itemprop="url">Redis - Java集成</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T08:44:56+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Redis/" itemprop="url" rel="index">
-                    <span itemprop="name">Redis</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  762
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<p>[TOC]</p>
-<h2 id="第七章-Java中的13个原子操作类"><a href="#第七章-Java中的13个原子操作类" class="headerlink" title="第七章 Java中的13个原子操作类"></a>第七章 Java中的13个原子操作类</h2><p>Java从JDK 1.5开始提供了 java.util.concurrent.atomic 包（Atomic包），这个包里面的原子操作类提供了一种用法简单、性能高效、线程安全地更新一个变量的方式。</p>
-<h3 id="7-1-原子更新基本类型类"><a href="#7-1-原子更新基本类型类" class="headerlink" title="7.1 原子更新基本类型类"></a>7.1 原子更新基本类型类</h3><p>使用原子的方式更新基本类型，Atomic包提供以下三个类：</p>
-<pre><code>1.AtomicBoolean：原子更新布尔类型
-
-2.AtomicInteger：原子更新整型
-
-    方法：
-
-        1.int addAndGet(int delta)：以原子方式将输入的数组与实例中的值相加，并返回结果。
-
-        2.boolean compareAndSet(int expect, int update)：如果输入的数值等于预期值，则以原子方式将该数值设置为输入的值。
-
-        3.int getAndIncrement()：以原子方式将当前值加1，注意这里返回的是自增前的新值。
-
-        4.void lazySet(int newValue)：最终会设置成newValue，使用lazySet设置值后，可能导致其它线程在之后一小段时间内还是读到旧值。
-
-        5.int getAndSet(int newValue)：以原子方式设置newValue的值，并返回旧值。
-
-3.AtomicLong：原子更新长整型
-</code></pre><h3 id="7-2-原子更新数组"><a href="#7-2-原子更新数组" class="headerlink" title="7.2 原子更新数组"></a>7.2 原子更新数组</h3><p>通过原子的方式更新数组里的某个元素，Atomic包提供以下4个类：</p>
-<pre><code>1.AtomicIntegerArray：原子更新整型数组里的元素\
-
-    //以原子方式将输入值与数组中索引i的元素相加
-    int addAndGet(int i, int delta);
-
-    //如果当前值等于预期值，则以原子方式将数组i的元素设置成update
-    boolean compareAndGet(int i, int expect, int update);
-
-2.AtomicLongArray：原子更新长整型数组里的元素
-
-3.AtomicReferenceArray：原子更新引用类型数组里的元素
-
-...
-</code></pre><h3 id="7-3-原子更新引用类型"><a href="#7-3-原子更新引用类型" class="headerlink" title="7.3 原子更新引用类型"></a>7.3 原子更新引用类型</h3><p>因为原子更新基本类型AtomicInteger只能更新一个变量，如果需要原子更新多个变量，就需要使用这个原子更新引用类型提供的类。Atomic包提供了一下3个类：</p>
-<pre><code>1.AtomicReference：原子更新引用类型
-
-    public static AtomicReference&lt;user&gt; userRef = new AtomicReference&lt;user&gt;();
-
-    userRef.set(..);
-    userRef.compareAndSet(..);
-
-2.AtomicReferenceFieldUpdater：原子更新引用类型里的字段
-
-3.AtomicMarkableReferance：原子更新带有标记位的引用类型
-</code></pre><h3 id="7-4-原子更新字段类"><a href="#7-4-原子更新字段类" class="headerlink" title="7.4 原子更新字段类"></a>7.4 原子更新字段类</h3><p>如果需要<code>原子更新某个类里面的某个字段时</code>，需要使用原子更新字段类，Atomic包提供以下三个类进行原子字段更新。</p>
-<pre><code>1.AtomicIntegerFieldUpdate：原子更新整型的字段的更新器。
-
-    //创建原子更新器，并设置需要更新的对象类和对象的属性
-    private static AtomicIntegerFieldUpdater&lt;User&gt; a = AtomicIntegerFieldUpdater.newUpdater(User.class, &quot;old&quot;);
-
-    //原子更新
-    a.getAndIncrement(user);
-
-2.AtomicLongFieldUpdater：原子更新长整型字段的更新器。
-
-3.AtomicStampedReference：原子更新带有版本号的引用类型。该类将整数值与数据的版本号更新。可以解决使用CAS原子更新时可能出现的ABA问题。
-
-提示：上面三者的更新类似，所以只提及Integer的代码更新。
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第8章 Java中的并发工具类/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/第8章 Java中的并发工具类/" itemprop="url">Redis - Java集成</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T09:55:37+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Redis/" itemprop="url" rel="index">
-                    <span itemprop="name">Redis</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1,206
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="第八章-Java中的并发工具类"><a href="#第八章-Java中的并发工具类" class="headerlink" title="第八章 Java中的并发工具类"></a>第八章 Java中的并发工具类</h2><p>[TOC]</p>
-<p><code>CountDownLatch、CyclicBarrier和Semaphore</code>工具类提供一种并发流程控制手段，<code>Exchanger</code>工具类提供了在线程间交换数据的一种手段。</p>
-<h3 id="8-1-等待多线程完成的CountDownLatch"><a href="#8-1-等待多线程完成的CountDownLatch" class="headerlink" title="8.1 等待多线程完成的CountDownLatch"></a>8.1 等待多线程完成的CountDownLatch</h3><p>CountDownLatch 允许一个或多个线程等待其它线程完成操作。</p>
-<blockquote>
-<p>需求：我们需要解析一个Excel里多个sheet的数据，此时可以考虑使用多线程，每个线程解析一个sheet里的数据，等到所有的sheet都解析完成之后，程序需要提示解析完成。</p>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>提示：join用于让当前线程等待join线程执行结束。其实现原理是不停的检查join线程是否存活，如果join线程存活则让当前线程永远等待。</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>注意：直到join线程中止后，线程的this.notifyAll()方法会被调用，调用notifyAll()方法是在JVM里实现的。</p>
-</blockquote>
-<p>CountDownLatch 的构造函数接收一个int类型的参数作为计数器，如果想等待N个点完成，就传入N。</p>
-<p>当调用CountDownLatch的countDown方法时，N就会减1，<code>CountDownLatch的await()方法</code>会阻塞当前线程，直到N变为0。</p>
-<pre><code>await() 阻塞当前线程
-</code></pre><p>如果有某个解析sheet的线程处理得比较慢，我们不可能让主线程一直等待，所以可以使用另外一个带指定时间的await()方法，这个方法等待特定时间之后就会不再阻塞当前线程。join也有类似方法。</p>
-<pre><code>await(long time, TimeUnit unit);//在特定时间之后就不会阻塞当前线程
-</code></pre><h3 id="8-2-同步屏障-CyclicBarrier"><a href="#8-2-同步屏障-CyclicBarrier" class="headerlink" title="8.2 同步屏障 CyclicBarrier"></a>8.2 同步屏障 CyclicBarrier</h3><p>CyclicBarrier 表可循环使用的屏障。其做的事情是，让一组线程到达一个屏障（同步点）时被阻塞，直到最后一个线程到达屏障时，屏障才会开门，所有被屏障拦截的线程才会继续运行。</p>
-<h4 id="8-2-1-CyclicBarrier简介"><a href="#8-2-1-CyclicBarrier简介" class="headerlink" title="8.2.1 CyclicBarrier简介"></a>8.2.1 CyclicBarrier简介</h4><p>CyclicBarrier 的构造方法是 CyclicBarrier(int parties)，其参数表示屏障拦截的线程数量，每个<code>线程调用await()方法告诉 CyclicBarrier 我已经到达屏障，然后当前线程被阻塞</code>。</p>
-<pre><code>CyclicBarrier(int parties);//参数表示屏障拦截的线程数量
-</code></pre><h4 id="8-2-2-CyclicBarrier-应用场景"><a href="#8-2-2-CyclicBarrier-应用场景" class="headerlink" title="8.2.2 CyclicBarrier 应用场景"></a>8.2.2 CyclicBarrier 应用场景</h4><p>CyclicBarrier 可用于多线程计算数据，最后合并计算结果的场景。</p>
-<h4 id="8-2-3-CyclicBarrier-和-CountDownLatch-的区别"><a href="#8-2-3-CyclicBarrier-和-CountDownLatch-的区别" class="headerlink" title="8.2.3 CyclicBarrier 和 CountDownLatch 的区别"></a>8.2.3 CyclicBarrier 和 CountDownLatch 的区别</h4><p>CountDownLatch 的计数器只能使用一次，而 CyclicBarrier 的计数器可以使用reset()方法重置。</p>
-<h3 id="8-3-控制并发线程数的Semaphore"><a href="#8-3-控制并发线程数的Semaphore" class="headerlink" title="8.3 控制并发线程数的Semaphore"></a>8.3 控制并发线程数的Semaphore</h3><p>Semaphore （信号量）是用来控制同时访问特定资源的线程数量，通过协调各个线程，以保证合理的使用公共资源。</p>
-<p>信号量可以指定多个线程同时访问某一个资源。提供构造函数：</p>
-<pre><code>1. public Semaphore(int permits);
-
-2. public Semaphore(int permits, boolean fair);//fair指是否是公平锁
-</code></pre><p>在构造信号量对象时应该指定信号量的准入数，即能够同时申请多少个许可。当每个线程每次只申请一个许可时，这就相当于指定了同时有多少个线程可以访问某一个资源。</p>
-<pre><code>1. public void acquire();
-
-2. public void acquireUninterruptibly();//不响应中断
-
-3. public boolean tryAcquire();//获取一个许可
-
-4. public boolean tryAcquire(long timeout, TimeUnit unit);
-
-5. public void release();
-</code></pre><h4 id="8-3-1-应用场景"><a href="#8-3-1-应用场景" class="headerlink" title="8.3.1 应用场景"></a>8.3.1 应用场景</h4><p>Semaphore 可以用作流量控制，特别是公用资源有限的应用场景。</p>
-<h4 id="8-3-2-其它方法"><a href="#8-3-2-其它方法" class="headerlink" title="8.3.2 其它方法"></a>8.3.2 其它方法</h4><pre><code>1. int availablePermits() 返回此信号量当前可用的许可证数量
-
-2. int getQueueLength() 返回正在等待获取许可证的线程数
-
-3. boolean hasQueueThreads() 是否有线程正在等待获取许可证
-
-4. void reducePermits(int reduction) 减少reduction个许可证
-
-5. Collection getQueuedThread() 返回所有等待获取许可证的线程集合
-</code></pre><h3 id="8-4-线程间交换数据的Exchanger"><a href="#8-4-线程间交换数据的Exchanger" class="headerlink" title="8.4 线程间交换数据的Exchanger"></a>8.4 线程间交换数据的Exchanger</h3><p>Exchanger 是一个用于线程间协作的工具类。Exchanger用于进行线程间的数据交换。它提供一个同步点，在这个同步点，两线程可以交换彼此的数据。</p>
-<p>如果一个线程先执行exchange()方法，它会一直等待第二个线程也执行exchange()方法，当两个线程都到达同步点时，这两个线程可以交换数据，将本线程生产出来的数据传递给对方。</p>
-<h3 id="8-5-线程阻塞工具类-LockSupport"><a href="#8-5-线程阻塞工具类-LockSupport" class="headerlink" title="8.5 线程阻塞工具类 LockSupport"></a>8.5 线程阻塞工具类 LockSupport</h3><p>线程阻塞工具类 LockSupport 是一个实用的工具类，可以在线程任意位置让线程阻塞。与Thread.suspend()方法比较，弥补了resume()方法发生导致线程无法继续执行的情况。</p>
-<p>线程阻塞工具类 LockSupport 的静态方法 park() 方法阻塞当前线程，类似的还有 parkNanos() | parkUntil()等方法，其实现了一个限时等待。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第9章 Java中的线程池/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/第9章 Java中的线程池/" itemprop="url">Redis - Java集成</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T08:44:42+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Redis/" itemprop="url" rel="index">
-                    <span itemprop="name">Redis</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  966
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<h2 id="第九章-Java中的线程池"><a href="#第九章-Java中的线程池" class="headerlink" title="第九章 Java中的线程池"></a>第九章 Java中的线程池</h2><p>[TOC]</p>
-<p>Java中线程池的运行场景最多的是并发框架，几乎所有需要异步或并发执行任务的程序都可以使用线程池。合理使用线程池的3个好处：</p>
-<pre><code>1.降低资源消耗
-
-2.提高响应速度
-
-3.提高线程的可管理性
-</code></pre><h3 id="9-1-线程池的实现原理"><a href="#9-1-线程池的实现原理" class="headerlink" title="9.1 线程池的实现原理"></a>9.1 线程池的实现原理</h3><p>当提交一个新任务到线程池时，线程池的处理流程：</p>
-<pre><code>1.线程池判断核心线程池里的线程是否都在执行任务。如果不是，则创建一个新的工作线程来执行任务。如果核心线程池里的线程都在执行任务，则进入下一个流程。
-
-2.线程池判断工作队列是否已满。如果工作队列没有满，则将新提交的任务存储在这个工作队列里。如果工作队列满了，则进入下个流程。
-
-3.线程池判断线程池的线程是否都处于工作状态。如果没有，则创建一个新的工作线程来执行任务。如果已经满了，则交给饱和策略来处理这个任务。
-</code></pre><p><strong>1.ThreadPoolExecutor 执行execute()方法</strong><br></p>
-<pre><code>1.如果当前运行的线程少于corePoolSize，则创建新线程来执行任务（注意：执行这一步骤需要获取全局锁）。
-
-2.如果运行的线程等于或多于corePoolSize，则将任务加入BlockingQueue。
-
-3.如果无法将任务加入 BlockingQueue（队列已满），则创建新的线程来处理任务（注意：执行这一步需要获取全局锁）。
-
-4.如果创建新线程将使当前运行的线程超出maximumPoolSize，任务将被拒绝，并调用 RejectedExecutionHandler.rejectedExceptionExecution()方法。
-</code></pre><blockquote>
-<p>提示：ThreadPoolExecutor采取上述步骤的总体设计思路，为了在执行execute()方法时尽可能避免获取全局锁。</p>
-</blockquote>
-<h3 id="9-2-线程池的使用"><a href="#9-2-线程池的使用" class="headerlink" title="9.2 线程池的使用"></a>9.2 线程池的使用</h3><h4 id="9-2-1-线程池的创建"><a href="#9-2-1-线程池的创建" class="headerlink" title="9.2.1 线程池的创建"></a>9.2.1 线程池的创建</h4><p>我们可通过ThreadPoolExecutor来创建一个线程池：</p>
-<pre><code>new ThreadPoolExecutor(corePoolSize, maximumPoolSize, keepAliveTime, milliseconds, runnableTaskQueue, handler);
-
-1.corePoolSize 线程池基本大小
-2.runnableTaskQueue 任务队列，用于保存等待执行的任务的阻塞队列
-
-    阻塞队列：ArrayBlockingQueue | LinkedBlockingQueue | SynchronousQueue | PriorityBlockingQueue
-
-3.ThreadFactory 用于设置创建线程工厂，可以通过线程工厂给每个创建出来的线程设置更有意义的名字
-
-4.RejectedExecutionHandler(饱和策略) 当队列和线程池都满了，说明线程池处于饱和状态，需要采用一种策略处理提交的新任务。
-
-    1. AbortPolicy 直接抛出异常
-
-    2. CallerRunsPolicy 只用调用者所在线程运行任务
-
-    3. DiscardOldestPolicy 丢弃队列里最近的一个任务，并执行当前任务
-
-    4. DiscardPolicy 不处理、不丢弃
-
-5.maximumPoolSize 线程池最大数量，线程池允许创建的最大线程数。如果队列满了，并且已创建的线程数小于最大线程数，则线程池会再创建新的线程执行任务。
-</code></pre><h4 id="9-2-2-向线程池提交任务"><a href="#9-2-2-向线程池提交任务" class="headerlink" title="9.2.2 向线程池提交任务"></a>9.2.2 向线程池提交任务</h4><p>我们可以使用两个方法向线程池提交任务：1.execute()方法，提交不需要返回值的任务，所以无法判断任务是否被线程池执行成功。2.submit()方法，用于提交需要返回值的任务，线程池会返回一个future类型对象…。</p>
-<h4 id="9-2-3-关闭线程池"><a href="#9-2-3-关闭线程池" class="headerlink" title="9.2.3 关闭线程池"></a>9.2.3 关闭线程池</h4><p>我们可以通过调用线程池的shutdown或者shutdownNow方法关闭线程池。</p>
-<h4 id="9-2-4-合理配置线程池"><a href="#9-2-4-合理配置线程池" class="headerlink" title="9.2.4 合理配置线程池"></a>9.2.4 合理配置线程池</h4><h4 id="9-2-5-线程池的监控"><a href="#9-2-5-线程池的监控" class="headerlink" title="9.2.5 线程池的监控"></a>9.2.5 线程池的监控</h4><p>监控线程池时可以使用以下属性。</p>
-<pre><code>1. taskCount 线程池需要执行的任务数量
-
-2. completedTaskCount 线程池在运行过程中已完成的任务数量，小于或等于taskCount
-
-...
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第一章 Java多线程技能/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/第一章 Java多线程技能/" itemprop="url">多线程基础</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:39:01+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/并发编程/" itemprop="url" rel="index">
-                    <span itemprop="name">并发编程</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  907
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<p>[TOC]</p>
-<h2 id="第一章-Java多线程技能"><a href="#第一章-Java多线程技能" class="headerlink" title="第一章 Java多线程技能"></a>第一章 Java多线程技能</h2><h3 id="1-1-继承Thread类"><a href="#1-1-继承Thread类" class="headerlink" title="1.1 继承Thread类"></a>1.1 继承Thread类</h3><blockquote>
-<p>提示：使用多线程技术时，代码运行结果与代码执行顺序或调用顺序无关。线程调用的随机性。</p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/undefined/第一章 Java多线程技能/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第一章 并发编程的挑战/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/第一章 并发编程的挑战/" itemprop="url">并发编程</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:38:42+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/并发编程/" itemprop="url" rel="index">
-                    <span itemprop="name">并发编程</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  729
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<p>[TOC]</p>
-<h2 id="第一章-并发编程的挑战"><a href="#第一章-并发编程的挑战" class="headerlink" title="第一章 并发编程的挑战"></a>第一章 并发编程的挑战</h2><h3 id="1-1-上下文切换"><a href="#1-1-上下文切换" class="headerlink" title="1.1 上下文切换"></a>1.1 上下文切换</h3><pre><code>时间片：CPU通过每个线程分配CPU时间片来实现单核处理器多线程执行代码。时间片是分配给每一个线程的时间，因为很短，通常是几十毫秒。所以会有多个线程同时执行的错觉。
-</code></pre><blockquote>
-<p>注意：当并发执行累加操作不超过百万次时，速度会比串行执行累加操作慢。这是因为线程有创建和上下文切换的开销。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/undefined/第一章 并发编程的挑战/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第一章 线程与多线程基础/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/第一章 线程与多线程基础/" itemprop="url">并发编程基础</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:38:47+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/并发编程/" itemprop="url" rel="index">
-                    <span itemprop="name">并发编程</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  163
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote class="blockquote-center"></blockquote>
-<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<p>[TOC]</p>
-<h2 id="第一章-线程与多线程基础"><a href="#第一章-线程与多线程基础" class="headerlink" title="第一章 线程与多线程基础"></a>第一章 线程与多线程基础</h2><h3 id="1-1-线程的创建"><a href="#1-1-线程的创建" class="headerlink" title="1.1 线程的创建"></a>1.1 线程的创建</h3><p>线程是一个对象，它有唯一标识符ID、名称、状态、优先级等属性。线程只能修改其优先级和名称等属性 ，无法修改 ID 、状态。ID 是 JVM 分配的，名字默认也为Thread-XX，XX是一组数字。线程初始状态为 NEW。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/undefined/第一章 线程与多线程基础/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第三章 Java内存模型/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bangjin-Hu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/site.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BangjinHu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/undefined/第三章 Java内存模型/" itemprop="url">Java内存模型</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
-                2019-10-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:39:11+08:00">
-                2020-03-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/多线程编程/" itemprop="url" rel="index">
-                    <span itemprop="name">多线程编程</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  567
+                  415
                 </span>
               
 
@@ -2063,11 +510,10 @@
         
           <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<p>[TOC]</p>
-<h2 id="第三章-Java内存模型"><a href="#第三章-Java内存模型" class="headerlink" title="第三章 Java内存模型"></a>第三章 Java内存模型</h2><h3 id="3-1-Java内存模型基础"><a href="#3-1-Java内存模型基础" class="headerlink" title="3.1 Java内存模型基础"></a>3.1 Java内存模型基础</h3><p>Java线程之间的通信由Java内存模型（JMM）控制，JMM决定一个线程对共享变量的写入何时对另一个线程可见。<br>
+<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>该模式是一种数据驱动的设计模式，请求以命令的形式包裹在对象中，并且传给调用对象。调用对象寻找可以处理该命令的合适对象，并将该命令传给相应的对象，该对象执行命令。<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/undefined/第三章 Java内存模型/#more" rel="contents">
+            <a class="btn" href="/undefined/设计模式 - 命令模式 重点/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2121,7 +567,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第三章 线程间通信/">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/设计模式 - 备忘录模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bangjin-Hu">
@@ -2140,7 +586,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/undefined/第三章 线程间通信/" itemprop="url">线程间通信</a></h2>
+                <a class="post-title-link" href="/undefined/设计模式 - 备忘录模式/" itemprop="url">设计模式 - 备忘录</a></h2>
         
 
         <div class="post-meta">
@@ -2168,8 +614,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:39:06+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:21:31+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -2187,8 +633,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/并发编程/" itemprop="url" rel="index">
-                    <span itemprop="name">并发编程</span>
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
                   </a>
                 </span>
 
@@ -2218,7 +664,395 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  845
+                  381
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>该模式表示保存一个对象的某个状态，以便在适当的时候恢复对象。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/设计模式 - 备忘录模式/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/设计模式 - 外观模式 - 重点/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/设计模式 - 外观模式 - 重点/" itemprop="url">设计模式 - 外观</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:21:40+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  491
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/设计模式 - 外观模式 - 重点/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/设计模式 - 工厂模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/设计模式 - 工厂模式/" itemprop="url">设计模式 - 工厂</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:21:53+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  680
                 </span>
               
 
@@ -2258,11 +1092,10 @@
         
           <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<p>[TOC]</p>
-<h2 id="第三章-线程间通信"><a href="#第三章-线程间通信" class="headerlink" title="第三章 线程间通信"></a>第三章 线程间通信</h2><h3 id="3-1-等待-通知机制"><a href="#3-1-等待-通知机制" class="headerlink" title="3.1 等待/通知机制"></a>3.1 等待/通知机制</h3><h4 id="3-1-3-等待-通知机制的实现"><a href="#3-1-3-等待-通知机制的实现" class="headerlink" title="3.1.3 等待/通知机制的实现"></a>3.1.3 等待/通知机制的实现</h4><p>wait()方法是使当前执行程序的线程进入等待状态，wait()方法是Object类方法，该方法用来将当前线程置入“预执行队列”中。<br>
+<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>工厂模式是Java中最常用的设计模式之一。它提供一种创建对象的最佳方式。在这一模式中在创建对象的时候不会对客户端暴露创建逻辑，同时使用一个共同的接口来指向新创建的对象。<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/undefined/第三章 线程间通信/#more" rel="contents">
+            <a class="btn" href="/undefined/设计模式 - 工厂模式/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2316,7 +1149,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/第二章 对象及变量的并发访问/">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/设计模式 - 建造者模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bangjin-Hu">
@@ -2335,7 +1168,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/undefined/第二章 对象及变量的并发访问/" itemprop="url">并发编程 - 对象及变量的并发访问</a></h2>
+                <a class="post-title-link" href="/undefined/设计模式 - 建造者模式/" itemprop="url">设计模式 - 建造</a></h2>
         
 
         <div class="post-meta">
@@ -2363,8 +1196,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T11:39:21+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:21:57+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -2382,8 +1215,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/并发编程/" itemprop="url" rel="index">
-                    <span itemprop="name">并发编程</span>
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
                   </a>
                 </span>
 
@@ -2413,7 +1246,401 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,209
+                  697
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>该模式是使用多个简单的对象一步一步构建成一个复杂的对象。一个Builder类会一步一步构造最终的对象。该Builder类是独立于其它对象的。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/设计模式 - 建造者模式/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/设计模式 - 拦截过滤器模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/设计模式 - 拦截过滤器模式/" itemprop="url">设计模式 - 过滤器</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:22:08+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  477
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>该模式用于对应用程序的请求或响应做一些预处理/后处理。定义过滤器，并再将请求传给实际目标应用程序之前应用在请求上。过滤器可以做认证/授权/记录日志，或者跟踪请求，然后把请求传给相应的处理程序。</p>
+<pre><code>1.过滤器：过滤器在请求处理程序执行请求之前或之后执行某些任务。
+2.过滤器链：过滤器链带有多个过滤器，并在target上按照定义的顺序执行这些过滤器。
+3.target：target对象是请求处理程序。
+4.过滤管理器：过滤管理器管理过滤器和过滤器链。
+5.客户端：客户端是target对象发送请求的对象。
+</code></pre>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/设计模式 - 拦截过滤器模式/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/设计模式 - 抽象工厂模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/设计模式 - 抽象工厂模式/" itemprop="url">设计模式 - 抽象工厂</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:22:03+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  958
                 </span>
               
 
@@ -2453,14 +1680,592 @@
         
           <blockquote class="blockquote-center"></blockquote>
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
-<p>[TOC]</p>
-<h2 id="第二章-对象及变量的并发访问"><a href="#第二章-对象及变量的并发访问" class="headerlink" title="第二章 对象及变量的并发访问"></a>第二章 对象及变量的并发访问</h2><h3 id="2-1-synchronize-同步方法"><a href="#2-1-synchronize-同步方法" class="headerlink" title="2.1 synchronize 同步方法"></a>2.1 synchronize 同步方法</h3><h4 id="2-1-1-方法内的变量是线程安全"><a href="#2-1-1-方法内的变量是线程安全" class="headerlink" title="2.1.1 方法内的变量是线程安全"></a>2.1.1 方法内的变量是线程安全</h4><blockquote>
-<p>提示：方法中变量不存在非线程安全问题，永远都是线程安全的。这是方法内部变量的私有属性造成的。</p>
-</blockquote>
-<h4 id="2-1-2-实例变量非线程安全"><a href="#2-1-2-实例变量非线程安全" class="headerlink" title="2.1.2 实例变量非线程安全"></a>2.1.2 实例变量非线程安全</h4><h4 id="2-1-6-synchronize锁重入"><a href="#2-1-6-synchronize锁重入" class="headerlink" title="2.1.6 synchronize锁重入"></a>2.1.6 synchronize锁重入</h4><p>关键字 synchronize 拥有锁重入的功能，也就是在使用 synchronize 时，当一个线程得到一个对象锁后，再次请求此对象锁时是可以再次得到该对象的锁的。<br>
+<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>该模式是围绕一个超级工厂创建其它工厂，该超级工厂又称为其他工厂的工厂。它提供了一种创建对象的最佳方式。在该模式中，接口是负责创建一个相关对象的工厂，不需要显式指定它们的类。每个生成的工厂都能按照工厂模式提供对象。<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/undefined/第二章 对象及变量的并发访问/#more" rel="contents">
+            <a class="btn" href="/undefined/设计模式 - 抽象工厂模式/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/设计模式 - 服务器定位模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/设计模式 - 服务器定位模式/" itemprop="url">设计模式 - 服务器定位</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:22:20+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  542
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>该模式用在我们想使用JNDI查询定位各种服务的时候。考虑到为某个服务查找JNDI的代价很高，服务定位器模式充分利用缓存技术。所以在首次请求某个服务的时候，服务定位器在JNDI中查找服务，并缓存该服务对象。所以当再次请求相同的服务时，服务定位器会在它的缓存中查找，这样可以很大程度上提高应用程序的性能。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/设计模式 - 服务器定位模式/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/设计模式 - 桥接模式 - 重点/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/设计模式 - 桥接模式 - 重点/" itemprop="url">设计模式 - 桥接</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:22:25+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  901
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>该模式是用于将抽象化与实现化解耦，使得二者独立变化。它通过提供抽象化与实现化之间的桥接功能，来实现两者之间的解耦。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/设计模式 - 桥接模式 - 重点/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bangjinhu.github.io/undefined/设计模式 - 状态模式 - 重要/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bangjin-Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/site.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BangjinHu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined/设计模式 - 状态模式 - 重要/" itemprop="url">设计模式 - 状态</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T09:22:26+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:22:35+08:00">
+                2020-03-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  753
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"></blockquote>
+<div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
+<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>在该模式中，类的行为基于它的状态改变的。在该模式中创建表示各种状态的对象和一个行为随着状态对象改变而改变的context对象。允许对象在内部状态发生改变时改变它的行为，对象看起来好像修改了它的类。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/undefined/设计模式 - 状态模式 - 重要/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2505,7 +2310,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/16/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/18/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/16/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/18/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2557,7 +2362,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2568,7 +2373,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2579,7 +2384,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2621,12 +2426,6 @@
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -2688,7 +2487,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 

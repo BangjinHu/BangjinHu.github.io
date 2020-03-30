@@ -139,7 +139,7 @@
 
 
 
-  <meta name="keywords" content="Redis," />
+  <meta name="keywords" content="多线程与并发," />
 
 
 
@@ -152,18 +152,18 @@
 
 
 
-<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. 第六章 Java并发容器和框架[TOC] 6.1 ConcurrentHashMap的实现原理和使用ConcurrentHashMap是线程安全且高效的HashMap。 6.1.1 为何使用ConcurrentHashMap在并发编程中使用HashMap可能会导致死循环，而使用线程安全的HashTable效率非常低下，基于上面两个原因，所以有了Con">
-<meta name="keywords" content="Redis">
+<meta name="description" content="注意：所有文章除特别说明外，转载请注明出处. 第六章 Java并发容器和框架[TOC] 6.1 ConcurrentHashMap的实现原理和使用ConcurrentHashMap是线程安全且高效的HashMap。 6.1.1 为何使用ConcurrentHashMap">
+<meta name="keywords" content="多线程与并发">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Redis - Java集成">
+<meta property="og:title" content="并发容器与框架">
 <meta property="og:url" content="http://bangjinhu.github.io/undefined/第6章 Java并发容器和框架/index.html">
 <meta property="og:site_name" content="BangjinHu&#39;s Blog">
-<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. 第六章 Java并发容器和框架[TOC] 6.1 ConcurrentHashMap的实现原理和使用ConcurrentHashMap是线程安全且高效的HashMap。 6.1.1 为何使用ConcurrentHashMap在并发编程中使用HashMap可能会导致死循环，而使用线程安全的HashTable效率非常低下，基于上面两个原因，所以有了Con">
+<meta property="og:description" content="注意：所有文章除特别说明外，转载请注明出处. 第六章 Java并发容器和框架[TOC] 6.1 ConcurrentHashMap的实现原理和使用ConcurrentHashMap是线程安全且高效的HashMap。 6.1.1 为何使用ConcurrentHashMap">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-29T00:45:03.435Z">
+<meta property="og:updated_time" content="2020-03-30T00:18:32.008Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Redis - Java集成">
-<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 第六章 Java并发容器和框架[TOC] 6.1 ConcurrentHashMap的实现原理和使用ConcurrentHashMap是线程安全且高效的HashMap。 6.1.1 为何使用ConcurrentHashMap在并发编程中使用HashMap可能会导致死循环，而使用线程安全的HashTable效率非常低下，基于上面两个原因，所以有了Con">
+<meta name="twitter:title" content="并发容器与框架">
+<meta name="twitter:description" content="注意：所有文章除特别说明外，转载请注明出处. 第六章 Java并发容器和框架[TOC] 6.1 ConcurrentHashMap的实现原理和使用ConcurrentHashMap是线程安全且高效的HashMap。 6.1.1 为何使用ConcurrentHashMap">
 
 
 
@@ -199,7 +199,7 @@
 
 
 
-  <title>Redis - Java集成 | BangjinHu's Blog</title>
+  <title>并发容器与框架 | BangjinHu's Blog</title>
   
 
 
@@ -391,7 +391,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Redis - Java集成</h2>
+          <h2 class="post-title" itemprop="name headline">并发容器与框架</h2>
         
 
         <div class="post-meta">
@@ -419,8 +419,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-29T08:45:03+08:00">
-                2020-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-30T08:18:32+08:00">
+                2020-03-30
               </time>
             
           </span>
@@ -438,8 +438,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Redis/" itemprop="url" rel="index">
-                    <span itemprop="name">Redis</span>
+                  <a href="/categories/多线程与并发/" itemprop="url" rel="index">
+                    <span itemprop="name">多线程与并发</span>
                   </a>
                 </span>
 
@@ -510,7 +510,8 @@
 <div class="note danger"><p>注意：所有文章除特别说明外，转载请注明出处.</p></div>
 <h2 id="第六章-Java并发容器和框架"><a href="#第六章-Java并发容器和框架" class="headerlink" title="第六章 Java并发容器和框架"></a>第六章 Java并发容器和框架</h2><p>[TOC]</p>
 <h3 id="6-1-ConcurrentHashMap的实现原理和使用"><a href="#6-1-ConcurrentHashMap的实现原理和使用" class="headerlink" title="6.1 ConcurrentHashMap的实现原理和使用"></a>6.1 ConcurrentHashMap的实现原理和使用</h3><p>ConcurrentHashMap是线程安全且高效的HashMap。</p>
-<h4 id="6-1-1-为何使用ConcurrentHashMap"><a href="#6-1-1-为何使用ConcurrentHashMap" class="headerlink" title="6.1.1 为何使用ConcurrentHashMap"></a>6.1.1 为何使用ConcurrentHashMap</h4><p>在并发编程中使用HashMap可能会导致死循环，而使用线程安全的HashTable效率非常低下，基于上面两个原因，所以有了ConcurrentHashMap。</p>
+<h4 id="6-1-1-为何使用ConcurrentHashMap"><a href="#6-1-1-为何使用ConcurrentHashMap" class="headerlink" title="6.1.1 为何使用ConcurrentHashMap"></a>6.1.1 为何使用ConcurrentHashMap</h4><a id="more"></a>
+<p>在并发编程中使用HashMap可能会导致死循环，而使用线程安全的HashTable效率非常低下，基于上面两个原因，所以有了ConcurrentHashMap。</p>
 <p><strong>1.线程不安全的HashMap</strong><br></p>
 <p>多线程环境下，使用HashMap进行put操作会导致死循环，导致CPU利用率接近1。</p>
 <p><strong>2.效率低下的HashTable</strong><br></p>
@@ -672,11 +673,11 @@ public class ForkJoinExample extends RecursiveTask&lt;Integer&gt; {
   <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
 
-  <p><span>本文标题:</span>Redis - Java集成</a></p>
+  <p><span>本文标题:</span>并发容器与框架</a></p>
   <p><span>文章作者:</span>Bangjin-Hu</a></p>
   <p><span>发布时间:</span>2019年10月15日 - 09:22:26</p>
-  <p><span>最后更新:</span>2020年03月29日 - 08:45:03</p>
-  <p><span>原始链接:</span><a href="/undefined/第6章 Java并发容器和框架/" title="Redis - Java集成">http://bangjinhu.github.io/undefined/第6章 Java并发容器和框架/</a>
+  <p><span>最后更新:</span>2020年03月30日 - 08:18:32</p>
+  <p><span>原始链接:</span><a href="/undefined/第6章 Java并发容器和框架/" title="并发容器与框架">http://bangjinhu.github.io/undefined/第6章 Java并发容器和框架/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://bangjinhu.github.io/undefined/第6章 Java并发容器和框架/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
@@ -748,7 +749,7 @@ public class ForkJoinExample extends RecursiveTask&lt;Integer&gt; {
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://bangjinhu.github.io/undefined/第6章 Java并发容器和框架/" title="Redis - Java集成">http://bangjinhu.github.io/undefined/第6章 Java并发容器和框架/</a>
+    <a href="http://bangjinhu.github.io/undefined/第6章 Java并发容器和框架/" title="并发容器与框架">http://bangjinhu.github.io/undefined/第6章 Java并发容器和框架/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -763,7 +764,7 @@ public class ForkJoinExample extends RecursiveTask&lt;Integer&gt; {
       
         <div class="post-tags">
           
-            <a href="/tags/Redis/" rel="tag"><i class="fa fa-tag"></i> Redis</a>
+            <a href="/tags/多线程与并发/" rel="tag"><i class="fa fa-tag"></i> 多线程与并发</a>
           
         </div>
       
@@ -776,8 +777,8 @@ public class ForkJoinExample extends RecursiveTask&lt;Integer&gt; {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/undefined/第6章 深入分析ClassLoader工作机制/" rel="next" title="Redis - Java集成">
-                <i class="fa fa-chevron-left"></i> Redis - Java集成
+              <a href="/undefined/第6章 深入分析ClassLoader工作机制/" rel="next" title="CLASSLAODER">
+                <i class="fa fa-chevron-left"></i> CLASSLAODER
               </a>
             
           </div>
@@ -786,8 +787,8 @@ public class ForkJoinExample extends RecursiveTask&lt;Integer&gt; {
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/undefined/第5章 深入class文件结构/" rel="prev" title="Redis - Java集成">
-                Redis - Java集成 <i class="fa fa-chevron-right"></i>
+              <a href="/undefined/第4章 Spring MVC/" rel="prev" title="SpringMVC">
+                SpringMVC <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -897,7 +898,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">242</span>
+                  <span class="site-state-item-count">212</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -908,7 +909,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -919,7 +920,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -961,12 +962,6 @@ var jiathis_config={
                     <a href="http://www.zhihu.com/people/aaron-5-60" target="_blank" title="知乎">
                       
                         <i class="fa fa-fw fa-heart-o"></i>知乎</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.avantv.cn" target="_blank" title="AVANTV">
-                      
-                        <i class="fa fa-fw fa-user"></i>AVANTV</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -1044,7 +1039,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">465.0k</span>
+    <span title="Site words total count">486.7k</span>
   
 </div>
 
